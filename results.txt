@@ -1,0 +1,174 @@
+# Fresh run of the claim-audit battery from this copy of the code.
+# Generated: 2026-09-24T14:47Z
+# Python: Python 3.11.2
+
+## calibration.py
+[OK  ] R1 clean-ablation (ROBUST)
+      instrument : DISCRIMINATES
+      ground-truth: DISCRIMINATES
+      why        : 0.22>0.05 (real beat); null removes only {cm} (the lever) -> isolated, honest, resolved.
+
+[OK  ] R2 ci-resolved (ROBUST)
+      instrument : DISCRIMINATES
+      ground-truth: DISCRIMINATES
+      why        : 0.40>0.20 (point beat); 95% CI [0.35,0.45] excludes 0.20 (0.20<0.35) -> resolved.
+
+[OK  ] R3 own-axis-beat (ROBUST)
+      instrument : DISCRIMINATES
+      ground-truth: DISCRIMINATES
+      why        : headline 0.60>0.40 AND own-axis 0.30>0.10 -> beats null on both the headline and its own axis.
+
+[OK  ] F1 self-keyed (FLAWED)
+      instrument : SELF-KEYED
+      ground-truth: SELF-KEYED
+        fired NOT-SELF-KEYED: metric is (anti-)monotone in the mechanism's own knob (spearman +1.000); the instrument reads the lever it is supposed to measure
+      why        : metric (0.50,0.60,0.80) strictly monotone in the mechanism's own knob (0.90,0.95,0.99) -> reads the lever it measures.
+
+[OK  ] F2 null-reaches-headline (FLAWED)
+      instrument : NULL-REACHES-HEADLINE
+      ground-truth: NULL-REACHES-HEADLINE
+        fired BEATS-NULL: null 0.3 >= mechanism 0.1 (metric cannot tell mechanism from null)
+      why        : null 0.30 > mechanism 0.10 -> the metric cannot tell mechanism from null.
+
+[OK  ] F3 confounded-ablation (FLAWED)
+      instrument : CONFOUNDED
+      ground-truth: CONFOUNDED
+        fired ISOLATED: no null holds the substrate: best null drops ['bus', 'shared'] beyond the lever; the gap is the substrate, not the mechanism
+      why        : null removes {cm,bus,shared}, more than the lever {cm} -> turning off cm also drops bus+shared; never isolates the lever.
+
+[OK  ] F4 wrong-axis (FLAWED)
+      instrument : WRONG-AXIS
+      ground-truth: WRONG-AXIS
+        fired CO-MOVES: mechanism at/below null on its own axis (0 <= 0); headline high but the mechanism-relevant axis is at null
+      why        : headline 0.90>0.70 but the mechanism's own axis (0.00) sits at the null baseline (0.00) -> decoupled from the mechanism-relevant axis.
+
+[OK  ] F5 within-noise (FLAWED)
+      instrument : WITHIN-NOISE
+      ground-truth: WITHIN-NOISE
+        fired NOISE-FLOOR: beat 0.4 > 0.35 is unresolved: the max null 0.35 sits inside the mechanism's 95% CI [0.3, 0.5] (lo 0.3); the gap is within the noise floor
+      why        : point beat 0.40>0.35 but 95% CI [0.30,0.50] includes the null 0.35 (0.35>=0.30) -> gap within the noise floor.
+
+[OK  ] F6 consequence-witnessed (FLAWED)
+      instrument : CONSEQUENCE-WITNESSED
+      ground-truth: CONSEQUENCE-WITNESSED
+        fired REFERENT-WITNESSED: the witness observes only consequences (runtime timing, output quality), never the referent 'the cache is correct'; the success signal is self-sealing (a function of the mechanism being on, not the referent being correct)
+      why        : witness observes only {runtime timing, output quality} (downstream consequences), never the referent 'the cache is correct' -> self-sealing.
+
+[OK  ] F7 lossy-projection (FLAWED)
+      instrument : LOSSY-PROJECTION
+      ground-truth: LOSSY-PROJECTION
+        fired LOSSY-PROJECTION: record 'L' maps to 2 distinct referent values (0.0, 1.0): the referent is non-identifiable from the record, so the reported value cannot discriminate between referent values that share a record (many-to-one lossy projection)
+      why        : record 'L' maps to two distinct referent values {1.0, 0.0} -> the referent is non-identifiable from the record.
+
+[OK  ] F8 selection-bias (FLAWED)
+      instrument : SELECTION-BIAS
+      ground-truth: SELECTION-BIAS
+        fired SELECTION-BIAS: reported metric 2.75 is the max of 3 independent draws of a fixed instrument (knob 0.9); the max-of-K selection bias inflates the score by ~fsd * E[max of K standard normals] (~2.5*fsd at K=100), not a mechanism effect
+      why        : headline 2.75 is the max of independent draws {2.10,2.30,2.75} of a FIXED instrument (knob 0.90 constant) -> max-of-K selection, not a mechanism effect.
+
+================================================================
+CALIBRATION RESULT
+  (a) silent-on-robust : 3/3
+  (b) fire-on-flawed   : 8/8
+  (c) right-axis-strict: 8/8  (cross-fire on 0)
+  overall agreement    : 11/11
+  VERDICT: instrument DISCRIMINATES -- silent on the robust set AND
+           routes each known flaw to the right axis with no cross-fire.
+           The 283 NO-FALSIFIER streak is now evidence: the axes are
+           not so broad they fire on everything, not so narrow they
+           miss known flaws.
+
+## claim_audit.py (91-specimen battery, summary lines only)
+[OK      ] vibe-design (2609.15078)
+[OK      ] busma (2609.15054)
+[OK      ] avg-farmer (2609.15038)
+[OK      ] control (clean retrieval ablation)
+[OK      ] square post 5399 (09-15 draw, partial)
+[OK      ] retention instrument OWN headline (four-axis meaning, self-specimen)
+[OK      ] update-admission audit (2609.10873)
+[OK      ] MERIT memory floor (2609.05441)
+[OK      ] prometheus on-par headline (2310.08491)
+[OK      ] four-ledgers vacuous-ratio (2609.15015)
+[OK      ] el-agente-potente accuracy (2609.14840)
+[OK      ] Aura c62793 label-swap (model-label silence, griffelschuft #5458)
+[OK      ] self-orchestrating-LMs TIP ablation (2609.14850)
+[OK      ] Economy of Minds (2606.02859)
+[OK      ] Economy of Minds (2606.02859) — headline framing (best-of-N vs single)
+[OK      ] ANASSA (2609.14824)
+[OK      ] TypeSafe AI 'Jev' zero-hallucination (typesafe.ai, 2026-09-15)
+[OK      ] four-ledgers lossy-projection (general, 2609.15015)
+[OK      ] four-ledgers lossy-projection control (injective)
+[OK      ] orthogonality Case C: SELF-KEYED fires, LOSSY-PROJECTION passes (injective record)
+[OK      ] orthogonality Case D: LOSSY-PROJECTION fires, NOT-SELF-KEYED passes (non-monotone metric)
+[OK      ] GAI WEAK multiple-comparisons (max-of-K, fixed instrument)
+[OK      ] GAI STRONG definition-edit (knob varies, max-of-K) -- control
+[OK      ] GAI SINGLE single-draw (fixed instrument, no selection) -- control
+[OK      ] GAI KNOB-VARY knob-sweep (knob varies, single draw per knob) -- control
+[OK      ] TEMPORAL-SPIKE true immediate + later null spike (fail-cell false positive caught) -- T3
+[OK      ] TEMPORAL-SPIKE true immediate + later null spike, onset UNDECLARED (schema-boundary: over-fire returns) -- T3u
+[OK      ] OUTCOME-ONSET pass-cell false negative caught -- O1
+[OK      ] OUTCOME-SPIKE fail-cell false positive caught -- O2
+[OK      ] OUTCOME-SPIKE true beat in accuracy + non-claim null spike, claim_outcome UNDECLARED (schema-boundary: over-fire returns) -- O2u
+[OK      ] OUTCOME genuine fail (no refinement) -- O3
+[OK      ] OUTCOME robust multi-outcome (no refinement) -- O4
+[OK      ] SUBGROUP-ONSET pass-cell false negative caught -- S1
+[OK      ] SUBGROUP-SPIKE true beat in A + non-claim null spike (fail-cell false positive caught) -- S2
+[OK      ] SUBGROUP-SPIKE true beat in A + non-claim null spike, claim_subgroup UNDECLARED (schema-boundary: over-fire returns) -- S2u
+[OK      ] SUBGROUP-SPIKE genuine fail (at-claim-subgroup value does not support the claim) -- S3
+[OK      ] SUBGROUP-ONSET robust multi-subgroup (control) -- S4
+[OK      ] DOSE-ONSET pass-cell false negative caught -- D1
+[OK      ] DOSE-SPIKE true beat in mild + non-claim null spike (fail-cell false positive caught) -- D2
+[OK      ] DOSE-SPIKE true beat in mild + non-claim null spike, claim_dose UNDECLARED (schema-boundary: over-fire returns) -- D2u
+[OK      ] DOSE-SPIKE genuine fail (at-claim-dose value does not support the claim) -- D3
+[OK      ] DOSE-ONSET robust multi-dose (control) -- D4
+[OK      ] TIER-ONSET pass-cell false negative caught -- TR1
+[OK      ] TIER-SPIKE true beat in easy + non-claim null spike (fail-cell false positive caught) -- TR2
+[OK      ] TIER-SPIKE true beat in easy + non-claim null spike, claim_tier UNDECLARED (schema-boundary: over-fire returns) -- TR2u
+[OK      ] TIER-SPIKE genuine fail (at-claim-tier value does not support the claim) -- TR3
+[OK      ] TIER-ONSET robust multi-tier (control) -- TR4
+[OK      ] SPLIT-ONSET pass-cell false negative caught -- SP1
+[OK      ] SPLIT-SPIKE true beat in held-out + non-claim null spike (fail-cell false positive caught) -- SP2
+[OK      ] SPLIT-SPIKE true beat in held-out + non-claim null spike, claim_split UNDECLARED (schema-boundary: over-fire returns) -- SP2u
+[OK      ] SPLIT-SPIKE genuine fail (at-claim-split value does not support the claim) -- SP3
+[OK      ] SPLIT-ONSET robust multi-split (control) -- SP4
+[OK      ] SPLIT-SPIKE + METRIC-SPIKE entangled: metric varies within each split, both claim_split and claim_metric declared -- SP5
+[OK      ] METRIC-ONSET pass-cell false negative caught -- MP1
+[OK      ] METRIC-SPIKE true beat in accuracy + non-claim null spike (fail-cell false positive caught) -- MP2
+[OK      ] METRIC-SPIKE true beat in accuracy + non-claim null spike, claim_metric UNDECLARED (schema-boundary: over-fire returns) -- MP2u
+[OK      ] METRIC-SPIKE genuine fail (at-claim-metric value does not support the claim) -- MP3
+[OK      ] METRIC-ONSET robust multi-metric (control) -- MP4
+[OK      ] MemRiskBench (2609.14976) -- selector triple scoped to calibration/reference set; split + metric change (external witness)
+[OK      ] ATLAS v1.0 (2608.00038) - AI & Economy dataset, prevalence claims
+[OK      ] codeasauditor 2609.19199 input layer (GPT-5 summary of PIPC decision)
+[OK      ] codeasauditor 2609.19199 encoding layer (GPT-5 self-verified compliance code)
+[OK      ] codeasauditor 2609.19199 Table 6 (outperforms GPT-5)
+[OK      ] RAFT (2609.20754) Case Hit: label is a model artifact (consequence-witnessed)
+[OK      ] RAFT (2609.20754) Case Hit: Claude group id is a lossy projection of the true root cause
+[OK      ] RAFT (2609.20754) baseline-scope confound (granularity bundled with statefulness)
+[OK      ] BLINDSPOT-A: referent is a MODEL-CONSTRUCTED artifact (e.g. Claude-Opus-4-7 root-cause groups), directly observed, injective
+[OK      ] BLINDSPOT-B (CONTROL): referent is EXTERNALLY ANCHORED (human-audited root-cause groups), directly observed, injective
+[OK      ] CO-OCCURRENCE (synthetic): self-keyed knob AND lossy record (2x2 joint cell)
+[OK      ] AGGREGATION-REVERSAL control: aggregate TRUE (Simpson-consistent pooling) -- S0
+[OK      ] AGGREGATION-REVERSAL probe: aggregate FALSE (Simpson reversal, mech wins every subgroup) -- S1
+[OK      ] AGGREGATION-REVERSAL mirror: null wins every subgroup, mech wins pooled -- S2
+[OK      ] DOSE-RESPONSE true dose-response, dose DECLARED (FP-side schema-boundary witness) -- DR0
+[OK      ] DOSE-RESPONSE true dose-response, dose UNDECLARED (schema-boundary: over-fire returns) -- DRu
+[OK      ] headline-layer baseline-omission (Ebola structure, clean data) -- NORMALIZER-OMISSION blind-spot witness
+[OK      ] headline-layer baseline-omission (PIRNN 2609.19871 title, clean data) -- NORMALIZER-OMISSION arXiv-population witness
+[OK      ] wason-consensus (2609.20543): consensus tracks correctness -- S0
+[OK      ] wason-consensus (2609.20543): consensus decoupled from correctness -- S1
+[OK      ] harness-fixed-sham (2609.20474): Fixed beats Sham -- S0 (the paper's contrast)
+[OK      ] harness-fixed-sham (2609.20474): task-specific-but-shuffled control -- S1 (the discriminating case)
+[OK      ] haegeo funnel (2609.06027): 'rarely converts verification into recovery'
+[OK      ] haegeo funnel (2609.06027): correct attribution (reach stage)
+[OK      ] mtva middle-three (2609.20152): narrative-selected subset
+[OK      ] mtva middle-three (2609.20152): positional control (pass cell)
+[OK      ] BBC Lindsey-Graham sanctions (cqvgy34ndj4eo): narrative-selected 'China and India'
+[OK      ] Tailored-to-you 2609.20077 — advice-uptake: 'exposure-driven' headline vs personalisation null
+[OK      ] harness phase-composition (2609.20804): planning reduces trajectory length via Verify-phase reduction
+[OK      ] harness recall-null (2609.20804): no accuracy gain from recall (dose readout, pass cell)
+[OK      ] Pain-axis re-press dissociation (arXiv 2609.16247): 'tracks internal state not label'
+[OK      ] Coda (2609.21216): 5-step Coda-Transformer vs 6-step pi0.5-FT on the 'independent 13-task control'
+[OK      ] Coda (2609.21216): composite trade-off pairing (quality vs 5-step, latency vs 10-step)
+[OK      ] AgentBench (2308.03688): 'Evaluating LLMs as agents' (janus simulator/simulacrum conflation, underdetermined referent)
+ALL SPECIMENS MATCH

@@ -1,0 +1,126 @@
+#!/usr/bin/env python3
+"""Calibration of the 7-axis claim-audit instrument (the discriminating case
+parked 2026-09-18 07:52Z).
+
+Ground truth is INDEPENDENT of the instrument: each specimen's known answer is
+derived by direct arithmetic/inspection of the raw numbers (see truth_reason),
+not by running claim_audit. The calibration checks three things:
+  (a) silent-on-robust : robust claims  -> instrument fires NO flag (DISCRIMINATES)
+  (b) fire-on-flawed   : flawed claims  -> instrument fires the expected axis
+  (c) right-axis-strict: the fired set == the expected set (no cross-fire)
+A clean streak of NO-FALSIFIER results is only evidence if the instrument is
+silent on the robust set AND routes each known flaw to the right axis.
+"""
+import claim_audit
+
+SPECIMENS = [
+  # ---- ROBUST (expected: DISCRIMINATES, no flags) ----
+  {"name":"R1 clean-ablation","type":"ablation","mechanism_lever":"cm",
+   "rows":[{"label":"managed","mechanism_on":True,"substrate":["cm","base"],"metric":0.22},
+           {"label":"unmanaged","mechanism_on":False,"is_null":True,"substrate":["base"],"metric":0.05}],
+   "truth":[],
+   "truth_reason":"0.22>0.05 (real beat); null removes only {cm} (the lever) -> isolated, honest, resolved."},
+  {"name":"R2 ci-resolved","type":"cross-model",
+   "rows":[{"label":"mechanism","mechanism_on":True,"metric":0.40,"ci":[0.35,0.45]},
+           {"label":"null","mechanism_on":False,"is_null":True,"metric":0.20}],
+   "truth":[],
+   "truth_reason":"0.40>0.20 (point beat); 95% CI [0.35,0.45] excludes 0.20 (0.20<0.35) -> resolved."},
+  {"name":"R3 own-axis-beat","type":"cross-model",
+   "rows":[{"label":"mechanism","mechanism_on":True,"metric":0.60,"mechanism_axis":0.30},
+           {"label":"null","mechanism_on":False,"is_null":True,"metric":0.40,"mechanism_axis":0.10}],
+   "truth":[],
+   "truth_reason":"headline 0.60>0.40 AND own-axis 0.30>0.10 -> beats null on both the headline and its own axis."},
+  # ---- FLAWED (expected: one specific flag) ----
+  {"name":"F1 self-keyed","type":"cross-model",
+   "rows":[{"mechanism_on":True,"knob":0.90,"metric":0.50},
+           {"mechanism_on":True,"knob":0.95,"metric":0.60},
+           {"mechanism_on":True,"knob":0.99,"metric":0.80}],
+   "truth":["SELF-KEYED"],
+   "truth_reason":"metric (0.50,0.60,0.80) strictly monotone in the mechanism's own knob (0.90,0.95,0.99) -> reads the lever it measures."},
+  {"name":"F2 null-reaches-headline","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.10},
+           {"mechanism_on":False,"is_null":True,"metric":0.30}],
+   "truth":["NULL-REACHES-HEADLINE"],
+   "truth_reason":"null 0.30 > mechanism 0.10 -> the metric cannot tell mechanism from null."},
+  {"name":"F3 confounded-ablation","type":"ablation","mechanism_lever":"cm",
+   "rows":[{"mechanism_on":True,"substrate":["cm","bus","shared"],"metric":0.50},
+           {"mechanism_on":False,"is_null":True,"substrate":["base"],"metric":0.20}],
+   "truth":["CONFOUNDED"],
+   "truth_reason":"null removes {cm,bus,shared}, more than the lever {cm} -> turning off cm also drops bus+shared; never isolates the lever."},
+  {"name":"F4 wrong-axis","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.90,"mechanism_axis":0.00},
+           {"mechanism_on":False,"is_null":True,"metric":0.70,"mechanism_axis":0.00}],
+   "truth":["WRONG-AXIS"],
+   "truth_reason":"headline 0.90>0.70 but the mechanism's own axis (0.00) sits at the null baseline (0.00) -> decoupled from the mechanism-relevant axis."},
+  {"name":"F5 within-noise","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.40,"ci":[0.30,0.50]},
+           {"mechanism_on":False,"is_null":True,"metric":0.35}],
+   "truth":["WITHIN-NOISE"],
+   "truth_reason":"point beat 0.40>0.35 but 95% CI [0.30,0.50] includes the null 0.35 (0.35>=0.30) -> gap within the noise floor."},
+  {"name":"F6 consequence-witnessed","type":"cross-model",
+   "referent":"the cache is correct","witness_observes":["runtime timing","output quality"],
+   "rows":[{"mechanism_on":True,"metric":0.50},
+           {"mechanism_on":False,"is_null":True,"metric":0.40}],
+   "truth":["CONSEQUENCE-WITNESSED"],
+   "truth_reason":"witness observes only {runtime timing, output quality} (downstream consequences), never the referent 'the cache is correct' -> self-sealing."},
+  {"name":"F7 lossy-projection","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.50,"record":"L","referent_value":1.0},
+           {"mechanism_on":True,"metric":0.50,"record":"L","referent_value":0.0}],
+   "truth":["LOSSY-PROJECTION"],
+   "truth_reason":"record 'L' maps to two distinct referent values {1.0, 0.0} -> the referent is non-identifiable from the record."},
+  {"name":"F8 selection-bias","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":2.75,"statistic":"max","knob":0.90},
+           {"mechanism_on":True,"metric":2.10,"draw":1,"knob":0.90},
+           {"mechanism_on":True,"metric":2.30,"draw":2,"knob":0.90},
+           {"mechanism_on":True,"metric":2.75,"draw":3,"knob":0.90}],
+   "truth":["SELECTION-BIAS"],
+   "truth_reason":"headline 2.75 is the max of independent draws {2.10,2.30,2.75} of a FIXED instrument (knob 0.90 constant) -> max-of-K selection, not a mechanism effect."},
+]
+
+def main():
+    robust=[s for s in SPECIMENS if s["truth"]==[]]
+    flawed=[s for s in SPECIMENS if s["truth"]!=[]]
+    silent=fire=right=crossfire=0
+    lines=[]
+    for s in SPECIMENS:
+        a=claim_audit.audit(s)
+        got=set(a["flags"]); want=set(s["truth"])
+        match = got==want
+        kind="ROBUST" if s["truth"]==[] else "FLAWED"
+        if s["truth"]==[]:
+            if not got: silent+=1
+        else:
+            if want<=got: fire+=1
+            if got==want: right+=1
+            if got-want: crossfire+=1
+        lines.append("[%s] %s (%s)" % ("OK  " if match else "FAIL", s["name"], kind))
+        lines.append("      instrument : %s" % a["verdict"])
+        lines.append("      ground-truth: %s" % ("DISCRIMINATES" if not want else ", ".join(sorted(want))))
+        if not match:
+            if got-want: lines.append("      CROSS-FIRE (unexpected): %s" % ", ".join(sorted(got-want)))
+            if want-got: lines.append("      MISSED (expected)    : %s" % ", ".join(sorted(want-got)))
+        for name,res in a["checks"].items():
+            if not res["pass"]:
+                lines.append("        fired %s: %s" % (name, res["detail"]))
+        lines.append("      why        : %s" % s["truth_reason"])
+        lines.append("")
+    print("\n".join(lines))
+    print("="*64)
+    print("CALIBRATION RESULT")
+    print("  (a) silent-on-robust : %d/%d" % (silent, len(robust)))
+    print("  (b) fire-on-flawed   : %d/%d" % (fire, len(flawed)))
+    print("  (c) right-axis-strict: %d/%d  (cross-fire on %d)" % (right, len(flawed), crossfire))
+    total=len(SPECIMENS); agree=silent+right
+    print("  overall agreement    : %d/%d" % (agree, total))
+    if silent==len(robust) and right==len(flawed):
+        print("  VERDICT: instrument DISCRIMINATES -- silent on the robust set AND")
+        print("           routes each known flaw to the right axis with no cross-fire.")
+        print("           The 283 NO-FALSIFIER streak is now evidence: the axes are")
+        print("           not so broad they fire on everything, not so narrow they")
+        print("           miss known flaws.")
+    else:
+        print("  VERDICT: instrument does NOT fully discriminate. See FAIL lines above.")
+    return 0 if (silent==len(robust) and right==len(flawed)) else 1
+
+if __name__=="__main__":
+    raise SystemExit(main())
