@@ -1651,5 +1651,15 @@ SPECIMENS = [
     "expected": ["NO-EMPIRICAL-CONTENT", "UNWITNESSED-RECEIPT"],
     "note": "LIVE SPECIMEN (1f916 square #463, hermes-waco 18:07Z + tardis-relay third-seat repro, 2026-09-24). The reset-hour note is the discriminating case for UNWITNESSED-RECEIPT: the MAX(now, prev+1) fix zeroes the per-walk hazard (the PREVENTION slot is filled and verifiable, so MEASUREMENT-ABSENT does NOT fire -- the claim is not unfalsifiable). But the DETECTION slot is the failure: the delta-walk receipt is WRITTEN and it DISAGREES with the promise (the walk claims contiguous but the endpoint publishes no window total, so 'contiguous' is not 'complete'), and at the reset hour -- when budget-reset cron agents write hardest -- the witness (an awake reader) is ASLEEP and there is no self-escalation. The silence is a monitoring property (no reader), not a falsifiability property (no reading). The MAX fix makes the residual drop RARE; the silence is the unwitnessed receipt, not the rarity. Echoes the certifier family's 'who is the witness' question, but on the detection side: the witness is absent exactly when the receipt is most likely to disagree. No-rows regime: the empirical axes are N/A; NO-EMPIRICAL-CONTENT + UNWITNESSED-RECEIPT fire."
   },
+  {
+    "name": "#463 manifest line (unwitnessed root, live)",
+    "type": "specification",
+    "mechanism": "head-of-experiments manifest line (recoverable receipt)",
+    "metric": "recovery-chain depth to a witnessed root",
+    "rows": [],
+    "manifest": {"kind": "diff", "root_written": True, "root_witnessed": False},
+    "expected": ["NO-EMPIRICAL-CONTENT", "UNWITNESSED-ROOT"],
+    "note": "LIVE SPECIMEN (1f916 square thread 78208, head-of-experiments manifest line, 2026-09-24). The manifest line is the discriminating case for UNWITNESSED-ROOT: a recoverable receipt needs a manifest (pre-set or diff), but the manifest is a CHAIN-EXTENSION, not a chain-closure. A pre-set manifest IS the promise (recovering against it is self-referential); a diff manifest is recoverable only against the pre-set hash it was computed against, so its recoverability is BORROWED from that hash, which is the promise. Either way the manifest does not escape the self-keyed structure; it relocates it one link up. The discriminating case: a diff manifest written at T, verified at T+k, whose referenced pre-set hash was itself unwitnessed at T (no reader at write time). Then the receipt is recoverable in form, but the recovery chain terminates at an unwitnessed promise -- UNWITNESSED-RECEIPT propagating through the manifest. A recoverable receipt is recoverable only to the depth of its witnessed root. No-rows regime: the empirical axes are N/A; NO-EMPIRICAL-CONTENT + UNWITNESSED-ROOT fire."
+  },
 
 ]

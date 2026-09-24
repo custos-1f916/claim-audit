@@ -3,7 +3,7 @@
 claim_audit.py — does the headline metric discriminate the claimed mechanism?
 
 Reusable instrument for auditing a paper's load-bearing claim. A claim is a
-(mechanism, metric, null) triple. The instrument runs thirty-two checks: fifteen primary axes plus sixteen refinements of BEATS-NULL (NOISE-FLOOR, DOSE-RESPONSE, TEMPORAL-ONSET, TEMPORAL-SPIKE, OUTCOME-ONSET, OUTCOME-SPIKE, SUBGROUP-ONSET, SUBGROUP-SPIKE, DOSE-ONSET, DOSE-SPIKE, TIER-ONSET, TIER-SPIKE, SPLIT-ONSET, SPLIT-SPIKE, METRIC-ONSET, METRIC-SPIKE), plus a COMPUTABLE axis that
+(mechanism, metric, null) triple. The instrument runs thirty-three checks: sixteen primary axes plus sixteen refinements of BEATS-NULL (NOISE-FLOOR, DOSE-RESPONSE, TEMPORAL-ONSET, TEMPORAL-SPIKE, OUTCOME-ONSET, OUTCOME-SPIKE, SUBGROUP-ONSET, SUBGROUP-SPIKE, DOSE-ONSET, DOSE-SPIKE, TIER-ONSET, TIER-SPIKE, SPLIT-ONSET, SPLIT-SPIKE, METRIC-ONSET, METRIC-SPIKE), plus a COMPUTABLE axis that
 operates in the no-data regime, all behind a vacuous-ratio precondition gate.
 Each returns PASS or a named flag. A claim DISCRIMINATES only if all empirical checks pass.
 The primary checks are
@@ -1379,6 +1379,32 @@ def check_unwitnessed_receipt(spec):
     return False, "UNWITNESSED-RECEIPT", "the receipt is written and disagrees with the promise, but the witness is absent at the critical moment (no awake reader, no self-escalation); the failure signal is present but unread"
 
 
+def check_unwitnessed_root(spec):
+    """UNWITNESSED-ROOT (16th primary axis, 2026-09-24): a manifest (pre-set
+    or diff) presented as a recoverable receipt is a CHAIN-EXTENSION, not a
+    chain-closure: its recoverability is BORROWED from a root (the pre-set
+    hash the manifest is computed against / the anchor of the recovery
+    chain). If that root was UNWITNESSED at write time (no reader at write
+    time), the recovery chain terminates at an unwitnessed promise. The
+    receipt is recoverable in FORM, not to a witnessed root. Distinct from
+    UNWITNESSED-RECEIPT (a disagreement going unread): here the receipt may
+    even agree with the promise; the failure is that the recovery chain's
+    anchor is unwitnessed. This is UNWITNESSED-RECEIPT propagating one link
+    up the chain. N/A when the spec does not declare a manifest (orthogonal
+    to the empirical axes), when the root hash is not written
+    (MEASUREMENT-ABSENT regime: the recovery chain is broken at the first
+    link, not unwitnessed), or when the root was witnessed at write time
+    (the recovery chain terminates at a witnessed root)."""
+    m = spec.get("manifest")
+    if not m:
+        return True, "", "N/A (no manifest declared; orthogonal to the empirical axes)"
+    if not m.get("root_written"):
+        return True, "", "N/A (MEASUREMENT-ABSENT regime: the root hash is not written; the recovery chain is broken at the first link, not unwitnessed)"
+    if m.get("root_witnessed"):
+        return True, "", "N/A (the recovery chain terminates at a witnessed root; the manifest is as recoverable as its root, and the root is witnessed)"
+    return False, "UNWITNESSED-ROOT", "the manifest (%s) is presented as a recoverable receipt, but its recovery chain terminates at an unwitnessed root (the pre-set hash was not witnessed at write time); the receipt is recoverable in form, not to a witnessed root" % m.get("kind","manifest")
+
+
 def _classify_na(detail, superlative=False):
     """Classify an N/A reason into a boundary class.
     - schema: the spec could have declared the structure; the instrument is
@@ -1464,6 +1490,7 @@ CHECKS = [
     ("SCOPE-OF-INDEPENDENCE", check_scope_of_independence),
     ("REFERENCE-MIX", check_reference_mix),
     ("UNWITNESSED-RECEIPT", check_unwitnessed_receipt),
+    ("UNWITNESSED-ROOT", check_unwitnessed_root),
 ]
 
 def _no_empirical(spec):
@@ -1477,7 +1504,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:
@@ -1492,6 +1519,12 @@ def audit(spec):
     by_construction, bc_detail = _by_construction(spec)
     for name, fn in CHECKS:
         if name == "UNWITNESSED-RECEIPT":
+            ok, flag, detail = fn(spec)
+            results[name] = {"pass": ok, "detail": detail}
+            if not ok:
+                flags.append(flag)
+            continue
+        if name == "UNWITNESSED-ROOT":
             ok, flag, detail = fn(spec)
             results[name] = {"pass": ok, "detail": detail}
             if not ok:
