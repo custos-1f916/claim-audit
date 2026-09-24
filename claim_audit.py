@@ -3,7 +3,7 @@
 claim_audit.py — does the headline metric discriminate the claimed mechanism?
 
 Reusable instrument for auditing a paper's load-bearing claim. A claim is a
-(mechanism, metric, null) triple. The instrument runs thirty-one checks: fourteen primary axes plus sixteen refinements of BEATS-NULL (NOISE-FLOOR, DOSE-RESPONSE, TEMPORAL-ONSET, TEMPORAL-SPIKE, OUTCOME-ONSET, OUTCOME-SPIKE, SUBGROUP-ONSET, SUBGROUP-SPIKE, DOSE-ONSET, DOSE-SPIKE, TIER-ONSET, TIER-SPIKE, SPLIT-ONSET, SPLIT-SPIKE, METRIC-ONSET, METRIC-SPIKE), plus a COMPUTABLE axis that
+(mechanism, metric, null) triple. The instrument runs thirty-two checks: fifteen primary axes plus sixteen refinements of BEATS-NULL (NOISE-FLOOR, DOSE-RESPONSE, TEMPORAL-ONSET, TEMPORAL-SPIKE, OUTCOME-ONSET, OUTCOME-SPIKE, SUBGROUP-ONSET, SUBGROUP-SPIKE, DOSE-ONSET, DOSE-SPIKE, TIER-ONSET, TIER-SPIKE, SPLIT-ONSET, SPLIT-SPIKE, METRIC-ONSET, METRIC-SPIKE), plus a COMPUTABLE axis that
 operates in the no-data regime, all behind a vacuous-ratio precondition gate.
 Each returns PASS or a named flag. A claim DISCRIMINATES only if all empirical checks pass.
 The primary checks are
@@ -1356,6 +1356,29 @@ def check_reference_mix(spec):
     return True, "", "the composite trade-off pairing is conservative or neutral relative to the single-reference reading (%s); presentation, not flaw" % single_ref
 
 
+def check_unwitnessed_receipt(spec):
+    """UNWITNESSED-RECEIPT (15th primary axis, 2026-09-24): the failure signal
+    (a receipt that disagrees with its promise) is PRESENT but UNREAD, because
+    the witness (awake reader) is absent at the critical moment. The silence is
+    a monitoring property (no reader), not a falsifiability property (no
+    reading). Distinct from MEASUREMENT-ABSENT (signal absent -> claim
+    unfalsifiable) and VACUOUS-RATIO (value reported, support empty). N/A when
+    the spec does not declare a receipt (orthogonal to the empirical axes),
+    when the receipt is not written (MEASUREMENT-ABSENT regime), when the
+    receipt agrees with the promise (no failure signal), or when the failure
+    is caught (awake witness or self-escalation)."""
+    receipt = spec.get("receipt")
+    if not receipt:
+        return True, "", "N/A (no receipt declared; orthogonal to the empirical axes)"
+    if not receipt.get("written"):
+        return True, "", "N/A (MEASUREMENT-ABSENT regime: the receipt is not written; the signal is absent, not unread)"
+    if not receipt.get("disagrees"):
+        return True, "", "N/A (the receipt agrees with the promise; no failure signal)"
+    if receipt.get("witness_awake") or receipt.get("self_escalates"):
+        return True, "", "N/A (the failure is caught: an awake witness or self-escalation reads the receipt)"
+    return False, "UNWITNESSED-RECEIPT", "the receipt is written and disagrees with the promise, but the witness is absent at the critical moment (no awake reader, no self-escalation); the failure signal is present but unread"
+
+
 def _classify_na(detail, superlative=False):
     """Classify an N/A reason into a boundary class.
     - schema: the spec could have declared the structure; the instrument is
@@ -1382,7 +1405,8 @@ def _classify_na(detail, superlative=False):
                             "no funnel structure", "no onset timepoint",
                             "no spike timepoint", "no tier level",
                             "no split level", "no metric value",
-                            "no outcome value")):
+                            "no outcome value",
+                            "no receipt declared")):
         return "schema"
     # a superlative's missing comparison basis is schema-conditional (the
     # data-absence side of the boundary): the claim is an extreme over a
@@ -1439,6 +1463,7 @@ CHECKS = [
     ("COMPUTABLE",       check_computable),
     ("SCOPE-OF-INDEPENDENCE", check_scope_of_independence),
     ("REFERENCE-MIX", check_reference_mix),
+    ("UNWITNESSED-RECEIPT", check_unwitnessed_receipt),
 ]
 
 def _no_empirical(spec):
@@ -1452,7 +1477,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name == "COMPUTABLE":
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:
@@ -1466,6 +1491,12 @@ def audit(spec):
     incomparable, inc_detail = _incomparable_statistic(spec)
     by_construction, bc_detail = _by_construction(spec)
     for name, fn in CHECKS:
+        if name == "UNWITNESSED-RECEIPT":
+            ok, flag, detail = fn(spec)
+            results[name] = {"pass": ok, "detail": detail}
+            if not ok:
+                flags.append(flag)
+            continue
         if incomparable:
             results[name] = {"pass": True, "detail": "N/A (INCOMPARABLE-STATISTIC: %s)" % inc_detail}
             continue

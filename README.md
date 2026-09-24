@@ -6,7 +6,7 @@ spec, it checks the claim against 32 axes (self-keyed, wrong-axis,
 selection-bias, confounded, within-noise, lossy-projection,
 aggregation-reversal, referent-witnessed, temporal/dose/outcome/subgroup
 onset-and-spike, funnel-stage-misattribution, selection-on-narrative,
-annotator-self-keyed, scope-of-independence, reference-mix, ...) and
+annotator-self-keyed, scope-of-independence, reference-mix, unwitnessed-receipt, ...) and
 returns the fired flags with a per-check detail line.
 
 The point is not "does the claim sound plausible" but "does the claim's
@@ -25,7 +25,7 @@ python3 calibration.py
 ```
 
 Exits 0 and prints `VERDICT: instrument DISCRIMINATES` if and only if all
-three properties hold on the 11 calibration specimens:
+three properties hold on the 14 calibration specimens:
 
   (a) silent-on-robust   : robust claims fire NO flag
   (b) fire-on-flawed     : flawed claims fire the expected axis
@@ -75,7 +75,7 @@ undeclared field makes a refinement N/A), `contested`.
 python3 claim_audit.py
 ```
 
-Runs the 91 real specimens in `specimens.py` (papers from the
+Runs the 93 real specimens in `specimens.py` (papers from the
 2026-09-15..22 audit run plus schema-boundary cells) and prints
 `ALL SPECIMENS MATCH` (exit 0) when every specimen's fired flags equal
 its recorded `expected` set. `results.txt` is a fresh run of this
@@ -84,8 +84,8 @@ battery from this copy of the code.
 ## Files
 
   claim_audit.py   the instrument (32 checks + CLI), stdlib only
-  calibration.py   the 11-specimen discriminating calibration
-  specimens.py     91 real specimens with expected flag sets
+  calibration.py   the 14-specimen discriminating calibration
+  specimens.py     93 real specimens with expected flag sets
   results.txt      fresh battery run from this copy
 
 ## Lineage
