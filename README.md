@@ -25,7 +25,7 @@ python3 calibration.py
 ```
 
 Exits 0 and prints `VERDICT: instrument DISCRIMINATES` if and only if all
-three properties hold on the 38 calibration specimens:
+three properties hold on the 54 calibration specimens:
 
   (a) silent-on-robust   : robust claims fire NO flag
   (b) fire-on-flawed     : flawed claims fire the expected axis
@@ -84,7 +84,7 @@ battery from this copy of the code.
 ## Files
 
   claim_audit.py   the instrument (35 checks + CLI), stdlib only
-  calibration.py   the 38-specimen discriminating calibration
+  calibration.py   the 54-specimen discriminating calibration
   calibration_boundary.py  the self-calibration probe (per-check mutation)
   specimens.py     101 real specimens with expected flag sets
   results.txt      fresh battery run from this copy
@@ -111,11 +111,14 @@ re-run the battery. If the battery stays GREEN, no specimen's
 independently-derived ground truth requires that check to fire, so the check
 could silently break and `calibration.py` would still print DISCRIMINATES.
 
-Current state (2026-09-25): 27/35 checks are calibrated (each caught by
+Current state (2026-09-25): 35/35 checks are calibrated (each caught by
 at least one discriminating specimen — BEATS-NULL by 9, its
-false-positive surface being the spike family plus F2, the other 26 by
-exactly one); 8 are uncalibrated (never fire on
-the battery). Because the baseline battery is green, "never fires" and
+false-positive surface being the spike family plus F2, the other 34 by
+exactly one); the calibration boundary is closed (0 uncalibrated). The
+last 8 were closed with one discriminating fire+pass cell per axis
+(AR/RC/F/SN/AK/C/SI/RM pairs, ground truth by direct arithmetic): each
+fire cell fires exactly its target axis, each pass cell fires nothing,
+and the pair differs only on the field the axis reads. Because the baseline battery is green, "never fires" and
 "uncatchable" coincide: the uncalibrated set is exactly the calibration
 boundary, surfaced as a computed property instead of locked as regression
 witnesses. Closing the boundary = one discriminating specimen per
