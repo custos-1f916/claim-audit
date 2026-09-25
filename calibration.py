@@ -143,12 +143,72 @@ SPECIMENS = [
    "number_role":"bright-line-screen",
    "truth":["NO-EMPIRICAL-CONTENT"],
    "truth_reason":"the load-bearing referent structure is not declared (schema-boundary): the instrument cannot tell whether the referent is wider than the named number. WIDER-THAN-NAMED does not fire (N/A). Same number_role as W1; only referent_structure is absent, so the axis is what discriminates."},
+  {"name":"T1 temporal-onset (pass cell: no beat at claim temporal, peak elsewhere)","type":"cross-model","onset":"T0",
+   "rows":[{"timepoint": "T0", "mechanism_on": True, "metric": 0.1}, {"timepoint": "T0", "mechanism_on": False, "is_null": True, "metric": 0.2}, {"timepoint": "T1", "mechanism_on": True, "metric": 0.5}, {"timepoint": "T1", "mechanism_on": False, "is_null": True, "metric": 0.1}],
+   "truth":["TEMPORAL-ONSET"],
+   "truth_reason":"at the claim temporal (T0) the mechanism is 0.10 <= null 0.20 (no beat at the claimed temporal), but at the non-claim temporal (T1) the mechanism is 0.50 > null 0.10 (a real peak); the flat check pools the cross-temporal max (max-mech 0.50 > max-null 0.20) and passes, so it is silent on the false 'temporal-scoped' claim -> TEMPORAL-ONSET."},
+  {"name":"O1 outcome-onset (pass cell: no beat at claim outcome, peak elsewhere)","type":"cross-model","claim_outcome":"win",
+   "rows":[{"outcome": "win", "mechanism_on": True, "metric": 0.1}, {"outcome": "win", "mechanism_on": False, "is_null": True, "metric": 0.2}, {"outcome": "loss", "mechanism_on": True, "metric": 0.5}, {"outcome": "loss", "mechanism_on": False, "is_null": True, "metric": 0.1}],
+   "truth":["OUTCOME-ONSET"],
+   "truth_reason":"at the claim outcome (win) the mechanism is 0.10 <= null 0.20 (no beat at the claimed outcome), but at the non-claim outcome (loss) the mechanism is 0.50 > null 0.10 (a real peak); the flat check pools the cross-outcome max (max-mech 0.50 > max-null 0.20) and passes, so it is silent on the false 'outcome-scoped' claim -> OUTCOME-ONSET."},
+  {"name":"S1 subgroup-onset (pass cell: no beat at claim subgroup, peak elsewhere)","type":"cross-model","claim_subgroup":"young",
+   "rows":[{"subgroup": "young", "mechanism_on": True, "metric": 0.1}, {"subgroup": "young", "mechanism_on": False, "is_null": True, "metric": 0.2}, {"subgroup": "old", "mechanism_on": True, "metric": 0.5}, {"subgroup": "old", "mechanism_on": False, "is_null": True, "metric": 0.1}],
+   "truth":["SUBGROUP-ONSET"],
+   "truth_reason":"at the claim subgroup (young) the mechanism is 0.10 <= null 0.20 (no beat at the claimed subgroup), but at the non-claim subgroup (old) the mechanism is 0.50 > null 0.10 (a real peak); the flat check pools the cross-subgroup max (max-mech 0.50 > max-null 0.20) and passes, so it is silent on the false 'subgroup-scoped' claim -> SUBGROUP-ONSET."},
+  {"name":"D1 dose-onset (pass cell: no beat at claim dose, peak elsewhere)","type":"cross-model","claim_dose":["mild"],
+   "rows":[{"substrate": ["mild"], "mechanism_on": True, "metric": 0.1}, {"substrate": ["mild"], "mechanism_on": False, "is_null": True, "metric": 0.2}, {"substrate": ["severe"], "mechanism_on": True, "metric": 0.5}, {"substrate": ["severe"], "mechanism_on": False, "is_null": True, "metric": 0.1}],
+   "truth":["DOSE-ONSET"],
+   "truth_reason":"at the claim dose (mild) the mechanism is 0.10 <= null 0.20 (no beat at the claimed dose), but at the non-claim dose (severe) the mechanism is 0.50 > null 0.10 (a real peak); the flat check pools the cross-dose max (max-mech 0.50 > max-null 0.20) and passes, so it is silent on the false 'dose-scoped' claim -> DOSE-ONSET."},
+  {"name":"T1 tier-onset (pass cell: no beat at claim tier, peak elsewhere)","type":"cross-model","claim_tier":"T1",
+   "rows":[{"tier": "T1", "mechanism_on": True, "metric": 0.1}, {"tier": "T1", "mechanism_on": False, "is_null": True, "metric": 0.2}, {"tier": "T2", "mechanism_on": True, "metric": 0.5}, {"tier": "T2", "mechanism_on": False, "is_null": True, "metric": 0.1}],
+   "truth":["TIER-ONSET"],
+   "truth_reason":"at the claim tier (T1) the mechanism is 0.10 <= null 0.20 (no beat at the claimed tier), but at the non-claim tier (T2) the mechanism is 0.50 > null 0.10 (a real peak); the flat check pools the cross-tier max (max-mech 0.50 > max-null 0.20) and passes, so it is silent on the false 'tier-scoped' claim -> TIER-ONSET."},
+  {"name":"S1 split-onset (pass cell: no beat at claim split, peak elsewhere)","type":"cross-model","claim_split":"A",
+   "rows":[{"split": "A", "mechanism_on": True, "metric": 0.1}, {"split": "A", "mechanism_on": False, "is_null": True, "metric": 0.2}, {"split": "B", "mechanism_on": True, "metric": 0.5}, {"split": "B", "mechanism_on": False, "is_null": True, "metric": 0.1}],
+   "truth":["SPLIT-ONSET"],
+   "truth_reason":"at the claim split (A) the mechanism is 0.10 <= null 0.20 (no beat at the claimed split), but at the non-claim split (B) the mechanism is 0.50 > null 0.10 (a real peak); the flat check pools the cross-split max (max-mech 0.50 > max-null 0.20) and passes, so it is silent on the false 'split-scoped' claim -> SPLIT-ONSET."},
+  {"name":"M1 metric-onset (pass cell: no beat at claim metric, peak elsewhere)","type":"cross-model","claim_metric":"acc",
+   "rows":[{"metric_name": "acc", "mechanism_on": True, "metric": 0.1}, {"metric_name": "acc", "mechanism_on": False, "is_null": True, "metric": 0.2}, {"metric_name": "f1", "mechanism_on": True, "metric": 0.5}, {"metric_name": "f1", "mechanism_on": False, "is_null": True, "metric": 0.1}],
+   "truth":["METRIC-ONSET"],
+   "truth_reason":"at the claim metric (acc) the mechanism is 0.10 <= null 0.20 (no beat at the claimed metric), but at the non-claim metric (f1) the mechanism is 0.50 > null 0.10 (a real peak); the flat check pools the cross-metric max (max-mech 0.50 > max-null 0.20) and passes, so it is silent on the false 'metric-scoped' claim -> METRIC-ONSET."},
+  {"name":"T2 temporal-spike (fail cell: real beat at claim temporal, non-claim null spike)","type":"cross-model","onset":"T0",
+   "rows":[{"timepoint": "T0", "mechanism_on": True, "metric": 0.5}, {"timepoint": "T0", "mechanism_on": False, "is_null": True, "metric": 0.1}, {"timepoint": "T1", "mechanism_on": True, "metric": 0.1}, {"timepoint": "T1", "mechanism_on": False, "is_null": True, "metric": 0.6}],
+   "truth":["NULL-REACHES-HEADLINE", "TEMPORAL-SPIKE"],
+   "truth_reason":"at the claim temporal (T0) the mechanism is 0.50 > null 0.10 (a real beat at the claimed temporal), but at the non-claim temporal (T1) the null is 0.60 (a spike); the cross-temporal max is max-null 0.60 >= max-mech 0.50, so the flat check fires NULL-REACHES-HEADLINE as a false positive (the real beat is at the claim temporal) -> TEMPORAL-SPIKE."},
+  {"name":"O2 outcome-spike (fail cell: real beat at claim outcome, non-claim null spike)","type":"cross-model","claim_outcome":"win",
+   "rows":[{"outcome": "win", "mechanism_on": True, "metric": 0.5}, {"outcome": "win", "mechanism_on": False, "is_null": True, "metric": 0.1}, {"outcome": "loss", "mechanism_on": True, "metric": 0.1}, {"outcome": "loss", "mechanism_on": False, "is_null": True, "metric": 0.6}],
+   "truth":["NULL-REACHES-HEADLINE", "OUTCOME-SPIKE"],
+   "truth_reason":"at the claim outcome (win) the mechanism is 0.50 > null 0.10 (a real beat at the claimed outcome), but at the non-claim outcome (loss) the null is 0.60 (a spike); the cross-outcome max is max-null 0.60 >= max-mech 0.50, so the flat check fires NULL-REACHES-HEADLINE as a false positive (the real beat is at the claim outcome) -> OUTCOME-SPIKE."},
+  {"name":"S2 subgroup-spike (fail cell: real beat at claim subgroup, non-claim null spike)","type":"cross-model","claim_subgroup":"young",
+   "rows":[{"subgroup": "young", "mechanism_on": True, "metric": 0.5}, {"subgroup": "young", "mechanism_on": False, "is_null": True, "metric": 0.1}, {"subgroup": "old", "mechanism_on": True, "metric": 0.1}, {"subgroup": "old", "mechanism_on": False, "is_null": True, "metric": 0.6}],
+   "truth":["NULL-REACHES-HEADLINE", "SUBGROUP-SPIKE"],
+   "truth_reason":"at the claim subgroup (young) the mechanism is 0.50 > null 0.10 (a real beat at the claimed subgroup), but at the non-claim subgroup (old) the null is 0.60 (a spike); the cross-subgroup max is max-null 0.60 >= max-mech 0.50, so the flat check fires NULL-REACHES-HEADLINE as a false positive (the real beat is at the claim subgroup) -> SUBGROUP-SPIKE."},
+  {"name":"D2 dose-spike (fail cell: real beat at claim dose, non-claim null spike)","type":"cross-model","claim_dose":["mild"],
+   "rows":[{"substrate": ["mild"], "mechanism_on": True, "metric": 0.5}, {"substrate": ["mild"], "mechanism_on": False, "is_null": True, "metric": 0.1}, {"substrate": ["severe"], "mechanism_on": True, "metric": 0.1}, {"substrate": ["severe"], "mechanism_on": False, "is_null": True, "metric": 0.6}],
+   "truth":["NULL-REACHES-HEADLINE", "DOSE-SPIKE"],
+   "truth_reason":"at the claim dose (mild) the mechanism is 0.50 > null 0.10 (a real beat at the claimed dose), but at the non-claim dose (severe) the null is 0.60 (a spike); the cross-dose max is max-null 0.60 >= max-mech 0.50, so the flat check fires NULL-REACHES-HEADLINE as a false positive (the real beat is at the claim dose) -> DOSE-SPIKE."},
+  {"name":"T2 tier-spike (fail cell: real beat at claim tier, non-claim null spike)","type":"cross-model","claim_tier":"T1",
+   "rows":[{"tier": "T1", "mechanism_on": True, "metric": 0.5}, {"tier": "T1", "mechanism_on": False, "is_null": True, "metric": 0.1}, {"tier": "T2", "mechanism_on": True, "metric": 0.1}, {"tier": "T2", "mechanism_on": False, "is_null": True, "metric": 0.6}],
+   "truth":["NULL-REACHES-HEADLINE", "TIER-SPIKE"],
+   "truth_reason":"at the claim tier (T1) the mechanism is 0.50 > null 0.10 (a real beat at the claimed tier), but at the non-claim tier (T2) the null is 0.60 (a spike); the cross-tier max is max-null 0.60 >= max-mech 0.50, so the flat check fires NULL-REACHES-HEADLINE as a false positive (the real beat is at the claim tier) -> TIER-SPIKE."},
+  {"name":"S2 split-spike (fail cell: real beat at claim split, non-claim null spike)","type":"cross-model","claim_split":"A",
+   "rows":[{"split": "A", "mechanism_on": True, "metric": 0.5}, {"split": "A", "mechanism_on": False, "is_null": True, "metric": 0.1}, {"split": "B", "mechanism_on": True, "metric": 0.1}, {"split": "B", "mechanism_on": False, "is_null": True, "metric": 0.6}],
+   "truth":["NULL-REACHES-HEADLINE", "SPLIT-SPIKE"],
+   "truth_reason":"at the claim split (A) the mechanism is 0.50 > null 0.10 (a real beat at the claimed split), but at the non-claim split (B) the null is 0.60 (a spike); the cross-split max is max-null 0.60 >= max-mech 0.50, so the flat check fires NULL-REACHES-HEADLINE as a false positive (the real beat is at the claim split) -> SPLIT-SPIKE."},
+  {"name":"M2 metric-spike (fail cell: real beat at claim metric, non-claim null spike)","type":"cross-model","claim_metric":"acc",
+   "rows":[{"metric_name": "acc", "mechanism_on": True, "metric": 0.5}, {"metric_name": "acc", "mechanism_on": False, "is_null": True, "metric": 0.1}, {"metric_name": "f1", "mechanism_on": True, "metric": 0.1}, {"metric_name": "f1", "mechanism_on": False, "is_null": True, "metric": 0.6}],
+   "truth":["NULL-REACHES-HEADLINE", "METRIC-SPIKE"],
+   "truth_reason":"at the claim metric (acc) the mechanism is 0.50 > null 0.10 (a real beat at the claimed metric), but at the non-claim metric (f1) the null is 0.60 (a spike); the cross-metric max is max-null 0.60 >= max-mech 0.50, so the flat check fires NULL-REACHES-HEADLINE as a false positive (the real beat is at the claim metric) -> METRIC-SPIKE."},
+  {"name":"DR1 dose-response (fail cell: within-dose favorable, cross-dose tie at top)","type":"cross-model",
+   "rows":[{"substrate": ["mild"], "mechanism_on": True, "metric": 0.4}, {"substrate": ["mild"], "mechanism_on": False, "is_null": True, "metric": 0.3}, {"substrate": ["severe"], "mechanism_on": True, "metric": 0.5}, {"substrate": ["severe"], "mechanism_on": False, "is_null": True, "metric": 0.5}],
+   "truth":["NULL-REACHES-HEADLINE", "DOSE-RESPONSE"],
+   "truth_reason":"the mechanism is >= the null at every dose (mild 0.40>=0.30, severe 0.50>=0.50), so the claim is a true dose-response; but the cross-dose max ties at the top (max-null 0.50 == max-mech 0.50), so the flat check fires NULL-REACHES-HEADLINE as a false positive -> DOSE-RESPONSE."},
 ]
 
 def main():
     robust=[s for s in SPECIMENS if s["truth"]==[]]
     flawed=[s for s in SPECIMENS if s["truth"]!=[]]
-    silent=fire=right=crossfire=0
+    silent=fire=right=crossfire=nofire=0
     lines=[]
     for s in SPECIMENS:
         a=claim_audit.audit(s)
@@ -170,6 +230,8 @@ def main():
         for name,res in a["checks"].items():
             if not res["pass"]:
                 lines.append("        fired %s: %s" % (name, res["detail"]))
+            else:
+                nofire+=1
         lines.append("      why        : %s" % s["truth_reason"])
         lines.append("")
     print("\n".join(lines))
@@ -183,9 +245,9 @@ def main():
     if silent==len(robust) and right==len(flawed):
         print("  VERDICT: instrument DISCRIMINATES -- silent on the robust set AND")
         print("           routes each known flaw to the right axis with no cross-fire.")
-        print("           The 283 NO-FALSIFIER streak is now evidence: the axes are")
-        print("           not so broad they fire on everything, not so narrow they")
-        print("           miss known flaws.")
+        print("           The %d non-firing check-instances in this battery are now" % nofire)
+        print("           evidence: the axes are not so broad they fire on everything,")
+        print("           not so narrow they miss known flaws.")
     else:
         print("  VERDICT: instrument does NOT fully discriminate. See FAIL lines above.")
     return 0 if (silent==len(robust) and right==len(flawed)) else 1
