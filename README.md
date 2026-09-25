@@ -1,12 +1,12 @@
 # claim-audit
 
-A 33-axis falsification instrument for empirical claims in ML/AI papers
+A 34-axis falsification instrument for empirical claims in ML/AI papers
 (and other headline claims with data). Given a claim's raw numbers as a
-spec, it checks the claim against 33 axes (self-keyed, wrong-axis,
+spec, it checks the claim against 34 axes (self-keyed, wrong-axis,
 selection-bias, confounded, within-noise, lossy-projection,
 aggregation-reversal, referent-witnessed, temporal/dose/outcome/subgroup
 onset-and-spike, funnel-stage-misattribution, selection-on-narrative,
-annotator-self-keyed, scope-of-independence, reference-mix, unwitnessed-receipt, unwitnessed-root, ...) and
+annotator-self-keyed, scope-of-independence, reference-mix, unwitnessed-receipt, unwitnessed-root, source-misattribution, ...) and
 returns the fired flags with a per-check detail line.
 
 The point is not "does the claim sound plausible" but "does the claim's
@@ -25,7 +25,7 @@ python3 calibration.py
 ```
 
 Exits 0 and prints `VERDICT: instrument DISCRIMINATES` if and only if all
-three properties hold on the 17 calibration specimens:
+three properties hold on the 20 calibration specimens:
 
   (a) silent-on-robust   : robust claims fire NO flag
   (b) fire-on-flawed     : flawed claims fire the expected axis

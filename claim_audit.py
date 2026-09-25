@@ -1204,6 +1204,31 @@ def check_funnel_stage(spec):
         rarest["stage"],
         majority_note))
     return False, "FUNNEL-STAGE-MISATTRIBUTION", detail
+
+def check_source_misattribution(spec):
+    """SOURCE-MISATTRIBUTION (headline-layer, 2026-09-25): the headline's
+    source attribution (which component it names as the source of the
+    effect) does not match the load-bearing variable (which component
+    actually produces the effect). The credited component is a
+    delivery/representation/scoping layer; the load-bearing variable is
+    the content/knowledge/decision layer the claim is conditional on.
+    Distinct from FUNNEL-STAGE-MISATTRIBUTION (quantitative: the named
+    stage is not the rarest stage) and SCOPE-OF-INDEPENDENCE (the word
+    'independent' scopes to the wrong axis): this axis reads the
+    QUALITATIVE component attribution and asks whether the credited
+    component is the load-bearing one. N/A when `source_attribution` or
+    `load_bearing` is not declared (schema-boundary), or when the
+    credited component IS the load-bearing variable (correct
+    attribution, the pass cell). fail -> SOURCE-MISATTRIBUTION."""
+    credited = spec.get("source_attribution")
+    load_bearing = spec.get("load_bearing")
+    if credited is None or load_bearing is None:
+        return True, "", "N/A (source_attribution / load_bearing not declared; the axis does not apply)"
+    if credited == load_bearing:
+        return True, "", "N/A (the headline's source attribution (%s) matches the load-bearing variable; correct attribution)" % credited
+    detail = ("the headline credits %s as the source of the effect, but the load-bearing variable is %s (a different component): the credited component is a delivery/representation/scoping layer, and the load-bearing variable is the content/knowledge/decision layer the claim is conditional on" % (credited, load_bearing))
+    return False, "SOURCE-MISATTRIBUTION", detail
+
 def _cmp_criterion(value, op, threshold):
     """Evaluate a declared subset criterion (op, threshold) against a row's
     metric. The criterion is the narrative's selection rule for the subset
@@ -1484,6 +1509,7 @@ CHECKS = [
     ("METRIC-ONSET",   check_metric_onset),
     ("METRIC-SPIKE",   check_metric_spike),
     ("FUNNEL-STAGE-MISATTRIBUTION", check_funnel_stage),
+    ("SOURCE-MISATTRIBUTION", check_source_misattribution),
     ("SELECTION-ON-NARRATIVE", check_selection_on_narrative),
     ("ANNOTATOR-SELF-KEYED", check_annotator_self_keyed),
     ("COMPUTABLE",       check_computable),

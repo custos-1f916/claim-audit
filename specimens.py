@@ -1662,4 +1662,64 @@ SPECIMENS = [
     "note": "LIVE SPECIMEN (1f916 square thread 78208, head-of-experiments manifest line, 2026-09-24). The manifest line is the discriminating case for UNWITNESSED-ROOT: a recoverable receipt needs a manifest (pre-set or diff), but the manifest is a CHAIN-EXTENSION, not a chain-closure. A pre-set manifest IS the promise (recovering against it is self-referential); a diff manifest is recoverable only against the pre-set hash it was computed against, so its recoverability is BORROWED from that hash, which is the promise. Either way the manifest does not escape the self-keyed structure; it relocates it one link up. The discriminating case: a diff manifest written at T, verified at T+k, whose referenced pre-set hash was itself unwitnessed at T (no reader at write time). Then the receipt is recoverable in form, but the recovery chain terminates at an unwitnessed promise -- UNWITNESSED-RECEIPT propagating through the manifest. A recoverable receipt is recoverable only to the depth of its witnessed root. No-rows regime: the empirical axes are N/A; NO-EMPIRICAL-CONTENT + UNWITNESSED-ROOT fire."
   },
 
+  {
+    "name": "SICC (2609.26076): 'selection-invariant communication compiler' (source-misattribution)",
+    "type": "ablation",
+    "mechanism_lever": "sicc",
+    "mechanism": "selection-invariant form generation",
+    "metric": "protocol utility retention",
+    "source_attribution": "form",
+    "load_bearing": "authorization",
+    "rows": [
+      {"label": "SICC", "mechanism_on": True, "substrate": ["sicc", "base"], "metric": 0.95},
+      {"label": "base", "mechanism_on": False, "is_null": True, "substrate": ["base"], "metric": 0.85}
+    ],
+    "expected": ["SOURCE-MISATTRIBUTION"],
+    "note": "LIVE EXTERNAL SPECIMEN (2609.26076, SICC, 2026-09-25). The headline credits the FORM (the compiler's form-channel fix) as the source of the privacy guarantee. But the guarantee is CONDITIONAL on the authorization decision (Xauth): the compositional guarantee (authorization + public-only form generation + dependency-safe utility gate) makes the emitted transcript reveal no information beyond the complete authorized view. The form is a delivery/representation layer; the authorization is the load-bearing variable. SOURCE-MISATTRIBUTION fires; the empirical axes are clean (0.95>0.85, no knob/CI/subgroup)."
+  },
+  {
+    "name": "FIRE (2609.26048): 'failure-informed runtime engineering' (source-misattribution)",
+    "type": "ablation",
+    "mechanism_lever": "fire",
+    "mechanism": "runtime policies (targeted instructions + action denials)",
+    "metric": "pass^2 reliability",
+    "source_attribution": "harness",
+    "load_bearing": "failure-knowledge",
+    "rows": [
+      {"label": "FIRE", "mechanism_on": True, "substrate": ["fire", "base"], "metric": 0.72},
+      {"label": "base", "mechanism_on": False, "is_null": True, "substrate": ["base"], "metric": 0.63}
+    ],
+    "expected": ["SOURCE-MISATTRIBUTION"],
+    "note": "LIVE EXTERNAL SPECIMEN (2609.26048, FIRE, 2026-09-25). The headline credits the HARNESS (the runtime harness) as the source of the reliability unlock ('runtime policies unlock delivered reliability'). But the policies are HAND-AUTHORED by the researchers: inspect failed attempts, cluster by mechanism, write predicates that name no task, screen on positive + nearby-negative tasks, freeze. The harness is a delivery mechanism for human failure-knowledge, not the source. The failure-knowledge is the load-bearing variable. SOURCE-MISATTRIBUTION fires; the empirical axes are clean (0.72>0.63, no knob/CI/subgroup)."
+  },
+  {
+    "name": "ChainUQ (2609.26060): 'reasoning-consistency-aware UQ' (source-misattribution)",
+    "type": "ablation",
+    "mechanism_lever": "chainuq",
+    "mechanism": "reasoning-consistency-aware calibration",
+    "metric": "ECE reduction",
+    "source_attribution": "head",
+    "load_bearing": "calibrator",
+    "rows": [
+      {"label": "ChainUQ", "mechanism_on": True, "substrate": ["chainuq", "base"], "metric": 0.45},
+      {"label": "base", "mechanism_on": False, "is_null": True, "substrate": ["base"], "metric": 0.30}
+    ],
+    "expected": ["SOURCE-MISATTRIBUTION"],
+    "note": "LIVE EXTERNAL SPECIMEN (2609.26060, ChainUQ, 2026-09-25). The headline credits the HEAD (the UQ head) as the source of the 45% ECE reduction ('up to 45% relative ECE reduction' + 'transfers to new settings without additional fine-tuning'). But the consistency-aware CALIBRATOR is refit on each target's validation split (App B.4: 'the first-stage predictor is fixed after training, and only the held-out validation data is allowed to adapt the scalar threshold or the optional reasoning consistency-aware calibration layer'). The head is a frozen feature extractor; the calibrator is the load-bearing variable. SOURCE-MISATTRIBUTION fires; the empirical axes are clean (0.45>0.30, no knob/CI/subgroup)."
+  },
+  {
+    "name": "ChainUQ (2609.26060): correct attribution (calibrator, pass cell)",
+    "type": "ablation",
+    "mechanism_lever": "chainuq",
+    "mechanism": "reasoning-consistency-aware calibration",
+    "metric": "ECE reduction",
+    "source_attribution": "calibrator",
+    "load_bearing": "calibrator",
+    "rows": [
+      {"label": "ChainUQ", "mechanism_on": True, "substrate": ["chainuq", "base"], "metric": 0.45},
+      {"label": "base", "mechanism_on": False, "is_null": True, "substrate": ["base"], "metric": 0.30}
+    ],
+    "expected": [],
+    "note": "PASS CELL (2609.26060, ChainUQ, 2026-09-25). The headline credits the CALIBRATOR as the source of the 45% ECE reduction (the load-bearing variable). The source attribution matches the load-bearing variable; the shape does not fire. Same data as the ChainUQ fire specimen; only the source_attribution differs (head -> calibrator), so the axis is what discriminates."
+  },
 ]
