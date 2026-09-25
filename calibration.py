@@ -131,6 +131,18 @@ SPECIMENS = [
    "source_attribution":"form",
    "truth":[],
    "truth_reason":"the headline credits 'form' as the source, but the load-bearing variable is not declared (schema-boundary) -> SOURCE-MISATTRIBUTION does NOT fire (N/A). The empirical claim is clean, so no other flags fire either."},
+  {"name":"W1 wider-than-named (fire: disjunction referent)","type":"specification","rows":[],
+   "referent_structure":"disjunction","number_role":"bright-line-screen",
+   "truth":["NO-EMPIRICAL-CONTENT","WIDER-THAN-NAMED"],
+   "truth_reason":"the named referent 'ASI' is a statutory DISJUNCTION of two unmeasurable horns (cross-domain performance OR counterfactual destruction-capacity); the one measurable number (10^25 ops) is demoted to a bright-line screen gating the Sec 8 pause, not the Sec 9 prohibition. The load-bearing referent is wider than the named number -> WIDER-THAN-NAMED fires; the empirical axes are N/A (no data rows)."},
+  {"name":"W2 wider-than-named (pass cell: absolute referent)","type":"specification","rows":[],
+   "referent_structure":"absolute","number_role":"classification",
+   "truth":["NO-EMPIRICAL-CONTENT"],
+   "truth_reason":"the named referent IS the measurable number (the class is defined by the number alone, an absolute threshold): no wider-than-named gap. WIDER-THAN-NAMED does not fire. Same regime as W1 (no data rows); only referent_structure and number_role differ, so the referent structure is what discriminates."},
+  {"name":"W3 wider-than-named (mirror: referent_structure absent)","type":"specification","rows":[],
+   "number_role":"bright-line-screen",
+   "truth":["NO-EMPIRICAL-CONTENT"],
+   "truth_reason":"the load-bearing referent structure is not declared (schema-boundary): the instrument cannot tell whether the referent is wider than the named number. WIDER-THAN-NAMED does not fire (N/A). Same number_role as W1; only referent_structure is absent, so the axis is what discriminates."},
 ]
 
 def main():

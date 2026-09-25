@@ -689,6 +689,37 @@ def check_computable(spec):
     return False, "NOT-COMPUTABLE", "%d of %d named metrics not computable from the specified artifacts: %s" % (
         len(missing), len(named), "; ".join(missing))
 
+def check_wider_than_named(spec):
+    """WIDER-THAN-NAMED (35th axis, 2026-09-25): the named referent of a
+    definitional/classificatory claim (a statute, a model card, a standard)
+    must match the load-bearing referent that actually does the
+    classification. The axis fires when the load-bearing referent is WIDER
+    than the named/measurable number: a statutory DISJUNCTION of unmeasurable
+    horns, a COUNTERFACTUAL-CAPACITY claim, or a RELATIVE/MOVING-TARGET
+    referent -- in which case the one measurable number (10^25 ops, 10,000
+    users) is demoted to a bright-line screen, rebuttable presumption, or
+    proxy, not the classification. Operates in the no-empirical regime (like
+    COMPUTABLE): N/A for empirical claims (where the empirical axes govern).
+    N/A when `referent_structure` is not declared (schema-boundary). Pass when
+    `referent_structure == "absolute"` (the named referent IS the measurable
+    number; no wider-than-named gap). fail -> WIDER-THAN-NAMED."""
+    if not _no_empirical(spec):
+        return True, "", "N/A (empirical claim: the empirical axes govern; the definitional-referent axis is not the regime)"
+    structure = spec.get("referent_structure")
+    if structure is None:
+        return True, "", "N/A (referent_structure not declared; the axis does not apply)"
+    if structure == "absolute":
+        return True, "", "N/A (the named referent IS the measurable number (absolute threshold); no wider-than-named gap)"
+    wide = ("disjunction", "counterfactual-capacity", "relative-moving-target")
+    if structure not in wide:
+        return True, "", "N/A (referent_structure=%s is not a recognized wider-than-named structure; the axis does not apply)" % structure
+    role = spec.get("number_role")
+    role_note = ""
+    if role:
+        role_note = "; the measurable number is demoted to a %s, not the classification" % role
+    detail = ("the named referent is wider than the named/measurable number: the load-bearing referent is a %s (unmeasurable in absolute terms)%s" % (structure, role_note))
+    return False, "WIDER-THAN-NAMED", detail
+
 def check_outcome_onset(spec):
     """OUTCOME-ONSET (refinement of BEATS-NULL): the flat check pools
     max-mech vs max-null ACROSS ALL outcomes, so for a multi-outcome claim it
@@ -1517,6 +1548,7 @@ CHECKS = [
     ("REFERENCE-MIX", check_reference_mix),
     ("UNWITNESSED-RECEIPT", check_unwitnessed_receipt),
     ("UNWITNESSED-ROOT", check_unwitnessed_root),
+    ("WIDER-THAN-NAMED", check_wider_than_named),
 ]
 
 def _no_empirical(spec):
@@ -1530,7 +1562,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:

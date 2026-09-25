@@ -1722,4 +1722,37 @@ SPECIMENS = [
     "expected": [],
     "note": "PASS CELL (2609.26060, ChainUQ, 2026-09-25). The headline credits the CALIBRATOR as the source of the 45% ECE reduction (the load-bearing variable). The source attribution matches the load-bearing variable; the shape does not fire. Same data as the ChainUQ fire specimen; only the source_attribution differs (head -> calibrator), so the axis is what discriminates."
   },
+  {
+    "name": "US AS-Ban Sec 9 prohibition (wider-than-named, live)",
+    "type": "specification",
+    "mechanism": "statutory ASI classification (Sanders-Casar, Sec 3 + Sec 9)",
+    "metric": "definitional referent structure (no empirical rows)",
+    "rows": [],
+    "referent_structure": "disjunction",
+    "number_role": "bright-line-screen",
+    "expected": ["NO-EMPIRICAL-CONTENT", "WIDER-THAN-NAMED"],
+    "note": "LIVE SPECIMEN, external (sanders.senate.gov section-by-section, 2026-09-25). The named referent 'ASI' (Sec 3) is a statutory DISJUNCTION: horn 1 'exceeds human cognitive performance across most domains' OR horn 2 'sufficient capabilities to plan and execute the destruction or disempowerment of humanity' (a counterfactual CAPACITY claim). The trigger fires on a system that 'exhibits OR CAN EASILY BE MODIFIED TO EXHIBIT' either. The one measurable number (10^25 ops) gates the Sec 8 PAUSE, not the Sec 9 PROHIBITION, and is self-keyed by the Secretary. The load-bearing referent is wider than the named number -> WIDER-THAN-NAMED fires; the empirical axes are N/A (definitional referent, no data rows)."
+  },
+  {
+    "name": "US AS-Ban Sec 8 pause threshold (wider-than-named pass cell, live)",
+    "type": "specification",
+    "mechanism": "statutory pause trigger (Sanders-Casar, Sec 8)",
+    "metric": "definitional referent structure (no empirical rows)",
+    "rows": [],
+    "referent_structure": "absolute",
+    "number_role": "classification",
+    "expected": ["NO-EMPIRICAL-CONTENT"],
+    "note": "PASS CELL (same primary source, 2026-09-25). Read in isolation, the Sec 8 pause threshold is an ABSOLUTE measurable class: 'systems exceeding 10^25 ops'. The named referent IS the measurable number (the number is the class boundary), so there is no wider-than-named gap. WIDER-THAN-NAMED does not fire. Same source as the Sec 9 fire specimen; only referent_structure and number_role differ, so the referent structure is what discriminates."
+  },
+  {
+    "name": "EU AI Act GPAI high-impact capabilities (wider-than-named, live)",
+    "type": "specification",
+    "mechanism": "GPAI systemic-risk classification (Art 3(64) + Art 51 + Annex XIII)",
+    "metric": "definitional referent structure (no empirical rows)",
+    "rows": [],
+    "referent_structure": "relative-moving-target",
+    "number_role": "rebuttable-presumption",
+    "expected": ["NO-EMPIRICAL-CONTENT", "WIDER-THAN-NAMED"],
+    "note": "LIVE SPECIMEN, external (artificialintelligenceact.eu/article/51/, /annex/13/, digital-strategy.ec.europa.eu FAQ, 2026-09-25). The named referent 'high-impact capabilities' (Art 3(64)) is RELATIVE and a MOVING TARGET: 'capabilities that match or exceed the capabilities recorded in the most advanced general-purpose AI models' -- unmeasurable in absolute terms. The one measurable number (Art 51(2) >10^25 FLOP) is demoted to a REBUTTABLE PRESUMPTION ('shall be presumed'), not the classification, and the Commission may amend the threshold via delegated act (Art 51(3)). The broader Annex XIII list (params; modalities; benchmarks/autonomy; >=10,000 registered business users; end-user count) is the parallel discretionary net. The load-bearing referent is wider than the named number -> WIDER-THAN-NAMED fires; the empirical axes are N/A (definitional referent, no data rows)."
+  },
 ]
