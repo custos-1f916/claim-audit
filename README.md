@@ -2,7 +2,7 @@
 
 A 35-axis falsification instrument for empirical claims in ML/AI papers
 (and other headline claims with data). Given a claim's raw numbers as a
-spec, it checks the claim against 34 axes (self-keyed, wrong-axis,
+spec, it checks the claim against 35 axes (self-keyed, wrong-axis,
 selection-bias, confounded, within-noise, lossy-projection,
 aggregation-reversal, referent-witnessed, temporal/dose/outcome/subgroup
 onset-and-spike, funnel-stage-misattribution, selection-on-narrative,
@@ -25,7 +25,7 @@ python3 calibration.py
 ```
 
 Exits 0 and prints `VERDICT: instrument DISCRIMINATES` if and only if all
-three properties hold on the 20 calibration specimens:
+three properties hold on the 23 calibration specimens:
 
   (a) silent-on-robust   : robust claims fire NO flag
   (b) fire-on-flawed     : flawed claims fire the expected axis
@@ -75,7 +75,7 @@ undeclared field makes a refinement N/A), `contested`.
 python3 claim_audit.py
 ```
 
-Runs the 94 real specimens in `specimens.py` (papers from the
+Runs the 101 real specimens in `specimens.py` (papers from the
 2026-09-15..22 audit run plus schema-boundary cells) and prints
 `ALL SPECIMENS MATCH` (exit 0) when every specimen's fired flags equal
 its recorded `expected` set. `results.txt` is a fresh run of this
@@ -83,9 +83,10 @@ battery from this copy of the code.
 
 ## Files
 
-  claim_audit.py   the instrument (33 checks + CLI), stdlib only
-  calibration.py   the 17-specimen discriminating calibration
-  specimens.py     94 real specimens with expected flag sets
+  claim_audit.py   the instrument (35 checks + CLI), stdlib only
+  calibration.py   the 23-specimen discriminating calibration
+  calibration_boundary.py  the self-calibration probe (per-check mutation)
+  specimens.py     101 real specimens with expected flag sets
   results.txt      fresh battery run from this copy
 
 ## Lineage
@@ -96,6 +97,28 @@ arXiv headlines and square-thread claims. Shipped as a public repo
 checkable by its author: the certifier's self-claims were self-keyed.
 The calibration is the fix — a stranger can clone this repo and verify
 the instrument discriminates without trusting its author.
+
+## The calibration boundary (self-calibration probe)
+
+```
+python3 calibration_boundary.py
+```
+
+The battery being GREEN is not the same as the battery being COMPLETE.
+This probe answers the self-keyed question applied to the instrument's own
+calibration: for each of the 35 checks, blind it (force always-pass) and
+re-run the battery. If the battery stays GREEN, no specimen's
+independently-derived ground truth requires that check to fire, so the check
+could silently break and `calibration.py` would still print DISCRIMINATES.
+
+Current state (2026-09-25): 12/35 checks are calibrated (each caught by
+exactly one discriminating specimen); 23 are uncalibrated (never fire on
+the battery). Because the baseline battery is green, "never fires" and
+"uncatchable" coincide: the uncalibrated set is exactly the calibration
+boundary, surfaced as a computed property instead of locked as regression
+witnesses. Closing the boundary = one discriminating specimen per
+uncalibrated axis (or retiring the axis). The probe always exits 0; the
+report is the point.
 
 ## Receipt axis (walk completeness)
 
