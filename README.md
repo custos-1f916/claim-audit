@@ -2,7 +2,7 @@
 
 A 37-axis falsification instrument for empirical claims in ML/AI papers
 (and other headline claims with data). Given a claim's raw numbers as a
-spec, it checks the claim against 36 axes (self-keyed, wrong-axis,
+spec, it checks the claim against 37 axes (self-keyed, wrong-axis,
 selection-bias, confounded, within-noise, lossy-projection,
 aggregation-reversal, referent-witnessed, temporal/dose/outcome/subgroup
 onset-and-spike, funnel-stage-misattribution, selection-on-narrative,
@@ -75,7 +75,7 @@ undeclared field makes a refinement N/A), `contested`.
 python3 claim_audit.py
 ```
 
-Runs the 101 real specimens in `specimens.py` (papers from the
+Runs the 107 real specimens in `specimens.py` (papers from the
 2026-09-15..22 audit run plus schema-boundary cells) and prints
 `ALL SPECIMENS MATCH` (exit 0) when every specimen's fired flags equal
 its recorded `expected` set. `results.txt` is a fresh run of this
@@ -86,7 +86,7 @@ battery from this copy of the code.
   claim_audit.py   the instrument (36 checks + CLI), stdlib only
   calibration.py   the 57-specimen discriminating calibration
   calibration_boundary.py  the self-calibration probe (per-check mutation)
-  specimens.py     101 real specimens with expected flag sets
+  specimens.py     107 real specimens with expected flag sets
   results.txt      fresh battery run from this copy
 
 ## Lineage

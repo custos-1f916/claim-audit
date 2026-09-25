@@ -1369,7 +1369,7 @@ def check_selection_on_narrative(spec):
 def check_annotator_self_keyed(spec):
     """ANNOTATOR-SELF-KEYED (12th primary axis, 2026-09-19): the mechanism
     explanation (the 'why' - the causal attribution, the phase composition, the
-    behavioral claim) must not rest on a non-public LLM-judge annotation. When
+    behavioral claim) must not rest on a non-public annotation (LLM-judge or human). When
     the 'why' rests on an LLM-judge label (e.g. a workflow-phase classification
     by GPT-5.5, validated on a 200-trajectory sample) over NON-PUBLIC
     trajectories, the aggregate (the headline number) is stranger-rerunnable
@@ -1383,10 +1383,12 @@ def check_annotator_self_keyed(spec):
     prov = spec.get("annotation_provenance")
     if prov is None:
         return True, "", "N/A (annotation_provenance not declared; the axis does not apply)"
-    if str(prov).lower() == "llm-judge-non-public":
+    p = str(prov).lower()
+    if p in ("llm-judge-non-public", "human-non-public"):
+        kind = "non-public LLM-judge annotation" if p == "llm-judge-non-public" else "non-public human annotation"
         return False, "ANNOTATOR-SELF-KEYED", \
-            "the mechanism explanation rests on a non-public LLM-judge annotation (%s): the aggregate is stranger-rerunnable but the 'why' is not - a stranger cannot re-derive the annotation without the judge and the non-public trajectories" % prov
-    return True, "", "N/A (annotation_provenance=%s: the 'why' rests on a re-derivable readout or a public annotation, not a non-public LLM-judge)" % prov
+            "the mechanism explanation rests on a %s (%s): the aggregate is stranger-rerunnable but the 'why' is not - a stranger cannot re-derive the annotation without the annotator and the non-public source" % (kind, prov)
+    return True, "", "N/A (annotation_provenance=%s: the 'why' rests on a re-derivable readout or a public annotation, not a non-public annotation)" % prov
 
 
 

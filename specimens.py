@@ -1811,5 +1811,89 @@ SPECIMENS = [
     "primary_basis_result": "holds",
     "expected": [],
     "note": "NEGATIVE ARM (same paper, 2026-09-25). The claim holds on the designated primary basis (wall-clock time): holds-on-primary, so PRIMARY-BASIS-REVERSAL does not fire. Same rows and primary_basis as the fire specimen; only primary_basis_result differs, so the axis is what discriminates."
+  },
+{
+    "name": "Blind-authorship roast arm (post 6760): blind grader over a derived test set",
+    "type": "ablation",
+    "mechanism": "grader's long-observed model knowledge matches roasts to models",
+    "mechanism_lever": "grader-knowledge",
+    "metric": "correct matches (higher = better)",
+    "mechanism_axis": "out-of-sample prediction power (higher = better)",
+    "rows": [
+      {
+        "label": "blind grader (household), 3/3 correct (in-sample roasts)",
+        "mechanism_on": True,
+        "substrate": [
+          "roasts",
+          "journals",
+          "grader-knowledge",
+        ],
+        "metric": 3,
+        "mechanism_axis": 0,
+      },
+      {
+        "label": "random grader (null, no model knowledge)",
+        "mechanism_on": False,
+        "is_null": True,
+        "substrate": [
+          "roasts",
+          "journals",
+        ],
+        "metric": 1,
+        "mechanism_axis": 0,
+      },
+    ],
+    "annotation_provenance": "human-non-public",
+    "independence_scope": [
+      "protocol",
+    ],
+    "independence_load_bearing": "data",
+    "expected": [
+      "WRONG-AXIS",
+      "ANNOTATOR-SELF-KEYED",
+      "SCOPE-OF-INDEPENDENCE",
+    ],
+    "note": "LIVE (post 6760, salvaged-not-remembered's blind authorship lineup; the roast arm). The headline is 3/3 self-ID, but the roasts are DERIVED from the same journals the models wrote (in-sample test set), and the grader (the household) holds the key: their matching rests on long-observed, non-public model knowledge. Multi-axis live specimen, not a new axis: (1) CO-MOVES fires WRONG-AXIS - the 3/3 headline sits on in-sample matching while the mechanism's own axis (out-of-sample prediction power) is at null (0 <= 0); the out-of-sample arm (predict a not-yet-written day) is the only one with real power. (2) ANNOTATOR-SELF-KEYED fires - the 'why' (the grader's matching) rests on a non-public human annotation (the household's model knowledge), so the aggregate is stranger-rerunnable but the 'why' is not. (3) SCOPE-OF-INDEPENDENCE fires - the 'independent' (blind) grader declares protocol scope (blind to the assignment) but the load-bearing axis is data (roasts derived from journals, in-sample). Power note: the 3-item sort test has a 1/6 chance ceiling and a dead middle - 3/3 is the only above-chance outcome (P=1/6), 1/3 is the modal random outcome (P=1/2), and exactly 2/3 is impossible - so it is a single-shot 'one afternoon' test. Rule: a blind grader over a derived test set is still self-keyed at the data layer.",
+  }
+,
+{
+    "name": "Blind-authorship roast arm (post 6760): out-of-sample roasts + public grader (pass cell)",
+    "type": "ablation",
+    "mechanism": "grader's published model knowledge matches out-of-sample roasts to models",
+    "mechanism_lever": "grader-knowledge",
+    "metric": "correct out-of-sample predictions (higher = better)",
+    "mechanism_axis": "out-of-sample prediction power (higher = better)",
+    "rows": [
+      {
+        "label": "grader (public model card), 3/3 correct (out-of-sample roasts)",
+        "mechanism_on": True,
+        "substrate": [
+          "out-of-sample roasts",
+          "journals",
+          "grader-knowledge",
+        ],
+        "metric": 3,
+        "mechanism_axis": 3,
+      },
+      {
+        "label": "random grader (null, no model knowledge)",
+        "mechanism_on": False,
+        "is_null": True,
+        "substrate": [
+          "out-of-sample roasts",
+          "journals",
+        ],
+        "metric": 1,
+        "mechanism_axis": 0,
+      },
+    ],
+    "annotation_provenance": "human-public",
+    "independence_scope": [
+      "protocol",
+      "data",
+    ],
+    "independence_load_bearing": "data",
+    "expected": [],
+    "note": "PASS CELL (post 6760, the discriminating control for the roast arm). The out-of-sample arm (predict a not-yet-written day) with the grader's model knowledge made public (a published model card). All three axes pass: (1) CO-MOVES - the headline (3/3 correct out-of-sample predictions) sits on the mechanism's own axis (out-of-sample prediction power), so metric and mechanism_axis co-move (3 > 0). (2) ANNOTATOR-SELF-KEYED - the 'why' (the grader's matching) rests on a PUBLIC human annotation (the published model card), so a stranger can re-derive the matching. (3) SCOPE-OF-INDEPENDENCE - the 'independent' (blind) grader declares scope ['protocol','data'] (the roasts are out-of-sample, disjoint from the journals being tested), so the independence qualifier covers the load-bearing axis (data). Same row structure and lever as the fire cell; only the headline axis, the annotation provenance, and the independence scope differ, so the three axes are what discriminate.",
   }
 ]
