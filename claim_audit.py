@@ -3,8 +3,8 @@
 claim_audit.py — does the headline metric discriminate the claimed mechanism?
 
 Reusable instrument for auditing a paper's load-bearing claim. A claim is a
-(mechanism, metric, null) triple. The instrument runs thirty-three checks: sixteen primary axes plus sixteen refinements of BEATS-NULL (NOISE-FLOOR, DOSE-RESPONSE, TEMPORAL-ONSET, TEMPORAL-SPIKE, OUTCOME-ONSET, OUTCOME-SPIKE, SUBGROUP-ONSET, SUBGROUP-SPIKE, DOSE-ONSET, DOSE-SPIKE, TIER-ONSET, TIER-SPIKE, SPLIT-ONSET, SPLIT-SPIKE, METRIC-ONSET, METRIC-SPIKE), plus a COMPUTABLE axis that
-operates in the no-data regime, all behind a vacuous-ratio precondition gate.
+(mechanism, metric, null) triple. The instrument runs thirty-seven checks: the primary axes, their sixteen refinements of BEATS-NULL (NOISE-FLOOR, DOSE-RESPONSE, TEMPORAL-ONSET, TEMPORAL-SPIKE, OUTCOME-ONSET, OUTCOME-SPIKE, SUBGROUP-ONSET, SUBGROUP-SPIKE, DOSE-ONSET, DOSE-SPIKE, TIER-ONSET, TIER-SPIKE, SPLIT-ONSET, SPLIT-SPIKE, METRIC-ONSET, METRIC-SPIKE), a COMPUTABLE axis that
+operates in the no-data regime, and a set of headline-layer axes, all behind a vacuous-ratio precondition gate.
 Each returns PASS or a named flag. A claim DISCRIMINATES only if all empirical checks pass.
 The primary checks are
 orthogonal axes, not a ladder: a claim can fail any subset of them.
@@ -1288,6 +1288,29 @@ def check_self_falsifying(spec):
     detail = ("the headline claims a %s scope, but the paper's own stated limitation negates that %s scope: the data is clean (the data-layer checks read the rows), yet the paper's own concession negates the scope of its own headline" % (scope, scope))
     return False, "SELF-FALSIFYING", detail
 
+def check_primary_basis_reversal(spec):
+    """PRIMARY-BASIS-REVERSAL (headline-layer, 2026-09-25): the paper's own
+    text designates a primary basis for comparison, and the claim's
+    load-bearing comparative advantage REVERSES on that designated primary
+    basis (it holds on a secondary axis the paper also reports, but flips on
+    the one the paper itself designates as primary). Distinct from
+    WRONG-AXIS (the mechanism's own axis sits at the null baseline; a
+    data-layer check on the rows) and SELF-FALSIFYING (the paper's own
+    stated limitation negates the headline's scope): this axis reads the
+    paper's own basis designation and asks whether the headline's advantage
+    survives on it. N/A when `primary_basis` or `primary_basis_result` is
+    not declared (schema-boundary), or when the claim HOLDS on the
+    designated primary basis (holds-on-primary, the pass cell). fail ->
+    PRIMARY-BASIS-REVERSAL when the result is 'reverses'."""
+    basis = spec.get("primary_basis")
+    result = spec.get("primary_basis_result")
+    if basis is None or result is None:
+        return True, "", "N/A (primary_basis / primary_basis_result not declared; the axis does not apply)"
+    if result == "reverses":
+        detail = ("the paper designates %s as the primary basis for comparison, and the claim's comparative advantage reverses on it (it holds on the secondary axis %s, but flips on the paper's own designated primary basis)" % (basis, spec.get("secondary_basis", "the secondary axis")))
+        return False, "PRIMARY-BASIS-REVERSAL", detail
+    return True, "", "N/A (the claim holds on the designated primary basis (%s); holds-on-primary)" % basis
+
 def _cmp_criterion(value, op, threshold):
     """Evaluate a declared subset criterion (op, threshold) against a row's
     metric. The criterion is the narrative's selection rule for the subset
@@ -1578,6 +1601,7 @@ CHECKS = [
     ("UNWITNESSED-ROOT", check_unwitnessed_root),
     ("WIDER-THAN-NAMED", check_wider_than_named),
     ("SELF-FALSIFYING", check_self_falsifying),
+    ("PRIMARY-BASIS-REVERSAL", check_primary_basis_reversal),
 ]
 
 def _no_empirical(spec):

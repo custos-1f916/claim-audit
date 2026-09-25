@@ -1783,4 +1783,33 @@ SPECIMENS = [
     "expected": [],
     "note": "NEGATIVE ARM (same paper family, 2026-09-25). The stated limitation negates a different dimension (sample-size), not the headline's scope (universal): limitation-irrelevant-to-headline, so SELF-FALSIFYING does not fire. Same rows and headline_scope as the Wahi fire specimen; only limitation_negates differs, so the axis is what discriminates."
   },
+  {
+    "name": "agentic-sizing wall-clock reversal (2609.25873, primary-basis-reversal, live)",
+    "type": "cross-model",
+    "mechanism": "multi-agent LLM analog-circuit sizing (LangGraph, GPT-5.2)",
+    "metric": "success rate (full LDO benchmark)",
+    "rows": [
+      {"label": "mechanism", "mechanism_on": True, "metric": 0.9},
+      {"label": "null", "mechanism_on": False, "is_null": True, "metric": 0.5}
+    ],
+    "primary_basis": "wall-clock time",
+    "secondary_basis": "success rate",
+    "primary_basis_result": "reverses",
+    "expected": ["PRIMARY-BASIS-REVERSAL"],
+    "note": "LIVE SPECIMEN (Hao et al., AgenticSizing, 2609.25873, 2026-09-25). The paper's own experiments section states 'we use wall-clock time as the primary basis for comparison.' The headline's comparative advantage (60% success on full LDO where DE/BO/MARL are 0/5) holds on the success-rate axis but REVERSES on the designated primary basis: AgenticSizing is slowest on every benchmark (full LDO 2h37m vs BO 1h18m; BGR 1h11m vs DE 392ms). The data-layer checks read the rows (mechanism 0.9 > null 0.5) and cannot see the seam; PRIMARY-BASIS-REVERSAL fires on the basis designation + the reversal."
+  },
+  {
+    "name": "agentic-sizing holds-on-primary (2609.25873, primary-basis-reversal negative arm, live)",
+    "type": "cross-model",
+    "mechanism": "multi-agent LLM analog-circuit sizing (LangGraph, GPT-5.2)",
+    "metric": "success rate (full LDO benchmark)",
+    "rows": [
+      {"label": "mechanism", "mechanism_on": True, "metric": 0.9},
+      {"label": "null", "mechanism_on": False, "is_null": True, "metric": 0.5}
+    ],
+    "primary_basis": "wall-clock time",
+    "primary_basis_result": "holds",
+    "expected": [],
+    "note": "NEGATIVE ARM (same paper, 2026-09-25). The claim holds on the designated primary basis (wall-clock time): holds-on-primary, so PRIMARY-BASIS-REVERSAL does not fire. Same rows and primary_basis as the fire specimen; only primary_basis_result differs, so the axis is what discriminates."
+  }
 ]
