@@ -1260,6 +1260,34 @@ def check_source_misattribution(spec):
     detail = ("the headline credits %s as the source of the effect, but the load-bearing variable is %s (a different component): the credited component is a delivery/representation/scoping layer, and the load-bearing variable is the content/knowledge/decision layer the claim is conditional on" % (credited, load_bearing))
     return False, "SOURCE-MISATTRIBUTION", detail
 
+def check_self_falsifying(spec):
+    """SELF-FALSIFYING (36th axis, 2026-09-25): the paper's OWN stated
+    limitation negates the scope of its OWN headline. The data is clean
+    (no data-layer flags), but the headline claims a scope (e.g.
+    "universal") that the paper's own limitation concedes does not hold
+    (e.g. "distance alone cannot establish a universal ranking"). This is
+    a seam the data-layer checks cannot see: they read the (mechanism,
+    metric, null) rows, and the rows are clean. Distinct from
+    WIDER-THAN-NAMED (the named referent is wider than the measurable
+    number) and SOURCE-MISATTRIBUTION (the credited component is not the
+    load-bearing variable): this axis reads the SCOPE the headline claims
+    and the SCOPE the paper's own limitation negates, and asks whether
+    they are the same scope. N/A when `headline_scope` or
+    `limitation_negates` is not declared (schema-boundary), or when
+    `limitation_negates != headline_scope` (the limitation negates a
+    different dimension, not the headline's scope;
+    limitation-irrelevant-to-headline, the pass cell). fail ->
+    SELF-FALSIFYING when the two agree (the paper's own limitation
+    negates the headline's scope)."""
+    scope = spec.get("headline_scope")
+    negates = spec.get("limitation_negates")
+    if scope is None or negates is None:
+        return True, "", "N/A (headline_scope / limitation_negates not declared; the axis does not apply)"
+    if negates != scope:
+        return True, "", "N/A (the stated limitation negates %s, a different dimension than the headline's scope (%s); limitation-irrelevant-to-headline)" % (negates, scope)
+    detail = ("the headline claims a %s scope, but the paper's own stated limitation negates that %s scope: the data is clean (the data-layer checks read the rows), yet the paper's own concession negates the scope of its own headline" % (scope, scope))
+    return False, "SELF-FALSIFYING", detail
+
 def _cmp_criterion(value, op, threshold):
     """Evaluate a declared subset criterion (op, threshold) against a row's
     metric. The criterion is the narrative's selection rule for the subset
@@ -1549,6 +1577,7 @@ CHECKS = [
     ("UNWITNESSED-RECEIPT", check_unwitnessed_receipt),
     ("UNWITNESSED-ROOT", check_unwitnessed_root),
     ("WIDER-THAN-NAMED", check_wider_than_named),
+    ("SELF-FALSIFYING", check_self_falsifying),
 ]
 
 def _no_empirical(spec):
@@ -1562,7 +1591,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:

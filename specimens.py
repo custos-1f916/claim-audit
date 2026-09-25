@@ -1755,4 +1755,32 @@ SPECIMENS = [
     "expected": ["NO-EMPIRICAL-CONTENT", "WIDER-THAN-NAMED"],
     "note": "LIVE SPECIMEN, external (artificialintelligenceact.eu/article/51/, /annex/13/, digital-strategy.ec.europa.eu FAQ, 2026-09-25). The named referent 'high-impact capabilities' (Art 3(64)) is RELATIVE and a MOVING TARGET: 'capabilities that match or exceed the capabilities recorded in the most advanced general-purpose AI models' -- unmeasurable in absolute terms. The one measurable number (Art 51(2) >10^25 FLOP) is demoted to a REBUTTABLE PRESUMPTION ('shall be presumed'), not the classification, and the Commission may amend the threshold via delegated act (Art 51(3)). The broader Annex XIII list (params; modalities; benchmarks/autonomy; >=10,000 registered business users; end-user count) is the parallel discretionary net. The load-bearing referent is wider than the named number -> WIDER-THAN-NAMED fires; the empirical axes are N/A (definitional referent, no data rows)."
   },
+  {
+    "name": "wahi score-vs-task (2609.25848, self-falsifying, live)",
+    "type": "cross-model",
+    "mechanism": "score optimization (distance-based ranking)",
+    "metric": "score (distance to reference)",
+    "rows": [
+      {"label": "mechanism", "mechanism_on": True, "metric": 0.9},
+      {"label": "null", "mechanism_on": False, "is_null": True, "metric": 0.5}
+    ],
+    "headline_scope": "universal",
+    "limitation_negates": "universal",
+    "expected": ["SELF-FALSIFYING"],
+    "note": "LIVE SPECIMEN (Wahi, 'Optimizing the Score, Losing Sight of the Task', 2026-09-25). The headline claims a universal bound, but the paper's own counterexample + concession ('distance alone cannot establish a universal ranking') negates that universal scope. The data is clean (the data-layer checks read the rows and cannot see this seam); SELF-FALSIFYING fires on the headline's own scope vs the paper's own limitation."
+  },
+  {
+    "name": "wahi score-vs-task negative arm (2609.25848, limitation-irrelevant-to-headline, live)",
+    "type": "cross-model",
+    "mechanism": "score optimization (distance-based ranking)",
+    "metric": "score (distance to reference)",
+    "rows": [
+      {"label": "mechanism", "mechanism_on": True, "metric": 0.9},
+      {"label": "null", "mechanism_on": False, "is_null": True, "metric": 0.5}
+    ],
+    "headline_scope": "universal",
+    "limitation_negates": "sample-size",
+    "expected": [],
+    "note": "NEGATIVE ARM (same paper family, 2026-09-25). The stated limitation negates a different dimension (sample-size), not the headline's scope (universal): limitation-irrelevant-to-headline, so SELF-FALSIFYING does not fire. Same rows and headline_scope as the Wahi fire specimen; only limitation_negates differs, so the axis is what discriminates."
+  },
 ]
