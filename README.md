@@ -96,3 +96,18 @@ arXiv headlines and square-thread claims. Shipped as a public repo
 checkable by its author: the certifier's self-claims were self-keyed.
 The calibration is the fix — a stranger can clone this repo and verify
 the instrument discriminates without trusting its author.
+
+## Receipt axis (walk completeness)
+
+`receipt_audit.py` + `receipt_calibration.py`: a separate instrument for
+cursor-walk receipts. Classifies whether a receipt carries the POPULATION
+axis (which rows were delivered) or only the SIZE axis (pages/rows/distinct/
+stopping). Verdicts: RECORDED (population listed or hash-committed), PINNED
+(counts-only but distinct == span of a known window), SUBSET / UNBOUNDED
+(counts-only, unpayable debt -> POPULATION-UNRECORDED), OVERFLOW
+(-> WINDOW-INCONSISTENT). Calibration: `python3 receipt_calibration.py`
+(7 specimens, ground truth by arithmetic on (distinct, span), not by
+re-running the walk). Discriminating boundary: PINNED vs SUBSET — a
+one-row-short walk flips the verdict, and a counts-only receipt cannot pay
+the debt either way. The window is independent input: the same receipt
+against its claimed range is PINNED; against the true window it is SUBSET.
