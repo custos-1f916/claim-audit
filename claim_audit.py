@@ -1589,6 +1589,68 @@ def _classify_na(detail, superlative=False):
         return "regime"
     return "data"
 
+def _bool(v):
+    """Accept real bools and the common string forms; None otherwise."""
+    if isinstance(v, bool):
+        return v
+    if isinstance(v, str):
+        s = v.strip().lower()
+        if s in ("true", "yes", "1"):
+            return True
+        if s in ("false", "no", "0"):
+            return False
+    return None
+
+def _cursor_frozen(cursor_runs):
+    """A cursor that never advances across >=2 runs is frozen (the tell).
+
+    Returns True (frozen), False (advanced), or None (not enough evidence).
+    """
+    if not isinstance(cursor_runs, (list, tuple)):
+        return None
+    vals = [v for v in cursor_runs if v is not None]
+    if len(vals) < 2:
+        return None
+    return len(set(vals)) == 1
+
+def check_evidence_unclosed(spec):
+    """EVIDENCE-UNCLOSED (regime axis, 2026-09-26): the evidence-gathering
+    process (a paged walk) is unclosed. This is a REGIME axis (the shape of
+    COMPUTABLE), not a flaw axis: it fires when the walk never closed, so the
+    completeness predicate cannot be evaluated. When it fires, the
+    completeness axes (WIDER-THAN-NAMED, UNWITNESSED-RECEIPT) are UNDEFINED
+    (not pass/fail), because the walk never closed.
+
+    Primary evidence (single-run): has_more_at_end.
+      true  -> the walk hit its budget with more still queued -> unclosed
+      false -> the walk reached the end -> closed
+    Corroborating evidence (cross-run): cursor_runs.
+      frozen across >=2 runs -> the observable tell (frozen-cursor)
+      advancing            -> liveness confirmed (supports closed)
+
+    N/A boundary: neither has_more_at_end nor cursor_runs is declared, so the
+    axis does not apply (schema boundary).
+
+    Distinct from UNBOUNDED (a record problem: the walk closed but the window
+    was not recorded; repair = find the window): here the walk never closed,
+    so the window is unknowable, not unrecorded (repair = re-run the walk).
+    Same verdict, different repair.
+    """
+    hme = _bool(spec.get("has_more_at_end"))
+    cursor_runs = spec.get("cursor_runs", spec.get("cursor"))
+    frozen = _cursor_frozen(cursor_runs)
+    if hme is True:
+        return (False, "EVIDENCE-UNCLOSED",
+                "the evidence-gathering walk hit its budget with has_more still true; the accepted window did not reach its end, so the completeness predicate is undefined (re-run the walk)")
+    if hme is False:
+        return (True, "", "closed: the walk reached its end (has_more_at_end=false)")
+    if frozen is True:
+        return (False, "EVIDENCE-UNCLOSED",
+                "the cursor never advanced across runs (frozen-cursor); the observable symptom of an unclosed window, so the completeness predicate is undefined (re-run the walk)")
+    if frozen is False:
+        return (True, "", "cursor-advanced: liveness confirmed across runs (supports closed)")
+    return (True, "", "N/A (has_more_at_end / cursor_runs not declared; the axis does not apply)")
+
 CHECKS = [
     ("BEATS-NULL",     check_beats_null),
     ("NOT-SELF-KEYED", check_not_self_keyed),
@@ -1628,6 +1690,7 @@ CHECKS = [
     ("SELF-FALSIFYING", check_self_falsifying),
     ("PRIMARY-BASIS-REVERSAL", check_primary_basis_reversal),
     ("WINDOW-PRESENT-TENSE", check_window_present_tense),
+    ("EVIDENCE-UNCLOSED", check_evidence_unclosed),
 ]
 
 def _no_empirical(spec):
@@ -1641,13 +1704,21 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:
                     flags.append(flag)
             else:
                 results[name] = {"pass": True, "detail": "N/A (NO-EMPIRICAL-CONTENT: no data rows; the empirical axis does not apply)"}
+        # Regime interaction: when the evidence-gathering walk never closed
+        # (EVIDENCE-UNCLOSED fired), the completeness predicate is undefined,
+        # so the completeness axes are UNDEFINED (not pass/fail).
+        if not results["EVIDENCE-UNCLOSED"]["pass"]:
+            for comp in ("WIDER-THAN-NAMED", "UNWITNESSED-RECEIPT"):
+                if comp in flags:
+                    flags.remove(comp)
+                results[comp] = {"pass": True, "detail": "UNDEFINED (EVIDENCE-UNCLOSED: the evidence-gathering walk never closed; the completeness predicate cannot be evaluated)"}
         flags.insert(0, "NO-EMPIRICAL-CONTENT")
         verdict = "NO-EMPIRICAL-CONTENT" if len(flags) == 1 else ", ".join(flags)
         return {"spec": spec.get("name"), "checks": results, "flags": flags, "verdict": verdict, "contested": []}

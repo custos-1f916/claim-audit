@@ -1,12 +1,12 @@
 # claim-audit
 
-A 38-axis falsification instrument for empirical claims in ML/AI papers
+A 39-axis falsification instrument for empirical claims in ML/AI papers
 (and other headline claims with data). Given a claim's raw numbers as a
-spec, it checks the claim against 38 axes (self-keyed, wrong-axis,
+spec, it checks the claim against 39 axes (self-keyed, wrong-axis,
 selection-bias, confounded, within-noise, lossy-projection,
 aggregation-reversal, referent-witnessed, temporal/dose/outcome/subgroup
 onset-and-spike, funnel-stage-misattribution, selection-on-narrative,
-annotator-self-keyed, scope-of-independence, reference-mix, unwitnessed-receipt, unwitnessed-root, source-misattribution, wider-than-named, self-falsifying, primary-basis-reversal, window-present-tense, ...) and
+annotator-self-keyed, scope-of-independence, reference-mix, unwitnessed-receipt, unwitnessed-root, source-misattribution, wider-than-named, self-falsifying, primary-basis-reversal, window-present-tense, evidence-unclosed, ...) and
 returns the fired flags with a per-check detail line.
 
 The point is not "does the claim sound plausible" but "does the claim's
@@ -25,7 +25,7 @@ python3 calibration.py
 ```
 
 Exits 0 and prints `VERDICT: instrument DISCRIMINATES` if and only if all
-three properties hold on the 57 calibration specimens:
+three properties hold on the 67 calibration specimens:
 
   (a) silent-on-robust   : robust claims fire NO flag
   (b) fire-on-flawed     : flawed claims fire the expected axis
@@ -84,7 +84,7 @@ battery from this copy of the code.
 ## Files
 
   claim_audit.py   the instrument (36 checks + CLI), stdlib only
-  calibration.py   the 57-specimen discriminating calibration
+  calibration.py   the 67-specimen discriminating calibration
   calibration_boundary.py  the self-calibration probe (per-check mutation)
   specimens.py     107 real specimens with expected flag sets
   results.txt      fresh battery run from this copy

@@ -274,6 +274,21 @@ SPECIMENS = [
    "window_claim":"the verb never existed in the 12-day window",
    "truth":["NO-EMPIRICAL-CONTENT"],
    "truth_reason":"the window claim is declared but the mechanism's history is not, so the axis cannot apply (schema boundary); WINDOW-PRESENT-TENSE does not fire. Same window_claim as WP1; only mechanism_history is absent, so the axis is what discriminates."},
+  {"name":"EV1 evidence-unclosed (fire cell: walk hit budget, has_more_at_end=true)","type":"specification","rows":[],
+   "has_more_at_end":True,
+   "truth":["NO-EMPIRICAL-CONTENT","EVIDENCE-UNCLOSED"],
+   "truth_reason":"has_more_at_end=true -> the walk hit its budget with more still queued -> unclosed -> EVIDENCE-UNCLOSED fires; the completeness predicate is undefined. Same structure as EV2; only has_more_at_end differs, so the field is what discriminates."},
+  {"name":"EV2 evidence-unclosed (pass cell: walk reached its end, has_more_at_end=false)","type":"specification","rows":[],
+   "has_more_at_end":False,
+   "truth":["NO-EMPIRICAL-CONTENT"],
+   "truth_reason":"has_more_at_end=false -> the walk reached its end -> closed -> EVIDENCE-UNCLOSED does not fire. Same structure as EV1; only has_more_at_end differs, so the field is what discriminates."},
+  {"name":"EV3 evidence-unclosed (frozen-cursor cell: cursor never advanced across runs)","type":"specification","rows":[],
+   "cursor_runs":[1234, 1234],
+   "truth":["NO-EMPIRICAL-CONTENT","EVIDENCE-UNCLOSED"],
+   "truth_reason":"cursor_runs=[1234,1234] never advanced across >=2 runs -> frozen-cursor -> the observable symptom of an unclosed window -> EVIDENCE-UNCLOSED fires; the completeness predicate is undefined. has_more_at_end is absent, so the cross-run tell governs."},
+  {"name":"EV4 evidence-unclosed (N/A mirror: no closure evidence declared)","type":"specification","rows":[],
+   "truth":["NO-EMPIRICAL-CONTENT"],
+   "truth_reason":"neither has_more_at_end nor cursor_runs is declared -> the axis cannot apply (schema boundary) -> EVIDENCE-UNCLOSED does not fire. Same structure as EV3; only cursor_runs is absent, so the axis is what discriminates."},
 ]
 
 def main():

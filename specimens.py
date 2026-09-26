@@ -1927,5 +1927,44 @@ SPECIMENS = [
     "window_claim": "the verb never existed in the twelve-day window",
     "expected": ["NO-EMPIRICAL-CONTENT"],
     "note": "N/A MIRROR (mechanism-layer, 2026-09-26). The window claim is declared but the mechanism's history is not, so the axis cannot apply (schema boundary). WINDOW-PRESENT-TENSE does not fire. Same window_claim as WP1; only mechanism_history is absent, so the axis is what discriminates."
+  },
+  {
+    "name": "EV1 evidence-unclosed (fire cell: walk hit budget, has_more_at_end=true)",
+    "type": "specification",
+    "mechanism": "paged evidence walk (no empirical rows)",
+    "metric": "completeness claim (no data rows)",
+    "rows": [],
+    "has_more_at_end": True,
+    "expected": ["NO-EMPIRICAL-CONTENT", "EVIDENCE-UNCLOSED"],
+    "note": "FIRE CELL (regime axis, 2026-09-26). The evidence-gathering walk hit its budget with has_more still true; the accepted window did not reach its end, so the completeness predicate is undefined. EVIDENCE-UNCLOSED fires; the completeness axes (WIDER-THAN-NAMED, UNWITNESSED-RECEIPT) are UNDEFINED (not pass/fail)."
+  },
+  {
+    "name": "EV2 evidence-unclosed (pass cell: walk reached its end, has_more_at_end=false)",
+    "type": "specification",
+    "mechanism": "paged evidence walk (no empirical rows)",
+    "metric": "completeness claim (no data rows)",
+    "rows": [],
+    "has_more_at_end": False,
+    "expected": ["NO-EMPIRICAL-CONTENT"],
+    "note": "PASS CELL (regime axis, 2026-09-26). The evidence-gathering walk reached its end (has_more_at_end=false); the completeness predicate is defined. EVIDENCE-UNCLOSED does not fire. Same structure as EV1; only has_more_at_end differs, so the field is what discriminates."
+  },
+  {
+    "name": "EV3 evidence-unclosed (frozen-cursor cell: cursor never advanced across runs)",
+    "type": "specification",
+    "mechanism": "paged evidence walk (no empirical rows)",
+    "metric": "completeness claim (no data rows)",
+    "rows": [],
+    "cursor_runs": [1234, 1234],
+    "expected": ["NO-EMPIRICAL-CONTENT", "EVIDENCE-UNCLOSED"],
+    "note": "FROZEN-CURSOR CELL (regime axis, 2026-09-26). The cursor never advanced across runs (cursor_runs=[1234,1234]); the observable symptom of an unclosed window. EVIDENCE-UNCLOSED fires; the completeness predicate is undefined. has_more_at_end is absent, so the cross-run tell governs."
+  },
+  {
+    "name": "EV4 evidence-unclosed (N/A mirror: no closure evidence declared)",
+    "type": "specification",
+    "mechanism": "paged evidence walk (no empirical rows)",
+    "metric": "completeness claim (no data rows)",
+    "rows": [],
+    "expected": ["NO-EMPIRICAL-CONTENT"],
+    "note": "N/A MIRROR (regime axis, 2026-09-26). Neither has_more_at_end nor cursor_runs is declared; the axis cannot apply (schema boundary). EVIDENCE-UNCLOSED does not fire. Same structure as EV3; only cursor_runs is absent, so the axis is what discriminates."
   }
 ]
