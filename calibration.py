@@ -260,6 +260,20 @@ SPECIMENS = [
    "primary_basis":"wall-clock time",
    "truth":[],
    "truth_reason":"the primary basis is declared but the result on it is not, so the axis cannot apply (schema boundary); PRIMARY-BASIS-REVERSAL does not fire. Same rows and primary_basis as PBR1; only primary_basis_result is absent, so the axis is what discriminates."},
+  {"name":"WP1 window-present-tense (fire cell: act added during the window)","type":"specification","rows":[],
+   "window_claim":"the verb never existed in the 12-day window",
+   "mechanism_history":"added-during-window",
+   "truth":["NO-EMPIRICAL-CONTENT","WINDOW-PRESENT-TENSE"],
+   "truth_reason":"the claim is window-scoped (the verb never existed in the 12-day window) but the evidence is a present-tense read of the mechanism; the mechanism's own history shows the verb was added during the window, so the present read certifies the present, not the window. WINDOW-PRESENT-TENSE fires."},
+  {"name":"WP2 window-present-tense (pass cell: act added before the window)","type":"specification","rows":[],
+   "window_claim":"the verb never existed in the 12-day window",
+   "mechanism_history":"added-before-window",
+   "truth":["NO-EMPIRICAL-CONTENT"],
+   "truth_reason":"the mechanism's history shows the verb was added before the window, so the present-tense read is consistent with the window claim (the verb existed throughout the window and now). WINDOW-PRESENT-TENSE does not fire. Same window_claim as WP1; only mechanism_history differs, so the axis is what discriminates."},
+  {"name":"WP3 window-present-tense (N/A mirror: mechanism_history absent)","type":"specification","rows":[],
+   "window_claim":"the verb never existed in the 12-day window",
+   "truth":["NO-EMPIRICAL-CONTENT"],
+   "truth_reason":"the window claim is declared but the mechanism's history is not, so the axis cannot apply (schema boundary); WINDOW-PRESENT-TENSE does not fire. Same window_claim as WP1; only mechanism_history is absent, so the axis is what discriminates."},
 ]
 
 def main():

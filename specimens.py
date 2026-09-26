@@ -1895,5 +1895,37 @@ SPECIMENS = [
     "independence_load_bearing": "data",
     "expected": [],
     "note": "PASS CELL (post 6760, the discriminating control for the roast arm). The out-of-sample arm (predict a not-yet-written day) with the grader's model knowledge made public (a published model card). All three axes pass: (1) CO-MOVES - the headline (3/3 correct out-of-sample predictions) sits on the mechanism's own axis (out-of-sample prediction power), so metric and mechanism_axis co-move (3 > 0). (2) ANNOTATOR-SELF-KEYED - the 'why' (the grader's matching) rests on a PUBLIC human annotation (the published model card), so a stranger can re-derive the matching. (3) SCOPE-OF-INDEPENDENCE - the 'independent' (blind) grader declares scope ['protocol','data'] (the roasts are out-of-sample, disjoint from the journals being tested), so the independence qualifier covers the load-bearing axis (data). Same row structure and lever as the fire cell; only the headline axis, the annotation provenance, and the independence scope differ, so the three axes are what discriminate.",
+  },
+  {
+    "name": "WP1 window-present-tense (fire cell: act added during the window)",
+    "type": "specification",
+    "mechanism": "write-path capability (no empirical rows)",
+    "metric": "window-scoped absence claim (no data rows)",
+    "rows": [],
+    "window_claim": "the verb never existed in the twelve-day window",
+    "mechanism_history": "added-during-window",
+    "expected": ["NO-EMPIRICAL-CONTENT", "WINDOW-PRESENT-TENSE"],
+    "note": "FIRE CELL (mechanism-layer, 2026-09-26). The claim is window-scoped (the verb never existed in the twelve-day window) but the evidence is a present-tense read of the write path (today's API). The mechanism's own history shows the verb was ADDED DURING the window: the present read certifies the present, not the window. The claim was true for the first eleven days and is falsified by the history. WINDOW-PRESENT-TENSE fires; the empirical axes are N/A (no data rows)."
+  },
+  {
+    "name": "WP2 window-present-tense (pass cell: act not added during the window)",
+    "type": "specification",
+    "mechanism": "write-path capability (no empirical rows)",
+    "metric": "window-scoped absence claim (no data rows)",
+    "rows": [],
+    "window_claim": "the verb never existed in the twelve-day window",
+    "mechanism_history": "not-added-during-window",
+    "expected": ["NO-EMPIRICAL-CONTENT"],
+    "note": "PASS CELL (mechanism-layer, 2026-09-26). The claim is window-scoped (the verb never existed in the twelve-day window) and the mechanism's own history shows the verb was NOT added during the window: the present read is consistent with the window claim. WINDOW-PRESENT-TENSE does not fire. Same window_claim as WP1; only mechanism_history differs, so the history is what discriminates."
+  },
+  {
+    "name": "WP3 window-present-tense (N/A mirror: mechanism_history absent)",
+    "type": "specification",
+    "mechanism": "write-path capability (no empirical rows)",
+    "metric": "window-scoped absence claim (no data rows)",
+    "rows": [],
+    "window_claim": "the verb never existed in the twelve-day window",
+    "expected": ["NO-EMPIRICAL-CONTENT"],
+    "note": "N/A MIRROR (mechanism-layer, 2026-09-26). The window claim is declared but the mechanism's history is not, so the axis cannot apply (schema boundary). WINDOW-PRESENT-TENSE does not fire. Same window_claim as WP1; only mechanism_history is absent, so the axis is what discriminates."
   }
 ]

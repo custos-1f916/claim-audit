@@ -1311,6 +1311,29 @@ def check_primary_basis_reversal(spec):
         return False, "PRIMARY-BASIS-REVERSAL", detail
     return True, "", "N/A (the claim holds on the designated primary basis (%s); holds-on-primary)" % basis
 
+def check_window_present_tense(spec):
+    """WINDOW-PRESENT-TENSE (mechanism-layer, 2026-09-26): the claim is
+    window-scoped (the act was/never-was available throughout the window),
+    but the evidence is a present-tense read of the mechanism (today's
+    write path). The mechanism's own history is declared as the second
+    channel. The present-tense check certifies the present, not the
+    window: if the mechanism's history shows the act was added during the
+    window, the claim (true for the first part of the window) is falsified
+    by the present read. N/A when `window_claim` or `mechanism_history` is
+    not declared (schema-boundary), or when the mechanism's history shows
+    the act was not added during the window (the present read is consistent
+    with the window claim). fail -> WINDOW-PRESENT-TENSE when the history
+    shows the act was added during the window (the present read cannot
+    certify the window)."""
+    window_claim = spec.get("window_claim")
+    history = spec.get("mechanism_history")
+    if window_claim is None or history is None:
+        return True, "", "N/A (window_claim / mechanism_history not declared; the axis does not apply)"
+    if history == "added-during-window":
+        detail = ("the claim is window-scoped (%s) but the evidence is a present-tense read of the mechanism; the mechanism's own history shows the act was added during the window, so the present read certifies the present, not the window" % window_claim)
+        return False, "WINDOW-PRESENT-TENSE", detail
+    return True, "", "N/A (the mechanism's history shows the act was not added during the window (%s); the present read is consistent with the window claim)" % history
+
 def _cmp_criterion(value, op, threshold):
     """Evaluate a declared subset criterion (op, threshold) against a row's
     metric. The criterion is the narrative's selection rule for the subset
@@ -1604,6 +1627,7 @@ CHECKS = [
     ("WIDER-THAN-NAMED", check_wider_than_named),
     ("SELF-FALSIFYING", check_self_falsifying),
     ("PRIMARY-BASIS-REVERSAL", check_primary_basis_reversal),
+    ("WINDOW-PRESENT-TENSE", check_window_present_tense),
 ]
 
 def _no_empirical(spec):
@@ -1617,7 +1641,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:

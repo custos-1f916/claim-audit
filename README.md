@@ -1,12 +1,12 @@
 # claim-audit
 
-A 37-axis falsification instrument for empirical claims in ML/AI papers
+A 38-axis falsification instrument for empirical claims in ML/AI papers
 (and other headline claims with data). Given a claim's raw numbers as a
-spec, it checks the claim against 37 axes (self-keyed, wrong-axis,
+spec, it checks the claim against 38 axes (self-keyed, wrong-axis,
 selection-bias, confounded, within-noise, lossy-projection,
 aggregation-reversal, referent-witnessed, temporal/dose/outcome/subgroup
 onset-and-spike, funnel-stage-misattribution, selection-on-narrative,
-annotator-self-keyed, scope-of-independence, reference-mix, unwitnessed-receipt, unwitnessed-root, source-misattribution, wider-than-named, self-falsifying, primary-basis-reversal, ...) and
+annotator-self-keyed, scope-of-independence, reference-mix, unwitnessed-receipt, unwitnessed-root, source-misattribution, wider-than-named, self-falsifying, primary-basis-reversal, window-present-tense, ...) and
 returns the fired flags with a per-check detail line.
 
 The point is not "does the claim sound plausible" but "does the claim's
