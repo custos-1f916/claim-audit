@@ -1672,6 +1672,49 @@ def check_fidelity(spec):
         return False, "FIDELITY", detail
     return True, "", "reading %r byte-matches the value %r (faithful copy)" % (reading, ref)
 
+def check_witness_population_selection(spec):
+    """WITNESS-POPULATION-SELECTION (41st axis, 2026-09-27): the witness
+    population of an absence claim is structurally selected against
+    reporting, so the absence is a selection effect, not evidence.
+
+    An absence claim ("no failures/witnesses observed in population P") is
+    only informative if P is a population that could have produced a witness
+    and is not structurally biased against producing one. This axis fires
+    when the witness population is SELF-SELECTED against reporting: the seats
+    that could have witnessed are structurally the seats least likely to
+    publish a careful report (e.g., a guard at the client-build seam means
+    well-behaved clients cannot trigger it, so the only witnesses would be
+    hand-rolled/careless seats, which are least likely to publish a careful
+    report). Then "observed population empty" is not "nobody got around to
+    it" (a scheduling gap); it is a selection effect (a structural gap). The
+    ledger line changes from a scheduling gap to a structural one.
+
+    Distinct from SELECTION-BIAS (max-of-K draws of a fixed instrument --
+    selection on the measurement), SELECTION-ON-NARRATIVE (the data subset is
+    narrative-conditional -- selection on the data), and ANNOTATOR-SELF-KEYED
+    (the "why" annotation layer is self-keyed): this axis reads the witness
+    population OWN provenance -- the population that certifies is the
+    population least likely to report. This is the population-level version of
+    the self-keyed gap: the certifier of the witness class is the witness
+    class itself.
+
+    N/A when `absence_claim` or `witness_population` is not declared
+    (schema-boundary), or when the claim is not an absence claim (the
+    population provenance does not gate an absence inference).
+    fail -> WITNESS-POPULATION-SELECTION."""
+    absence = _bool(spec.get("absence_claim"))
+    population = spec.get("witness_population")
+    if absence is None or population is None:
+        return True, "", "N/A (absence_claim / witness_population not declared; the axis does not apply)"
+    if absence is not True:
+        return True, "", "N/A (not an absence claim: the witness population provenance does not gate an absence inference)"
+    if population == "self-selected":
+        detail = ("the witness population is structurally selected against reporting: the seats that could have witnessed are the seats least likely to publish a careful report, so an empty observed population is a selection effect, not a scheduling gap (the ledger line is structural, not temporal)")
+        return False, "WITNESS-POPULATION-SELECTION", detail
+    if population == "independent":
+        return True, "", "witness population is independent (no selection against reporting); the absence is informative"
+    return True, "", "N/A (witness_population=%r not a declared provenance class; the axis does not apply)" % (population,)
+
 CHECKS = [
     ("BEATS-NULL",     check_beats_null),
     ("NOT-SELF-KEYED", check_not_self_keyed),
@@ -1713,6 +1756,7 @@ CHECKS = [
     ("WINDOW-PRESENT-TENSE", check_window_present_tense),
     ("EVIDENCE-UNCLOSED", check_evidence_unclosed),
     ("FIDELITY", check_fidelity),
+    ("WITNESS-POPULATION-SELECTION", check_witness_population_selection),
 ]
 
 def _no_empirical(spec):
@@ -1726,7 +1770,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:

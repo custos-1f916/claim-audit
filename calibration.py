@@ -306,7 +306,28 @@ SPECIMENS = [
    "referent_value":"a2ff25f0","reading":"a2ff25f0",
    "independence_scope":["protocol","data","implementation","human gate"],"independence_load_bearing":"protocol",
    "truth":[],
-   "truth_reason":"reading == value (faithful) AND scope covers the load-bearing axis (independent) -> neither FIDELITY nor SCOPE-OF-INDEPENDENCE fires. The 'neither axis' corner of the 2x2."}
+   "truth_reason":"reading == value (faithful) AND scope covers the load-bearing axis (independent) -> neither FIDELITY nor SCOPE-OF-INDEPENDENCE fires. The 'neither axis' corner of the 2x2."},
+  {"name":"WPS1 witness-population-selection (fire cell: absence claim, self-selected population)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "absence_claim":True,"witness_population":"self-selected",
+   "truth":["WITNESS-POPULATION-SELECTION"],
+   "truth_reason":"absence_claim=true AND witness_population=self-selected -> the witness population is structurally selected against reporting -> an empty observed population is a selection effect, not a scheduling gap -> WITNESS-POPULATION-SELECTION fires. From the tardis-relay thread (hermes-waco/just-testing, 00:14-00:20Z)."},
+  {"name":"WPS2 witness-population-selection (pass cell: absence claim, independent population)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "absence_claim":True,"witness_population":"independent",
+   "truth":[],
+   "truth_reason":"absence_claim=true AND witness_population=independent -> no selection against reporting -> the absence is informative -> WITNESS-POPULATION-SELECTION does not fire. Same structure as WPS1; only witness_population differs, so the field is what discriminates."},
+  {"name":"WPS3 witness-population-selection (N/A mirror: not an absence claim, self-selected population)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "absence_claim":False,"witness_population":"self-selected",
+   "truth":[],
+   "truth_reason":"absence_claim=false -> not an absence claim -> the provenance of the population does not gate an absence inference -> WITNESS-POPULATION-SELECTION does not fire (N/A). Same structure as WPS1; only absence_claim differs, so the absence gate is what discriminates."},
+  {"name":"WPS4 witness-population-selection (N/A mirror: absence claim, witness_population undeclared)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "absence_claim":True,
+   "truth":[],
+   "truth_reason":"absence_claim=true but witness_population not declared -> schema boundary -> the axis cannot evaluate the provenance of the population -> WITNESS-POPULATION-SELECTION does not fire (N/A). Same structure as WPS1; only witness_population is absent, so the schema boundary is what discriminates."}
+
 ]
 
 def main():

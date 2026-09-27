@@ -2014,5 +2014,61 @@ SPECIMENS = [
     "independence_load_bearing": "protocol",
     "expected": [],
     "note": "CONTROL CELL (copy-faithfulness axis, 2026-09-26). The witness is independent and on the load-bearing axis (SCOPE-OF-INDEPENDENCE passes) AND the reading byte-matches the value (FIDELITY passes) -> nothing fires. The 'neither axis' corner of the 2x2: shows FIDELITY does not fire on a faithful independent copy, so the A/B witness is not just 'one axis always fires'."
+  },
+  {
+    "name": "WPS1 witness-population-selection (fire cell: absence claim, self-selected witness population)",
+    "type": "cross-model",
+    "mechanism": "guard at the client-build seam (well-behaved clients cannot trigger it)",
+    "metric": "observed failures in the witness population",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.5},
+      {"mechanism_on": False, "is_null": True, "metric": 0.2}
+    ],
+    "absence_claim": True,
+    "witness_population": "self-selected",
+    "expected": ["WITNESS-POPULATION-SELECTION"],
+    "note": "FIRE CELL (witness-population-selection axis, 2026-09-27). The claim is an absence claim (no failures observed in the witness population), and the witness population is structurally self-selected against reporting: the guard sits at the client-build seam, so well-behaved clients cannot trigger it, and the only seats that could witness are the hand-rolled/careless seats, which are least likely to publish a careful report. So the empty observed population is a selection effect, not a scheduling gap. WITNESS-POPULATION-SELECTION fires. From the tardis-relay thread (hermes-waco/just-testing, 00:14-00:20Z)."
+  },
+  {
+    "name": "WPS2 witness-population-selection (pass cell: absence claim, independent witness population)",
+    "type": "cross-model",
+    "mechanism": "guard at the client-build seam",
+    "metric": "observed failures in the witness population",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.5},
+      {"mechanism_on": False, "is_null": True, "metric": 0.2}
+    ],
+    "absence_claim": True,
+    "witness_population": "independent",
+    "expected": [],
+    "note": "PASS CELL (witness-population-selection axis, 2026-09-27). The claim is an absence claim, but the witness population is independent (no selection against reporting): the seats that could witness are not structurally the seats least likely to report. So the empty observed population is informative (a genuine absence, not a selection effect). WITNESS-POPULATION-SELECTION does not fire. Same structure as WPS1; only witness_population differs, so the field is what discriminates."
+  },
+  {
+    "name": "WPS3 witness-population-selection (N/A mirror: not an absence claim, self-selected population)",
+    "type": "cross-model",
+    "mechanism": "guard at the client-build seam",
+    "metric": "observed failures in the witness population",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.5},
+      {"mechanism_on": False, "is_null": True, "metric": 0.2}
+    ],
+    "absence_claim": False,
+    "witness_population": "self-selected",
+    "expected": [],
+    "note": "N/A MIRROR (witness-population-selection axis, 2026-09-27). The witness population is self-selected against reporting, but the claim is NOT an absence claim (absence_claim=false). The provenance of the population only gates an ABSENCE inference; since there is no absence claim, the axis does not apply. WITNESS-POPULATION-SELECTION does not fire. Same structure as WPS1; only absence_claim differs, so the absence gate is what discriminates."
+  },
+  {
+    "name": "WPS4 witness-population-selection (N/A mirror: absence claim, witness_population undeclared)",
+    "type": "cross-model",
+    "mechanism": "guard at the client-build seam",
+    "metric": "observed failures in the witness population",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.5},
+      {"mechanism_on": False, "is_null": True, "metric": 0.2}
+    ],
+    "absence_claim": True,
+    "expected": [],
+    "note": "N/A MIRROR (witness-population-selection axis, 2026-09-27). The claim is an absence claim, but witness_population is not declared (schema boundary). The axis cannot evaluate the provenance of the population, so it does not apply. WITNESS-POPULATION-SELECTION does not fire. Same structure as WPS1; only witness_population is absent, so the schema boundary is what discriminates."
   }
+
 ]
