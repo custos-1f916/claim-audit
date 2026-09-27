@@ -1966,5 +1966,53 @@ SPECIMENS = [
     "rows": [],
     "expected": ["NO-EMPIRICAL-CONTENT"],
     "note": "N/A MIRROR (regime axis, 2026-09-26). Neither has_more_at_end nor cursor_runs is declared; the axis cannot apply (schema boundary). EVIDENCE-UNCLOSED does not fire. Same structure as EV3; only cursor_runs is absent, so the axis is what discriminates."
+  },
+  {
+    "name": "FID1 fidelity (fire cell: independent right-axis witness, distorted copy)",
+    "type": "cross-model",
+    "mechanism": "copy-faithfulness (reading vs value)",
+    "metric": "byte-match of the reading to the value it represents",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.5},
+      {"mechanism_on": False, "is_null": True, "metric": 0.2}
+    ],
+    "referent_value": "a2ff25f0",
+    "reading": "a2ff25f1",
+    "independence_scope": ["protocol", "data", "implementation", "human gate"],
+    "independence_load_bearing": "protocol",
+    "expected": ["FIDELITY"],
+    "note": "FIRE CELL (copy-faithfulness axis, 2026-09-26). The witness is independent and on the load-bearing axis (independence_scope covers protocol, the load-bearing axis -> SCOPE-OF-INDEPENDENCE passes), but the reading a2ff25f1 does not byte-match the value a2ff25f0 it claims to represent -> the copy is distorted -> FIDELITY fires. Case A of the A/B witness: an independent, right-axis witness that is a distorted copy passes both of Kim's provenance checks yet FIDELITY fires."
+  },
+  {
+    "name": "FID2 fidelity (pass cell: self-keyed in-lineage witness, faithful copy)",
+    "type": "cross-model",
+    "mechanism": "copy-faithfulness (reading vs value)",
+    "metric": "byte-match of the reading to the value it represents",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.5},
+      {"mechanism_on": False, "is_null": True, "metric": 0.2}
+    ],
+    "referent_value": "a2ff25f0",
+    "reading": "a2ff25f0",
+    "independence_scope": ["data"],
+    "independence_load_bearing": "protocol",
+    "expected": ["SCOPE-OF-INDEPENDENCE"],
+    "note": "PASS CELL for FIDELITY / FIRE CELL for SCOPE-OF-INDEPENDENCE (copy-faithfulness axis, 2026-09-26). The witness is in-lineage on the load-bearing axis (independence_scope covers only data, but the load-bearing axis is protocol -> SCOPE-OF-INDEPENDENCE fires), yet the reading a2ff25f0 byte-matches the value a2ff25f0 -> the copy is faithful -> FIDELITY is silent. Case B of the A/B witness: a self-keyed, in-lineage witness that is a faithful copy fires the provenance axis while FIDELITY stays silent. A + B: neither axis is a special case of the other; they are orthogonal."
+  },
+  {
+    "name": "FID3 fidelity (control: independent right-axis witness, faithful copy)",
+    "type": "cross-model",
+    "mechanism": "copy-faithfulness (reading vs value)",
+    "metric": "byte-match of the reading to the value it represents",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.5},
+      {"mechanism_on": False, "is_null": True, "metric": 0.2}
+    ],
+    "referent_value": "a2ff25f0",
+    "reading": "a2ff25f0",
+    "independence_scope": ["protocol", "data", "implementation", "human gate"],
+    "independence_load_bearing": "protocol",
+    "expected": [],
+    "note": "CONTROL CELL (copy-faithfulness axis, 2026-09-26). The witness is independent and on the load-bearing axis (SCOPE-OF-INDEPENDENCE passes) AND the reading byte-matches the value (FIDELITY passes) -> nothing fires. The 'neither axis' corner of the 2x2: shows FIDELITY does not fire on a faithful independent copy, so the A/B witness is not just 'one axis always fires'."
   }
 ]

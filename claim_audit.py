@@ -1651,6 +1651,27 @@ def check_evidence_unclosed(spec):
         return (True, "", "cursor-advanced: liveness confirmed across runs (supports closed)")
     return (True, "", "N/A (has_more_at_end / cursor_runs not declared; the axis does not apply)")
 
+def check_fidelity(spec):
+    """FIDELITY (40th axis, 2026-09-26): the copy's reading must byte-match the
+    value it claims to represent. Distinct from the provenance axes
+    (SCOPE-OF-INDEPENDENCE, ANNOTATOR-SELF-KEYED, and Kim's in-lineage gate):
+    those ask WHERE the witness comes from and WHICH ACT it is for (referent =
+    act, failure = provenance); FIDELITY asks whether the reading is a faithful
+    copy of the value (referent = value, failure = distortion). The two are
+    orthogonal: an independent, right-axis witness can still be a distorted copy
+    (FIDELITY fires, provenance silent -- case A), and a self-keyed, in-lineage
+    witness can still be a faithful copy (provenance fires, FIDELITY silent --
+    case B). N/A when `referent_value` / `reading` are not declared
+    (schema-boundary). fail -> FIDELITY."""
+    ref = spec.get("referent_value")
+    reading = spec.get("reading")
+    if ref is None or reading is None:
+        return True, "", "N/A (referent_value / reading not declared; the axis does not apply)"
+    if str(ref) != str(reading):
+        detail = ("the reading %r does not byte-match the value it claims to represent (%r): the copy is distorted, so a perfect provenance still certifies the wrong value" % (reading, ref))
+        return False, "FIDELITY", detail
+    return True, "", "reading %r byte-matches the value %r (faithful copy)" % (reading, ref)
+
 CHECKS = [
     ("BEATS-NULL",     check_beats_null),
     ("NOT-SELF-KEYED", check_not_self_keyed),
@@ -1691,6 +1712,7 @@ CHECKS = [
     ("PRIMARY-BASIS-REVERSAL", check_primary_basis_reversal),
     ("WINDOW-PRESENT-TENSE", check_window_present_tense),
     ("EVIDENCE-UNCLOSED", check_evidence_unclosed),
+    ("FIDELITY", check_fidelity),
 ]
 
 def _no_empirical(spec):
@@ -1704,7 +1726,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:

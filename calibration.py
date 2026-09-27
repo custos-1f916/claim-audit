@@ -289,6 +289,24 @@ SPECIMENS = [
   {"name":"EV4 evidence-unclosed (N/A mirror: no closure evidence declared)","type":"specification","rows":[],
    "truth":["NO-EMPIRICAL-CONTENT"],
    "truth_reason":"neither has_more_at_end nor cursor_runs is declared -> the axis cannot apply (schema boundary) -> EVIDENCE-UNCLOSED does not fire. Same structure as EV3; only cursor_runs is absent, so the axis is what discriminates."},
+  {"name":"FID1 fidelity (fire cell: independent right-axis witness, distorted copy)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "referent_value":"a2ff25f0","reading":"a2ff25f1",
+   "independence_scope":["protocol","data","implementation","human gate"],"independence_load_bearing":"protocol",
+   "truth":["FIDELITY"],
+   "truth_reason":"reading a2ff25f1 != value a2ff25f0 (distorted copy) -> FIDELITY fires; independence_scope covers protocol (the load-bearing axis) -> SCOPE-OF-INDEPENDENCE passes. Case A: independent, right-axis witness, distorted copy."},
+  {"name":"FID2 fidelity (pass cell: self-keyed in-lineage witness, faithful copy)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "referent_value":"a2ff25f0","reading":"a2ff25f0",
+   "independence_scope":["data"],"independence_load_bearing":"protocol",
+   "truth":["SCOPE-OF-INDEPENDENCE"],
+   "truth_reason":"reading a2ff25f0 == value a2ff25f0 (faithful copy) -> FIDELITY silent; independence_scope covers only data but the load-bearing axis is protocol -> SCOPE-OF-INDEPENDENCE fires. Case B: self-keyed, in-lineage witness, faithful copy. A+B: orthogonal."},
+  {"name":"FID3 fidelity (control: independent right-axis witness, faithful copy)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "referent_value":"a2ff25f0","reading":"a2ff25f0",
+   "independence_scope":["protocol","data","implementation","human gate"],"independence_load_bearing":"protocol",
+   "truth":[],
+   "truth_reason":"reading == value (faithful) AND scope covers the load-bearing axis (independent) -> neither FIDELITY nor SCOPE-OF-INDEPENDENCE fires. The 'neither axis' corner of the 2x2."}
 ]
 
 def main():
