@@ -25,7 +25,7 @@ python3 calibration.py
 ```
 
 Exits 0 and prints `VERDICT: instrument DISCRIMINATES` if and only if all
-three properties hold on the 67 calibration specimens:
+three properties hold on the 74 calibration specimens:
 
   (a) silent-on-robust   : robust claims fire NO flag
   (b) fire-on-flawed     : flawed claims fire the expected axis
@@ -75,7 +75,7 @@ undeclared field makes a refinement N/A), `contested`.
 python3 claim_audit.py
 ```
 
-Runs the 107 real specimens in `specimens.py` (papers from the
+Runs the 121 real specimens in `specimens.py` (papers from the
 2026-09-15..22 audit run plus schema-boundary cells) and prints
 `ALL SPECIMENS MATCH` (exit 0) when every specimen's fired flags equal
 its recorded `expected` set. `results.txt` is a fresh run of this
@@ -83,10 +83,10 @@ battery from this copy of the code.
 
 ## Files
 
-  claim_audit.py   the instrument (36 checks + CLI), stdlib only
-  calibration.py   the 67-specimen discriminating calibration
+  claim_audit.py   the instrument (41 checks + CLI), stdlib only
+  calibration.py   the 74-specimen discriminating calibration
   calibration_boundary.py  the self-calibration probe (per-check mutation)
-  specimens.py     107 real specimens with expected flag sets
+  specimens.py     121 real specimens with expected flag sets
   results.txt      fresh battery run from this copy
 
 ## Lineage
@@ -106,14 +106,14 @@ python3 calibration_boundary.py
 
 The battery being GREEN is not the same as the battery being COMPLETE.
 This probe answers the self-keyed question applied to the instrument's own
-calibration: for each of the 36 checks, blind it (force always-pass) and
+calibration: for each of the 41 checks, blind it (force always-pass) and
 re-run the battery. If the battery stays GREEN, no specimen's
 independently-derived ground truth requires that check to fire, so the check
 could silently break and `calibration.py` would still print DISCRIMINATES.
 
-Current state (2026-09-25): 36/36 checks are calibrated (each caught by
+Current state (2026-09-27): 41/41 checks are calibrated (each caught by
 at least one discriminating specimen — BEATS-NULL by 9, its
-false-positive surface being the spike family plus F2, the other 35 by
+false-positive surface being the spike family plus F2, the other 40 by
 exactly one); the calibration boundary is closed (0 uncalibrated). The
 last 8 were closed with one discriminating fire+pass cell per axis
 (AR/RC/F/SN/AK/C/SI/RM pairs, ground truth by direct arithmetic): each
@@ -124,6 +124,22 @@ boundary, surfaced as a computed property instead of locked as regression
 witnesses. Closing the boundary = one discriminating specimen per
 uncalibrated axis (or retiring the axis). The probe always exits 0; the
 report is the point.
+
+## Coherence check (axis overlap / redundancy)
+
+```
+python3 cofiring.py
+```
+
+Growth to 41 axes raises the question: do axes start to overlap? `cofiring.py`
+computes the co-firing matrix over the 121-specimen battery: per-axis firing
+counts, identical firing sets (pure redundancy), strict-subset sets (the
+designed refinement hierarchy), and co-firing pairs. Current state
+(2026-09-27): no two axes share a firing set; the only subset structure is the
+designed refinement hierarchy (NULL-REACHES-HEADLINE superset of the BEATS-NULL
+spike/onset refinements; NO-EMPIRICAL-CONTENT superset of the completeness
+regime); the newest axes (FIDELITY, WITNESS-POPULATION-SELECTION) each fire on
+a specimen where no other axis fires. Full report: `COHERENCE.md`.
 
 ## Receipt axis (walk completeness)
 
