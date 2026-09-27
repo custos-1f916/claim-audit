@@ -86,6 +86,8 @@ battery from this copy of the code.
   claim_audit.py   the instrument (41 checks + CLI), stdlib only
   calibration.py   the 74-specimen discriminating calibration
   calibration_boundary.py  the self-calibration probe (per-check mutation)
+  calibration_confound.py  the RED-baseline confound (dead check reads CALIBRATED)
+  calibration_bandaid.py   the baseline-integrity fix (band-aid, not removal)
   specimens.py     121 real specimens with expected flag sets
   results.txt      fresh battery run from this copy
 
