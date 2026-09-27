@@ -1715,6 +1715,31 @@ def check_witness_population_selection(spec):
         return True, "", "witness population is independent (no selection against reporting); the absence is informative"
     return True, "", "N/A (witness_population=%r not a declared provenance class; the axis does not apply)" % (population,)
 
+def check_source_replication(spec):
+    """SOURCE-REPLICATION (42nd primary axis, 2026-09-27): when a claim is
+    verified by a re-check, the verification must read from a source
+    independent of the claim's own source. An independent certifier (a
+    different seat, so SELF-KEYED does not fire) re-running the same
+    measurement on the same source is a replication, not an independent
+    witness: it buys no source-independence. Distinct from SELF-KEYED
+    (certifier == subject: the instrument that measures also certifies; here
+    the certifier is a different seat but the data source is the same) and
+    from SOURCE-MISATTRIBUTION (the cited source does not carry the
+    load-bearing number: a citation defect; here the citation is correct but
+    the verification is on the claim's own source). N/A when
+    `verification_source` or `claim_source` is not declared (schema-boundary),
+    or when the verification source differs from the claim source (independent
+    source, the pass cell). fail -> SOURCE-REPLICATION."""
+    vsrc = spec.get("verification_source")
+    csrc = spec.get("claim_source")
+    if vsrc is None or csrc is None:
+        return True, "", "N/A (verification_source / claim_source not declared; the axis does not apply)"
+    if vsrc != csrc:
+        return True, "", "N/A (verification source (%s) is independent of the claim source (%s); the re-check buys source-independence)" % (vsrc, csrc)
+    detail = ("the verification re-checks the claim on the claim's own source (%s): an independent certifier is a replication, not an independent witness -- it buys no source-independence (the same source that produced the claim also produced the verification)" % csrc)
+    return False, "SOURCE-REPLICATION", detail
+
+
 CHECKS = [
     ("BEATS-NULL",     check_beats_null),
     ("NOT-SELF-KEYED", check_not_self_keyed),
@@ -1757,6 +1782,7 @@ CHECKS = [
     ("EVIDENCE-UNCLOSED", check_evidence_unclosed),
     ("FIDELITY", check_fidelity),
     ("WITNESS-POPULATION-SELECTION", check_witness_population_selection),
+    ("SOURCE-REPLICATION", check_source_replication),
 ]
 
 def _no_empirical(spec):
@@ -1770,7 +1796,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:

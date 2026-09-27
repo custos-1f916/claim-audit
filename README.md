@@ -1,12 +1,12 @@
 # claim-audit
 
-A 41-axis falsification instrument for empirical claims in ML/AI papers
+A 42-axis falsification instrument for empirical claims in ML/AI papers
 (and other headline claims with data). Given a claim's raw numbers as a
-spec, it checks the claim against 41 axes (self-keyed, wrong-axis,
+spec, it checks the claim against 42 axes (self-keyed, wrong-axis,
 selection-bias, confounded, within-noise, lossy-projection,
 aggregation-reversal, referent-witnessed, temporal/dose/outcome/subgroup
 onset-and-spike, funnel-stage-misattribution, selection-on-narrative,
-annotator-self-keyed, scope-of-independence, reference-mix, unwitnessed-receipt, unwitnessed-root, source-misattribution, wider-than-named, self-falsifying, primary-basis-reversal, window-present-tense, evidence-unclosed, fidelity, witness-population-selection, ...) and
+annotator-self-keyed, scope-of-independence, reference-mix, unwitnessed-receipt, unwitnessed-root, source-misattribution, wider-than-named, self-falsifying, primary-basis-reversal, window-present-tense, evidence-unclosed, fidelity, witness-population-selection, source-replication, ...) and
 returns the fired flags with a per-check detail line.
 
 The point is not "does the claim sound plausible" but "does the claim's
@@ -75,7 +75,7 @@ undeclared field makes a refinement N/A), `contested`.
 python3 claim_audit.py
 ```
 
-Runs the 123 real specimens in `specimens.py` (papers from the
+Runs the 125 real specimens in `specimens.py` (papers from the
 2026-09-15..22 audit run plus schema-boundary cells) and prints
 `ALL SPECIMENS MATCH` (exit 0) when every specimen's fired flags equal
 its recorded `expected` set. `results.txt` is a fresh run of this
@@ -83,12 +83,12 @@ battery from this copy of the code.
 
 ## Files
 
-  claim_audit.py   the instrument (41 checks + CLI), stdlib only
-  calibration.py   the 74-specimen discriminating calibration
+  claim_audit.py   the instrument (42 checks + CLI), stdlib only
+  calibration.py   the 78-specimen discriminating calibration
   calibration_boundary.py  the self-calibration probe (per-check mutation)
   calibration_confound.py  the RED-baseline confound (dead check reads CALIBRATED)
   calibration_bandaid.py   the baseline-integrity fix (band-aid, not removal)
-  specimens.py     123 real specimens with expected flag sets
+  specimens.py     125 real specimens with expected flag sets
   results.txt      fresh battery run from this copy
 
 ## Lineage
@@ -108,12 +108,12 @@ python3 calibration_boundary.py
 
 The battery being GREEN is not the same as the battery being COMPLETE.
 This probe answers the self-keyed question applied to the instrument's own
-calibration: for each of the 41 checks, blind it (force always-pass) and
+calibration: for each of the 42 checks, blind it (force always-pass) and
 re-run the battery. If the battery stays GREEN, no specimen's
 independently-derived ground truth requires that check to fire, so the check
 could silently break and `calibration.py` would still print DISCRIMINATES.
 
-Current state (2026-09-27): 41/41 checks are calibrated (each caught by
+Current state (2026-09-27): 42/42 checks are calibrated (each caught by
 at least one discriminating specimen — BEATS-NULL by 9, its
 false-positive surface being the spike family plus F2, the other 40 by
 exactly one); the calibration boundary is closed (0 uncalibrated). The
@@ -133,8 +133,8 @@ report is the point.
 python3 cofiring.py
 ```
 
-Growth to 41 axes raises the question: do axes start to overlap? `cofiring.py`
-computes the co-firing matrix over the 123-specimen battery: per-axis firing
+Growth to 42 axes raises the question: do axes start to overlap? `cofiring.py`
+computes the co-firing matrix over the 125-specimen battery: per-axis firing
 counts, identical firing sets (pure redundancy), strict-subset sets (the
 designed refinement hierarchy), and co-firing pairs. Current state
 (2026-09-27): no two axes share a firing set; the only subset structure is the

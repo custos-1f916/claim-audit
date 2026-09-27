@@ -1,5 +1,5 @@
 {
-  "battery": 123,
+  "battery": 125,
   "check2flag": {
     "BEATS-NULL": "NULL-REACHES-HEADLINE",
     "NOT-SELF-KEYED": "SELF-KEYED",
@@ -41,23 +41,24 @@
     "WINDOW-PRESENT-TENSE": "WINDOW-PRESENT-TENSE",
     "EVIDENCE-UNCLOSED": "EVIDENCE-UNCLOSED",
     "FIDELITY": "FIDELITY",
-    "WITNESS-POPULATION-SELECTION": "WITNESS-POPULATION-SELECTION"
+    "WITNESS-POPULATION-SELECTION": "WITNESS-POPULATION-SELECTION",
+    "SOURCE-REPLICATION": "SOURCE-REPLICATION"
   },
   "truly_never": [
     "TEMPORAL-ONSET",
     "REFERENCE-MIX"
   ],
   "counts": {
-    "SELF-KEYED": 6,
     "WRONG-AXIS": 5,
-    "CONFOUNDED": 6,
+    "SELF-KEYED": 6,
     "NULL-REACHES-HEADLINE": 36,
+    "CONFOUNDED": 6,
     "WITHIN-NOISE": 1,
     "VACUOUS-RATIO": 1,
     "CONSEQUENCE-WITNESSED": 4,
     "INCOMPARABLE-STATISTIC": 1,
-    "NOT-COMPUTABLE": 2,
     "NO-EMPIRICAL-CONTENT": 14,
+    "NOT-COMPUTABLE": 2,
     "BY-CONSTRUCTION": 1,
     "LOSSY-PROJECTION": 6,
     "SELECTION-BIAS": 1,
@@ -90,17 +91,10 @@
     "WINDOW-PRESENT-TENSE": 1,
     "EVIDENCE-UNCLOSED": 2,
     "FIDELITY": 1,
-    "WITNESS-POPULATION-SELECTION": 1
+    "WITNESS-POPULATION-SELECTION": 1,
+    "SOURCE-REPLICATION": 1
   },
   "firing_sets": {
-    "SELF-KEYED": [
-      0,
-      5,
-      19,
-      22,
-      24,
-      68
-    ],
     "WRONG-AXIS": [
       0,
       2,
@@ -108,13 +102,13 @@
       77,
       105
     ],
-    "CONFOUNDED": [
-      1,
-      10,
-      62,
-      65,
-      78,
-      88
+    "SELF-KEYED": [
+      0,
+      5,
+      19,
+      22,
+      24,
+      68
     ],
     "NULL-REACHES-HEADLINE": [
       1,
@@ -154,6 +148,14 @@
       87,
       88
     ],
+    "CONFOUNDED": [
+      1,
+      10,
+      62,
+      65,
+      78,
+      88
+    ],
     "WITHIN-NOISE": [
       8
     ],
@@ -168,10 +170,6 @@
     ],
     "INCOMPARABLE-STATISTIC": [
       14
-    ],
-    "NOT-COMPUTABLE": [
-      15,
-      59
     ],
     "NO-EMPIRICAL-CONTENT": [
       15,
@@ -188,6 +186,10 @@
       111,
       112,
       113
+    ],
+    "NOT-COMPUTABLE": [
+      15,
+      59
     ],
     "BY-CONSTRUCTION": [
       16
@@ -307,6 +309,9 @@
     ],
     "WITNESS-POPULATION-SELECTION": [
       117
+    ],
+    "SOURCE-REPLICATION": [
+      123
     ]
   },
   "identical": {},

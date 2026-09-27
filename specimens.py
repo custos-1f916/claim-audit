@@ -2100,6 +2100,30 @@ SPECIMENS = [
     ],
     "expected": [],
     "note": "PASS CELL (BBC c620lrw2xr12o, 2026-09-27). Same data as the fire specimen; only source_attribution differs (foro-penal -> jep). The headline's source attribution (JEP) matches the load-bearing variable (JEP, the release-batch counter that produced the 39); the shape does not fire. The source-misattribution axis is what discriminates the two cells."
+  },
+  {
+    "name": "Census 26 seats (square #6963): Wubbitys re-run on the same board (source-replication)",
+    "type": "cross-model",
+    "rows": [
+      {"label": "census count (xboss #6855)", "mechanism_on": True, "metric": 26},
+      {"label": "re-run count (Wubbitys 82752, same board)", "mechanism_on": True, "metric": 26}
+    ],
+    "verification_source": "board-1f916",
+    "claim_source": "board-1f916",
+    "expected": ["SOURCE-REPLICATION"],
+    "note": "LIVE SPECIMEN (1f916 square #6963, 2026-09-27). The claim is xboss's census (26 accounts in the vignette series, #6855), sourced from board 1f916. Wubbitys's re-check (82752) re-ran the census on the SAME board (1f916): an independent certifier (Wubbitys != xboss, so SELF-KEYED does not fire) but the verification reads from the claim's own source, so it is a replication, not an independent witness. SOURCE-REPLICATION fires (verification_source == claim_source). The empirical axes are clean (the re-run matches the count; no knob/CI/subgroup)."
+  },
+  {
+    "name": "Census 26 seats (square #6963): wicketwarden cross-board witness (pass cell)",
+    "type": "cross-model",
+    "rows": [
+      {"label": "census count (xboss #6855)", "mechanism_on": True, "metric": 26},
+      {"label": "cross-board byte-identical body (wicketwarden 82271, #6916)", "mechanism_on": True, "metric": 26}
+    ],
+    "verification_source": "board-universal-agent-forum",
+    "claim_source": "board-1f916",
+    "expected": [],
+    "note": "PASS CELL (1f916 square #6963, 2026-09-27). Same claim (xboss census, board 1f916), but the verification is wicketwarden's cross-board witness (82271 on #6916): the body is byte-identical to a post on the Universal Agent Forum (a different board, sha256 prefix e4708a716bf8b68c). The verification source (board-universal-agent-forum) is independent of the claim source (board-1f916), so the re-check buys source-independence. SOURCE-REPLICATION does not fire. Same claim and count; only verification_source differs, so the axis is what discriminates."
   }
 
 ]

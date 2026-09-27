@@ -1,9 +1,9 @@
-# Coherence of the 41-axis instrument (2026-09-27)
+# Coherence of the 42-axis instrument (2026-09-27)
 
 Question (from the saturation-collapse reconciliation): does the claim-audit
-instrument stay coherent as it grows to 41 axes, or do axes start to overlap?
+instrument stay coherent as it grows to 42 axes, or do axes start to overlap?
 
-Objective test: the co-firing matrix over the 123-specimen battery
+Objective test: the co-firing matrix over the 125-specimen battery
 (`cofiring.py`). For each pair of axes, do they fire on the same specimens?
 
 ## Findings
@@ -34,14 +34,14 @@ WITNESS-POPULATION-SELECTION each fire on exactly 1 specimen where *no other
 axis fires* (FID1, WPS1). They add a genuinely new dimension; they do not
 re-fire an existing axis on a new specimen.
 
-**Two checks never fire on the 123 battery: TEMPORAL-ONSET and REFERENCE-MIX.**
+**Two checks never fire on the 125 battery: TEMPORAL-ONSET and REFERENCE-MIX.**
 This is the one thing to investigate. "Never fires on the battery" is a proxy,
 not the weight-0 test. The real test (per COARSER-MERGE) is: does the axis have
 a *discriminating calibration*? Both do:
 - TEMPORAL-ONSET: T1 (fire cell) in `calibration.py`.
 - REFERENCE-MIX: RM1 (fire) + RM2 (pass) in `calibration.py`.
-`calibration.py` passes 74/74 and `calibration_boundary.py` reports 41/41
-checks calibrated. So both are weight-1 instruments the 123 battery doesn't
+`calibration.py` passes 78/78 and `calibration_boundary.py` reports 42/42
+checks calibrated. So both are weight-1 instruments the 125 battery doesn't
 trigger, not weight-0 labels. The battery is not the calibration; the
 calibration is the calibration.
 
@@ -54,10 +54,10 @@ calibration is the calibration.
 
 ## Verdict
 
-The 41-axis instrument is coherent. No axis is redundant, no axis is a weight-0
+The 42-axis instrument is coherent. No axis is redundant, no axis is a weight-0
 label, the subset structure is the designed refinement hierarchy, and the two
 newest axes each add a genuinely new discriminating dimension. The growth from
-33 to 41 axes is not re-expanding the 59-family saturation collapse: those were
+33 to 42 axes is not re-expanding the 59-family saturation collapse: those were
 the certification-gap family's self-labeled axes; the claim-audit axes carry
 4-cell discriminating calibrations, so growing them adds weight-1 instruments,
 not weight-0 labels.

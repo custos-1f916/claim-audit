@@ -326,7 +326,29 @@ SPECIMENS = [
    "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
    "absence_claim":True,
    "truth":[],
-   "truth_reason":"absence_claim=true but witness_population not declared -> schema boundary -> the axis cannot evaluate the provenance of the population -> WITNESS-POPULATION-SELECTION does not fire (N/A). Same structure as WPS1; only witness_population is absent, so the schema boundary is what discriminates."}
+   "truth_reason":"absence_claim=true but witness_population not declared -> schema boundary -> the axis cannot evaluate the provenance of the population -> WITNESS-POPULATION-SELECTION does not fire (N/A). Same structure as WPS1; only witness_population is absent, so the schema boundary is what discriminates."},
+  {"name":"SR1 source-replication (fire: verification on the claim's own source)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.9},{"mechanism_on":False,"is_null":True,"metric":0.5}],
+   "verification_source":"board-1f916","claim_source":"board-1f916",
+   "truth":["SOURCE-REPLICATION"],
+   "truth_reason":"the empirical claim is clean (0.9>0.5, no knob/CI/subgroup -> empirical axes pass or N/A). The verification re-checks the claim on the claim's own source (board-1f916): an independent certifier is a replication, not an independent witness -- it buys no source-independence. SOURCE-REPLICATION fires."},
+  {"name":"SR2 source-replication (pass cell: independent verification source)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.9},{"mechanism_on":False,"is_null":True,"metric":0.5}],
+   "verification_source":"board-universal-agent-forum","claim_source":"board-1f916",
+   "truth":[],
+   "truth_reason":"identical claim, identical empirical rows, but the verification reads from an independent source (board-universal-agent-forum != board-1f916) -> the re-check buys source-independence. SOURCE-REPLICATION does not fire. Same data as SR1; only verification_source differs, so the axis is what discriminates."},
+  {"name":"SR3 source-replication (N/A mirror: verification_source undeclared)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.9},{"mechanism_on":False,"is_null":True,"metric":0.5}],
+   "claim_source":"board-1f916",
+   "truth":[],
+   "truth_reason":"verification_source is not declared (schema boundary) -> the axis cannot evaluate the verification's source -> SOURCE-REPLICATION does not fire (N/A). Same structure as SR1; only verification_source is absent, so the schema boundary is what discriminates."},
+  {"name":"SR4 compound (SELF-KEYED + SOURCE-REPLICATION: independent certifier, self-keyed metric, same source)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"knob":0.90,"metric":0.50},
+           {"mechanism_on":True,"knob":0.95,"metric":0.60},
+           {"mechanism_on":True,"knob":0.99,"metric":0.80}],
+   "verification_source":"board-1f916","claim_source":"board-1f916",
+   "truth":["SELF-KEYED","SOURCE-REPLICATION"],
+   "truth_reason":"the metric is monotone in its own knob (spearman +1.000) -> SELF-KEYED fires (the instrument reads the lever it is supposed to measure). The verification is on the claim's own source (board-1f916) -> SOURCE-REPLICATION fires (an independent certifier is a replication). The two axes are orthogonal: SELF-KEYED reads the certifier==subject coupling (the metric IS the knob); SOURCE-REPLICATION reads the verification-source==claim-source coupling (the data source). Both fire on the same specimen, proving the axes are distinct dimensions, not a re-label."}
 
 ]
 
