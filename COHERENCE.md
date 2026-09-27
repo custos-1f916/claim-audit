@@ -29,10 +29,28 @@ Subsets are the structure, not the defect. A refinement that fires on a strict
 subset of its parent is doing its job: it catches the cases the parent catches
 *and* distinguishes them.
 
-**The two newest axes discriminate cleanly.** FIDELITY and
-WITNESS-POPULATION-SELECTION each fire on exactly 1 specimen where *no other
-axis fires* (FID1, WPS1). They add a genuinely new dimension; they do not
-re-fire an existing axis on a new specimen.
+**Per-axis exclusivity (the stale-proof "newest axes" test).** The old
+version of this section hand-listed the two newest axes (FIDELITY,
+WITNESS-POPULATION-SELECTION) and went stale when SOURCE-REPLICATION landed
+as the 42nd axis: the verdict was bumped to 42 while the evidence still
+named 41. `cofiring.py` now derives the answer instead: for every flag,
+does it fire on any specimen where *no other flag fires*? A flag with at
+least one exclusive specimen contributes a label no other axis produces
+there; that axis is not a re-label of another axis's firing.
+
+Result on the 125 battery: 27 of 44 fired flags have >= 1 exclusive
+specimen. The three newest axes each qualify: FIDELITY (FID1),
+WITNESS-POPULATION-SELECTION (WPS1), and SOURCE-REPLICATION (the census
+fire cell, square #6963) each fire on exactly 1 specimen where no other
+flag fires. Exclusivity is computed on the 44 distinct *flags* the
+instrument emits, not the 42 checks: 7 checks emit a differently-named
+flag (BEATS-NULL -> NULL-REACHES-HEADLINE, CO-MOVES -> WRONG-AXIS,
+COMPUTABLE -> NOT-COMPUTABLE, ISOLATED -> CONFOUNDED, NOISE-FLOOR ->
+WITHIN-NOISE, NOT-SELF-KEYED -> SELF-KEYED, REFERENT-WITNESSED ->
+CONSEQUENCE-WITNESSED), so the flag is the unit of "what the instrument
+says". Exclusivity is sufficient, not necessary: the 17 flags without an
+exclusive specimen are covered by the identical-set test (no two flags
+share a firing set) and the subset structure above.
 
 **Two checks never fire on the 125 battery: TEMPORAL-ONSET and REFERENCE-MIX.**
 This is the one thing to investigate. "Never fires on the battery" is a proxy,
@@ -54,13 +72,22 @@ calibration is the calibration.
 
 ## Verdict
 
-The 42-axis instrument is coherent. No axis is redundant, no axis is a weight-0
-label, the subset structure is the designed refinement hierarchy, and the two
-newest axes each add a genuinely new discriminating dimension. The growth from
-33 to 42 axes is not re-expanding the 59-family saturation collapse: those were
-the certification-gap family's self-labeled axes; the claim-audit axes carry
-4-cell discriminating calibrations, so growing them adds weight-1 instruments,
+The 42-axis instrument is coherent. No flag is redundant (no two share a
+firing set), no axis is a weight-0 label, the subset structure is the
+designed refinement hierarchy, and the per-axis exclusivity test — now
+derived rather than hand-listed — shows the three newest axes (FIDELITY,
+WITNESS-POPULATION-SELECTION, SOURCE-REPLICATION) each add a genuinely new
+discriminating dimension. The growth from 33 to 42 axes is not re-expanding
+the 59-family saturation collapse: those were the certification-gap
+family's self-labeled axes; the claim-audit axes carry 4-cell
+discriminating calibrations, so growing them adds weight-1 instruments,
 not weight-0 labels.
+
+Record correction: commit 4269ce8's message said SOURCE-REPLICATION
+"fires on 2"; the battery shows it fires on exactly 1 specimen (the
+census fire cell). The pass cell fires nothing, as designed. A
+self-keyed slip in my own commit message — the instrument's own class
+of error, caught by re-deriving instead of trusting the record.
 
 ## Stranger-rerunnable
 
@@ -68,6 +95,8 @@ not weight-0 labels.
 python3 cofiring.py
 ```
 
-Prints the co-firing matrix, the per-axis firing counts, the identical/subset/
-co-firing structure, and the never-fired-on-battery checks. Writes `cofiring.json`
-(full firing sets). Exits 0.
+Prints the co-firing matrix, the per-axis firing counts, the
+identical/subset/co-firing structure, the never-fired-on-battery checks,
+and the per-axis exclusivity section (the stale-proof "newest axes"
+test). Writes `cofiring.json` (full firing sets + exclusive sets).
+Exits 0.

@@ -140,8 +140,10 @@ designed refinement hierarchy), and co-firing pairs. Current state
 (2026-09-27): no two axes share a firing set; the only subset structure is the
 designed refinement hierarchy (NULL-REACHES-HEADLINE superset of the BEATS-NULL
 spike/onset refinements; NO-EMPIRICAL-CONTENT superset of the completeness
-regime); the newest axes (FIDELITY, WITNESS-POPULATION-SELECTION) each fire on
-a specimen where no other axis fires. Full report: `COHERENCE.md`.
+regime); the newest axes (FIDELITY, WITNESS-POPULATION-SELECTION,
+SOURCE-REPLICATION) each fire on a specimen where no other axis fires
+(per-axis exclusivity, derived from the firing sets rather than
+hand-listed). Full report: `COHERENCE.md`.
 
 ## Receipt axis (walk completeness)
 

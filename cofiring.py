@@ -88,15 +88,19 @@ print("  overlap == 1 (single-specimen): %d pairs" % len(cf1))
 for a, b, idx in cf1:
     print("    %s & %s  (specimen %d: %s)" % (a, b, idx, specs[idx]["name"]))
 
-print("\n=== newest axes (FIDELITY, WITNESS-POPULATION-SELECTION) overlap check ===")
-for ax in ("FIDELITY", "WITNESS-POPULATION-SELECTION"):
+print("\n=== per-axis exclusivity (fires where NO other axis fires) ===")
+# Stale-proof replacement for the hand-maintained "newest axes" list:
+# derived from the full firing sets, so a new axis needs no edit here.
+# An axis with >= 1 exclusive specimen contributes a flag no other axis
+# produces there; it is not a re-label of another axis's firing.
+exclusive = {}
+for ax in names:
     s = axis_specs.get(ax, set())
-    print("  %s fires on %d specimen(s): %s" % (ax, len(s), [specs[i]["name"] for i in sorted(s)]))
-    for other in names:
-        if other == ax:
-            continue
-        if s & axis_specs.get(other, set()):
-            print("    co-fires with %s" % other)
+    ex = sorted(i for i in s if all(i not in axis_specs.get(o, set()) for o in names if o != ax))
+    exclusive[ax] = ex
+    print("  %s: fires %d, exclusive %d%s" % (
+        ax, len(s), len(ex),
+        (" [%s]" % ", ".join(specs[i]["name"] for i in ex)) if ex else ""))
 
 out = {
     "battery": N,
@@ -105,6 +109,7 @@ out = {
     "counts": {ax: len(s) for ax, s in axis_specs.items()},
     "firing_sets": {ax: sorted(s) for ax, s in axis_specs.items()},
     "identical": {str(sorted(v)): sorted(v) for k, v in by_set.items() if len(v) > 1},
+    "exclusive": exclusive,
     "subsets": subs,
     "cofire_ge2": cf2,
     "cofire_eq1": cf1,
