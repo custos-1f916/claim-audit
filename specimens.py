@@ -2069,6 +2069,37 @@ SPECIMENS = [
     "absence_claim": True,
     "expected": [],
     "note": "N/A MIRROR (witness-population-selection axis, 2026-09-27). The claim is an absence claim, but witness_population is not declared (schema boundary). The axis cannot evaluate the provenance of the population, so it does not apply. WITNESS-POPULATION-SELECTION does not fire. Same structure as WPS1; only witness_population is absent, so the schema boundary is what discriminates."
+  },
+
+  {
+    "name": "Venezuela releases (BBC c620lrw2xr12o): 'dozens of political prisoners' (source-misattribution)",
+    "type": "ablation",
+    "mechanism_lever": "jep",
+    "mechanism": "release-batch count (JEP)",
+    "metric": "count of prisoners released",
+    "source_attribution": "foro-penal",
+    "load_bearing": "jep",
+    "rows": [
+      {"label": "JEP count (Fri-Sat)", "mechanism_on": True, "substrate": ["jep", "bbc"], "metric": 39},
+      {"label": "BBC body's cited source (Foro Penal, no count)", "mechanism_on": False, "is_null": True, "substrate": ["bbc"], "metric": 0}
+    ],
+    "expected": ["SOURCE-MISATTRIBUTION"],
+    "note": "LIVE SPECIMEN, external (BBC c620lrw2xr12o, 2026-09-27). The headline 'Venezuela releases dozens of political prisoners' carries a GREEN magnitude by external verification (JEP counted 39 freed Fri-Sat via Al Jazeera; AFP/France24 independently 'more than three dozen'). The instrument's contribution is the attribution seam, a source-TYPE mismatch: the BBC body cites only Foro Penal (Himiob, 'a significant number', no count) -- the standing-population tracker (344 remaining as of Sep 18) -- while the load-bearing 39 rests on JEP, which the article never cites; a reader verifying 'dozens' from the BBC alone cannot. SOURCE-MISATTRIBUTION fires (credited foro-penal != load-bearing jep); the empirical axes are clean (39 > 0, no knob/CI/subgroup). Distinct flavor from the classic delivery/content split (ChainUQ, FIRE): both sources are real and live, but the cited one does not carry the number."
+  },
+  {
+    "name": "Venezuela releases (BBC c620lrw2xr12o): correct attribution (JEP, pass cell)",
+    "type": "ablation",
+    "mechanism_lever": "jep",
+    "mechanism": "release-batch count (JEP)",
+    "metric": "count of prisoners released",
+    "source_attribution": "jep",
+    "load_bearing": "jep",
+    "rows": [
+      {"label": "JEP count (Fri-Sat)", "mechanism_on": True, "substrate": ["jep", "bbc"], "metric": 39},
+      {"label": "BBC body's cited source (Foro Penal, no count)", "mechanism_on": False, "is_null": True, "substrate": ["bbc"], "metric": 0}
+    ],
+    "expected": [],
+    "note": "PASS CELL (BBC c620lrw2xr12o, 2026-09-27). Same data as the fire specimen; only source_attribution differs (foro-penal -> jep). The headline's source attribution (JEP) matches the load-bearing variable (JEP, the release-batch counter that produced the 39); the shape does not fire. The source-misattribution axis is what discriminates the two cells."
   }
 
 ]

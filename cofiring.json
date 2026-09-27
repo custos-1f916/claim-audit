@@ -1,5 +1,5 @@
 {
-  "battery": 121,
+  "battery": 123,
   "check2flag": {
     "BEATS-NULL": "NULL-REACHES-HEADLINE",
     "NOT-SELF-KEYED": "SELF-KEYED",
@@ -50,8 +50,8 @@
   "counts": {
     "SELF-KEYED": 6,
     "WRONG-AXIS": 5,
-    "NULL-REACHES-HEADLINE": 36,
     "CONFOUNDED": 6,
+    "NULL-REACHES-HEADLINE": 36,
     "WITHIN-NOISE": 1,
     "VACUOUS-RATIO": 1,
     "CONSEQUENCE-WITNESSED": 4,
@@ -83,7 +83,7 @@
     "SCOPE-OF-INDEPENDENCE": 3,
     "UNWITNESSED-RECEIPT": 1,
     "UNWITNESSED-ROOT": 1,
-    "SOURCE-MISATTRIBUTION": 3,
+    "SOURCE-MISATTRIBUTION": 4,
     "WIDER-THAN-NAMED": 2,
     "SELF-FALSIFYING": 1,
     "PRIMARY-BASIS-REVERSAL": 1,
@@ -107,6 +107,14 @@
       4,
       77,
       105
+    ],
+    "CONFOUNDED": [
+      1,
+      10,
+      62,
+      65,
+      78,
+      88
     ],
     "NULL-REACHES-HEADLINE": [
       1,
@@ -144,14 +152,6 @@
       85,
       86,
       87,
-      88
-    ],
-    "CONFOUNDED": [
-      1,
-      10,
-      62,
-      65,
-      78,
       88
     ],
     "WITHIN-NOISE": [
@@ -282,7 +282,8 @@
     "SOURCE-MISATTRIBUTION": [
       94,
       95,
-      96
+      96,
+      121
     ],
     "WIDER-THAN-NAMED": [
       98,

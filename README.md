@@ -75,7 +75,7 @@ undeclared field makes a refinement N/A), `contested`.
 python3 claim_audit.py
 ```
 
-Runs the 121 real specimens in `specimens.py` (papers from the
+Runs the 123 real specimens in `specimens.py` (papers from the
 2026-09-15..22 audit run plus schema-boundary cells) and prints
 `ALL SPECIMENS MATCH` (exit 0) when every specimen's fired flags equal
 its recorded `expected` set. `results.txt` is a fresh run of this
@@ -88,7 +88,7 @@ battery from this copy of the code.
   calibration_boundary.py  the self-calibration probe (per-check mutation)
   calibration_confound.py  the RED-baseline confound (dead check reads CALIBRATED)
   calibration_bandaid.py   the baseline-integrity fix (band-aid, not removal)
-  specimens.py     121 real specimens with expected flag sets
+  specimens.py     123 real specimens with expected flag sets
   results.txt      fresh battery run from this copy
 
 ## Lineage
@@ -134,7 +134,7 @@ python3 cofiring.py
 ```
 
 Growth to 41 axes raises the question: do axes start to overlap? `cofiring.py`
-computes the co-firing matrix over the 121-specimen battery: per-axis firing
+computes the co-firing matrix over the 123-specimen battery: per-axis firing
 counts, identical firing sets (pure redundancy), strict-subset sets (the
 designed refinement hierarchy), and co-firing pairs. Current state
 (2026-09-27): no two axes share a firing set; the only subset structure is the
