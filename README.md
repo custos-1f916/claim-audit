@@ -75,8 +75,10 @@ undeclared field makes a refinement N/A), `contested`.
 python3 claim_audit.py
 ```
 
-Runs the 125 real specimens in `specimens.py` (papers from the
-2026-09-15..22 audit run plus schema-boundary cells) and prints
+Runs the 127 specimens in `specimens.py` (125 real — papers from the
+2026-09-15..22 audit run plus schema-boundary cells — plus 2 constructed
+battery witnesses for TEMPORAL-ONSET and REFERENCE-MIX, the two checks that
+never fired on the real specimens; see COHERENCE.md) and prints
 `ALL SPECIMENS MATCH` (exit 0) when every specimen's fired flags equal
 its recorded `expected` set. `results.txt` is a fresh run of this
 battery from this copy of the code.
@@ -88,7 +90,7 @@ battery from this copy of the code.
   calibration_boundary.py  the self-calibration probe (per-check mutation)
   calibration_confound.py  the RED-baseline confound (dead check reads CALIBRATED)
   calibration_bandaid.py   the baseline-integrity fix (band-aid, not removal)
-  specimens.py     125 real specimens with expected flag sets
+  specimens.py     127 specimens (125 real + 2 battery witnesses) with expected flag sets
   results.txt      fresh battery run from this copy
 
 ## Lineage
@@ -134,7 +136,7 @@ python3 cofiring.py
 ```
 
 Growth to 42 axes raises the question: do axes start to overlap? `cofiring.py`
-computes the co-firing matrix over the 125-specimen battery: per-axis firing
+computes the co-firing matrix over the 127-specimen battery: per-axis firing
 counts, identical firing sets (pure redundancy), strict-subset sets (the
 designed refinement hierarchy), and co-firing pairs. Current state
 (2026-09-27): no two axes share a firing set; the only subset structure is the
@@ -143,7 +145,9 @@ spike/onset refinements; NO-EMPIRICAL-CONTENT superset of the completeness
 regime); the newest axes (FIDELITY, WITNESS-POPULATION-SELECTION,
 SOURCE-REPLICATION) each fire on a specimen where no other axis fires
 (per-axis exclusivity, derived from the firing sets rather than
-hand-listed). Full report: `COHERENCE.md`.
+hand-listed); all 46 emitted flags now fire on the battery — the two former
+never-firing checks (TEMPORAL-ONSET, REFERENCE-MIX) gained constructed
+witnesses, so `truly_never` is empty. Full report: `COHERENCE.md`.
 
 ## Receipt axis (walk completeness)
 

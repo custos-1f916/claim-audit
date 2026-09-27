@@ -3,7 +3,7 @@
 Question (from the saturation-collapse reconciliation): does the claim-audit
 instrument stay coherent as it grows to 42 axes, or do axes start to overlap?
 
-Objective test: the co-firing matrix over the 125-specimen battery
+Objective test: the co-firing matrix over the 127-specimen battery
 (`cofiring.py`). For each pair of axes, do they fire on the same specimens?
 
 ## Findings
@@ -38,11 +38,12 @@ does it fire on any specimen where *no other flag fires*? A flag with at
 least one exclusive specimen contributes a label no other axis produces
 there; that axis is not a re-label of another axis's firing.
 
-Result on the 125 battery: 27 of 44 fired flags have >= 1 exclusive
+Result on the 127 battery: 29 of 46 fired flags have >= 1 exclusive
 specimen. The three newest axes each qualify: FIDELITY (FID1),
 WITNESS-POPULATION-SELECTION (WPS1), and SOURCE-REPLICATION (the census
 fire cell, square #6963) each fire on exactly 1 specimen where no other
-flag fires. Exclusivity is computed on the 44 distinct *flags* the
+flag fires; the two battery witnesses (TEMPORAL-ONSET, REFERENCE-MIX)
+are exclusive as well. Exclusivity is computed on the 44 distinct *flags* the
 instrument emits, not the 42 checks: 7 checks emit a differently-named
 flag (BEATS-NULL -> NULL-REACHES-HEADLINE, CO-MOVES -> WRONG-AXIS,
 COMPUTABLE -> NOT-COMPUTABLE, ISOLATED -> CONFOUNDED, NOISE-FLOOR ->
@@ -52,8 +53,8 @@ says". Exclusivity is sufficient, not necessary: the 17 flags without an
 exclusive specimen are covered by the identical-set test (no two flags
 share a firing set) and the subset structure above.
 
-**Two checks never fire on the 125 battery: TEMPORAL-ONSET and REFERENCE-MIX.**
-This is the one thing to investigate. "Never fires on the battery" is a proxy,
+**Two checks never fired on the 125 battery: TEMPORAL-ONSET and REFERENCE-MIX.**
+This was the one thing to investigate. "Never fires on the battery" is a proxy,
 not the weight-0 test. The real test (per COARSER-MERGE) is: does the axis have
 a *discriminating calibration*? Both do:
 - TEMPORAL-ONSET: T1 (fire cell) in `calibration.py`.
@@ -62,6 +63,16 @@ a *discriminating calibration*? Both do:
 checks calibrated. So both are weight-1 instruments the 125 battery doesn't
 trigger, not weight-0 labels. The battery is not the calibration; the
 calibration is the calibration.
+
+**Resolved (2026-09-27, this commit):** the battery's silence was a coverage
+gap, not a defect — and a coverage gap is closable. Two constructed witnesses
+mirroring the calibration fire cells (T1, RM1) were added to `specimens.py`:
+the battery is now 127 (125 real + 2 witnesses), the instrument fires all 46
+flags on it (was 44; the two silent flags now fire on exactly their witness,
+no cross-fire), `truly_never` is empty, and each witness is an exclusive
+specimen (exclusivity 29/46). The witnesses are constructed, not real
+specimens: they make the battery a second, independent confirmation of the
+calibration's discriminating cells, not new ground truth.
 
 **Co-firing pairs (overlap >= 2, neither a subset):** only 2, both expected:
 - METRIC-SPIKE & SPLIT-SPIKE (2 specimens): the spike family shares the

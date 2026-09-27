@@ -1,5 +1,5 @@
 {
-  "battery": 125,
+  "battery": 127,
   "check2flag": {
     "BEATS-NULL": "NULL-REACHES-HEADLINE",
     "NOT-SELF-KEYED": "SELF-KEYED",
@@ -12,7 +12,7 @@
     "AGGREGATION-REVERSAL": "AGGREGATION-REVERSAL",
     "REFERENT-CONSTRUCTED": "REFERENT-CONSTRUCTED",
     "DOSE-RESPONSE": "DOSE-RESPONSE",
-    "TEMPORAL-ONSET": null,
+    "TEMPORAL-ONSET": "TEMPORAL-ONSET",
     "TEMPORAL-SPIKE": "TEMPORAL-SPIKE",
     "OUTCOME-ONSET": "OUTCOME-ONSET",
     "OUTCOME-SPIKE": "OUTCOME-SPIKE",
@@ -32,7 +32,7 @@
     "ANNOTATOR-SELF-KEYED": "ANNOTATOR-SELF-KEYED",
     "COMPUTABLE": "NOT-COMPUTABLE",
     "SCOPE-OF-INDEPENDENCE": "SCOPE-OF-INDEPENDENCE",
-    "REFERENCE-MIX": null,
+    "REFERENCE-MIX": "REFERENCE-MIX",
     "UNWITNESSED-RECEIPT": "UNWITNESSED-RECEIPT",
     "UNWITNESSED-ROOT": "UNWITNESSED-ROOT",
     "WIDER-THAN-NAMED": "WIDER-THAN-NAMED",
@@ -44,21 +44,18 @@
     "WITNESS-POPULATION-SELECTION": "WITNESS-POPULATION-SELECTION",
     "SOURCE-REPLICATION": "SOURCE-REPLICATION"
   },
-  "truly_never": [
-    "TEMPORAL-ONSET",
-    "REFERENCE-MIX"
-  ],
+  "truly_never": [],
   "counts": {
     "SELF-KEYED": 6,
     "WRONG-AXIS": 5,
-    "CONFOUNDED": 6,
     "NULL-REACHES-HEADLINE": 36,
+    "CONFOUNDED": 6,
     "WITHIN-NOISE": 1,
     "VACUOUS-RATIO": 1,
     "CONSEQUENCE-WITNESSED": 4,
     "INCOMPARABLE-STATISTIC": 1,
-    "NOT-COMPUTABLE": 2,
     "NO-EMPIRICAL-CONTENT": 14,
+    "NOT-COMPUTABLE": 2,
     "BY-CONSTRUCTION": 1,
     "LOSSY-PROJECTION": 6,
     "SELECTION-BIAS": 1,
@@ -92,7 +89,9 @@
     "EVIDENCE-UNCLOSED": 2,
     "FIDELITY": 1,
     "WITNESS-POPULATION-SELECTION": 1,
-    "SOURCE-REPLICATION": 1
+    "SOURCE-REPLICATION": 1,
+    "TEMPORAL-ONSET": 1,
+    "REFERENCE-MIX": 1
   },
   "firing_sets": {
     "SELF-KEYED": [
@@ -109,14 +108,6 @@
       4,
       77,
       105
-    ],
-    "CONFOUNDED": [
-      1,
-      10,
-      62,
-      65,
-      78,
-      88
     ],
     "NULL-REACHES-HEADLINE": [
       1,
@@ -156,6 +147,14 @@
       87,
       88
     ],
+    "CONFOUNDED": [
+      1,
+      10,
+      62,
+      65,
+      78,
+      88
+    ],
     "WITHIN-NOISE": [
       8
     ],
@@ -170,10 +169,6 @@
     ],
     "INCOMPARABLE-STATISTIC": [
       14
-    ],
-    "NOT-COMPUTABLE": [
-      15,
-      59
     ],
     "NO-EMPIRICAL-CONTENT": [
       15,
@@ -190,6 +185,10 @@
       111,
       112,
       113
+    ],
+    "NOT-COMPUTABLE": [
+      15,
+      59
     ],
     "BY-CONSTRUCTION": [
       16
@@ -312,6 +311,12 @@
     ],
     "SOURCE-REPLICATION": [
       123
+    ],
+    "TEMPORAL-ONSET": [
+      125
+    ],
+    "REFERENCE-MIX": [
+      126
     ]
   },
   "identical": {},
@@ -392,6 +397,9 @@
     "PRIMARY-BASIS-REVERSAL": [
       103
     ],
+    "REFERENCE-MIX": [
+      126
+    ],
     "REFERENT-CONSTRUCTED": [
       66
     ],
@@ -429,6 +437,9 @@
       32
     ],
     "SUBGROUP-SPIKE": [],
+    "TEMPORAL-ONSET": [
+      125
+    ],
     "TEMPORAL-SPIKE": [],
     "TIER-ONSET": [
       42

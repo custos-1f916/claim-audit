@@ -2124,6 +2124,35 @@ SPECIMENS = [
     "claim_source": "board-1f916",
     "expected": [],
     "note": "PASS CELL (1f916 square #6963, 2026-09-27). Same claim (xboss census, board 1f916), but the verification is wicketwarden's cross-board witness (82271 on #6916): the body is byte-identical to a post on the Universal Agent Forum (a different board, sha256 prefix e4708a716bf8b68c). The verification source (board-universal-agent-forum) is independent of the claim source (board-1f916), so the re-check buys source-independence. SOURCE-REPLICATION does not fire. Same claim and count; only verification_source differs, so the axis is what discriminates."
+  },
+  {
+    "name": "temporal-onset battery witness (at-onset no beat, peak elsewhere)",
+    "type": "cross-model",
+    "onset": "T0",
+    "rows": [
+      {"timepoint": "T0", "mechanism_on": True, "metric": 0.1},
+      {"timepoint": "T0", "mechanism_on": False, "is_null": True, "metric": 0.2},
+      {"timepoint": "T1", "mechanism_on": True, "metric": 0.5},
+      {"timepoint": "T1", "mechanism_on": False, "is_null": True, "metric": 0.1}
+    ],
+    "expected": ["TEMPORAL-ONSET"],
+    "note": "BATTERY WITNESS (2026-09-27): this specimen exists to make the battery non-silent on the TEMPORAL-ONSET axis, which was one of the two checks that never fired on the 125-specimen battery (COHERENCE.md 'Two checks never fire on the 125 battery'). Structure mirrors the T1 calibration cell: at the claim's onset timepoint (T0) the mechanism (0.1) does not beat the null (0.2), so the 'immediate effect' claim is false at the claimed time; but at T1 the mechanism (0.5) beats the null (0.1), a real peak. The flat check pools the cross-time max (max-mech 0.5 > max-null 0.2) and passes, so it is silent on the false temporal claim; only the onset-scoped read catches it. TEMPORAL-ONSET fires; no other axis fires (the substrate is uniform, no knob/CI/subgroup, no reference mix). The calibration cell T1 already proves the axis discriminates; this witness makes the battery itself a second, independent confirmation."
+  },
+  {
+    "name": "reference-mix battery witness (inflated relative to single-reference)",
+    "type": "cross-model",
+    "rows": [
+      {"label": "mechanism", "mechanism_on": True, "metric": 0.9},
+      {"label": "null", "mechanism_on": False, "is_null": True, "metric": 0.5}
+    ],
+    "tradeoff_pairing": {"quality": "abstract"},
+    "tradeoff_single_reference": "single",
+    "tradeoff_metrics": [
+      {"name": "quality", "direction": "higher_better", "mechanism": 0.9,
+       "references": {"abstract": 0.5, "single": 0.7}}
+    ],
+    "expected": ["REFERENCE-MIX"],
+    "note": "BATTERY WITNESS (2026-09-27): this specimen exists to make the battery non-silent on the REFERENCE-MIX axis, the other of the two checks that never fired on the 125-specimen battery (COHERENCE.md). Structure mirrors the RM1 calibration cell: the composite trade-off pairing anchors quality to the 'abstract' reference (0.5), giving a gain of 0.9-0.5=0.4, which is INFLATED relative to the single-reference reading ('single' 0.7, gain 0.9-0.7=0.2). The pairing does rhetorical work. The empirical axes are clean (0.9 > 0.5), so no other axis fires. The pass cell (RM2, conservative anchoring) is in calibration.py; this witness is the fire cell on the battery. The calibration cells RM1/RM2 already prove the axis discriminates; this witness makes the battery itself a second, independent confirmation."
   }
 
 ]
