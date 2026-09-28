@@ -1,8 +1,8 @@
 # claim-audit
 
-A 44-axis falsification instrument for empirical claims in ML/AI papers
+A 45-axis falsification instrument for empirical claims in ML/AI papers
 (and other headline claims with data). Given a claim's raw numbers as a
-spec, it checks the claim against 44 axes (self-keyed, wrong-axis,
+spec, it checks the claim against 45 axes (self-keyed, wrong-axis,
 selection-bias, confounded, within-noise, lossy-projection,
 aggregation-reversal, referent-witnessed, temporal/dose/outcome/subgroup
 onset-and-spike, funnel-stage-misattribution, selection-on-narrative,
@@ -75,22 +75,22 @@ undeclared field makes a refinement N/A), `contested`.
 python3 claim_audit.py
 ```
 
-Runs the 130 specimens in `specimens.py` (126 real — papers from the
+Runs the 131 specimens in `specimens.py` (126 real — papers from the
 2026-09-15..22 audit run plus schema-boundary cells plus the live 1f916.ai
-seal/ack floor — plus 4 constructed battery witnesses for TEMPORAL-ONSET,
-REFERENCE-MIX, PLATFORM-CERTIFIED, and TRUST; see COHERENCE.md) and prints
+seal/ack floor — plus 5 constructed battery witnesses for TEMPORAL-ONSET,
+REFERENCE-MIX, PLATFORM-CERTIFIED, TRUST, and TAUTOLOGICAL-BLEND; see COHERENCE.md) and prints
 `ALL SPECIMENS MATCH` (exit 0) when every specimen's fired flags equal
 its recorded `expected` set. `results.txt` is a fresh run of this
 battery from this copy of the code.
 
 ## Files
 
-  claim_audit.py   the instrument (44 checks + CLI), stdlib only
+  claim_audit.py   the instrument (45 checks + CLI), stdlib only
   calibration.py   the 78-specimen discriminating calibration
   calibration_boundary.py  the self-calibration probe (per-check mutation)
   calibration_confound.py  the RED-baseline confound (dead check reads CALIBRATED)
   calibration_bandaid.py   the baseline-integrity fix (band-aid, not removal)
-  specimens.py     130 specimens (126 real + 4 battery witnesses) with expected flag sets
+  specimens.py     131 specimens (126 real + 5 battery witnesses) with expected flag sets
   results.txt      fresh battery run from this copy
   publicity_saturation.py  the PUBLICITY saturation test (certification subset -> one variable)
   question_selection.py  terminus candidate: query-selection collapses into what-is-recorded
@@ -216,7 +216,25 @@ face. The self-keyed family is no longer closed: it has a third axis
 (2026-09-28): the forward move was implemented. The weight-1 TRUST instrument
 landed as the 44th axis (check_trust in claim_audit.py), with the T1-T4
 calibration cells (calibration.py) and the TW1 battery witness (specimens.py).
-The battery is now 130 specimens (126 real + 4 constructed battery witnesses).
+The battery is now 131 specimens (126 real + 5 constructed battery witnesses).
+
+(2026-09-28): the TAUTOLOGICAL-BLEND axis (45th) was implemented. The
+construction-channel face of the self-keyed family (the SignTrace
+decomposition, 2026-09-28): fires when the headline metric's population
+includes a construction-guaranteed subset -- the system's own setup
+guarantees the result for that metric -- and the guaranteed component is
+not separated from the measured in the headline number. The guarantee is
+METRIC-SPECIFIC: the construction guarantees the pool metric (target in
+top-K), not the rank metrics (Hit@1/Hit@9). Distinct from
+SELECTION-ON-NARRATIVE (the headline is over a narrative-selected subset;
+here the headline is over the full population, and the preselection is a
+construction fact about a subset of it) and from REFERENT-CONSTRUCTED
+(the query side is constructed in the system's own style; here the
+construction is on the setup side: the targets are preselected into the
+pool). The weight-1 TAUTOLOGICAL-BLEND instrument landed as the 45th axis
+(check_tautological_blend in claim_audit.py), with the TB1-TB3 calibration
+cells (calibration.py) and the TW2 battery witness (specimens.py). The
+battery is now 131 specimens (126 real + 5 constructed battery witnesses).
 
 ## Lineage
 
