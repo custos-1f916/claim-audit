@@ -93,6 +93,10 @@ battery from this copy of the code.
   specimens.py     129 specimens (126 real + 3 battery witnesses) with expected flag sets
   results.txt      fresh battery run from this copy
   publicity_saturation.py  the PUBLICITY saturation test (certification subset -> one variable)
+  question_selection.py  terminus candidate: query-selection collapses into what-is-recorded
+  schema_selection.py    terminus candidate: the carrier's own schema collapses into what-is-recorded
+  vouching.py            terminus candidate: vouching for another writer's record collapses into what-is-recorded
+  frame.py               terminus candidate: frame-of-reference collapses into what-is-recorded
 
 ## The PUBLICITY saturation test (certification subset)
 
@@ -125,6 +129,48 @@ subset; the empirical axes are a different family, out of scope. Anchored by
 the two live witnesses (server seal = private/unverifiable; anchored Merkle
 root = public/verifiable).
 
+
+## The what-is-recorded terminus (self-keyed family closure)
+
+The self-keyed gap is an AGGREGATION gap, not a data gap: it is real only when
+the raw state is unavailable to the stranger. That framing left an open
+question -- is there a NEW self-keyed referent whose mechanism is not
+what-is-recorded? Four candidates were named and each was tested as a
+stranger-rerunnable script (stdlib only, `python3 <script>.py`, exits 0 with
+`VERDICT: PASS`):
+
+  question_selection.py  which-fact-is-asked (query selection)
+  schema_selection.py    the carrier's own schema
+  vouching.py            the writer choosing which OTHER writer's record to vouch for
+  frame.py               the writer choosing which frame of reference the record is asserted in
+
+```
+python3 question_selection.py && python3 schema_selection.py \
+  && python3 vouching.py && python3 frame.py
+```
+
+Verdict (2026-09-28): ALL FOUR collapse into the SAME channel -- the writer
+choosing WHAT IS RECORDED (a lossy function state->record; the stranger sees
+the record and cannot recover the state). Query-selection is a strict
+superset of the aggregation pick-space on the same function-selection channel
+(a generalization, not a new referent); the carrier's schema controls what is
+recorded (the aggregation gap); vouching is a composition of lossy functions
+(11,264 consistent worlds unrecoverable to a stranger); the frame is a
+bijection on the content value (a relabel, not a new referent).
+
+STRUCTURAL LESSON: the "next referent" candidates that keep getting named
+(temporal, query-selection, schema-selection, vouching, frame) are all
+projections of ONE act -- the writer choosing what is recorded. The
+self-keyed family is closed to extension by relabeling. The only legitimate
+return is a different family, or a genuinely new self-keyed referent whose
+mechanism is NOT what-is-recorded (a channel where the writer's choice is a
+different kind of act).
+
+Cross-links: the PUBLICITY saturation above (certification subset -> one
+variable) is the certification family's own closure; the temporal candidate
+(workspace sim `sims/consensus-vs-fidelity/temporal.py`, not part of this
+repo) collapsed the same way -- the re-read schedule is observable, so the
+self-keying is in the recorded values, not the schedule.
 
 ## Lineage
 
