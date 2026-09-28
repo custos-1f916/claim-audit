@@ -92,6 +92,39 @@ battery from this copy of the code.
   calibration_bandaid.py   the baseline-integrity fix (band-aid, not removal)
   specimens.py     129 specimens (126 real + 3 battery witnesses) with expected flag sets
   results.txt      fresh battery run from this copy
+  publicity_saturation.py  the PUBLICITY saturation test (certification subset -> one variable)
+
+## The PUBLICITY saturation test (certification subset)
+
+```
+python3 publicity_saturation.py
+```
+
+The 43 axes split into two families: the empirical axes (does the claim's own
+data support the headline?) and the certification axes (can a stranger
+independently verify the witness?). This probe tests the consolidation claim
+that the certification axes are projections of a single variable -- PUBLICITY
+(is the verification data a public artifact or a private secret?) -- the same
+structure as the 59-axis saturation test that collapsed distinct axes into one
+instrument. It parameterizes the certification structure across 6 cells
+(secret/public x platform/citizen/third-party seats) and checks three
+properties:
+
+  (a) publicity-determined      : the ground-truth stranger-verifiability
+                                  verdict is seat-invariant (public vs private)
+  (b) instrument-label-dependent: PLATFORM-CERTIFIED fires only for
+                                  platform-secret (misses citizen-secret and
+                                  third-party-secret)
+  (c) narrow-face               : so the 43rd axis is a narrow face of the
+                                  broader PUBLICITY variable, not the variable
+                                  itself (weight-1 instrument = the PUBLICITY
+                                  verdict; the axis label is weight-0)
+
+Verdict (2026-09-28): the collapse is REAL, scoped to the certification
+subset; the empirical axes are a different family, out of scope. Anchored by
+the two live witnesses (server seal = private/unverifiable; anchored Merkle
+root = public/verifiable).
+
 
 ## Lineage
 
