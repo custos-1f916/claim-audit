@@ -2192,4 +2192,22 @@ SPECIMENS = [
     "note": "CONSTRUCTED WITNESS (trust axis, 2026-09-28). Scaffolding rows keep the empirical axes clean (no knob/CI/subgroup); the certification field carries the axis. writer_trust=self-asserted -> the writer's trust is self-asserted (the writer decides which sources count, and the record carries no independent establishment of that trust); the stranger's verifiability is bounded by what the stranger believes, and no record closes that gap -- trust is conjunctive, not derivable from the record (the authority channel) -> TRUST fires, and no other flag fires (exclusive). Mirrors the calibration fire cell T1; the live external specimen is the trust_cell result (public, lossless, untrusted -> still unverifiable). The constructed witness is what makes the axis exclusive on the battery, not a re-label of the empirical axes."
   },
 
+  {
+    "name": "tautological-blend battery witness (SignTrace Pool@60, TW2)",
+    "type": "cross-model",
+    "mechanism": "construction-guaranteed subset (preselected targets in the pool)",
+    "metric": "Pool@60 (target in top-60 pool)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.5},
+      {"mechanism_on": False, "is_null": True, "metric": 0.2}
+    ],
+    "metric_name": "Pool@60",
+    "guaranteed_count": 200,
+    "total_count": 500,
+    "measured_count": 297,
+    "separated": False,
+    "expected": ["TAUTOLOGICAL-BLEND"],
+    "note": "CONSTRUCTED WITNESS (tautological-blend axis, 2026-09-28). Scaffolding rows keep the empirical axes clean (no knob/CI/subgroup); the construction fields carry the axis. guaranteed_count=200, total_count=500, measured_count=297, separated=False -> the SignTrace Pool@60 decomposition: 200 preselected targets are guaranteed to be in the top-60 pool (100% by construction), 300 measured targets are not (297/300=99.0%); the headline Pool@60=99.4% blends the guaranteed (200/500) with the measured (297/500) without separating them -> the guaranteed component inflates the headline by 0.4pp -> TAUTOLOGICAL-BLEND fires, and no other flag fires (exclusive). Mirrors the calibration fire cell TB1; the live external specimen is the SignTrace paper (arXiv:2609.30295, Pool@60=99.4% over 500 queries, 200 preselected into the 60-entry pool). The constructed witness is what makes the axis exclusive on the battery, not a re-label of the empirical axes."
+  },
+
 ]

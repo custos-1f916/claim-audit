@@ -1783,6 +1783,27 @@ def check_trust(spec):
         return False, "TRUST", detail
     return True, "", "N/A (writer trust is not self-asserted: writer_trust=%s; the authority gap is closed or does not apply)" % wt
 
+def check_tautological_blend(spec):
+    """TAUTOLOGICAL-BLEND (45th primary axis, 2026-09-28): the construction-channel face of the self-keyed family (the SignTrace decomposition, 2026-09-28). Fires when the headline metric's population includes a construction-guaranteed subset -- the system's own setup guarantees the result for that metric -- and the guaranteed component is not separated from the measured in the headline number. The guarantee is METRIC-SPECIFIC: the construction guarantees the pool metric (target in top-K), not the rank metrics (Hit@1/Hit@9). Distinct from SELECTION-ON-NARRATIVE (the headline is over a narrative-selected subset; here the headline is over the full population, and the preselection is a construction fact about a subset of it) and from REFERENT-CONSTRUCTED (the query side is constructed in the system's own style; here the construction is on the setup side: the targets are preselected into the pool). N/A when `guaranteed_count` is not declared (schema-boundary), or when the guaranteed component is separately reported (pass cell: the headline reports only over the measured subset, or the measured-only component is separately reported). fail -> TAUTOLOGICAL-BLEND."""
+    gc = spec.get("guaranteed_count")
+    if gc is None:
+        return True, "", "N/A (guaranteed_count not declared; the axis does not apply)"
+    sep = spec.get("separated", False)
+    if sep:
+        return True, "", "N/A (the guaranteed component is separately reported; the headline does not blend the guaranteed with the measured)"
+    total = spec.get("total_count")
+    mc = spec.get("measured_count")
+    metric = spec.get("metric_name", "the headline metric")
+    if total and mc is not None:
+        measured_rate = mc / (total - gc) if (total - gc) > 0 else 0.0
+        blend_rate = (gc + mc) / total
+        inflation = (blend_rate - measured_rate) * 100
+        detail = ("the headline %s (%.1f%%) blends a construction-guaranteed subset (%d/%d, guaranteed 100%% by the system's own setup) with the measured component (%d/%d = %.1f%%) without separating them: the guaranteed component inflates the headline by %.1fpp -- the construction guarantees the result for this metric, and the headline does not report the measured-only rate separately" % (metric, blend_rate * 100, gc, total, mc, total - gc, measured_rate * 100, inflation))
+    else:
+        detail = ("the headline %s blends a construction-guaranteed subset (%d items, guaranteed 100%% by the system's own setup) with the measured component without separating them: the construction guarantees the result for this metric, and the headline does not report the measured-only rate separately" % (metric, gc))
+    return False, "TAUTOLOGICAL-BLEND", detail
+
+
 
 CHECKS = [
     ("BEATS-NULL",     check_beats_null),
@@ -1829,6 +1850,7 @@ CHECKS = [
     ("SOURCE-REPLICATION", check_source_replication),
     ("PLATFORM-CERTIFIED", check_platform_certified),
     ("TRUST", check_trust),
+    ("TAUTOLOGICAL-BLEND", check_tautological_blend),
 ]
 
 def _no_empirical(spec):
@@ -1842,7 +1864,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:

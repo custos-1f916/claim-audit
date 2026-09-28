@@ -1,5 +1,5 @@
 {
-  "battery": 130,
+  "battery": 131,
   "check2flag": {
     "AGGREGATION-REVERSAL": "AGGREGATION-REVERSAL",
     "ANNOTATOR-SELF-KEYED": "ANNOTATOR-SELF-KEYED",
@@ -35,6 +35,7 @@
     "SPLIT-SPIKE": "SPLIT-SPIKE",
     "SUBGROUP-ONSET": "SUBGROUP-ONSET",
     "SUBGROUP-SPIKE": "SUBGROUP-SPIKE",
+    "TAUTOLOGICAL-BLEND": "TAUTOLOGICAL-BLEND",
     "TEMPORAL-ONSET": "TEMPORAL-ONSET",
     "TEMPORAL-SPIKE": "TEMPORAL-SPIKE",
     "TIER-ONSET": "TIER-ONSET",
@@ -236,6 +237,7 @@
     "SPLIT-SPIKE": 3,
     "SUBGROUP-ONSET": 1,
     "SUBGROUP-SPIKE": 1,
+    "TAUTOLOGICAL-BLEND": 1,
     "TEMPORAL-ONSET": 1,
     "TEMPORAL-SPIKE": 1,
     "TIER-ONSET": 1,
@@ -370,6 +372,9 @@
       32
     ],
     "SUBGROUP-SPIKE": [],
+    "TAUTOLOGICAL-BLEND": [
+      130
+    ],
     "TEMPORAL-ONSET": [
       125
     ],
@@ -587,6 +592,9 @@
     ],
     "SUBGROUP-SPIKE": [
       33
+    ],
+    "TAUTOLOGICAL-BLEND": [
+      130
     ],
     "TEMPORAL-ONSET": [
       125

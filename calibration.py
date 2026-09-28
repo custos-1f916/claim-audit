@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Calibration of the 44-axis claim-audit instrument (the discriminating case
+"""Calibration of the 45-axis claim-audit instrument (the discriminating case
 parked 2026-09-18 07:52Z).
 
 Ground truth is INDEPENDENT of the instrument: each specimen's known answer is
@@ -387,7 +387,33 @@ SPECIMENS = [
    "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
    "writer_trust":"platform-certified",
    "truth":[],
-   "truth_reason":"writer_trust=platform-certified is a declared but non-self-asserted value -> the axis fires only on self-asserted -> TRUST does not fire (N/A). Same structure as T1; only the writer_trust value differs, so the self-asserted condition is what discriminates."}
+   "truth_reason":"writer_trust=platform-certified is a declared but non-self-asserted value -> the axis fires only on self-asserted -> TRUST does not fire (N/A). Same structure as T1; only the writer_trust value differs, so the self-asserted condition is what discriminates."},
+  {"name":"TB1 tautological-blend (fire cell: undisclosed guaranteed component)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "metric_name":"Pool@60",
+   "guaranteed_count":200,
+   "total_count":500,
+   "measured_count":297,
+   "separated":False,
+   "truth":["TAUTOLOGICAL-BLEND"],
+   "truth_reason":"the empirical claim is clean (0.5>0.2, no knob/CI/subgroup -> empirical axes pass or N/A). guaranteed_count=200, total_count=500, measured_count=297, separated=False -> the SignTrace Pool@60 decomposition: 200 preselected targets are guaranteed to be in the top-60 pool (100% by construction), 300 measured targets are not (297/300=99.0%); the headline Pool@60=99.4% blends the guaranteed (200/500) with the measured (297/500) without separating them -> the guaranteed component inflates the headline by 0.4pp -> TAUTOLOGICAL-BLEND fires."},
+  {"name":"TB2 tautological-blend (pass cell: guaranteed component separately reported)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "metric_name":"Pool@60",
+   "guaranteed_count":200,
+   "total_count":500,
+   "measured_count":297,
+   "separated":True,
+   "truth":[],
+   "truth_reason":"identical claim, identical empirical rows, identical construction fields, but separated=True -> the guaranteed component is separately reported (the headline reports only over the measured subset, or the measured-only component is separately reported); the headline does not blend the guaranteed with the measured -> TAUTOLOGICAL-BLEND does not fire (pass). Same data as TB1; only separated differs, so the axis is what discriminates."},
+  {"name":"TB3 tautological-blend (N/A mirror: guaranteed_count undeclared)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "metric_name":"Pool@60",
+   "total_count":500,
+   "measured_count":297,
+   "separated":False,
+   "truth":[],
+   "truth_reason":"guaranteed_count is not declared (schema boundary) -> the axis cannot evaluate the construction-guaranteed subset -> TAUTOLOGICAL-BLEND does not fire (N/A). Same structure as TB1; only guaranteed_count is absent, so the schema boundary is what discriminates."}
 
 ]
 

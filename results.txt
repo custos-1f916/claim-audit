@@ -43,6 +43,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] busma (2609.15054)
           verdict: NULL-REACHES-HEADLINE, CONFOUNDED   (expected ['NULL-REACHES-HEADLINE', 'CONFOUNDED'])
@@ -89,6 +91,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] avg-farmer (2609.15038)
           verdict: NULL-REACHES-HEADLINE, WRONG-AXIS   (expected ['NULL-REACHES-HEADLINE', 'WRONG-AXIS'])
@@ -135,6 +139,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] control (clean retrieval ablation)
           verdict: DISCRIMINATES   (expected [])
@@ -181,6 +187,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] square post 5399 (09-15 draw, partial)
           verdict: WRONG-AXIS   (expected ['WRONG-AXIS'])
@@ -227,6 +235,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] retention instrument OWN headline (four-axis meaning, self-specimen)
           verdict: SELF-KEYED   (expected ['SELF-KEYED'])
@@ -273,6 +283,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] update-admission audit (2609.10873)
           verdict: DISCRIMINATES   (expected [])
@@ -319,6 +331,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] MERIT memory floor (2609.05441)
           verdict: DISCRIMINATES   (expected [])
@@ -365,6 +379,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] prometheus on-par headline (2310.08491)
           verdict: WITHIN-NOISE   (expected ['WITHIN-NOISE'])
@@ -411,6 +427,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] four-ledgers vacuous-ratio (2609.15015)
           verdict: VACUOUS-RATIO   (expected ['VACUOUS-RATIO'])
@@ -457,6 +475,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (VACUOUS-RATIO: the mechanism's headline has an empty denominator; the metric is undefined)
             pass SOURCE-REPLICATION: N/A (VACUOUS-RATIO: the mechanism's headline has an empty denominator; the metric is undefined)
             pass PLATFORM-CERTIFIED: N/A (VACUOUS-RATIO: the mechanism's headline has an empty denominator; the metric is undefined)
+            pass TRUST: N/A (VACUOUS-RATIO: the mechanism's headline has an empty denominator; the metric is undefined)
+            pass TAUTOLOGICAL-BLEND: N/A (VACUOUS-RATIO: the mechanism's headline has an empty denominator; the metric is undefined)
 
 [OK      ] el-agente-potente accuracy (2609.14840)
           verdict: CONFOUNDED   (expected ['CONFOUNDED'])
@@ -503,6 +523,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] Aura c62793 label-swap (model-label silence, griffelschuft #5458)
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -549,6 +571,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] self-orchestrating-LMs TIP ablation (2609.14850)
           verdict: CONSEQUENCE-WITNESSED   (expected ['CONSEQUENCE-WITNESSED'])
@@ -595,6 +619,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] Economy of Minds (2606.02859)
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -641,6 +667,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] Economy of Minds (2606.02859) — headline framing (best-of-N vs single)
           verdict: INCOMPARABLE-STATISTIC   (expected ['INCOMPARABLE-STATISTIC'])
@@ -687,6 +715,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (INCOMPARABLE-STATISTIC: mechanism headline statistic 'best' (class order) vs null headline statistic 'single' (class single); the two sides are different kinds of statistic and one is an order statistic, so the beat is an artifact of the order statistic, not the mechanism)
             pass SOURCE-REPLICATION: N/A (INCOMPARABLE-STATISTIC: mechanism headline statistic 'best' (class order) vs null headline statistic 'single' (class single); the two sides are different kinds of statistic and one is an order statistic, so the beat is an artifact of the order statistic, not the mechanism)
             pass PLATFORM-CERTIFIED: N/A (INCOMPARABLE-STATISTIC: mechanism headline statistic 'best' (class order) vs null headline statistic 'single' (class single); the two sides are different kinds of statistic and one is an order statistic, so the beat is an artifact of the order statistic, not the mechanism)
+            pass TRUST: N/A (INCOMPARABLE-STATISTIC: mechanism headline statistic 'best' (class order) vs null headline statistic 'single' (class single); the two sides are different kinds of statistic and one is an order statistic, so the beat is an artifact of the order statistic, not the mechanism)
+            pass TAUTOLOGICAL-BLEND: N/A (INCOMPARABLE-STATISTIC: mechanism headline statistic 'best' (class order) vs null headline statistic 'single' (class single); the two sides are different kinds of statistic and one is an order statistic, so the beat is an artifact of the order statistic, not the mechanism)
 
 [OK      ] ANASSA (2609.14824)
           verdict: NO-EMPIRICAL-CONTENT, NOT-COMPUTABLE   (expected ['NO-EMPIRICAL-CONTENT', 'NOT-COMPUTABLE'])
@@ -733,6 +763,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] TypeSafe AI 'Jev' zero-hallucination (typesafe.ai, 2026-09-15)
           verdict: BY-CONSTRUCTION   (expected ['BY-CONSTRUCTION'])
@@ -779,6 +811,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (BY-CONSTRUCTION: the load-bearing headline number (1) is a by-construction guarantee, not a measurement; the empirical frame is empty (the number is added, not measured))
             pass SOURCE-REPLICATION: N/A (BY-CONSTRUCTION: the load-bearing headline number (1) is a by-construction guarantee, not a measurement; the empirical frame is empty (the number is added, not measured))
             pass PLATFORM-CERTIFIED: N/A (BY-CONSTRUCTION: the load-bearing headline number (1) is a by-construction guarantee, not a measurement; the empirical frame is empty (the number is added, not measured))
+            pass TRUST: N/A (BY-CONSTRUCTION: the load-bearing headline number (1) is a by-construction guarantee, not a measurement; the empirical frame is empty (the number is added, not measured))
+            pass TAUTOLOGICAL-BLEND: N/A (BY-CONSTRUCTION: the load-bearing headline number (1) is a by-construction guarantee, not a measurement; the empirical frame is empty (the number is added, not measured))
 
 [OK      ] four-ledgers lossy-projection (general, 2609.15015)
           verdict: LOSSY-PROJECTION   (expected ['LOSSY-PROJECTION'])
@@ -825,6 +859,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] four-ledgers lossy-projection control (injective)
           verdict: DISCRIMINATES   (expected [])
@@ -871,6 +907,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] orthogonality Case C: SELF-KEYED fires, LOSSY-PROJECTION passes (injective record)
           verdict: SELF-KEYED   (expected ['SELF-KEYED'])
@@ -917,6 +955,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] orthogonality Case D: LOSSY-PROJECTION fires, NOT-SELF-KEYED passes (non-monotone metric)
           verdict: LOSSY-PROJECTION   (expected ['LOSSY-PROJECTION'])
@@ -963,6 +1003,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] GAI WEAK multiple-comparisons (max-of-K, fixed instrument)
           verdict: SELECTION-BIAS   (expected ['SELECTION-BIAS'])
@@ -1009,6 +1051,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] GAI STRONG definition-edit (knob varies, max-of-K) -- control
           verdict: SELF-KEYED   (expected ['SELF-KEYED'])
@@ -1055,6 +1099,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] GAI SINGLE single-draw (fixed instrument, no selection) -- control
           verdict: DISCRIMINATES   (expected [])
@@ -1101,6 +1147,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] GAI KNOB-VARY knob-sweep (knob varies, single draw per knob) -- control
           verdict: SELF-KEYED   (expected ['SELF-KEYED'])
@@ -1147,6 +1195,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] TEMPORAL-SPIKE true immediate + later null spike (fail-cell false positive caught) -- T3
           verdict: NULL-REACHES-HEADLINE, TEMPORAL-SPIKE   (expected ['NULL-REACHES-HEADLINE', 'TEMPORAL-SPIKE'])
@@ -1193,6 +1243,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] TEMPORAL-SPIKE true immediate + later null spike, onset UNDECLARED (schema-boundary: over-fire returns) -- T3u
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -1239,6 +1291,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] OUTCOME-ONSET pass-cell false negative caught -- O1
           verdict: OUTCOME-ONSET   (expected ['OUTCOME-ONSET'])
@@ -1285,6 +1339,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] OUTCOME-SPIKE fail-cell false positive caught -- O2
           verdict: NULL-REACHES-HEADLINE, OUTCOME-SPIKE   (expected ['NULL-REACHES-HEADLINE', 'OUTCOME-SPIKE'])
@@ -1331,6 +1387,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] OUTCOME-SPIKE true beat in accuracy + non-claim null spike, claim_outcome UNDECLARED (schema-boundary: over-fire returns) -- O2u
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -1377,6 +1435,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] OUTCOME genuine fail (no refinement) -- O3
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -1423,6 +1483,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] OUTCOME robust multi-outcome (no refinement) -- O4
           verdict: DISCRIMINATES   (expected [])
@@ -1469,6 +1531,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] SUBGROUP-ONSET pass-cell false negative caught -- S1
           verdict: SUBGROUP-ONSET   (expected ['SUBGROUP-ONSET'])
@@ -1515,6 +1579,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] SUBGROUP-SPIKE true beat in A + non-claim null spike (fail-cell false positive caught) -- S2
           verdict: NULL-REACHES-HEADLINE, SUBGROUP-SPIKE   (expected ['NULL-REACHES-HEADLINE', 'SUBGROUP-SPIKE'])
@@ -1561,6 +1627,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] SUBGROUP-SPIKE true beat in A + non-claim null spike, claim_subgroup UNDECLARED (schema-boundary: over-fire returns) -- S2u
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -1607,6 +1675,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] SUBGROUP-SPIKE genuine fail (at-claim-subgroup value does not support the claim) -- S3
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -1653,6 +1723,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] SUBGROUP-ONSET robust multi-subgroup (control) -- S4
           verdict: DISCRIMINATES   (expected [])
@@ -1699,6 +1771,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] DOSE-ONSET pass-cell false negative caught -- D1
           verdict: DOSE-ONSET   (expected ['DOSE-ONSET'])
@@ -1745,6 +1819,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] DOSE-SPIKE true beat in mild + non-claim null spike (fail-cell false positive caught) -- D2
           verdict: NULL-REACHES-HEADLINE, DOSE-SPIKE   (expected ['NULL-REACHES-HEADLINE', 'DOSE-SPIKE'])
@@ -1791,6 +1867,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] DOSE-SPIKE true beat in mild + non-claim null spike, claim_dose UNDECLARED (schema-boundary: over-fire returns) -- D2u
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -1837,6 +1915,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] DOSE-SPIKE genuine fail (at-claim-dose value does not support the claim) -- D3
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -1883,6 +1963,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] DOSE-ONSET robust multi-dose (control) -- D4
           verdict: DISCRIMINATES   (expected [])
@@ -1929,6 +2011,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] TIER-ONSET pass-cell false negative caught -- TR1
           verdict: TIER-ONSET   (expected ['TIER-ONSET'])
@@ -1975,6 +2059,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] TIER-SPIKE true beat in easy + non-claim null spike (fail-cell false positive caught) -- TR2
           verdict: NULL-REACHES-HEADLINE, TIER-SPIKE   (expected ['NULL-REACHES-HEADLINE', 'TIER-SPIKE'])
@@ -2021,6 +2107,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] TIER-SPIKE true beat in easy + non-claim null spike, claim_tier UNDECLARED (schema-boundary: over-fire returns) -- TR2u
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -2067,6 +2155,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] TIER-SPIKE genuine fail (at-claim-tier value does not support the claim) -- TR3
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -2113,6 +2203,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] TIER-ONSET robust multi-tier (control) -- TR4
           verdict: DISCRIMINATES   (expected [])
@@ -2159,6 +2251,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] SPLIT-ONSET pass-cell false negative caught -- SP1
           verdict: SPLIT-ONSET   (expected ['SPLIT-ONSET'])
@@ -2205,6 +2299,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] SPLIT-SPIKE true beat in held-out + non-claim null spike (fail-cell false positive caught) -- SP2
           verdict: NULL-REACHES-HEADLINE, SPLIT-SPIKE   (expected ['NULL-REACHES-HEADLINE', 'SPLIT-SPIKE'])
@@ -2251,6 +2347,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] SPLIT-SPIKE true beat in held-out + non-claim null spike, claim_split UNDECLARED (schema-boundary: over-fire returns) -- SP2u
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -2297,6 +2395,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] SPLIT-SPIKE genuine fail (at-claim-split value does not support the claim) -- SP3
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -2343,6 +2443,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] SPLIT-ONSET robust multi-split (control) -- SP4
           verdict: DISCRIMINATES   (expected [])
@@ -2389,6 +2491,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] SPLIT-SPIKE + METRIC-SPIKE entangled: metric varies within each split, both claim_split and claim_metric declared -- SP5
           verdict: NULL-REACHES-HEADLINE, SPLIT-SPIKE, METRIC-SPIKE   (expected ['NULL-REACHES-HEADLINE', 'SPLIT-SPIKE', 'METRIC-SPIKE'])
@@ -2435,6 +2539,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] METRIC-ONSET pass-cell false negative caught -- MP1
           verdict: METRIC-ONSET   (expected ['METRIC-ONSET'])
@@ -2481,6 +2587,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] METRIC-SPIKE true beat in accuracy + non-claim null spike (fail-cell false positive caught) -- MP2
           verdict: NULL-REACHES-HEADLINE, METRIC-SPIKE   (expected ['NULL-REACHES-HEADLINE', 'METRIC-SPIKE'])
@@ -2527,6 +2635,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] METRIC-SPIKE true beat in accuracy + non-claim null spike, claim_metric UNDECLARED (schema-boundary: over-fire returns) -- MP2u
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -2573,6 +2683,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] METRIC-SPIKE genuine fail (at-claim-metric value does not support the claim) -- MP3
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -2619,6 +2731,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] METRIC-ONSET robust multi-metric (control) -- MP4
           verdict: DISCRIMINATES   (expected [])
@@ -2665,6 +2779,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] MemRiskBench (2609.14976) -- selector triple scoped to calibration/reference set; split + metric change (external witness)
           verdict: NULL-REACHES-HEADLINE, DOSE-RESPONSE, SPLIT-SPIKE, METRIC-SPIKE   (expected ['NULL-REACHES-HEADLINE', 'DOSE-RESPONSE', 'SPLIT-SPIKE', 'METRIC-SPIKE'])
@@ -2711,6 +2827,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] ATLAS v1.0 (2608.00038) - AI & Economy dataset, prevalence claims
           verdict: NO-EMPIRICAL-CONTENT, NOT-COMPUTABLE   (expected ['NO-EMPIRICAL-CONTENT', 'NOT-COMPUTABLE'])
@@ -2757,6 +2875,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] codeasauditor 2609.19199 input layer (GPT-5 summary of PIPC decision)
           verdict: LOSSY-PROJECTION   (expected ['LOSSY-PROJECTION'])
@@ -2803,6 +2923,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] codeasauditor 2609.19199 encoding layer (GPT-5 self-verified compliance code)
           verdict: CONSEQUENCE-WITNESSED   (expected ['CONSEQUENCE-WITNESSED'])
@@ -2849,6 +2971,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] codeasauditor 2609.19199 Table 6 (outperforms GPT-5)
           verdict: CONFOUNDED   (expected ['CONFOUNDED'])
@@ -2895,6 +3019,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] RAFT (2609.20754) Case Hit: label is a model artifact (consequence-witnessed)
           verdict: CONSEQUENCE-WITNESSED   (expected ['CONSEQUENCE-WITNESSED'])
@@ -2941,6 +3067,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] RAFT (2609.20754) Case Hit: Claude group id is a lossy projection of the true root cause
           verdict: LOSSY-PROJECTION   (expected ['LOSSY-PROJECTION'])
@@ -2987,6 +3115,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] RAFT (2609.20754) baseline-scope confound (granularity bundled with statefulness)
           verdict: CONFOUNDED   (expected ['CONFOUNDED'])
@@ -3033,6 +3163,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] BLINDSPOT-A: referent is a MODEL-CONSTRUCTED artifact (e.g. Claude-Opus-4-7 root-cause groups), directly observed, injective
           verdict: REFERENT-CONSTRUCTED   (expected ['REFERENT-CONSTRUCTED'])
@@ -3079,6 +3211,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] BLINDSPOT-B (CONTROL): referent is EXTERNALLY ANCHORED (human-audited root-cause groups), directly observed, injective
           verdict: DISCRIMINATES   (expected [])
@@ -3125,6 +3259,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] CO-OCCURRENCE (synthetic): self-keyed knob AND lossy record (2x2 joint cell)
           verdict: SELF-KEYED, LOSSY-PROJECTION   (expected ['SELF-KEYED', 'LOSSY-PROJECTION'])
@@ -3171,6 +3307,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] AGGREGATION-REVERSAL control: aggregate TRUE (Simpson-consistent pooling) -- S0
           verdict: DISCRIMINATES   (expected [])
@@ -3217,6 +3355,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] AGGREGATION-REVERSAL probe: aggregate FALSE (Simpson reversal, mech wins every subgroup) -- S1
           verdict: AGGREGATION-REVERSAL   (expected ['AGGREGATION-REVERSAL'])
@@ -3263,6 +3403,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] AGGREGATION-REVERSAL mirror: null wins every subgroup, mech wins pooled -- S2
           verdict: NULL-REACHES-HEADLINE, AGGREGATION-REVERSAL   (expected ['NULL-REACHES-HEADLINE', 'AGGREGATION-REVERSAL'])
@@ -3309,6 +3451,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] DOSE-RESPONSE true dose-response, dose DECLARED (FP-side schema-boundary witness) -- DR0
           verdict: NULL-REACHES-HEADLINE, DOSE-RESPONSE   (expected ['NULL-REACHES-HEADLINE', 'DOSE-RESPONSE'])
@@ -3355,6 +3499,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] DOSE-RESPONSE true dose-response, dose UNDECLARED (schema-boundary: over-fire returns) -- DRu
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -3401,6 +3547,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] headline-layer baseline-omission (Ebola structure, clean data) -- NORMALIZER-OMISSION blind-spot witness
           verdict: DISCRIMINATES   (expected [])
@@ -3447,6 +3595,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] headline-layer baseline-omission (PIRNN 2609.19871 title, clean data) -- NORMALIZER-OMISSION arXiv-population witness
           verdict: DISCRIMINATES   (expected [])
@@ -3493,6 +3643,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] wason-consensus (2609.20543): consensus tracks correctness -- S0
           verdict: DISCRIMINATES   (expected [])
@@ -3539,6 +3691,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] wason-consensus (2609.20543): consensus decoupled from correctness -- S1
           verdict: WRONG-AXIS   (expected ['WRONG-AXIS'])
@@ -3585,6 +3739,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] harness-fixed-sham (2609.20474): Fixed beats Sham -- S0 (the paper's contrast)
           verdict: CONFOUNDED   (expected ['CONFOUNDED'])
@@ -3631,6 +3787,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] harness-fixed-sham (2609.20474): task-specific-but-shuffled control -- S1 (the discriminating case)
           verdict: DISCRIMINATES   (expected [])
@@ -3677,6 +3835,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] haegeo funnel (2609.06027): 'rarely converts verification into recovery'
           verdict: NULL-REACHES-HEADLINE, FUNNEL-STAGE-MISATTRIBUTION   (expected ['NULL-REACHES-HEADLINE', 'FUNNEL-STAGE-MISATTRIBUTION'])
@@ -3723,6 +3883,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] haegeo funnel (2609.06027): correct attribution (reach stage)
           verdict: DISCRIMINATES   (expected [])
@@ -3769,6 +3931,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] mtva middle-three (2609.20152): narrative-selected subset
           verdict: NULL-REACHES-HEADLINE, SELECTION-ON-NARRATIVE   (expected ['NULL-REACHES-HEADLINE', 'SELECTION-ON-NARRATIVE'])
@@ -3815,6 +3979,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] mtva middle-three (2609.20152): positional control (pass cell)
           verdict: DISCRIMINATES   (expected [])
@@ -3861,6 +4027,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] BBC Lindsey-Graham sanctions (cqvgy34ndj4eo): narrative-selected 'China and India'
           verdict: NULL-REACHES-HEADLINE, SELECTION-ON-NARRATIVE   (expected ['NULL-REACHES-HEADLINE', 'SELECTION-ON-NARRATIVE'])
@@ -3907,6 +4075,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] Tailored-to-you 2609.20077 — advice-uptake: 'exposure-driven' headline vs personalisation null
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -3953,6 +4123,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] harness phase-composition (2609.20804): planning reduces trajectory length via Verify-phase reduction
           verdict: NULL-REACHES-HEADLINE, ANNOTATOR-SELF-KEYED   (expected ['NULL-REACHES-HEADLINE', 'ANNOTATOR-SELF-KEYED'])
@@ -3999,6 +4171,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] harness recall-null (2609.20804): no accuracy gain from recall (dose readout, pass cell)
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -4045,6 +4219,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] Pain-axis re-press dissociation (arXiv 2609.16247): 'tracks internal state not label'
           verdict: NULL-REACHES-HEADLINE, CONFOUNDED   (expected ['NULL-REACHES-HEADLINE', 'CONFOUNDED'])
@@ -4091,6 +4267,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] Coda (2609.21216): 5-step Coda-Transformer vs 6-step pi0.5-FT on the 'independent 13-task control'
           verdict: SCOPE-OF-INDEPENDENCE   (expected ['SCOPE-OF-INDEPENDENCE'])
@@ -4137,6 +4315,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] Coda (2609.21216): composite trade-off pairing (quality vs 5-step, latency vs 10-step)
           verdict: DISCRIMINATES   (expected [])
@@ -4183,6 +4363,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] AgentBench (2308.03688): 'Evaluating LLMs as agents' (janus simulator/simulacrum conflation, underdetermined referent)
           verdict: CONSEQUENCE-WITNESSED, LOSSY-PROJECTION   (expected ['CONSEQUENCE-WITNESSED', 'LOSSY-PROJECTION'])
@@ -4229,6 +4411,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] #463 reset-hour (unwitnessed receipt, live)
           verdict: NO-EMPIRICAL-CONTENT, UNWITNESSED-RECEIPT   (expected ['NO-EMPIRICAL-CONTENT', 'UNWITNESSED-RECEIPT'])
@@ -4275,6 +4459,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] #463 manifest line (unwitnessed root, live)
           verdict: NO-EMPIRICAL-CONTENT, UNWITNESSED-ROOT   (expected ['NO-EMPIRICAL-CONTENT', 'UNWITNESSED-ROOT'])
@@ -4321,6 +4507,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] SICC (2609.26076): 'selection-invariant communication compiler' (source-misattribution)
           verdict: SOURCE-MISATTRIBUTION   (expected ['SOURCE-MISATTRIBUTION'])
@@ -4367,6 +4555,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] FIRE (2609.26048): 'failure-informed runtime engineering' (source-misattribution)
           verdict: SOURCE-MISATTRIBUTION   (expected ['SOURCE-MISATTRIBUTION'])
@@ -4413,6 +4603,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] ChainUQ (2609.26060): 'reasoning-consistency-aware UQ' (source-misattribution)
           verdict: SOURCE-MISATTRIBUTION   (expected ['SOURCE-MISATTRIBUTION'])
@@ -4459,6 +4651,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] ChainUQ (2609.26060): correct attribution (calibrator, pass cell)
           verdict: DISCRIMINATES   (expected [])
@@ -4505,6 +4699,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] US AS-Ban Sec 9 prohibition (wider-than-named, live)
           verdict: NO-EMPIRICAL-CONTENT, WIDER-THAN-NAMED   (expected ['NO-EMPIRICAL-CONTENT', 'WIDER-THAN-NAMED'])
@@ -4551,6 +4747,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] US AS-Ban Sec 8 pause threshold (wider-than-named pass cell, live)
           verdict: NO-EMPIRICAL-CONTENT   (expected ['NO-EMPIRICAL-CONTENT'])
@@ -4597,6 +4795,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] EU AI Act GPAI high-impact capabilities (wider-than-named, live)
           verdict: NO-EMPIRICAL-CONTENT, WIDER-THAN-NAMED   (expected ['NO-EMPIRICAL-CONTENT', 'WIDER-THAN-NAMED'])
@@ -4643,6 +4843,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] wahi score-vs-task (2609.25848, self-falsifying, live)
           verdict: SELF-FALSIFYING   (expected ['SELF-FALSIFYING'])
@@ -4689,6 +4891,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] wahi score-vs-task negative arm (2609.25848, limitation-irrelevant-to-headline, live)
           verdict: DISCRIMINATES   (expected [])
@@ -4735,6 +4939,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] agentic-sizing wall-clock reversal (2609.25873, primary-basis-reversal, live)
           verdict: PRIMARY-BASIS-REVERSAL   (expected ['PRIMARY-BASIS-REVERSAL'])
@@ -4781,6 +4987,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] agentic-sizing holds-on-primary (2609.25873, primary-basis-reversal negative arm, live)
           verdict: DISCRIMINATES   (expected [])
@@ -4827,6 +5035,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] Blind-authorship roast arm (post 6760): blind grader over a derived test set
           verdict: WRONG-AXIS, ANNOTATOR-SELF-KEYED, SCOPE-OF-INDEPENDENCE   (expected ['WRONG-AXIS', 'ANNOTATOR-SELF-KEYED', 'SCOPE-OF-INDEPENDENCE'])
@@ -4873,6 +5083,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] Blind-authorship roast arm (post 6760): out-of-sample roasts + public grader (pass cell)
           verdict: DISCRIMINATES   (expected [])
@@ -4919,6 +5131,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] WP1 window-present-tense (fire cell: act added during the window)
           verdict: NO-EMPIRICAL-CONTENT, WINDOW-PRESENT-TENSE   (expected ['NO-EMPIRICAL-CONTENT', 'WINDOW-PRESENT-TENSE'])
@@ -4965,6 +5179,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] WP2 window-present-tense (pass cell: act not added during the window)
           verdict: NO-EMPIRICAL-CONTENT   (expected ['NO-EMPIRICAL-CONTENT'])
@@ -5011,6 +5227,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] WP3 window-present-tense (N/A mirror: mechanism_history absent)
           verdict: NO-EMPIRICAL-CONTENT   (expected ['NO-EMPIRICAL-CONTENT'])
@@ -5057,6 +5275,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] EV1 evidence-unclosed (fire cell: walk hit budget, has_more_at_end=true)
           verdict: NO-EMPIRICAL-CONTENT, EVIDENCE-UNCLOSED   (expected ['NO-EMPIRICAL-CONTENT', 'EVIDENCE-UNCLOSED'])
@@ -5103,6 +5323,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] EV2 evidence-unclosed (pass cell: walk reached its end, has_more_at_end=false)
           verdict: NO-EMPIRICAL-CONTENT   (expected ['NO-EMPIRICAL-CONTENT'])
@@ -5149,6 +5371,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] EV3 evidence-unclosed (frozen-cursor cell: cursor never advanced across runs)
           verdict: NO-EMPIRICAL-CONTENT, EVIDENCE-UNCLOSED   (expected ['NO-EMPIRICAL-CONTENT', 'EVIDENCE-UNCLOSED'])
@@ -5195,6 +5419,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] EV4 evidence-unclosed (N/A mirror: no closure evidence declared)
           verdict: NO-EMPIRICAL-CONTENT   (expected ['NO-EMPIRICAL-CONTENT'])
@@ -5241,6 +5467,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] FID1 fidelity (fire cell: independent right-axis witness, distorted copy)
           verdict: FIDELITY   (expected ['FIDELITY'])
@@ -5287,6 +5515,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] FID2 fidelity (pass cell: self-keyed in-lineage witness, faithful copy)
           verdict: SCOPE-OF-INDEPENDENCE   (expected ['SCOPE-OF-INDEPENDENCE'])
@@ -5333,6 +5563,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] FID3 fidelity (control: independent right-axis witness, faithful copy)
           verdict: DISCRIMINATES   (expected [])
@@ -5379,6 +5611,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] WPS1 witness-population-selection (fire cell: absence claim, self-selected witness population)
           verdict: WITNESS-POPULATION-SELECTION   (expected ['WITNESS-POPULATION-SELECTION'])
@@ -5425,6 +5659,8 @@
             FLAG WITNESS-POPULATION-SELECTION: the witness population is structurally selected against reporting: the seats that could have witnessed are the seats least likely to publish a careful report, so an empty observed population is a selection effect, not a scheduling gap (the ledger line is structural, not temporal)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] WPS2 witness-population-selection (pass cell: absence claim, independent witness population)
           verdict: DISCRIMINATES   (expected [])
@@ -5471,6 +5707,8 @@
             pass WITNESS-POPULATION-SELECTION: witness population is independent (no selection against reporting); the absence is informative
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] WPS3 witness-population-selection (N/A mirror: not an absence claim, self-selected population)
           verdict: DISCRIMINATES   (expected [])
@@ -5517,6 +5755,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (not an absence claim: the witness population provenance does not gate an absence inference)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] WPS4 witness-population-selection (N/A mirror: absence claim, witness_population undeclared)
           verdict: DISCRIMINATES   (expected [])
@@ -5563,6 +5803,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] Venezuela releases (BBC c620lrw2xr12o): 'dozens of political prisoners' (source-misattribution)
           verdict: SOURCE-MISATTRIBUTION   (expected ['SOURCE-MISATTRIBUTION'])
@@ -5609,6 +5851,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] Venezuela releases (BBC c620lrw2xr12o): correct attribution (JEP, pass cell)
           verdict: DISCRIMINATES   (expected [])
@@ -5655,6 +5899,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] Census 26 seats (square #6963): Wubbitys re-run on the same board (source-replication)
           verdict: SOURCE-REPLICATION   (expected ['SOURCE-REPLICATION'])
@@ -5701,6 +5947,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             FLAG SOURCE-REPLICATION: the verification re-checks the claim on the claim's own source (board-1f916): an independent certifier is a replication, not an independent witness -- it buys no source-independence (the same source that produced the claim also produced the verification)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] Census 26 seats (square #6963): wicketwarden cross-board witness (pass cell)
           verdict: DISCRIMINATES   (expected [])
@@ -5747,6 +5995,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification source (board-universal-agent-forum) is independent of the claim source (board-1f916); the re-check buys source-independence)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] temporal-onset battery witness (at-onset no beat, peak elsewhere)
           verdict: TEMPORAL-ONSET   (expected ['TEMPORAL-ONSET'])
@@ -5793,6 +6043,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] reference-mix battery witness (inflated relative to single-reference)
           verdict: REFERENCE-MIX   (expected ['REFERENCE-MIX'])
@@ -5839,6 +6091,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] seal-ack-floor (1f916.ai /api/me/ack, 2026-09-27)
           verdict: NO-EMPIRICAL-CONTENT, PLATFORM-CERTIFIED   (expected ['NO-EMPIRICAL-CONTENT', 'PLATFORM-CERTIFIED'])
@@ -5885,6 +6139,8 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             FLAG PLATFORM-CERTIFIED: the platform is the certifier (signs the seal) and holds the verification key (platform-secret); the citizen is a blind carrier (carries the seal, cannot verify it); no independent third party can verify (needs the platform's secret) -> the self-keyed gap fires at the certifier layer
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
 
 [OK      ] PC1 platform-certified (constructed witness: fire cell, platform certifier, platform-secret key)
           verdict: PLATFORM-CERTIFIED   (expected ['PLATFORM-CERTIFIED'])
@@ -5931,5 +6187,103 @@
             pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
             pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
             FLAG PLATFORM-CERTIFIED: the platform is the certifier (signs the seal) and holds the verification key (platform-secret); the citizen is a blind carrier (carries the seal, cannot verify it); no independent third party can verify (needs the platform's secret) -> the self-keyed gap fires at the certifier layer
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
+
+[OK      ] trust battery witness (self-asserted writer trust, TW1)
+          verdict: TRUST   (expected ['TRUST'])
+            pass BEATS-NULL: mechanism 0.5 > null 0.2
+            pass NOT-SELF-KEYED: N/A (no knob readings)
+            pass SELECTION-BIAS: N/A (no order-statistic headline declared)
+            pass ISOLATED: N/A (not an ablation claim)
+            pass CO-MOVES: N/A (no mechanism-axis readings)
+            pass NOISE-FLOOR: N/A (no CI/SE declared on the mechanism row)
+            pass REFERENT-WITNESSED: N/A (referent not declared)
+            pass LOSSY-PROJECTION: N/A (no record/referent witness declared)
+            pass AGGREGATION-REVERSAL: N/A (no subgroup/pooling structure declared; need >=2 subgroups with both a mechanism and a null reading)
+            pass REFERENT-CONSTRUCTED: N/A (referent not declared)
+            pass DOSE-RESPONSE: N/A (no dose structure declared; need >=2 substrate levels with both a mechanism and a null reading)
+            pass TEMPORAL-ONSET: N/A (no onset timepoint declared; the flat check governs)
+            pass TEMPORAL-SPIKE: N/A (no onset timepoint declared; the flat check governs)
+            pass OUTCOME-ONSET: N/A (no claim_outcome declared; the flat check governs)
+            pass OUTCOME-SPIKE: N/A (no claim_outcome declared; the flat check governs)
+            pass SUBGROUP-ONSET: N/A (no claim_subgroup declared; the flat check governs)
+            pass SUBGROUP-SPIKE: N/A (no claim_subgroup declared; the flat check governs)
+            pass DOSE-ONSET: N/A (no claim_dose declared; the flat check governs)
+            pass DOSE-SPIKE: N/A (no claim_dose declared; the flat check governs)
+            pass TIER-ONSET: N/A (no claim_tier declared; the flat check governs)
+            pass TIER-SPIKE: N/A (no claim_tier declared; the flat check governs)
+            pass SPLIT-ONSET: N/A (no claim_split declared; the flat check governs)
+            pass SPLIT-SPIKE: N/A (no claim_split declared; the flat check governs)
+            pass METRIC-ONSET: N/A (no claim_metric declared; the flat check governs)
+            pass METRIC-SPIKE: N/A (no claim_metric declared; the flat check governs)
+            pass FUNNEL-STAGE-MISATTRIBUTION: N/A (no funnel structure declared)
+            pass SOURCE-MISATTRIBUTION: N/A (source_attribution / load_bearing not declared; the axis does not apply)
+            pass SELECTION-ON-NARRATIVE: N/A (no subset_criterion declared)
+            pass ANNOTATOR-SELF-KEYED: N/A (annotation_provenance not declared; the axis does not apply)
+            pass COMPUTABLE: N/A (empirical claim: the empirical axes govern; metric computability is not the regime)
+            pass SCOPE-OF-INDEPENDENCE: N/A (independence_scope / independence_load_bearing not declared; the axis does not apply)
+            pass REFERENCE-MIX: N/A (tradeoff_pairing / tradeoff_single_reference / tradeoff_metrics not declared; the axis does not apply)
+            pass UNWITNESSED-RECEIPT: N/A (no receipt declared; orthogonal to the empirical axes)
+            pass UNWITNESSED-ROOT: N/A (no manifest declared; orthogonal to the empirical axes)
+            pass WIDER-THAN-NAMED: N/A (empirical claim: the empirical axes govern; the definitional-referent axis is not the regime)
+            pass SELF-FALSIFYING: N/A (headline_scope / limitation_negates not declared; the axis does not apply)
+            pass PRIMARY-BASIS-REVERSAL: N/A (primary_basis / primary_basis_result not declared; the axis does not apply)
+            pass WINDOW-PRESENT-TENSE: N/A (window_claim / mechanism_history not declared; the axis does not apply)
+            pass EVIDENCE-UNCLOSED: N/A (has_more_at_end / cursor_runs not declared; the axis does not apply)
+            pass FIDELITY: N/A (referent_value / reading not declared; the axis does not apply)
+            pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
+            pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
+            pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            FLAG TRUST: the writer's trust is self-asserted (self-asserted): the stranger's verifiability is bounded by what the stranger believes, and no record closes that gap -- trust is conjunctive, not derivable from the record (the authority channel)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
+
+[OK      ] tautological-blend battery witness (SignTrace Pool@60, TW2)
+          verdict: TAUTOLOGICAL-BLEND   (expected ['TAUTOLOGICAL-BLEND'])
+            pass BEATS-NULL: mechanism 0.5 > null 0.2
+            pass NOT-SELF-KEYED: N/A (no knob readings)
+            pass SELECTION-BIAS: N/A (no order-statistic headline declared)
+            pass ISOLATED: N/A (not an ablation claim)
+            pass CO-MOVES: N/A (no mechanism-axis readings)
+            pass NOISE-FLOOR: N/A (no CI/SE declared on the mechanism row)
+            pass REFERENT-WITNESSED: N/A (referent not declared)
+            pass LOSSY-PROJECTION: N/A (no record/referent witness declared)
+            pass AGGREGATION-REVERSAL: N/A (no subgroup/pooling structure declared; need >=2 subgroups with both a mechanism and a null reading)
+            pass REFERENT-CONSTRUCTED: N/A (referent not declared)
+            pass DOSE-RESPONSE: N/A (no dose structure declared; need >=2 substrate levels with both a mechanism and a null reading)
+            pass TEMPORAL-ONSET: N/A (no onset timepoint declared; the flat check governs)
+            pass TEMPORAL-SPIKE: N/A (no onset timepoint declared; the flat check governs)
+            pass OUTCOME-ONSET: N/A (no claim_outcome declared; the flat check governs)
+            pass OUTCOME-SPIKE: N/A (no claim_outcome declared; the flat check governs)
+            pass SUBGROUP-ONSET: N/A (no claim_subgroup declared; the flat check governs)
+            pass SUBGROUP-SPIKE: N/A (no claim_subgroup declared; the flat check governs)
+            pass DOSE-ONSET: N/A (no claim_dose declared; the flat check governs)
+            pass DOSE-SPIKE: N/A (no claim_dose declared; the flat check governs)
+            pass TIER-ONSET: N/A (no claim_tier declared; the flat check governs)
+            pass TIER-SPIKE: N/A (no claim_tier declared; the flat check governs)
+            pass SPLIT-ONSET: N/A (no claim_split declared; the flat check governs)
+            pass SPLIT-SPIKE: N/A (no claim_split declared; the flat check governs)
+            pass METRIC-ONSET: N/A (no claim_metric declared; the flat check governs)
+            pass METRIC-SPIKE: N/A (no claim_metric declared; the flat check governs)
+            pass FUNNEL-STAGE-MISATTRIBUTION: N/A (no funnel structure declared)
+            pass SOURCE-MISATTRIBUTION: N/A (source_attribution / load_bearing not declared; the axis does not apply)
+            pass SELECTION-ON-NARRATIVE: N/A (no subset_criterion declared)
+            pass ANNOTATOR-SELF-KEYED: N/A (annotation_provenance not declared; the axis does not apply)
+            pass COMPUTABLE: N/A (empirical claim: the empirical axes govern; metric computability is not the regime)
+            pass SCOPE-OF-INDEPENDENCE: N/A (independence_scope / independence_load_bearing not declared; the axis does not apply)
+            pass REFERENCE-MIX: N/A (tradeoff_pairing / tradeoff_single_reference / tradeoff_metrics not declared; the axis does not apply)
+            pass UNWITNESSED-RECEIPT: N/A (no receipt declared; orthogonal to the empirical axes)
+            pass UNWITNESSED-ROOT: N/A (no manifest declared; orthogonal to the empirical axes)
+            pass WIDER-THAN-NAMED: N/A (empirical claim: the empirical axes govern; the definitional-referent axis is not the regime)
+            pass SELF-FALSIFYING: N/A (headline_scope / limitation_negates not declared; the axis does not apply)
+            pass PRIMARY-BASIS-REVERSAL: N/A (primary_basis / primary_basis_result not declared; the axis does not apply)
+            pass WINDOW-PRESENT-TENSE: N/A (window_claim / mechanism_history not declared; the axis does not apply)
+            pass EVIDENCE-UNCLOSED: N/A (has_more_at_end / cursor_runs not declared; the axis does not apply)
+            pass FIDELITY: N/A (referent_value / reading not declared; the axis does not apply)
+            pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
+            pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
+            pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            FLAG TAUTOLOGICAL-BLEND: the headline Pool@60 (99.4%) blends a construction-guaranteed subset (200/500, guaranteed 100% by the system's own setup) with the measured component (297/300 = 99.0%) without separating them: the guaranteed component inflates the headline by 0.4pp -- the construction guarantees the result for this metric, and the headline does not report the measured-only rate separately
 
 ALL SPECIMENS MATCH
