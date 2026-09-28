@@ -115,5 +115,5 @@ out = {
     "cofire_eq1": cf1,
 }
 with open("cofiring.json", "w") as f:
-    json.dump(out, f, indent=2)
+    json.dump(out, f, indent=2, sort_keys=True)
 print("\nwrote cofiring.json")
