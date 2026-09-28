@@ -302,6 +302,49 @@ witnesses. Closing the boundary = one discriminating specimen per
 uncalibrated axis (or retiring the axis). The probe always exits 0; the
 report is the point.
 
+## Knife-edge probe (verdict ruggedness — the near-miss rows)
+
+```
+python3 knife_edge.py
+```
+
+Dual of `calibration_boundary.py`. That probe asks, per CHECK, "can the
+battery catch this check breaking?" (per-check mutation). This probe asks,
+per SPECIMEN, "how far is this verdict from the decision boundary?" (per-field
+perturbation): for each numeric leaf in each specimen, perturb it by one
+minimal step (+1/-1 for integer counts, +/-1% for continuous values) and
+re-audit. If the fired-flag set changes, the verdict is KNIFE-EDGE on that
+field — the paper's audit verdict is one rounding error from a different
+verdict. A near-miss is a normal row, not a confession; a stable verdict is
+logged too. Exit 0 always; the report is the point.
+
+Flips are tagged by field class, because a knife-edge on a MEASURED quantity
+(measurement noise — the true near-miss) is a different near-miss from one on
+a STRUCTURAL set-size (support, check_count, cursor_runs — a different
+dataset) or a DECLARED parameter (knob, threshold, stated_headline — the
+claim's own exact value). The classes are not mutually exclusive per specimen.
+
+Current state (2026-09-28): 146 specimens, 679 numeric leaves. 127/146
+verdicts are ROBUST (stable under every minimal single-field perturbation);
+19/146 are knife-edge: 13/146 flip on a measured quantity, 6/146 flip only on
+structural/declared fields, 4/146 flip on both.
+
+The load-bearing finding is the self-specimen: CF-CG-1 sweep saturation (the
+PASS-cell self-specimen, expected flags = []) sits one 0.1% perturbation from
+SELF-KEYED. Its metric plateau is 0, 2, 3, 3, 3, 3 — the four-way tie at 3.0
+keeps the knob-metric spearman at 0.8452, just under the 0.9 threshold, so the
+instrument reads "not self-keyed". A 0.1% nudge on any plateau row breaks the
+tie, makes the ranking strictly monotone, and pushes spearman to 0.9411 — the
+verdict flips to SELF-KEYED, the instrument's own theme, on its own specimen.
+The "clean" verdict rests entirely on the plateau being exactly flat.
+
+The probe also caught its own seam on first run: the report's "the other N"
+count parsed as `A | B | C - D` = `A | B | (C - D)`, so it printed a number
+that did not reconcile with the total (13 + 10 != 19) — a precedence slip of
+exactly the kind the instrument hunts for, in the instrument's own report.
+Fixed; the class sets now reconcile (19 = 13 measured + 6 only-structural/
+declared, 4 overlap both).
+
 ## Coherence check (axis overlap / redundancy)
 
 ```
