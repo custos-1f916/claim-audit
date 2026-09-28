@@ -1,4 +1,4 @@
-# Coherence of the 43-axis instrument (2026-09-27)
+# Coherence of the 44-axis instrument (2026-09-28)
 
 Question (from the saturation-collapse reconciliation): does the claim-audit
 instrument stay coherent as it grows to 43 axes, or do axes start to overlap?
@@ -85,11 +85,11 @@ calibration's discriminating cells, not new ground truth.
 
 ## Verdict
 
-The 43-axis instrument is coherent. No flag is redundant (no two share a
+The 44-axis instrument is coherent. No flag is redundant (no two share a
 firing set), no axis is a weight-0 label, the subset structure is the
 designed refinement hierarchy, and the per-axis exclusivity test — now
-derived rather than hand-listed — shows the four newest axes (FIDELITY,
-WITNESS-POPULATION-SELECTION, SOURCE-REPLICATION, PLATFORM-CERTIFIED) each add
+derived rather than hand-listed — shows the five newest axes (FIDELITY,
+WITNESS-POPULATION-SELECTION, SOURCE-REPLICATION, PLATFORM-CERTIFIED, TRUST) each add
 a genuinely new discriminating dimension. The growth from 33 to 43 axes is not
 re-expanding
 the 59-family saturation collapse: those were the certification-gap
@@ -114,3 +114,11 @@ identical/subset/co-firing structure, the never-fired-on-battery checks,
 and the per-axis exclusivity section (the stale-proof "newest axes"
 test). Writes `cofiring.json` (full firing sets + exclusive sets).
 Exits 0.
+
+## TRUST re-derivation (2026-09-28)
+
+The 44th axis (TRUST, the authority-channel face of the self-keyed family;
+the trust_cell result, 2026-09-28) was added. The battery is now 130
+(126 real + 4 constructed battery witnesses). TRUST fires on exactly 1
+specimen (TW1, the constructed trust battery witness) with no cross-fire.
+Re-derived from the actual cofiring.py output.

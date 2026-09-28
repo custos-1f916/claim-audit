@@ -1,8 +1,8 @@
 # claim-audit
 
-A 43-axis falsification instrument for empirical claims in ML/AI papers
+A 44-axis falsification instrument for empirical claims in ML/AI papers
 (and other headline claims with data). Given a claim's raw numbers as a
-spec, it checks the claim against 43 axes (self-keyed, wrong-axis,
+spec, it checks the claim against 44 axes (self-keyed, wrong-axis,
 selection-bias, confounded, within-noise, lossy-projection,
 aggregation-reversal, referent-witnessed, temporal/dose/outcome/subgroup
 onset-and-spike, funnel-stage-misattribution, selection-on-narrative,
@@ -75,22 +75,22 @@ undeclared field makes a refinement N/A), `contested`.
 python3 claim_audit.py
 ```
 
-Runs the 129 specimens in `specimens.py` (126 real — papers from the
+Runs the 130 specimens in `specimens.py` (126 real — papers from the
 2026-09-15..22 audit run plus schema-boundary cells plus the live 1f916.ai
-seal/ack floor — plus 3 constructed battery witnesses for TEMPORAL-ONSET,
-REFERENCE-MIX, and PLATFORM-CERTIFIED; see COHERENCE.md) and prints
+seal/ack floor — plus 4 constructed battery witnesses for TEMPORAL-ONSET,
+REFERENCE-MIX, PLATFORM-CERTIFIED, and TRUST; see COHERENCE.md) and prints
 `ALL SPECIMENS MATCH` (exit 0) when every specimen's fired flags equal
 its recorded `expected` set. `results.txt` is a fresh run of this
 battery from this copy of the code.
 
 ## Files
 
-  claim_audit.py   the instrument (43 checks + CLI), stdlib only
+  claim_audit.py   the instrument (44 checks + CLI), stdlib only
   calibration.py   the 78-specimen discriminating calibration
   calibration_boundary.py  the self-calibration probe (per-check mutation)
   calibration_confound.py  the RED-baseline confound (dead check reads CALIBRATED)
   calibration_bandaid.py   the baseline-integrity fix (band-aid, not removal)
-  specimens.py     129 specimens (126 real + 3 battery witnesses) with expected flag sets
+  specimens.py     130 specimens (126 real + 4 battery witnesses) with expected flag sets
   results.txt      fresh battery run from this copy
   publicity_saturation.py  the PUBLICITY saturation test (certification subset -> one variable)
   question_selection.py  terminus candidate: query-selection collapses into what-is-recorded
@@ -213,6 +213,11 @@ on the trust flag. The forward move is the weight-1 TRUST instrument
 face. The self-keyed family is no longer closed: it has a third axis
 (source authority) that is conjunctive with openness and lossiness.
 
+(2026-09-28): the forward move was implemented. The weight-1 TRUST instrument
+landed as the 44th axis (check_trust in claim_audit.py), with the T1-T4
+calibration cells (calibration.py) and the TW1 battery witness (specimens.py).
+The battery is now 130 specimens (126 real + 4 constructed battery witnesses).
+
 ## Lineage
 
 Built 2026-09-15..22 as a workspace instrument for tearing apart
@@ -230,12 +235,12 @@ python3 calibration_boundary.py
 
 The battery being GREEN is not the same as the battery being COMPLETE.
 This probe answers the self-keyed question applied to the instrument's own
-calibration: for each of the 43 checks, blind it (force always-pass) and
+calibration: for each of the 44 checks, blind it (force always-pass) and
 re-run the battery. If the battery stays GREEN, no specimen's
 independently-derived ground truth requires that check to fire, so the check
 could silently break and `calibration.py` would still print DISCRIMINATES.
 
-Current state (2026-09-27): 43/43 checks are calibrated (each caught by
+Current state (2026-09-28): 44/44 checks are calibrated (each caught by
 at least one discriminating specimen — BEATS-NULL by 9, its
 false-positive surface being the spike family plus F2; NOT-SELF-KEYED /
 SCOPE-OF-INDEPENDENCE / EVIDENCE-UNCLOSED / SOURCE-REPLICATION by 2 each;
