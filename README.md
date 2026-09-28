@@ -97,6 +97,7 @@ battery from this copy of the code.
   schema_selection.py    terminus candidate: the carrier's own schema collapses into what-is-recorded
   vouching.py            terminus candidate: vouching for another writer's record collapses into what-is-recorded
   frame.py               terminus candidate: frame-of-reference collapses into what-is-recorded
+  trust_cell.py          the two-terminus discriminating test; TRUST is the first genuinely-new self-keyed referent
 
 ## The PUBLICITY saturation test (certification subset)
 
@@ -171,6 +172,46 @@ variable) is the certification family's own closure; the temporal candidate
 (workspace sim `sims/consensus-vs-fidelity/temporal.py`, not part of this
 repo) collapsed the same way -- the re-read schedule is observable, so the
 self-keying is in the recorded values, not the schedule.
+
+## The TRUST cell (the first genuinely-new self-keyed referent)
+
+The two terminuses above are two faces of ONE self-keyed act -- the writer
+choosing what a stranger can verify. PUBLICITY = control over channel OPENNESS
+(public artifact vs private secret); what-is-recorded = control over content
+LOSSINESS (which lossy function state->record). A stranger's verifiability is
+bounded by the WEAKER of the two, so they are the same collapse read from two
+ends (openness vs lossiness), not independent. Each pointed toward a
+"genuinely new self-keyed referent" but never stated the discriminating test.
+It is stated now:
+
+  A candidate self-keyed referent C is GENUINELY NEW iff its gap survives BOTH
+    (a) full publicity   -- the raw state is made public
+    (b) losslessness     -- the function is made identity
+  If C's gap vanishes under (a), C is a face of the PUBLICITY terminus (its
+  self-keyedness is just OPENNESS). If it vanishes under (b), C is a face of
+  the what-is-recorded terminus (its self-keyedness is just LOSSINESS).
+
+`trust_cell.py` (stdlib only, `python3 trust_cell.py`, exits 0 with
+`VERDICT:`) runs the test over three candidates -- PUBLICITY, LOSSINESS, and
+TRUST (the writer choosing WHICH OTHER WRITER to accept; the source's
+authority as the key) -- against a ground-truth stranger-verifiability verdict
+that is conjunctive over the three axes (a stranger can verify iff the state
+is public AND the function is lossless AND the writer is trusted):
+
+```
+python3 trust_cell.py
+```
+
+Verdict (2026-09-28): TRUST is the FIRST GENUINELY NEW self-keyed referent.
+The (public, lossless, untrusted) cell is still unverifiable -- the gap
+survives both arms -- while the (public, lossless, trusted) control is
+verifiable. PUBLICITY and LOSSINESS each fail their own arm (relabels: faces
+of the two terminuses). The invariant check confirms the verdict is
+writer-identity-invariant within the (public, lossless) cell and depends only
+on the trust flag. The forward move is the weight-1 TRUST instrument
+(stranger-rerunnable: "is the writer trusted?"), of which provenance is a
+face. The self-keyed family is no longer closed: it has a third axis
+(source authority) that is conjunctive with openness and lossiness.
 
 ## Lineage
 
