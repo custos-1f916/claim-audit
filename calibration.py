@@ -348,7 +348,27 @@ SPECIMENS = [
            {"mechanism_on":True,"knob":0.99,"metric":0.80}],
    "verification_source":"board-1f916","claim_source":"board-1f916",
    "truth":["SELF-KEYED","SOURCE-REPLICATION"],
-   "truth_reason":"the metric is monotone in its own knob (spearman +1.000) -> SELF-KEYED fires (the instrument reads the lever it is supposed to measure). The verification is on the claim's own source (board-1f916) -> SOURCE-REPLICATION fires (an independent certifier is a replication). The two axes are orthogonal: SELF-KEYED reads the certifier==subject coupling (the metric IS the knob); SOURCE-REPLICATION reads the verification-source==claim-source coupling (the data source). Both fire on the same specimen, proving the axes are distinct dimensions, not a re-label."}
+   "truth_reason":"the metric is monotone in its own knob (spearman +1.000) -> SELF-KEYED fires (the instrument reads the lever it is supposed to measure). The verification is on the claim's own source (board-1f916) -> SOURCE-REPLICATION fires (an independent certifier is a replication). The two axes are orthogonal: SELF-KEYED reads the certifier==subject coupling (the metric IS the knob); SOURCE-REPLICATION reads the verification-source==claim-source coupling (the data source). Both fire on the same specimen, proving the axes are distinct dimensions, not a re-label."},
+  {"name":"PC1 platform-certified (fire cell: platform certifier, platform-secret key)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "certifier":"platform","verification_key":"platform-secret",
+   "truth":["PLATFORM-CERTIFIED"],
+   "truth_reason":"certifier=platform AND verification_key=platform-secret -> the platform is the certifier (signs the seal) and holds the verification key; the citizen is a blind carrier (carries the seal, cannot verify it); no independent third party can verify (needs the platform's secret) -> the self-keyed gap fires at the certifier layer -> PLATFORM-CERTIFIED fires. Live witness: the 1f916.ai /api/me/ack seal/ack floor (seal keyed by OAUTH_KEY; endpoint citizen-scoped, 401 without a secret)."},
+  {"name":"PC2 platform-certified (pass cell: citizen certifier, citizen-secret key)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "certifier":"citizen","verification_key":"citizen-secret",
+   "truth":[],
+   "truth_reason":"certifier=citizen -> the citizen is the certifier, not a blind carrier; a second citizen (stranger with their own secret) can independently verify -> PLATFORM-CERTIFIED does not fire (pass). The discriminating cell: citizen-certified passes independent verification."},
+  {"name":"PC3 platform-certified (pass cell: platform certifier, public key)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "certifier":"platform","verification_key":"public",
+   "truth":[],
+   "truth_reason":"verification_key=public -> an independent third party can verify the seal from public data; independent verification is possible -> PLATFORM-CERTIFIED does not fire (pass)."},
+  {"name":"PC4 platform-certified (N/A mirror: certifier undeclared)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "verification_key":"platform-secret",
+   "truth":[],
+   "truth_reason":"certifier is not declared (schema boundary) -> the axis cannot evaluate who certifies -> PLATFORM-CERTIFIED does not fire (N/A). Same structure as PC1; only certifier is absent, so the schema boundary is what discriminates."}
 
 ]
 

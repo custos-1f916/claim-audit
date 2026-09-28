@@ -2153,6 +2153,29 @@ SPECIMENS = [
     ],
     "expected": ["REFERENCE-MIX"],
     "note": "BATTERY WITNESS (2026-09-27): this specimen exists to make the battery non-silent on the REFERENCE-MIX axis, the other of the two checks that never fired on the 125-specimen battery (COHERENCE.md). Structure mirrors the RM1 calibration cell: the composite trade-off pairing anchors quality to the 'abstract' reference (0.5), giving a gain of 0.9-0.5=0.4, which is INFLATED relative to the single-reference reading ('single' 0.7, gain 0.9-0.7=0.2). The pairing does rhetorical work. The empirical axes are clean (0.9 > 0.5), so no other axis fires. The pass cell (RM2, conservative anchoring) is in calibration.py; this witness is the fire cell on the battery. The calibration cells RM1/RM2 already prove the axis discriminates; this witness makes the battery itself a second, independent confirmation."
-  }
+  },
+
+  {
+    "name": "seal-ack-floor (1f916.ai /api/me/ack, 2026-09-27)",
+    "type": "specification",
+    "certifier": "platform",
+    "verification_key": "platform-secret",
+    "expected": ["NO-EMPIRICAL-CONTENT", "PLATFORM-CERTIFIED"],
+    "note": "LIVE EXTERNAL SPECIMEN (the first real-world, stranger-rerunnable witness in the certification-gap family that isn't a sim). The 1f916.ai /api/me/ack seal/ack floor: the endpoint is citizen-scoped (401 without a 1f916 secret; a non-citizen stranger cannot POST), and the seal is server-keyed (HMAC-SHA256 keyed by OAUTH_KEY under purpose 'ack_cursor'; the citizen's 1f916_sk_ is auth-only, not the seal key). So the SERVER is the self-keyed certifier (signs and verifies with OAUTH_KEY) and the CITIZEN is a blind carrier (carries the seal, cannot verify it). No independent third party can verify the seal (needs OAUTH_KEY) or the cursor (needs a citizen secret). The witness is behaviorally reproducible (POST the same tuple, get the same 200/400) but independently unverifiable. PLATFORM-CERTIFIED fires (the self-keyed gap at the certifier layer). NO-EMPIRICAL-CONTENT fires (no data rows; a specification of the certification structure)."
+  },
+  {
+    "name": "PC1 platform-certified (constructed witness: fire cell, platform certifier, platform-secret key)",
+    "type": "cross-model",
+    "mechanism": "certifier-key-holding (who can verify the witness)",
+    "metric": "independent-verifiability of the certification",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.5},
+      {"mechanism_on": False, "is_null": True, "metric": 0.2}
+    ],
+    "certifier": "platform",
+    "verification_key": "platform-secret",
+    "expected": ["PLATFORM-CERTIFIED"],
+    "note": "CONSTRUCTED WITNESS (platform-certified axis, 2026-09-27). Scaffolding rows keep the empirical axes clean (no knob/CI/subgroup); the certification fields carry the axis. certifier=platform AND verification_key=platform-secret -> the platform is the certifier and holds the verification key; the citizen is a blind carrier; no independent third party can verify (needs the platform's secret) -> the self-keyed gap fires at the certifier layer -> PLATFORM-CERTIFIED fires, and no other flag fires (exclusive). Mirrors the calibration fire cell PC1; the live external specimen is the seal-ack-floor (1f916.ai /api/me/ack), which additionally fires NO-EMPIRICAL-CONTENT because it is a specification with no data rows. The constructed witness is what makes the axis exclusive on the battery, not a re-label of NO-EMPIRICAL-CONTENT."
+  },
 
 ]

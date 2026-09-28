@@ -1,9 +1,9 @@
-# Coherence of the 42-axis instrument (2026-09-27)
+# Coherence of the 43-axis instrument (2026-09-27)
 
 Question (from the saturation-collapse reconciliation): does the claim-audit
-instrument stay coherent as it grows to 42 axes, or do axes start to overlap?
+instrument stay coherent as it grows to 43 axes, or do axes start to overlap?
 
-Objective test: the co-firing matrix over the 127-specimen battery
+Objective test: the co-firing matrix over the 129-specimen battery
 (`cofiring.py`). For each pair of axes, do they fire on the same specimens?
 
 ## Findings
@@ -38,13 +38,13 @@ does it fire on any specimen where *no other flag fires*? A flag with at
 least one exclusive specimen contributes a label no other axis produces
 there; that axis is not a re-label of another axis's firing.
 
-Result on the 127 battery: 29 of 46 fired flags have >= 1 exclusive
-specimen. The three newest axes each qualify: FIDELITY (FID1),
-WITNESS-POPULATION-SELECTION (WPS1), and SOURCE-REPLICATION (the census
-fire cell, square #6963) each fire on exactly 1 specimen where no other
-flag fires; the two battery witnesses (TEMPORAL-ONSET, REFERENCE-MIX)
-are exclusive as well. Exclusivity is computed on the 44 distinct *flags* the
-instrument emits, not the 42 checks: 7 checks emit a differently-named
+Result on the 129 battery: 30 of 47 fired flags have >= 1 exclusive
+specimen. The four newest axes each qualify: FIDELITY (FID1),
+WITNESS-POPULATION-SELECTION (WPS1), SOURCE-REPLICATION (the census
+fire cell, square #6963), and PLATFORM-CERTIFIED (PC1) each fire on exactly
+1 specimen where no other flag fires; the two battery witnesses
+(TEMPORAL-ONSET, REFERENCE-MIX) are exclusive as well. Exclusivity is computed
+on the 47 distinct *flags* the instrument emits, not the 43 checks: 7 checks emit a differently-named
 flag (BEATS-NULL -> NULL-REACHES-HEADLINE, CO-MOVES -> WRONG-AXIS,
 COMPUTABLE -> NOT-COMPUTABLE, ISOLATED -> CONFOUNDED, NOISE-FLOOR ->
 WITHIN-NOISE, NOT-SELF-KEYED -> SELF-KEYED, REFERENT-WITNESSED ->
@@ -59,7 +59,7 @@ not the weight-0 test. The real test (per COARSER-MERGE) is: does the axis have
 a *discriminating calibration*? Both do:
 - TEMPORAL-ONSET: T1 (fire cell) in `calibration.py`.
 - REFERENCE-MIX: RM1 (fire) + RM2 (pass) in `calibration.py`.
-`calibration.py` passes 78/78 and `calibration_boundary.py` reports 42/42
+`calibration.py` passes 82/82 and `calibration_boundary.py` reports 43/43
 checks calibrated. So both are weight-1 instruments the 125 battery doesn't
 trigger, not weight-0 labels. The battery is not the calibration; the
 calibration is the calibration.
@@ -67,10 +67,12 @@ calibration is the calibration.
 **Resolved (2026-09-27, this commit):** the battery's silence was a coverage
 gap, not a defect — and a coverage gap is closable. Two constructed witnesses
 mirroring the calibration fire cells (T1, RM1) were added to `specimens.py`:
-the battery is now 127 (125 real + 2 witnesses), the instrument fires all 46
-flags on it (was 44; the two silent flags now fire on exactly their witness,
-no cross-fire), `truly_never` is empty, and each witness is an exclusive
-specimen (exclusivity 29/46). The witnesses are constructed, not real
+the battery is now 129 (126 real + 3 witnesses), the instrument fires all 47
+flags on it (was 46; the two silent flags now fire on exactly their witness,
+no cross-fire; PLATFORM-CERTIFIED's live specimen co-fires with
+NO-EMPIRICAL-CONTENT, so its constructed witness PC1 is what makes it
+exclusive), `truly_never` is empty, and each witness is an exclusive
+specimen (exclusivity 30/47). The witnesses are constructed, not real
 specimens: they make the battery a second, independent confirmation of the
 calibration's discriminating cells, not new ground truth.
 
@@ -83,12 +85,13 @@ calibration's discriminating cells, not new ground truth.
 
 ## Verdict
 
-The 42-axis instrument is coherent. No flag is redundant (no two share a
+The 43-axis instrument is coherent. No flag is redundant (no two share a
 firing set), no axis is a weight-0 label, the subset structure is the
 designed refinement hierarchy, and the per-axis exclusivity test — now
-derived rather than hand-listed — shows the three newest axes (FIDELITY,
-WITNESS-POPULATION-SELECTION, SOURCE-REPLICATION) each add a genuinely new
-discriminating dimension. The growth from 33 to 42 axes is not re-expanding
+derived rather than hand-listed — shows the four newest axes (FIDELITY,
+WITNESS-POPULATION-SELECTION, SOURCE-REPLICATION, PLATFORM-CERTIFIED) each add
+a genuinely new discriminating dimension. The growth from 33 to 43 axes is not
+re-expanding
 the 59-family saturation collapse: those were the certification-gap
 family's self-labeled axes; the claim-audit axes carry 4-cell
 discriminating calibrations, so growing them adds weight-1 instruments,

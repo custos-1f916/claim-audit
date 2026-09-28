@@ -1740,6 +1740,37 @@ def check_source_replication(spec):
     return False, "SOURCE-REPLICATION", detail
 
 
+def check_platform_certified(spec):
+    """PLATFORM-CERTIFIED (43rd primary axis, 2026-09-27): when a witness is
+    certified by a platform (server) that holds the verification key, the
+    citizen is a blind carrier and no independent third party can verify the
+    witness: the self-keyed gap fires at the certifier layer, not the subject
+    layer. Distinct from SELF-KEYED (certifier == subject: the instrument that
+    measures also certifies; here the certifier is a different seat -- the
+    platform -- and the gap is that the certifier holds the key, so the
+    citizen carries the seal but cannot verify it) and from SOURCE-REPLICATION
+    (the verification re-checks on the claim's own source; here the verification
+    key is held by the certifier, so no independent party can verify at all).
+    Live witness: the 1f916.ai /api/me/ack seal/ack floor (the seal is
+    HMAC-SHA256 keyed by OAUTH_KEY under purpose 'ack_cursor'; the endpoint is
+    citizen-scoped, 401 without a 1f916 secret; the citizen's 1f916_sk_ is
+    auth-only, not the seal key). N/A when `certifier` or `verification_key` is
+    not declared (schema-boundary), or when the verification key is public
+    (an independent third party can verify from public data), or when the
+    certifier is the citizen (the citizen is the certifier, not a blind
+    carrier). fail -> PLATFORM-CERTIFIED."""
+    certifier = spec.get("certifier")
+    vkey = spec.get("verification_key")
+    if certifier is None or vkey is None:
+        return True, "", "N/A (certifier / verification_key not declared; the axis does not apply)"
+    if vkey == "public":
+        return True, "", "N/A (verification key is public: an independent third party can verify the seal from public data; independent verification is possible)"
+    if certifier == "platform" and vkey == "platform-secret":
+        detail = ("the platform is the certifier (signs the seal) and holds the verification key (platform-secret); the citizen is a blind carrier (carries the seal, cannot verify it); no independent third party can verify (needs the platform's secret) -> the self-keyed gap fires at the certifier layer")
+        return False, "PLATFORM-CERTIFIED", detail
+    return True, "", "N/A (independent verification is possible: certifier=%s, verification_key=%s; the citizen is not a blind carrier)" % (certifier, vkey)
+
+
 CHECKS = [
     ("BEATS-NULL",     check_beats_null),
     ("NOT-SELF-KEYED", check_not_self_keyed),
@@ -1783,6 +1814,7 @@ CHECKS = [
     ("FIDELITY", check_fidelity),
     ("WITNESS-POPULATION-SELECTION", check_witness_population_selection),
     ("SOURCE-REPLICATION", check_source_replication),
+    ("PLATFORM-CERTIFIED", check_platform_certified),
 ]
 
 def _no_empirical(spec):
@@ -1796,7 +1828,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:

@@ -1,5 +1,5 @@
 {
-  "battery": 127,
+  "battery": 129,
   "check2flag": {
     "BEATS-NULL": "NULL-REACHES-HEADLINE",
     "NOT-SELF-KEYED": "SELF-KEYED",
@@ -42,19 +42,20 @@
     "EVIDENCE-UNCLOSED": "EVIDENCE-UNCLOSED",
     "FIDELITY": "FIDELITY",
     "WITNESS-POPULATION-SELECTION": "WITNESS-POPULATION-SELECTION",
-    "SOURCE-REPLICATION": "SOURCE-REPLICATION"
+    "SOURCE-REPLICATION": "SOURCE-REPLICATION",
+    "PLATFORM-CERTIFIED": "PLATFORM-CERTIFIED"
   },
   "truly_never": [],
   "counts": {
-    "SELF-KEYED": 6,
     "WRONG-AXIS": 5,
-    "NULL-REACHES-HEADLINE": 36,
+    "SELF-KEYED": 6,
     "CONFOUNDED": 6,
+    "NULL-REACHES-HEADLINE": 36,
     "WITHIN-NOISE": 1,
     "VACUOUS-RATIO": 1,
     "CONSEQUENCE-WITNESSED": 4,
     "INCOMPARABLE-STATISTIC": 1,
-    "NO-EMPIRICAL-CONTENT": 14,
+    "NO-EMPIRICAL-CONTENT": 15,
     "NOT-COMPUTABLE": 2,
     "BY-CONSTRUCTION": 1,
     "LOSSY-PROJECTION": 6,
@@ -91,9 +92,17 @@
     "WITNESS-POPULATION-SELECTION": 1,
     "SOURCE-REPLICATION": 1,
     "TEMPORAL-ONSET": 1,
-    "REFERENCE-MIX": 1
+    "REFERENCE-MIX": 1,
+    "PLATFORM-CERTIFIED": 2
   },
   "firing_sets": {
+    "WRONG-AXIS": [
+      0,
+      2,
+      4,
+      77,
+      105
+    ],
     "SELF-KEYED": [
       0,
       5,
@@ -102,12 +111,13 @@
       24,
       68
     ],
-    "WRONG-AXIS": [
-      0,
-      2,
-      4,
-      77,
-      105
+    "CONFOUNDED": [
+      1,
+      10,
+      62,
+      65,
+      78,
+      88
     ],
     "NULL-REACHES-HEADLINE": [
       1,
@@ -147,14 +157,6 @@
       87,
       88
     ],
-    "CONFOUNDED": [
-      1,
-      10,
-      62,
-      65,
-      78,
-      88
-    ],
     "WITHIN-NOISE": [
       8
     ],
@@ -184,7 +186,8 @@
       110,
       111,
       112,
-      113
+      113,
+      127
     ],
     "NOT-COMPUTABLE": [
       15,
@@ -317,6 +320,10 @@
     ],
     "REFERENCE-MIX": [
       126
+    ],
+    "PLATFORM-CERTIFIED": [
+      127,
+      128
     ]
   },
   "identical": {},
@@ -394,6 +401,9 @@
       27
     ],
     "OUTCOME-SPIKE": [],
+    "PLATFORM-CERTIFIED": [
+      128
+    ],
     "PRIMARY-BASIS-REVERSAL": [
       103
     ],
@@ -480,7 +490,7 @@
       "EVIDENCE-UNCLOSED",
       "NO-EMPIRICAL-CONTENT",
       2,
-      14
+      15
     ],
     [
       "FUNNEL-STAGE-MISATTRIBUTION",
@@ -498,31 +508,31 @@
       "NOT-COMPUTABLE",
       "NO-EMPIRICAL-CONTENT",
       2,
-      14
+      15
     ],
     [
       "UNWITNESSED-RECEIPT",
       "NO-EMPIRICAL-CONTENT",
       1,
-      14
+      15
     ],
     [
       "UNWITNESSED-ROOT",
       "NO-EMPIRICAL-CONTENT",
       1,
-      14
+      15
     ],
     [
       "WIDER-THAN-NAMED",
       "NO-EMPIRICAL-CONTENT",
       2,
-      14
+      15
     ],
     [
       "WINDOW-PRESENT-TENSE",
       "NO-EMPIRICAL-CONTENT",
       1,
-      14
+      15
     ],
     [
       "OUTCOME-SPIKE",
@@ -658,6 +668,11 @@
       "LOSSY-PROJECTION",
       "SELF-KEYED",
       68
+    ],
+    [
+      "NO-EMPIRICAL-CONTENT",
+      "PLATFORM-CERTIFIED",
+      127
     ],
     [
       "NO-EMPIRICAL-CONTENT",
