@@ -147,3 +147,25 @@ that axis, and the other two still fire (CH1 closes population -> only
 TAUTOLOGICAL-BLEND goes silent; CH2 closes criterion -> only CRITERION-THRESHOLD
 goes silent; CH3 closes loop -> only JUDGE-AS-TARGET goes silent). Re-derived
 from the actual cofiring.py output.
+
+## COVERAGE-GAP re-derivation (2026-09-28)
+
+The 48th axis (COVERAGE-GAP, the shape-channel face of the self-keyed family;
+the CF-CG-1 terrarium self-specimen, 2026-09-28) was added. The battery is now
+140 (127 real + 9 constructed battery witnesses + 4 self-specimens). The
+discriminating test (run before adding the axis): the three CF-CG-1 witness
+cells were encoded over the EXISTING 47-axis instrument and all came back
+DISCRIMINATES with no flags -- the shape-over-partial-support error is not a
+special case of WRONG-AXIS, population-coverage, or any existing axis, so it is
+a genuine 48th axis, not a projection of one. COVERAGE-GAP fires on exactly 2
+specimens (the CF-CG-1 screen clean-gap and the CF-CG-1 census linear-weight
+self-specimens) with no cross-fire; the CF-CG-1 sweep saturation self-specimen
+is the PASS cell (shape_structurally_bounded: the argmax saturates at bc3,
+bounded by the 0.25 uptake cap + 0.6/0.3 reserve weights, so a wider-support
+re-probe cannot dissolve it -- the saturation is what separates support-bound
+from merely-underpowered). Distinct from SELF-KEYED (the self-keyed gap in
+LEVEL/knob inference; here the gap is in SHAPE inference) and from WRONG-AXIS
+(the mechanism at/below null on its own axis; here the mechanism moves the
+metric, but the shape claim is support-bound). N/A when `shape_claim` or
+`probe_support_fraction` is not declared (schema-boundary). Re-derived from the
+actual cofiring output.

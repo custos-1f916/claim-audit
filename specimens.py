@@ -2327,4 +2327,58 @@ SPECIMENS = [
     "expected": ["JUDGE-AS-TARGET"],
     "note": "CONSTRUCTED WITNESS (judge-as-target axis, 2026-09-28). Scaffolding rows keep the empirical axes clean (no knob/CI/subgroup); the loop fields carry the axis. judge_emits_labels=True, agent_optimizes_toward_judge=True -> the judge emits the green/red labels AND the agent optimizes toward those same labels -> the measure is the optimization target, so the loop closes on the judge and the reported gain is self-measured -> JUDGE-AS-TARGET fires, and no other flag fires (exclusive). Mirrors the calibration fire cell JT1; the live external specimen is the Spotify paper (arXiv:2609.30297, the LLM-as-judge emits the labels and the coding agent optimizes the agent toward those labels; the +8% quality gain is self-measured on synthetic data). The constructed witness is what makes the axis exclusive on the battery, not a re-label of the empirical axes."
   },
+  {
+    "name": "CF-CG-1 screen clean-gap (self-specimen, partial support)",
+    "type": "ablation",
+    "mechanism": "B-allocation fraction (bit_count/8) over the reserve-weight landscape",
+    "mechanism_lever": "allocation_fraction",
+    "metric": "frac_of_systematic",
+    "shape_claim": True,
+    "probe_support_fraction": 0.625,
+    "shape_structurally_bounded": False,
+    "rows": [
+      {"label": "bc1", "mechanism_on": True, "substrate": ["allocation_fraction", "reserve_weights"], "knob": 0.125, "metric": 0.6595, "mechanism_axis": 0.6595},
+      {"label": "bc2", "mechanism_on": True, "substrate": ["allocation_fraction", "reserve_weights"], "knob": 0.25, "metric": 1.0194, "mechanism_axis": 1.0194},
+      {"label": "bc3", "mechanism_on": True, "substrate": ["allocation_fraction", "reserve_weights"], "knob": 0.375, "metric": 1.0599, "mechanism_axis": 1.0599},
+      {"label": "bc4", "mechanism_on": True, "substrate": ["allocation_fraction", "reserve_weights"], "knob": 0.5, "metric": 0.9822, "mechanism_axis": 0.9822},
+      {"label": "bc5", "mechanism_on": True, "substrate": ["allocation_fraction", "reserve_weights"], "knob": 0.625, "metric": 0.7334, "mechanism_axis": 0.7334}
+    ],
+    "expected": ["COVERAGE-GAP"],
+    "note": "SELF-SPECIMEN (CF-CG-1 terrarium, 2026-09-28). The transplant-ranking screen (16 genomes/seed, bit_counts {1,2,3,4,5}) claimed a two-level landscape with a clean gap in [0.5,0.95). The census (full bc0-8) showed bc5 sits at 0.7334, INSIDE the claimed gap. The clean-gap was a shape claim over partial support (5/8 non-ancestor bit_counts), dissolved by the wider re-probe. Self-specimen: my own probe dissolved my own shape claim."
+  },
+  {
+    "name": "CF-CG-1 census linear-weight (self-specimen, single value_b)",
+    "type": "ablation",
+    "mechanism": "value_b (reserve weight on B) over the allocation-fraction landscape",
+    "mechanism_lever": "value_b",
+    "metric": "peak_location",
+    "shape_claim": True,
+    "probe_support_fraction": 0.166667,
+    "shape_structurally_bounded": False,
+    "rows": [
+      {"label": "vb=0.30 (single)", "mechanism_on": True, "substrate": ["value_b", "allocation_fraction"], "knob": 0.30, "metric": 3.0, "mechanism_axis": 3.0}
+    ],
+    "expected": ["COVERAGE-GAP"],
+    "note": "SELF-SPECIMEN (CF-CG-1 terrarium, 2026-09-28). The census predicted the peak is weight-dependent (linear), from a SINGLE value_b (0.30). The sweep (6 value_b levels, 0.00..0.90) showed the argmax SATURATES at bc3 even at value_b=0.90. The linear-weight-dependence was support-bound in the value_b dimension (1/6 of the sweep's levels). Self-specimen: my own sweep dissolved my own shape claim."
+  },
+  {
+    "name": "CF-CG-1 sweep saturation (self-specimen, PASS cell)",
+    "type": "ablation",
+    "mechanism": "value_b (reserve weight on B) over the allocation-fraction landscape",
+    "mechanism_lever": "value_b",
+    "metric": "argmax_bit_count",
+    "shape_claim": True,
+    "probe_support_fraction": 0.9,
+    "shape_structurally_bounded": True,
+    "rows": [
+      {"label": "vb=0.00", "mechanism_on": True, "substrate": ["value_b", "allocation_fraction"], "knob": 0.0, "metric": 0.0, "mechanism_axis": 0.0},
+      {"label": "vb=0.15", "mechanism_on": True, "substrate": ["value_b", "allocation_fraction"], "knob": 0.15, "metric": 2.0, "mechanism_axis": 2.0},
+      {"label": "vb=0.30", "mechanism_on": True, "substrate": ["value_b", "allocation_fraction"], "knob": 0.30, "metric": 3.0, "mechanism_axis": 3.0},
+      {"label": "vb=0.45", "mechanism_on": True, "substrate": ["value_b", "allocation_fraction"], "knob": 0.45, "metric": 3.0, "mechanism_axis": 3.0},
+      {"label": "vb=0.60", "mechanism_on": True, "substrate": ["value_b", "allocation_fraction"], "knob": 0.60, "metric": 3.0, "mechanism_axis": 3.0},
+      {"label": "vb=0.90", "mechanism_on": True, "substrate": ["value_b", "allocation_fraction"], "knob": 0.90, "metric": 3.0, "mechanism_axis": 3.0}
+    ],
+    "expected": [],
+    "note": "SELF-SPECIMEN (CF-CG-1 terrarium, 2026-09-28, PASS cell). The sweep (6 value_b levels, 0.00..0.90) showed the argmax saturates at bc3. Structurally bounded by the 0.25 uptake cap + 0.6/0.3 reserve weights (a wider value_b re-probe within the probed range cannot dissolve the saturation). The saturation is what separates support-bound from merely-underpowered. PASS cell: COVERAGE-GAP does not fire."
+  },
 ]

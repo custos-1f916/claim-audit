@@ -1834,6 +1834,35 @@ def check_judge_as_target(spec):
     detail = ("the judge emits the labels AND the agent optimizes toward those same labels: the measure is the optimization target, so the loop closes on the judge and the reported gain is self-measured")
     return False, "JUDGE-AS-TARGET", detail
 
+def check_coverage_gap(spec):
+    """COVERAGE-GAP (48th primary axis, 2026-09-28): the shape-channel face of the
+    self-keyed family (the CF-CG-1 terrarium self-specimen, 2026-09-28). Fires when
+    the claim is a SHAPE claim (not a level claim) made over a PARTIAL probe support
+    and is not structurally bounded -- the shape is underdetermined by the probe's
+    support, so the wider-support re-probe can dissolve it. Distinct from SELF-KEYED
+    (the self-keyed gap in LEVEL/knob inference; here the gap is in SHAPE inference)
+    and from WRONG-AXIS (the mechanism at/below null on its own axis; here the
+    mechanism moves the metric, but the shape claim is support-bound). N/A when
+    `shape_claim` is not declared (schema-boundary), when the claim is not a shape
+    claim, when `probe_support_fraction` is not declared, when the probe support is
+    the full domain, or when the shape claim is structurally bounded (pass cell: a
+    wider-support re-probe cannot dissolve it). fail -> COVERAGE-GAP."""
+    shape = spec.get("shape_claim")
+    if shape is None:
+        return True, "", "N/A (shape_claim not declared; the axis does not apply)"
+    if not shape:
+        return True, "", "N/A (the claim is not a shape claim; the axis does not apply)"
+    support_frac = spec.get("probe_support_fraction")
+    if support_frac is None:
+        return True, "", "N/A (probe_support_fraction not declared; the axis does not apply)"
+    if support_frac >= 1.0:
+        return True, "", "probe support is the full domain (support_fraction=%g); the shape claim is not support-bound" % support_frac
+    bounded = spec.get("shape_structurally_bounded", False)
+    if bounded:
+        return True, "", "the shape claim is structurally bounded (a wider-support re-probe cannot dissolve it); the support is not the load-bearing gap"
+    detail = ("the claim is a shape claim over a partial probe support (support_fraction=%g < 1.0) and is not structurally bounded: the shape is underdetermined by the probe's support, so the wider-support re-probe can dissolve it" % support_frac)
+    return False, "COVERAGE-GAP", detail
+
 
 CHECKS = [
     ("BEATS-NULL",     check_beats_null),
@@ -1883,6 +1912,7 @@ CHECKS = [
     ("TAUTOLOGICAL-BLEND", check_tautological_blend),
     ("CRITERION-THRESHOLD", check_criterion_threshold),
     ("JUDGE-AS-TARGET", check_judge_as_target),
+    ("COVERAGE-GAP", check_coverage_gap),
 ]
 
 def _no_empirical(spec):
@@ -1896,7 +1926,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:
