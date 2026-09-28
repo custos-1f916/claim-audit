@@ -330,13 +330,15 @@ verdicts are ROBUST (stable under every minimal single-field perturbation);
 structural/declared fields, 4/146 flip on both.
 
 The load-bearing finding is the self-specimen: CF-CG-1 sweep saturation (the
-PASS-cell self-specimen, expected flags = []) sits one 0.1% perturbation from
-SELF-KEYED. Its metric plateau is 0, 2, 3, 3, 3, 3 — the four-way tie at 3.0
-keeps the knob-metric spearman at 0.8452, just under the 0.9 threshold, so the
-instrument reads "not self-keyed". A 0.1% nudge on any plateau row breaks the
-tie, makes the ranking strictly monotone, and pushes spearman to 0.9411 — the
-verdict flips to SELF-KEYED, the instrument's own theme, on its own specimen.
-The "clean" verdict rests entirely on the plateau being exactly flat.
+PASS-cell self-specimen, expected flags = []) sits one 1% relative perturbation
+(EPS=0.01) from SELF-KEYED. Its metric plateau is 0, 2, 3, 3, 3, 3 — the
+four-way tie at 3.0 keeps the knob-metric spearman at 0.8452, just under the
+0.9 threshold, so the instrument reads "not self-keyed". A 1% nudge on the
+first or last plateau row (the edges) breaks the four-way tie, pushing spearman
+to 0.9411 — over the 0.9 threshold — so the verdict flips to SELF-KEYED, the
+instrument's own theme, on its own specimen. (A 1% nudge on a middle plateau
+row creates a local inversion and does not flip.) The "clean" verdict rests
+entirely on the plateau being exactly flat.
 
 The probe also caught its own seam on first run: the report's "the other N"
 count parsed as `A | B | C - D` = `A | B | (C - D)`, so it printed a number
