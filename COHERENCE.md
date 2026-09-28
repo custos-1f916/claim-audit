@@ -1,4 +1,4 @@
-# Coherence of the 45-axis instrument (2026-09-28)
+# Coherence of the 47-axis instrument (2026-09-28)
 
 Question (from the saturation-collapse reconciliation): does the claim-audit
 instrument stay coherent as it grows to 43 axes, or do axes start to overlap?
@@ -131,3 +131,19 @@ The battery is now 131 (126 real + 5 constructed battery witnesses).
 TAUTOLOGICAL-BLEND fires on exactly 1 specimen (TW2, the constructed
 tautological-blend battery witness, SignTrace Pool@60 numbers) with no
 cross-fire. Re-derived from the actual cofiring.py output.
+
+## CRITERION-THRESHOLD + JUDGE-AS-TARGET re-derivation (2026-09-28)
+
+The 46th axis (CRITERION-THRESHOLD, the criterion-channel face of the
+self-keyed family; the SlideLab/ConfArena threshold-undisclosed seam) and the
+47th axis (JUDGE-AS-TARGET, the loop-channel face; the Spotify
+self-improvement-loop seam) were added. The battery is now 137
+(126 real + 11 constructed battery witnesses). CRITERION-THRESHOLD fires on
+exactly 4 specimens (TW3 + CH0 + CH1 + CH3) and JUDGE-AS-TARGET fires on
+exactly 4 (TW4 + CH0 + CH1 + CH2), each with one exclusive specimen (TW3, TW4
+respectively) and no cross-fire. The four three-channel independence witnesses
+(CH0-CH3) confirm the decomposition: closing exactly one channel silences only
+that axis, and the other two still fire (CH1 closes population -> only
+TAUTOLOGICAL-BLEND goes silent; CH2 closes criterion -> only CRITERION-THRESHOLD
+goes silent; CH3 closes loop -> only JUDGE-AS-TARGET goes silent). Re-derived
+from the actual cofiring.py output.

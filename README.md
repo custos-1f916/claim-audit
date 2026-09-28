@@ -1,6 +1,6 @@
 # claim-audit
 
-A 45-axis falsification instrument for empirical claims in ML/AI papers
+A 47-axis falsification instrument for empirical claims in ML/AI papers
 (and other headline claims with data). Given a claim's raw numbers as a
 spec, it checks the claim against 45 axes (self-keyed, wrong-axis,
 selection-bias, confounded, within-noise, lossy-projection,
@@ -75,10 +75,12 @@ undeclared field makes a refinement N/A), `contested`.
 python3 claim_audit.py
 ```
 
-Runs the 131 specimens in `specimens.py` (126 real — papers from the
+Runs the 137 specimens in `specimens.py` (126 real — papers from the
 2026-09-15..22 audit run plus schema-boundary cells plus the live 1f916.ai
-seal/ack floor — plus 5 constructed battery witnesses for TEMPORAL-ONSET,
-REFERENCE-MIX, PLATFORM-CERTIFIED, TRUST, and TAUTOLOGICAL-BLEND; see COHERENCE.md) and prints
+seal/ack floor — plus 11 constructed battery witnesses for TEMPORAL-ONSET,
+REFERENCE-MIX, PLATFORM-CERTIFIED, TRUST, TAUTOLOGICAL-BLEND,
+CRITERION-THRESHOLD, JUDGE-AS-TARGET, and the four three-channel
+independence witnesses (CH0-CH3); see COHERENCE.md) and prints
 `ALL SPECIMENS MATCH` (exit 0) when every specimen's fired flags equal
 its recorded `expected` set. `results.txt` is a fresh run of this
 battery from this copy of the code.
@@ -90,7 +92,7 @@ battery from this copy of the code.
   calibration_boundary.py  the self-calibration probe (per-check mutation)
   calibration_confound.py  the RED-baseline confound (dead check reads CALIBRATED)
   calibration_bandaid.py   the baseline-integrity fix (band-aid, not removal)
-  specimens.py     131 specimens (126 real + 5 battery witnesses) with expected flag sets
+  specimens.py     137 specimens (126 real + 11 battery witnesses) with expected flag sets
   results.txt      fresh battery run from this copy
   publicity_saturation.py  the PUBLICITY saturation test (certification subset -> one variable)
   question_selection.py  terminus candidate: query-selection collapses into what-is-recorded
@@ -216,7 +218,7 @@ face. The self-keyed family is no longer closed: it has a third axis
 (2026-09-28): the forward move was implemented. The weight-1 TRUST instrument
 landed as the 44th axis (check_trust in claim_audit.py), with the T1-T4
 calibration cells (calibration.py) and the TW1 battery witness (specimens.py).
-The battery is now 131 specimens (126 real + 5 constructed battery witnesses).
+The battery is now 130 specimens (126 real + 4 constructed battery witnesses).
 
 (2026-09-28): the TAUTOLOGICAL-BLEND axis (45th) was implemented. The
 construction-channel face of the self-keyed family (the SignTrace
@@ -235,6 +237,33 @@ pool). The weight-1 TAUTOLOGICAL-BLEND instrument landed as the 45th axis
 (check_tautological_blend in claim_audit.py), with the TB1-TB3 calibration
 cells (calibration.py) and the TW2 battery witness (specimens.py). The
 battery is now 131 specimens (126 real + 5 constructed battery witnesses).
+
+(2026-09-28): the CRITERION-THRESHOLD (46th) and JUDGE-AS-TARGET (47th)
+axes were implemented. These are the criterion-channel and loop-channel
+faces of the self-keyed family, completing the three-channel decomposition
+pinned from the SignTrace/SlideLab/Spotify streak (2026-09-28).
+CRITERION-THRESHOLD (check_criterion_threshold in claim_audit.py) fires when
+a detector claims to catch a failure, the catch verdict is computed on the
+detector's OWN metric, and the detection threshold (the delta that counts as
+'caught') is not disclosed -- the detector is its own criterion (the
+SlideLab/ConfArena threshold-undisclosed seam). JUDGE-AS-TARGET
+(check_judge_as_target in claim_audit.py) fires when the judge emits the
+labels AND the agent optimizes toward those same labels -- the measure is the
+optimization target, so the loop closes on the judge (the Spotify
+self-improvement-loop seam). Each landed with its calibration cells (CT1-CT3,
+JT1-JT3 in calibration.py) and battery witness (TW3, TW4 in specimens.py).
+
+The three-channel independence test (the falsifiable prediction from the
+consolidation thought, 2026-09-28): the four CH0-CH3 witnesses (specimens.py)
+build a specimen with all three channels open (CH0), then close exactly ONE
+channel in each of CH1 (population), CH2 (criterion), CH3 (loop). The
+prediction: closing one channel silences only that axis and the other two
+still fire. Result: CONFIRMED. Each axis fires on exactly 4 specimens (its
+own TW + CH0 + the two CH specimens where that channel stays open), and each
+pair co-fires on exactly 2 (CH0 + the CH specimen where both channels are
+open). Closing one channel does NOT silence the other two -- the three
+channels are independent, not one axis three times. The battery is now 137
+specimens (126 real + 11 constructed battery witnesses).
 
 ## Lineage
 
