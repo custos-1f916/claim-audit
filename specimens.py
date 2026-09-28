@@ -2381,4 +2381,75 @@ SPECIMENS = [
     "expected": [],
     "note": "SELF-SPECIMEN (CF-CG-1 terrarium, 2026-09-28, PASS cell). The sweep (6 value_b levels, 0.00..0.90) showed the argmax saturates at bc3. Structurally bounded by the 0.25 uptake cap + 0.6/0.3 reserve weights (a wider value_b re-probe within the probed range cannot dissolve the saturation). The saturation is what separates support-bound from merely-underpowered. PASS cell: COVERAGE-GAP does not fire."
   },
+  {
+    "name": "SCOPE-FLATTENING FAIL (2609.31563 multi-agent scaling, regime-flattening): plurality realizes almost none of the OR-potential, stated as scope-universal",
+    "type": "regime-sweep",
+    "mechanism": "plurality voting over N=30 agents realizes the OR-potential (P[>=1 of N correct])",
+    "mechanism_lever": "plurality",
+    "metric": "realized accuracy (fraction of OR-potential realized)",
+    "scope_claim": True,
+    "probe_support_fraction": 1.0,
+    "stated_headline": 0.5,
+    "rows": [
+      {"label": "not-modal regime",   "mechanism_on": True,  "substrate": ["plurality","n30"], "metric": 0.0},
+      {"label": "close-modal regime", "mechanism_on": True,  "substrate": ["plurality","n30"], "metric": 0.5},
+      {"label": "clear-modal regime", "mechanism_on": True,  "substrate": ["plurality","n30"], "metric": 1.0},
+      {"label": "single agent (null)","mechanism_on": False, "is_null": True, "substrate": ["single"], "metric": 0.5}
+    ],
+    "expected": ["SCOPE-FLATTENING"],
+    "note": "2609.31563 regime-flattening (the motivating case). The abstract states 'plurality realises almost none of the OR-potential' (~0.5, the close-modal value) as a scope-universal level claim. But the realized fraction varies across regimes: not-modal 0.0, close-modal 0.5, clear-modal 1.0. The instrument's max-over-scope headline selection reads the clear-modal regime (1.0), which beats the null (0.5) -> reports DISCRIMINATES, no flags. But the STATED universal value (0.5) does not beat the null (0.5). The regime-conditional value is flattened into a universal claim the instrument cannot see. FAIL cell: SCOPE-FLATTENING fires."
+  },
+  {
+    "name": "SCOPE-FLATTENING PASS-1 (2609.31563, partial support): the value is support-bound, not scope-flattened",
+    "type": "regime-sweep",
+    "mechanism": "plurality realizes the OR-potential",
+    "mechanism_lever": "plurality",
+    "metric": "realized accuracy",
+    "scope_claim": True,
+    "probe_support_fraction": 0.34,
+    "stated_headline": 0.5,
+    "rows": [
+      {"label": "not-modal regime",   "mechanism_on": True,  "substrate": ["plurality","n30"], "metric": 0.0},
+      {"label": "close-modal regime", "mechanism_on": True,  "substrate": ["plurality","n30"], "metric": 0.5},
+      {"label": "single agent (null)","mechanism_on": False, "is_null": True, "substrate": ["single"], "metric": 0.3}
+    ],
+    "expected": [],
+    "note": "PASS cell (partial support). probe_support_fraction=0.34 < 1.0: the value is underdetermined by the probe's support, so the error is support-bound (COVERAGE-GAP's domain), not scope-flattened. SCOPE-FLATTENING is N/A (partial support). BEATS-NULL passes (max 0.5 > null 0.3)."
+  },
+  {
+    "name": "SCOPE-FLATTENING PASS-2 (constant value across the scope): nothing to flatten",
+    "type": "regime-sweep",
+    "mechanism": "plurality realizes the OR-potential",
+    "mechanism_lever": "plurality",
+    "metric": "realized accuracy",
+    "scope_claim": True,
+    "probe_support_fraction": 1.0,
+    "stated_headline": 0.5,
+    "rows": [
+      {"label": "not-modal regime",   "mechanism_on": True,  "substrate": ["plurality","n30"], "metric": 0.5},
+      {"label": "close-modal regime", "mechanism_on": True,  "substrate": ["plurality","n30"], "metric": 0.5},
+      {"label": "clear-modal regime", "mechanism_on": True,  "substrate": ["plurality","n30"], "metric": 0.5},
+      {"label": "single agent (null)","mechanism_on": False, "is_null": True, "substrate": ["single"], "metric": 0.3}
+    ],
+    "expected": [],
+    "note": "PASS cell (constant value). The metric is 0.5 in every regime (1 distinct value < 2): there is nothing to flatten. The universal claim is supported (the value is the same everywhere). SCOPE-FLATTENING is N/A (constant value). BEATS-NULL passes (max 0.5 > null 0.3)."
+  },
+  {
+    "name": "SCOPE-FLATTENING PASS-3 (stated value beats the null): directionally supported, an overstatement not a load-bearing flattening",
+    "type": "regime-sweep",
+    "mechanism": "plurality realizes the OR-potential",
+    "mechanism_lever": "plurality",
+    "metric": "realized accuracy",
+    "scope_claim": True,
+    "probe_support_fraction": 1.0,
+    "stated_headline": 0.8,
+    "rows": [
+      {"label": "not-modal regime",   "mechanism_on": True,  "substrate": ["plurality","n30"], "metric": 0.0},
+      {"label": "close-modal regime", "mechanism_on": True,  "substrate": ["plurality","n30"], "metric": 0.5},
+      {"label": "clear-modal regime", "mechanism_on": True,  "substrate": ["plurality","n30"], "metric": 1.0},
+      {"label": "single agent (null)","mechanism_on": False, "is_null": True, "substrate": ["single"], "metric": 0.5}
+    ],
+    "expected": [],
+    "note": "PASS cell (stated beats null). The stated universal value (0.8) beats the null (0.5): the universal claim is directionally supported (just overstated in magnitude). The flattening is not load-bearing -- the verdict (mechanism beats null) holds at the stated value. SCOPE-FLATTENING does not fire."
+  },
 ]

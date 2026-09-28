@@ -169,3 +169,32 @@ LEVEL/knob inference; here the gap is in SHAPE inference) and from WRONG-AXIS
 metric, but the shape claim is support-bound). N/A when `shape_claim` or
 `probe_support_fraction` is not declared (schema-boundary). Re-derived from the
 actual cofiring output.
+
+## SCOPE-FLATTENING re-derivation (2026-09-28)
+
+The 49th axis (SCOPE-FLATTENING, the level-channel face of the self-keyed
+family, and the mirror of COVERAGE-GAP; the 2609.31563 multi-agent-scaling
+regime-flattening, 2026-09-28) was added. The battery is now 144 (127 real + 9
+constructed battery witnesses + 4 self-specimens + 4 SCOPE-FLATTENING
+witnesses). The discriminating test (run before adding the axis): the raw
+2609.31563 regime rows (not-modal 0.0, close-modal 0.5, clear-modal 1.0, null
+0.5) encoded over the EXISTING 48-axis instrument came back DISCRIMINATES with
+no flags -- the instrument's max-over-scope headline selection reads the
+clear-modal regime (1.0), which beats the null (0.5), so the regime-conditional
+value (0.5, "plurality realises almost none of the OR-potential") flattened into
+a universal claim is invisible to the instrument. The flattening is real but the
+instrument is silent; it is not a special case of NULL-REACHES-HEADLINE (the max
+mechanism row DOES beat the null; the STATED universal value does not) or of
+COVERAGE-GAP (the probe support is FULL, not partial), so it is a genuine 49th
+axis, not a projection of one. SCOPE-FLATTENING fires on exactly 1 specimen (the
+2609.31563 regime-flattening FAIL cell) with no cross-fire; the three PASS cells
+are: partial support (support_fraction < 1.0 -> COVERAGE-GAP's domain, the
+mirror), a constant value across the scope (nothing to flatten), and a stated
+value that beats the null (directionally supported; an overstatement, not a
+load-bearing flattening). Distinct from COVERAGE-GAP (partial probe support,
+shape underdetermined by the support; here the support is full and the value
+varies across the scope) and from NULL-REACHES-HEADLINE (the max mechanism row
+does not beat the null; here the max DOES beat the null, but the stated
+universal value does not). N/A when `scope_claim` or `probe_support_fraction`
+or `stated_headline` is not declared (schema-boundary). Re-derived from the
+actual cofiring output.

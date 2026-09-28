@@ -1864,6 +1864,58 @@ def check_coverage_gap(spec):
     return False, "COVERAGE-GAP", detail
 
 
+def check_scope_flattening(spec):
+    """SCOPE-FLATTENING (49th primary axis, 2026-09-28): the level-channel face of
+    the self-keyed family, and the mirror of COVERAGE-GAP (the 2609.31563
+    regime-flattening, 2026-09-28). COVERAGE-GAP fires on a PARTIAL probe support
+    (the shape is underdetermined by the support); SCOPE-FLATTENING fires on a
+    FULL probe support where the value VARIES across the scope (regimes) but the
+    claim states ONE value as scope-universal, and that stated value does not beat
+    the null while the instrument's max-over-scope headline selection (which reads
+    the most favorable regime) does -- so the flattening is masked and the
+    instrument reports DISCRIMINATES. Distinct from COVERAGE-GAP (partial support;
+    here the support is full) and from NULL-REACHES-HEADLINE (the max mechanism row
+    does not beat the null; here the max DOES beat the null, but the STATED
+    universal value does not). N/A when `scope_claim` is not declared
+    (schema-boundary), when the claim is not a scope-universal level claim, when
+    `probe_support_fraction` is not declared or is < 1.0 (partial support ->
+    COVERAGE-GAP's domain), when the metric is constant across the scope (nothing
+    to flatten), when `stated_headline` is not declared, when the stated value
+    beats the null (directionally supported; an overstatement, not a load-bearing
+    flattening), or when the instrument's max-over-scope headline does not beat the
+    null (the flattening is not masked; NULL-REACHES-HEADLINE already fires).
+    fail -> SCOPE-FLATTENING."""
+    claim = spec.get("scope_claim")
+    if claim is None:
+        return True, "", "N/A (scope_claim not declared; the axis does not apply)"
+    if not claim:
+        return True, "", "N/A (the claim is not a scope-universal level claim; the axis does not apply)"
+    support_frac = spec.get("probe_support_fraction")
+    if support_frac is None:
+        return True, "", "N/A (probe_support_fraction not declared; the axis does not apply)"
+    if support_frac < 1.0:
+        return True, "", "probe support is partial (support_fraction=%g < 1.0); the value is support-bound, not scope-flattened (COVERAGE-GAP's domain)" % support_frac
+    on = [r["metric"] for r in _rows(spec, lambda r: r.get("mechanism_on"))]
+    if not on:
+        return True, "", "N/A (no mechanism rows; the axis does not apply)"
+    if len(set(on)) < 2:
+        return True, "", "the metric is constant across the scope (%d distinct values < 2); there is nothing to flatten" % len(set(on))
+    stated = spec.get("stated_headline")
+    if stated is None:
+        return True, "", "N/A (stated_headline not declared; the axis does not apply)"
+    nul = [r["metric"] for r in _rows(spec, lambda r: (not r.get("mechanism_on")) or r.get("is_null"))]
+    if not nul:
+        return True, "", "N/A (no null rows; the stated value cannot be compared against the null)"
+    n = max(nul)
+    if stated > n:
+        return True, "", "the stated universal value %g beats the null %g (directionally supported; an overstatement, not a load-bearing flattening)" % (stated, n)
+    h = max(on)
+    if not (h > n):
+        return True, "", "the instrument's max-over-scope headline %g does not beat the null %g (the flattening is not masked; NULL-REACHES-HEADLINE governs)" % (h, n)
+    detail = ("the claim states a single value (%g) as scope-universal over a FULL probe support (support_fraction=%g), but the value varies across the scope (%d distinct values, max %g): the stated value %g does not beat the null %g, while the instrument's max-over-scope headline selection reads the most favorable regime (%g) and reports DISCRIMINATES -- the regime-conditional value is flattened into a universal claim the instrument cannot see" % (stated, support_frac, len(set(on)), h, stated, n, h))
+    return False, "SCOPE-FLATTENING", detail
+
+
 CHECKS = [
     ("BEATS-NULL",     check_beats_null),
     ("NOT-SELF-KEYED", check_not_self_keyed),
@@ -1913,6 +1965,7 @@ CHECKS = [
     ("CRITERION-THRESHOLD", check_criterion_threshold),
     ("JUDGE-AS-TARGET", check_judge_as_target),
     ("COVERAGE-GAP", check_coverage_gap),
+    ("SCOPE-FLATTENING", check_scope_flattening),
 ]
 
 def _no_empirical(spec):
@@ -1926,7 +1979,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:
