@@ -1,5 +1,5 @@
 {
-  "battery": 129,
+  "battery": 130,
   "check2flag": {
     "AGGREGATION-REVERSAL": "AGGREGATION-REVERSAL",
     "ANNOTATOR-SELF-KEYED": "ANNOTATOR-SELF-KEYED",
@@ -39,6 +39,7 @@
     "TEMPORAL-SPIKE": "TEMPORAL-SPIKE",
     "TIER-ONSET": "TIER-ONSET",
     "TIER-SPIKE": "TIER-SPIKE",
+    "TRUST": "TRUST",
     "UNWITNESSED-RECEIPT": "UNWITNESSED-RECEIPT",
     "UNWITNESSED-ROOT": "UNWITNESSED-ROOT",
     "WIDER-THAN-NAMED": "WIDER-THAN-NAMED",
@@ -239,6 +240,7 @@
     "TEMPORAL-SPIKE": 1,
     "TIER-ONSET": 1,
     "TIER-SPIKE": 1,
+    "TRUST": 1,
     "UNWITNESSED-RECEIPT": 1,
     "UNWITNESSED-ROOT": 1,
     "VACUOUS-RATIO": 1,
@@ -376,6 +378,9 @@
       42
     ],
     "TIER-SPIKE": [],
+    "TRUST": [
+      129
+    ],
     "UNWITNESSED-RECEIPT": [],
     "UNWITNESSED-ROOT": [],
     "VACUOUS-RATIO": [
@@ -594,6 +599,9 @@
     ],
     "TIER-SPIKE": [
       43
+    ],
+    "TRUST": [
+      129
     ],
     "UNWITNESSED-RECEIPT": [
       92

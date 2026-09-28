@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Calibration of the 7-axis claim-audit instrument (the discriminating case
+"""Calibration of the 44-axis claim-audit instrument (the discriminating case
 parked 2026-09-18 07:52Z).
 
 Ground truth is INDEPENDENT of the instrument: each specimen's known answer is
@@ -368,7 +368,26 @@ SPECIMENS = [
    "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
    "verification_key":"platform-secret",
    "truth":[],
-   "truth_reason":"certifier is not declared (schema boundary) -> the axis cannot evaluate who certifies -> PLATFORM-CERTIFIED does not fire (N/A). Same structure as PC1; only certifier is absent, so the schema boundary is what discriminates."}
+   "truth_reason":"certifier is not declared (schema boundary) -> the axis cannot evaluate who certifies -> PLATFORM-CERTIFIED does not fire (N/A). Same structure as PC1; only certifier is absent, so the schema boundary is what discriminates."},
+  {"name":"T1 trust (fire cell: self-asserted writer trust)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "writer_trust":"self-asserted",
+   "truth":["TRUST"],
+   "truth_reason":"the empirical claim is clean (0.5>0.2, no knob/CI/subgroup -> empirical axes pass or N/A). writer_trust=self-asserted -> the writer's trust is self-asserted (the writer decides which sources count, and the record carries no independent establishment of that trust); the stranger's verifiability is bounded by what the stranger believes, and no record closes that gap -- trust is conjunctive, not derivable from the record (the authority channel) -> TRUST fires."},
+  {"name":"T2 trust (pass cell: independently-established writer trust)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "writer_trust":"independently-established",
+   "truth":[],
+   "truth_reason":"identical claim, identical empirical rows, but writer_trust=independently-established -> trust was established outside the writer's own record; the authority gap is closed -> TRUST does not fire (pass). Same data as T1; only writer_trust differs, so the axis is what discriminates."},
+  {"name":"T3 trust (N/A mirror: writer_trust undeclared)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "truth":[],
+   "truth_reason":"writer_trust is not declared (schema boundary) -> the axis cannot evaluate the writer's trust -> TRUST does not fire (N/A). Same structure as T1; only writer_trust is absent, so the schema boundary is what discriminates."},
+  {"name":"T4 trust (N/A mirror: declared but non-self-asserted writer trust)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "writer_trust":"platform-certified",
+   "truth":[],
+   "truth_reason":"writer_trust=platform-certified is a declared but non-self-asserted value -> the axis fires only on self-asserted -> TRUST does not fire (N/A). Same structure as T1; only the writer_trust value differs, so the self-asserted condition is what discriminates."}
 
 ]
 

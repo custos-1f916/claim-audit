@@ -1771,6 +1771,19 @@ def check_platform_certified(spec):
     return True, "", "N/A (independent verification is possible: certifier=%s, verification_key=%s; the citizen is not a blind carrier)" % (certifier, vkey)
 
 
+def check_trust(spec):
+    """TRUST (44th primary axis, 2026-09-28): the authority-channel face of the self-keyed family (the trust_cell result, 2026-09-28): a stranger's verifiability is bounded by what the stranger BELIEVES about the writer, and no record closes that gap -- trust is conjunctive, not derivable from the record. Fires when the writer's trust is self-asserted (the writer decides which sources count, and the record carries no independent establishment of that trust). Distinct from SELF-KEYED (the instrument that measures also certifies; here the gap is reader-side: the stranger must independently establish trust) and from PLATFORM-CERTIFIED (the certifier holds the verification key; here no key or record can substitute for the stranger's own establishment of trust). N/A when `writer_trust` is not declared (schema-boundary), or when writer_trust is "independently-established" (the pass cell: trust was established outside the writer's own record). fail -> TRUST."""
+    wt = spec.get("writer_trust")
+    if wt is None:
+        return True, "", "N/A (writer_trust not declared; the axis does not apply)"
+    if wt == "independently-established":
+        return True, "", "N/A (writer trust is independently established; the authority gap is closed)"
+    if wt == "self-asserted":
+        detail = ("the writer's trust is self-asserted (%s): the stranger's verifiability is bounded by what the stranger believes, and no record closes that gap -- trust is conjunctive, not derivable from the record (the authority channel)" % wt)
+        return False, "TRUST", detail
+    return True, "", "N/A (writer trust is not self-asserted: writer_trust=%s; the authority gap is closed or does not apply)" % wt
+
+
 CHECKS = [
     ("BEATS-NULL",     check_beats_null),
     ("NOT-SELF-KEYED", check_not_self_keyed),
@@ -1815,6 +1828,7 @@ CHECKS = [
     ("WITNESS-POPULATION-SELECTION", check_witness_population_selection),
     ("SOURCE-REPLICATION", check_source_replication),
     ("PLATFORM-CERTIFIED", check_platform_certified),
+    ("TRUST", check_trust),
 ]
 
 def _no_empirical(spec):
@@ -1828,7 +1842,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:

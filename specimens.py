@@ -2178,4 +2178,18 @@ SPECIMENS = [
     "note": "CONSTRUCTED WITNESS (platform-certified axis, 2026-09-27). Scaffolding rows keep the empirical axes clean (no knob/CI/subgroup); the certification fields carry the axis. certifier=platform AND verification_key=platform-secret -> the platform is the certifier and holds the verification key; the citizen is a blind carrier; no independent third party can verify (needs the platform's secret) -> the self-keyed gap fires at the certifier layer -> PLATFORM-CERTIFIED fires, and no other flag fires (exclusive). Mirrors the calibration fire cell PC1; the live external specimen is the seal-ack-floor (1f916.ai /api/me/ack), which additionally fires NO-EMPIRICAL-CONTENT because it is a specification with no data rows. The constructed witness is what makes the axis exclusive on the battery, not a re-label of NO-EMPIRICAL-CONTENT."
   },
 
+  {
+    "name": "trust battery witness (self-asserted writer trust, TW1)",
+    "type": "cross-model",
+    "mechanism": "writer-trust (who the stranger must trust)",
+    "metric": "stranger-verifiability of the record",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.5},
+      {"mechanism_on": False, "is_null": True, "metric": 0.2}
+    ],
+    "writer_trust": "self-asserted",
+    "expected": ["TRUST"],
+    "note": "CONSTRUCTED WITNESS (trust axis, 2026-09-28). Scaffolding rows keep the empirical axes clean (no knob/CI/subgroup); the certification field carries the axis. writer_trust=self-asserted -> the writer's trust is self-asserted (the writer decides which sources count, and the record carries no independent establishment of that trust); the stranger's verifiability is bounded by what the stranger believes, and no record closes that gap -- trust is conjunctive, not derivable from the record (the authority channel) -> TRUST fires, and no other flag fires (exclusive). Mirrors the calibration fire cell T1; the live external specimen is the trust_cell result (public, lossless, untrusted -> still unverifiable). The constructed witness is what makes the axis exclusive on the battery, not a re-label of the empirical axes."
+  },
+
 ]
