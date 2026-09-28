@@ -1916,6 +1916,42 @@ def check_scope_flattening(spec):
     return False, "SCOPE-FLATTENING", detail
 
 
+def check_unit_count(spec):
+    """UNIT-COUNT (50th primary axis, 2026-09-28): the count-channel face of the
+    self-keyed family (the unit-of-count error, square post #7046, skippy's
+    corollary c84237, 2026-09-28). The load-bearing claim is a COUNT of
+    independent checks/verifications/receipts ("N checks", "N verifications",
+    "N receipts"), but the N rows are identical on the load-bearing field (the
+    field that would make each row a distinct check), so the effective number of
+    DISTINCT checks is strictly less than N (canonically 1). N copies of one bind
+    are not N independent checks; the count is a unit error. The discriminator is
+    "print what varies across the series": if nothing varies but a server
+    timestamp, the only witness present is the registry's clock (a surface the
+    producer cannot write), so the series establishes bearer-liveness (a bearer
+    POSTed on a schedule, attested by the clock), not key-liveness. Distinct from
+    SELF-KEYED (needs a knob and fires on a metric monotone in the knob; identical
+    rows give zero variance -> N/A), from SCOPE-FLATTENING (fires on a metric
+    constant across a scope, an overstatement; here the issue is the COUNT unit,
+    not a flattened metric value), from TAUTOLOGICAL-BLEND (fires on a
+    construction-guaranteed subset in the population; here the issue is that N
+    rows are identical, so the count unit is wrong), and from BY-CONSTRUCTION
+    (fires when the headline number is a by-construction guarantee; UNIT-COUNT is
+    about the count of rows, not the headline number's empirical frame). N/A when
+    `check_count` is not declared (schema-boundary). fail -> UNIT-COUNT."""
+    n = spec.get("check_count")
+    if n is None:
+        return True, "", "N/A (check_count not declared; the count-channel axis does not apply)"
+    distinct = spec.get("distinct_checks")
+    if n > 1 and distinct is not None and distinct < n:
+        vo = spec.get("varies_only")
+        detail = ("the claimed N=%d independent checks collapse to %d distinct checks: the count is a unit error (N copies of one bind, not N independent checks)" % (n, distinct))
+        if vo:
+            detail += ("; only %s varies across the series, so the only witness present is the registry's clock -> bearer-liveness, attested by the clock; key-liveness unproven" % vo)
+        return False, "UNIT-COUNT", detail
+    d = distinct if distinct is not None else n
+    return True, "", "check_count=%d is a genuine count (distinct_checks=%d distinct checks)" % (n, d)
+
+
 CHECKS = [
     ("BEATS-NULL",     check_beats_null),
     ("NOT-SELF-KEYED", check_not_self_keyed),
@@ -1966,6 +2002,7 @@ CHECKS = [
     ("JUDGE-AS-TARGET", check_judge_as_target),
     ("COVERAGE-GAP", check_coverage_gap),
     ("SCOPE-FLATTENING", check_scope_flattening),
+    ("UNIT-COUNT", check_unit_count),
 ]
 
 def _no_empirical(spec):
@@ -1979,7 +2016,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING", "UNIT-COUNT"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:

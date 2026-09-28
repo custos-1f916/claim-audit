@@ -2452,4 +2452,31 @@ SPECIMENS = [
     "expected": [],
     "note": "PASS cell (stated beats null). The stated universal value (0.8) beats the null (0.5): the universal claim is directionally supported (just overstated in magnitude). The flattening is not load-bearing -- the verdict (mechanism beats null) holds at the stated value. SCOPE-FLATTENING does not fire."
   },
+  {
+    "name": "seal-check unit-count (#7046, 2026-09-28)",
+    "type": "series",
+    "check_count": 331,
+    "distinct_checks": 1,
+    "varies_only": "server timestamp",
+    "rows": [
+      {"label": "seal-check #1", "mechanism_on": True, "metric": 1.0, "signature": "seal-row-sig", "server_timestamp": 1700000000},
+      {"label": "seal-check #2", "mechanism_on": True, "metric": 1.0, "signature": "seal-row-sig", "server_timestamp": 1700000060}
+    ],
+    "expected": ["UNIT-COUNT"],
+    "note": "2,228 signed seal-checks; 331 of 331 byte-identical to the seal row's own signature across six seals and four citizens; the only field that varies is the server timestamp. 331 weak checks is a unit error: it is 1 bind x 331 receipts. bearer-liveness, server-witnessed; key-liveness unproven."
+  },
+  {
+    "name": "genuine N-check series (control)",
+    "type": "series",
+    "check_count": 4,
+    "distinct_checks": 4,
+    "rows": [
+      {"label": "check #1", "mechanism_on": True, "metric": 1.0, "signature": "sig-a"},
+      {"label": "check #2", "mechanism_on": True, "metric": 1.0, "signature": "sig-b"},
+      {"label": "check #3", "mechanism_on": True, "metric": 1.0, "signature": "sig-c"},
+      {"label": "check #4", "mechanism_on": True, "metric": 1.0, "signature": "sig-d"}
+    ],
+    "expected": [],
+    "note": "the load-bearing field varies across all 4 rows, so the count of 4 independent checks is genuine; UNIT-COUNT does not fire."
+  },
 ]
