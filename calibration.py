@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Calibration of the 45-axis claim-audit instrument (the discriminating case
+"""Calibration of the 47-axis claim-audit instrument (the discriminating case
 parked 2026-09-18 07:52Z).
 
 Ground truth is INDEPENDENT of the instrument: each specimen's known answer is
@@ -413,8 +413,45 @@ SPECIMENS = [
    "measured_count":297,
    "separated":False,
    "truth":[],
-   "truth_reason":"guaranteed_count is not declared (schema boundary) -> the axis cannot evaluate the construction-guaranteed subset -> TAUTOLOGICAL-BLEND does not fire (N/A). Same structure as TB1; only guaranteed_count is absent, so the schema boundary is what discriminates."}
+   "truth_reason":"guaranteed_count is not declared (schema boundary) -> the axis cannot evaluate the construction-guaranteed subset -> TAUTOLOGICAL-BLEND does not fire (N/A). Same structure as TB1; only guaranteed_count is absent, so the schema boundary is what discriminates."},
 
+  {"name":"CT1 criterion-threshold (fire cell: undisclosed threshold on own metric)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "detector_catches_claim":True,
+   "detection_on_own_metric":True,
+   "detection_threshold_disclosed":False,
+   "truth":["CRITERION-THRESHOLD"],
+   "truth_reason":"the detector claims to catch a failure, the catch verdict is on the detector's OWN metric, and the detection threshold is not disclosed -> the detector is its own criterion and the catch verdict is not magnitude-calibrated -> CRITERION-THRESHOLD fires."},
+  {"name":"CT2 criterion-threshold (pass cell: threshold disclosed)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "detector_catches_claim":True,
+   "detection_on_own_metric":True,
+   "detection_threshold_disclosed":True,
+   "truth":[],
+   "truth_reason":"identical claim, identical empirical rows, identical criterion fields, but detection_threshold_disclosed=True -> the threshold that counts as a catch is disclosed, so the catch verdict is magnitude-calibrated -> CRITERION-THRESHOLD does not fire (pass). Same data as CT1; only the threshold differs, so the axis is what discriminates."},
+  {"name":"CT3 criterion-threshold (N/A mirror: detector_catches_claim undeclared)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "detection_on_own_metric":True,
+   "detection_threshold_disclosed":False,
+   "truth":[],
+   "truth_reason":"detector_catches_claim is not declared (schema boundary) -> the axis cannot evaluate the detector's catch claim -> CRITERION-THRESHOLD does not fire (N/A). Same structure as CT1; only detector_catches_claim is absent, so the schema boundary is what discriminates."},
+  {"name":"JT1 judge-as-target (fire cell: judge emits labels and agent optimizes toward them)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "judge_emits_labels":True,
+   "agent_optimizes_toward_judge":True,
+   "truth":["JUDGE-AS-TARGET"],
+   "truth_reason":"the judge emits the labels AND the agent optimizes toward those same labels -> the measure is the optimization target, so the loop closes on the judge and the reported gain is self-measured -> JUDGE-AS-TARGET fires."},
+  {"name":"JT2 judge-as-target (pass cell: agent does not optimize toward the judge)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "judge_emits_labels":True,
+   "agent_optimizes_toward_judge":False,
+   "truth":[],
+   "truth_reason":"identical claim, identical empirical rows, identical loop fields, but agent_optimizes_toward_judge=False -> the agent does not optimize toward the judge's labels, so the measure and the target are separated -> JUDGE-AS-TARGET does not fire (pass). Same data as JT1; only the optimization target differs, so the axis is what discriminates."},
+  {"name":"JT3 judge-as-target (N/A mirror: judge_emits_labels undeclared)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "agent_optimizes_toward_judge":True,
+   "truth":[],
+   "truth_reason":"judge_emits_labels is not declared (schema boundary) -> the axis cannot evaluate the judge's label emission -> JUDGE-AS-TARGET does not fire (N/A). Same structure as JT1; only judge_emits_labels is absent, so the schema boundary is what discriminates."}
 ]
 
 def main():

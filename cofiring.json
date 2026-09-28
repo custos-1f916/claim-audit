@@ -1,11 +1,12 @@
 {
-  "battery": 131,
+  "battery": 137,
   "check2flag": {
     "AGGREGATION-REVERSAL": "AGGREGATION-REVERSAL",
     "ANNOTATOR-SELF-KEYED": "ANNOTATOR-SELF-KEYED",
     "BEATS-NULL": "NULL-REACHES-HEADLINE",
     "CO-MOVES": "WRONG-AXIS",
     "COMPUTABLE": "NOT-COMPUTABLE",
+    "CRITERION-THRESHOLD": "CRITERION-THRESHOLD",
     "DOSE-ONSET": "DOSE-ONSET",
     "DOSE-RESPONSE": "DOSE-RESPONSE",
     "DOSE-SPIKE": "DOSE-SPIKE",
@@ -13,6 +14,7 @@
     "FIDELITY": "FIDELITY",
     "FUNNEL-STAGE-MISATTRIBUTION": "FUNNEL-STAGE-MISATTRIBUTION",
     "ISOLATED": "CONFOUNDED",
+    "JUDGE-AS-TARGET": "JUDGE-AS-TARGET",
     "LOSSY-PROJECTION": "LOSSY-PROJECTION",
     "METRIC-ONSET": "METRIC-ONSET",
     "METRIC-SPIKE": "METRIC-SPIKE",
@@ -187,6 +189,11 @@
     ],
     [
       2,
+      "JUDGE-AS-TARGET",
+      "TAUTOLOGICAL-BLEND"
+    ],
+    [
+      2,
       "EVIDENCE-UNCLOSED",
       "NO-EMPIRICAL-CONTENT"
     ],
@@ -194,6 +201,16 @@
       2,
       "DOSE-RESPONSE",
       "NULL-REACHES-HEADLINE"
+    ],
+    [
+      2,
+      "CRITERION-THRESHOLD",
+      "TAUTOLOGICAL-BLEND"
+    ],
+    [
+      2,
+      "CRITERION-THRESHOLD",
+      "JUDGE-AS-TARGET"
     ],
     [
       2,
@@ -207,6 +224,7 @@
     "BY-CONSTRUCTION": 1,
     "CONFOUNDED": 6,
     "CONSEQUENCE-WITNESSED": 4,
+    "CRITERION-THRESHOLD": 4,
     "DOSE-ONSET": 1,
     "DOSE-RESPONSE": 2,
     "DOSE-SPIKE": 1,
@@ -214,6 +232,7 @@
     "FIDELITY": 1,
     "FUNNEL-STAGE-MISATTRIBUTION": 1,
     "INCOMPARABLE-STATISTIC": 1,
+    "JUDGE-AS-TARGET": 4,
     "LOSSY-PROJECTION": 6,
     "METRIC-ONSET": 1,
     "METRIC-SPIKE": 3,
@@ -237,7 +256,7 @@
     "SPLIT-SPIKE": 3,
     "SUBGROUP-ONSET": 1,
     "SUBGROUP-SPIKE": 1,
-    "TAUTOLOGICAL-BLEND": 1,
+    "TAUTOLOGICAL-BLEND": 4,
     "TEMPORAL-ONSET": 1,
     "TEMPORAL-SPIKE": 1,
     "TIER-ONSET": 1,
@@ -271,6 +290,9 @@
       61,
       63
     ],
+    "CRITERION-THRESHOLD": [
+      135
+    ],
     "DOSE-ONSET": [
       37
     ],
@@ -283,6 +305,9 @@
     "FUNNEL-STAGE-MISATTRIBUTION": [],
     "INCOMPARABLE-STATISTIC": [
       14
+    ],
+    "JUDGE-AS-TARGET": [
+      136
     ],
     "LOSSY-PROJECTION": [
       17,
@@ -430,6 +455,12 @@
       63,
       91
     ],
+    "CRITERION-THRESHOLD": [
+      131,
+      132,
+      134,
+      135
+    ],
     "DOSE-ONSET": [
       37
     ],
@@ -452,6 +483,12 @@
     ],
     "INCOMPARABLE-STATISTIC": [
       14
+    ],
+    "JUDGE-AS-TARGET": [
+      131,
+      132,
+      133,
+      136
     ],
     "LOSSY-PROJECTION": [
       17,
@@ -594,7 +631,10 @@
       33
     ],
     "TAUTOLOGICAL-BLEND": [
-      130
+      130,
+      131,
+      133,
+      134
     ],
     "TEMPORAL-ONSET": [
       125

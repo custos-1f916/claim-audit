@@ -2210,4 +2210,121 @@ SPECIMENS = [
     "note": "CONSTRUCTED WITNESS (tautological-blend axis, 2026-09-28). Scaffolding rows keep the empirical axes clean (no knob/CI/subgroup); the construction fields carry the axis. guaranteed_count=200, total_count=500, measured_count=297, separated=False -> the SignTrace Pool@60 decomposition: 200 preselected targets are guaranteed to be in the top-60 pool (100% by construction), 300 measured targets are not (297/300=99.0%); the headline Pool@60=99.4% blends the guaranteed (200/500) with the measured (297/500) without separating them -> the guaranteed component inflates the headline by 0.4pp -> TAUTOLOGICAL-BLEND fires, and no other flag fires (exclusive). Mirrors the calibration fire cell TB1; the live external specimen is the SignTrace paper (arXiv:2609.30295, Pool@60=99.4% over 500 queries, 200 preselected into the 60-entry pool). The constructed witness is what makes the axis exclusive on the battery, not a re-label of the empirical axes."
   },
 
+  {
+    "name": "three-channel independence witness (all channels open, CH0)",
+    "type": "cross-model",
+    "mechanism": "self-referential evaluation (three channels open)",
+    "metric": "quality (self-measured)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.5},
+      {"mechanism_on": False, "is_null": True, "metric": 0.2}
+    ],
+    "metric_name": "Pool@60",
+    "guaranteed_count": 200,
+    "total_count": 500,
+    "measured_count": 297,
+    "separated": False,
+    "detector_catches_claim": True,
+    "detection_on_own_metric": True,
+    "detection_threshold_disclosed": False,
+    "judge_emits_labels": True,
+    "agent_optimizes_toward_judge": True,
+    "expected": ["TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET"],
+    "note": "CONSTRUCTED WITNESS (three-channel independence test, 2026-09-28). All three self-referentiality channels are open simultaneously: population (guaranteed_count=200/500 blended, separated=False -> TAUTOLOGICAL-BLEND), criterion (detector_catches_claim on own metric, threshold undisclosed -> CRITERION-THRESHOLD), loop (judge emits labels, agent optimizes toward them -> JUDGE-AS-TARGET). Scaffolding rows keep the empirical axes clean (0.5>0.2, no knob/CI/subgroup). This is the 'not one axis three times' cell: a single specimen with all three channels open fires all three distinct axes. The discriminating test is CH1-CH3: closing exactly one channel silences exactly that axis and leaves the other two firing."
+  },
+  {
+    "name": "three-channel independence witness (population closed, CH1)",
+    "type": "cross-model",
+    "mechanism": "self-referential evaluation (population channel closed)",
+    "metric": "quality (self-measured)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.5},
+      {"mechanism_on": False, "is_null": True, "metric": 0.2}
+    ],
+    "metric_name": "Pool@60",
+    "guaranteed_count": 200,
+    "total_count": 500,
+    "measured_count": 297,
+    "separated": True,
+    "detector_catches_claim": True,
+    "detection_on_own_metric": True,
+    "detection_threshold_disclosed": False,
+    "judge_emits_labels": True,
+    "agent_optimizes_toward_judge": True,
+    "expected": ["CRITERION-THRESHOLD", "JUDGE-AS-TARGET"],
+    "note": "CONSTRUCTED WITNESS (three-channel independence test, 2026-09-28). Identical to CH0 except the population channel is CLOSED (separated=True: the guaranteed component is separately reported, so TAUTOLOGICAL-BLEND is silent). The criterion and loop channels remain open. Prediction: TAUTOLOGICAL-BLEND silent, CRITERION-THRESHOLD + JUDGE-AS-TARGET fire. If closing the population channel also silenced the criterion or loop (or if all three still fired), the channel decomposition would be an artifact."
+  },
+  {
+    "name": "three-channel independence witness (criterion closed, CH2)",
+    "type": "cross-model",
+    "mechanism": "self-referential evaluation (criterion channel closed)",
+    "metric": "quality (self-measured)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.5},
+      {"mechanism_on": False, "is_null": True, "metric": 0.2}
+    ],
+    "metric_name": "Pool@60",
+    "guaranteed_count": 200,
+    "total_count": 500,
+    "measured_count": 297,
+    "separated": False,
+    "detector_catches_claim": True,
+    "detection_on_own_metric": True,
+    "detection_threshold_disclosed": True,
+    "judge_emits_labels": True,
+    "agent_optimizes_toward_judge": True,
+    "expected": ["TAUTOLOGICAL-BLEND", "JUDGE-AS-TARGET"],
+    "note": "CONSTRUCTED WITNESS (three-channel independence test, 2026-09-28). Identical to CH0 except the criterion channel is CLOSED (detection_threshold_disclosed=True: the threshold that counts as a catch is disclosed, so CRITERION-THRESHOLD is silent). The population and loop channels remain open. Prediction: CRITERION-THRESHOLD silent, TAUTOLOGICAL-BLEND + JUDGE-AS-TARGET fire."
+  },
+  {
+    "name": "three-channel independence witness (loop closed, CH3)",
+    "type": "cross-model",
+    "mechanism": "self-referential evaluation (loop channel closed)",
+    "metric": "quality (self-measured)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.5},
+      {"mechanism_on": False, "is_null": True, "metric": 0.2}
+    ],
+    "metric_name": "Pool@60",
+    "guaranteed_count": 200,
+    "total_count": 500,
+    "measured_count": 297,
+    "separated": False,
+    "detector_catches_claim": True,
+    "detection_on_own_metric": True,
+    "detection_threshold_disclosed": False,
+    "judge_emits_labels": True,
+    "agent_optimizes_toward_judge": False,
+    "expected": ["TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD"],
+    "note": "CONSTRUCTED WITNESS (three-channel independence test, 2026-09-28). Identical to CH0 except the loop channel is CLOSED (agent_optimizes_toward_judge=False: the agent does not optimize toward the judge's labels, so the measure and the target are separated and JUDGE-AS-TARGET is silent). The population and criterion channels remain open. Prediction: JUDGE-AS-TARGET silent, TAUTOLOGICAL-BLEND + CRITERION-THRESHOLD fire."
+  },
+  {
+    "name": "criterion-threshold battery witness (SlideLab/ConfArena threshold-undisclosed, TW3)",
+    "type": "cross-model",
+    "mechanism": "detector catch verdict (ConfArena)",
+    "metric": "faithfulness (0-1, the detector's own metric)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.5},
+      {"mechanism_on": False, "is_null": True, "metric": 0.2}
+    ],
+    "detector_catches_claim": True,
+    "detection_on_own_metric": True,
+    "detection_threshold_disclosed": False,
+    "expected": ["CRITERION-THRESHOLD"],
+    "note": "CONSTRUCTED WITNESS (criterion-threshold axis, 2026-09-28). Scaffolding rows keep the empirical axes clean (no knob/CI/subgroup); the criterion fields carry the axis. detector_catches_claim=True, detection_on_own_metric=True, detection_threshold_disclosed=False -> the detector claims to catch a failure, the catch verdict is on the detector's OWN metric, and the detection threshold (the delta that counts as a catch) is not disclosed -> the detector is its own criterion and the catch verdict is not magnitude-calibrated -> CRITERION-THRESHOLD fires, and no other flag fires (exclusive). Mirrors the calibration fire cell CT1; the live external specimen is the SlideLab/ConfArena paper (arXiv:2609.30294, Table 6 'ConfArena is the only evaluation that catches all four targeted failures' via delta=-0.01 on its own 0-1 faithfulness metric, threshold undisclosed). The constructed witness is what makes the axis exclusive on the battery, not a re-label of the empirical axes."
+  },
+  {
+    "name": "judge-as-target battery witness (Spotify self-improvement loop, TW4)",
+    "type": "cross-model",
+    "mechanism": "self-improvement loop (judge as optimization target)",
+    "metric": "quality (self-measured by the judge)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.5},
+      {"mechanism_on": False, "is_null": True, "metric": 0.2}
+    ],
+    "judge_emits_labels": True,
+    "agent_optimizes_toward_judge": True,
+    "expected": ["JUDGE-AS-TARGET"],
+    "note": "CONSTRUCTED WITNESS (judge-as-target axis, 2026-09-28). Scaffolding rows keep the empirical axes clean (no knob/CI/subgroup); the loop fields carry the axis. judge_emits_labels=True, agent_optimizes_toward_judge=True -> the judge emits the green/red labels AND the agent optimizes toward those same labels -> the measure is the optimization target, so the loop closes on the judge and the reported gain is self-measured -> JUDGE-AS-TARGET fires, and no other flag fires (exclusive). Mirrors the calibration fire cell JT1; the live external specimen is the Spotify paper (arXiv:2609.30297, the LLM-as-judge emits the labels and the coding agent optimizes the agent toward those labels; the +8% quality gain is self-measured on synthetic data). The constructed witness is what makes the axis exclusive on the battery, not a re-label of the empirical axes."
+  },
 ]

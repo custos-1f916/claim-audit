@@ -1805,6 +1805,36 @@ def check_tautological_blend(spec):
 
 
 
+def check_criterion_threshold(spec):
+    """CRITERION-THRESHOLD (46th primary axis, 2026-09-28): the criterion-channel face of the self-keyed family (the SlideLab/ConfArena threshold-undisclosed seam, 2026-09-28). Fires when a detector claims to catch/detect a failure, the catch verdict is computed on the detector's OWN metric, and the detection threshold (the delta that counts as 'caught') is not disclosed -- so the catch verdict is not magnitude-calibrated and the detector is its own criterion. Distinct from TAUTOLOGICAL-BLEND (the population channel: a construction-guaranteed subset is blended into the headline; here the population is clean and the seam is the undisclosed threshold on the detector's own metric) and from FIDELITY (the headline number does not match the body; here the numbers match but the threshold that turns a delta into a 'catch' is undisclosed). N/A when `detector_catches_claim` is not declared (schema-boundary), or when the detection threshold is disclosed (pass cell: the delta that counts as a catch is magnitude-calibrated). fail -> CRITERION-THRESHOLD."""
+    claim = spec.get("detector_catches_claim")
+    if claim is None:
+        return True, "", "N/A (detector_catches_claim not declared; the axis does not apply)"
+    if not claim:
+        return True, "", "N/A (the detector does not claim to catch a failure; the axis does not apply)"
+    own = spec.get("detection_on_own_metric", False)
+    if not own:
+        return True, "", "N/A (the detection verdict is not on the detector's own metric; the criterion is external, the axis does not apply)"
+    disclosed = spec.get("detection_threshold_disclosed", False)
+    if disclosed:
+        return True, "", "N/A (the detection threshold is disclosed; the catch verdict is magnitude-calibrated, the pass cell)"
+    detail = ("the detector claims to catch a failure, and the catch verdict is computed on the detector's OWN metric, but the detection threshold (the delta that counts as 'caught') is not disclosed: the detector is its own criterion, and the catch verdict is not magnitude-calibrated")
+    return False, "CRITERION-THRESHOLD", detail
+
+def check_judge_as_target(spec):
+    """JUDGE-AS-TARGET (47th primary axis, 2026-09-28): the loop-channel face of the self-keyed family (the Spotify judge-as-target seam, 2026-09-28). Fires when the judge (LLM-as-judge or human) emits the labels AND the agent optimizes toward those same labels -- the measure is the optimization target, so the loop closes on the judge and the reported gain is self-measured. Distinct from ANNOTATOR-SELF-KEYED (the behavioral claim rests on a non-public annotation; here the annotation is the OPTIMIZATION TARGET, not just the evidence, and the loop closes on the judge) and from NOT-SELF-KEYED (the metric is monotone in the mechanism's own knob; here the judge is a separate component that both measures and is the target). N/A when `judge_emits_labels` is not declared (schema-boundary), or when the agent does not optimize toward the judge's labels (pass cell: the measure and the target are separated). fail -> JUDGE-AS-TARGET."""
+    emits = spec.get("judge_emits_labels")
+    if emits is None:
+        return True, "", "N/A (judge_emits_labels not declared; the axis does not apply)"
+    if not emits:
+        return True, "", "N/A (the judge does not emit the labels; the axis does not apply)"
+    optimizes = spec.get("agent_optimizes_toward_judge", False)
+    if not optimizes:
+        return True, "", "N/A (the agent does not optimize toward the judge's labels; the measure and the target are separated, the pass cell)"
+    detail = ("the judge emits the labels AND the agent optimizes toward those same labels: the measure is the optimization target, so the loop closes on the judge and the reported gain is self-measured")
+    return False, "JUDGE-AS-TARGET", detail
+
+
 CHECKS = [
     ("BEATS-NULL",     check_beats_null),
     ("NOT-SELF-KEYED", check_not_self_keyed),
@@ -1851,6 +1881,8 @@ CHECKS = [
     ("PLATFORM-CERTIFIED", check_platform_certified),
     ("TRUST", check_trust),
     ("TAUTOLOGICAL-BLEND", check_tautological_blend),
+    ("CRITERION-THRESHOLD", check_criterion_threshold),
+    ("JUDGE-AS-TARGET", check_judge_as_target),
 ]
 
 def _no_empirical(spec):
@@ -1864,7 +1896,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:
