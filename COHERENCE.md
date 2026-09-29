@@ -1,9 +1,9 @@
-# Coherence of the 51-axis instrument (2026-09-29)
+# Coherence of the 52-axis instrument (2026-09-29)
 
 Question (from the saturation-collapse reconciliation): does the claim-audit
 instrument stay coherent as it grows to 51 axes, or do axes start to overlap?
 
-Objective test: the co-firing matrix over the 149-specimen battery
+Objective test: the co-firing matrix over the 153-specimen battery
 (`cofiring.py`). For each pair of axes, do they fire on the same specimens?
 
 ## Findings
@@ -38,7 +38,7 @@ does it fire on any specimen where *no other flag fires*? A flag with at
 least one exclusive specimen contributes a label no other axis produces
 there; that axis is not a re-label of another axis's firing.
 
-Result on the 149 battery: 37 of 55 flags have >= 1 exclusive
+Result on the 153 battery: 38 of 56 flags have >= 1 exclusive
 specimen. The newest axes each qualify: UNIT-COUNT, SCOPE-FLATTENING,
 COVERAGE-GAP, JUDGE-AS-TARGET, CRITERION-THRESHOLD, TAUTOLOGICAL-BLEND,
 and TRUST each fire on at least one exclusive specimen (no other flag
@@ -88,11 +88,11 @@ calibration's discriminating cells, not new ground truth.
 
 ## Verdict
 
-The 51-axis instrument is coherent. No flag is redundant (no two share a
+The 52-axis instrument is coherent. No flag is redundant (no two share a
 firing set), no axis is a weight-0 label, the subset structure is the
 designed refinement hierarchy, and the per-axis exclusivity test — now
 derived rather than hand-listed — shows the newest axes (OPT-IN-CENSUS, UNIT-COUNT, SCOPE-FLATTENING,
-COVERAGE-GAP) each add a genuinely new discriminating dimension. The growth from 33 to 51 axes is not
+COVERAGE-GAP, THESIS-OUTRUNS-EVIDENCE) each add a genuinely new discriminating dimension. The growth from 33 to 52 axes is not
 re-expanding
 the 59-family saturation collapse: those were the certification-gap
 family's self-labeled axes; the claim-audit axes carry 4-cell
@@ -243,3 +243,31 @@ controls. N/A when census_claim is not declared (schema-boundary), when the
 state field is genuinely two-valued, when the claim already distinguishes the
 three values, or when the undeclared bucket is empty. Re-derived from the
 actual cofiring output.
+
+## THESIS-OUTRUNS-EVIDENCE re-derivation (2026-09-29)
+
+The 52nd axis (THESIS-OUTRUNS-EVIDENCE, the headline-layer face of the scope
+family; arXiv 2609.31054, Rilla et al., "Cheap, open agents make LLM pollution
+harder to mitigate", the arXiv feed seed) was added. The battery is now 153
+(149 + 4 THESIS-OUTRUNS-EVIDENCE cells). The discriminating test (run before
+adding the axis): the Rilla teardown encoded over the EXISTING 51-axis
+instrument came back DISCRIMINATES with no flags -- the title states a
+present-tense causal fact about MITIGATION DIFFICULTY, but the evidence
+measures only the premises (deployment cost, survey competitiveness, per-check
+failure profile, SED); the mitigation step is a forecast (cheap + competitive +
+textually divergent but behaviorally close -> harder to mitigate), not a
+measurement. Distinct from SCOPE-FLATTENING (a measured value varies across
+regimes and is stated scope-universal; here the endpoint is unmeasured -- the
+2609.31563 measured-endpoint reverse control fires SCOPE-FLATTENING and passes
+THESIS-OUTRUNS-EVIDENCE) and from FUNNEL-STAGE-MISATTRIBUTION (the named stage
+is inside the measured pipeline; here the endpoint is downstream of it).
+THESIS-OUTRUNS-EVIDENCE fires on exactly 2 specimens (the Rilla fire cell, and
+the no-rows regime cell where it co-fires with NO-EMPIRICAL-CONTENT) and has 1
+exclusive specimen (the Rilla fire cell) -- it is not a re-label (identical-set
+test: no two flags share a firing set). The properly-scoped-headline pass cell
+is the reverse control: same measured set, same unmeasured endpoint, but the
+title hedges the endpoint, so the discriminator is the headline's present-tense
+fact-statement, not the body hedge (present in both cells). N/A when
+thesis_endpoint is not declared (schema-boundary) or when the endpoint IS in
+the measured set (the measured-value case is SCOPE-FLATTENING's domain).
+Re-derived from the actual cofiring output.

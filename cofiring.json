@@ -1,5 +1,5 @@
 {
-  "battery": 149,
+  "battery": 153,
   "check2flag": {
     "AGGREGATION-REVERSAL": "AGGREGATION-REVERSAL",
     "ANNOTATOR-SELF-KEYED": "ANNOTATOR-SELF-KEYED",
@@ -43,6 +43,7 @@
     "TAUTOLOGICAL-BLEND": "TAUTOLOGICAL-BLEND",
     "TEMPORAL-ONSET": "TEMPORAL-ONSET",
     "TEMPORAL-SPIKE": "TEMPORAL-SPIKE",
+    "THESIS-OUTRUNS-EVIDENCE": "THESIS-OUTRUNS-EVIDENCE",
     "TIER-ONSET": "TIER-ONSET",
     "TIER-SPIKE": "TIER-SPIKE",
     "TRUST": "TRUST",
@@ -113,6 +114,11 @@
       "NO-EMPIRICAL-CONTENT",
       "PLATFORM-CERTIFIED",
       127
+    ],
+    [
+      "NO-EMPIRICAL-CONTENT",
+      "THESIS-OUTRUNS-EVIDENCE",
+      152
     ],
     [
       "NO-EMPIRICAL-CONTENT",
@@ -246,7 +252,7 @@
     "LOSSY-PROJECTION": 6,
     "METRIC-ONSET": 1,
     "METRIC-SPIKE": 3,
-    "NO-EMPIRICAL-CONTENT": 18,
+    "NO-EMPIRICAL-CONTENT": 19,
     "NOT-COMPUTABLE": 2,
     "NULL-REACHES-HEADLINE": 36,
     "OPT-IN-CENSUS": 1,
@@ -256,7 +262,7 @@
     "PRIMARY-BASIS-REVERSAL": 1,
     "REFERENCE-MIX": 1,
     "REFERENT-CONSTRUCTED": 1,
-    "SCOPE-FLATTENING": 1,
+    "SCOPE-FLATTENING": 2,
     "SCOPE-OF-INDEPENDENCE": 3,
     "SELECTION-BIAS": 1,
     "SELECTION-ON-NARRATIVE": 2,
@@ -271,6 +277,7 @@
     "TAUTOLOGICAL-BLEND": 4,
     "TEMPORAL-ONSET": 1,
     "TEMPORAL-SPIKE": 1,
+    "THESIS-OUTRUNS-EVIDENCE": 2,
     "TIER-ONSET": 1,
     "TIER-SPIKE": 1,
     "TRUST": 1,
@@ -384,7 +391,8 @@
       66
     ],
     "SCOPE-FLATTENING": [
-      140
+      140,
+      150
     ],
     "SCOPE-OF-INDEPENDENCE": [
       89,
@@ -427,6 +435,9 @@
       125
     ],
     "TEMPORAL-SPIKE": [],
+    "THESIS-OUTRUNS-EVIDENCE": [
+      149
+    ],
     "TIER-ONSET": [
       42
     ],
@@ -554,7 +565,8 @@
       127,
       146,
       147,
-      148
+      148,
+      152
     ],
     "NOT-COMPUTABLE": [
       15,
@@ -621,7 +633,8 @@
       66
     ],
     "SCOPE-FLATTENING": [
-      140
+      140,
+      150
     ],
     "SCOPE-OF-INDEPENDENCE": [
       89,
@@ -680,6 +693,10 @@
     ],
     "TEMPORAL-SPIKE": [
       25
+    ],
+    "THESIS-OUTRUNS-EVIDENCE": [
+      149,
+      152
     ],
     "TIER-ONSET": [
       42
@@ -741,7 +758,7 @@
       "EVIDENCE-UNCLOSED",
       "NO-EMPIRICAL-CONTENT",
       2,
-      18
+      19
     ],
     [
       "FUNNEL-STAGE-MISATTRIBUTION",
@@ -759,37 +776,37 @@
       "NOT-COMPUTABLE",
       "NO-EMPIRICAL-CONTENT",
       2,
-      18
+      19
     ],
     [
       "OPT-IN-CENSUS",
       "NO-EMPIRICAL-CONTENT",
       1,
-      18
+      19
     ],
     [
       "UNWITNESSED-RECEIPT",
       "NO-EMPIRICAL-CONTENT",
       1,
-      18
+      19
     ],
     [
       "UNWITNESSED-ROOT",
       "NO-EMPIRICAL-CONTENT",
       1,
-      18
+      19
     ],
     [
       "WIDER-THAN-NAMED",
       "NO-EMPIRICAL-CONTENT",
       2,
-      18
+      19
     ],
     [
       "WINDOW-PRESENT-TENSE",
       "NO-EMPIRICAL-CONTENT",
       1,
-      18
+      19
     ],
     [
       "OUTCOME-SPIKE",

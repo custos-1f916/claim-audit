@@ -498,6 +498,38 @@ SPECIMENS = [
     "undeclared_count": 312,
     "binary_reading": {"collapsed_into": "breached"}
   },
+  {
+    "name": "THESIS-OUTRUNS-EVIDENCE FIRE (2609.31054 Rilla et al., open agents): title states mitigation difficulty as a present-tense fact; the data measures cost, competitiveness, failure profiles, SED",
+    "truth": ["THESIS-OUTRUNS-EVIDENCE"],
+    "truth_reason": "FIRE CELL (thesis-outruns-evidence axis, 2026-09-29). The title 'Cheap, open agents make LLM pollution harder to mitigate' states a present-tense causal fact about MITIGATION DIFFICULTY, but the evidence measures only the premises: deployment cost, survey competitiveness, per-check failure profile, and SED (distance from a human reference). Mitigation difficulty is a forecast endpoint (cheap + competitive + detectable-textually-but-not-behaviorally -> harder to mitigate), not a measurement. The body hedges it ('may have removed this barrier', 'FUTURE pollution'), so the title outruns even the authors' own careful claim. The empirical layer passes (open beats closed on competitiveness), so the only flag is the headline-layer overclaim. Distinct from SCOPE-FLATTENING (a measured value varies across regimes and is stated universal; here the endpoint is unmeasured) and from FUNNEL-STAGE-MISATTRIBUTION (the named stage is in the pipeline; here the endpoint is downstream of the measured set).",
+    "type": "ablation",
+    "mechanism_lever": "openness",
+    "thesis_endpoint": "mitigation difficulty",
+    "measured_endpoints": ["deployment cost", "survey competitiveness", "per-check failure profile", "SED (distance from human reference)"],
+    "headline_states_as_fact": True,
+    "body_hedges": True,
+    "rows": [
+      {"label": "fully-open (3 configs)",   "mechanism_on": True,  "substrate": ["openness"], "metric": 0.8, "mechanism_axis": 0.8},
+      {"label": "mixed (3 configs)",        "mechanism_on": True,  "substrate": ["openness"], "metric": 0.6, "mechanism_axis": 0.6},
+      {"label": "closed (3 configs, null)", "mechanism_on": False, "is_null": True, "substrate": [], "metric": 0.5, "mechanism_axis": 0.5}
+    ]
+  },
+  {
+    "name": "THESIS-OUTRUNS-EVIDENCE PASS (2609.31054 properly-scoped headline): the unmeasured endpoint is hedged in the title, not stated as a fact",
+    "truth": [],
+    "truth_reason": "PASS CELL (thesis-outruns-evidence axis, 2026-09-29). Same measured set (cost, competitiveness, failure profile, SED) and same unmeasured endpoint (mitigation difficulty), but the title hedges the endpoint ('open agents may make LLM pollution harder to mitigate') rather than stating it as a present-tense fact. The thesis does not out-run the evidence: the endpoint is a forecast and the headline concedes it is a forecast. No flags fire (the empirical layer passes, open beats closed on competitiveness). This is the reverse control to the fire cell: the discriminator is the headline's present-tense fact-statement, not the body hedge (present in both cells).",
+    "type": "ablation",
+    "mechanism_lever": "openness",
+    "thesis_endpoint": "mitigation difficulty",
+    "measured_endpoints": ["deployment cost", "survey competitiveness", "per-check failure profile", "SED (distance from human reference)"],
+    "headline_states_as_fact": False,
+    "body_hedges": True,
+    "rows": [
+      {"label": "fully-open (3 configs)",   "mechanism_on": True,  "substrate": ["openness"], "metric": 0.8, "mechanism_axis": 0.8},
+      {"label": "mixed (3 configs)",        "mechanism_on": True,  "substrate": ["openness"], "metric": 0.6, "mechanism_axis": 0.6},
+      {"label": "closed (3 configs, null)", "mechanism_on": False, "is_null": True, "substrate": [], "metric": 0.5, "mechanism_axis": 0.5}
+    ]
+  },
 ]
 
 def main():

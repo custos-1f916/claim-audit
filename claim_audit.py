@@ -1916,6 +1916,62 @@ def check_scope_flattening(spec):
     return False, "SCOPE-FLATTENING", detail
 
 
+
+def check_thesis_outruns_evidence(spec):
+    """THESIS-OUTRUNS-EVIDENCE (52nd primary axis, 2026-09-29): the headline
+    states a causal endpoint as a present-tense fact, but the evidence
+    measures only the premises -- the endpoint is a forecast, not a
+    measurement. The thesis out-runs the evidence at the endpoint step.
+
+    Schema:
+      thesis_endpoint      : the causal endpoint the headline is about
+                             (str). None -> N/A (the axis does not apply).
+      measured_endpoints   : the set of endpoints the evidence actually
+                             measures (list[str]).
+      headline_states_as_fact : the headline states the endpoint as a
+                             present-tense causal fact, not a hedge/scope
+                             (bool). False -> the headline is properly
+                             scoped, so no overclaim.
+      body_hedges          : the body hedges the endpoint (bool). Corroborating
+                             only: it shows the authors themselves treat the
+                             endpoint as a forecast. Not the primary gate.
+
+    Fire: thesis_endpoint is NOT in measured_endpoints (the endpoint is a
+    forecast, not a measurement) AND headline_states_as_fact (the headline
+    states it as a present-tense fact). The body hedge, when present, is
+    corroboration that the title outruns even the authors' own careful claim.
+    Pass: thesis_endpoint IS in measured_endpoints (the endpoint is measured;
+    the measured-value case is SCOPE-FLATTENING's domain), OR the headline
+    does not state the endpoint as a present-tense fact (properly scoped).
+    N/A: thesis_endpoint not declared.
+
+    Distinct from SCOPE-FLATTENING (the value is MEASURED and varies across
+    regimes; here the endpoint is NOT measured at all). Distinct from
+    FUNNEL-STAGE-MISATTRIBUTION (the named stage is IN the pipeline but a rarer
+    stage exists; here the endpoint is DOWNSTREAM of the measured pipeline).
+    Distinct from SOURCE-MISATTRIBUTION (the credited component is wrong; here
+    the conclusion is unmeasured). Motivating case: arXiv 2609.31054 (Rilla et
+    al.), "Cheap, open agents make LLM pollution harder to mitigate" -- the
+    title states mitigation difficulty as a present-tense causal fact, but the
+    data measures deployment cost, survey competitiveness, per-check failure
+    profiles, and SED; the mitigation step is a forecast, and the
+    abstract/discussion hedge it ("may have removed this barrier", "possibly
+    underestimated source of FUTURE pollution").
+    """
+    thesis = spec.get("thesis_endpoint")
+    if thesis is None:
+        return True, "", "N/A (thesis_endpoint not declared; the axis does not apply)"
+    measured = spec.get("measured_endpoints", [])
+    if thesis in measured:
+        return True, "", "the thesis endpoint (%s) is in the measured set; the endpoint is a measurement, not a forecast -- the measured-value case is SCOPE-FLATTENING's domain" % thesis
+    if not spec.get("headline_states_as_fact", False):
+        return True, "", "the thesis endpoint (%s) is not in the measured set, but the headline does not state it as a present-tense fact (properly scoped/hedged); no overclaim" % thesis
+    corr = ""
+    if spec.get("body_hedges"):
+        corr = " The body hedges the endpoint (admitting it is a forecast), so the title outruns even the authors' own careful claim."
+    detail = ("the headline states the causal endpoint (%s) as a present-tense fact, but the evidence measures only the premises (%s); the endpoint is a forecast, not a measurement -- the thesis outruns the evidence at the endpoint step.%s" % (thesis, ", ".join(measured), corr))
+    return False, "THESIS-OUTRUNS-EVIDENCE", detail
+
 def check_unit_count(spec):
     """UNIT-COUNT (50th primary axis, 2026-09-28): the count-channel face of the
     self-keyed family (the unit-of-count error, square post #7046, skippy's
@@ -2033,6 +2089,7 @@ CHECKS = [
     ("JUDGE-AS-TARGET", check_judge_as_target),
     ("COVERAGE-GAP", check_coverage_gap),
     ("SCOPE-FLATTENING", check_scope_flattening),
+    ("THESIS-OUTRUNS-EVIDENCE", check_thesis_outruns_evidence),
     ("UNIT-COUNT", check_unit_count),
     ("OPT-IN-CENSUS", check_opt_in_census),
 ]
@@ -2048,7 +2105,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING", "UNIT-COUNT", "OPT-IN-CENSUS"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING", "THESIS-OUTRUNS-EVIDENCE", "UNIT-COUNT", "OPT-IN-CENSUS"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:

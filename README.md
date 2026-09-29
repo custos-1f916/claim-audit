@@ -1,12 +1,12 @@
 # claim-audit
 
-A 51-axis falsification instrument for empirical claims in ML/AI papers
+A 52-axis falsification instrument for empirical claims in ML/AI papers
 (and other headline claims with data). Given a claim's raw numbers as a
-spec, it checks the claim against 51 axes (self-keyed, wrong-axis,
+spec, it checks the claim against 52 axes (self-keyed, wrong-axis,
 selection-bias, confounded, within-noise, lossy-projection,
 aggregation-reversal, referent-witnessed, temporal/dose/outcome/subgroup
 onset-and-spike, funnel-stage-misattribution, selection-on-narrative,
-annotator-self-keyed, scope-of-independence, reference-mix, unwitnessed-receipt, unwitnessed-root, source-misattribution, wider-than-named, self-falsifying, primary-basis-reversal, window-present-tense, evidence-unclosed, fidelity, witness-population-selection, source-replication, opt-in-census, ...) and
+annotator-self-keyed, scope-of-independence, reference-mix, unwitnessed-receipt, unwitnessed-root, source-misattribution, wider-than-named, self-falsifying, primary-basis-reversal, window-present-tense, evidence-unclosed, fidelity, witness-population-selection, source-replication, opt-in-census, thesis-outruns-evidence, ...) and
 returns the fired flags with a per-check detail line.
 
 The point is not "does the claim sound plausible" but "does the claim's
@@ -75,26 +75,26 @@ undeclared field makes a refinement N/A), `contested`.
 python3 claim_audit.py
 ```
 
-Runs the 149 specimens in `specimens.py` (126 real — papers from the
+Runs the 153 specimens in `specimens.py` (127 real — papers from the
 2026-09-15..22 audit run plus schema-boundary cells plus the live 1f916.ai
-seal/ack floor — plus 23 constructed/self-specimen discriminating cells: the
+seal/ack floor — plus 26 constructed/self-specimen discriminating cells: the
 original 11 battery witnesses for TEMPORAL-ONSET, REFERENCE-MIX,
 PLATFORM-CERTIFIED, TRUST, TAUTOLOGICAL-BLEND, CRITERION-THRESHOLD,
 JUDGE-AS-TARGET, and the four three-channel independence witnesses (CH0-CH3),
 plus the CF-CG-1 self-specimens and the SCOPE-FLATTENING / UNIT-COUNT /
-OPT-IN-CENSUS fire+pass cells; see COHERENCE.md) and prints
+OPT-IN-CENSUS / THESIS-OUTRUNS-EVIDENCE fire+pass cells; see COHERENCE.md) and prints
 `ALL SPECIMENS MATCH` (exit 0) when every specimen's fired flags equal
 its recorded `expected` set. `results.txt` is a fresh run of this
 battery from this copy of the code.
 
 ## Files
 
-  claim_audit.py   the instrument (51 checks + CLI), stdlib only
+  claim_audit.py   the instrument (52 checks + CLI), stdlib only
   calibration.py   the 99-specimen discriminating calibration
   calibration_boundary.py  the self-calibration probe (per-check mutation)
   calibration_confound.py  the RED-baseline confound (dead check reads CALIBRATED)
   calibration_bandaid.py   the baseline-integrity fix (band-aid, not removal)
-  specimens.py     149 specimens (126 real + 23 constructed/self-specimen) with expected flag sets
+  specimens.py     153 specimens (127 real + 26 constructed/self-specimen) with expected flag sets
   results.txt      fresh battery run from this copy
   publicity_saturation.py  the PUBLICITY saturation test (certification subset -> one variable)
   question_selection.py  terminus candidate: query-selection collapses into what-is-recorded
@@ -267,6 +267,27 @@ open). Closing one channel does NOT silence the other two -- the three
 channels are independent, not one axis three times. The battery is now 137
 specimens (126 real + 11 constructed battery witnesses).
 
+(2026-09-29): the THESIS-OUTRUNS-EVIDENCE axis (52nd) was implemented.
+The headline-layer face of the scope family (arXiv 2609.31054, Rilla et al.,
+"Cheap, open agents make LLM pollution harder to mitigate", the arXiv feed
+seed): the title states a present-tense causal fact about the endpoint
+(mitigation difficulty), but the evidence measures only the premises
+(deployment cost, survey competitiveness, per-check failure profile, SED) —
+the endpoint is a forecast, not a measurement. Fires when the thesis endpoint
+is not in the measured set AND the headline states it as a present-tense fact;
+the body hedge ("may have removed this barrier", "FUTURE pollution") is
+corroborating, not the discriminator (it is present in the properly-scoped
+control too). Distinct from SCOPE-FLATTENING (a measured value varies across
+regimes and is stated universal — the endpoint IS measured) and from
+FUNNEL-STAGE-MISATTRIBUTION (the named stage is inside the measured pipeline;
+here the endpoint is downstream of it). The weight-1 THESIS-OUTRUNS-EVIDENCE
+instrument landed as the 52nd axis (check_thesis_outruns_evidence in
+claim_audit.py), with the T1-T2 calibration cells (calibration.py) and the
+battery cells (specimens.py: the Rilla fire cell, the 2609.31563
+measured-endpoint reverse control, the properly-scoped-headline pass cell,
+and the no-rows regime cell). The battery is now 153 specimens (126 real +
+27 constructed/self-specimen).
+
 ## Lineage
 
 Built 2026-09-15..22 as a workspace instrument for tearing apart
@@ -284,12 +305,12 @@ python3 calibration_boundary.py
 
 The battery being GREEN is not the same as the battery being COMPLETE.
 This probe answers the self-keyed question applied to the instrument's own
-calibration: for each of the 51 checks, blind it (force always-pass) and
+calibration: for each of the 52 checks, blind it (force always-pass) and
 re-run the battery. If the battery stays GREEN, no specimen's
 independently-derived ground truth requires that check to fire, so the check
 could silently break and `calibration.py` would still print DISCRIMINATES.
 
-Current state (2026-09-29): 51/51 checks are calibrated (each caught by
+Current state (2026-09-29): 52/52 checks are calibrated (each caught by
 at least one discriminating specimen — BEATS-NULL by 9, its
 false-positive surface being the spike family plus F2; NOT-SELF-KEYED /
 SCOPE-OF-INDEPENDENCE / EVIDENCE-UNCLOSED / SOURCE-REPLICATION by 2 each;
@@ -330,10 +351,10 @@ a STRUCTURAL set-size (support, check_count, cursor_runs — a different
 dataset) or a DECLARED parameter (knob, threshold, stated_headline — the
 claim's own exact value). The classes are not mutually exclusive per specimen.
 
-Current state (2026-09-29): 149 specimens, 682 numeric leaves. 130/149
+Current state (2026-09-29): 153 specimens, 700 numeric leaves. 133/153
 verdicts are ROBUST (stable under every minimal single-field perturbation);
-19/149 are knife-edge: 13/149 flip on a measured quantity, 6/149 flip only on
-structural/declared fields, 4/149 flip on both.
+20/153 are knife-edge: 14/153 flip on a measured quantity, 6/153 flip only on
+structural/declared fields, 5/153 flip on both.
 
 The load-bearing finding is the self-specimen: CF-CG-1 sweep saturation (the
 PASS-cell self-specimen, expected flags = []) sits one 1% relative perturbation
@@ -359,18 +380,19 @@ declared, 4 overlap both).
 python3 cofiring.py
 ```
 
-Growth to 51 axes raises the question: do axes start to overlap? `cofiring.py`
-computes the co-firing matrix over the 149-specimen battery: per-axis firing
+Growth to 52 axes raises the question: do axes start to overlap? `cofiring.py`
+computes the co-firing matrix over the 153-specimen battery: per-axis firing
 counts, identical firing sets (pure redundancy), strict-subset sets (the
 designed refinement hierarchy), and co-firing pairs. Current state
 (2026-09-29): no two axes share a firing set; the only subset structure is the
 designed refinement hierarchy (NULL-REACHES-HEADLINE superset of the BEATS-NULL
 spike/onset refinements; NO-EMPIRICAL-CONTENT superset of the completeness
 regime); the newest axes (COVERAGE-GAP, SCOPE-FLATTENING, UNIT-COUNT,
-OPT-IN-CENSUS) each fire on a specimen where no other axis fires, except
-OPT-IN-CENSUS which co-fires with NO-EMPIRICAL-CONTENT (its designed
-refinement parent) (per-axis exclusivity, derived from the firing sets rather
-than hand-listed); all 51 checks now fire on the battery — the two
+OPT-IN-CENSUS, THESIS-OUTRUNS-EVIDENCE) each fire on a specimen where no other
+axis fires, except OPT-IN-CENSUS which co-fires with NO-EMPIRICAL-CONTENT (its
+designed refinement parent; THESIS-OUTRUNS-EVIDENCE likewise co-fires with
+NO-EMPIRICAL-CONTENT in its no-rows regime cell) (per-axis exclusivity, derived
+from the firing sets rather than hand-listed); all 52 checks now fire on the battery — the two
 former never-firing checks (TEMPORAL-ONSET, REFERENCE-MIX) gained constructed
 witnesses, and PLATFORM-CERTIFIED gained a constructed witness (PC1) for
 exclusivity (its live specimen, the seal-ack-floor, co-fires with

@@ -225,7 +225,7 @@ def main():
         print("    %s%s" % (n, mark))
     print()
     print("Reading: the PRIMARY axis answers episteme directly -- %d/%d knife-edge rows are" % (invariant, len(rows)))
-    print("robust to the probe's step choice, so the 19/146 count is NOT primarily a step-choice")
+    print("robust to the probe's step choice, so the knife-edge count is NOT primarily a step-choice")
     print("artifact. The %d WINDOWED rows are the step-relative ones (the 1%% probe lands in their" % windowed)
     print("window by luck). The TIE count (cont only) generalizes the self-specimen finding: a")
     print("knife-edge that flips at 1e-6 is the instrument measuring a degeneracy (the value sits")
