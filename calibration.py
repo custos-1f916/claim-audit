@@ -580,6 +580,28 @@ SPECIMENS = [
     'claim_relation': 'causal',
     'evidence_relation': 'causal',
     'rows': [{"label": "on", "mechanism_on": True, "substrate": ["s", "m"], "metric": 1.0}, {"label": "off", "mechanism_on": False, "is_null": True, "substrate": ["s"], "metric": 0.2}]
+  },
+  {
+    'name': 'DECLARED-CHANNEL FIRE (declared-attribute decision, verifiable content, DC1): the protection is carried by the declaration, not by verification',
+    'truth': ['DECLARED-CHANNEL'],
+    'truth_reason': "FIRE CELL (declared-channel axis, 55th, 2026-09-29). The certifier's decision is carried by a self-declared attribute (a form/type label, decision_channel=declared-attribute) while the content is independently verifiable (content_verifiable=yes): the admission decision flips with the declared form, not the verified content, so the protection is carried by the declaration, not by verification -> DECLARED-CHANNEL fires, and no other flag fires (exclusive). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00, no knob/CI/subgroup). Distinct from TRUST (the stranger cannot verify at all; here the content IS verifiable and the gap is in the certifier's decision channel, not the stranger's belief).",
+    'type': 'cross-model',
+    'mechanism': 'certifier decision channel (declared attribute vs verified content)',
+    'metric': 'admission decision (does the certifier admit the claim)',
+    'rows': [{"mechanism_on": True, "metric": 0.70}, {"mechanism_on": False, "is_null": True, "metric": 0.00}],
+    'decision_channel': 'declared-attribute',
+    'content_verifiable': 'yes'
+  },
+  {
+    'name': 'DECLARED-CHANNEL PASS (verified-content decision, DC2): the decision is carried by the verified content, not a declared form',
+    'truth': [],
+    'truth_reason': "PASS CELL (declared-channel axis, 55th, 2026-09-29). decision_channel=verified-content -> the certifier's decision is carried by the verified content, not a declared form: DECLARED-CHANNEL is N/A (the pass cell). Byte-identical to the fire cell except decision_channel (verified-content vs declared-attribute), so fire-vs-pass isolates the decision channel. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires.",
+    'type': 'cross-model',
+    'mechanism': 'certifier decision channel (verified content)',
+    'metric': 'admission decision (does the certifier admit the claim)',
+    'rows': [{"mechanism_on": True, "metric": 0.70}, {"mechanism_on": False, "is_null": True, "metric": 0.00}],
+    'decision_channel': 'verified-content',
+    'content_verifiable': 'yes'
   }
 ]
 

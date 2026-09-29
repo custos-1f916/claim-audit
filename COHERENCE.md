@@ -1,9 +1,9 @@
-# Coherence of the 53-axis instrument (2026-09-29)
+# Coherence of the 55-axis instrument (2026-09-29)
 
 Question (from the saturation-collapse reconciliation): does the claim-audit
 instrument stay coherent as it grows to 51 axes, or do axes start to overlap?
 
-Objective test: the co-firing matrix over the 157-specimen battery
+Objective test: the co-firing matrix over the 168-specimen battery
 (`cofiring.py`). For each pair of axes, do they fire on the same specimens?
 
 ## Findings
@@ -38,16 +38,16 @@ does it fire on any specimen where *no other flag fires*? A flag with at
 least one exclusive specimen contributes a label no other axis produces
 there; that axis is not a re-label of another axis's firing.
 
-Result on the 153 battery: 38 of 56 flags have >= 1 exclusive
+Result on the 168 battery: 41 of 59 flags have >= 1 exclusive
 specimen. The newest axes each qualify: UNIT-COUNT, SCOPE-FLATTENING,
 COVERAGE-GAP, JUDGE-AS-TARGET, CRITERION-THRESHOLD, TAUTOLOGICAL-BLEND,
-and TRUST each fire on at least one exclusive specimen (no other flag
+TRUST, CAUSAL-WIRING, and DECLARED-CHANNEL each fire on at least one exclusive specimen (no other flag
 fires there). OPT-IN-CENSUS (the 51st) has no exclusive specimen -- it
 co-fires with NO-EMPIRICAL-CONTENT in the no-rows regime -- but it is not
 a re-label: the identical-set test (no two flags share a firing set)
 covers it, and its fire cell is the only place the self-selected-denominator
 collapse is named. Exclusivity is computed
-on the 55 distinct *flags* the instrument emits, not the 51 checks: 7 checks emit a differently-named
+on the 59 distinct *flags* the instrument emits, not the 55 checks: 7 checks emit a differently-named
 flag (BEATS-NULL -> NULL-REACHES-HEADLINE, CO-MOVES -> WRONG-AXIS,
 COMPUTABLE -> NOT-COMPUTABLE, ISOLATED -> CONFOUNDED, NOISE-FLOOR ->
 WITHIN-NOISE, NOT-SELF-KEYED -> SELF-KEYED, REFERENT-WITNESSED ->
@@ -79,20 +79,25 @@ specimen (exclusivity 30/47). The witnesses are constructed, not real
 specimens: they make the battery a second, independent confirmation of the
 calibration's discriminating cells, not new ground truth.
 
-**Co-firing pairs (overlap >= 2, neither a subset):** only 2, both expected:
+**Co-firing pairs (overlap >= 2, neither a subset):** only 5, all expected:
 - METRIC-SPIKE & SPLIT-SPIKE (2 specimens): the spike family shares the
   false-positive surface of the flat check; co-firing on a specimen where both
   a metric-spike and a split-spike are present is correct.
 - CONFOUNDED & NULL-REACHES-HEADLINE (2 specimens): a confounded ablation where
   the null also reaches the headline is a real, multi-axis specimen.
+- CRITERION-THRESHOLD & JUDGE-AS-TARGET, CRITERION-THRESHOLD &
+  TAUTOLOGICAL-BLEND, and JUDGE-AS-TARGET & TAUTOLOGICAL-BLEND (2 each): the
+  CH0 three-channel witness fires all three self-referentiality channels
+  (population, criterion, loop) on one specimen; the pairwise co-firing is
+  the designed "not one axis three times" cell, not overlap.
 
 ## Verdict
 
-The 53-axis instrument is coherent. No flag is redundant (no two share a
+The 55-axis instrument is coherent. No flag is redundant (no two share a
 firing set), no axis is a weight-0 label, the subset structure is the
 designed refinement hierarchy, and the per-axis exclusivity test — now
 derived rather than hand-listed — shows the newest axes (OPT-IN-CENSUS, UNIT-COUNT, SCOPE-FLATTENING,
-COVERAGE-GAP, THESIS-OUTRUNS-EVIDENCE) each add a genuinely new discriminating dimension. The growth from 33 to 53 axes is not
+COVERAGE-GAP, THESIS-OUTRUNS-EVIDENCE, CAUSAL-WIRING, DECLARED-CHANNEL) each add a genuinely new discriminating dimension. The growth from 33 to 55 axes is not
 re-expanding
 the 59-family saturation collapse: those were the certification-gap
 family's self-labeled axes; the claim-audit axes carry 4-cell
@@ -334,3 +339,70 @@ declared). The battery is now 157 specimens (127 real + 30
 constructed/self-specimen); the calibration battery is now 104 (fire, pass,
 and N/A-mirror cells, 104/104 DISCRIMINATES). Re-derived from the actual
 cofiring output.
+
+## CAUSAL-WIRING re-derivation (2026-09-29)
+
+The 54th axis (headline-layer correlate-to-cause promotion). The load-bearing
+claim asserts a CAUSAL link (X causes / drives / leads to Y), but the evidence
+establishes only an ASSOCIATION (X is associated with / correlates with /
+co-occurs with Y): the measured correlate is promoted to a cause. Distinct
+from THESIS-OUTRUNS-EVIDENCE (the endpoint is not measured at all; here the
+link IS measured, as an association, and the claim promotes that measured
+association to a causal link). N/A when `claim_relation` or
+`evidence_relation` is not declared (schema-boundary), when the claim does not
+assert a causal link, or when the evidence is not merely associative.
+
+Discriminating test (the 2x3 over claim_relation x evidence_relation): the
+fire cell is claim_relation=causal + evidence_relation=associative; the pass
+cells are claim_relation=associative (no promotion) and
+claim_relation=causal + evidence_relation=none (the association is not
+measured at all, so THESIS-OUTRUNS-EVIDENCE governs the unmeasured endpoint).
+Wired-in cells: CAUSAL-WIRING 2x3 A (fire), B (pass, associative claim), C
+(pass, causal claim / no evidence), D (N/A, claim_relation undeclared), E
+(TOE territory, causal claim / association not measured). The live external
+specimen is FRAIL (2609.30940) seam 2: Section 4.2 reports early commitment is
+"associated with" 82% safety vs 37% (an association), but the Discussion
+promotes it to a causal driver. CAUSAL-WIRING fires on exactly 2 specimens
+(the 2x3 A fire cell + the FRAIL seam-2 live specimen) and has 2 exclusive
+specimens (no other flag fires on either); no identical firing set, not a
+strict subset of any existing axis. Backfilled: the 54th axis landed without
+a re-derivation section; this one is written at the 55th-axis re-derivation.
+Re-derived from the actual cofiring output.
+
+## DECLARED-CHANNEL re-derivation (2026-09-29)
+
+The 55th axis (decision-channel face of the self-keyed family). The certifier
+is external and named (not CERTIFIER-UNNAMED) and the referent's content is
+independently verifiable (not TRUST, not SELF-KEYED: the stranger CAN check
+the truth), but the certifier's DECISION is carried by a self-declared
+attribute -- a form/type label the publisher declares -- so the admission
+decision flips with the declared form, not the verified content. The
+protection is carried by the declaration, not by verification. Distinct from
+TRUST (the stranger cannot verify at all; here the content IS verifiable and
+the gap is in the certifier's decision channel, not the stranger's belief)
+and from SOURCE-REPLICATION (the certifier re-runs the same measurement on the
+same source; here the certifier reads a DIFFERENT attribute -- the declared
+form -- not the verified content). N/A when `decision_channel` is not
+declared (schema-boundary), when the decision channel is verified-content (the
+pass cell), or when the content is not independently verifiable (defers to
+TRUST).
+
+Discriminating test (the 2x2 over decision_channel x content_verifiable): the
+fire cell is decision_channel=declared-attribute + content_verifiable=yes;
+the pass cell is decision_channel=verified-content (the decision is carried by
+the verified content, not a declared form); the defer cell is
+decision_channel=declared-attribute + content_verifiable=no (the content
+itself is not verifiable, so the gap is in the content's verifiability, not
+the decision channel; TRUST governs). Wired-in cells: DC1 (fire), DC2 (pass),
+DC3 (defer to TRUST). The live external specimen is CPB (2609.30813): the
+governance policy B7 is the only policy that keeps damage low, but its entire
+protection rests on a declared source-type channel -- 0.00 adoption while a
+false copy is typed web-text, 0.70 once re-typed register-document, truth
+unchanged. The certifier (B7) is external and named and the referent's truth
+is externally anchored (lineage fixed by scenario, graders validated), so the
+stranger CAN verify the content; the gap is in the certifier's decision
+channel. DECLARED-CHANNEL fires on exactly 2 specimens (the DC1 fire cell +
+the CPB live specimen) and has 2 exclusive specimens (no other flag fires on
+either); no identical firing set, not a strict subset of any existing axis.
+The battery is now 168 specimens (164 + 4: DC1/DC2/DC3 + CPB). Re-derived
+from the actual cofiring output.

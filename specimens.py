@@ -2572,4 +2572,61 @@ SPECIMENS = [
            'substrate': []}],
  'thesis_endpoint': 'individually capable agents',
  'type': 'ablation'},
+
+  {
+    "name": "declared-channel battery witness (declared-attribute decision, verifiable content, DC1)",
+    "type": "cross-model",
+    "mechanism": "certifier decision channel (declared attribute vs verified content)",
+    "metric": "admission decision (does the certifier admit the claim)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "decision_channel": "declared-attribute",
+    "content_verifiable": "yes",
+    "expected": ["DECLARED-CHANNEL"],
+    "note": "CONSTRUCTED WITNESS (declared-channel axis, 2026-09-29). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00, no knob/CI/subgroup); the certification fields carry the axis. decision_channel=declared-attribute + content_verifiable=yes -> the certifier's decision is carried by a self-declared attribute (a form/type label) while the content is independently verifiable: the admission decision flips with the declared form, not the verified content, so the protection is carried by the declaration, not by verification -> DECLARED-CHANNEL fires, and no other flag fires (exclusive). Distinct from TRUST (the stranger cannot verify at all; here the content IS verifiable and the gap is in the certifier's decision channel, not the stranger's belief)."
+  },
+  {
+    "name": "declared-channel battery witness (verified-content decision, pass, DC2)",
+    "type": "cross-model",
+    "mechanism": "certifier decision channel (verified content)",
+    "metric": "admission decision (does the certifier admit the claim)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "decision_channel": "verified-content",
+    "content_verifiable": "yes",
+    "expected": [],
+    "note": "CONSTRUCTED WITNESS (declared-channel axis, 2026-09-29), pass cell. decision_channel=verified-content -> the certifier's decision is carried by the verified content, not a declared form: DECLARED-CHANNEL is N/A (the pass cell). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00, no knob/CI/subgroup), so nothing fires."
+  },
+  {
+    "name": "declared-channel battery witness (declared-attribute decision, unverifiable content, defers to TRUST, DC3)",
+    "type": "cross-model",
+    "mechanism": "certifier decision channel (declared attribute, content unverifiable)",
+    "metric": "admission decision (does the certifier admit the claim)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "decision_channel": "declared-attribute",
+    "content_verifiable": "no",
+    "expected": [],
+    "note": "CONSTRUCTED WITNESS (declared-channel axis, 2026-09-29), N/A-mirror cell. decision_channel=declared-attribute but content_verifiable=no -> the content itself is not independently verifiable, so the gap is in the content's verifiability, not the decision channel: DECLARED-CHANNEL is N/A and defers to TRUST (which governs the unverifiable-content case; TRUST's own fields are not declared here, so nothing fires). This is the boundary cell that separates DECLARED-CHANNEL (content verifiable, decision keys on form) from TRUST (content unverifiable)."
+  },
+  {
+    "name": "CPB (2609.30813): governance policy B7's protection rests on a declared source-type channel; admission flips with the declared form, not the verified content",
+    "type": "cross-model",
+    "mechanism": "governance policy B7 (declared source-type channel)",
+    "metric": "adoption of the false restatement (consumer admits the false belief)",
+    "rows": [
+      {"label": "reworded copy typed register-document", "mechanism_on": True, "metric": 0.70},
+      {"label": "reworded copy typed web-text (null)", "mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "decision_channel": "declared-attribute",
+    "content_verifiable": "yes",
+    "expected": ["DECLARED-CHANNEL"],
+    "note": "LIVE EXTERNAL SPECIMEN (arXiv 2609.30813, CPB, 'A Benchmark and Diagnostic Study of Epistemic Admission in Shared Agent Memory', Li et al.; explore/cpb-2609.30813 teardown, 2026-09-29). The governance rule B7 is the only policy that keeps damage low while answering in every family, but its entire protection rests on a DECLARED SOURCE-TYPE channel: 0.00 adoption of the false restatement while it is typed web-text (verbatim and reworded), 0.70 once the reworded copy is typed register-document (5.5), truth unchanged. The certifier (B7) is external and named (not CERTIFIER-UNNAMED) and the referent's truth is externally anchored (lineage fixed by scenario before any policy runs, graders validated against two human annotators on 120 items each) -- so the stranger CAN verify the content (content_verifiable=yes, not TRUST, not SELF-KEYED). But the certifier's DECISION is carried by a self-declared attribute (the source-type label the publisher declares): the admission decision flips with the declared form, not the verified content. DECLARED-CHANNEL fires. The empirical layer is clean (register-document 0.70 > web-text 0.00, no knob/CI/subgroup), so the only flag is the declared-channel promotion. The paper is honest that its protection is carried by the declaration, not by verification -- F6: 'admission follows the form of the second source more than the truth of the claim.'"
+  },
 ]

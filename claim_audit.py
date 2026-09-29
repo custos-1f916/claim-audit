@@ -2095,6 +2095,40 @@ def check_causal_wiring(spec):
     return True, "", "claim_relation=%s, evidence_relation=%s: the claim does not promote a measured association to a causal link" % (claim, evidence)
 
 
+def check_declared_channel(spec):
+    """DECLARED-CHANNEL (55th primary axis, 2026-09-29): the decision-channel
+    face of the self-keyed family. The certifier is external and named (not
+    CERTIFIER-UNNAMED) and the referent's content is independently verifiable
+    (not TRUST, not SELF-KEYED: the stranger CAN check the truth), but the
+    certifier's DECISION is carried by a self-declared attribute -- a form/type
+    label the publisher declares -- so the admission decision flips with the
+    declared form, not the verified content. The protection is carried by the
+    declaration, not by verification. Distinct from TRUST (the stranger cannot
+    verify at all; here the content IS verifiable and the gap is in the
+    certifier's decision channel, not the stranger's belief) and from
+    SOURCE-REPLICATION (the certifier re-runs the same measurement on the same
+    source; here the certifier reads a DIFFERENT attribute -- the declared
+    form -- not the verified content). N/A when `decision_channel` is not
+    declared (schema-boundary), when the decision channel is verified-content
+    (the pass cell), or when the content is not independently verifiable
+    (defers to TRUST). fail -> DECLARED-CHANNEL."""
+    dc = spec.get("decision_channel")
+    if dc is None:
+        return True, "", "N/A (decision_channel not declared; the axis does not apply)"
+    dc = str(dc).lower()
+    if dc == "verified-content":
+        return True, "", "N/A (decision_channel=verified-content: the certifier's decision is carried by the verified content, not a declared form)"
+    if dc != "declared-attribute":
+        return True, "", "N/A (decision_channel=%s: not the declared-attribute channel)" % dc
+    cv = spec.get("content_verifiable")
+    if cv is None:
+        return True, "", "N/A (decision_channel=declared-attribute but content_verifiable not declared; cannot separate the decision-channel gap from the content-verifiability gap)"
+    cv = str(cv).lower()
+    if cv != "yes":
+        return True, "", "N/A (decision_channel=declared-attribute but content_verifiable=%s: the content itself is not independently verifiable, so the gap is in the content's verifiability, not the decision channel; TRUST governs)" % cv
+    detail = ("the certifier's decision is carried by a self-declared attribute (decision_channel=declared-attribute) while the content is independently verifiable (content_verifiable=yes): the admission decision flips with the declared form, not the verified content, so the protection is carried by the declaration, not by verification")
+    return False, "DECLARED-CHANNEL", detail
+
 CHECKS = [
     ("BEATS-NULL",     check_beats_null),
     ("NOT-SELF-KEYED", check_not_self_keyed),
@@ -2150,6 +2184,7 @@ CHECKS = [
     ("OPT-IN-CENSUS", check_opt_in_census),
     ("CERTIFIER-UNNAMED", check_certifier_unnamed),
     ("CAUSAL-WIRING", check_causal_wiring),
+    ("DECLARED-CHANNEL", check_declared_channel),
 ]
 
 def _no_empirical(spec):
@@ -2163,7 +2198,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING", "THESIS-OUTRUNS-EVIDENCE", "UNIT-COUNT", "OPT-IN-CENSUS", "CAUSAL-WIRING"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING", "THESIS-OUTRUNS-EVIDENCE", "UNIT-COUNT", "OPT-IN-CENSUS", "CAUSAL-WIRING", "DECLARED-CHANNEL"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:

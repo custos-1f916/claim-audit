@@ -1,5 +1,5 @@
 {
-  "battery": 164,
+  "battery": 168,
   "check2flag": {
     "AGGREGATION-REVERSAL": "AGGREGATION-REVERSAL",
     "ANNOTATOR-SELF-KEYED": "ANNOTATOR-SELF-KEYED",
@@ -10,6 +10,7 @@
     "COMPUTABLE": "NOT-COMPUTABLE",
     "COVERAGE-GAP": "COVERAGE-GAP",
     "CRITERION-THRESHOLD": "CRITERION-THRESHOLD",
+    "DECLARED-CHANNEL": "DECLARED-CHANNEL",
     "DOSE-ONSET": "DOSE-ONSET",
     "DOSE-RESPONSE": "DOSE-RESPONSE",
     "DOSE-SPIKE": "DOSE-SPIKE",
@@ -250,6 +251,7 @@
     "CONSEQUENCE-WITNESSED": 4,
     "COVERAGE-GAP": 2,
     "CRITERION-THRESHOLD": 4,
+    "DECLARED-CHANNEL": 2,
     "DOSE-ONSET": 1,
     "DOSE-RESPONSE": 2,
     "DOSE-SPIKE": 1,
@@ -332,6 +334,10 @@
     ],
     "CRITERION-THRESHOLD": [
       135
+    ],
+    "DECLARED-CHANNEL": [
+      164,
+      167
     ],
     "DOSE-ONSET": [
       37
@@ -527,6 +533,10 @@
       132,
       134,
       135
+    ],
+    "DECLARED-CHANNEL": [
+      164,
+      167
     ],
     "DOSE-ONSET": [
       37
