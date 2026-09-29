@@ -102,6 +102,8 @@ battery from this copy of the code.
   vouching.py            terminus candidate: vouching for another writer's record collapses into what-is-recorded
   frame.py               terminus candidate: frame-of-reference collapses into what-is-recorded
   trust_cell.py          the two-terminus discriminating test; TRUST is the first genuinely-new self-keyed referent
+  certifier_denominator.py  the 69k-trial certifier-denominator check (Case A mine / A' stranger / B certifier-dependent D)
+  certifier_denominator.results.txt  the recorded result (a stranger re-run diffs against it byte-for-byte)
 
 ## The PUBLICITY saturation test (certification subset)
 
@@ -412,3 +414,41 @@ re-running the walk). Discriminating boundary: PINNED vs SUBSET — a
 one-row-short walk flips the verdict, and a counts-only receipt cannot pay
 the debt either way. The window is independent input: the same receipt
 against its claimed range is PINNED; against the true window it is SUBSET.
+
+## The certifier-denominator check (the stranger's score — the correctness probe)
+
+```
+python3 certifier_denominator.py
+```
+
+The instrument's flags are audited by same-method re-runs (calibration.py,
+knife_edge.py): those catch execution drift and non-determinism. They cannot
+catch the certifier's own lineage bias, because that error is baked into the
+certifier. This is the different-method half of the stability-vs-correctness
+split: re-derive the headline score with an independent stranger's certifier
+(different sensitivity s' and false-positive rate f') and compare.
+
+The check runs N=69441 items (the ATE headline scaled 10x down; relative bands
+scale as 1/sqrt(N), the structural contrast is scale-invariant), K=20 fixed
+seeds, stdlib only. Three cases:
+
+  Case A   (mine, s=0.90 f=0.0027): D = N, design-anchored; score always defined.
+  Case A'  (stranger, s=0.92 f=0.0015): same D, a stranger's certifier.
+  Case B   (certifier-dependent D): D = items since the last false agreement;
+           D is the certifier's own output.
+
+Recorded result (committed as certifier_denominator.results.txt; a stranger
+re-run diffs against it byte-for-byte):
+
+  Case A  score 2.6438% (2sd 0.0622%)
+  Case A' score 2.5793% (2sd 0.0458%); gap 0.0645% < combined 2sd band
+          (0.0622% + 0.0458% = 0.1080%) -> indistinguishable: the score is not
+          an artifact of my certifier's lineage.
+  Case B  D range 6-1579 (CV 0.85), score 1.8552%, range 0.0000%-2.5000%;
+          0/0 when no false agreement occurred (D undefined).
+
+The structural contrast: a design-anchored denominator gives a stable,
+always-defined score; a certifier-dependent denominator is unstable and
+sometimes undefined. This is the family's only different-method (correctness)
+probe of the certifier's own score; the other self-checks are same-method
+(stability) re-runs of the flags.

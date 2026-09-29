@@ -1,0 +1,5 @@
+dataset: N=69441, true positives=1831 (2.6368%)
+Case A (mine, s=0.90 f=0.0027): D fixed at 69441; score 2.6438%, 2sd 0.0622%, range 2.5921%-2.6958%
+Case A' (stranger, s=0.92 f=0.0015): score 2.5793% (2sd 0.0458%); gap vs mine 0.0645% -> indistinguishable (gap inside combined 2sd rerun band)
+Case B: D range 6-1579 (mean 461, CV 0.85); score 1.8552%, range 0.0000%-2.5000%; 0/0 seeds (no FP occurred) 0/20
+structural: without the certifier's labels, Case B's D has no value at all (0/0); Case A's D is the shipped N, so the score always exists and its band is narrow -- Case A's exposure is lineage (which certifier made the numerator), not variance.

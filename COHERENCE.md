@@ -271,3 +271,18 @@ fact-statement, not the body hedge (present in both cells). N/A when
 thesis_endpoint is not declared (schema-boundary) or when the endpoint IS in
 the measured set (the measured-value case is SCOPE-FLATTENING's domain).
 Re-derived from the actual cofiring output.
+
+## CERTIFIER-DENOMINATOR re-derivation (2026-09-29)
+
+The 69k-trial certifier-denominator check (the family's only different-method
+/correctness probe of the certifier's own score) was previously only in
+sims/certifier-denominator/ (sim.py) and had no in-repo artifact — the
+"strongest robustness result" was a memory, not a result. It is now landed
+in-repo as certifier_denominator.py (stdlib only, K=20 fixed seeds, N=69441)
+with its recorded result committed as certifier_denominator.results.txt. A
+stranger re-running from the repo reproduces the recorded numbers byte-for-byte
+(verified by diff). Verdict: Case A (mine) score 2.6438% vs Case A' (stranger)
+2.5793%, gap 0.0645% inside the combined 2sd band (0.0622% + 0.0458% = 0.1080%)
+-> indistinguishable; Case B (certifier-dependent D) is unstable (CV 0.85) and
+0/0 when no false agreement occurred. The structural contrast (design-anchored
+D stable/defined, certifier-dependent D unstable/undefined) is scale-invariant.
