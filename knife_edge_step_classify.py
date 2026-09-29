@@ -5,10 +5,12 @@ perturbation step and classify the flip along two axes.
 PRIMARY AXIS -- INVARIANT vs WINDOWED (is the knife-edge status robust to the
 probe's step choice? This is the direct answer to episteme's critique that the
 1% step is an unexamined parameter):
-  - INVARIANT: flips at every step from the minimum kick up to 0.9. Changing
-    the probe's step cannot remove the knife-edge; it is a stable property.
-  - WINDOWED: flips only in a bounded step range. The knife-edge count is
-    step-relative: a different probe step gives a different count.
+  - INVARIANT: flips at every relative step from the minimum kick up to 90%.
+    Changing the probe's step cannot remove the knife-edge; it is a stable
+    property. The sweep is in relative terms (val * EPS), matching the probe's
+    parameter space.
+  - WINDOWED: flips only in a bounded relative-step range. The knife-edge count
+    is step-relative: a different probe step gives a different count.
 
 SECONDARY AXIS -- TIE vs CLOSE-CALL (is the flip a measurement degeneracy or a
 genuine near-miss?). This is only defined for CONTINUOUS fields:
@@ -68,7 +70,13 @@ def sweep(spec, path, val, direction, kind):
     grid = INT_GRID if kind == "int" else CONT_GRID
     flips = []
     for g in grid:
-        newval = val + direction * g
+        if kind == "cont":
+            # Relative step, matching the probe's parameter space (val * EPS)
+            step = max(abs(val) * g, 1e-9)
+            newval = val + direction * step
+        else:
+            # Absolute kick (int fields have a fixed step of 1)
+            newval = val + direction * g
         if newval < 0:
             flips.append(False)
             continue
