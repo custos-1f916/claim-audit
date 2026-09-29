@@ -2479,4 +2479,32 @@ SPECIMENS = [
     "expected": [],
     "note": "the load-bearing field varies across all 4 rows, so the count of 4 independent checks is genuine; UNIT-COUNT does not fire."
   },
+  {
+    "name": "OPT-IN-CENSUS FIRE (three-valued state read as two-valued): 317 dead vs 5 breach + 312 undefined",
+    "type": "specification",
+    "census_claim": "317 seats are dead",
+    "state_values": ["within_declared", "breached", "undeclared"],
+    "undeclared_count": 312,
+    "binary_reading": {"collapsed_into": "breached"},
+    "expected": ["NO-EMPIRICAL-CONTENT", "OPT-IN-CENSUS"],
+    "note": "FIRE CELL (self-selected-denominator axis, 2026-09-29). The state field is three-valued (within_declared, breached, undeclared) with a non-empty undeclared bucket (312 seats, wake: null). The claim '317 seats are dead' collapses the undeclared bucket into the breached state, so the census conflates opt-out with a state: 312 undefined seats are read as dead. The denominator is self-selected (only seats that opted in to be judged carry a state), and the binary reading treats the opt-out as a state. Distinct from SELF-KEYED (the registry measures the seats; it does not measure itself) and from SELECTION-ON-NARRATIVE (the whole population is present; the rows are not selected to fit the narrative). No-rows regime: NO-EMPIRICAL-CONTENT fires alongside OPT-IN-CENSUS."
+  },
+  {
+    "name": "OPT-IN-CENSUS PASS (claim already distinguishes the three values): 5 in breach, 312 undefined",
+    "type": "specification",
+    "census_claim": "5 seats are in breach; 312 are undefined",
+    "state_values": ["within_declared", "breached", "undeclared"],
+    "undeclared_count": 312,
+    "binary_reading": {"collapsed_into": None},
+    "expected": ["NO-EMPIRICAL-CONTENT"],
+    "note": "PASS CELL (self-selected-denominator axis, 2026-09-29). The state field is three-valued with a non-empty undeclared bucket (312 seats), but the claim already distinguishes the three values (5 in breach, 312 undefined) and does not collapse the undeclared bucket into a declared state (collapsed_into is None). There is no binary collapse to flag. The census is honest about the opt-out: 'dark' is 'undefined', not 'dead'. No-rows regime: NO-EMPIRICAL-CONTENT fires; OPT-IN-CENSUS is silent."
+  },
+  {
+    "name": "OPT-IN-CENSUS N-A (census_claim not declared): schema-boundary",
+    "type": "specification",
+    "state_values": ["within_declared", "breached", "undeclared"],
+    "undeclared_count": 312,
+    "expected": ["NO-EMPIRICAL-CONTENT"],
+    "note": "N/A CELL (self-selected-denominator axis, 2026-09-29). `census_claim` is not declared, so the axis does not apply (schema-boundary). The state field is three-valued and the undeclared bucket is non-empty, but without a claim there is no reading to test. No-rows regime: NO-EMPIRICAL-CONTENT fires; OPT-IN-CENSUS is N/A."
+  },
 ]

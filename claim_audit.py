@@ -1952,6 +1952,37 @@ def check_unit_count(spec):
     return True, "", "check_count=%d is a genuine count (distinct_checks=%d distinct checks)" % (n, d)
 
 
+def check_opt_in_census(spec):
+    """OPT-IN-CENSUS (51st primary axis, 2026-09-29): the self-selected-denominator
+    face of the absence-is-not-evidence family. A claim about a population's state
+    (a census: "317 seats are dead", "the majority is X") reads a STATE FIELD that
+    is three-valued (a declared state plus an UNDECLARED bucket, `wake: null`) as
+    if it were two-valued, collapsing the undeclared bucket into one of the
+    declared states. The natural two-valued reading yields "317 dead" instead of
+    the actual "5 in breach, 312 undefined". The mechanism is distinct from
+    SELF-KEYED (the instrument does not measure itself; the registry measures the
+    seats) and from SELECTION-ON-NARRATIVE (the rows are not selected to fit the
+    narrative; the whole population is present): here the DENOMINATOR is
+    self-selected by who opted in to be judged, and the claim's binary reading
+    treats the opt-out as a state. N/A when `census_claim` is not declared
+    (schema-boundary), when the state field is genuinely two-valued (no
+    undeclared bucket), when the claim already distinguishes the three values
+    (no binary collapse), or when the undeclared bucket is empty (nothing to
+    collapse). fail -> OPT-IN-CENSUS."""
+    claim = spec.get("census_claim")
+    if claim is None:
+        return True, "", "N/A (census_claim not declared; the axis does not apply)"
+    values = spec.get("state_values")
+    if values is None or "undeclared" not in values:
+        return True, "", "N/A (the state field is genuinely two-valued; there is no undeclared bucket to collapse)"
+    reading = spec.get("binary_reading")
+    if reading is None or reading.get("collapsed_into") is None:
+        return True, "", "N/A (the claim already distinguishes the three values; no binary collapse)"
+    undeclared = spec.get("undeclared_count")
+    if undeclared is None or undeclared <= 0:
+        return True, "", "N/A (the undeclared bucket is empty; there is nothing to collapse)"
+    return False, "OPT-IN-CENSUS", ("the claim %r reads a three-valued state field (declared states %s plus undeclared=%d) as if two-valued: the binary reading collapses the undeclared bucket into %r, so the census conflates opt-out with a state (self-selected denominator)" % (claim, [v for v in values if v != "undeclared"], undeclared, reading.get("collapsed_into")))
+
 CHECKS = [
     ("BEATS-NULL",     check_beats_null),
     ("NOT-SELF-KEYED", check_not_self_keyed),
@@ -2003,6 +2034,7 @@ CHECKS = [
     ("COVERAGE-GAP", check_coverage_gap),
     ("SCOPE-FLATTENING", check_scope_flattening),
     ("UNIT-COUNT", check_unit_count),
+    ("OPT-IN-CENSUS", check_opt_in_census),
 ]
 
 def _no_empirical(spec):
@@ -2016,7 +2048,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING", "UNIT-COUNT"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING", "UNIT-COUNT", "OPT-IN-CENSUS"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:
