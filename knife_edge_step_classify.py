@@ -5,12 +5,19 @@ perturbation step and classify the flip along two axes.
 PRIMARY AXIS -- INVARIANT vs WINDOWED (is the knife-edge status robust to the
 probe's step choice? This is the direct answer to episteme's critique that the
 1% step is an unexamined parameter):
-  - INVARIANT: flips at every relative step from the minimum kick up to 90%.
-    Changing the probe's step cannot remove the knife-edge; it is a stable
-    property. The sweep is in relative terms (val * EPS), matching the probe's
-    parameter space.
+  - INVARIANT: flips at every relative step from the minimum kick up to the
+    grid max (5.0x for direction=+1; capped at the 1.0 domain boundary for
+    direction=-1). Changing the probe's step cannot remove the knife-edge; it
+    is a stable property. The sweep is in relative terms (val * EPS), matching
+    the probe's parameter space.
   - WINDOWED: flips only in a bounded relative-step range. The knife-edge count
     is step-relative: a different probe step gives a different count.
+
+The sweep grid is direction-aware: out-of-domain points (newval < 0) are
+excluded rather than counted as non-flips, so a truly INVARIANT row cannot be
+misclassified as WINDOWED by domain-excluded points. The continuous grid is
+extended above 0.9 (to 5.0x), so a row whose flip window stops above relative
+step 0.9 is no longer INVARIANT by construction.
 
 SECONDARY AXIS -- TIE vs CLOSE-CALL (is the flip a measurement degeneracy or a
 genuine near-miss?). This is only defined for CONTINUOUS fields:
@@ -31,9 +38,10 @@ import claim_audit
 import specimens
 from knife_edge import numeric_leaves, _split_path, _set_at, audit_flags, EPS
 
-CONT_GRID = [1e-9, 1e-6, 1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 0.2, 0.5, 0.9]
+CONT_GRID = [1e-9, 1e-6, 1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 0.2, 0.5, 0.9, 1.0, 1.5, 2.0, 3.0, 5.0]
 INT_GRID  = [1, 2, 3, 5, 10]
-TIE_IDX_CONT = 1   # 1e-6 (grid[0]=1e-9 is numerically degenerate)
+TIE_IDX_CONT = 1   # 1e-6 (grid[0]=1e-9 is numerically degenerate); still index 1 in the
+    # direction-capped grids (1e-6 < 1.0, so the cap never drops it)
 
 
 def flagged_fields():
@@ -67,7 +75,13 @@ def flagged_fields():
 
 def sweep(spec, path, val, direction, kind):
     base = audit_flags(spec)
-    grid = INT_GRID if kind == "int" else CONT_GRID
+    # Direction-aware grid: cap out-of-domain points so they cannot read as
+    # non-flips (a truly INVARIANT row must not be misclassified as WINDOWED
+    # by points the domain excludes). TIE_IDX_CONT stays valid: 1e-6 < 1.0.
+    if kind == "int":
+        grid = INT_GRID if direction > 0 else [g for g in INT_GRID if g <= val]
+    else:
+        grid = CONT_GRID if direction > 0 else [g for g in CONT_GRID if g <= 1.0]
     flips = []
     for g in grid:
         if kind == "cont":
@@ -137,7 +151,7 @@ def main():
     controws = ties + closecalls
     print("=== SUMMARY ===")
     print("PRIMARY (step-robustness, all %d rows):" % len(rows))
-    print("  INVARIANT (flips at every step min..0.9, robust to step choice): %d/%d" % (invariant, len(rows)))
+    print("  INVARIANT (flips at every step min..grid max, robust to step choice): %d/%d" % (invariant, len(rows)))
     print("  WINDOWED  (flips only in a bounded step range, step-relative):   %d/%d" % (windowed, len(rows)))
     print("SECONDARY (degeneracy, %d CONTINUOUS rows only; %d int rows are MIN-KICK, excluded):" % (controws, introws))
     print("  TIE        (flips at 1e-6, value exactly on a boundary):         %d/%d cont" % (ties, controws))
