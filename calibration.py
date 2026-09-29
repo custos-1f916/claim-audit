@@ -530,6 +530,37 @@ SPECIMENS = [
       {"label": "closed (3 configs, null)", "mechanism_on": False, "is_null": True, "substrate": [], "metric": 0.5, "mechanism_axis": 0.5}
     ]
   },
+  {
+    'name': "CERTIFIER-UNNAMED FIRE (2609.30971 SciHorizon-eLab, unnamed visual-review agent): the certification gate's only protocol-anchoring channel has no declared identity",
+    'truth': ['CERTIFIER-UNNAMED'],
+    'truth_reason': "FIRE CELL (certifier-unnamed axis, 53rd, 2026-09-29). The benchmark's load-bearing word is 'certified', and the certification gate's only channel that ties the compiled task back to the source protocol is a 'visual-review agent' that is NEVER NAMED anywhere in the paper (no model/provider/temperature/prompt for any pipeline agent). The certification is stranger-unrerunnable: a stranger cannot re-derive the gate's output without the certifier's identity. Distinct from REFERENT-CONSTRUCTED (the referent -- what the claim is about -- is a model-constructed artifact; here the referent is externally-anchored and the gap is at the certifier) and from ANNOTATOR-SELF-KEYED (the 'why' rests on a non-public annotation; here the certification gate's output is the load-bearing channel and the certifier's identity is absent, not merely non-public). The empirical layer passes (the 49.7% headline is arithmetically correct), so the only flag is the certifier-channel gap.",
+    'type': 'ablation',
+    'mechanism_lever': 'm',
+    'referent': 'benchmark quality of the externally-anchored artifact',
+    'referent_provenance': 'externally-anchored',
+    'certifier_identity': 'unnamed', 'rows': [{"label": "on", "mechanism_on": True, "substrate": ["s", "m"], "metric": 1.0}, {"label": "off", "mechanism_on": False, "is_null": True, "substrate": ["s"], "metric": 0.2}]
+  },
+  {
+    'name': 'CERTIFIER-UNNAMED PASS (corner D: externally-anchored referent, NAMED certifier): the certifier is a specific model a stranger can re-run',
+    'truth': [],
+    'truth_reason': "PASS CELL (certifier-unnamed axis, 53rd, 2026-09-29), corner D of the 2x2 discriminating test. The referent is externally-anchored (so REFERENT-CONSTRUCTED does NOT fire) and the certifier is NAMED (a specific model a stranger can re-run, so CERTIFIER-UNNAMED does NOT fire). No flags fire: the certification is stranger-rerunnable and the referent is not model-constructed. This is the all-pass control of the 2x2: the fire cell (corner B, model-constructed referent + unnamed certifier) fires CERTIFIER-UNNAMED, the MACBT witness (corner A, model-constructed referent + named certifier) fires REFERENT-CONSTRUCTED only, and this cell fires neither. The discriminator is the certifier's identity, not the referent's provenance.",
+    'type': 'ablation',
+    'mechanism_lever': 'm',
+    'referent': 'benchmark quality of the externally-anchored artifact',
+    'referent_provenance': 'externally-anchored',
+    'certifier_identity': 'named',
+    'rows': [{"label": "on", "mechanism_on": True, "substrate": ["s", "m"], "metric": 1.0}, {"label": "off", "mechanism_on": False, "is_null": True, "substrate": ["s"], "metric": 0.2}]
+  },
+  {
+    'name': 'CERTIFIER-UNNAMED N/A MIRROR (certifier_identity undeclared): no certifier role declared, so the axis does not apply',
+    'truth': [],
+    'truth_reason': "N/A MIRROR (certifier-unnamed axis, 53rd, 2026-09-29). The certifier_identity field is not declared, so the axis is N/A (schema-boundary: no certifier role declared). The empirical layer passes (the 49.7% headline is arithmetically correct), so no flags fire. This is the N/A mirror to the fire cell: the discriminator is the presence of the certifier_identity field, not the certifier's identity (absent in both cells).",
+    'type': 'ablation',
+    'mechanism_lever': 'm',
+    'referent': 'benchmark quality of the externally-anchored artifact',
+    'referent_provenance': 'externally-anchored',
+    'rows': [{"label": "on", "mechanism_on": True, "substrate": ["s", "m"], "metric": 1.0}, {"label": "off", "mechanism_on": False, "is_null": True, "substrate": ["s"], "metric": 0.2}]
+  }
 ]
 
 def main():

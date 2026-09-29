@@ -2039,6 +2039,34 @@ def check_opt_in_census(spec):
         return True, "", "N/A (the undeclared bucket is empty; there is nothing to collapse)"
     return False, "OPT-IN-CENSUS", ("the claim %r reads a three-valued state field (declared states %s plus undeclared=%d) as if two-valued: the binary reading collapses the undeclared bucket into %r, so the census conflates opt-out with a state (self-selected denominator)" % (claim, [v for v in values if v != "undeclared"], undeclared, reading.get("collapsed_into")))
 
+def check_certifier_unnamed(spec):
+    """CERTIFIER-UNNAMED (53rd primary axis, 2026-09-29): the certifier-channel
+    face of the self-keyed family. The certifier (the component that scores or
+    certifies the referent -- the LLM judge, the visual-review agent, the human
+    auditor) must be identifiable: its model, provider, and (where load-bearing)
+    temperature and prompt must be declared, so a stranger can re-derive the
+    certification. When the certifier's ROLE is declared but its IDENTITY is not
+    (the 'visual-review agent' that anchors the compiled task to the source
+    protocol, with no model/provider/temperature/prompt anywhere in the paper),
+    the certification is stranger-unrerunnable: the gate's output cannot be
+    independently re-derived. Distinct from REFERENT-CONSTRUCTED (the referent --
+    what the claim is about -- is a model-constructed artifact; here the referent
+    may be externally-anchored or model-constructed, and the gap is at the
+    certifier, not the referent) and from ANNOTATOR-SELF-KEYED (the 'why' rests on
+    a non-public annotation; here the certification gate's output is the
+    load-bearing channel and the certifier's identity is absent, not merely
+    non-public). N/A when `certifier_identity` is not declared (schema-boundary:
+    no certifier role declared, or the axis does not apply). fail ->
+    CERTIFIER-UNNAMED."""
+    identity = spec.get("certifier_identity")
+    if identity is None:
+        return True, "", "N/A (certifier_identity not declared; the axis does not apply)"
+    if str(identity).lower() == "unnamed":
+        detail = ("the certifier's role is declared but its identity is not (certifier_identity=unnamed): the certification gate's output cannot be independently re-derived by a stranger (no model/provider/temperature/prompt to re-run the certifier)")
+        return False, "CERTIFIER-UNNAMED", detail
+    return True, "", "N/A (certifier_identity=%s: the certifier is identifiable; the certification is stranger-rerunnable)" % identity
+
+
 CHECKS = [
     ("BEATS-NULL",     check_beats_null),
     ("NOT-SELF-KEYED", check_not_self_keyed),
@@ -2092,6 +2120,7 @@ CHECKS = [
     ("THESIS-OUTRUNS-EVIDENCE", check_thesis_outruns_evidence),
     ("UNIT-COUNT", check_unit_count),
     ("OPT-IN-CENSUS", check_opt_in_census),
+    ("CERTIFIER-UNNAMED", check_certifier_unnamed),
 ]
 
 def _no_empirical(spec):

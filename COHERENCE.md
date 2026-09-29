@@ -1,9 +1,9 @@
-# Coherence of the 52-axis instrument (2026-09-29)
+# Coherence of the 53-axis instrument (2026-09-29)
 
 Question (from the saturation-collapse reconciliation): does the claim-audit
 instrument stay coherent as it grows to 51 axes, or do axes start to overlap?
 
-Objective test: the co-firing matrix over the 153-specimen battery
+Objective test: the co-firing matrix over the 157-specimen battery
 (`cofiring.py`). For each pair of axes, do they fire on the same specimens?
 
 ## Findings
@@ -88,11 +88,11 @@ calibration's discriminating cells, not new ground truth.
 
 ## Verdict
 
-The 52-axis instrument is coherent. No flag is redundant (no two share a
+The 53-axis instrument is coherent. No flag is redundant (no two share a
 firing set), no axis is a weight-0 label, the subset structure is the
 designed refinement hierarchy, and the per-axis exclusivity test — now
 derived rather than hand-listed — shows the newest axes (OPT-IN-CENSUS, UNIT-COUNT, SCOPE-FLATTENING,
-COVERAGE-GAP, THESIS-OUTRUNS-EVIDENCE) each add a genuinely new discriminating dimension. The growth from 33 to 52 axes is not
+COVERAGE-GAP, THESIS-OUTRUNS-EVIDENCE) each add a genuinely new discriminating dimension. The growth from 33 to 53 axes is not
 re-expanding
 the 59-family saturation collapse: those were the certification-gap
 family's self-labeled axes; the claim-audit axes carry 4-cell
@@ -287,3 +287,50 @@ stranger re-running from the repo reproduces the recorded numbers byte-for-byte
 -> indistinguishable; Case B (certifier-dependent D) is unstable (CV 0.85) and
 0/0 when no false agreement occurred. The structural contrast (design-anchored
 D stable/defined, certifier-dependent D unstable/undefined) is scale-invariant.
+
+## CERTIFIER-UNNAMED re-derivation (2026-09-29)
+
+The 53rd axis (certifier-channel face of the self-keyed family). The
+certifier (the component that scores or certifies the referent -- the LLM
+judge, the visual-review agent, the human auditor) must be identifiable: its
+model, provider, and (where load-bearing) temperature and prompt must be
+declared, so a stranger can re-derive the certification. When the certifier's
+ROLE is declared but its IDENTITY is not (the 'visual-review agent' that
+anchors the compiled task to the source protocol, with no model/provider/
+temperature/prompt anywhere in the paper), the certification is
+stranger-unrerunnable: a stranger cannot re-derive the gate's output without
+the certifier's identity.
+
+Discriminating test (the 2x2 over the two channels the axis must separate
+from): the referent channel (REFERENT-CONSTRUCTED) and the certifier channel
+(CERTIFIER-UNNAMED) are orthogonal. The four corners, audited pre- and
+post-wire-in:
+  corner A (model-constructed referent, NAMED certifier, 2609.30939 MACBT):
+    REFERENT-CONSTRUCTED only. Pre-wire-in the instrument read this and corner
+    B identically (both REFERENT-CONSTRUCTED) -- it was provably insensitive to
+    the certifier's identity.
+  corner B (model-constructed referent, UNNAMED certifier, 2609.30971
+    SciHorizon-eLab): REFERENT-CONSTRUCTED + CERTIFIER-UNNAMED. Post-wire-in
+    this is the only corner that differs from A on the certifier channel.
+  corner C (externally-anchored referent, UNNAMED certifier, RC-free control):
+    CERTIFIER-UNNAMED alone. This is the cell that proves the axis is
+    separable from REFERENT-CONSTRUCTED: CU fires with no RC present.
+  corner D (externally-anchored referent, NAMED certifier, pass control):
+    no flags.
+A-vs-B isolates the certifier channel (A==B pre-wire-in, A!=B post); B-vs-C
+isolates the referent channel; C proves CU is not a re-label of RC.
+
+CERTIFIER-UNNAMED fires on exactly 2 battery specimens (corner B, co-firing
+with REFERENT-CONSTRUCTED, and corner C) and has 1 exclusive specimen (corner
+C) -- the per-axis exclusivity test passes: it is not a re-label (identical-set
+test: no two flags share a firing set). Distinct from REFERENT-CONSTRUCTED
+(the referent -- what the claim is about -- is a model-constructed artifact;
+here the referent may be externally-anchored and the gap is at the certifier)
+and from ANNOTATOR-SELF-KEYED (the 'why' rests on a non-public annotation;
+here the certification gate's output is the load-bearing channel and the
+certifier's identity is absent, not merely non-public). N/A when
+certifier_identity is not declared (schema-boundary: no certifier role
+declared). The battery is now 157 specimens (127 real + 30
+constructed/self-specimen); the calibration battery is now 104 (fire, pass,
+and N/A-mirror cells, 104/104 DISCRIMINATES). Re-derived from the actual
+cofiring output.

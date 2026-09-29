@@ -1,9 +1,10 @@
 {
-  "battery": 153,
+  "battery": 157,
   "check2flag": {
     "AGGREGATION-REVERSAL": "AGGREGATION-REVERSAL",
     "ANNOTATOR-SELF-KEYED": "ANNOTATOR-SELF-KEYED",
     "BEATS-NULL": "NULL-REACHES-HEADLINE",
+    "CERTIFIER-UNNAMED": "CERTIFIER-UNNAMED",
     "CO-MOVES": "WRONG-AXIS",
     "COMPUTABLE": "NOT-COMPUTABLE",
     "COVERAGE-GAP": "COVERAGE-GAP",
@@ -74,6 +75,11 @@
       "ANNOTATOR-SELF-KEYED",
       "WRONG-AXIS",
       105
+    ],
+    [
+      "CERTIFIER-UNNAMED",
+      "REFERENT-CONSTRUCTED",
+      154
     ],
     [
       "CONSEQUENCE-WITNESSED",
@@ -237,6 +243,7 @@
     "AGGREGATION-REVERSAL": 2,
     "ANNOTATOR-SELF-KEYED": 2,
     "BY-CONSTRUCTION": 1,
+    "CERTIFIER-UNNAMED": 2,
     "CONFOUNDED": 6,
     "CONSEQUENCE-WITNESSED": 4,
     "COVERAGE-GAP": 2,
@@ -261,7 +268,7 @@
     "PLATFORM-CERTIFIED": 2,
     "PRIMARY-BASIS-REVERSAL": 1,
     "REFERENCE-MIX": 1,
-    "REFERENT-CONSTRUCTED": 1,
+    "REFERENT-CONSTRUCTED": 3,
     "SCOPE-FLATTENING": 2,
     "SCOPE-OF-INDEPENDENCE": 3,
     "SELECTION-BIAS": 1,
@@ -298,6 +305,9 @@
     "ANNOTATOR-SELF-KEYED": [],
     "BY-CONSTRUCTION": [
       16
+    ],
+    "CERTIFIER-UNNAMED": [
+      155
     ],
     "CONFOUNDED": [
       10,
@@ -388,7 +398,8 @@
       126
     ],
     "REFERENT-CONSTRUCTED": [
-      66
+      66,
+      153
     ],
     "SCOPE-FLATTENING": [
       140,
@@ -477,6 +488,10 @@
     ],
     "BY-CONSTRUCTION": [
       16
+    ],
+    "CERTIFIER-UNNAMED": [
+      154,
+      155
     ],
     "CONFOUNDED": [
       1,
@@ -630,7 +645,9 @@
       126
     ],
     "REFERENT-CONSTRUCTED": [
-      66
+      66,
+      153,
+      154
     ],
     "SCOPE-FLATTENING": [
       140,
