@@ -423,10 +423,10 @@ a STRUCTURAL set-size (support, check_count, cursor_runs — a different
 dataset) or a DECLARED parameter (knob, threshold, stated_headline — the
 claim's own exact value). The classes are not mutually exclusive per specimen.
 
-Current state (2026-09-29): 168 specimens, 736 numeric leaves. 148/168
+Current state (2026-09-29): 169 specimens, 744 numeric leaves. 149/169
 verdicts are ROBUST (stable under every minimal single-field perturbation);
-20/168 are knife-edge: 14/168 flip on a measured quantity, 6/168 flip only on
-structural/declared fields, 5/168 flip on both.
+20/169 are knife-edge: 14/169 flip on a measured quantity, 6/169 flip only on
+structural/declared fields, 5/169 flip on both.
 
 The load-bearing finding is the self-specimen: CF-CG-1 sweep saturation (the
 PASS-cell self-specimen, expected flags = []) sits one 1% relative perturbation

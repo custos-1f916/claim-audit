@@ -12,13 +12,13 @@ Objective test: the co-firing matrix over the 169-specimen battery
 weight-0 label that could be dropped without changing the instrument's output.
 
 **The subset structure is the *designed* refinement hierarchy, not overlap.**
-- `NULL-REACHES-HEADLINE` (36 specimens) is the superset of the BEATS-NULL
+- `NULL-REACHES-HEADLINE` (37 specimens) is the superset of the BEATS-NULL
   spike/onset refinements (DOSE-RESPONSE, DOSE-SPIKE, FUNNEL-STAGE-MISATTRIBUTION,
   METRIC-SPIKE, OUTCOME-SPIKE, SELECTION-ON-NARRATIVE, SPLIT-SPIKE,
   SUBGROUP-SPIKE, TEMPORAL-SPIKE, TIER-SPIKE). These are the false-positive
   surface of the flat check: each fires on a specimen where the flat check
   also fires, but the refinement is the *right* axis.
-- `NO-EMPIRICAL-CONTENT` (18 specimens) is the superset of the
+- `NO-EMPIRICAL-CONTENT` (19 specimens) is the superset of the
   completeness/regime axes (EVIDENCE-UNCLOSED, NOT-COMPUTABLE,
   UNWITNESSED-RECEIPT, UNWITNESSED-ROOT, WIDER-THAN-NAMED,
   WINDOW-PRESENT-TENSE). Same design: the regime gate short-circuits the
@@ -404,5 +404,4 @@ stranger CAN verify the content; the gap is in the certifier's decision
 channel. DECLARED-CHANNEL fires on exactly 2 specimens (the DC1 fire cell +
 the CPB live specimen) and has 2 exclusive specimens (no other flag fires on
 either); no identical firing set, not a strict subset of any existing axis.
-The battery is now 169 specimens (168 + 1: the DIAL 2609.31215 pass cell). Re-derived
-from the actual cofiring output.
+The battery is now 169 specimens (168 + 1: the DIAL 2609.31215 pass cell). Re-derived from the actual cofiring output and verified with `python3 cofiring.py --check` (the staleness guard: exit 0 when the committed cofiring.json matches a fresh recompute, exit 1 when it is stale, exit 2 when missing).

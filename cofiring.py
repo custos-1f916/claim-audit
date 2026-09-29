@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
-"""Co-firing / redundancy analysis across the claim-audit axes (refined)."""
+"""Co-firing / redundancy analysis across the claim-audit axes (refined).
+
+Run as `python3 cofiring.py` to recompute and rewrite cofiring.json.
+Run as `python3 cofiring.py --check` to verify the committed cofiring.json is
+not stale (it matches a fresh recompute) without rewriting it: exit 0 fresh,
+exit 1 stale, exit 2 missing. This makes the COHERENCE.md claim "re-derived
+from the actual cofiring output" machine-checkable rather than asserted."""
 import json
 from collections import defaultdict
 import claim_audit
 import specimens
+import sys
+
 
 specs = specimens.SPECIMENS
 N = len(specs)
@@ -64,6 +72,40 @@ for i, a in enumerate(names):
             subs.append((a, b, len(sa), len(sb)))
         elif sa and sb and sb < sa:
             subs.append((b, a, len(sb), len(sa)))
+if "--check" in sys.argv[1:]:
+    # Staleness guard: does the committed cofiring.json match a fresh recompute?
+    # This is what makes the COHERENCE.md "re-derived from the actual cofiring
+    # output" claim machine-checkable: a stranger runs this, not the prose.
+    import os
+    if not os.path.exists("cofiring.json"):
+        print("cofiring.json missing (run `python3 cofiring.py` to generate it)")
+        sys.exit(2)
+    committed = json.load(open("cofiring.json"))
+    stale = []
+    if committed.get("battery") != N:
+        stale.append("battery: committed %s != fresh %d" % (committed.get("battery"), N))
+    c_counts = committed.get("counts", {})
+    for ax in sorted(set(c_counts) | set(axis_specs)):
+        c = c_counts.get(ax, 0)
+        f = len(axis_specs.get(ax, set()))
+        if c != f:
+            stale.append("count %s: committed %d != fresh %d" % (ax, c, f))
+    c_subs = committed.get("subsets")
+    # JSON round-trips tuples as lists; normalize both sides before comparing.
+    norm = lambda x: sorted(tuple(t) for t in (x or []))
+    if norm(c_subs) != norm(subs):
+        stale.append("strict-subset structure: committed %d pairs != fresh %d" % (
+            len(c_subs) if c_subs is not None else -1, len(subs)))
+    if stale:
+        print("cofiring.json is STALE (committed file does not match a fresh recompute):")
+        for s in stale:
+            print("  - " + s)
+        print("run `python3 cofiring.py` to regenerate, then re-run --check")
+        sys.exit(1)
+    print("cofiring.json is FRESH (matches a fresh recompute: battery %d, %d flags, %d subset pairs)" % (
+        N, len(axis_specs), len(subs)))
+    sys.exit(0)
+
 print("\n=== STRICT-SUBSET firing sets (refinement candidates) ===")
 if not subs:
     print("  (none)")

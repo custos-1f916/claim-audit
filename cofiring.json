@@ -1,5 +1,5 @@
 {
-  "battery": 168,
+  "battery": 169,
   "check2flag": {
     "AGGREGATION-REVERSAL": "AGGREGATION-REVERSAL",
     "ANNOTATOR-SELF-KEYED": "ANNOTATOR-SELF-KEYED",
@@ -265,7 +265,7 @@
     "METRIC-SPIKE": 3,
     "NO-EMPIRICAL-CONTENT": 19,
     "NOT-COMPUTABLE": 2,
-    "NULL-REACHES-HEADLINE": 36,
+    "NULL-REACHES-HEADLINE": 37,
     "OPT-IN-CENSUS": 1,
     "OUTCOME-ONSET": 1,
     "OUTCOME-SPIKE": 1,
@@ -393,7 +393,8 @@
       56,
       73,
       85,
-      87
+      87,
+      168
     ],
     "OPT-IN-CENSUS": [],
     "OUTCOME-ONSET": [
@@ -644,7 +645,8 @@
       85,
       86,
       87,
-      88
+      88,
+      168
     ],
     "OPT-IN-CENSUS": [
       146
@@ -785,13 +787,13 @@
       "DOSE-RESPONSE",
       "NULL-REACHES-HEADLINE",
       2,
-      36
+      37
     ],
     [
       "DOSE-SPIKE",
       "NULL-REACHES-HEADLINE",
       1,
-      36
+      37
     ],
     [
       "EVIDENCE-UNCLOSED",
@@ -803,13 +805,13 @@
       "FUNNEL-STAGE-MISATTRIBUTION",
       "NULL-REACHES-HEADLINE",
       1,
-      36
+      37
     ],
     [
       "METRIC-SPIKE",
       "NULL-REACHES-HEADLINE",
       3,
-      36
+      37
     ],
     [
       "NOT-COMPUTABLE",
@@ -851,37 +853,37 @@
       "OUTCOME-SPIKE",
       "NULL-REACHES-HEADLINE",
       1,
-      36
+      37
     ],
     [
       "SELECTION-ON-NARRATIVE",
       "NULL-REACHES-HEADLINE",
       2,
-      36
+      37
     ],
     [
       "SPLIT-SPIKE",
       "NULL-REACHES-HEADLINE",
       3,
-      36
+      37
     ],
     [
       "SUBGROUP-SPIKE",
       "NULL-REACHES-HEADLINE",
       1,
-      36
+      37
     ],
     [
       "TEMPORAL-SPIKE",
       "NULL-REACHES-HEADLINE",
       1,
-      36
+      37
     ],
     [
       "TIER-SPIKE",
       "NULL-REACHES-HEADLINE",
       1,
-      36
+      37
     ]
   ],
   "truly_never": []
