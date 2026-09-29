@@ -1,0 +1,193 @@
+KNIFE-EDGE STEP-SWEEP  (N=153 specimens)
+rel step for continuous fields; integer step for counts
+
+=== knife-edge specimen count by config ===
+  0.1% rel, +-1 counts    19/153
+  0.5% rel, +-1 counts    20/153
+  1.0% rel, +-1 counts    20/153
+  2.0% rel, +-1 counts    22/153
+  2.0% rel, +-2 counts    22/153
+  5.0% rel, +-2 counts    27/153
+
+=== pairwise overlap (jaccard) ===
+  0.1% rel, +-1 counts   & 0.5% rel, +-1 counts    inter=19 union=20 jac=0.950
+  0.1% rel, +-1 counts   & 1.0% rel, +-1 counts    inter=19 union=20 jac=0.950
+  0.1% rel, +-1 counts   & 2.0% rel, +-1 counts    inter=19 union=22 jac=0.864
+  0.1% rel, +-1 counts   & 2.0% rel, +-2 counts    inter=18 union=23 jac=0.783
+  0.1% rel, +-1 counts   & 5.0% rel, +-2 counts    inter=18 union=28 jac=0.643
+  0.5% rel, +-1 counts   & 1.0% rel, +-1 counts    inter=20 union=20 jac=1.000
+  0.5% rel, +-1 counts   & 2.0% rel, +-1 counts    inter=20 union=22 jac=0.909
+  0.5% rel, +-1 counts   & 2.0% rel, +-2 counts    inter=19 union=23 jac=0.826
+  0.5% rel, +-1 counts   & 5.0% rel, +-2 counts    inter=19 union=28 jac=0.679
+  1.0% rel, +-1 counts   & 2.0% rel, +-1 counts    inter=20 union=22 jac=0.909
+  1.0% rel, +-1 counts   & 2.0% rel, +-2 counts    inter=19 union=23 jac=0.826
+  1.0% rel, +-1 counts   & 5.0% rel, +-2 counts    inter=19 union=28 jac=0.679
+  2.0% rel, +-1 counts   & 2.0% rel, +-2 counts    inter=21 union=23 jac=0.913
+  2.0% rel, +-1 counts   & 5.0% rel, +-2 counts    inter=21 union=28 jac=0.750
+  2.0% rel, +-2 counts   & 5.0% rel, +-2 counts    inter=22 union=27 jac=0.815
+
+=== core (knife-edge at EVERY step config): 18 ===
+    Aura c62793 label-swap (model-label silence, griffelschuft #5458)
+    BBC Lindsey-Graham sanctions (cqvgy34ndj4eo): narrative-selected 'China and India'
+    Blind-authorship roast arm (post 6760): blind grader over a derived test set
+    CF-CG-1 sweep saturation (self-specimen, PASS cell)
+    DOSE-RESPONSE true dose-response, dose DECLARED (FP-side schema-boundary witness) -- DR0
+    DOSE-RESPONSE true dose-response, dose UNDECLARED (schema-boundary: over-fire returns) -- DRu
+    EV3 evidence-unclosed (frozen-cursor cell: cursor never advanced across runs)
+    GAI WEAK multiple-comparisons (max-of-K, fixed instrument)
+    METRIC-SPIKE genuine fail (at-claim-metric value does not support the claim) -- MP3
+    MemRiskBench (2609.14976) -- selector triple scoped to calibration/reference set; split + metric change (external witness)
+    SCOPE-FLATTENING FAIL (2609.31563 multi-agent scaling, regime-flattening): plurality realizes almost none of the OR-potential, stated as scope-universal
+    THESIS-OUTRUNS-EVIDENCE PASS / SCOPE-FLATTENING FAIL (2609.31563 multi-agent scaling): the endpoint IS the measured value, so the thesis is properly scoped and the flattening is SCOPE-FLATTENING's
+    busma (2609.15054)
+    four-ledgers vacuous-ratio (2609.15015)
+    genuine N-check series (control)
+    haegeo funnel (2609.06027): 'rarely converts verification into recovery'
+    mtva middle-three (2609.20152): narrative-selected subset
+    square post 5399 (09-15 draw, partial)
+
+=== self-specimen (CF-CG-1 sweep saturation) ===
+  0.1% rel, +-1 counts    knife-edge
+  0.5% rel, +-1 counts    knife-edge
+  1.0% rel, +-1 counts    knife-edge
+  2.0% rel, +-1 counts    knife-edge
+  2.0% rel, +-2 counts    knife-edge
+  5.0% rel, +-2 counts    knife-edge
+
+=== per-config knife-edge sets (full) ===
+--- 0.1% rel, +-1 counts (19) ---
+    Aura c62793 label-swap (model-label silence, griffelschuft #5458)
+    BBC Lindsey-Graham sanctions (cqvgy34ndj4eo): narrative-selected 'China and India'
+    Blind-authorship roast arm (post 6760): blind grader over a derived test set
+    CF-CG-1 sweep saturation (self-specimen, PASS cell)
+    DOSE-RESPONSE true dose-response, dose DECLARED (FP-side schema-boundary witness) -- DR0
+    DOSE-RESPONSE true dose-response, dose UNDECLARED (schema-boundary: over-fire returns) -- DRu
+    EV3 evidence-unclosed (frozen-cursor cell: cursor never advanced across runs)
+    GAI WEAK multiple-comparisons (max-of-K, fixed instrument)
+    METRIC-SPIKE genuine fail (at-claim-metric value does not support the claim) -- MP3
+    MemRiskBench (2609.14976) -- selector triple scoped to calibration/reference set; split + metric change (external witness)
+    SCOPE-FLATTENING FAIL (2609.31563 multi-agent scaling, regime-flattening): plurality realizes almost none of the OR-potential, stated as scope-universal
+    THESIS-OUTRUNS-EVIDENCE PASS / SCOPE-FLATTENING FAIL (2609.31563 multi-agent scaling): the endpoint IS the measured value, so the thesis is properly scoped and the flattening is SCOPE-FLATTENING's
+    TypeSafe AI 'Jev' zero-hallucination (typesafe.ai, 2026-09-15)
+    busma (2609.15054)
+    four-ledgers vacuous-ratio (2609.15015)
+    genuine N-check series (control)
+    haegeo funnel (2609.06027): 'rarely converts verification into recovery'
+    mtva middle-three (2609.20152): narrative-selected subset
+    square post 5399 (09-15 draw, partial)
+--- 0.5% rel, +-1 counts (20) ---
+    Aura c62793 label-swap (model-label silence, griffelschuft #5458)
+    BBC Lindsey-Graham sanctions (cqvgy34ndj4eo): narrative-selected 'China and India'
+    Blind-authorship roast arm (post 6760): blind grader over a derived test set
+    CF-CG-1 sweep saturation (self-specimen, PASS cell)
+    Coda (2609.21216): composite trade-off pairing (quality vs 5-step, latency vs 10-step)
+    DOSE-RESPONSE true dose-response, dose DECLARED (FP-side schema-boundary witness) -- DR0
+    DOSE-RESPONSE true dose-response, dose UNDECLARED (schema-boundary: over-fire returns) -- DRu
+    EV3 evidence-unclosed (frozen-cursor cell: cursor never advanced across runs)
+    GAI WEAK multiple-comparisons (max-of-K, fixed instrument)
+    METRIC-SPIKE genuine fail (at-claim-metric value does not support the claim) -- MP3
+    MemRiskBench (2609.14976) -- selector triple scoped to calibration/reference set; split + metric change (external witness)
+    SCOPE-FLATTENING FAIL (2609.31563 multi-agent scaling, regime-flattening): plurality realizes almost none of the OR-potential, stated as scope-universal
+    THESIS-OUTRUNS-EVIDENCE PASS / SCOPE-FLATTENING FAIL (2609.31563 multi-agent scaling): the endpoint IS the measured value, so the thesis is properly scoped and the flattening is SCOPE-FLATTENING's
+    TypeSafe AI 'Jev' zero-hallucination (typesafe.ai, 2026-09-15)
+    busma (2609.15054)
+    four-ledgers vacuous-ratio (2609.15015)
+    genuine N-check series (control)
+    haegeo funnel (2609.06027): 'rarely converts verification into recovery'
+    mtva middle-three (2609.20152): narrative-selected subset
+    square post 5399 (09-15 draw, partial)
+--- 1.0% rel, +-1 counts (20) ---
+    Aura c62793 label-swap (model-label silence, griffelschuft #5458)
+    BBC Lindsey-Graham sanctions (cqvgy34ndj4eo): narrative-selected 'China and India'
+    Blind-authorship roast arm (post 6760): blind grader over a derived test set
+    CF-CG-1 sweep saturation (self-specimen, PASS cell)
+    Coda (2609.21216): composite trade-off pairing (quality vs 5-step, latency vs 10-step)
+    DOSE-RESPONSE true dose-response, dose DECLARED (FP-side schema-boundary witness) -- DR0
+    DOSE-RESPONSE true dose-response, dose UNDECLARED (schema-boundary: over-fire returns) -- DRu
+    EV3 evidence-unclosed (frozen-cursor cell: cursor never advanced across runs)
+    GAI WEAK multiple-comparisons (max-of-K, fixed instrument)
+    METRIC-SPIKE genuine fail (at-claim-metric value does not support the claim) -- MP3
+    MemRiskBench (2609.14976) -- selector triple scoped to calibration/reference set; split + metric change (external witness)
+    SCOPE-FLATTENING FAIL (2609.31563 multi-agent scaling, regime-flattening): plurality realizes almost none of the OR-potential, stated as scope-universal
+    THESIS-OUTRUNS-EVIDENCE PASS / SCOPE-FLATTENING FAIL (2609.31563 multi-agent scaling): the endpoint IS the measured value, so the thesis is properly scoped and the flattening is SCOPE-FLATTENING's
+    TypeSafe AI 'Jev' zero-hallucination (typesafe.ai, 2026-09-15)
+    busma (2609.15054)
+    four-ledgers vacuous-ratio (2609.15015)
+    genuine N-check series (control)
+    haegeo funnel (2609.06027): 'rarely converts verification into recovery'
+    mtva middle-three (2609.20152): narrative-selected subset
+    square post 5399 (09-15 draw, partial)
+--- 2.0% rel, +-1 counts (22) ---
+    Aura c62793 label-swap (model-label silence, griffelschuft #5458)
+    BBC Lindsey-Graham sanctions (cqvgy34ndj4eo): narrative-selected 'China and India'
+    Blind-authorship roast arm (post 6760): blind grader over a derived test set
+    CF-CG-1 sweep saturation (self-specimen, PASS cell)
+    Coda (2609.21216): composite trade-off pairing (quality vs 5-step, latency vs 10-step)
+    DOSE-RESPONSE true dose-response, dose DECLARED (FP-side schema-boundary witness) -- DR0
+    DOSE-RESPONSE true dose-response, dose UNDECLARED (schema-boundary: over-fire returns) -- DRu
+    EV3 evidence-unclosed (frozen-cursor cell: cursor never advanced across runs)
+    GAI WEAK multiple-comparisons (max-of-K, fixed instrument)
+    METRIC-SPIKE genuine fail (at-claim-metric value does not support the claim) -- MP3
+    MemRiskBench (2609.14976) -- selector triple scoped to calibration/reference set; split + metric change (external witness)
+    SCOPE-FLATTENING FAIL (2609.31563 multi-agent scaling, regime-flattening): plurality realizes almost none of the OR-potential, stated as scope-universal
+    THESIS-OUTRUNS-EVIDENCE PASS / SCOPE-FLATTENING FAIL (2609.31563 multi-agent scaling): the endpoint IS the measured value, so the thesis is properly scoped and the flattening is SCOPE-FLATTENING's
+    TypeSafe AI 'Jev' zero-hallucination (typesafe.ai, 2026-09-15)
+    busma (2609.15054)
+    four-ledgers vacuous-ratio (2609.15015)
+    genuine N-check series (control)
+    haegeo funnel (2609.06027): 'rarely converts verification into recovery'
+    harness recall-null (2609.20804): no accuracy gain from recall (dose readout, pass cell)
+    mtva middle-three (2609.20152): narrative-selected subset
+    prometheus on-par headline (2310.08491)
+    square post 5399 (09-15 draw, partial)
+--- 2.0% rel, +-2 counts (22) ---
+    Aura c62793 label-swap (model-label silence, griffelschuft #5458)
+    BBC Lindsey-Graham sanctions (cqvgy34ndj4eo): narrative-selected 'China and India'
+    Blind-authorship roast arm (post 6760): blind grader over a derived test set
+    Blind-authorship roast arm (post 6760): out-of-sample roasts + public grader (pass cell)
+    CF-CG-1 sweep saturation (self-specimen, PASS cell)
+    Coda (2609.21216): composite trade-off pairing (quality vs 5-step, latency vs 10-step)
+    DOSE-RESPONSE true dose-response, dose DECLARED (FP-side schema-boundary witness) -- DR0
+    DOSE-RESPONSE true dose-response, dose UNDECLARED (schema-boundary: over-fire returns) -- DRu
+    EV3 evidence-unclosed (frozen-cursor cell: cursor never advanced across runs)
+    GAI WEAK multiple-comparisons (max-of-K, fixed instrument)
+    METRIC-SPIKE genuine fail (at-claim-metric value does not support the claim) -- MP3
+    MemRiskBench (2609.14976) -- selector triple scoped to calibration/reference set; split + metric change (external witness)
+    SCOPE-FLATTENING FAIL (2609.31563 multi-agent scaling, regime-flattening): plurality realizes almost none of the OR-potential, stated as scope-universal
+    THESIS-OUTRUNS-EVIDENCE PASS / SCOPE-FLATTENING FAIL (2609.31563 multi-agent scaling): the endpoint IS the measured value, so the thesis is properly scoped and the flattening is SCOPE-FLATTENING's
+    busma (2609.15054)
+    four-ledgers vacuous-ratio (2609.15015)
+    genuine N-check series (control)
+    haegeo funnel (2609.06027): 'rarely converts verification into recovery'
+    harness recall-null (2609.20804): no accuracy gain from recall (dose readout, pass cell)
+    mtva middle-three (2609.20152): narrative-selected subset
+    prometheus on-par headline (2310.08491)
+    square post 5399 (09-15 draw, partial)
+--- 5.0% rel, +-2 counts (27) ---
+    Aura c62793 label-swap (model-label silence, griffelschuft #5458)
+    BBC Lindsey-Graham sanctions (cqvgy34ndj4eo): narrative-selected 'China and India'
+    Blind-authorship roast arm (post 6760): blind grader over a derived test set
+    Blind-authorship roast arm (post 6760): out-of-sample roasts + public grader (pass cell)
+    CF-CG-1 sweep saturation (self-specimen, PASS cell)
+    Coda (2609.21216): composite trade-off pairing (quality vs 5-step, latency vs 10-step)
+    DOSE-RESPONSE true dose-response, dose DECLARED (FP-side schema-boundary witness) -- DR0
+    DOSE-RESPONSE true dose-response, dose UNDECLARED (schema-boundary: over-fire returns) -- DRu
+    EV3 evidence-unclosed (frozen-cursor cell: cursor never advanced across runs)
+    GAI KNOB-VARY knob-sweep (knob varies, single draw per knob) -- control
+    GAI STRONG definition-edit (knob varies, max-of-K) -- control
+    GAI WEAK multiple-comparisons (max-of-K, fixed instrument)
+    METRIC-SPIKE genuine fail (at-claim-metric value does not support the claim) -- MP3
+    MemRiskBench (2609.14976) -- selector triple scoped to calibration/reference set; split + metric change (external witness)
+    SCOPE-FLATTENING FAIL (2609.31563 multi-agent scaling, regime-flattening): plurality realizes almost none of the OR-potential, stated as scope-universal
+    THESIS-OUTRUNS-EVIDENCE PASS / SCOPE-FLATTENING FAIL (2609.31563 multi-agent scaling): the endpoint IS the measured value, so the thesis is properly scoped and the flattening is SCOPE-FLATTENING's
+    busma (2609.15054)
+    four-ledgers vacuous-ratio (2609.15015)
+    genuine N-check series (control)
+    haegeo funnel (2609.06027): 'rarely converts verification into recovery'
+    harness recall-null (2609.20804): no accuracy gain from recall (dose readout, pass cell)
+    mtva middle-three (2609.20152): narrative-selected subset
+    orthogonality Case C: SELF-KEYED fires, LOSSY-PROJECTION passes (injective record)
+    prometheus on-par headline (2310.08491)
+    square post 5399 (09-15 draw, partial)
+    vibe-design (2609.15078)
+    wason-consensus (2609.20543): consensus decoupled from correctness -- S1
