@@ -1,11 +1,12 @@
 {
-  "battery": 137,
+  "battery": 149,
   "check2flag": {
     "AGGREGATION-REVERSAL": "AGGREGATION-REVERSAL",
     "ANNOTATOR-SELF-KEYED": "ANNOTATOR-SELF-KEYED",
     "BEATS-NULL": "NULL-REACHES-HEADLINE",
     "CO-MOVES": "WRONG-AXIS",
     "COMPUTABLE": "NOT-COMPUTABLE",
+    "COVERAGE-GAP": "COVERAGE-GAP",
     "CRITERION-THRESHOLD": "CRITERION-THRESHOLD",
     "DOSE-ONSET": "DOSE-ONSET",
     "DOSE-RESPONSE": "DOSE-RESPONSE",
@@ -20,6 +21,7 @@
     "METRIC-SPIKE": "METRIC-SPIKE",
     "NOISE-FLOOR": "WITHIN-NOISE",
     "NOT-SELF-KEYED": "SELF-KEYED",
+    "OPT-IN-CENSUS": "OPT-IN-CENSUS",
     "OUTCOME-ONSET": "OUTCOME-ONSET",
     "OUTCOME-SPIKE": "OUTCOME-SPIKE",
     "PLATFORM-CERTIFIED": "PLATFORM-CERTIFIED",
@@ -27,6 +29,7 @@
     "REFERENCE-MIX": "REFERENCE-MIX",
     "REFERENT-CONSTRUCTED": "REFERENT-CONSTRUCTED",
     "REFERENT-WITNESSED": "CONSEQUENCE-WITNESSED",
+    "SCOPE-FLATTENING": "SCOPE-FLATTENING",
     "SCOPE-OF-INDEPENDENCE": "SCOPE-OF-INDEPENDENCE",
     "SELECTION-BIAS": "SELECTION-BIAS",
     "SELECTION-ON-NARRATIVE": "SELECTION-ON-NARRATIVE",
@@ -43,6 +46,7 @@
     "TIER-ONSET": "TIER-ONSET",
     "TIER-SPIKE": "TIER-SPIKE",
     "TRUST": "TRUST",
+    "UNIT-COUNT": "UNIT-COUNT",
     "UNWITNESSED-RECEIPT": "UNWITNESSED-RECEIPT",
     "UNWITNESSED-ROOT": "UNWITNESSED-ROOT",
     "WIDER-THAN-NAMED": "WIDER-THAN-NAMED",
@@ -99,6 +103,11 @@
       "LOSSY-PROJECTION",
       "SELF-KEYED",
       68
+    ],
+    [
+      "NO-EMPIRICAL-CONTENT",
+      "OPT-IN-CENSUS",
+      146
     ],
     [
       "NO-EMPIRICAL-CONTENT",
@@ -224,6 +233,7 @@
     "BY-CONSTRUCTION": 1,
     "CONFOUNDED": 6,
     "CONSEQUENCE-WITNESSED": 4,
+    "COVERAGE-GAP": 2,
     "CRITERION-THRESHOLD": 4,
     "DOSE-ONSET": 1,
     "DOSE-RESPONSE": 2,
@@ -236,15 +246,17 @@
     "LOSSY-PROJECTION": 6,
     "METRIC-ONSET": 1,
     "METRIC-SPIKE": 3,
-    "NO-EMPIRICAL-CONTENT": 15,
+    "NO-EMPIRICAL-CONTENT": 18,
     "NOT-COMPUTABLE": 2,
     "NULL-REACHES-HEADLINE": 36,
+    "OPT-IN-CENSUS": 1,
     "OUTCOME-ONSET": 1,
     "OUTCOME-SPIKE": 1,
     "PLATFORM-CERTIFIED": 2,
     "PRIMARY-BASIS-REVERSAL": 1,
     "REFERENCE-MIX": 1,
     "REFERENT-CONSTRUCTED": 1,
+    "SCOPE-FLATTENING": 1,
     "SCOPE-OF-INDEPENDENCE": 3,
     "SELECTION-BIAS": 1,
     "SELECTION-ON-NARRATIVE": 2,
@@ -262,6 +274,7 @@
     "TIER-ONSET": 1,
     "TIER-SPIKE": 1,
     "TRUST": 1,
+    "UNIT-COUNT": 1,
     "UNWITNESSED-RECEIPT": 1,
     "UNWITNESSED-ROOT": 1,
     "VACUOUS-RATIO": 1,
@@ -289,6 +302,10 @@
       12,
       61,
       63
+    ],
+    "COVERAGE-GAP": [
+      137,
+      138
     ],
     "CRITERION-THRESHOLD": [
       135
@@ -324,7 +341,9 @@
       108,
       109,
       111,
-      113
+      113,
+      147,
+      148
     ],
     "NOT-COMPUTABLE": [],
     "NULL-REACHES-HEADLINE": [
@@ -347,6 +366,7 @@
       85,
       87
     ],
+    "OPT-IN-CENSUS": [],
     "OUTCOME-ONSET": [
       27
     ],
@@ -362,6 +382,9 @@
     ],
     "REFERENT-CONSTRUCTED": [
       66
+    ],
+    "SCOPE-FLATTENING": [
+      140
     ],
     "SCOPE-OF-INDEPENDENCE": [
       89,
@@ -411,6 +434,9 @@
     "TRUST": [
       129
     ],
+    "UNIT-COUNT": [
+      144
+    ],
     "UNWITNESSED-RECEIPT": [],
     "UNWITNESSED-ROOT": [],
     "VACUOUS-RATIO": [
@@ -454,6 +480,10 @@
       61,
       63,
       91
+    ],
+    "COVERAGE-GAP": [
+      137,
+      138
     ],
     "CRITERION-THRESHOLD": [
       131,
@@ -521,7 +551,10 @@
       111,
       112,
       113,
-      127
+      127,
+      146,
+      147,
+      148
     ],
     "NOT-COMPUTABLE": [
       15,
@@ -565,6 +598,9 @@
       87,
       88
     ],
+    "OPT-IN-CENSUS": [
+      146
+    ],
     "OUTCOME-ONSET": [
       27
     ],
@@ -583,6 +619,9 @@
     ],
     "REFERENT-CONSTRUCTED": [
       66
+    ],
+    "SCOPE-FLATTENING": [
+      140
     ],
     "SCOPE-OF-INDEPENDENCE": [
       89,
@@ -651,6 +690,9 @@
     "TRUST": [
       129
     ],
+    "UNIT-COUNT": [
+      144
+    ],
     "UNWITNESSED-RECEIPT": [
       92
     ],
@@ -699,7 +741,7 @@
       "EVIDENCE-UNCLOSED",
       "NO-EMPIRICAL-CONTENT",
       2,
-      15
+      18
     ],
     [
       "FUNNEL-STAGE-MISATTRIBUTION",
@@ -717,31 +759,37 @@
       "NOT-COMPUTABLE",
       "NO-EMPIRICAL-CONTENT",
       2,
-      15
+      18
+    ],
+    [
+      "OPT-IN-CENSUS",
+      "NO-EMPIRICAL-CONTENT",
+      1,
+      18
     ],
     [
       "UNWITNESSED-RECEIPT",
       "NO-EMPIRICAL-CONTENT",
       1,
-      15
+      18
     ],
     [
       "UNWITNESSED-ROOT",
       "NO-EMPIRICAL-CONTENT",
       1,
-      15
+      18
     ],
     [
       "WIDER-THAN-NAMED",
       "NO-EMPIRICAL-CONTENT",
       2,
-      15
+      18
     ],
     [
       "WINDOW-PRESENT-TENSE",
       "NO-EMPIRICAL-CONTENT",
       1,
-      15
+      18
     ],
     [
       "OUTCOME-SPIKE",

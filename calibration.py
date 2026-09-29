@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Calibration of the 47-axis claim-audit instrument (the discriminating case
+"""Calibration of the 51-axis claim-audit instrument (the discriminating case
 parked 2026-09-18 07:52Z).
 
 Ground truth is INDEPENDENT of the instrument: each specimen's known answer is
@@ -451,7 +451,53 @@ SPECIMENS = [
    "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
    "agent_optimizes_toward_judge":True,
    "truth":[],
-   "truth_reason":"judge_emits_labels is not declared (schema boundary) -> the axis cannot evaluate the judge's label emission -> JUDGE-AS-TARGET does not fire (N/A). Same structure as JT1; only judge_emits_labels is absent, so the schema boundary is what discriminates."}
+   "truth_reason":"judge_emits_labels is not declared (schema boundary) -> the axis cannot evaluate the judge's label emission -> JUDGE-AS-TARGET does not fire (N/A). Same structure as JT1; only judge_emits_labels is absent, so the schema boundary is what discriminates."},
+  {
+    "name": "CF-CG-1 screen clean-gap (self-specimen, partial support)",
+    "truth": ["COVERAGE-GAP"],
+    "truth_reason": "SELF-SPECIMEN (CF-CG-1 terrarium, 2026-09-28). The transplant-ranking screen (16 genomes/seed, bit_counts {1,2,3,4,5}) claimed a two-level landscape with a clean gap in [0.5,0.95). The census (full bc0-8) showed bc5 sits at 0.7334, INSIDE the claimed gap. The clean-gap was a shape claim over partial support (5/8 non-ancestor bit_counts), dissolved by the wider re-probe. Self-specimen: my own probe dissolved my own shape claim.",
+    "type": "ablation",
+    "mechanism": "B-allocation fraction (bit_count/8) over the reserve-weight landscape",
+    "mechanism_lever": "allocation_fraction",
+    "metric": "frac_of_systematic",
+    "shape_claim": True,
+    "probe_support_fraction": 0.625,
+    "shape_structurally_bounded": False,
+    "rows": [{"label": "bc1", "mechanism_on": True, "substrate": ["allocation_fraction", "reserve_weights"], "knob": 0.125, "metric": 0.6595, "mechanism_axis": 0.6595}, {"label": "bc2", "mechanism_on": True, "substrate": ["allocation_fraction", "reserve_weights"], "knob": 0.25, "metric": 1.0194, "mechanism_axis": 1.0194}, {"label": "bc3", "mechanism_on": True, "substrate": ["allocation_fraction", "reserve_weights"], "knob": 0.375, "metric": 1.0599, "mechanism_axis": 1.0599}, {"label": "bc4", "mechanism_on": True, "substrate": ["allocation_fraction", "reserve_weights"], "knob": 0.5, "metric": 0.9822, "mechanism_axis": 0.9822}, {"label": "bc5", "mechanism_on": True, "substrate": ["allocation_fraction", "reserve_weights"], "knob": 0.625, "metric": 0.7334, "mechanism_axis": 0.7334}]
+  },
+  {
+    "name": "SCOPE-FLATTENING FAIL (2609.31563 multi-agent scaling, regime-flattening): plurality realizes almost none of the OR-potential, stated as scope-universal",
+    "truth": ["SCOPE-FLATTENING"],
+    "truth_reason": "2609.31563 regime-flattening (the motivating case). The abstract states 'plurality realises almost none of the OR-potential' (~0.5, the close-modal value) as a scope-universal level claim. But the realized fraction varies across regimes: not-modal 0.0, close-modal 0.5, clear-modal 1.0. The instrument's max-over-scope headline selection reads the clear-modal regime (1.0), which beats the null (0.5) -> reports DISCRIMINATES, no flags. But the STATED universal value (0.5) does not beat the null (0.5). The regime-conditional value is flattened into a universal claim the instrument cannot see. FAIL cell: SCOPE-FLATTENING fires.",
+    "type": "regime-sweep",
+    "mechanism": "plurality voting over N=30 agents realizes the OR-potential (P[>=1 of N correct])",
+    "mechanism_lever": "plurality",
+    "metric": "realized accuracy (fraction of OR-potential realized)",
+    "scope_claim": True,
+    "probe_support_fraction": 1.0,
+    "stated_headline": 0.5,
+    "rows": [{"label": "not-modal regime", "mechanism_on": True, "substrate": ["plurality", "n30"], "metric": 0.0}, {"label": "close-modal regime", "mechanism_on": True, "substrate": ["plurality", "n30"], "metric": 0.5}, {"label": "clear-modal regime", "mechanism_on": True, "substrate": ["plurality", "n30"], "metric": 1.0}, {"label": "single agent (null)", "mechanism_on": False, "is_null": True, "substrate": ["single"], "metric": 0.5}]
+  },
+  {
+    "name": "seal-check unit-count (#7046, 2026-09-28)",
+    "truth": ["UNIT-COUNT"],
+    "truth_reason": "2,228 signed seal-checks; 331 of 331 byte-identical to the seal row's own signature across six seals and four citizens; the only field that varies is the server timestamp. 331 weak checks is a unit error: it is 1 bind x 331 receipts. bearer-liveness, server-witnessed; key-liveness unproven.",
+    "type": "series",
+    "check_count": 331,
+    "distinct_checks": 1,
+    "varies_only": "server timestamp",
+    "rows": [{"label": "seal-check #1", "mechanism_on": True, "metric": 1.0, "signature": "seal-row-sig", "server_timestamp": 1700000000}, {"label": "seal-check #2", "mechanism_on": True, "metric": 1.0, "signature": "seal-row-sig", "server_timestamp": 1700000060}]
+  },
+  {
+    "name": "OPT-IN-CENSUS FIRE (three-valued state read as two-valued): 317 dead vs 5 breach + 312 undefined",
+    "truth": ["NO-EMPIRICAL-CONTENT", "OPT-IN-CENSUS"],
+    "truth_reason": "FIRE CELL (self-selected-denominator axis, 2026-09-29). The state field is three-valued (within_declared, breached, undeclared) with a non-empty undeclared bucket (312 seats, wake: null). The claim '317 seats are dead' collapses the undeclared bucket into the breached state, so the census conflates opt-out with a state: 312 undefined seats are read as dead. The denominator is self-selected (only seats that opted in to be judged carry a state), and the binary reading treats the opt-out as a state. Distinct from SELF-KEYED (the registry measures the seats; it does not measure itself) and from SELECTION-ON-NARRATIVE (the whole population is present; the rows are not selected to fit the narrative). No-rows regime: NO-EMPIRICAL-CONTENT fires alongside OPT-IN-CENSUS.",
+    "type": "specification",
+    "census_claim": "317 seats are dead",
+    "state_values": ["within_declared", "breached", "undeclared"],
+    "undeclared_count": 312,
+    "binary_reading": {"collapsed_into": "breached"}
+  },
 ]
 
 def main():
