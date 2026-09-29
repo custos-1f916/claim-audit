@@ -2629,4 +2629,59 @@ SPECIMENS = [
     "expected": ["DECLARED-CHANNEL"],
     "note": "LIVE EXTERNAL SPECIMEN (arXiv 2609.30813, CPB, 'A Benchmark and Diagnostic Study of Epistemic Admission in Shared Agent Memory', Li et al.; explore/cpb-2609.30813 teardown, 2026-09-29). The governance rule B7 is the only policy that keeps damage low while answering in every family, but its entire protection rests on a DECLARED SOURCE-TYPE channel: 0.00 adoption of the false restatement while it is typed web-text (verbatim and reworded), 0.70 once the reworded copy is typed register-document (5.5), truth unchanged. The certifier (B7) is external and named (not CERTIFIER-UNNAMED) and the referent's truth is externally anchored (lineage fixed by scenario before any policy runs, graders validated against two human annotators on 120 items each) -- so the stranger CAN verify the content (content_verifiable=yes, not TRUST, not SELF-KEYED). But the certifier's DECISION is carried by a self-declared attribute (the source-type label the publisher declares): the admission decision flips with the declared form, not the verified content. DECLARED-CHANNEL fires. The empirical layer is clean (register-document 0.70 > web-text 0.00, no knob/CI/subgroup), so the only flag is the declared-channel promotion. The paper is honest that its protection is carried by the declaration, not by verification -- F6: 'admission follows the form of the second source more than the truth of the claim.'"
   },
+{ 'body_hedges': True,
+  'expected': ['NULL-REACHES-HEADLINE'],
+  'headline_states_as_fact': True,
+  'knob': 'nh (human-label budget)',
+  'knob_kind': 'workload',
+  'measured_endpoints': [ 'strong human-aligned rankings',
+                          'position-debiasing robustness to unbalanced order'],
+  'mechanism': 'DIAL-Ada (adaptive human-preference calibration)',
+  'mechanism_lever': 'adaptive_calibration',
+  'metric': "Kendall's tau with held-out human ranking",
+  'name': 'DIAL (2609.31215): strong human-aligned rankings with limited labels (thesis-outruns '
+          'pass cell)',
+  'note': "PASS CELL (2609.31215, DIAL, 'position-debiased LLM judges with adaptive "
+          "human-preference calibration'; Cai/Fan/Chen/Du; explore/arxiv-2609.31215 teardown, "
+          "2026-09-29). The 'strong human-aligned rankings with limited labels' headline is a mild "
+          'overclaim, not a clean FAIL. In the limited-labels regime (the one the headline names; '
+          'Figure 4a, nh varies with all 21 LLM judges) the unrestricted Human BTL fit is '
+          'non-finite in every split, and the only finite comparator (the stage-matched AtC '
+          'baseline) is within 0.013 of DIAL-Ada (roughly tied); the measurable difference vs AtC '
+          'lands at the LARGEST budget (nh=3200), where AtC actually exceeds DIAL-Ada. The body '
+          "hedges this explicitly ('where the unrestricted Human fit is not finite in every "
+          "split'), so the authors properly scope and report the stage-matched baseline. tau "
+          'values are approximate (the exact curves are Figure 4, not in the text); the structure '
+          'is faithful. The instrument fires NULL-REACHES-HEADLINE (the honest data-layer reading: '
+          'the max-over-budget metric cannot tell DIAL-Ada from the stage-matched baseline) but '
+          'does NOT over-fire THESIS-OUTRUNS-EVIDENCE (the endpoint IS measured -- a measurement '
+          "of Kendall's tau with the held-out human ranking, not a forecast -- and the body hedges "
+          'it) or SCOPE-FLATTENING (the max-over-scope does not beat the null, so the flattening '
+          'is not masked). This is the discriminating PASS control for THESIS-OUTRUNS-EVIDENCE: a '
+          'strong headline where the endpoint is a measurement and the body hedges, so the axis '
+          'does not over-fire.',
+  'rows': [ { 'knob': 800,
+              'label': 'DIAL-Ada at nh=800 (limited, the regime the headline names)',
+              'mechanism_on': True,
+              'metric': 0.85,
+              'substrate': ['dial_ada', '21_judges']},
+            { 'is_null': True,
+              'knob': 800,
+              'label': 'AtC at nh=800 (limited, stage-matched baseline; within 0.013 of DIAL-Ada)',
+              'mechanism_on': False,
+              'metric': 0.84,
+              'substrate': ['atc', '21_judges']},
+            { 'knob': 3200,
+              'label': 'DIAL-Ada at nh=3200 (largest budget)',
+              'mechanism_on': True,
+              'metric': 0.9,
+              'substrate': ['dial_ada', '21_judges']},
+            { 'is_null': True,
+              'knob': 3200,
+              'label': 'AtC at nh=3200 (largest; measurably exceeds DIAL-Ada)',
+              'mechanism_on': False,
+              'metric': 0.92,
+              'substrate': ['atc', '21_judges']}],
+  'thesis_endpoint': 'strong human-aligned rankings',
+  'type': 'knob-sweep'},
 ]

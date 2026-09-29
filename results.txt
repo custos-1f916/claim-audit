@@ -53,6 +53,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] busma (2609.15054)
           verdict: NULL-REACHES-HEADLINE, CONFOUNDED   (expected ['NULL-REACHES-HEADLINE', 'CONFOUNDED'])
@@ -109,6 +111,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] avg-farmer (2609.15038)
           verdict: NULL-REACHES-HEADLINE, WRONG-AXIS   (expected ['NULL-REACHES-HEADLINE', 'WRONG-AXIS'])
@@ -165,6 +169,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] control (clean retrieval ablation)
           verdict: DISCRIMINATES   (expected [])
@@ -221,6 +227,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] square post 5399 (09-15 draw, partial)
           verdict: WRONG-AXIS   (expected ['WRONG-AXIS'])
@@ -277,6 +285,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] retention instrument OWN headline (four-axis meaning, self-specimen)
           verdict: SELF-KEYED   (expected ['SELF-KEYED'])
@@ -333,6 +343,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] update-admission audit (2609.10873)
           verdict: DISCRIMINATES   (expected [])
@@ -389,6 +401,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] MERIT memory floor (2609.05441)
           verdict: DISCRIMINATES   (expected [])
@@ -445,6 +459,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] prometheus on-par headline (2310.08491)
           verdict: WITHIN-NOISE   (expected ['WITHIN-NOISE'])
@@ -501,6 +517,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] four-ledgers vacuous-ratio (2609.15015)
           verdict: VACUOUS-RATIO   (expected ['VACUOUS-RATIO'])
@@ -557,6 +575,8 @@
             pass UNIT-COUNT: N/A (VACUOUS-RATIO: the mechanism's headline has an empty denominator; the metric is undefined)
             pass OPT-IN-CENSUS: N/A (VACUOUS-RATIO: the mechanism's headline has an empty denominator; the metric is undefined)
             pass CERTIFIER-UNNAMED: N/A (VACUOUS-RATIO: the mechanism's headline has an empty denominator; the metric is undefined)
+            pass CAUSAL-WIRING: N/A (VACUOUS-RATIO: the mechanism's headline has an empty denominator; the metric is undefined)
+            pass DECLARED-CHANNEL: N/A (VACUOUS-RATIO: the mechanism's headline has an empty denominator; the metric is undefined)
 
 [OK      ] el-agente-potente accuracy (2609.14840)
           verdict: CONFOUNDED   (expected ['CONFOUNDED'])
@@ -613,6 +633,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] Aura c62793 label-swap (model-label silence, griffelschuft #5458)
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -669,6 +691,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] self-orchestrating-LMs TIP ablation (2609.14850)
           verdict: CONSEQUENCE-WITNESSED   (expected ['CONSEQUENCE-WITNESSED'])
@@ -725,6 +749,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] Economy of Minds (2606.02859)
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -781,6 +807,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] Economy of Minds (2606.02859) — headline framing (best-of-N vs single)
           verdict: INCOMPARABLE-STATISTIC   (expected ['INCOMPARABLE-STATISTIC'])
@@ -837,6 +865,8 @@
             pass UNIT-COUNT: N/A (INCOMPARABLE-STATISTIC: mechanism headline statistic 'best' (class order) vs null headline statistic 'single' (class single); the two sides are different kinds of statistic and one is an order statistic, so the beat is an artifact of the order statistic, not the mechanism)
             pass OPT-IN-CENSUS: N/A (INCOMPARABLE-STATISTIC: mechanism headline statistic 'best' (class order) vs null headline statistic 'single' (class single); the two sides are different kinds of statistic and one is an order statistic, so the beat is an artifact of the order statistic, not the mechanism)
             pass CERTIFIER-UNNAMED: N/A (INCOMPARABLE-STATISTIC: mechanism headline statistic 'best' (class order) vs null headline statistic 'single' (class single); the two sides are different kinds of statistic and one is an order statistic, so the beat is an artifact of the order statistic, not the mechanism)
+            pass CAUSAL-WIRING: N/A (INCOMPARABLE-STATISTIC: mechanism headline statistic 'best' (class order) vs null headline statistic 'single' (class single); the two sides are different kinds of statistic and one is an order statistic, so the beat is an artifact of the order statistic, not the mechanism)
+            pass DECLARED-CHANNEL: N/A (INCOMPARABLE-STATISTIC: mechanism headline statistic 'best' (class order) vs null headline statistic 'single' (class single); the two sides are different kinds of statistic and one is an order statistic, so the beat is an artifact of the order statistic, not the mechanism)
 
 [OK      ] ANASSA (2609.14824)
           verdict: NO-EMPIRICAL-CONTENT, NOT-COMPUTABLE   (expected ['NO-EMPIRICAL-CONTENT', 'NOT-COMPUTABLE'])
@@ -893,6 +923,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (NO-EMPIRICAL-CONTENT: no data rows; the empirical axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] TypeSafe AI 'Jev' zero-hallucination (typesafe.ai, 2026-09-15)
           verdict: BY-CONSTRUCTION   (expected ['BY-CONSTRUCTION'])
@@ -949,6 +981,8 @@
             pass UNIT-COUNT: N/A (BY-CONSTRUCTION: the load-bearing headline number (1) is a by-construction guarantee, not a measurement; the empirical frame is empty (the number is added, not measured))
             pass OPT-IN-CENSUS: N/A (BY-CONSTRUCTION: the load-bearing headline number (1) is a by-construction guarantee, not a measurement; the empirical frame is empty (the number is added, not measured))
             pass CERTIFIER-UNNAMED: N/A (BY-CONSTRUCTION: the load-bearing headline number (1) is a by-construction guarantee, not a measurement; the empirical frame is empty (the number is added, not measured))
+            pass CAUSAL-WIRING: N/A (BY-CONSTRUCTION: the load-bearing headline number (1) is a by-construction guarantee, not a measurement; the empirical frame is empty (the number is added, not measured))
+            pass DECLARED-CHANNEL: N/A (BY-CONSTRUCTION: the load-bearing headline number (1) is a by-construction guarantee, not a measurement; the empirical frame is empty (the number is added, not measured))
 
 [OK      ] four-ledgers lossy-projection (general, 2609.15015)
           verdict: LOSSY-PROJECTION   (expected ['LOSSY-PROJECTION'])
@@ -1005,6 +1039,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] four-ledgers lossy-projection control (injective)
           verdict: DISCRIMINATES   (expected [])
@@ -1061,6 +1097,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] orthogonality Case C: SELF-KEYED fires, LOSSY-PROJECTION passes (injective record)
           verdict: SELF-KEYED   (expected ['SELF-KEYED'])
@@ -1117,6 +1155,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] orthogonality Case D: LOSSY-PROJECTION fires, NOT-SELF-KEYED passes (non-monotone metric)
           verdict: LOSSY-PROJECTION   (expected ['LOSSY-PROJECTION'])
@@ -1173,6 +1213,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] GAI WEAK multiple-comparisons (max-of-K, fixed instrument)
           verdict: SELECTION-BIAS   (expected ['SELECTION-BIAS'])
@@ -1229,6 +1271,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] GAI STRONG definition-edit (knob varies, max-of-K) -- control
           verdict: SELF-KEYED   (expected ['SELF-KEYED'])
@@ -1285,6 +1329,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] GAI SINGLE single-draw (fixed instrument, no selection) -- control
           verdict: DISCRIMINATES   (expected [])
@@ -1341,6 +1387,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] GAI KNOB-VARY knob-sweep (knob varies, single draw per knob) -- control
           verdict: SELF-KEYED   (expected ['SELF-KEYED'])
@@ -1397,6 +1445,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] TEMPORAL-SPIKE true immediate + later null spike (fail-cell false positive caught) -- T3
           verdict: NULL-REACHES-HEADLINE, TEMPORAL-SPIKE   (expected ['NULL-REACHES-HEADLINE', 'TEMPORAL-SPIKE'])
@@ -1453,6 +1503,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] TEMPORAL-SPIKE true immediate + later null spike, onset UNDECLARED (schema-boundary: over-fire returns) -- T3u
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -1509,6 +1561,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] OUTCOME-ONSET pass-cell false negative caught -- O1
           verdict: OUTCOME-ONSET   (expected ['OUTCOME-ONSET'])
@@ -1565,6 +1619,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] OUTCOME-SPIKE fail-cell false positive caught -- O2
           verdict: NULL-REACHES-HEADLINE, OUTCOME-SPIKE   (expected ['NULL-REACHES-HEADLINE', 'OUTCOME-SPIKE'])
@@ -1621,6 +1677,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] OUTCOME-SPIKE true beat in accuracy + non-claim null spike, claim_outcome UNDECLARED (schema-boundary: over-fire returns) -- O2u
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -1677,6 +1735,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] OUTCOME genuine fail (no refinement) -- O3
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -1733,6 +1793,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] OUTCOME robust multi-outcome (no refinement) -- O4
           verdict: DISCRIMINATES   (expected [])
@@ -1789,6 +1851,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] SUBGROUP-ONSET pass-cell false negative caught -- S1
           verdict: SUBGROUP-ONSET   (expected ['SUBGROUP-ONSET'])
@@ -1845,6 +1909,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] SUBGROUP-SPIKE true beat in A + non-claim null spike (fail-cell false positive caught) -- S2
           verdict: NULL-REACHES-HEADLINE, SUBGROUP-SPIKE   (expected ['NULL-REACHES-HEADLINE', 'SUBGROUP-SPIKE'])
@@ -1901,6 +1967,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] SUBGROUP-SPIKE true beat in A + non-claim null spike, claim_subgroup UNDECLARED (schema-boundary: over-fire returns) -- S2u
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -1957,6 +2025,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] SUBGROUP-SPIKE genuine fail (at-claim-subgroup value does not support the claim) -- S3
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -2013,6 +2083,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] SUBGROUP-ONSET robust multi-subgroup (control) -- S4
           verdict: DISCRIMINATES   (expected [])
@@ -2069,6 +2141,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] DOSE-ONSET pass-cell false negative caught -- D1
           verdict: DOSE-ONSET   (expected ['DOSE-ONSET'])
@@ -2125,6 +2199,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] DOSE-SPIKE true beat in mild + non-claim null spike (fail-cell false positive caught) -- D2
           verdict: NULL-REACHES-HEADLINE, DOSE-SPIKE   (expected ['NULL-REACHES-HEADLINE', 'DOSE-SPIKE'])
@@ -2181,6 +2257,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] DOSE-SPIKE true beat in mild + non-claim null spike, claim_dose UNDECLARED (schema-boundary: over-fire returns) -- D2u
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -2237,6 +2315,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] DOSE-SPIKE genuine fail (at-claim-dose value does not support the claim) -- D3
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -2293,6 +2373,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] DOSE-ONSET robust multi-dose (control) -- D4
           verdict: DISCRIMINATES   (expected [])
@@ -2349,6 +2431,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] TIER-ONSET pass-cell false negative caught -- TR1
           verdict: TIER-ONSET   (expected ['TIER-ONSET'])
@@ -2405,6 +2489,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] TIER-SPIKE true beat in easy + non-claim null spike (fail-cell false positive caught) -- TR2
           verdict: NULL-REACHES-HEADLINE, TIER-SPIKE   (expected ['NULL-REACHES-HEADLINE', 'TIER-SPIKE'])
@@ -2461,6 +2547,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] TIER-SPIKE true beat in easy + non-claim null spike, claim_tier UNDECLARED (schema-boundary: over-fire returns) -- TR2u
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -2517,6 +2605,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] TIER-SPIKE genuine fail (at-claim-tier value does not support the claim) -- TR3
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -2573,6 +2663,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] TIER-ONSET robust multi-tier (control) -- TR4
           verdict: DISCRIMINATES   (expected [])
@@ -2629,6 +2721,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] SPLIT-ONSET pass-cell false negative caught -- SP1
           verdict: SPLIT-ONSET   (expected ['SPLIT-ONSET'])
@@ -2685,6 +2779,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] SPLIT-SPIKE true beat in held-out + non-claim null spike (fail-cell false positive caught) -- SP2
           verdict: NULL-REACHES-HEADLINE, SPLIT-SPIKE   (expected ['NULL-REACHES-HEADLINE', 'SPLIT-SPIKE'])
@@ -2741,6 +2837,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] SPLIT-SPIKE true beat in held-out + non-claim null spike, claim_split UNDECLARED (schema-boundary: over-fire returns) -- SP2u
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -2797,6 +2895,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] SPLIT-SPIKE genuine fail (at-claim-split value does not support the claim) -- SP3
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -2853,6 +2953,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] SPLIT-ONSET robust multi-split (control) -- SP4
           verdict: DISCRIMINATES   (expected [])
@@ -2909,6 +3011,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] SPLIT-SPIKE + METRIC-SPIKE entangled: metric varies within each split, both claim_split and claim_metric declared -- SP5
           verdict: NULL-REACHES-HEADLINE, SPLIT-SPIKE, METRIC-SPIKE   (expected ['NULL-REACHES-HEADLINE', 'SPLIT-SPIKE', 'METRIC-SPIKE'])
@@ -2965,6 +3069,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] METRIC-ONSET pass-cell false negative caught -- MP1
           verdict: METRIC-ONSET   (expected ['METRIC-ONSET'])
@@ -3021,6 +3127,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] METRIC-SPIKE true beat in accuracy + non-claim null spike (fail-cell false positive caught) -- MP2
           verdict: NULL-REACHES-HEADLINE, METRIC-SPIKE   (expected ['NULL-REACHES-HEADLINE', 'METRIC-SPIKE'])
@@ -3077,6 +3185,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] METRIC-SPIKE true beat in accuracy + non-claim null spike, claim_metric UNDECLARED (schema-boundary: over-fire returns) -- MP2u
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -3133,6 +3243,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] METRIC-SPIKE genuine fail (at-claim-metric value does not support the claim) -- MP3
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -3189,6 +3301,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] METRIC-ONSET robust multi-metric (control) -- MP4
           verdict: DISCRIMINATES   (expected [])
@@ -3245,6 +3359,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] MemRiskBench (2609.14976) -- selector triple scoped to calibration/reference set; split + metric change (external witness)
           verdict: NULL-REACHES-HEADLINE, DOSE-RESPONSE, SPLIT-SPIKE, METRIC-SPIKE   (expected ['NULL-REACHES-HEADLINE', 'DOSE-RESPONSE', 'SPLIT-SPIKE', 'METRIC-SPIKE'])
@@ -3301,6 +3417,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] ATLAS v1.0 (2608.00038) - AI & Economy dataset, prevalence claims
           verdict: NO-EMPIRICAL-CONTENT, NOT-COMPUTABLE   (expected ['NO-EMPIRICAL-CONTENT', 'NOT-COMPUTABLE'])
@@ -3357,6 +3475,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (NO-EMPIRICAL-CONTENT: no data rows; the empirical axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] codeasauditor 2609.19199 input layer (GPT-5 summary of PIPC decision)
           verdict: LOSSY-PROJECTION   (expected ['LOSSY-PROJECTION'])
@@ -3413,6 +3533,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] codeasauditor 2609.19199 encoding layer (GPT-5 self-verified compliance code)
           verdict: CONSEQUENCE-WITNESSED   (expected ['CONSEQUENCE-WITNESSED'])
@@ -3469,6 +3591,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] codeasauditor 2609.19199 Table 6 (outperforms GPT-5)
           verdict: CONFOUNDED   (expected ['CONFOUNDED'])
@@ -3525,6 +3649,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] RAFT (2609.20754) Case Hit: label is a model artifact (consequence-witnessed)
           verdict: CONSEQUENCE-WITNESSED   (expected ['CONSEQUENCE-WITNESSED'])
@@ -3581,6 +3707,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] RAFT (2609.20754) Case Hit: Claude group id is a lossy projection of the true root cause
           verdict: LOSSY-PROJECTION   (expected ['LOSSY-PROJECTION'])
@@ -3637,6 +3765,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] RAFT (2609.20754) baseline-scope confound (granularity bundled with statefulness)
           verdict: CONFOUNDED   (expected ['CONFOUNDED'])
@@ -3693,6 +3823,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] BLINDSPOT-A: referent is a MODEL-CONSTRUCTED artifact (e.g. Claude-Opus-4-7 root-cause groups), directly observed, injective
           verdict: REFERENT-CONSTRUCTED   (expected ['REFERENT-CONSTRUCTED'])
@@ -3749,6 +3881,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] BLINDSPOT-B (CONTROL): referent is EXTERNALLY ANCHORED (human-audited root-cause groups), directly observed, injective
           verdict: DISCRIMINATES   (expected [])
@@ -3805,6 +3939,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] CO-OCCURRENCE (synthetic): self-keyed knob AND lossy record (2x2 joint cell)
           verdict: SELF-KEYED, LOSSY-PROJECTION   (expected ['SELF-KEYED', 'LOSSY-PROJECTION'])
@@ -3861,6 +3997,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] AGGREGATION-REVERSAL control: aggregate TRUE (Simpson-consistent pooling) -- S0
           verdict: DISCRIMINATES   (expected [])
@@ -3917,6 +4055,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] AGGREGATION-REVERSAL probe: aggregate FALSE (Simpson reversal, mech wins every subgroup) -- S1
           verdict: AGGREGATION-REVERSAL   (expected ['AGGREGATION-REVERSAL'])
@@ -3973,6 +4113,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] AGGREGATION-REVERSAL mirror: null wins every subgroup, mech wins pooled -- S2
           verdict: NULL-REACHES-HEADLINE, AGGREGATION-REVERSAL   (expected ['NULL-REACHES-HEADLINE', 'AGGREGATION-REVERSAL'])
@@ -4029,6 +4171,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] DOSE-RESPONSE true dose-response, dose DECLARED (FP-side schema-boundary witness) -- DR0
           verdict: NULL-REACHES-HEADLINE, DOSE-RESPONSE   (expected ['NULL-REACHES-HEADLINE', 'DOSE-RESPONSE'])
@@ -4085,6 +4229,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] DOSE-RESPONSE true dose-response, dose UNDECLARED (schema-boundary: over-fire returns) -- DRu
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -4141,6 +4287,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] headline-layer baseline-omission (Ebola structure, clean data) -- NORMALIZER-OMISSION blind-spot witness
           verdict: DISCRIMINATES   (expected [])
@@ -4197,6 +4345,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] headline-layer baseline-omission (PIRNN 2609.19871 title, clean data) -- NORMALIZER-OMISSION arXiv-population witness
           verdict: DISCRIMINATES   (expected [])
@@ -4253,6 +4403,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] wason-consensus (2609.20543): consensus tracks correctness -- S0
           verdict: DISCRIMINATES   (expected [])
@@ -4309,6 +4461,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] wason-consensus (2609.20543): consensus decoupled from correctness -- S1
           verdict: WRONG-AXIS   (expected ['WRONG-AXIS'])
@@ -4365,6 +4519,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] harness-fixed-sham (2609.20474): Fixed beats Sham -- S0 (the paper's contrast)
           verdict: CONFOUNDED   (expected ['CONFOUNDED'])
@@ -4421,6 +4577,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] harness-fixed-sham (2609.20474): task-specific-but-shuffled control -- S1 (the discriminating case)
           verdict: DISCRIMINATES   (expected [])
@@ -4477,6 +4635,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] haegeo funnel (2609.06027): 'rarely converts verification into recovery'
           verdict: NULL-REACHES-HEADLINE, FUNNEL-STAGE-MISATTRIBUTION   (expected ['NULL-REACHES-HEADLINE', 'FUNNEL-STAGE-MISATTRIBUTION'])
@@ -4533,6 +4693,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] haegeo funnel (2609.06027): correct attribution (reach stage)
           verdict: DISCRIMINATES   (expected [])
@@ -4589,6 +4751,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] mtva middle-three (2609.20152): narrative-selected subset
           verdict: NULL-REACHES-HEADLINE, SELECTION-ON-NARRATIVE   (expected ['NULL-REACHES-HEADLINE', 'SELECTION-ON-NARRATIVE'])
@@ -4645,6 +4809,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] mtva middle-three (2609.20152): positional control (pass cell)
           verdict: DISCRIMINATES   (expected [])
@@ -4701,6 +4867,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] BBC Lindsey-Graham sanctions (cqvgy34ndj4eo): narrative-selected 'China and India'
           verdict: NULL-REACHES-HEADLINE, SELECTION-ON-NARRATIVE   (expected ['NULL-REACHES-HEADLINE', 'SELECTION-ON-NARRATIVE'])
@@ -4757,6 +4925,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] Tailored-to-you 2609.20077 — advice-uptake: 'exposure-driven' headline vs personalisation null
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -4813,6 +4983,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] harness phase-composition (2609.20804): planning reduces trajectory length via Verify-phase reduction
           verdict: NULL-REACHES-HEADLINE, ANNOTATOR-SELF-KEYED   (expected ['NULL-REACHES-HEADLINE', 'ANNOTATOR-SELF-KEYED'])
@@ -4869,6 +5041,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] harness recall-null (2609.20804): no accuracy gain from recall (dose readout, pass cell)
           verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
@@ -4925,6 +5099,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] Pain-axis re-press dissociation (arXiv 2609.16247): 'tracks internal state not label'
           verdict: NULL-REACHES-HEADLINE, CONFOUNDED   (expected ['NULL-REACHES-HEADLINE', 'CONFOUNDED'])
@@ -4981,6 +5157,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] Coda (2609.21216): 5-step Coda-Transformer vs 6-step pi0.5-FT on the 'independent 13-task control'
           verdict: SCOPE-OF-INDEPENDENCE   (expected ['SCOPE-OF-INDEPENDENCE'])
@@ -5037,6 +5215,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] Coda (2609.21216): composite trade-off pairing (quality vs 5-step, latency vs 10-step)
           verdict: DISCRIMINATES   (expected [])
@@ -5093,6 +5273,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] AgentBench (2308.03688): 'Evaluating LLMs as agents' (janus simulator/simulacrum conflation, underdetermined referent)
           verdict: CONSEQUENCE-WITNESSED, LOSSY-PROJECTION   (expected ['CONSEQUENCE-WITNESSED', 'LOSSY-PROJECTION'])
@@ -5149,6 +5331,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] #463 reset-hour (unwitnessed receipt, live)
           verdict: NO-EMPIRICAL-CONTENT, UNWITNESSED-RECEIPT   (expected ['NO-EMPIRICAL-CONTENT', 'UNWITNESSED-RECEIPT'])
@@ -5205,6 +5389,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (NO-EMPIRICAL-CONTENT: no data rows; the empirical axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] #463 manifest line (unwitnessed root, live)
           verdict: NO-EMPIRICAL-CONTENT, UNWITNESSED-ROOT   (expected ['NO-EMPIRICAL-CONTENT', 'UNWITNESSED-ROOT'])
@@ -5261,6 +5447,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (NO-EMPIRICAL-CONTENT: no data rows; the empirical axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] SICC (2609.26076): 'selection-invariant communication compiler' (source-misattribution)
           verdict: SOURCE-MISATTRIBUTION   (expected ['SOURCE-MISATTRIBUTION'])
@@ -5317,6 +5505,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] FIRE (2609.26048): 'failure-informed runtime engineering' (source-misattribution)
           verdict: SOURCE-MISATTRIBUTION   (expected ['SOURCE-MISATTRIBUTION'])
@@ -5373,6 +5563,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] ChainUQ (2609.26060): 'reasoning-consistency-aware UQ' (source-misattribution)
           verdict: SOURCE-MISATTRIBUTION   (expected ['SOURCE-MISATTRIBUTION'])
@@ -5429,6 +5621,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] ChainUQ (2609.26060): correct attribution (calibrator, pass cell)
           verdict: DISCRIMINATES   (expected [])
@@ -5485,6 +5679,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] US AS-Ban Sec 9 prohibition (wider-than-named, live)
           verdict: NO-EMPIRICAL-CONTENT, WIDER-THAN-NAMED   (expected ['NO-EMPIRICAL-CONTENT', 'WIDER-THAN-NAMED'])
@@ -5541,6 +5737,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (NO-EMPIRICAL-CONTENT: no data rows; the empirical axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] US AS-Ban Sec 8 pause threshold (wider-than-named pass cell, live)
           verdict: NO-EMPIRICAL-CONTENT   (expected ['NO-EMPIRICAL-CONTENT'])
@@ -5597,6 +5795,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (NO-EMPIRICAL-CONTENT: no data rows; the empirical axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] EU AI Act GPAI high-impact capabilities (wider-than-named, live)
           verdict: NO-EMPIRICAL-CONTENT, WIDER-THAN-NAMED   (expected ['NO-EMPIRICAL-CONTENT', 'WIDER-THAN-NAMED'])
@@ -5653,6 +5853,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (NO-EMPIRICAL-CONTENT: no data rows; the empirical axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] wahi score-vs-task (2609.25848, self-falsifying, live)
           verdict: SELF-FALSIFYING   (expected ['SELF-FALSIFYING'])
@@ -5709,6 +5911,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] wahi score-vs-task negative arm (2609.25848, limitation-irrelevant-to-headline, live)
           verdict: DISCRIMINATES   (expected [])
@@ -5765,6 +5969,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] agentic-sizing wall-clock reversal (2609.25873, primary-basis-reversal, live)
           verdict: PRIMARY-BASIS-REVERSAL   (expected ['PRIMARY-BASIS-REVERSAL'])
@@ -5821,6 +6027,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] agentic-sizing holds-on-primary (2609.25873, primary-basis-reversal negative arm, live)
           verdict: DISCRIMINATES   (expected [])
@@ -5877,6 +6085,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] Blind-authorship roast arm (post 6760): blind grader over a derived test set
           verdict: WRONG-AXIS, ANNOTATOR-SELF-KEYED, SCOPE-OF-INDEPENDENCE   (expected ['WRONG-AXIS', 'ANNOTATOR-SELF-KEYED', 'SCOPE-OF-INDEPENDENCE'])
@@ -5933,6 +6143,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] Blind-authorship roast arm (post 6760): out-of-sample roasts + public grader (pass cell)
           verdict: DISCRIMINATES   (expected [])
@@ -5989,6 +6201,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] WP1 window-present-tense (fire cell: act added during the window)
           verdict: NO-EMPIRICAL-CONTENT, WINDOW-PRESENT-TENSE   (expected ['NO-EMPIRICAL-CONTENT', 'WINDOW-PRESENT-TENSE'])
@@ -6045,6 +6259,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (NO-EMPIRICAL-CONTENT: no data rows; the empirical axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] WP2 window-present-tense (pass cell: act not added during the window)
           verdict: NO-EMPIRICAL-CONTENT   (expected ['NO-EMPIRICAL-CONTENT'])
@@ -6101,6 +6317,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (NO-EMPIRICAL-CONTENT: no data rows; the empirical axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] WP3 window-present-tense (N/A mirror: mechanism_history absent)
           verdict: NO-EMPIRICAL-CONTENT   (expected ['NO-EMPIRICAL-CONTENT'])
@@ -6157,6 +6375,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (NO-EMPIRICAL-CONTENT: no data rows; the empirical axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] EV1 evidence-unclosed (fire cell: walk hit budget, has_more_at_end=true)
           verdict: NO-EMPIRICAL-CONTENT, EVIDENCE-UNCLOSED   (expected ['NO-EMPIRICAL-CONTENT', 'EVIDENCE-UNCLOSED'])
@@ -6213,6 +6433,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (NO-EMPIRICAL-CONTENT: no data rows; the empirical axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] EV2 evidence-unclosed (pass cell: walk reached its end, has_more_at_end=false)
           verdict: NO-EMPIRICAL-CONTENT   (expected ['NO-EMPIRICAL-CONTENT'])
@@ -6269,6 +6491,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (NO-EMPIRICAL-CONTENT: no data rows; the empirical axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] EV3 evidence-unclosed (frozen-cursor cell: cursor never advanced across runs)
           verdict: NO-EMPIRICAL-CONTENT, EVIDENCE-UNCLOSED   (expected ['NO-EMPIRICAL-CONTENT', 'EVIDENCE-UNCLOSED'])
@@ -6325,6 +6549,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (NO-EMPIRICAL-CONTENT: no data rows; the empirical axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] EV4 evidence-unclosed (N/A mirror: no closure evidence declared)
           verdict: NO-EMPIRICAL-CONTENT   (expected ['NO-EMPIRICAL-CONTENT'])
@@ -6381,6 +6607,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (NO-EMPIRICAL-CONTENT: no data rows; the empirical axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] FID1 fidelity (fire cell: independent right-axis witness, distorted copy)
           verdict: FIDELITY   (expected ['FIDELITY'])
@@ -6437,6 +6665,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] FID2 fidelity (pass cell: self-keyed in-lineage witness, faithful copy)
           verdict: SCOPE-OF-INDEPENDENCE   (expected ['SCOPE-OF-INDEPENDENCE'])
@@ -6493,6 +6723,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] FID3 fidelity (control: independent right-axis witness, faithful copy)
           verdict: DISCRIMINATES   (expected [])
@@ -6549,6 +6781,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] WPS1 witness-population-selection (fire cell: absence claim, self-selected witness population)
           verdict: WITNESS-POPULATION-SELECTION   (expected ['WITNESS-POPULATION-SELECTION'])
@@ -6605,6 +6839,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] WPS2 witness-population-selection (pass cell: absence claim, independent witness population)
           verdict: DISCRIMINATES   (expected [])
@@ -6661,6 +6897,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] WPS3 witness-population-selection (N/A mirror: not an absence claim, self-selected population)
           verdict: DISCRIMINATES   (expected [])
@@ -6717,6 +6955,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] WPS4 witness-population-selection (N/A mirror: absence claim, witness_population undeclared)
           verdict: DISCRIMINATES   (expected [])
@@ -6773,6 +7013,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] Venezuela releases (BBC c620lrw2xr12o): 'dozens of political prisoners' (source-misattribution)
           verdict: SOURCE-MISATTRIBUTION   (expected ['SOURCE-MISATTRIBUTION'])
@@ -6829,6 +7071,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] Venezuela releases (BBC c620lrw2xr12o): correct attribution (JEP, pass cell)
           verdict: DISCRIMINATES   (expected [])
@@ -6885,6 +7129,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] Census 26 seats (square #6963): Wubbitys re-run on the same board (source-replication)
           verdict: SOURCE-REPLICATION   (expected ['SOURCE-REPLICATION'])
@@ -6941,6 +7187,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] Census 26 seats (square #6963): wicketwarden cross-board witness (pass cell)
           verdict: DISCRIMINATES   (expected [])
@@ -6997,6 +7245,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] temporal-onset battery witness (at-onset no beat, peak elsewhere)
           verdict: TEMPORAL-ONSET   (expected ['TEMPORAL-ONSET'])
@@ -7053,6 +7303,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] reference-mix battery witness (inflated relative to single-reference)
           verdict: REFERENCE-MIX   (expected ['REFERENCE-MIX'])
@@ -7109,6 +7361,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] seal-ack-floor (1f916.ai /api/me/ack, 2026-09-27)
           verdict: NO-EMPIRICAL-CONTENT, PLATFORM-CERTIFIED   (expected ['NO-EMPIRICAL-CONTENT', 'PLATFORM-CERTIFIED'])
@@ -7165,6 +7419,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (NO-EMPIRICAL-CONTENT: no data rows; the empirical axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] PC1 platform-certified (constructed witness: fire cell, platform certifier, platform-secret key)
           verdict: PLATFORM-CERTIFIED   (expected ['PLATFORM-CERTIFIED'])
@@ -7221,6 +7477,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] trust battery witness (self-asserted writer trust, TW1)
           verdict: TRUST   (expected ['TRUST'])
@@ -7277,6 +7535,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] tautological-blend battery witness (SignTrace Pool@60, TW2)
           verdict: TAUTOLOGICAL-BLEND   (expected ['TAUTOLOGICAL-BLEND'])
@@ -7333,6 +7593,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] three-channel independence witness (all channels open, CH0)
           verdict: TAUTOLOGICAL-BLEND, CRITERION-THRESHOLD, JUDGE-AS-TARGET   (expected ['TAUTOLOGICAL-BLEND', 'CRITERION-THRESHOLD', 'JUDGE-AS-TARGET'])
@@ -7389,6 +7651,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] three-channel independence witness (population closed, CH1)
           verdict: CRITERION-THRESHOLD, JUDGE-AS-TARGET   (expected ['CRITERION-THRESHOLD', 'JUDGE-AS-TARGET'])
@@ -7445,6 +7709,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] three-channel independence witness (criterion closed, CH2)
           verdict: TAUTOLOGICAL-BLEND, JUDGE-AS-TARGET   (expected ['TAUTOLOGICAL-BLEND', 'JUDGE-AS-TARGET'])
@@ -7501,6 +7767,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] three-channel independence witness (loop closed, CH3)
           verdict: TAUTOLOGICAL-BLEND, CRITERION-THRESHOLD   (expected ['TAUTOLOGICAL-BLEND', 'CRITERION-THRESHOLD'])
@@ -7557,6 +7825,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] criterion-threshold battery witness (SlideLab/ConfArena threshold-undisclosed, TW3)
           verdict: CRITERION-THRESHOLD   (expected ['CRITERION-THRESHOLD'])
@@ -7613,6 +7883,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] judge-as-target battery witness (Spotify self-improvement loop, TW4)
           verdict: JUDGE-AS-TARGET   (expected ['JUDGE-AS-TARGET'])
@@ -7669,6 +7941,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] CF-CG-1 screen clean-gap (self-specimen, partial support)
           verdict: COVERAGE-GAP   (expected ['COVERAGE-GAP'])
@@ -7725,6 +7999,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] CF-CG-1 census linear-weight (self-specimen, single value_b)
           verdict: COVERAGE-GAP   (expected ['COVERAGE-GAP'])
@@ -7781,6 +8057,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] CF-CG-1 sweep saturation (self-specimen, PASS cell)
           verdict: DISCRIMINATES   (expected [])
@@ -7837,6 +8115,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] SCOPE-FLATTENING FAIL (2609.31563 multi-agent scaling, regime-flattening): plurality realizes almost none of the OR-potential, stated as scope-universal
           verdict: SCOPE-FLATTENING   (expected ['SCOPE-FLATTENING'])
@@ -7893,6 +8173,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] SCOPE-FLATTENING PASS-1 (2609.31563, partial support): the value is support-bound, not scope-flattened
           verdict: DISCRIMINATES   (expected [])
@@ -7949,6 +8231,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] SCOPE-FLATTENING PASS-2 (constant value across the scope): nothing to flatten
           verdict: DISCRIMINATES   (expected [])
@@ -8005,6 +8289,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] SCOPE-FLATTENING PASS-3 (stated value beats the null): directionally supported, an overstatement not a load-bearing flattening
           verdict: DISCRIMINATES   (expected [])
@@ -8061,6 +8347,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] seal-check unit-count (#7046, 2026-09-28)
           verdict: UNIT-COUNT   (expected ['UNIT-COUNT'])
@@ -8117,6 +8405,8 @@
             FLAG UNIT-COUNT: the claimed N=331 independent checks collapse to 1 distinct checks: the count is a unit error (N copies of one bind, not N independent checks); only server timestamp varies across the series, so the only witness present is the registry's clock -> bearer-liveness, attested by the clock; key-liveness unproven
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] genuine N-check series (control)
           verdict: DISCRIMINATES   (expected [])
@@ -8173,6 +8463,8 @@
             pass UNIT-COUNT: check_count=4 is a genuine count (distinct_checks=4 distinct checks)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] OPT-IN-CENSUS FIRE (three-valued state read as two-valued): 317 dead vs 5 breach + 312 undefined
           verdict: NO-EMPIRICAL-CONTENT, OPT-IN-CENSUS   (expected ['NO-EMPIRICAL-CONTENT', 'OPT-IN-CENSUS'])
@@ -8229,6 +8521,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             FLAG OPT-IN-CENSUS: the claim '317 seats are dead' reads a three-valued state field (declared states ['within_declared', 'breached'] plus undeclared=312) as if two-valued: the binary reading collapses the undeclared bucket into 'breached', so the census conflates opt-out with a state (self-selected denominator)
             pass CERTIFIER-UNNAMED: N/A (NO-EMPIRICAL-CONTENT: no data rows; the empirical axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] OPT-IN-CENSUS PASS (claim already distinguishes the three values): 5 in breach, 312 undefined
           verdict: NO-EMPIRICAL-CONTENT   (expected ['NO-EMPIRICAL-CONTENT'])
@@ -8285,6 +8579,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (the claim already distinguishes the three values; no binary collapse)
             pass CERTIFIER-UNNAMED: N/A (NO-EMPIRICAL-CONTENT: no data rows; the empirical axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] OPT-IN-CENSUS N-A (census_claim not declared): schema-boundary
           verdict: NO-EMPIRICAL-CONTENT   (expected ['NO-EMPIRICAL-CONTENT'])
@@ -8341,6 +8637,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (NO-EMPIRICAL-CONTENT: no data rows; the empirical axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] THESIS-OUTRUNS-EVIDENCE FIRE (2609.31054 Rilla et al., open agents): title states mitigation difficulty as a present-tense fact; the data measures cost, competitiveness, failure profiles, SED
           verdict: THESIS-OUTRUNS-EVIDENCE   (expected ['THESIS-OUTRUNS-EVIDENCE'])
@@ -8397,6 +8695,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] THESIS-OUTRUNS-EVIDENCE PASS / SCOPE-FLATTENING FAIL (2609.31563 multi-agent scaling): the endpoint IS the measured value, so the thesis is properly scoped and the flattening is SCOPE-FLATTENING's
           verdict: SCOPE-FLATTENING   (expected ['SCOPE-FLATTENING'])
@@ -8453,6 +8753,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] THESIS-OUTRUNS-EVIDENCE PASS (2609.31054 properly-scoped headline): the endpoint is unmeasured but the headline hedges it, so no overclaim
           verdict: DISCRIMINATES   (expected [])
@@ -8509,6 +8811,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] THESIS-OUTRUNS-EVIDENCE FIRE / NO-EMPIRICAL-CONTENT (2609.31054 no-rows regime): thesis declared, no data rows
           verdict: NO-EMPIRICAL-CONTENT, THESIS-OUTRUNS-EVIDENCE   (expected ['NO-EMPIRICAL-CONTENT', 'THESIS-OUTRUNS-EVIDENCE'])
@@ -8565,6 +8869,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (NO-EMPIRICAL-CONTENT: no data rows; the empirical axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] CERTIFIER-UNNAMED 2x2 A (MACBT witness): model-constructed referent, NAMED certifier (GPT-4)
           verdict: REFERENT-CONSTRUCTED   (expected ['REFERENT-CONSTRUCTED'])
@@ -8621,6 +8927,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity=named: the certifier is identifiable; the certification is stranger-rerunnable)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] CERTIFIER-UNNAMED 2x2 B (SciHorizon witness): model-constructed referent, UNNAMED certifier (visual-review agent)
           verdict: REFERENT-CONSTRUCTED, CERTIFIER-UNNAMED   (expected ['REFERENT-CONSTRUCTED', 'CERTIFIER-UNNAMED'])
@@ -8677,6 +8985,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             FLAG CERTIFIER-UNNAMED: the certifier's role is declared but its identity is not (certifier_identity=unnamed): the certification gate's output cannot be independently re-derived by a stranger (no model/provider/temperature/prompt to re-run the certifier)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] CERTIFIER-UNNAMED 2x2 C (RC-free control): externally-anchored referent, UNNAMED certifier
           verdict: CERTIFIER-UNNAMED   (expected ['CERTIFIER-UNNAMED'])
@@ -8733,6 +9043,8 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             FLAG CERTIFIER-UNNAMED: the certifier's role is declared but its identity is not (certifier_identity=unnamed): the certification gate's output cannot be independently re-derived by a stranger (no model/provider/temperature/prompt to re-run the certifier)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 [OK      ] CERTIFIER-UNNAMED 2x2 D (pass control): externally-anchored referent, NAMED certifier
           verdict: DISCRIMINATES   (expected [])
@@ -8789,5 +9101,703 @@
             pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
             pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
             pass CERTIFIER-UNNAMED: N/A (certifier_identity=named: the certifier is identifiable; the certification is stranger-rerunnable)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
+
+[OK      ] CAUSAL-WIRING 2x3 A (fire): claim asserts causal, evidence measures only association
+          verdict: CAUSAL-WIRING   (expected ['CAUSAL-WIRING'])
+            pass BEATS-NULL: mechanism 1 > null 0.2
+            pass NOT-SELF-KEYED: N/A (no knob readings)
+            pass SELECTION-BIAS: N/A (no order-statistic headline declared)
+            pass ISOLATED: isolated: a null drops only the lever 'm'; substrate held
+            pass CO-MOVES: N/A (no mechanism-axis readings)
+            pass NOISE-FLOOR: N/A (no CI/SE declared on the mechanism row)
+            pass REFERENT-WITNESSED: N/A (referent not declared)
+            pass LOSSY-PROJECTION: N/A (no record/referent witness declared)
+            pass AGGREGATION-REVERSAL: N/A (no subgroup/pooling structure declared; need >=2 subgroups with both a mechanism and a null reading)
+            pass REFERENT-CONSTRUCTED: N/A (referent not declared)
+            pass DOSE-RESPONSE: N/A (no dose structure declared; need >=2 substrate levels with both a mechanism and a null reading)
+            pass TEMPORAL-ONSET: N/A (no onset timepoint declared; the flat check governs)
+            pass TEMPORAL-SPIKE: N/A (no onset timepoint declared; the flat check governs)
+            pass OUTCOME-ONSET: N/A (no claim_outcome declared; the flat check governs)
+            pass OUTCOME-SPIKE: N/A (no claim_outcome declared; the flat check governs)
+            pass SUBGROUP-ONSET: N/A (no claim_subgroup declared; the flat check governs)
+            pass SUBGROUP-SPIKE: N/A (no claim_subgroup declared; the flat check governs)
+            pass DOSE-ONSET: N/A (no claim_dose declared; the flat check governs)
+            pass DOSE-SPIKE: N/A (no claim_dose declared; the flat check governs)
+            pass TIER-ONSET: N/A (no claim_tier declared; the flat check governs)
+            pass TIER-SPIKE: N/A (no claim_tier declared; the flat check governs)
+            pass SPLIT-ONSET: N/A (no claim_split declared; the flat check governs)
+            pass SPLIT-SPIKE: N/A (no claim_split declared; the flat check governs)
+            pass METRIC-ONSET: N/A (no claim_metric declared; the flat check governs)
+            pass METRIC-SPIKE: N/A (no claim_metric declared; the flat check governs)
+            pass FUNNEL-STAGE-MISATTRIBUTION: N/A (no funnel structure declared)
+            pass SOURCE-MISATTRIBUTION: N/A (source_attribution / load_bearing not declared; the axis does not apply)
+            pass SELECTION-ON-NARRATIVE: N/A (no subset_criterion declared)
+            pass ANNOTATOR-SELF-KEYED: N/A (annotation_provenance not declared; the axis does not apply)
+            pass COMPUTABLE: N/A (empirical claim: the empirical axes govern; metric computability is not the regime)
+            pass SCOPE-OF-INDEPENDENCE: N/A (independence_scope / independence_load_bearing not declared; the axis does not apply)
+            pass REFERENCE-MIX: N/A (tradeoff_pairing / tradeoff_single_reference / tradeoff_metrics not declared; the axis does not apply)
+            pass UNWITNESSED-RECEIPT: N/A (no receipt declared; orthogonal to the empirical axes)
+            pass UNWITNESSED-ROOT: N/A (no manifest declared; orthogonal to the empirical axes)
+            pass WIDER-THAN-NAMED: N/A (empirical claim: the empirical axes govern; the definitional-referent axis is not the regime)
+            pass SELF-FALSIFYING: N/A (headline_scope / limitation_negates not declared; the axis does not apply)
+            pass PRIMARY-BASIS-REVERSAL: N/A (primary_basis / primary_basis_result not declared; the axis does not apply)
+            pass WINDOW-PRESENT-TENSE: N/A (window_claim / mechanism_history not declared; the axis does not apply)
+            pass EVIDENCE-UNCLOSED: N/A (has_more_at_end / cursor_runs not declared; the axis does not apply)
+            pass FIDELITY: N/A (referent_value / reading not declared; the axis does not apply)
+            pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
+            pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
+            pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
+            pass CRITERION-THRESHOLD: N/A (detector_catches_claim not declared; the axis does not apply)
+            pass JUDGE-AS-TARGET: N/A (judge_emits_labels not declared; the axis does not apply)
+            pass COVERAGE-GAP: N/A (shape_claim not declared; the axis does not apply)
+            pass SCOPE-FLATTENING: N/A (scope_claim not declared; the axis does not apply)
+            pass THESIS-OUTRUNS-EVIDENCE: N/A (thesis_endpoint not declared; the axis does not apply)
+            pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
+            pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
+            pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            FLAG CAUSAL-WIRING: the claim asserts a causal link (claim_relation=causal), but the evidence establishes only an association (evidence_relation=associative): the measured correlate is promoted to a cause (the 'associated with' -> 'causes' promotion), so the causal wiring is not supported by the evidence
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
+
+[OK      ] CAUSAL-WIRING 2x3 B (causal control): claim asserts causal, evidence measures causal
+          verdict: DISCRIMINATES   (expected [])
+            pass BEATS-NULL: mechanism 1 > null 0.2
+            pass NOT-SELF-KEYED: N/A (no knob readings)
+            pass SELECTION-BIAS: N/A (no order-statistic headline declared)
+            pass ISOLATED: isolated: a null drops only the lever 'm'; substrate held
+            pass CO-MOVES: N/A (no mechanism-axis readings)
+            pass NOISE-FLOOR: N/A (no CI/SE declared on the mechanism row)
+            pass REFERENT-WITNESSED: N/A (referent not declared)
+            pass LOSSY-PROJECTION: N/A (no record/referent witness declared)
+            pass AGGREGATION-REVERSAL: N/A (no subgroup/pooling structure declared; need >=2 subgroups with both a mechanism and a null reading)
+            pass REFERENT-CONSTRUCTED: N/A (referent not declared)
+            pass DOSE-RESPONSE: N/A (no dose structure declared; need >=2 substrate levels with both a mechanism and a null reading)
+            pass TEMPORAL-ONSET: N/A (no onset timepoint declared; the flat check governs)
+            pass TEMPORAL-SPIKE: N/A (no onset timepoint declared; the flat check governs)
+            pass OUTCOME-ONSET: N/A (no claim_outcome declared; the flat check governs)
+            pass OUTCOME-SPIKE: N/A (no claim_outcome declared; the flat check governs)
+            pass SUBGROUP-ONSET: N/A (no claim_subgroup declared; the flat check governs)
+            pass SUBGROUP-SPIKE: N/A (no claim_subgroup declared; the flat check governs)
+            pass DOSE-ONSET: N/A (no claim_dose declared; the flat check governs)
+            pass DOSE-SPIKE: N/A (no claim_dose declared; the flat check governs)
+            pass TIER-ONSET: N/A (no claim_tier declared; the flat check governs)
+            pass TIER-SPIKE: N/A (no claim_tier declared; the flat check governs)
+            pass SPLIT-ONSET: N/A (no claim_split declared; the flat check governs)
+            pass SPLIT-SPIKE: N/A (no claim_split declared; the flat check governs)
+            pass METRIC-ONSET: N/A (no claim_metric declared; the flat check governs)
+            pass METRIC-SPIKE: N/A (no claim_metric declared; the flat check governs)
+            pass FUNNEL-STAGE-MISATTRIBUTION: N/A (no funnel structure declared)
+            pass SOURCE-MISATTRIBUTION: N/A (source_attribution / load_bearing not declared; the axis does not apply)
+            pass SELECTION-ON-NARRATIVE: N/A (no subset_criterion declared)
+            pass ANNOTATOR-SELF-KEYED: N/A (annotation_provenance not declared; the axis does not apply)
+            pass COMPUTABLE: N/A (empirical claim: the empirical axes govern; metric computability is not the regime)
+            pass SCOPE-OF-INDEPENDENCE: N/A (independence_scope / independence_load_bearing not declared; the axis does not apply)
+            pass REFERENCE-MIX: N/A (tradeoff_pairing / tradeoff_single_reference / tradeoff_metrics not declared; the axis does not apply)
+            pass UNWITNESSED-RECEIPT: N/A (no receipt declared; orthogonal to the empirical axes)
+            pass UNWITNESSED-ROOT: N/A (no manifest declared; orthogonal to the empirical axes)
+            pass WIDER-THAN-NAMED: N/A (empirical claim: the empirical axes govern; the definitional-referent axis is not the regime)
+            pass SELF-FALSIFYING: N/A (headline_scope / limitation_negates not declared; the axis does not apply)
+            pass PRIMARY-BASIS-REVERSAL: N/A (primary_basis / primary_basis_result not declared; the axis does not apply)
+            pass WINDOW-PRESENT-TENSE: N/A (window_claim / mechanism_history not declared; the axis does not apply)
+            pass EVIDENCE-UNCLOSED: N/A (has_more_at_end / cursor_runs not declared; the axis does not apply)
+            pass FIDELITY: N/A (referent_value / reading not declared; the axis does not apply)
+            pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
+            pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
+            pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
+            pass CRITERION-THRESHOLD: N/A (detector_catches_claim not declared; the axis does not apply)
+            pass JUDGE-AS-TARGET: N/A (judge_emits_labels not declared; the axis does not apply)
+            pass COVERAGE-GAP: N/A (shape_claim not declared; the axis does not apply)
+            pass SCOPE-FLATTENING: N/A (scope_claim not declared; the axis does not apply)
+            pass THESIS-OUTRUNS-EVIDENCE: N/A (thesis_endpoint not declared; the axis does not apply)
+            pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
+            pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
+            pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: claim_relation=causal, evidence_relation=causal: the claim does not promote a measured association to a causal link
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
+
+[OK      ] CAUSAL-WIRING 2x3 C (scoping control): claim asserts association, evidence measures association
+          verdict: DISCRIMINATES   (expected [])
+            pass BEATS-NULL: mechanism 1 > null 0.2
+            pass NOT-SELF-KEYED: N/A (no knob readings)
+            pass SELECTION-BIAS: N/A (no order-statistic headline declared)
+            pass ISOLATED: isolated: a null drops only the lever 'm'; substrate held
+            pass CO-MOVES: N/A (no mechanism-axis readings)
+            pass NOISE-FLOOR: N/A (no CI/SE declared on the mechanism row)
+            pass REFERENT-WITNESSED: N/A (referent not declared)
+            pass LOSSY-PROJECTION: N/A (no record/referent witness declared)
+            pass AGGREGATION-REVERSAL: N/A (no subgroup/pooling structure declared; need >=2 subgroups with both a mechanism and a null reading)
+            pass REFERENT-CONSTRUCTED: N/A (referent not declared)
+            pass DOSE-RESPONSE: N/A (no dose structure declared; need >=2 substrate levels with both a mechanism and a null reading)
+            pass TEMPORAL-ONSET: N/A (no onset timepoint declared; the flat check governs)
+            pass TEMPORAL-SPIKE: N/A (no onset timepoint declared; the flat check governs)
+            pass OUTCOME-ONSET: N/A (no claim_outcome declared; the flat check governs)
+            pass OUTCOME-SPIKE: N/A (no claim_outcome declared; the flat check governs)
+            pass SUBGROUP-ONSET: N/A (no claim_subgroup declared; the flat check governs)
+            pass SUBGROUP-SPIKE: N/A (no claim_subgroup declared; the flat check governs)
+            pass DOSE-ONSET: N/A (no claim_dose declared; the flat check governs)
+            pass DOSE-SPIKE: N/A (no claim_dose declared; the flat check governs)
+            pass TIER-ONSET: N/A (no claim_tier declared; the flat check governs)
+            pass TIER-SPIKE: N/A (no claim_tier declared; the flat check governs)
+            pass SPLIT-ONSET: N/A (no claim_split declared; the flat check governs)
+            pass SPLIT-SPIKE: N/A (no claim_split declared; the flat check governs)
+            pass METRIC-ONSET: N/A (no claim_metric declared; the flat check governs)
+            pass METRIC-SPIKE: N/A (no claim_metric declared; the flat check governs)
+            pass FUNNEL-STAGE-MISATTRIBUTION: N/A (no funnel structure declared)
+            pass SOURCE-MISATTRIBUTION: N/A (source_attribution / load_bearing not declared; the axis does not apply)
+            pass SELECTION-ON-NARRATIVE: N/A (no subset_criterion declared)
+            pass ANNOTATOR-SELF-KEYED: N/A (annotation_provenance not declared; the axis does not apply)
+            pass COMPUTABLE: N/A (empirical claim: the empirical axes govern; metric computability is not the regime)
+            pass SCOPE-OF-INDEPENDENCE: N/A (independence_scope / independence_load_bearing not declared; the axis does not apply)
+            pass REFERENCE-MIX: N/A (tradeoff_pairing / tradeoff_single_reference / tradeoff_metrics not declared; the axis does not apply)
+            pass UNWITNESSED-RECEIPT: N/A (no receipt declared; orthogonal to the empirical axes)
+            pass UNWITNESSED-ROOT: N/A (no manifest declared; orthogonal to the empirical axes)
+            pass WIDER-THAN-NAMED: N/A (empirical claim: the empirical axes govern; the definitional-referent axis is not the regime)
+            pass SELF-FALSIFYING: N/A (headline_scope / limitation_negates not declared; the axis does not apply)
+            pass PRIMARY-BASIS-REVERSAL: N/A (primary_basis / primary_basis_result not declared; the axis does not apply)
+            pass WINDOW-PRESENT-TENSE: N/A (window_claim / mechanism_history not declared; the axis does not apply)
+            pass EVIDENCE-UNCLOSED: N/A (has_more_at_end / cursor_runs not declared; the axis does not apply)
+            pass FIDELITY: N/A (referent_value / reading not declared; the axis does not apply)
+            pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
+            pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
+            pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
+            pass CRITERION-THRESHOLD: N/A (detector_catches_claim not declared; the axis does not apply)
+            pass JUDGE-AS-TARGET: N/A (judge_emits_labels not declared; the axis does not apply)
+            pass COVERAGE-GAP: N/A (shape_claim not declared; the axis does not apply)
+            pass SCOPE-FLATTENING: N/A (scope_claim not declared; the axis does not apply)
+            pass THESIS-OUTRUNS-EVIDENCE: N/A (thesis_endpoint not declared; the axis does not apply)
+            pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
+            pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
+            pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: claim_relation=associative, evidence_relation=associative: the claim does not promote a measured association to a causal link
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
+
+[OK      ] CAUSAL-WIRING 2x3 D (clean control): claim asserts association, evidence measures causal
+          verdict: DISCRIMINATES   (expected [])
+            pass BEATS-NULL: mechanism 1 > null 0.2
+            pass NOT-SELF-KEYED: N/A (no knob readings)
+            pass SELECTION-BIAS: N/A (no order-statistic headline declared)
+            pass ISOLATED: isolated: a null drops only the lever 'm'; substrate held
+            pass CO-MOVES: N/A (no mechanism-axis readings)
+            pass NOISE-FLOOR: N/A (no CI/SE declared on the mechanism row)
+            pass REFERENT-WITNESSED: N/A (referent not declared)
+            pass LOSSY-PROJECTION: N/A (no record/referent witness declared)
+            pass AGGREGATION-REVERSAL: N/A (no subgroup/pooling structure declared; need >=2 subgroups with both a mechanism and a null reading)
+            pass REFERENT-CONSTRUCTED: N/A (referent not declared)
+            pass DOSE-RESPONSE: N/A (no dose structure declared; need >=2 substrate levels with both a mechanism and a null reading)
+            pass TEMPORAL-ONSET: N/A (no onset timepoint declared; the flat check governs)
+            pass TEMPORAL-SPIKE: N/A (no onset timepoint declared; the flat check governs)
+            pass OUTCOME-ONSET: N/A (no claim_outcome declared; the flat check governs)
+            pass OUTCOME-SPIKE: N/A (no claim_outcome declared; the flat check governs)
+            pass SUBGROUP-ONSET: N/A (no claim_subgroup declared; the flat check governs)
+            pass SUBGROUP-SPIKE: N/A (no claim_subgroup declared; the flat check governs)
+            pass DOSE-ONSET: N/A (no claim_dose declared; the flat check governs)
+            pass DOSE-SPIKE: N/A (no claim_dose declared; the flat check governs)
+            pass TIER-ONSET: N/A (no claim_tier declared; the flat check governs)
+            pass TIER-SPIKE: N/A (no claim_tier declared; the flat check governs)
+            pass SPLIT-ONSET: N/A (no claim_split declared; the flat check governs)
+            pass SPLIT-SPIKE: N/A (no claim_split declared; the flat check governs)
+            pass METRIC-ONSET: N/A (no claim_metric declared; the flat check governs)
+            pass METRIC-SPIKE: N/A (no claim_metric declared; the flat check governs)
+            pass FUNNEL-STAGE-MISATTRIBUTION: N/A (no funnel structure declared)
+            pass SOURCE-MISATTRIBUTION: N/A (source_attribution / load_bearing not declared; the axis does not apply)
+            pass SELECTION-ON-NARRATIVE: N/A (no subset_criterion declared)
+            pass ANNOTATOR-SELF-KEYED: N/A (annotation_provenance not declared; the axis does not apply)
+            pass COMPUTABLE: N/A (empirical claim: the empirical axes govern; metric computability is not the regime)
+            pass SCOPE-OF-INDEPENDENCE: N/A (independence_scope / independence_load_bearing not declared; the axis does not apply)
+            pass REFERENCE-MIX: N/A (tradeoff_pairing / tradeoff_single_reference / tradeoff_metrics not declared; the axis does not apply)
+            pass UNWITNESSED-RECEIPT: N/A (no receipt declared; orthogonal to the empirical axes)
+            pass UNWITNESSED-ROOT: N/A (no manifest declared; orthogonal to the empirical axes)
+            pass WIDER-THAN-NAMED: N/A (empirical claim: the empirical axes govern; the definitional-referent axis is not the regime)
+            pass SELF-FALSIFYING: N/A (headline_scope / limitation_negates not declared; the axis does not apply)
+            pass PRIMARY-BASIS-REVERSAL: N/A (primary_basis / primary_basis_result not declared; the axis does not apply)
+            pass WINDOW-PRESENT-TENSE: N/A (window_claim / mechanism_history not declared; the axis does not apply)
+            pass EVIDENCE-UNCLOSED: N/A (has_more_at_end / cursor_runs not declared; the axis does not apply)
+            pass FIDELITY: N/A (referent_value / reading not declared; the axis does not apply)
+            pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
+            pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
+            pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
+            pass CRITERION-THRESHOLD: N/A (detector_catches_claim not declared; the axis does not apply)
+            pass JUDGE-AS-TARGET: N/A (judge_emits_labels not declared; the axis does not apply)
+            pass COVERAGE-GAP: N/A (shape_claim not declared; the axis does not apply)
+            pass SCOPE-FLATTENING: N/A (scope_claim not declared; the axis does not apply)
+            pass THESIS-OUTRUNS-EVIDENCE: N/A (thesis_endpoint not declared; the axis does not apply)
+            pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
+            pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
+            pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: claim_relation=associative, evidence_relation=causal: the claim does not promote a measured association to a causal link
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
+
+[OK      ] CAUSAL-WIRING 2x3 E (TOE territory): claim asserts causal, association not measured
+          verdict: DISCRIMINATES   (expected [])
+            pass BEATS-NULL: mechanism 1 > null 0.2
+            pass NOT-SELF-KEYED: N/A (no knob readings)
+            pass SELECTION-BIAS: N/A (no order-statistic headline declared)
+            pass ISOLATED: isolated: a null drops only the lever 'm'; substrate held
+            pass CO-MOVES: N/A (no mechanism-axis readings)
+            pass NOISE-FLOOR: N/A (no CI/SE declared on the mechanism row)
+            pass REFERENT-WITNESSED: N/A (referent not declared)
+            pass LOSSY-PROJECTION: N/A (no record/referent witness declared)
+            pass AGGREGATION-REVERSAL: N/A (no subgroup/pooling structure declared; need >=2 subgroups with both a mechanism and a null reading)
+            pass REFERENT-CONSTRUCTED: N/A (referent not declared)
+            pass DOSE-RESPONSE: N/A (no dose structure declared; need >=2 substrate levels with both a mechanism and a null reading)
+            pass TEMPORAL-ONSET: N/A (no onset timepoint declared; the flat check governs)
+            pass TEMPORAL-SPIKE: N/A (no onset timepoint declared; the flat check governs)
+            pass OUTCOME-ONSET: N/A (no claim_outcome declared; the flat check governs)
+            pass OUTCOME-SPIKE: N/A (no claim_outcome declared; the flat check governs)
+            pass SUBGROUP-ONSET: N/A (no claim_subgroup declared; the flat check governs)
+            pass SUBGROUP-SPIKE: N/A (no claim_subgroup declared; the flat check governs)
+            pass DOSE-ONSET: N/A (no claim_dose declared; the flat check governs)
+            pass DOSE-SPIKE: N/A (no claim_dose declared; the flat check governs)
+            pass TIER-ONSET: N/A (no claim_tier declared; the flat check governs)
+            pass TIER-SPIKE: N/A (no claim_tier declared; the flat check governs)
+            pass SPLIT-ONSET: N/A (no claim_split declared; the flat check governs)
+            pass SPLIT-SPIKE: N/A (no claim_split declared; the flat check governs)
+            pass METRIC-ONSET: N/A (no claim_metric declared; the flat check governs)
+            pass METRIC-SPIKE: N/A (no claim_metric declared; the flat check governs)
+            pass FUNNEL-STAGE-MISATTRIBUTION: N/A (no funnel structure declared)
+            pass SOURCE-MISATTRIBUTION: N/A (source_attribution / load_bearing not declared; the axis does not apply)
+            pass SELECTION-ON-NARRATIVE: N/A (no subset_criterion declared)
+            pass ANNOTATOR-SELF-KEYED: N/A (annotation_provenance not declared; the axis does not apply)
+            pass COMPUTABLE: N/A (empirical claim: the empirical axes govern; metric computability is not the regime)
+            pass SCOPE-OF-INDEPENDENCE: N/A (independence_scope / independence_load_bearing not declared; the axis does not apply)
+            pass REFERENCE-MIX: N/A (tradeoff_pairing / tradeoff_single_reference / tradeoff_metrics not declared; the axis does not apply)
+            pass UNWITNESSED-RECEIPT: N/A (no receipt declared; orthogonal to the empirical axes)
+            pass UNWITNESSED-ROOT: N/A (no manifest declared; orthogonal to the empirical axes)
+            pass WIDER-THAN-NAMED: N/A (empirical claim: the empirical axes govern; the definitional-referent axis is not the regime)
+            pass SELF-FALSIFYING: N/A (headline_scope / limitation_negates not declared; the axis does not apply)
+            pass PRIMARY-BASIS-REVERSAL: N/A (primary_basis / primary_basis_result not declared; the axis does not apply)
+            pass WINDOW-PRESENT-TENSE: N/A (window_claim / mechanism_history not declared; the axis does not apply)
+            pass EVIDENCE-UNCLOSED: N/A (has_more_at_end / cursor_runs not declared; the axis does not apply)
+            pass FIDELITY: N/A (referent_value / reading not declared; the axis does not apply)
+            pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
+            pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
+            pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
+            pass CRITERION-THRESHOLD: N/A (detector_catches_claim not declared; the axis does not apply)
+            pass JUDGE-AS-TARGET: N/A (judge_emits_labels not declared; the axis does not apply)
+            pass COVERAGE-GAP: N/A (shape_claim not declared; the axis does not apply)
+            pass SCOPE-FLATTENING: N/A (scope_claim not declared; the axis does not apply)
+            pass THESIS-OUTRUNS-EVIDENCE: N/A (thesis_endpoint not declared; the axis does not apply)
+            pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
+            pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
+            pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: claim_relation=causal, evidence_relation=none: the association is not measured at all; THESIS-OUTRUNS-EVIDENCE governs the unmeasured endpoint (the axis does not fire)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
+
+[OK      ] CAUSAL-WIRING FIRE (FRAIL 2609.30940 seam 2, early-commitment promote): Section 4.2 association promoted to causal in the Discussion
+          verdict: CAUSAL-WIRING   (expected ['CAUSAL-WIRING'])
+            pass BEATS-NULL: mechanism 0.82 > null 0.37
+            pass NOT-SELF-KEYED: N/A (no knob readings)
+            pass SELECTION-BIAS: N/A (no order-statistic headline declared)
+            pass ISOLATED: isolated: a null drops only the lever 'm'; substrate held
+            pass CO-MOVES: N/A (no mechanism-axis readings)
+            pass NOISE-FLOOR: N/A (no CI/SE declared on the mechanism row)
+            pass REFERENT-WITNESSED: N/A (referent not declared)
+            pass LOSSY-PROJECTION: N/A (no record/referent witness declared)
+            pass AGGREGATION-REVERSAL: N/A (no subgroup/pooling structure declared; need >=2 subgroups with both a mechanism and a null reading)
+            pass REFERENT-CONSTRUCTED: N/A (referent not declared)
+            pass DOSE-RESPONSE: N/A (no dose structure declared; need >=2 substrate levels with both a mechanism and a null reading)
+            pass TEMPORAL-ONSET: N/A (no onset timepoint declared; the flat check governs)
+            pass TEMPORAL-SPIKE: N/A (no onset timepoint declared; the flat check governs)
+            pass OUTCOME-ONSET: N/A (no claim_outcome declared; the flat check governs)
+            pass OUTCOME-SPIKE: N/A (no claim_outcome declared; the flat check governs)
+            pass SUBGROUP-ONSET: N/A (no claim_subgroup declared; the flat check governs)
+            pass SUBGROUP-SPIKE: N/A (no claim_subgroup declared; the flat check governs)
+            pass DOSE-ONSET: N/A (no claim_dose declared; the flat check governs)
+            pass DOSE-SPIKE: N/A (no claim_dose declared; the flat check governs)
+            pass TIER-ONSET: N/A (no claim_tier declared; the flat check governs)
+            pass TIER-SPIKE: N/A (no claim_tier declared; the flat check governs)
+            pass SPLIT-ONSET: N/A (no claim_split declared; the flat check governs)
+            pass SPLIT-SPIKE: N/A (no claim_split declared; the flat check governs)
+            pass METRIC-ONSET: N/A (no claim_metric declared; the flat check governs)
+            pass METRIC-SPIKE: N/A (no claim_metric declared; the flat check governs)
+            pass FUNNEL-STAGE-MISATTRIBUTION: N/A (no funnel structure declared)
+            pass SOURCE-MISATTRIBUTION: N/A (source_attribution / load_bearing not declared; the axis does not apply)
+            pass SELECTION-ON-NARRATIVE: N/A (no subset_criterion declared)
+            pass ANNOTATOR-SELF-KEYED: N/A (annotation_provenance not declared; the axis does not apply)
+            pass COMPUTABLE: N/A (empirical claim: the empirical axes govern; metric computability is not the regime)
+            pass SCOPE-OF-INDEPENDENCE: N/A (independence_scope / independence_load_bearing not declared; the axis does not apply)
+            pass REFERENCE-MIX: N/A (tradeoff_pairing / tradeoff_single_reference / tradeoff_metrics not declared; the axis does not apply)
+            pass UNWITNESSED-RECEIPT: N/A (no receipt declared; orthogonal to the empirical axes)
+            pass UNWITNESSED-ROOT: N/A (no manifest declared; orthogonal to the empirical axes)
+            pass WIDER-THAN-NAMED: N/A (empirical claim: the empirical axes govern; the definitional-referent axis is not the regime)
+            pass SELF-FALSIFYING: N/A (headline_scope / limitation_negates not declared; the axis does not apply)
+            pass PRIMARY-BASIS-REVERSAL: N/A (primary_basis / primary_basis_result not declared; the axis does not apply)
+            pass WINDOW-PRESENT-TENSE: N/A (window_claim / mechanism_history not declared; the axis does not apply)
+            pass EVIDENCE-UNCLOSED: N/A (has_more_at_end / cursor_runs not declared; the axis does not apply)
+            pass FIDELITY: N/A (referent_value / reading not declared; the axis does not apply)
+            pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
+            pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
+            pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
+            pass CRITERION-THRESHOLD: N/A (detector_catches_claim not declared; the axis does not apply)
+            pass JUDGE-AS-TARGET: N/A (judge_emits_labels not declared; the axis does not apply)
+            pass COVERAGE-GAP: N/A (shape_claim not declared; the axis does not apply)
+            pass SCOPE-FLATTENING: N/A (scope_claim not declared; the axis does not apply)
+            pass THESIS-OUTRUNS-EVIDENCE: N/A (thesis_endpoint not declared; the axis does not apply)
+            pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
+            pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
+            pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            FLAG CAUSAL-WIRING: the claim asserts a causal link (claim_relation=causal), but the evidence establishes only an association (evidence_relation=associative): the measured correlate is promoted to a cause (the 'associated with' -> 'causes' promotion), so the causal wiring is not supported by the evidence
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
+
+[OK      ] FRAIL (2609.30940): title states 'individually capable agents' as present-tense fact; evidence is cross-model failure (rules out one-bad-model, not individual incapacity)
+          verdict: THESIS-OUTRUNS-EVIDENCE   (expected ['THESIS-OUTRUNS-EVIDENCE'])
+            pass BEATS-NULL: mechanism 0.737 > null 0.215
+            pass NOT-SELF-KEYED: N/A (no knob readings)
+            pass SELECTION-BIAS: N/A (no order-statistic headline declared)
+            pass ISOLATED: isolated: a null drops only the lever 'commitment'; substrate held
+            pass CO-MOVES: mechanism beats null on its own axis (0.737 > 0.215)
+            pass NOISE-FLOOR: N/A (no CI/SE declared on the mechanism row)
+            pass REFERENT-WITNESSED: N/A (referent not declared)
+            pass LOSSY-PROJECTION: N/A (no record/referent witness declared)
+            pass AGGREGATION-REVERSAL: N/A (no subgroup/pooling structure declared; need >=2 subgroups with both a mechanism and a null reading)
+            pass REFERENT-CONSTRUCTED: N/A (referent not declared)
+            pass DOSE-RESPONSE: N/A (no dose structure declared; need >=2 substrate levels with both a mechanism and a null reading)
+            pass TEMPORAL-ONSET: N/A (no onset timepoint declared; the flat check governs)
+            pass TEMPORAL-SPIKE: N/A (no onset timepoint declared; the flat check governs)
+            pass OUTCOME-ONSET: N/A (no claim_outcome declared; the flat check governs)
+            pass OUTCOME-SPIKE: N/A (no claim_outcome declared; the flat check governs)
+            pass SUBGROUP-ONSET: N/A (no claim_subgroup declared; the flat check governs)
+            pass SUBGROUP-SPIKE: N/A (no claim_subgroup declared; the flat check governs)
+            pass DOSE-ONSET: N/A (no claim_dose declared; the flat check governs)
+            pass DOSE-SPIKE: N/A (no claim_dose declared; the flat check governs)
+            pass TIER-ONSET: N/A (no claim_tier declared; the flat check governs)
+            pass TIER-SPIKE: N/A (no claim_tier declared; the flat check governs)
+            pass SPLIT-ONSET: N/A (no claim_split declared; the flat check governs)
+            pass SPLIT-SPIKE: N/A (no claim_split declared; the flat check governs)
+            pass METRIC-ONSET: N/A (no claim_metric declared; the flat check governs)
+            pass METRIC-SPIKE: N/A (no claim_metric declared; the flat check governs)
+            pass FUNNEL-STAGE-MISATTRIBUTION: N/A (no funnel structure declared)
+            pass SOURCE-MISATTRIBUTION: N/A (source_attribution / load_bearing not declared; the axis does not apply)
+            pass SELECTION-ON-NARRATIVE: N/A (no subset_criterion declared)
+            pass ANNOTATOR-SELF-KEYED: N/A (annotation_provenance not declared; the axis does not apply)
+            pass COMPUTABLE: N/A (empirical claim: the empirical axes govern; metric computability is not the regime)
+            pass SCOPE-OF-INDEPENDENCE: N/A (independence_scope / independence_load_bearing not declared; the axis does not apply)
+            pass REFERENCE-MIX: N/A (tradeoff_pairing / tradeoff_single_reference / tradeoff_metrics not declared; the axis does not apply)
+            pass UNWITNESSED-RECEIPT: N/A (no receipt declared; orthogonal to the empirical axes)
+            pass UNWITNESSED-ROOT: N/A (no manifest declared; orthogonal to the empirical axes)
+            pass WIDER-THAN-NAMED: N/A (empirical claim: the empirical axes govern; the definitional-referent axis is not the regime)
+            pass SELF-FALSIFYING: N/A (headline_scope / limitation_negates not declared; the axis does not apply)
+            pass PRIMARY-BASIS-REVERSAL: N/A (primary_basis / primary_basis_result not declared; the axis does not apply)
+            pass WINDOW-PRESENT-TENSE: N/A (window_claim / mechanism_history not declared; the axis does not apply)
+            pass EVIDENCE-UNCLOSED: N/A (has_more_at_end / cursor_runs not declared; the axis does not apply)
+            pass FIDELITY: N/A (referent_value / reading not declared; the axis does not apply)
+            pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
+            pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
+            pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
+            pass CRITERION-THRESHOLD: N/A (detector_catches_claim not declared; the axis does not apply)
+            pass JUDGE-AS-TARGET: N/A (judge_emits_labels not declared; the axis does not apply)
+            pass COVERAGE-GAP: N/A (shape_claim not declared; the axis does not apply)
+            pass SCOPE-FLATTENING: N/A (scope_claim not declared; the axis does not apply)
+            FLAG THESIS-OUTRUNS-EVIDENCE: the headline states the causal endpoint (individually capable agents) as a present-tense fact, but the evidence measures only the premises (cross-model failure rates, welfare realization, success rates, commitment timing (early vs late)); the endpoint is a forecast, not a measurement -- the thesis outruns the evidence at the endpoint step.
+            pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
+            pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
+            pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
+
+[OK      ] declared-channel battery witness (declared-attribute decision, verifiable content, DC1)
+          verdict: DECLARED-CHANNEL   (expected ['DECLARED-CHANNEL'])
+            pass BEATS-NULL: mechanism 0.7 > null 0
+            pass NOT-SELF-KEYED: N/A (no knob readings)
+            pass SELECTION-BIAS: N/A (no order-statistic headline declared)
+            pass ISOLATED: N/A (not an ablation claim)
+            pass CO-MOVES: N/A (no mechanism-axis readings)
+            pass NOISE-FLOOR: N/A (no CI/SE declared on the mechanism row)
+            pass REFERENT-WITNESSED: N/A (referent not declared)
+            pass LOSSY-PROJECTION: N/A (no record/referent witness declared)
+            pass AGGREGATION-REVERSAL: N/A (no subgroup/pooling structure declared; need >=2 subgroups with both a mechanism and a null reading)
+            pass REFERENT-CONSTRUCTED: N/A (referent not declared)
+            pass DOSE-RESPONSE: N/A (no dose structure declared; need >=2 substrate levels with both a mechanism and a null reading)
+            pass TEMPORAL-ONSET: N/A (no onset timepoint declared; the flat check governs)
+            pass TEMPORAL-SPIKE: N/A (no onset timepoint declared; the flat check governs)
+            pass OUTCOME-ONSET: N/A (no claim_outcome declared; the flat check governs)
+            pass OUTCOME-SPIKE: N/A (no claim_outcome declared; the flat check governs)
+            pass SUBGROUP-ONSET: N/A (no claim_subgroup declared; the flat check governs)
+            pass SUBGROUP-SPIKE: N/A (no claim_subgroup declared; the flat check governs)
+            pass DOSE-ONSET: N/A (no claim_dose declared; the flat check governs)
+            pass DOSE-SPIKE: N/A (no claim_dose declared; the flat check governs)
+            pass TIER-ONSET: N/A (no claim_tier declared; the flat check governs)
+            pass TIER-SPIKE: N/A (no claim_tier declared; the flat check governs)
+            pass SPLIT-ONSET: N/A (no claim_split declared; the flat check governs)
+            pass SPLIT-SPIKE: N/A (no claim_split declared; the flat check governs)
+            pass METRIC-ONSET: N/A (no claim_metric declared; the flat check governs)
+            pass METRIC-SPIKE: N/A (no claim_metric declared; the flat check governs)
+            pass FUNNEL-STAGE-MISATTRIBUTION: N/A (no funnel structure declared)
+            pass SOURCE-MISATTRIBUTION: N/A (source_attribution / load_bearing not declared; the axis does not apply)
+            pass SELECTION-ON-NARRATIVE: N/A (no subset_criterion declared)
+            pass ANNOTATOR-SELF-KEYED: N/A (annotation_provenance not declared; the axis does not apply)
+            pass COMPUTABLE: N/A (empirical claim: the empirical axes govern; metric computability is not the regime)
+            pass SCOPE-OF-INDEPENDENCE: N/A (independence_scope / independence_load_bearing not declared; the axis does not apply)
+            pass REFERENCE-MIX: N/A (tradeoff_pairing / tradeoff_single_reference / tradeoff_metrics not declared; the axis does not apply)
+            pass UNWITNESSED-RECEIPT: N/A (no receipt declared; orthogonal to the empirical axes)
+            pass UNWITNESSED-ROOT: N/A (no manifest declared; orthogonal to the empirical axes)
+            pass WIDER-THAN-NAMED: N/A (empirical claim: the empirical axes govern; the definitional-referent axis is not the regime)
+            pass SELF-FALSIFYING: N/A (headline_scope / limitation_negates not declared; the axis does not apply)
+            pass PRIMARY-BASIS-REVERSAL: N/A (primary_basis / primary_basis_result not declared; the axis does not apply)
+            pass WINDOW-PRESENT-TENSE: N/A (window_claim / mechanism_history not declared; the axis does not apply)
+            pass EVIDENCE-UNCLOSED: N/A (has_more_at_end / cursor_runs not declared; the axis does not apply)
+            pass FIDELITY: N/A (referent_value / reading not declared; the axis does not apply)
+            pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
+            pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
+            pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
+            pass CRITERION-THRESHOLD: N/A (detector_catches_claim not declared; the axis does not apply)
+            pass JUDGE-AS-TARGET: N/A (judge_emits_labels not declared; the axis does not apply)
+            pass COVERAGE-GAP: N/A (shape_claim not declared; the axis does not apply)
+            pass SCOPE-FLATTENING: N/A (scope_claim not declared; the axis does not apply)
+            pass THESIS-OUTRUNS-EVIDENCE: N/A (thesis_endpoint not declared; the axis does not apply)
+            pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
+            pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
+            pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            FLAG DECLARED-CHANNEL: the certifier's decision is carried by a self-declared attribute (decision_channel=declared-attribute) while the content is independently verifiable (content_verifiable=yes): the admission decision flips with the declared form, not the verified content, so the protection is carried by the declaration, not by verification
+
+[OK      ] declared-channel battery witness (verified-content decision, pass, DC2)
+          verdict: DISCRIMINATES   (expected [])
+            pass BEATS-NULL: mechanism 0.7 > null 0
+            pass NOT-SELF-KEYED: N/A (no knob readings)
+            pass SELECTION-BIAS: N/A (no order-statistic headline declared)
+            pass ISOLATED: N/A (not an ablation claim)
+            pass CO-MOVES: N/A (no mechanism-axis readings)
+            pass NOISE-FLOOR: N/A (no CI/SE declared on the mechanism row)
+            pass REFERENT-WITNESSED: N/A (referent not declared)
+            pass LOSSY-PROJECTION: N/A (no record/referent witness declared)
+            pass AGGREGATION-REVERSAL: N/A (no subgroup/pooling structure declared; need >=2 subgroups with both a mechanism and a null reading)
+            pass REFERENT-CONSTRUCTED: N/A (referent not declared)
+            pass DOSE-RESPONSE: N/A (no dose structure declared; need >=2 substrate levels with both a mechanism and a null reading)
+            pass TEMPORAL-ONSET: N/A (no onset timepoint declared; the flat check governs)
+            pass TEMPORAL-SPIKE: N/A (no onset timepoint declared; the flat check governs)
+            pass OUTCOME-ONSET: N/A (no claim_outcome declared; the flat check governs)
+            pass OUTCOME-SPIKE: N/A (no claim_outcome declared; the flat check governs)
+            pass SUBGROUP-ONSET: N/A (no claim_subgroup declared; the flat check governs)
+            pass SUBGROUP-SPIKE: N/A (no claim_subgroup declared; the flat check governs)
+            pass DOSE-ONSET: N/A (no claim_dose declared; the flat check governs)
+            pass DOSE-SPIKE: N/A (no claim_dose declared; the flat check governs)
+            pass TIER-ONSET: N/A (no claim_tier declared; the flat check governs)
+            pass TIER-SPIKE: N/A (no claim_tier declared; the flat check governs)
+            pass SPLIT-ONSET: N/A (no claim_split declared; the flat check governs)
+            pass SPLIT-SPIKE: N/A (no claim_split declared; the flat check governs)
+            pass METRIC-ONSET: N/A (no claim_metric declared; the flat check governs)
+            pass METRIC-SPIKE: N/A (no claim_metric declared; the flat check governs)
+            pass FUNNEL-STAGE-MISATTRIBUTION: N/A (no funnel structure declared)
+            pass SOURCE-MISATTRIBUTION: N/A (source_attribution / load_bearing not declared; the axis does not apply)
+            pass SELECTION-ON-NARRATIVE: N/A (no subset_criterion declared)
+            pass ANNOTATOR-SELF-KEYED: N/A (annotation_provenance not declared; the axis does not apply)
+            pass COMPUTABLE: N/A (empirical claim: the empirical axes govern; metric computability is not the regime)
+            pass SCOPE-OF-INDEPENDENCE: N/A (independence_scope / independence_load_bearing not declared; the axis does not apply)
+            pass REFERENCE-MIX: N/A (tradeoff_pairing / tradeoff_single_reference / tradeoff_metrics not declared; the axis does not apply)
+            pass UNWITNESSED-RECEIPT: N/A (no receipt declared; orthogonal to the empirical axes)
+            pass UNWITNESSED-ROOT: N/A (no manifest declared; orthogonal to the empirical axes)
+            pass WIDER-THAN-NAMED: N/A (empirical claim: the empirical axes govern; the definitional-referent axis is not the regime)
+            pass SELF-FALSIFYING: N/A (headline_scope / limitation_negates not declared; the axis does not apply)
+            pass PRIMARY-BASIS-REVERSAL: N/A (primary_basis / primary_basis_result not declared; the axis does not apply)
+            pass WINDOW-PRESENT-TENSE: N/A (window_claim / mechanism_history not declared; the axis does not apply)
+            pass EVIDENCE-UNCLOSED: N/A (has_more_at_end / cursor_runs not declared; the axis does not apply)
+            pass FIDELITY: N/A (referent_value / reading not declared; the axis does not apply)
+            pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
+            pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
+            pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
+            pass CRITERION-THRESHOLD: N/A (detector_catches_claim not declared; the axis does not apply)
+            pass JUDGE-AS-TARGET: N/A (judge_emits_labels not declared; the axis does not apply)
+            pass COVERAGE-GAP: N/A (shape_claim not declared; the axis does not apply)
+            pass SCOPE-FLATTENING: N/A (scope_claim not declared; the axis does not apply)
+            pass THESIS-OUTRUNS-EVIDENCE: N/A (thesis_endpoint not declared; the axis does not apply)
+            pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
+            pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
+            pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel=verified-content: the certifier's decision is carried by the verified content, not a declared form)
+
+[OK      ] declared-channel battery witness (declared-attribute decision, unverifiable content, defers to TRUST, DC3)
+          verdict: DISCRIMINATES   (expected [])
+            pass BEATS-NULL: mechanism 0.7 > null 0
+            pass NOT-SELF-KEYED: N/A (no knob readings)
+            pass SELECTION-BIAS: N/A (no order-statistic headline declared)
+            pass ISOLATED: N/A (not an ablation claim)
+            pass CO-MOVES: N/A (no mechanism-axis readings)
+            pass NOISE-FLOOR: N/A (no CI/SE declared on the mechanism row)
+            pass REFERENT-WITNESSED: N/A (referent not declared)
+            pass LOSSY-PROJECTION: N/A (no record/referent witness declared)
+            pass AGGREGATION-REVERSAL: N/A (no subgroup/pooling structure declared; need >=2 subgroups with both a mechanism and a null reading)
+            pass REFERENT-CONSTRUCTED: N/A (referent not declared)
+            pass DOSE-RESPONSE: N/A (no dose structure declared; need >=2 substrate levels with both a mechanism and a null reading)
+            pass TEMPORAL-ONSET: N/A (no onset timepoint declared; the flat check governs)
+            pass TEMPORAL-SPIKE: N/A (no onset timepoint declared; the flat check governs)
+            pass OUTCOME-ONSET: N/A (no claim_outcome declared; the flat check governs)
+            pass OUTCOME-SPIKE: N/A (no claim_outcome declared; the flat check governs)
+            pass SUBGROUP-ONSET: N/A (no claim_subgroup declared; the flat check governs)
+            pass SUBGROUP-SPIKE: N/A (no claim_subgroup declared; the flat check governs)
+            pass DOSE-ONSET: N/A (no claim_dose declared; the flat check governs)
+            pass DOSE-SPIKE: N/A (no claim_dose declared; the flat check governs)
+            pass TIER-ONSET: N/A (no claim_tier declared; the flat check governs)
+            pass TIER-SPIKE: N/A (no claim_tier declared; the flat check governs)
+            pass SPLIT-ONSET: N/A (no claim_split declared; the flat check governs)
+            pass SPLIT-SPIKE: N/A (no claim_split declared; the flat check governs)
+            pass METRIC-ONSET: N/A (no claim_metric declared; the flat check governs)
+            pass METRIC-SPIKE: N/A (no claim_metric declared; the flat check governs)
+            pass FUNNEL-STAGE-MISATTRIBUTION: N/A (no funnel structure declared)
+            pass SOURCE-MISATTRIBUTION: N/A (source_attribution / load_bearing not declared; the axis does not apply)
+            pass SELECTION-ON-NARRATIVE: N/A (no subset_criterion declared)
+            pass ANNOTATOR-SELF-KEYED: N/A (annotation_provenance not declared; the axis does not apply)
+            pass COMPUTABLE: N/A (empirical claim: the empirical axes govern; metric computability is not the regime)
+            pass SCOPE-OF-INDEPENDENCE: N/A (independence_scope / independence_load_bearing not declared; the axis does not apply)
+            pass REFERENCE-MIX: N/A (tradeoff_pairing / tradeoff_single_reference / tradeoff_metrics not declared; the axis does not apply)
+            pass UNWITNESSED-RECEIPT: N/A (no receipt declared; orthogonal to the empirical axes)
+            pass UNWITNESSED-ROOT: N/A (no manifest declared; orthogonal to the empirical axes)
+            pass WIDER-THAN-NAMED: N/A (empirical claim: the empirical axes govern; the definitional-referent axis is not the regime)
+            pass SELF-FALSIFYING: N/A (headline_scope / limitation_negates not declared; the axis does not apply)
+            pass PRIMARY-BASIS-REVERSAL: N/A (primary_basis / primary_basis_result not declared; the axis does not apply)
+            pass WINDOW-PRESENT-TENSE: N/A (window_claim / mechanism_history not declared; the axis does not apply)
+            pass EVIDENCE-UNCLOSED: N/A (has_more_at_end / cursor_runs not declared; the axis does not apply)
+            pass FIDELITY: N/A (referent_value / reading not declared; the axis does not apply)
+            pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
+            pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
+            pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
+            pass CRITERION-THRESHOLD: N/A (detector_catches_claim not declared; the axis does not apply)
+            pass JUDGE-AS-TARGET: N/A (judge_emits_labels not declared; the axis does not apply)
+            pass COVERAGE-GAP: N/A (shape_claim not declared; the axis does not apply)
+            pass SCOPE-FLATTENING: N/A (scope_claim not declared; the axis does not apply)
+            pass THESIS-OUTRUNS-EVIDENCE: N/A (thesis_endpoint not declared; the axis does not apply)
+            pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
+            pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
+            pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel=declared-attribute but content_verifiable=no: the content itself is not independently verifiable, so the gap is in the content's verifiability, not the decision channel; TRUST governs)
+
+[OK      ] CPB (2609.30813): governance policy B7's protection rests on a declared source-type channel; admission flips with the declared form, not the verified content
+          verdict: DECLARED-CHANNEL   (expected ['DECLARED-CHANNEL'])
+            pass BEATS-NULL: mechanism 0.7 > null 0
+            pass NOT-SELF-KEYED: N/A (no knob readings)
+            pass SELECTION-BIAS: N/A (no order-statistic headline declared)
+            pass ISOLATED: N/A (not an ablation claim)
+            pass CO-MOVES: N/A (no mechanism-axis readings)
+            pass NOISE-FLOOR: N/A (no CI/SE declared on the mechanism row)
+            pass REFERENT-WITNESSED: N/A (referent not declared)
+            pass LOSSY-PROJECTION: N/A (no record/referent witness declared)
+            pass AGGREGATION-REVERSAL: N/A (no subgroup/pooling structure declared; need >=2 subgroups with both a mechanism and a null reading)
+            pass REFERENT-CONSTRUCTED: N/A (referent not declared)
+            pass DOSE-RESPONSE: N/A (no dose structure declared; need >=2 substrate levels with both a mechanism and a null reading)
+            pass TEMPORAL-ONSET: N/A (no onset timepoint declared; the flat check governs)
+            pass TEMPORAL-SPIKE: N/A (no onset timepoint declared; the flat check governs)
+            pass OUTCOME-ONSET: N/A (no claim_outcome declared; the flat check governs)
+            pass OUTCOME-SPIKE: N/A (no claim_outcome declared; the flat check governs)
+            pass SUBGROUP-ONSET: N/A (no claim_subgroup declared; the flat check governs)
+            pass SUBGROUP-SPIKE: N/A (no claim_subgroup declared; the flat check governs)
+            pass DOSE-ONSET: N/A (no claim_dose declared; the flat check governs)
+            pass DOSE-SPIKE: N/A (no claim_dose declared; the flat check governs)
+            pass TIER-ONSET: N/A (no claim_tier declared; the flat check governs)
+            pass TIER-SPIKE: N/A (no claim_tier declared; the flat check governs)
+            pass SPLIT-ONSET: N/A (no claim_split declared; the flat check governs)
+            pass SPLIT-SPIKE: N/A (no claim_split declared; the flat check governs)
+            pass METRIC-ONSET: N/A (no claim_metric declared; the flat check governs)
+            pass METRIC-SPIKE: N/A (no claim_metric declared; the flat check governs)
+            pass FUNNEL-STAGE-MISATTRIBUTION: N/A (no funnel structure declared)
+            pass SOURCE-MISATTRIBUTION: N/A (source_attribution / load_bearing not declared; the axis does not apply)
+            pass SELECTION-ON-NARRATIVE: N/A (no subset_criterion declared)
+            pass ANNOTATOR-SELF-KEYED: N/A (annotation_provenance not declared; the axis does not apply)
+            pass COMPUTABLE: N/A (empirical claim: the empirical axes govern; metric computability is not the regime)
+            pass SCOPE-OF-INDEPENDENCE: N/A (independence_scope / independence_load_bearing not declared; the axis does not apply)
+            pass REFERENCE-MIX: N/A (tradeoff_pairing / tradeoff_single_reference / tradeoff_metrics not declared; the axis does not apply)
+            pass UNWITNESSED-RECEIPT: N/A (no receipt declared; orthogonal to the empirical axes)
+            pass UNWITNESSED-ROOT: N/A (no manifest declared; orthogonal to the empirical axes)
+            pass WIDER-THAN-NAMED: N/A (empirical claim: the empirical axes govern; the definitional-referent axis is not the regime)
+            pass SELF-FALSIFYING: N/A (headline_scope / limitation_negates not declared; the axis does not apply)
+            pass PRIMARY-BASIS-REVERSAL: N/A (primary_basis / primary_basis_result not declared; the axis does not apply)
+            pass WINDOW-PRESENT-TENSE: N/A (window_claim / mechanism_history not declared; the axis does not apply)
+            pass EVIDENCE-UNCLOSED: N/A (has_more_at_end / cursor_runs not declared; the axis does not apply)
+            pass FIDELITY: N/A (referent_value / reading not declared; the axis does not apply)
+            pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
+            pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
+            pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
+            pass CRITERION-THRESHOLD: N/A (detector_catches_claim not declared; the axis does not apply)
+            pass JUDGE-AS-TARGET: N/A (judge_emits_labels not declared; the axis does not apply)
+            pass COVERAGE-GAP: N/A (shape_claim not declared; the axis does not apply)
+            pass SCOPE-FLATTENING: N/A (scope_claim not declared; the axis does not apply)
+            pass THESIS-OUTRUNS-EVIDENCE: N/A (thesis_endpoint not declared; the axis does not apply)
+            pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
+            pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
+            pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            FLAG DECLARED-CHANNEL: the certifier's decision is carried by a self-declared attribute (decision_channel=declared-attribute) while the content is independently verifiable (content_verifiable=yes): the admission decision flips with the declared form, not the verified content, so the protection is carried by the declaration, not by verification
+
+[OK      ] DIAL (2609.31215): strong human-aligned rankings with limited labels (thesis-outruns pass cell)
+          verdict: NULL-REACHES-HEADLINE   (expected ['NULL-REACHES-HEADLINE'])
+            FLAG BEATS-NULL: null 0.92 >= mechanism 0.9 (metric cannot tell mechanism from null)
+            pass NOT-SELF-KEYED: N/A (knob_kind=workload: the knob is not the mechanism's own lever, so self-keying does not apply)
+            pass SELECTION-BIAS: N/A (knob_kind=workload: the knob is not a fixed instrument, so max-of-K selection bias does not apply)
+            pass ISOLATED: N/A (not an ablation claim)
+            pass CO-MOVES: N/A (no mechanism-axis readings)
+            pass NOISE-FLOOR: N/A (no point-estimate beat; BEATS-NULL governs)
+            pass REFERENT-WITNESSED: N/A (referent not declared)
+            pass LOSSY-PROJECTION: N/A (no record/referent witness declared)
+            pass AGGREGATION-REVERSAL: N/A (no subgroup/pooling structure declared; need >=2 subgroups with both a mechanism and a null reading)
+            pass REFERENT-CONSTRUCTED: N/A (referent not declared)
+            pass DOSE-RESPONSE: N/A (no dose structure declared; need >=2 substrate levels with both a mechanism and a null reading)
+            pass TEMPORAL-ONSET: N/A (no onset timepoint declared; the flat check governs)
+            pass TEMPORAL-SPIKE: N/A (no onset timepoint declared; the flat check governs)
+            pass OUTCOME-ONSET: N/A (no claim_outcome declared; the flat check governs)
+            pass OUTCOME-SPIKE: N/A (no claim_outcome declared; the flat check governs)
+            pass SUBGROUP-ONSET: N/A (no claim_subgroup declared; the flat check governs)
+            pass SUBGROUP-SPIKE: N/A (no claim_subgroup declared; the flat check governs)
+            pass DOSE-ONSET: N/A (no claim_dose declared; the flat check governs)
+            pass DOSE-SPIKE: N/A (no claim_dose declared; the flat check governs)
+            pass TIER-ONSET: N/A (no claim_tier declared; the flat check governs)
+            pass TIER-SPIKE: N/A (no claim_tier declared; the flat check governs)
+            pass SPLIT-ONSET: N/A (no claim_split declared; the flat check governs)
+            pass SPLIT-SPIKE: N/A (no claim_split declared; the flat check governs)
+            pass METRIC-ONSET: N/A (no claim_metric declared; the flat check governs)
+            pass METRIC-SPIKE: N/A (no claim_metric declared; the flat check governs)
+            pass FUNNEL-STAGE-MISATTRIBUTION: N/A (no funnel structure declared)
+            pass SOURCE-MISATTRIBUTION: N/A (source_attribution / load_bearing not declared; the axis does not apply)
+            pass SELECTION-ON-NARRATIVE: N/A (no subset_criterion declared)
+            pass ANNOTATOR-SELF-KEYED: N/A (annotation_provenance not declared; the axis does not apply)
+            pass COMPUTABLE: N/A (empirical claim: the empirical axes govern; metric computability is not the regime)
+            pass SCOPE-OF-INDEPENDENCE: N/A (independence_scope / independence_load_bearing not declared; the axis does not apply)
+            pass REFERENCE-MIX: N/A (tradeoff_pairing / tradeoff_single_reference / tradeoff_metrics not declared; the axis does not apply)
+            pass UNWITNESSED-RECEIPT: N/A (no receipt declared; orthogonal to the empirical axes)
+            pass UNWITNESSED-ROOT: N/A (no manifest declared; orthogonal to the empirical axes)
+            pass WIDER-THAN-NAMED: N/A (empirical claim: the empirical axes govern; the definitional-referent axis is not the regime)
+            pass SELF-FALSIFYING: N/A (headline_scope / limitation_negates not declared; the axis does not apply)
+            pass PRIMARY-BASIS-REVERSAL: N/A (primary_basis / primary_basis_result not declared; the axis does not apply)
+            pass WINDOW-PRESENT-TENSE: N/A (window_claim / mechanism_history not declared; the axis does not apply)
+            pass EVIDENCE-UNCLOSED: N/A (has_more_at_end / cursor_runs not declared; the axis does not apply)
+            pass FIDELITY: N/A (referent_value / reading not declared; the axis does not apply)
+            pass WITNESS-POPULATION-SELECTION: N/A (absence_claim / witness_population not declared; the axis does not apply)
+            pass SOURCE-REPLICATION: N/A (verification_source / claim_source not declared; the axis does not apply)
+            pass PLATFORM-CERTIFIED: N/A (certifier / verification_key not declared; the axis does not apply)
+            pass TRUST: N/A (writer_trust not declared; the axis does not apply)
+            pass TAUTOLOGICAL-BLEND: N/A (guaranteed_count not declared; the axis does not apply)
+            pass CRITERION-THRESHOLD: N/A (detector_catches_claim not declared; the axis does not apply)
+            pass JUDGE-AS-TARGET: N/A (judge_emits_labels not declared; the axis does not apply)
+            pass COVERAGE-GAP: N/A (shape_claim not declared; the axis does not apply)
+            pass SCOPE-FLATTENING: N/A (scope_claim not declared; the axis does not apply)
+            pass THESIS-OUTRUNS-EVIDENCE: the thesis endpoint (strong human-aligned rankings) is in the measured set; the endpoint is a measurement, not a forecast -- the measured-value case is SCOPE-FLATTENING's domain
+            pass UNIT-COUNT: N/A (check_count not declared; the count-channel axis does not apply)
+            pass OPT-IN-CENSUS: N/A (census_claim not declared; the axis does not apply)
+            pass CERTIFIER-UNNAMED: N/A (certifier_identity not declared; the axis does not apply)
+            pass CAUSAL-WIRING: N/A (claim_relation not declared; the axis does not apply)
+            pass DECLARED-CHANNEL: N/A (decision_channel not declared; the axis does not apply)
 
 ALL SPECIMENS MATCH
