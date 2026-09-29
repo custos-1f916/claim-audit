@@ -2514,5 +2514,56 @@ SPECIMENS = [
   {'name': 'CERTIFIER-UNNAMED 2x2 A (MACBT witness): model-constructed referent, NAMED certifier (GPT-4)', 'type': 'ablation', 'mechanism_lever': 'm', 'referent': 'benchmark quality of the model-constructed artifact', 'referent_provenance': 'model-constructed', 'certifier_identity': 'named', 'rows': [{"label": "on", "mechanism_on": True, "substrate": ["s", "m"], "metric": 1.0}, {"label": "off", "mechanism_on": False, "is_null": True, "substrate": ["s"], "metric": 0.2}], 'expected': ['REFERENT-CONSTRUCTED'], 'note': 'CERTIFIER-UNNAMED (53rd axis) discriminating test, corner A (2609.30939 MACBT). The referent is model-constructed (the GPT-4 judge scores LLM-simulated CBT dialogues) so REFERENT-CONSTRUCTED fires, but the certifier is NAMED (GPT-4, a specific model a stranger can re-run), so the certification is stranger-rerunnable and CERTIFIER-UNNAMED does NOT fire. Corner A of the 2x2: RC-only.'},
   {'name': 'CERTIFIER-UNNAMED 2x2 B (SciHorizon witness): model-constructed referent, UNNAMED certifier (visual-review agent)', 'type': 'ablation', 'mechanism_lever': 'm', 'referent': 'benchmark quality of the model-constructed artifact', 'referent_provenance': 'model-constructed', 'certifier_identity': 'unnamed', 'rows': [{"label": "on", "mechanism_on": True, "substrate": ["s", "m"], "metric": 1.0}, {"label": "off", "mechanism_on": False, "is_null": True, "substrate": ["s"], "metric": 0.2}], 'expected': ['REFERENT-CONSTRUCTED', 'CERTIFIER-UNNAMED'], 'note': 'CERTIFIER-UNNAMED (53rd axis) discriminating test, corner B (2609.30971 SciHorizon-eLab). The referent is model-constructed so REFERENT-CONSTRUCTED fires, AND the certifier is UNNAMED (the visual-review agent that anchors the compiled task to the source protocol, with no model/provider/temperature/prompt anywhere in the paper) so CERTIFIER-UNNAMED fires. Corner B of the 2x2: both fire. Byte-identical to corner A in every certifier-read field; only certifier_identity differs, so A-vs-B isolates the certifier channel.'},
   {'name': 'CERTIFIER-UNNAMED 2x2 C (RC-free control): externally-anchored referent, UNNAMED certifier', 'type': 'ablation', 'mechanism_lever': 'm', 'referent': 'benchmark quality of the externally-anchored artifact', 'referent_provenance': 'externally-anchored', 'certifier_identity': 'unnamed', 'rows': [{"label": "on", "mechanism_on": True, "substrate": ["s", "m"], "metric": 1.0}, {"label": "off", "mechanism_on": False, "is_null": True, "substrate": ["s"], "metric": 0.2}], 'expected': ['CERTIFIER-UNNAMED'], 'note': 'CERTIFIER-UNNAMED (53rd axis) discriminating test, corner C (RC-free control). The referent is externally-anchored so REFERENT-CONSTRUCTED does NOT fire, but the certifier is UNNAMED so CERTIFIER-UNNAMED fires ALONE. This is the cell that proves the axis is separable from REFERENT-CONSTRUCTED: CU fires with no RC present. Byte-identical to corner B in every certifier-read field; only referent_provenance differs, so B-vs-C isolates the referent channel.'},
-  {'name': 'CERTIFIER-UNNAMED 2x2 D (pass control): externally-anchored referent, NAMED certifier', 'type': 'ablation', 'mechanism_lever': 'm', 'referent': 'benchmark quality of the externally-anchored artifact', 'referent_provenance': 'externally-anchored', 'certifier_identity': 'named', 'rows': [{"label": "on", "mechanism_on": True, "substrate": ["s", "m"], "metric": 1.0}, {"label": "off", "mechanism_on": False, "is_null": True, "substrate": ["s"], "metric": 0.2}], 'expected': [], 'note': 'CERTIFIER-UNNAMED (53rd axis) discriminating test, corner D (full pass). The referent is externally-anchored (RC N/A) and the certifier is NAMED (CU N/A), so neither fires and the verdict is DISCRIMINATES. Corner D of the 2x2: the clean cell. The four corners form the full discriminating test: A-vs-B isolates the certifier channel, B-vs-C isolates the referent channel, and D is the all-pass control.'}
+  {'name': 'CERTIFIER-UNNAMED 2x2 D (pass control): externally-anchored referent, NAMED certifier', 'type': 'ablation', 'mechanism_lever': 'm', 'referent': 'benchmark quality of the externally-anchored artifact', 'referent_provenance': 'externally-anchored', 'certifier_identity': 'named', 'rows': [{"label": "on", "mechanism_on": True, "substrate": ["s", "m"], "metric": 1.0}, {"label": "off", "mechanism_on": False, "is_null": True, "substrate": ["s"], "metric": 0.2}], 'expected': [], 'note': 'CERTIFIER-UNNAMED (53rd axis) discriminating test, corner D (full pass). The referent is externally-anchored (RC N/A) and the certifier is NAMED (CU N/A), so neither fires and the verdict is DISCRIMINATES. Corner D of the 2x2: the clean cell. The four corners form the full discriminating test: A-vs-B isolates the certifier channel, B-vs-C isolates the referent channel, and D is the all-pass control.'},
+  {'body_hedges': False,
+ 'expected': ['THESIS-OUTRUNS-EVIDENCE'],
+ 'headline_states_as_fact': True,
+ 'measured_endpoints': ['cross-model failure rates',
+                        'welfare realization',
+                        'success rates',
+                        'commitment timing (early vs late)'],
+ 'mechanism': 'interaction mechanisms (M1 compensated / M2 agreement / M3 coalition) vs M0 '
+              'baseline',
+ 'mechanism_lever': 'commitment',
+ 'metric': 'welfare realization (higher is better)',
+ 'name': "FRAIL (2609.30940): title states 'individually capable agents' as present-tense fact; "
+         'evidence is cross-model failure (rules out one-bad-model, not individual incapacity)',
+ 'note': "LIVE EXTERNAL SPECIMEN (arXiv 2609.30940, FRAIL, 'Financial Fragility in Societies of "
+         "LLM Agents'). Different-method audit of the 2026-09-29 hand teardown "
+         '(explore/frail-2609.30940/audit.md), which flagged three seams. The headline states '
+         "'individually capable agents do not automatically form safe financial systems' as a "
+         'present-tense fact, but the evidence (cross-model failure: 77% bank-run / 83% '
+         'debt-rollover baseline) only rules out one-bad-model, not individual incapacity (no solo '
+         'control) -> THESIS-OUTRUNS-EVIDENCE. Hand-audit seams 2 and 3 have no catching axis '
+         "here: (2) early-commitment correlate->cause (4.2 'associated with' 82% vs 37%, promoted "
+         'to causal in the Discussion) is a causal-wiring conflation with no instrument axis; (3) '
+         "success (binary) vs welfare (continuous) conflated in 'improve aggregate outcomes' "
+         '(crowdfunding welfare stays high at zero success) is a metric-unit conflation, not the '
+         "instrument's UNIT-COUNT (which fires on check-count collapse). Bank-run rows: M0 0.215 "
+         '-> M1 0.507 / M2 0.615 / M3 0.737 (welfare realization, Table 2). Cross-environment '
+         'reversal (M3 best bank run, M2 best debt rollover 0.627 vs 0.555, M1 never best) is '
+         'honestly reported by the paper.',
+ 'rows': [{'label': 'M3 coalition (bank run)',
+           'mechanism_axis': 0.737,
+           'mechanism_on': True,
+           'metric': 0.737,
+           'substrate': ['commitment']},
+          {'label': 'M2 agreement (bank run)',
+           'mechanism_axis': 0.615,
+           'mechanism_on': True,
+           'metric': 0.615,
+           'substrate': ['commitment']},
+          {'label': 'M1 compensated (bank run)',
+           'mechanism_axis': 0.507,
+           'mechanism_on': True,
+           'metric': 0.507,
+           'substrate': ['commitment']},
+          {'is_null': True,
+           'label': 'M0 baseline (bank run, null)',
+           'mechanism_axis': 0.215,
+           'mechanism_on': False,
+           'metric': 0.215,
+           'substrate': []}],
+ 'thesis_endpoint': 'individually capable agents',
+ 'type': 'ablation'},
 ]
