@@ -38,7 +38,7 @@ import claim_audit
 import specimens
 from knife_edge import numeric_leaves, _split_path, _set_at, audit_flags, EPS
 
-CONT_GRID = [1e-9, 1e-6, 1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 0.2, 0.5, 0.9, 1.0, 1.5, 2.0, 3.0, 5.0]
+CONT_GRID = [1e-9, 1e-6, 1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 0.2, 0.5, 0.9, 1.0, 1.5, 2.0, 3.0, 5.0, 10, 100, 1000]
 INT_GRID  = [1, 2, 3, 5, 10]
 TIE_IDX_CONT = 1   # 1e-6 (grid[0]=1e-9 is numerically degenerate); still index 1 in the
     # direction-capped grids (1e-6 < 1.0, so the cap never drops it)
@@ -110,6 +110,31 @@ def classify(flips, kind):
     return kind_name, robust
 
 
+def window_tag(flips, grid, direction, kind):
+    """For a WINDOWED row, say where the flip window is bounded. The grid range
+    is an unexamined parameter: a window that reaches the grid max/min is NOT
+    confirmed bounded there -- it may extend beyond the grid. Tags:
+      [bounded]    both ends confirmed strictly inside the grid (genuine window)
+      ->grid-max   high end at the grid max (unconfirmed above)
+      <-grid-min   low end at the grid min (unconfirmed below)
+      ->domain     high end at the domain boundary (dir=-1 cont, g=1.0 -> newval=0)
+    A non-monotone window can carry two edge tags; a contiguous one carries one.
+    """
+    n = len(flips)
+    flip_idx = [i for i, f in enumerate(flips) if f]
+    if not flip_idx:
+        return "(no flip in grid)"
+    lo, hi = flip_idx[0], flip_idx[-1]
+    tags = []
+    if lo == 0:
+        tags.append("<-grid-min")
+    if hi == n - 1:
+        tags.append("->domain" if (direction < 0 and kind == "cont") else "->grid-max")
+    if not tags:
+        tags.append("[bounded]")
+    return " ".join(tags)
+
+
 def main():
     rows = flagged_fields()
     specs = specimens.SPECIMENS
@@ -124,6 +149,7 @@ def main():
     ties = closecalls = 0
     introws = 0
     invariant = windowed = 0
+    w_bounded = w_gridmax = w_gridmin = w_domain = 0
     by_spec = {}
 
     for s, path, val, direction, kind in rows:
@@ -136,23 +162,36 @@ def main():
             introws += 1
         invariant += robust == "INVARIANT"
         windowed += robust == "WINDOWED"
+        if robust == "WINDOWED":
+            tag = window_tag(flips, grid, direction, kind)
+            if "[bounded]" in tag: w_bounded += 1
+            if "->grid-max" in tag: w_gridmax += 1
+            if "<-grid-min" in tag: w_gridmin += 1
+            if "->domain" in tag: w_domain += 1
+        else:
+            tag = ""
         by_spec.setdefault(s["name"], []).append(
-            (path, direction, kind, flips, kind_name, robust))
+            (path, direction, kind, flips, kind_name, robust, tag))
 
     for name, items in by_spec.items():
         selfmark = "  [SELF-SPECIMEN]" if "CF-CG-1 sweep saturation" in name else ""
         print("[%s]%s" % (name, selfmark))
-        for path, direction, kind, flips, kind_name, robust in items:
+        for path, direction, kind, flips, kind_name, robust, tag in items:
             marks = "".join(("X" if f else ".") for f in flips)
-            print("    [%s] %s%s  %s  %-11s %-10s" % (
-                kind, path, "+" if direction > 0 else "-", marks, kind_name, robust))
+            print("    [%s] %s%s  %s  %-11s %-10s %s" % (
+                kind, path, "+" if direction > 0 else "-", marks, kind_name, robust, tag))
         print()
 
     controws = ties + closecalls
     print("=== SUMMARY ===")
     print("PRIMARY (step-robustness, all %d rows):" % len(rows))
     print("  INVARIANT (flips at every step min..grid max, robust to step choice): %d/%d" % (invariant, len(rows)))
-    print("  WINDOWED  (flips only in a bounded step range, step-relative):   %d/%d" % (windowed, len(rows)))
+    print("  WINDOWED  (step-relative; the 1%% probe lands in their window):   %d/%d" % (windowed, len(rows)))
+    print("    by window shape (where the flip window is bounded; grid range is an unexamined param):")
+    print("      [bounded]    both ends confirmed inside the grid:            %d" % w_bounded)
+    print("      ->grid-max   high end at grid max (unconfirmed above):       %d" % w_gridmax)
+    print("      <-grid-min   low end at grid min (unconfirmed below):        %d" % w_gridmin)
+    print("      ->domain     high end at domain boundary (dir=-1):           %d" % w_domain)
     print("SECONDARY (degeneracy, %d CONTINUOUS rows only; %d int rows are MIN-KICK, excluded):" % (controws, introws))
     print("  TIE        (flips at 1e-6, value exactly on a boundary):         %d/%d cont" % (ties, controws))
     print("  CLOSE-CALL (flips at 1%% but not 1e-6, a real near-miss):        %d/%d cont" % (closecalls, controws))
