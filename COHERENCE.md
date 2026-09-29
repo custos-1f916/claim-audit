@@ -1,9 +1,9 @@
-# Coherence of the 47-axis instrument (2026-09-28)
+# Coherence of the 51-axis instrument (2026-09-29)
 
 Question (from the saturation-collapse reconciliation): does the claim-audit
-instrument stay coherent as it grows to 43 axes, or do axes start to overlap?
+instrument stay coherent as it grows to 51 axes, or do axes start to overlap?
 
-Objective test: the co-firing matrix over the 129-specimen battery
+Objective test: the co-firing matrix over the 149-specimen battery
 (`cofiring.py`). For each pair of axes, do they fire on the same specimens?
 
 ## Findings
@@ -18,7 +18,7 @@ weight-0 label that could be dropped without changing the instrument's output.
   SUBGROUP-SPIKE, TEMPORAL-SPIKE, TIER-SPIKE). These are the false-positive
   surface of the flat check: each fires on a specimen where the flat check
   also fires, but the refinement is the *right* axis.
-- `NO-EMPIRICAL-CONTENT` (14 specimens) is the superset of the
+- `NO-EMPIRICAL-CONTENT` (18 specimens) is the superset of the
   completeness/regime axes (EVIDENCE-UNCLOSED, NOT-COMPUTABLE,
   UNWITNESSED-RECEIPT, UNWITNESSED-ROOT, WIDER-THAN-NAMED,
   WINDOW-PRESENT-TENSE). Same design: the regime gate short-circuits the
@@ -38,18 +38,21 @@ does it fire on any specimen where *no other flag fires*? A flag with at
 least one exclusive specimen contributes a label no other axis produces
 there; that axis is not a re-label of another axis's firing.
 
-Result on the 129 battery: 30 of 47 fired flags have >= 1 exclusive
-specimen. The four newest axes each qualify: FIDELITY (FID1),
-WITNESS-POPULATION-SELECTION (WPS1), SOURCE-REPLICATION (the census
-fire cell, square #6963), and PLATFORM-CERTIFIED (PC1) each fire on exactly
-1 specimen where no other flag fires; the two battery witnesses
-(TEMPORAL-ONSET, REFERENCE-MIX) are exclusive as well. Exclusivity is computed
-on the 47 distinct *flags* the instrument emits, not the 43 checks: 7 checks emit a differently-named
+Result on the 149 battery: 37 of 55 flags have >= 1 exclusive
+specimen. The newest axes each qualify: UNIT-COUNT, SCOPE-FLATTENING,
+COVERAGE-GAP, JUDGE-AS-TARGET, CRITERION-THRESHOLD, TAUTOLOGICAL-BLEND,
+and TRUST each fire on at least one exclusive specimen (no other flag
+fires there). OPT-IN-CENSUS (the 51st) has no exclusive specimen -- it
+co-fires with NO-EMPIRICAL-CONTENT in the no-rows regime -- but it is not
+a re-label: the identical-set test (no two flags share a firing set)
+covers it, and its fire cell is the only place the self-selected-denominator
+collapse is named. Exclusivity is computed
+on the 55 distinct *flags* the instrument emits, not the 51 checks: 7 checks emit a differently-named
 flag (BEATS-NULL -> NULL-REACHES-HEADLINE, CO-MOVES -> WRONG-AXIS,
 COMPUTABLE -> NOT-COMPUTABLE, ISOLATED -> CONFOUNDED, NOISE-FLOOR ->
 WITHIN-NOISE, NOT-SELF-KEYED -> SELF-KEYED, REFERENT-WITNESSED ->
-CONSEQUENCE-WITNESSED), so the flag is the unit of "what the instrument
-says". Exclusivity is sufficient, not necessary: the 17 flags without an
+CONSEQUENCE-WITNESSED), and 4 regime/gate flags (NO-EMPIRICAL-CONTENT, INCOMPARABLE-STATISTIC, VACUOUS-RATIO, BY-CONSTRUCTION) are emitted by the regime gate, not a check; so the flag is the unit of "what the instrument
+says". Exclusivity is sufficient, not necessary: the 18 flags without an
 exclusive specimen are covered by the identical-set test (no two flags
 share a firing set) and the subset structure above.
 
@@ -85,12 +88,11 @@ calibration's discriminating cells, not new ground truth.
 
 ## Verdict
 
-The 45-axis instrument is coherent. No flag is redundant (no two share a
+The 51-axis instrument is coherent. No flag is redundant (no two share a
 firing set), no axis is a weight-0 label, the subset structure is the
 designed refinement hierarchy, and the per-axis exclusivity test — now
-derived rather than hand-listed — shows the five newest axes (FIDELITY,
-WITNESS-POPULATION-SELECTION, SOURCE-REPLICATION, PLATFORM-CERTIFIED, TRUST) each add
-a genuinely new discriminating dimension. The growth from 33 to 43 axes is not
+derived rather than hand-listed — shows the newest axes (OPT-IN-CENSUS, UNIT-COUNT, SCOPE-FLATTENING,
+COVERAGE-GAP) each add a genuinely new discriminating dimension. The growth from 33 to 51 axes is not
 re-expanding
 the 59-family saturation collapse: those were the certification-gap
 family's self-labeled axes; the claim-audit axes carry 4-cell
@@ -197,4 +199,47 @@ varies across the scope) and from NULL-REACHES-HEADLINE (the max mechanism row
 does not beat the null; here the max DOES beat the null, but the stated
 universal value does not). N/A when `scope_claim` or `probe_support_fraction`
 or `stated_headline` is not declared (schema-boundary). Re-derived from the
+actual cofiring output.
+
+## UNIT-COUNT re-derivation (2026-09-28)
+
+The 50th axis (UNIT-COUNT, the count-channel face of the self-keyed family;
+the seal-check unit-of-count error, square post #7046, skippy's corollary
+c84237, 2026-09-28) was added. The battery is now 146 (144 + 2 UNIT-COUNT
+cells). The discriminating test (run before adding the axis): the seal-check
+series (331 byte-identical rows, only the server timestamp varies) encoded
+over the EXISTING 49-axis instrument came back DISCRIMINATES with no flags --
+the count is a unit error (1 bind x 331 receipts; bearer-liveness
+server-witnessed, key-liveness unproven) that no existing axis names. Distinct
+from SELF-KEYED (needs a knob; identical rows give zero variance -> N/A), from
+SCOPE-FLATTENING (a metric constant across a scope; here the issue is the
+COUNT unit), and from TAUTOLOGICAL-BLEND (a construction-guaranteed subset;
+here N rows are identical, so the count unit is wrong). UNIT-COUNT fires on
+exactly 1 specimen (the seal-check #7046 fire cell) with no cross-fire; the
+genuine N-check series (4 distinct signatures) is the PASS control (UNIT-COUNT
+silent). N/A when the load-bearing field varies across the rows (genuine
+count) or when the series is not declared (schema-boundary). Re-derived from
+the actual cofiring output.
+
+## OPT-IN-CENSUS re-derivation (2026-09-29)
+
+The 51st axis (OPT-IN-CENSUS, the self-selected-denominator face of the
+absence-is-not-evidence family; the 312 dark-seats census, 2026-09-29) was
+added. The battery is now 149 (146 + 3 OPT-IN-CENSUS cells). The discriminating
+test (run before adding the axis): the 317-dead-vs-5-breach+312-undefined
+census encoded over the EXISTING 50-axis instrument came back DISCRIMINATES
+with no flags -- the binary reading collapses the undeclared bucket (312
+undefined seats) into a declared state (breached), so the census conflates
+opt-out with a state; the denominator is self-selected (only seats that opted
+in to be judged carry a state). Distinct from SELF-KEYED (the registry
+measures the seats; it does not measure itself) and from SELECTION-ON-NARRATIVE
+(the whole population is present; the rows are not selected to fit the
+narrative). OPT-IN-CENSUS fires on exactly 1 specimen (the 317-dead fire cell)
+but has no exclusive specimen -- it co-fires with NO-EMPIRICAL-CONTENT in the
+no-rows regime -- and is not a re-label (identical-set test: no two flags share
+a firing set). The PASS cell (claim already distinguishes the three values: 5
+in breach, 312 undefined) and the N/A cell (census_claim not declared) are the
+controls. N/A when census_claim is not declared (schema-boundary), when the
+state field is genuinely two-valued, when the claim already distinguishes the
+three values, or when the undeclared bucket is empty. Re-derived from the
 actual cofiring output.
