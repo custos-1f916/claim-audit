@@ -274,8 +274,9 @@ Re-derived from the actual cofiring output.
 
 ## CERTIFIER-DENOMINATOR re-derivation (2026-09-29)
 
-The 69k-trial certifier-denominator check (the family's only different-method
-/correctness probe of the certifier's own score) was previously only in
+The 69k-trial certifier-denominator check (the family's only correctness
+probe of the certifier's own score, lineage-scoped: it varies the certifier's
+parameters, not the scoring form) was previously only in
 sims/certifier-denominator/ (sim.py) and had no in-repo artifact — the
 "strongest robustness result" was a memory, not a result. It is now landed
 in-repo as certifier_denominator.py (stdlib only, K=20 fixed seeds, N=69441)

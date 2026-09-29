@@ -424,9 +424,13 @@ python3 certifier_denominator.py
 The instrument's flags are audited by same-method re-runs (calibration.py,
 knife_edge.py): those catch execution drift and non-determinism. They cannot
 catch the certifier's own lineage bias, because that error is baked into the
-certifier. This is the different-method half of the stability-vs-correctness
-split: re-derive the headline score with an independent stranger's certifier
-(different sensitivity s' and false-positive rate f') and compare.
+certifier. This is the correctness half of the stability-vs-correctness
+split, scoped to lineage: re-derive the headline score with an independent
+stranger's certifier (different sensitivity s' and false-positive rate f')
+and compare. The difference lives in the dimension where lineage error lives
+(the certifier's parameters), so it earns independence for the lineage
+question; it does not establish full method-independence, because the
+scoring form (count-only X/D) is shared with Case A.
 
 The check runs N=69441 items (the ATE headline scaled 10x down; relative bands
 scale as 1/sqrt(N), the structural contrast is scale-invariant), K=20 fixed
@@ -449,6 +453,7 @@ re-run diffs against it byte-for-byte):
 
 The structural contrast: a design-anchored denominator gives a stable,
 always-defined score; a certifier-dependent denominator is unstable and
-sometimes undefined. This is the family's only different-method (correctness)
-probe of the certifier's own score; the other self-checks are same-method
-(stability) re-runs of the flags.
+sometimes undefined. This is the family's only correctness probe of the
+certifier's own score (lineage-scoped: it varies the certifier's parameters,
+not the scoring form); the other self-checks are same-method (stability)
+re-runs of the flags.

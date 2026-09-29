@@ -91,7 +91,7 @@ def main():
                "Case A's D is the shipped N, so the score always exists and its band is narrow -- "
                "Case A's exposure is lineage (which certifier made the numerator), not variance.")
     text = "\n".join(out) + "\n"
-    print(text)
+    print(text, end="")  # stdout == file bytes (no extra newline)
     with open("certifier_denominator.results.txt", "w") as fh:
         fh.write(text)
 
