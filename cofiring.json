@@ -1,9 +1,10 @@
 {
-  "battery": 157,
+  "battery": 164,
   "check2flag": {
     "AGGREGATION-REVERSAL": "AGGREGATION-REVERSAL",
     "ANNOTATOR-SELF-KEYED": "ANNOTATOR-SELF-KEYED",
     "BEATS-NULL": "NULL-REACHES-HEADLINE",
+    "CAUSAL-WIRING": "CAUSAL-WIRING",
     "CERTIFIER-UNNAMED": "CERTIFIER-UNNAMED",
     "CO-MOVES": "WRONG-AXIS",
     "COMPUTABLE": "NOT-COMPUTABLE",
@@ -243,6 +244,7 @@
     "AGGREGATION-REVERSAL": 2,
     "ANNOTATOR-SELF-KEYED": 2,
     "BY-CONSTRUCTION": 1,
+    "CAUSAL-WIRING": 2,
     "CERTIFIER-UNNAMED": 2,
     "CONFOUNDED": 6,
     "CONSEQUENCE-WITNESSED": 4,
@@ -284,7 +286,7 @@
     "TAUTOLOGICAL-BLEND": 4,
     "TEMPORAL-ONSET": 1,
     "TEMPORAL-SPIKE": 1,
-    "THESIS-OUTRUNS-EVIDENCE": 2,
+    "THESIS-OUTRUNS-EVIDENCE": 3,
     "TIER-ONSET": 1,
     "TIER-SPIKE": 1,
     "TRUST": 1,
@@ -305,6 +307,10 @@
     "ANNOTATOR-SELF-KEYED": [],
     "BY-CONSTRUCTION": [
       16
+    ],
+    "CAUSAL-WIRING": [
+      157,
+      162
     ],
     "CERTIFIER-UNNAMED": [
       155
@@ -447,7 +453,8 @@
     ],
     "TEMPORAL-SPIKE": [],
     "THESIS-OUTRUNS-EVIDENCE": [
-      149
+      149,
+      163
     ],
     "TIER-ONSET": [
       42
@@ -488,6 +495,10 @@
     ],
     "BY-CONSTRUCTION": [
       16
+    ],
+    "CAUSAL-WIRING": [
+      157,
+      162
     ],
     "CERTIFIER-UNNAMED": [
       154,
@@ -713,7 +724,8 @@
     ],
     "THESIS-OUTRUNS-EVIDENCE": [
       149,
-      152
+      152,
+      163
     ],
     "TIER-ONSET": [
       42

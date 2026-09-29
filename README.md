@@ -1,8 +1,8 @@
 # claim-audit
 
-A 53-axis falsification instrument for empirical claims in ML/AI papers
+A 54-axis falsification instrument for empirical claims in ML/AI papers
 (and other headline claims with data). Given a claim's raw numbers as a
-spec, it checks the claim against 53 axes (self-keyed, wrong-axis,
+spec, it checks the claim against 54 axes (self-keyed, wrong-axis,
 selection-bias, confounded, within-noise, lossy-projection,
 aggregation-reversal, referent-witnessed, temporal/dose/outcome/subgroup
 onset-and-spike, funnel-stage-misattribution, selection-on-narrative,
@@ -75,26 +75,26 @@ undeclared field makes a refinement N/A), `contested`.
 python3 claim_audit.py
 ```
 
-Runs the 157 specimens in `specimens.py` (127 real — papers from the
+Runs the 164 specimens in `specimens.py` (128 real — papers from the
 2026-09-15..22 audit run plus schema-boundary cells plus the live 1f916.ai
-seal/ack floor — plus 30 constructed/self-specimen discriminating cells: the
+seal/ack floor — plus 36 constructed/self-specimen discriminating cells: the
 original 11 battery witnesses for TEMPORAL-ONSET, REFERENCE-MIX,
 PLATFORM-CERTIFIED, TRUST, TAUTOLOGICAL-BLEND, CRITERION-THRESHOLD,
 JUDGE-AS-TARGET, and the four three-channel independence witnesses (CH0-CH3),
 plus the CF-CG-1 self-specimens and the SCOPE-FLATTENING / UNIT-COUNT /
-OPT-IN-CENSUS / THESIS-OUTRUNS-EVIDENCE / CERTIFIER-UNNAMED fire+pass cells; see COHERENCE.md) and prints
+OPT-IN-CENSUS / THESIS-OUTRUNS-EVIDENCE / CERTIFIER-UNNAMED / CAUSAL-WIRING fire+pass cells; see COHERENCE.md) and prints
 `ALL SPECIMENS MATCH` (exit 0) when every specimen's fired flags equal
 its recorded `expected` set. `results.txt` is a fresh run of this
 battery from this copy of the code.
 
 ## Files
 
-  claim_audit.py   the instrument (53 checks + CLI), stdlib only
-  calibration.py   the 104-specimen discriminating calibration
+  claim_audit.py   the instrument (54 checks + CLI), stdlib only
+  calibration.py   the 106-specimen discriminating calibration
   calibration_boundary.py  the self-calibration probe (per-check mutation)
   calibration_confound.py  the RED-baseline confound (dead check reads CALIBRATED)
   calibration_bandaid.py   the baseline-integrity fix (band-aid, not removal)
-  specimens.py     157 specimens (127 real + 30 constructed/self-specimen) with expected flag sets
+  specimens.py     164 specimens (128 real + 36 constructed/self-specimen) with expected flag sets
   results.txt      fresh battery run from this copy
   publicity_saturation.py  the PUBLICITY saturation test (certification subset -> one variable)
   question_selection.py  terminus candidate: query-selection collapses into what-is-recorded
@@ -290,6 +290,49 @@ measured-endpoint reverse control, the properly-scoped-headline pass cell,
 and the no-rows regime cell). The battery is now 153 specimens (126 real +
 27 constructed/self-specimen).
 
+(2026-09-29): the CERTIFIER-UNNAMED axis (53rd) was implemented. The
+certification-gate face of the self-keyed family (arXiv 2609.30971,
+SciHorizon-eLab, the agentic protocol-to-task compiler, the arXiv feed seed):
+the paper's certification gate is anchored only to a protocol channel whose
+identity is never declared — the certifier is unnamed, so the 'certified'
+verdict has no external anchor to check against. The discriminating test is a
+2x2 over referent_provenance (model-constructed vs externally-anchored) x
+certifier_identity (named vs unnamed): corner B (model-constructed referent +
+unnamed certifier, the SciHorizon-eLab shape) fires CERTIFIER-UNNAMED only;
+corner A (MACBT: model-constructed referent + NAMED GPT-4 judge) fires
+REFERENT-CONSTRUCTED only — the named certifier is exactly what keeps
+CERTIFIER-UNNAMED from firing; corner D (external referent + named certifier)
+fires neither; corner C (external + unnamed) fires CERTIFIER-UNNAMED only.
+The weight-1 CERTIFIER-UNNAMED instrument landed as the 53rd axis
+(check_certifier_unnamed in claim_audit.py; schema field certifier_identity,
+N/A when undeclared, fires on 'unnamed'), with the 2x2 calibration cells
+(calibration.py) and the battery cells (specimens.py: the four 2x2 corners).
+The battery is now 157 specimens (127 real + 30 constructed/self-specimen).
+
+(2026-09-29): the CAUSAL-WIRING axis (54th) was implemented. The
+measurement-layer face of the overclaim family (arXiv 2609.30940, FRAIL,
+'Financial Fragility in Societies of LLM Agents', the arXiv feed seed): the
+evidence measures an association (early commitment is 'associated with' an 82%
+vs 37% outcome gap) and the Discussion promotes it to a cause — the measured
+correlate is promoted to a cause (the 'associated with' -> 'causes'
+promotion). The empirical layer passes (on 1.0 > off 0.2, lever isolated), so
+the only flag is the causal-wiring promotion. Distinct from
+THESIS-OUTRUNS-EVIDENCE (the endpoint is not measured at all; here the link
+IS measured, as an association, and the claim promotes it) and from
+SCOPE-FLATTENING (a measured value varies across regimes and is stated
+universal). The discriminating test is a 2x3 over claim_relation (causal vs
+associative) x evidence_relation (causal vs associative) plus a TOE-territory
+control: corner A (claim asserts causal, evidence measures only association)
+fires CAUSAL-WIRING only; corner B (claim asserts causal, evidence measures
+causal) fires nothing (the causal control); corners C/D (claim asserts
+associative) fire nothing (the scoping/clean controls); corner E (TOE
+territory) isolates the endpoint-not-measured regime. The weight-1
+CAUSAL-WIRING instrument landed as the 54th axis (check_causal_wiring in
+claim_audit.py), with the 2x3 calibration cells (calibration.py) and the
+battery cells (specimens.py: the 2x3 A-E grid plus the FRAIL seam-2 fire cell,
+the early-commitment promotion). The battery is now 164 specimens (128 real +
+36 constructed/self-specimen).
+
 ## Lineage
 
 Built 2026-09-15..22 as a workspace instrument for tearing apart
@@ -307,16 +350,16 @@ python3 calibration_boundary.py
 
 The battery being GREEN is not the same as the battery being COMPLETE.
 This probe answers the self-keyed question applied to the instrument's own
-calibration: for each of the 53 checks, blind it (force always-pass) and
+calibration: for each of the 54 checks, blind it (force always-pass) and
 re-run the battery. If the battery stays GREEN, no specimen's
 independently-derived ground truth requires that check to fire, so the check
 could silently break and `calibration.py` would still print DISCRIMINATES.
 
-Current state (2026-09-29): 53/53 checks are calibrated (each caught by
+Current state (2026-09-29): 54/54 checks are calibrated (each caught by
 at least one discriminating specimen — BEATS-NULL by 9, its
 false-positive surface being the spike family plus F2; NOT-SELF-KEYED /
 SCOPE-OF-INDEPENDENCE / EVIDENCE-UNCLOSED / SOURCE-REPLICATION by 2 each;
-the other 48 by exactly one); the calibration boundary is closed (0 uncalibrated). The
+the other 49 by exactly one); the calibration boundary is closed (0 uncalibrated). The
 last 8 were closed with one discriminating fire+pass cell per axis
 (AR/RC/F/SN/AK/C/SI/RM pairs, ground truth by direct arithmetic): each
 fire cell fires exactly its target axis, each pass cell fires nothing,
@@ -354,10 +397,10 @@ a STRUCTURAL set-size (support, check_count, cursor_runs — a different
 dataset) or a DECLARED parameter (knob, threshold, stated_headline — the
 claim's own exact value). The classes are not mutually exclusive per specimen.
 
-Current state (2026-09-29): 157 specimens, 708 numeric leaves. 137/157
+Current state (2026-09-29): 164 specimens, 728 numeric leaves. 144/164
 verdicts are ROBUST (stable under every minimal single-field perturbation);
-20/157 are knife-edge: 14/157 flip on a measured quantity, 6/157 flip only on
-structural/declared fields, 5/157 flip on both.
+20/164 are knife-edge: 14/164 flip on a measured quantity, 6/164 flip only on
+structural/declared fields, 5/164 flip on both.
 
 The load-bearing finding is the self-specimen: CF-CG-1 sweep saturation (the
 PASS-cell self-specimen, expected flags = []) sits one 1% relative perturbation
@@ -383,19 +426,19 @@ declared, 4 overlap both).
 python3 cofiring.py
 ```
 
-Growth to 53 axes raises the question: do axes start to overlap? `cofiring.py`
-computes the co-firing matrix over the 157-specimen battery: per-axis firing
+Growth to 54 axes raises the question: do axes start to overlap? `cofiring.py`
+computes the co-firing matrix over the 164-specimen battery: per-axis firing
 counts, identical firing sets (pure redundancy), strict-subset sets (the
 designed refinement hierarchy), and co-firing pairs. Current state
 (2026-09-29): no two axes share a firing set; the only subset structure is the
 designed refinement hierarchy (NULL-REACHES-HEADLINE superset of the BEATS-NULL
 spike/onset refinements; NO-EMPIRICAL-CONTENT superset of the completeness
 regime); the newest axes (COVERAGE-GAP, SCOPE-FLATTENING, UNIT-COUNT,
-OPT-IN-CENSUS, THESIS-OUTRUNS-EVIDENCE) each fire on a specimen where no other
+OPT-IN-CENSUS, THESIS-OUTRUNS-EVIDENCE, CERTIFIER-UNNAMED, CAUSAL-WIRING) each fire on a specimen where no other
 axis fires, except OPT-IN-CENSUS which co-fires with NO-EMPIRICAL-CONTENT (its
 designed refinement parent; THESIS-OUTRUNS-EVIDENCE likewise co-fires with
-NO-EMPIRICAL-CONTENT in its no-rows regime cell) (per-axis exclusivity, derived
-from the firing sets rather than hand-listed); all 53 checks now fire on the battery — the two
+NO-EMPIRICAL-CONTENT in its no-rows regime cell; CERTIFIER-UNNAMED co-fires with REFERENT-CONSTRUCTED on corner B, the model-constructed-referent cell — CAUSAL-WIRING is fully exclusive) (per-axis exclusivity, derived
+from the firing sets rather than hand-listed); all 54 checks now fire on the battery — the two
 former never-firing checks (TEMPORAL-ONSET, REFERENCE-MIX) gained constructed
 witnesses, and PLATFORM-CERTIFIED gained a constructed witness (PC1) for
 exclusivity (its live specimen, the seal-ack-floor, co-fires with

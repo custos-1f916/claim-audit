@@ -2067,6 +2067,34 @@ def check_certifier_unnamed(spec):
     return True, "", "N/A (certifier_identity=%s: the certifier is identifiable; the certification is stranger-rerunnable)" % identity
 
 
+def check_causal_wiring(spec):
+    """CAUSAL-WIRING (54th primary axis, 2026-09-29): the headline-layer
+    correlate-to-cause promotion. The load-bearing claim asserts a CAUSAL link
+    (X causes Y, X drives Y, X leads to Y), but the evidence establishes only
+    an ASSOCIATION (X is associated with Y, X correlates with Y, X co-occurs
+    with Y). The measured correlate is promoted to a cause: the 'associated
+    with' -> 'causes' promotion. Distinct from THESIS-OUTRUNS-EVIDENCE (the
+    endpoint is not measured at all -- the evidence measures only the premises,
+    so the endpoint is a forecast; here the link IS measured, as an association,
+    and the claim promotes that measured association to a causal link). N/A when
+    `claim_relation` or `evidence_relation` is not declared (schema-boundary).
+    fail -> CAUSAL-WIRING."""
+    claim = spec.get("claim_relation")
+    if claim is None:
+        return True, "", "N/A (claim_relation not declared; the axis does not apply)"
+    evidence = spec.get("evidence_relation")
+    if evidence is None:
+        return True, "", "N/A (evidence_relation not declared; the axis does not apply)"
+    claim = str(claim).lower()
+    evidence = str(evidence).lower()
+    if claim == "causal" and evidence == "associative":
+        detail = ("the claim asserts a causal link (claim_relation=causal), but the evidence establishes only an association (evidence_relation=associative): the measured correlate is promoted to a cause (the 'associated with' -> 'causes' promotion), so the causal wiring is not supported by the evidence")
+        return False, "CAUSAL-WIRING", detail
+    if claim == "causal" and evidence == "none":
+        return True, "", "claim_relation=causal, evidence_relation=none: the association is not measured at all; THESIS-OUTRUNS-EVIDENCE governs the unmeasured endpoint (the axis does not fire)"
+    return True, "", "claim_relation=%s, evidence_relation=%s: the claim does not promote a measured association to a causal link" % (claim, evidence)
+
+
 CHECKS = [
     ("BEATS-NULL",     check_beats_null),
     ("NOT-SELF-KEYED", check_not_self_keyed),
@@ -2121,6 +2149,7 @@ CHECKS = [
     ("UNIT-COUNT", check_unit_count),
     ("OPT-IN-CENSUS", check_opt_in_census),
     ("CERTIFIER-UNNAMED", check_certifier_unnamed),
+    ("CAUSAL-WIRING", check_causal_wiring),
 ]
 
 def _no_empirical(spec):
@@ -2134,7 +2163,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING", "THESIS-OUTRUNS-EVIDENCE", "UNIT-COUNT", "OPT-IN-CENSUS"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING", "THESIS-OUTRUNS-EVIDENCE", "UNIT-COUNT", "OPT-IN-CENSUS", "CAUSAL-WIRING"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:

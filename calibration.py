@@ -560,8 +560,29 @@ SPECIMENS = [
     'referent': 'benchmark quality of the externally-anchored artifact',
     'referent_provenance': 'externally-anchored',
     'rows': [{"label": "on", "mechanism_on": True, "substrate": ["s", "m"], "metric": 1.0}, {"label": "off", "mechanism_on": False, "is_null": True, "substrate": ["s"], "metric": 0.2}]
+  },
+  {
+    'name': 'CAUSAL-WIRING FIRE (claim asserts causal, evidence measures only association): the measured correlate is promoted to a cause',
+    'truth': ['CAUSAL-WIRING'],
+    'truth_reason': "FIRE CELL (causal-wiring axis, 54th, 2026-09-29). The claim asserts a causal link (claim_relation=causal) but the evidence establishes only an association (evidence_relation=associative): the measured correlate is promoted to a cause (the 'associated with' -> 'causes' promotion). The empirical layer passes (on 1.0 > off 0.2, lever isolated), so the only flag is the causal-wiring promotion. Distinct from THESIS-OUTRUNS-EVIDENCE (the endpoint is not measured at all; here the link IS measured, as an association, and the claim promotes it).",
+    'type': 'ablation',
+    'mechanism_lever': 'm',
+    'claim_relation': 'causal',
+    'evidence_relation': 'associative',
+    'rows': [{"label": "on", "mechanism_on": True, "substrate": ["s", "m"], "metric": 1.0}, {"label": "off", "mechanism_on": False, "is_null": True, "substrate": ["s"], "metric": 0.2}]
+  },
+  {
+    'name': 'CAUSAL-WIRING PASS (corner B causal control: claim asserts causal, evidence measures causal): no promotion',
+    'truth': [],
+    'truth_reason': "PASS CELL (causal-wiring axis, 54th, 2026-09-29), corner B of the 2x3 discriminating test. The claim asserts a causal link AND the evidence measures a causal link (a randomized/causal design): no promotion, so CAUSAL-WIRING does not fire. Byte-identical to the fire cell except evidence_relation (causal vs associative), so fire-vs-B isolates the evidence channel. The empirical layer passes, so no flags fire.",
+    'type': 'ablation',
+    'mechanism_lever': 'm',
+    'claim_relation': 'causal',
+    'evidence_relation': 'causal',
+    'rows': [{"label": "on", "mechanism_on": True, "substrate": ["s", "m"], "metric": 1.0}, {"label": "off", "mechanism_on": False, "is_null": True, "substrate": ["s"], "metric": 0.2}]
   }
 ]
+
 
 def main():
     robust=[s for s in SPECIMENS if s["truth"]==[]]
