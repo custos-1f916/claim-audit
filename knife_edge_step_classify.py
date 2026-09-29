@@ -38,7 +38,7 @@ import claim_audit
 import specimens
 from knife_edge import numeric_leaves, _split_path, _set_at, audit_flags, EPS
 
-CONT_GRID = [1e-9, 1e-6, 1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 0.2, 0.5, 0.9, 1.0, 1.5, 2.0, 3.0, 5.0, 10, 100, 1000]
+CONT_GRID = [1e-9, 1e-6, 1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 0.2, 0.5, 0.9, 1.0, 1.5, 2.0, 3.0, 5.0, 10, 100, 1000, 1e4, 1e6, 1e9, 1e12]
 INT_GRID  = [1, 2, 3, 5, 10]
 TIE_IDX_CONT = 1   # 1e-6 (grid[0]=1e-9 is numerically degenerate); still index 1 in the
     # direction-capped grids (1e-6 < 1.0, so the cap never drops it)
@@ -113,11 +113,22 @@ def classify(flips, kind):
 def window_tag(flips, grid, direction, kind):
     """For a WINDOWED row, say where the flip window is bounded. The grid range
     is an unexamined parameter: a window that reaches the grid max/min is NOT
-    confirmed bounded there -- it may extend beyond the grid. Tags:
-      [bounded]    both ends confirmed strictly inside the grid (genuine window)
-      ->grid-max   high end at the grid max (unconfirmed above)
-      <-grid-min   low end at the grid min (unconfirmed below)
-      ->domain     high end at the domain boundary (dir=-1 cont, g=1.0 -> newval=0)
+    confirmed bounded there -- it may extend beyond the grid. The grid now spans
+    [1e-9, 1e12] (cont), so an edge tag is a statement about that range. Tags:
+      [bounded]      both ends confirmed strictly inside the grid (genuine window)
+      ->half-line    high end at the grid max AND the flip is a contiguous run
+                     (monotone threshold) reaching the max: the window is
+                     unbounded above within the probed range (a threshold, not a
+                     bounded window that happens to reach the max).
+      ->domain       high end at the domain boundary (dir=-1 cont, g=1.0 -> newval=0)
+      <-step-floor   low end at the grid min AND the flip is a contiguous run
+                     reaching the min: the window extends down to the
+                     instrument's minimum resolvable kick (a TIE/degeneracy --
+                     the value sits exactly on a boundary, so any resolvable
+                     kick flips it).
+      ->grid-max     high end at the grid max, flip NOT contiguous (a bounded
+                     window whose true high end is beyond the grid; unconfirmed)
+      <-grid-min     low end at the grid min, flip NOT contiguous (unconfirmed)
     A non-monotone window can carry two edge tags; a contiguous one carries one.
     """
     n = len(flips)
@@ -125,11 +136,17 @@ def window_tag(flips, grid, direction, kind):
     if not flip_idx:
         return "(no flip in grid)"
     lo, hi = flip_idx[0], flip_idx[-1]
+    contiguous = all(flips[i] for i in range(lo, hi + 1))  # no gaps in [lo, hi]
     tags = []
     if lo == 0:
-        tags.append("<-grid-min")
+        tags.append("<-step-floor" if contiguous else "<-grid-min")
     if hi == n - 1:
-        tags.append("->domain" if (direction < 0 and kind == "cont") else "->grid-max")
+        if direction < 0 and kind == "cont":
+            tags.append("->domain")
+        elif contiguous:
+            tags.append("->half-line")
+        else:
+            tags.append("->grid-max")
     if not tags:
         tags.append("[bounded]")
     return " ".join(tags)
@@ -149,7 +166,7 @@ def main():
     ties = closecalls = 0
     introws = 0
     invariant = windowed = 0
-    w_bounded = w_gridmax = w_gridmin = w_domain = 0
+    w_bounded = w_gridmax = w_gridmin = w_domain = w_halfline = w_stepfloor = 0
     by_spec = {}
 
     for s, path, val, direction, kind in rows:
@@ -168,6 +185,8 @@ def main():
             if "->grid-max" in tag: w_gridmax += 1
             if "<-grid-min" in tag: w_gridmin += 1
             if "->domain" in tag: w_domain += 1
+            if "->half-line" in tag: w_halfline += 1
+            if "<-step-floor" in tag: w_stepfloor += 1
         else:
             tag = ""
         by_spec.setdefault(s["name"], []).append(
@@ -187,11 +206,13 @@ def main():
     print("PRIMARY (step-robustness, all %d rows):" % len(rows))
     print("  INVARIANT (flips at every step min..grid max, robust to step choice): %d/%d" % (invariant, len(rows)))
     print("  WINDOWED  (step-relative; the 1%% probe lands in their window):   %d/%d" % (windowed, len(rows)))
-    print("    by window shape (where the flip window is bounded; grid range is an unexamined param):")
-    print("      [bounded]    both ends confirmed inside the grid:            %d" % w_bounded)
-    print("      ->grid-max   high end at grid max (unconfirmed above):       %d" % w_gridmax)
-    print("      <-grid-min   low end at grid min (unconfirmed below):        %d" % w_gridmin)
-    print("      ->domain     high end at domain boundary (dir=-1):           %d" % w_domain)
+    print("    by window shape (where the flip window is bounded; grid spans [1e-9, 1e12], an unexamined param):")
+    print("      [bounded]      both ends confirmed inside the grid:          %d" % w_bounded)
+    print("      ->half-line    high end at grid max, monotone threshold (unbounded above): %d" % w_halfline)
+    print("      ->domain       high end at domain boundary (dir=-1):         %d" % w_domain)
+    print("      <-step-floor   low end at grid min, TIE to the min kick:     %d" % w_stepfloor)
+    print("      ->grid-max     high end at grid max, non-monotone (unconfirmed above): %d" % w_gridmax)
+    print("      <-grid-min     low end at grid min, non-monotone (unconfirmed below): %d" % w_gridmin)
     print("SECONDARY (degeneracy, %d CONTINUOUS rows only; %d int rows are MIN-KICK, excluded):" % (controws, introws))
     print("  TIE        (flips at 1e-6, value exactly on a boundary):         %d/%d cont" % (ties, controws))
     print("  CLOSE-CALL (flips at 1%% but not 1e-6, a real near-miss):        %d/%d cont" % (closecalls, controws))
