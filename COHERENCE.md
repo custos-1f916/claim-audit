@@ -1,9 +1,9 @@
-# Coherence of the 55-axis instrument (2026-09-29)
+# Coherence of the 57-axis instrument (2026-09-30)
 
 Question (from the saturation-collapse reconciliation): does the claim-audit
 instrument stay coherent as it grows to 51 axes, or do axes start to overlap?
 
-Objective test: the co-firing matrix over the 169-specimen battery
+Objective test: the co-firing matrix over the 177-specimen battery
 (`cofiring.py`). For each pair of axes, do they fire on the same specimens?
 
 ## Findings
@@ -38,16 +38,16 @@ does it fire on any specimen where *no other flag fires*? A flag with at
 least one exclusive specimen contributes a label no other axis produces
 there; that axis is not a re-label of another axis's firing.
 
-Result on the 169 battery: 41 of 59 flags have >= 1 exclusive
+Result on the 177 battery: 43 of 61 flags have >= 1 exclusive
 specimen. The newest axes each qualify: UNIT-COUNT, SCOPE-FLATTENING,
 COVERAGE-GAP, JUDGE-AS-TARGET, CRITERION-THRESHOLD, TAUTOLOGICAL-BLEND,
-TRUST, CAUSAL-WIRING, and DECLARED-CHANNEL each fire on at least one exclusive specimen (no other flag
+TRUST, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, and WITNESS-ADDRESS each fire on at least one exclusive specimen (no other flag
 fires there). OPT-IN-CENSUS (the 51st) has no exclusive specimen -- it
 co-fires with NO-EMPIRICAL-CONTENT in the no-rows regime -- but it is not
 a re-label: the identical-set test (no two flags share a firing set)
 covers it, and its fire cell is the only place the self-selected-denominator
 collapse is named. Exclusivity is computed
-on the 59 distinct *flags* the instrument emits, not the 55 checks: 7 checks emit a differently-named
+on the 61 distinct *flags* the instrument emits, not the 57 checks: 7 checks emit a differently-named
 flag (BEATS-NULL -> NULL-REACHES-HEADLINE, CO-MOVES -> WRONG-AXIS,
 COMPUTABLE -> NOT-COMPUTABLE, ISOLATED -> CONFOUNDED, NOISE-FLOOR ->
 WITHIN-NOISE, NOT-SELF-KEYED -> SELF-KEYED, REFERENT-WITNESSED ->
@@ -79,12 +79,17 @@ specimen (exclusivity 30/47). The witnesses are constructed, not real
 specimens: they make the battery a second, independent confirmation of the
 calibration's discriminating cells, not new ground truth.
 
-**Co-firing pairs (overlap >= 2, neither a subset):** only 5, all expected:
-- METRIC-SPIKE & SPLIT-SPIKE (2 specimens): the spike family shares the
-  false-positive surface of the flat check; co-firing on a specimen where both
-  a metric-spike and a split-spike are present is correct.
-- CONFOUNDED & NULL-REACHES-HEADLINE (2 specimens): a confounded ablation where
-  the null also reaches the headline is a real, multi-axis specimen.
+**Co-firing pairs (overlap >= 2, neither a subset):** 12 pairs, all expected:
+- The spike family (METRIC-SPIKE, SPLIT-SPIKE) shares the flat-check
+  false-positive surface: METRIC-SPIKE & SPLIT-SPIKE (2), METRIC-SPIKE &
+  NULL-REACHES-HEADLINE (3), and SPLIT-SPIKE & NULL-REACHES-HEADLINE (3). A
+  spike that also reaches the headline is a real multi-axis specimen.
+- NULL-REACHES-HEADLINE co-fires with CONFOUNDED (2), DOSE-RESPONSE (2), and
+  SELECTION-ON-NARRATIVE (2): a confounded / dose / selection specimen where
+  the null also reaches the headline is a real multi-axis specimen.
+- NO-EMPIRICAL-CONTENT co-fires with NOT-COMPUTABLE (2), WIDER-THAN-NAMED (2),
+  and EVIDENCE-UNCLOSED (2): the no-empirical-content regime cell where the
+  claim is also non-computable / wider-than-named / evidence-unclosed.
 - CRITERION-THRESHOLD & JUDGE-AS-TARGET, CRITERION-THRESHOLD &
   TAUTOLOGICAL-BLEND, and JUDGE-AS-TARGET & TAUTOLOGICAL-BLEND (2 each): the
   CH0 three-channel witness fires all three self-referentiality channels
@@ -93,11 +98,11 @@ calibration's discriminating cells, not new ground truth.
 
 ## Verdict
 
-The 55-axis instrument is coherent. No flag is redundant (no two share a
+The 57-axis instrument is coherent. No flag is redundant (no two share a
 firing set), no axis is a weight-0 label, the subset structure is the
 designed refinement hierarchy, and the per-axis exclusivity test — now
 derived rather than hand-listed — shows the newest axes (OPT-IN-CENSUS, UNIT-COUNT, SCOPE-FLATTENING,
-COVERAGE-GAP, THESIS-OUTRUNS-EVIDENCE, CAUSAL-WIRING, DECLARED-CHANNEL) each add a genuinely new discriminating dimension. The growth from 33 to 55 axes is not
+COVERAGE-GAP, THESIS-OUTRUNS-EVIDENCE, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS) each add a genuinely new discriminating dimension. The growth from 33 to 57 axes is not
 re-expanding
 the 59-family saturation collapse: those were the certification-gap
 family's self-labeled axes; the claim-audit axes carry 4-cell
