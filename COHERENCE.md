@@ -442,3 +442,53 @@ verified with `python3 cofiring.py --check` (the staleness guard: exit 0 when
 the committed cofiring.json matches a fresh recompute, exit 1 when it is stale,
 exit 2 when missing).
 
+## QUALIFICATION-DROP (honest-body / loose-abstract) — named tag, not an axis (2026-09-30)
+
+The honest-body / loose-abstract pattern fired on 4 consecutive audits
+(2609.30563 Bojic, 2609.30662 Parkinsonism, 2609.30489 BioEVAL,
+2609.30553 TGL-NSGA-II): the body *states* a qualification (a CI that
+crosses zero, a scope limit, "in-sample", "post-hoc", a lower-bound
+framing) that the abstract *withholds*. The claim's substance is fine
+(the body is honest); the *presentation* is flawed (the abstract hides
+the caveat).
+
+**Why a tag, not an axis.** The pattern is a *diagnostic of intent*, not a
+*falsifier*. It does not say the claim is wrong (the seam axis does that:
+THESIS-OUTRUNS-EVIDENCE, SELECTION-ON-NARRATIVE, VACUOUS-WITNESS). It says
+the authors *knew* the claim was weaker than the abstract suggests, because
+the body concedes it. That's a statement about *intent* / *presentation*,
+not about the *substance* of the claim. The instrument's axes are
+falsifiers (they catch specific flaws); the honest-body / loose-abstract
+pattern is a *relationship* (a seam axis fires AND the body concedes), which
+is the cofiring / named-pattern vocabulary, not the falsifier vocabulary.
+It is therefore a *named tag* in this file, not a new axis in
+claim_audit.py.
+
+**The discriminator (Case A vs Case B).**
+- Case A (body *also* omits): seam axis fires, body does NOT concede. The
+  claim is "accidentally loose" (the authors didn't realize).
+- Case B (body *states*, abstract *hides*): seam axis fires, body DOES
+  concede. The claim is "known-but-hidden" (the authors knew).
+The discriminator is the body's concession, captured by the existing
+`body_hedges` spec field (used in THESIS-OUTRUNS-EVIDENCE as a
+corroborating detail). When a seam axis fires AND the body concedes, the
+claim is tagged QUALIFICATION-DROP. (A more general
+`body_concedes_qualification` field could be added if the pattern becomes
+more prominent; for now `body_hedges` is the proxy.)
+
+**The 4 specimens.**
+- 2609.30563 Bojic: THESIS-OUTRUNS-EVIDENCE (CI crosses zero, abstract
+  claims "cut the compression of individual differences from seven times
+  the human level to three"); body concedes ("rest on eight numbers, one
+  per participant, so they carry wide uncertainty").
+- 2609.30662 Parkinsonism: THESIS-OUTRUNS-EVIDENCE (title-level, mild);
+  body concedes (8.2, 11.3, 11.5).
+- 2609.30489 BioEVAL: SELECTION-ON-NARRATIVE (the 90% is post-hoc-trimmed,
+  in-sample, best-single-model); body concedes (the QC pre-trim).
+- 2609.30553 TGL-NSGA-II: THESIS-OUTRUNS-EVIDENCE / VACUOUS-WITNESS (the
+  tau lower-bound "verification" is a vacuous witness); body concedes.
+
+**Not a re-label.** The pattern is not a re-label of any existing axis (it
+fires on THESIS-OUTRUNS-EVIDENCE, SELECTION-ON-NARRATIVE, and
+VACUOUS-WITNESS — three different axes). It's a *cross-axis* relationship
+(seam axis + body concedes), which is why it's a tag, not an axis.
