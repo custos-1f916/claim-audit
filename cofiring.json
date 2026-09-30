@@ -1,5 +1,5 @@
 {
-  "battery": 195,
+  "battery": 197,
   "check2flag": {
     "AGGREGATION-REVERSAL": "AGGREGATION-REVERSAL",
     "ANNOTATOR-SELF-KEYED": "ANNOTATOR-SELF-KEYED",
@@ -140,11 +140,6 @@
     ],
     [
       "NO-EMPIRICAL-CONTENT",
-      "THESIS-OUTRUNS-EVIDENCE",
-      152
-    ],
-    [
-      "NO-EMPIRICAL-CONTENT",
       "UNWITNESSED-RECEIPT",
       92
     ],
@@ -223,6 +218,11 @@
     [
       2,
       "NO-EMPIRICAL-CONTENT",
+      "THESIS-OUTRUNS-EVIDENCE"
+    ],
+    [
+      2,
+      "NO-EMPIRICAL-CONTENT",
       "NOT-COMPUTABLE"
     ],
     [
@@ -286,7 +286,7 @@
     "LOSSY-PROJECTION": 6,
     "METRIC-ONSET": 1,
     "METRIC-SPIKE": 3,
-    "NO-EMPIRICAL-CONTENT": 21,
+    "NO-EMPIRICAL-CONTENT": 22,
     "NOT-COMPUTABLE": 2,
     "NULL-REACHES-HEADLINE": 38,
     "OPT-IN-CENSUS": 1,
@@ -312,7 +312,7 @@
     "TAUTOLOGICAL-BLEND": 4,
     "TEMPORAL-ONSET": 1,
     "TEMPORAL-SPIKE": 1,
-    "THESIS-OUTRUNS-EVIDENCE": 3,
+    "THESIS-OUTRUNS-EVIDENCE": 4,
     "TIER-ONSET": 1,
     "TIER-SPIKE": 1,
     "TRUST": 1,
@@ -663,7 +663,8 @@
       148,
       152,
       174,
-      188
+      188,
+      196
     ],
     "NOT-COMPUTABLE": [
       15,
@@ -802,7 +803,8 @@
     "THESIS-OUTRUNS-EVIDENCE": [
       149,
       152,
-      163
+      163,
+      196
     ],
     "TIER-ONSET": [
       42
@@ -870,7 +872,7 @@
       "EVIDENCE-UNCLOSED",
       "NO-EMPIRICAL-CONTENT",
       2,
-      21
+      22
     ],
     [
       "FUNNEL-STAGE-MISATTRIBUTION",
@@ -888,37 +890,37 @@
       "NOT-COMPUTABLE",
       "NO-EMPIRICAL-CONTENT",
       2,
-      21
+      22
     ],
     [
       "OPT-IN-CENSUS",
       "NO-EMPIRICAL-CONTENT",
       1,
-      21
+      22
     ],
     [
       "UNWITNESSED-RECEIPT",
       "NO-EMPIRICAL-CONTENT",
       1,
-      21
+      22
     ],
     [
       "UNWITNESSED-ROOT",
       "NO-EMPIRICAL-CONTENT",
       1,
-      21
+      22
     ],
     [
       "WIDER-THAN-NAMED",
       "NO-EMPIRICAL-CONTENT",
       2,
-      21
+      22
     ],
     [
       "WINDOW-PRESENT-TENSE",
       "NO-EMPIRICAL-CONTENT",
       1,
-      21
+      22
     ],
     [
       "OUTCOME-SPIKE",

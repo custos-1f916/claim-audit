@@ -574,7 +574,17 @@ SELECTION-PROVENANCE instrument landed as the 60th axis
 (check_selection_provenance in claim_audit.py), with the calibration cells
 (calibration.py: SP1 fire + SP2 pass) and the battery cells (specimens.py:
 SP1/SP2/SP3/SP4 + the MATH-500 live external-construction self-selection specimen).
-The battery is now 195 specimens.
+The battery is now 197 specimens.
+
+Two live external specimens landed after the 60th axis without a count bump
+(the 195 line above predates them): the LLaMA 2 70B SELECTION-PROVENANCE PASS
+witness (Meta, Touvron et al. 2023, arXiv 2307.09288 — the standard MATH test
+set, externally selected, so SELECTION-PROVENANCE is the pass cell; the mirror
+of the MATH-500 FIRE) and the FAO SOFO 2026 THESIS-OUTRUNS-EVIDENCE witness
+(news.un.org 1168467 — the UN brief headlines "Planting trees is cost-effective"
+as a flat fact but surfaces only the benefit forecast and a past land-loss count;
+the cost side is absent, and the FAO primary report concedes the qualification
+the UN brief drops: a cross-source QUALIFICATION-DROP, see COHERENCE.md).
 
 The live specimen (OpenAI o1, Lightman et al. 2024, "Let's Verify Step by Step",
 arXiv 2305.20050) is the real-world FIRE witness: the MATH corpus (Hendrycks et

@@ -481,7 +481,7 @@ claim is tagged QUALIFICATION-DROP. (A more general
 `body_concedes_qualification` field could be added if the pattern becomes
 more prominent; for now `body_hedges` is the proxy.)
 
-**The 4 specimens.**
+**The 5 specimens.**
 - 2609.30563 Bojic: THESIS-OUTRUNS-EVIDENCE (CI crosses zero, abstract
   claims "cut the compression of individual differences from seven times
   the human level to three"); body concedes ("rest on eight numbers, one
@@ -492,11 +492,33 @@ more prominent; for now `body_hedges` is the proxy.)
   in-sample, best-single-model); body concedes (the QC pre-trim).
 - 2609.30553 TGL-NSGA-II: THESIS-OUTRUNS-EVIDENCE / VACUOUS-WITNESS (the
   tau lower-bound "verification" is a vacuous witness); body concedes.
+- FAO SOFO 2026 (news.un.org 1168467, 2026-09-30): THESIS-OUTRUNS-EVIDENCE
+  (no-rows regime; the UN brief headlines "Planting trees is
+  cost-effective" as a flat fact but surfaces only the benefit
+  forecast + a past land-loss count; the cost side is absent).
+  CROSS-SOURCE variant: the "body" (the FAO primary report,
+  FAO-authored) concedes the qualification the "summary" (the
+  UN news brief, UN-authored) drops — different authorship, not
+  within-paper.
 
 **Not a re-label.** The pattern is not a re-label of any existing axis (it
 fires on THESIS-OUTRUNS-EVIDENCE, SELECTION-ON-NARRATIVE, and
 VACUOUS-WITNESS — three different axes). It's a *cross-axis* relationship
 (seam axis + body concedes), which is why it's a tag, not an axis.
+
+**Cross-source variant (2026-09-30, FAO SOFO 2026).** The first four
+specimens are within-paper (the same authors' body concedes what their
+abstract hides). The FAO SOFO 2026 specimen is a *cross-source*
+QUALIFICATION-DROP: the qualification is conceded by the PRIMARY SOURCE
+(the FAO SOFO 2026 report, FAO-authored) but dropped by a *different*
+author's summary (the UN "World News in Brief", UN-authored). The tag
+still applies — the discriminator is "the honest source concedes what
+the headline source drops," not "same author." A news brief is a lossy
+projection of a primary report, and the projection can silently drop the
+cost side of a cost-benefit claim (here the "USD 30/USD 1" hedge, the
+$64B/$296B finance gap, and the report's own "inherently cost-effective
+misconception" warning). The $1.8T/yr benefit figure is not invented
+(it is on p.61), so the brief is a lossy compression, not a fabrication.
 
 ## WITNESS-ADDRESS re-derivation (2026-09-30)
 
