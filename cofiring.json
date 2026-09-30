@@ -1,5 +1,5 @@
 {
-  "battery": 184,
+  "battery": 189,
   "check2flag": {
     "AGGREGATION-REVERSAL": "AGGREGATION-REVERSAL",
     "ANNOTATOR-SELF-KEYED": "ANNOTATOR-SELF-KEYED",
@@ -19,6 +19,7 @@
     "EVIDENCE-UNCLOSED": "EVIDENCE-UNCLOSED",
     "FIDELITY": "FIDELITY",
     "FUNNEL-STAGE-MISATTRIBUTION": "FUNNEL-STAGE-MISATTRIBUTION",
+    "HELD-OUT-PROVENANCE": "HELD-OUT-PROVENANCE",
     "ISOLATED": "CONFOUNDED",
     "JUDGE-AS-TARGET": "JUDGE-AS-TARGET",
     "LOSSY-PROJECTION": "LOSSY-PROJECTION",
@@ -115,6 +116,11 @@
       "FUNNEL-STAGE-MISATTRIBUTION",
       "NULL-REACHES-HEADLINE",
       80
+    ],
+    [
+      "HELD-OUT-PROVENANCE",
+      "NO-EMPIRICAL-CONTENT",
+      188
     ],
     [
       "LOSSY-PROJECTION",
@@ -273,12 +279,13 @@
     "EVIDENCE-UNCLOSED": 2,
     "FIDELITY": 1,
     "FUNNEL-STAGE-MISATTRIBUTION": 1,
+    "HELD-OUT-PROVENANCE": 2,
     "INCOMPARABLE-STATISTIC": 1,
     "JUDGE-AS-TARGET": 4,
     "LOSSY-PROJECTION": 6,
     "METRIC-ONSET": 1,
     "METRIC-SPIKE": 3,
-    "NO-EMPIRICAL-CONTENT": 20,
+    "NO-EMPIRICAL-CONTENT": 21,
     "NOT-COMPUTABLE": 2,
     "NULL-REACHES-HEADLINE": 38,
     "OPT-IN-CENSUS": 1,
@@ -373,6 +380,9 @@
       114
     ],
     "FUNNEL-STAGE-MISATTRIBUTION": [],
+    "HELD-OUT-PROVENANCE": [
+      184
+    ],
     "INCOMPARABLE-STATISTIC": [
       14
     ],
@@ -597,6 +607,10 @@
     "FUNNEL-STAGE-MISATTRIBUTION": [
       80
     ],
+    "HELD-OUT-PROVENANCE": [
+      184,
+      188
+    ],
     "INCOMPARABLE-STATISTIC": [
       14
     ],
@@ -642,7 +656,8 @@
       147,
       148,
       152,
-      174
+      174,
+      188
     ],
     "NOT-COMPUTABLE": [
       15,
@@ -845,7 +860,7 @@
       "EVIDENCE-UNCLOSED",
       "NO-EMPIRICAL-CONTENT",
       2,
-      20
+      21
     ],
     [
       "FUNNEL-STAGE-MISATTRIBUTION",
@@ -863,37 +878,37 @@
       "NOT-COMPUTABLE",
       "NO-EMPIRICAL-CONTENT",
       2,
-      20
+      21
     ],
     [
       "OPT-IN-CENSUS",
       "NO-EMPIRICAL-CONTENT",
       1,
-      20
+      21
     ],
     [
       "UNWITNESSED-RECEIPT",
       "NO-EMPIRICAL-CONTENT",
       1,
-      20
+      21
     ],
     [
       "UNWITNESSED-ROOT",
       "NO-EMPIRICAL-CONTENT",
       1,
-      20
+      21
     ],
     [
       "WIDER-THAN-NAMED",
       "NO-EMPIRICAL-CONTENT",
       2,
-      20
+      21
     ],
     [
       "WINDOW-PRESENT-TENSE",
       "NO-EMPIRICAL-CONTENT",
       1,
-      20
+      21
     ],
     [
       "OUTCOME-SPIKE",

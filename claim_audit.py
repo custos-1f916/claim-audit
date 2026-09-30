@@ -2227,6 +2227,42 @@ def check_coupled_headlines(spec):
     detail = ("the claim headlines two coupled numbers on different axes (a mechanism-axis number and a broader substrate-axis number), and the broader number is derived from the mechanism number given an UNDECLARED substrate composition: the two are jointly consistent only under that undeclared composition, so a reader who takes the broader number at face value cannot verify it from the mechanism number; the composition must be declared (or the broader number independently measured) for the coupling to be checkable")
     return False, "COUPLED-HEADLINES", detail
 
+
+def check_held_out_provenance(spec):
+    """HELD-OUT-PROVENANCE (59th primary axis, 2026-09-30): the claim proposes a
+    HELD-OUT EVAL (a test set the monitored party is scored against, e.g. "high
+    recall on past incidents in a held-out eval"). "Held-out" is genuinely
+    independent only if the eval set is CONSTRUCTED by a party independent of
+    the party being scored. When self-compiled by the monitored party (from its
+    own incident log/records), "held-out" means held-out-in-time only -- the
+    monitor certifies its own test set. A set can be temporally held-out (not
+    overfit, not hillclimbed on) yet provenance-self-keyed. Distinct from
+    WITNESS-ADDRESS (57th: the falsifier's single WITNESS READ comes from the
+    same ADDRESS as the claim channel; here it is the CONSTRUCTION PROVENANCE of
+    the whole eval corpus, not where one read comes from), from the temporal
+    held-out (the post's own backtesting clause; a set can be held-out in time
+    yet self-keyed in provenance -- this axis is provenance, orthogonal to
+    time), and from CERTIFIER-UNNAMED (the certifier may be named; the question
+    is whether the eval set is independently constructed). N/A when
+    `held_out_eval` or `eval_set_provenance` is not declared (schema-boundary),
+    when the claim does not propose a held-out eval (held_out_eval=no; the axis
+    does not apply), when the eval set is independently constructed
+    (eval_set_provenance=external; the pass cell), or when the post does not
+    declare who constructs the eval set (eval_set_provenance=undeclared;
+    schema-boundary). fail -> HELD-OUT-PROVENANCE."""
+    held = spec.get("held_out_eval")
+    prov = spec.get("eval_set_provenance")
+    if held is None or prov is None:
+        return True, "", "N/A (held_out_eval or eval_set_provenance not declared; the axis does not apply)"
+    if str(held).strip().lower() != "yes":
+        return True, "", "N/A (held_out_eval=no: the claim does not propose a held-out eval; the axis does not apply)"
+    if str(prov).strip().lower() == "external":
+        return True, "", "N/A (eval_set_provenance=external: the eval set is independently constructed, so the held-out is genuinely independent; the pass cell)"
+    if str(prov).strip().lower() == "undeclared":
+        return True, "", "N/A (eval_set_provenance=undeclared: the post does not declare who constructs the eval set; schema-boundary)"
+    detail = ("the claim proposes a held-out eval (a test set the monitored party is scored against) that is self-compiled by the monitored party from its own records: 'held-out' means held-out-in-time only, so the monitor certifies its own test set; a set can be temporally held-out (not overfit, not hillclimbed on) yet provenance-self-keyed; the genuinely independent eval set is externally constructed (NTSB-style public accident reports, regulator findings, an external corpus independent of the party being scored)")
+    return False, "HELD-OUT-PROVENANCE", detail
+
 CHECKS = [
     ("BEATS-NULL",     check_beats_null),
     ("NOT-SELF-KEYED", check_not_self_keyed),
@@ -2286,6 +2322,7 @@ CHECKS = [
     ("CARRIER-REACH", check_carrier_reach),
     ("WITNESS-ADDRESS", check_witness_address),
     ("COUPLED-HEADLINES", check_coupled_headlines),
+    ("HELD-OUT-PROVENANCE", check_held_out_provenance),
 ]
 
 def _no_empirical(spec):
@@ -2299,7 +2336,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING", "THESIS-OUTRUNS-EVIDENCE", "UNIT-COUNT", "OPT-IN-CENSUS", "CAUSAL-WIRING", "DECLARED-CHANNEL", "CARRIER-REACH", "WITNESS-ADDRESS"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING", "THESIS-OUTRUNS-EVIDENCE", "UNIT-COUNT", "OPT-IN-CENSUS", "CAUSAL-WIRING", "DECLARED-CHANNEL", "CARRIER-REACH", "WITNESS-ADDRESS", "HELD-OUT-PROVENANCE"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:

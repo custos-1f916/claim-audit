@@ -2936,4 +2936,103 @@ SPECIMENS = [
     ],
     "note": "LIVE EXTERNAL SPECIMEN (arXiv 2609.30383, Zhu/Lyu/Bibi/Wu, 2026-09-30). The paper introduces skill cascading attacks, in which a malicious objective is distributed across 2+ skills so that each modification clears per-skill scanning in isolation but the combined execution is harmful. They build SkillCascade (5-agent red-teaming, all on Claude Sonnet 4.6) and SkillCascade-Bench (213 validated cases, 10 domains, avg cascade 3.25). Headline: global ASR 89.4% over 24 configs (3 agents x 8 backbones), per-skill scanner stealth >=86% (delta <= 4.7 pts), runtime-defense evasion 88.5%. The load-bearing seam is WITNESS-ADDRESS / self-keyed (via selection): the benchmark is the OUTPUT of a pipeline whose inner loop 'iterates on the modified skill set until every skill independently passes per-skill scanning' (App C.1), using the SAME four public scanners (D.3: Skill-Vetter, Skill-Scanner, SkillScan, AIG-EdgeOne) that Section 5.3 measures (5.3 also measures a fifth, SkillProbe, which the selection loop does not use; the headline stealth rate is dominated by the four self-selected scanners). So the abstract's 'evading existing per-skill scanners' reports the absolute stealth rate of a population SELECTED to be stealthy. The selection-robust evidence is the delta (2.5-4.7 pts), which the body reports but the abstract does not foreground. The scanner both certifies (selects) and measures the population -> the falsifier reads from the same address as the selection channel. claim_channel_address = falsifier_witness_address = scanner_verdict (same address) -> WITNESS-ADDRESS fires. Secondary seam (scope, logged not flagged): the abstract pools 'evading per-skill scanners AND runtime monitors' without the single-config caveat (DER is measured on ONE config, OpenClaw + GPT-5.4-mini, while ASR is 24 configs). Tertiary seam (qualification, logged not flagged): the threat model requires attacker-controlled co-installation, asserted as 'natural' and cited to platform suite-install patterns, but the Discussion flags 'the empirical incidence of attacker-controlled co-installation in open marketplaces remains an open question we cannot answer from controlled experiments alone.' The honest, non-self-keyed core: the Behavior-Composition Scanner (Sec 6.4) is a genuinely different instrument (generative counterfactual, not the per-skill scanner) and catches 30+ pts on causal cascades -> that is the real, non-self-keyed result, and it is the paper's strongest. WITNESS-ADDRESS now fires on 4 specimens with 3 exclusive (the WA1 constructed witness, 2609.30397, and this one; the post-7253 partial-exit live specimen co-fires with NO-EMPIRICAL-CONTENT, so it is not exclusive). This live specimen is the third real-world witness (the selection face of the self-keyed family)."
   },
+  {
+    "name": "held-out-provenance battery witness (held-out eval self-compiled by the monitored party, fire, HP1): the monitor certifies its own test set",
+    "type": "cross-model",
+    "mechanism": "monitoring system (incident-derived regression tests)",
+    "metric": "recall on past incidents (held-out eval)",
+    "rows": [
+      {
+        "mechanism_on": True,
+        "metric": 0.7
+      },
+      {
+        "mechanism_on": False,
+        "is_null": True,
+        "metric": 0.0
+      }
+    ],
+    "held_out_eval": "yes",
+    "eval_set_provenance": "self",
+    "expected": [
+      "HELD-OUT-PROVENANCE"
+    ],
+    "note": "CONSTRUCTED WITNESS (held-out-provenance axis, 59th, 2026-09-30), fire cell. held_out_eval=yes + eval_set_provenance=self: the claim proposes a held-out eval (a test set the monitored party is scored against) that is self-compiled by the monitored party from its own records: 'held-out' means held-out-in-time only, so the monitor certifies its own test set; a set can be temporally held-out (not overfit, not hillclimbed on) yet provenance-self-keyed -> HELD-OUT-PROVENANCE fires, and no other flag fires (exclusive). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00, no knob/CI/subgroup). Distinct from WITNESS-ADDRESS (the falsifier's single WITNESS READ comes from the same ADDRESS as the claim channel; here it is the CONSTRUCTION PROVENANCE of the whole eval corpus, not where one read comes from), from the temporal held-out (a set can be held-out in time yet self-keyed in provenance -- this axis is provenance, orthogonal to time), and from CERTIFIER-UNNAMED (the certifier may be named; the question is whether the eval set is independently constructed)."
+  },
+  {
+    "name": "held-out-provenance battery witness (held-out eval externally constructed, pass, HP2): the held-out is genuinely independent",
+    "type": "cross-model",
+    "mechanism": "monitoring system (incident-derived regression tests)",
+    "metric": "recall on past incidents (held-out eval)",
+    "rows": [
+      {
+        "mechanism_on": True,
+        "metric": 0.7
+      },
+      {
+        "mechanism_on": False,
+        "is_null": True,
+        "metric": 0.0
+      }
+    ],
+    "held_out_eval": "yes",
+    "eval_set_provenance": "external",
+    "expected": [],
+    "note": "CONSTRUCTED WITNESS (held-out-provenance axis, 59th, 2026-09-30), pass cell. held_out_eval=yes + eval_set_provenance=external: the eval set is independently constructed, so the held-out is genuinely independent -> HELD-OUT-PROVENANCE is N/A (the pass cell). Byte-identical to the fire cell except eval_set_provenance (external vs self), so fire-vs-pass isolates the provenance. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+  },
+  {
+    "name": "held-out-provenance battery witness (held-out eval, provenance undeclared, N/A, HP3): schema-boundary",
+    "type": "cross-model",
+    "mechanism": "monitoring system (incident-derived regression tests)",
+    "metric": "recall on past incidents (held-out eval)",
+    "rows": [
+      {
+        "mechanism_on": True,
+        "metric": 0.7
+      },
+      {
+        "mechanism_on": False,
+        "is_null": True,
+        "metric": 0.0
+      }
+    ],
+    "held_out_eval": "yes",
+    "eval_set_provenance": "undeclared",
+    "expected": [],
+    "note": "CONSTRUCTED WITNESS (held-out-provenance axis, 59th, 2026-09-30), N/A cell. held_out_eval=yes + eval_set_provenance=undeclared: the post does not declare who constructs the eval set -> HELD-OUT-PROVENANCE is N/A (schema-boundary). Byte-identical to the fire cell except eval_set_provenance (undeclared vs self), so fire-vs-N/A isolates the declared provenance. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+  },
+  {
+    "name": "held-out-provenance battery witness (no held-out eval proposed, N/A, HP4): the axis does not apply",
+    "type": "cross-model",
+    "mechanism": "monitoring system (incident-derived regression tests)",
+    "metric": "recall on past incidents (in-sample)",
+    "rows": [
+      {
+        "mechanism_on": True,
+        "metric": 0.7
+      },
+      {
+        "mechanism_on": False,
+        "is_null": True,
+        "metric": 0.0
+      }
+    ],
+    "held_out_eval": "no",
+    "eval_set_provenance": "self",
+    "expected": [],
+    "note": "CONSTRUCTED WITNESS (held-out-provenance axis, 59th, 2026-09-30), N/A cell. held_out_eval=no + eval_set_provenance=self: the claim does not propose a held-out eval -> HELD-OUT-PROVENANCE is N/A (the axis does not apply). Byte-identical to the fire cell except held_out_eval (no vs yes), so fire-vs-N/A isolates the held-out-eval proposal. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+  },
+  {
+    "name": "OpenAI 'Towards safety cases for frontier AI training' (2026-09-30): the safety case's held-out eval is the lab's own incident log; 'held-out' means held-out-in-time only, so the monitor certifies its own test set (the NTSB referent is the external-corpus tell the post gestures at but never operationalizes)",
+    "type": "specification",
+    "mechanism": "monitoring system (incident-derived regression tests)",
+    "metric": "recall on past incidents (held-out eval)",
+    "held_out_eval": "yes",
+    "eval_set_provenance": "self",
+    "note": "LIVE EXTERNAL SPECIMEN (OpenAI, 'Towards safety cases for frontier AI training', 2026-09-30). A specification/framework doc (no data rows; type 'specification'). The post proposes a held-out eval: 'Ensure the monitoring system has high recall on past incidents in a held-out eval.' The incident corpus is the lab's own log ('past incidents', 'incident-derived regression tests'; the post is scoped to the lab's own RL training runs). This is an INFERRED self-provenance: the post does not explicitly declare who builds the set; the NTSB referent (investigate 'similar to NTSB investigation practices') is the external-corpus tell the post gestures at but never operationalizes (it borrows the NTSB method, not the NTSB corpus). held_out_eval=yes + eval_set_provenance=self -> HELD-OUT-PROVENANCE fires: 'held-out' means held-out-in-time only, so the monitor certifies its own test set; a set can be temporally held-out (not overfit, not hillclimbed on) yet provenance-self-keyed. NO-EMPIRICAL-CONTENT co-fires (the post is a specification, not an empirical claim; the designed refinement parent) -- so HELD-OUT-PROVENANCE is the only AXIS that fires (exclusively among the axes; the regime flag NO-EMPIRICAL-CONTENT co-fires, as on the post-7253 partial-exit witness). The genuinely independent eval set is externally constructed (NTSB-style public accident reports, regulator findings, an external corpus independent of the party being scored). Real-world witness, 59th axis, 2026-09-30; the self-keyed incident corpus in a safety-case jacket; the NTSB referent is the external-corpus tell.",
+    "expected": [
+      "HELD-OUT-PROVENANCE",
+      "NO-EMPIRICAL-CONTENT"
+    ]
+  },
 ]

@@ -1,8 +1,8 @@
 # claim-audit
 
-A 58-axis falsification instrument for empirical claims in ML/AI papers
+A 59-axis falsification instrument for empirical claims in ML/AI papers
 (and other headline claims with data). Given a claim's raw numbers as a
-spec, it checks the claim against 58 axes (self-keyed, wrong-axis,
+spec, it checks the claim against 59 axes (self-keyed, wrong-axis,
 selection-bias, confounded, within-noise, lossy-projection,
 aggregation-reversal, referent-witnessed, temporal/dose/outcome/subgroup
 onset-and-spike, funnel-stage-misattribution, selection-on-narrative,
@@ -25,7 +25,7 @@ python3 calibration.py
 ```
 
 Exits 0 and prints `VERDICT: instrument DISCRIMINATES` if and only if all
-three properties hold on the 114 calibration specimens:
+three properties hold on the 116 calibration specimens:
 
   (a) silent-on-robust   : robust claims fire NO flag
   (b) fire-on-flawed     : flawed claims fire the expected axis
@@ -75,9 +75,9 @@ undeclared field makes a refinement N/A), `contested`.
 python3 claim_audit.py
 ```
 
-Runs the 184 specimens in `specimens.py` (136 real — papers from the
+Runs the 189 specimens in `specimens.py` (137 real — papers from the
 2026-09-15..22 audit run plus schema-boundary cells plus the live 1f916.ai
-seal/ack floor — plus 48 constructed/self-specimen discriminating cells: the
+seal/ack floor — plus 52 constructed/self-specimen discriminating cells: the
 original 11 battery witnesses for TEMPORAL-ONSET, REFERENCE-MIX,
 PLATFORM-CERTIFIED, TRUST, TAUTOLOGICAL-BLEND, CRITERION-THRESHOLD,
 JUDGE-AS-TARGET, and the four three-channel independence witnesses (CH0-CH3),
@@ -89,12 +89,12 @@ battery from this copy of the code.
 
 ## Files
 
-  claim_audit.py   the instrument (58 checks + CLI), stdlib only
-  calibration.py   the 114-specimen discriminating calibration
+  claim_audit.py   the instrument (59 checks + CLI), stdlib only
+  calibration.py   the 116-specimen discriminating calibration
   calibration_boundary.py  the self-calibration probe (per-check mutation)
   calibration_confound.py  the RED-baseline confound (dead check reads CALIBRATED)
   calibration_bandaid.py   the baseline-integrity fix (band-aid, not removal)
-  specimens.py     184 specimens (136 real + 48 constructed/self-specimen) with expected flag sets
+  specimens.py     189 specimens (137 real + 52 constructed/self-specimen) with expected flag sets
   results.txt      fresh battery run from this copy
   publicity_saturation.py  the PUBLICITY saturation test (certification subset -> one variable)
   question_selection.py  terminus candidate: query-selection collapses into what-is-recorded
@@ -475,6 +475,60 @@ any existing axis. Re-derived from the actual cofiring output and verified with
 `python3 cofiring.py --check` (the staleness guard: exit 0 when the committed
 cofiring.json matches a fresh recompute, exit 1 when it is stale, exit 2 when
 missing).
+
+(2026-09-30): the HELD-OUT-PROVENANCE axis (59th) was implemented. The
+HELD-OUT-PROVENANCE axis catches the held-out-provenance seam: a claim
+proposes a HELD-OUT EVAL (a test set the monitored party is scored against,
+e.g. "high recall on past incidents in a held-out eval"). "Held-out" is
+genuinely independent only if the eval set is CONSTRUCTED by a party
+independent of the party being scored. When self-compiled by the monitored
+party (from its own incident log/records), "held-out" means held-out-in-time
+only -- the monitor certifies its own test set. A set can be temporally
+held-out (not overfit, not hillclimbed on) yet provenance-self-keyed.
+Distinct from WITNESS-ADDRESS (57th: the falsifier's single WITNESS READ
+comes from the same ADDRESS as the claim channel; here it is the CONSTRUCTION
+PROVENANCE of the whole eval corpus, not where one read comes from), from the
+temporal held-out (the post's own backtesting clause; a set can be held-out in
+time yet self-keyed in provenance -- this axis is provenance, orthogonal to
+time), and from CERTIFIER-UNNAMED (the certifier may be named; the question is
+whether the eval set is independently constructed). The discriminating test is
+a 4-cell design over held_out_eval (yes vs no) x eval_set_provenance (self vs
+external vs undeclared): HP1 (held-out + self) fires HELD-OUT-PROVENANCE only;
+HP2 (held-out + external) fires nothing (the pass cell: the held-out is
+genuinely independent); HP3 (held-out + undeclared) fires nothing
+(schema-boundary, the post does not declare who constructs the set); HP4 (no
+held-out + self) fires nothing (the axis does not apply). The weight-1
+HELD-OUT-PROVENANCE instrument landed as the 59th axis
+(check_held_out_provenance in claim_audit.py), with the calibration cells
+(calibration.py: HP1 fire + HP2 pass) and the battery cells (specimens.py:
+HP1/HP2/HP3/HP4 + the OpenAI "Towards safety cases for frontier AI training"
+live external specimen). The battery is now 189 specimens.
+
+The live specimen (OpenAI, "Towards safety cases for frontier AI training",
+2026-09-30) is the real-world witness: a specification/framework doc (no data
+rows) that proposes a held-out eval ("Ensure the monitoring system has high
+recall on past incidents in a held-out eval") whose incident corpus is the
+lab's own log ("past incidents", "incident-derived regression tests"; the post
+is scoped to the lab's own RL training runs). This is an INFERRED
+self-provenance: the post does not explicitly declare who builds the set; the
+NTSB referent (investigate "similar to NTSB investigation practices") is the
+external-corpus tell the post gestures at but never operationalizes (it borrows
+the NTSB method, not the NTSB corpus). held_out_eval=yes +
+eval_set_provenance=self -> the instrument fires HELD-OUT-PROVENANCE:
+"held-out" means held-out-in-time only, so the monitor certifies its own test
+set. NO-EMPIRICAL-CONTENT co-fires (the post is a specification, not an
+empirical claim; the designed refinement parent), so HELD-OUT-PROVENANCE is the
+only AXIS that fires (exclusively among the axes; the regime flag
+NO-EMPIRICAL-CONTENT co-fires, as on the post-7253 partial-exit witness).
+HELD-OUT-PROVENANCE fires on exactly 2 specimens (the HP1 fire cell +
+the OpenAI live specimen) and has 1 exclusive specimen (the HP1 fire
+cell; the live specimen co-fires with NO-EMPIRICAL-CONTENT, its designed
+refinement parent). No identical firing set, not a strict subset of any
+existing axis. Re-derived from the actual cofiring output and verified with
+`python3 cofiring.py --check` (the staleness guard: exit 0 when the committed
+cofiring.json matches a fresh recompute, exit 1 when it is stale, exit 2 when
+missing).
+
 ## Lineage
 
 Built 2026-09-15..22 as a workspace instrument for tearing apart
@@ -497,7 +551,7 @@ re-run the battery. If the battery stays GREEN, no specimen's
 independently-derived ground truth requires that check to fire, so the check
 could silently break and `calibration.py` would still print DISCRIMINATES.
 
-Current state (2026-09-30): 58/58 checks are calibrated (each caught by
+Current state (2026-09-30): 59/59 checks are calibrated (each caught by
 at least one discriminating specimen — BEATS-NULL by 9, its
 false-positive surface being the spike family plus F2; NOT-SELF-KEYED /
 SCOPE-OF-INDEPENDENCE / EVIDENCE-UNCLOSED / SOURCE-REPLICATION by 2 each;
@@ -568,8 +622,8 @@ declared, 4 overlap both).
 python3 cofiring.py
 ```
 
-Growth to 58 axes raises the question: do axes start to overlap? `cofiring.py`
-computes the co-firing matrix over the 184-specimen battery: per-axis firing
+Growth to 59 axes raises the question: do axes start to overlap? `cofiring.py`
+computes the co-firing matrix over the 189-specimen battery: per-axis firing
 counts, identical firing sets (pure redundancy), strict-subset sets (the
 designed refinement hierarchy), and co-firing pairs. Current state
 (2026-09-30): no two axes share a firing set; the only subset structure is the
@@ -580,7 +634,7 @@ OPT-IN-CENSUS, THESIS-OUTRUNS-EVIDENCE, CERTIFIER-UNNAMED, CAUSAL-WIRING, DECLAR
 axis fires, except OPT-IN-CENSUS which co-fires with NO-EMPIRICAL-CONTENT (its
 designed refinement parent; THESIS-OUTRUNS-EVIDENCE likewise co-fires with
 NO-EMPIRICAL-CONTENT in its no-rows regime cell; CERTIFIER-UNNAMED co-fires with REFERENT-CONSTRUCTED on corner B, the model-constructed-referent cell — CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, and WITNESS-ADDRESS are fully exclusive) (per-axis exclusivity, derived
-from the firing sets rather than hand-listed); all 58 checks now fire on the battery — the two
+from the firing sets rather than hand-listed); all 59 checks now fire on the battery — the two
 former never-firing checks (TEMPORAL-ONSET, REFERENCE-MIX) gained constructed
 witnesses, and PLATFORM-CERTIFIED gained a constructed witness (PC1) for
 exclusivity (its live specimen, the seal-ack-floor, co-fires with

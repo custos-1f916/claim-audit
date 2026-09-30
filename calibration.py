@@ -673,6 +673,28 @@ SPECIMENS = [
     'coupled_headlines': 'yes',
     'broader_derived': 'yes',
     'composition_declared': 'yes'
+  },
+  {
+    'name': 'HELD-OUT-PROVENANCE FIRE (held-out eval self-compiled by the monitored party, HP1): the monitor certifies its own test set',
+    'truth': ['HELD-OUT-PROVENANCE'],
+    'truth_reason': "FIRE CELL (held-out-provenance axis, 59th, 2026-09-30). held_out_eval=yes + eval_set_provenance=self: the claim proposes a held-out eval (a test set the monitored party is scored against) that is self-compiled by the monitored party from its own records: 'held-out' means held-out-in-time only, so the monitor certifies its own test set; a set can be temporally held-out (not overfit, not hillclimbed on) yet provenance-self-keyed -> HELD-OUT-PROVENANCE fires, and no other flag fires (exclusive). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00, no knob/CI/subgroup). Distinct from WITNESS-ADDRESS (the falsifier's single WITNESS READ comes from the same ADDRESS as the claim channel; here it is the CONSTRUCTION PROVENANCE of the whole eval corpus, not where one read comes from) and from the temporal held-out (a set can be held-out in time yet self-keyed in provenance -- this axis is provenance, orthogonal to time) and from CERTIFIER-UNNAMED (the certifier may be named; the question is whether the eval set is independently constructed).",
+    'type': 'cross-model',
+    'mechanism': 'monitoring system (incident-derived regression tests)',
+    'metric': 'recall on past incidents (held-out eval)',
+    'rows': [{"mechanism_on": True, "metric": 0.70}, {"mechanism_on": False, "is_null": True, "metric": 0.00}],
+    'held_out_eval': 'yes',
+    'eval_set_provenance': 'self'
+  },
+  {
+    'name': 'HELD-OUT-PROVENANCE PASS (held-out eval externally constructed, HP2): the held-out is genuinely independent',
+    'truth': [],
+    'truth_reason': "PASS CELL (held-out-provenance axis, 59th, 2026-09-30). held_out_eval=yes + eval_set_provenance=external: the eval set is independently constructed, so the held-out is genuinely independent -> HELD-OUT-PROVENANCE is N/A (the pass cell). Byte-identical to the fire cell except eval_set_provenance (external vs self), so fire-vs-pass isolates the provenance. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires.",
+    'type': 'cross-model',
+    'mechanism': 'monitoring system (incident-derived regression tests)',
+    'metric': 'recall on past incidents (held-out eval)',
+    'rows': [{"mechanism_on": True, "metric": 0.70}, {"mechanism_on": False, "is_null": True, "metric": 0.00}],
+    'held_out_eval': 'yes',
+    'eval_set_provenance': 'external'
   }
 
 ]

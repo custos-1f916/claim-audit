@@ -38,16 +38,16 @@ does it fire on any specimen where *no other flag fires*? A flag with at
 least one exclusive specimen contributes a label no other axis produces
 there; that axis is not a re-label of another axis's firing.
 
-Result on the 184 battery: 44 of 62 flags have >= 1 exclusive
+Result on the 189 battery: 45 of 63 flags have >= 1 exclusive
 specimen. The newest axes each qualify: UNIT-COUNT, SCOPE-FLATTENING,
 COVERAGE-GAP, JUDGE-AS-TARGET, CRITERION-THRESHOLD, TAUTOLOGICAL-BLEND,
-TRUST, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS, and COUPLED-HEADLINES each fire on at least one exclusive specimen (no other flag
+TRUST, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS, COUPLED-HEADLINES, and HELD-OUT-PROVENANCE each fire on at least one exclusive specimen (no other flag
 fires there). OPT-IN-CENSUS (the 51st) has no exclusive specimen -- it
 co-fires with NO-EMPIRICAL-CONTENT in the no-rows regime -- but it is not
 a re-label: the identical-set test (no two flags share a firing set)
 covers it, and its fire cell is the only place the self-selected-denominator
 collapse is named. Exclusivity is computed
-on the 62 distinct *flags* the instrument emits, not the 58 checks: 7 checks emit a differently-named
+on the 63 distinct *flags* the instrument emits, not the 59 checks: 7 checks emit a differently-named
 flag (BEATS-NULL -> NULL-REACHES-HEADLINE, CO-MOVES -> WRONG-AXIS,
 COMPUTABLE -> NOT-COMPUTABLE, ISOLATED -> CONFOUNDED, NOISE-FLOOR ->
 WITHIN-NOISE, NOT-SELF-KEYED -> SELF-KEYED, REFERENT-WITNESSED ->
@@ -98,11 +98,11 @@ calibration's discriminating cells, not new ground truth.
 
 ## Verdict
 
-The 58-axis instrument is coherent. No flag is redundant (no two share a
+The 59-axis instrument is coherent. No flag is redundant (no two share a
 firing set), no axis is a weight-0 label, the subset structure is the
 designed refinement hierarchy, and the per-axis exclusivity test — now
 derived rather than hand-listed — shows the newest axes (OPT-IN-CENSUS, UNIT-COUNT, SCOPE-FLATTENING,
-COVERAGE-GAP, THESIS-OUTRUNS-EVIDENCE, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS, COUPLED-HEADLINES) each add a genuinely new discriminating dimension. The growth from 33 to 58 axes is not
+COVERAGE-GAP, THESIS-OUTRUNS-EVIDENCE, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS, COUPLED-HEADLINES, HELD-OUT-PROVENANCE) each add a genuinely new discriminating dimension. The growth from 33 to 59 axes is not
 re-expanding
 the 59-family saturation collapse: those were the certification-gap
 family's self-labeled axes; the claim-audit axes carry 4-cell
@@ -612,3 +612,62 @@ any existing axis. Re-derived from the actual cofiring output and verified with
 `python3 cofiring.py --check` (the staleness guard: exit 0 when the committed
 cofiring.json matches a fresh recompute, exit 1 when it is stale, exit 2 when
 missing).
+
+## HELD-OUT-PROVENANCE re-derivation (2026-09-30)
+
+The HELD-OUT-PROVENANCE axis (59th) was implemented. The seam it catches: a
+claim proposes a HELD-OUT EVAL (a test set the monitored party is scored
+against, e.g. "high recall on past incidents in a held-out eval"). "Held-out"
+is genuinely independent only if the eval set is CONSTRUCTED by a party
+independent of the party being scored. When self-compiled by the monitored
+party (from its own incident log/records), "held-out" means held-out-in-time
+only -- the monitor certifies its own test set. A set can be temporally
+held-out (not overfit, not hillclimbed on) yet provenance-self-keyed.
+
+Distinct from WITNESS-ADDRESS (57th: the falsifier's single WITNESS READ comes
+from the same ADDRESS as the claim channel; here it is the CONSTRUCTION
+PROVENANCE of the whole eval corpus, not where one read comes from), from the
+temporal held-out (the post's own backtesting clause; a set can be held-out in
+time yet self-keyed in provenance -- this axis is provenance, orthogonal to
+time), and from CERTIFIER-UNNAMED (the certifier may be named; the question is
+whether the eval set is independently constructed).
+
+The discriminating test is a 4-cell design over held_out_eval (yes vs no) x
+eval_set_provenance (self vs external vs undeclared):
+- HP1 (held-out + self): fires HELD-OUT-PROVENANCE only (fire cell).
+- HP2 (held-out + external): fires nothing (pass cell: the held-out is genuinely independent).
+- HP3 (held-out + undeclared): fires nothing (schema-boundary, the post does not declare who constructs the set).
+- HP4 (no held-out + self): fires nothing (the axis does not apply).
+
+The weight-1 HELD-OUT-PROVENANCE instrument landed as the 59th axis
+(check_held_out_provenance in claim_audit.py), with the calibration cells
+(calibration.py: HP1 fire + HP2 pass) and the battery cells (specimens.py:
+HP1/HP2/HP3/HP4 + the OpenAI "Towards safety cases for frontier AI training"
+live external specimen). The battery is now 189 specimens.
+
+The live specimen (OpenAI, "Towards safety cases for frontier AI training",
+2026-09-30) is the real-world witness: a specification/framework doc (no data
+rows) that proposes a held-out eval ("Ensure the monitoring system has high
+recall on past incidents in a held-out eval") whose incident corpus is the
+lab's own log ("past incidents", "incident-derived regression tests"; the post
+is scoped to the lab's own RL training runs). This is an INFERRED
+self-provenance: the post does not explicitly declare who builds the set; the
+NTSB referent (investigate "similar to NTSB investigation practices") is the
+external-corpus tell the post gestures at but never operationalizes (it borrows
+the NTSB method, not the NTSB corpus). held_out_eval=yes +
+eval_set_provenance=self -> the instrument fires HELD-OUT-PROVENANCE:
+"held-out" means held-out-in-time only, so the monitor certifies its own test
+set. NO-EMPIRICAL-CONTENT co-fires (the post is a specification, not an
+empirical claim; the designed refinement parent), so HELD-OUT-PROVENANCE is the
+only AXIS that fires (exclusively among the axes; the regime flag
+NO-EMPIRICAL-CONTENT co-fires, as on the post-7253 partial-exit witness).
+
+HELD-OUT-PROVENANCE fires on exactly 2 specimens (the HP1 fire cell +
+the OpenAI live specimen) and has 1 exclusive specimen (the HP1 fire
+cell; the live specimen co-fires with NO-EMPIRICAL-CONTENT, its designed
+refinement parent). No identical firing set, not a strict subset of any
+existing axis. Re-derived from the actual cofiring output and verified with
+`python3 cofiring.py --check` (the staleness guard: exit 0 when the committed
+cofiring.json matches a fresh recompute, exit 1 when it is stale, exit 2 when
+missing).
+
