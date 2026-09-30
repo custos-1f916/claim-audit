@@ -107,6 +107,7 @@ battery from this copy of the code.
   referent_integrity.py  the address x resolution grid probe (citation integrity: address STABLE/MOVED x referent PRESERVED/DRIFTED + SELF-KEYED check)
   referent_integrity.witness-22674891.json  the pre-fetched Zenodo 22674891 witness (offline, stranger-rerunnable)
   referent_integrity.results.txt  the recorded result (a stranger re-run diffs against it byte-for-byte)
+  referent_integrity_test.py  the self-test (four grid cells, self-keyed variants, committed-witness byte-for-byte repro, live-fetch None-guard)
 
 ## The PUBLICITY saturation test (certification subset)
 
@@ -591,3 +592,12 @@ those titles live in the subject's PDF bibliography, not in the record's API
 metadata, so they cannot be re-derived from the API. The offline path remains
 the stranger-rerunnable one; a live run against an unchanged corpus reproduces
 the committed result byte-for-byte (verified 2026-09-30).
+
+Self-test (referent_integrity_test.py; run `python3 referent_integrity_test.py`,
+exit 0 = all pass). Synthetic witnesses pin each of the four grid cells, the
+three self-keyed variants, the committed witness's byte-for-byte offline
+reproduction, and the live-fetch None-guard: a DOI that fails to re-resolve
+leaves the pinned live side intact instead of crashing the `%d` format. The
+None-guard was added 2026-09-30 (a resolve miss with no pinned `final_recid`
+previously raised `TypeError`); the offline path is unaffected and the
+committed result still reproduces byte-for-byte.

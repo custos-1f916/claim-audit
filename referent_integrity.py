@@ -92,9 +92,12 @@ def live_fetch(w):
 
     for cit in w.get('citations', []):
         final = resolve(cit['doi'])
-        cit['final_recid'] = final if final is not None else cit.get('final_recid')
+        if final is None:
+            print('  [live] could not resolve %s; leaving live side pinned' % cit['doi'])
+            continue
+        cit['final_recid'] = final
         cit['redirected'] = (final != cit.get('cited_recid'))
-        with get('https://zenodo.org/api/records/%d' % cit['final_recid']) as r:
+        with get('https://zenodo.org/api/records/%d' % final) as r:
             cit['live_title'] = json.load(r)['title']
 
     subj = w.get('subject')
