@@ -75,7 +75,7 @@ undeclared field makes a refinement N/A), `contested`.
 python3 claim_audit.py
 ```
 
-Runs the 189 specimens in `specimens.py` (137 real — papers from the
+Runs the 190 specimens in `specimens.py` (138 real — papers from the
 2026-09-15..22 audit run plus schema-boundary cells plus the live 1f916.ai
 seal/ack floor — plus 52 constructed/self-specimen discriminating cells: the
 original 11 battery witnesses for TEMPORAL-ONSET, REFERENCE-MIX,
@@ -94,7 +94,7 @@ battery from this copy of the code.
   calibration_boundary.py  the self-calibration probe (per-check mutation)
   calibration_confound.py  the RED-baseline confound (dead check reads CALIBRATED)
   calibration_bandaid.py   the baseline-integrity fix (band-aid, not removal)
-  specimens.py     189 specimens (137 real + 52 constructed/self-specimen) with expected flag sets
+  specimens.py     190 specimens (138 real + 52 constructed/self-specimen) with expected flag sets
   results.txt      fresh battery run from this copy
   publicity_saturation.py  the PUBLICITY saturation test (certification subset -> one variable)
   question_selection.py  terminus candidate: query-selection collapses into what-is-recorded
@@ -529,6 +529,24 @@ existing axis. Re-derived from the actual cofiring output and verified with
 cofiring.json matches a fresh recompute, exit 1 when it is stale, exit 2 when
 missing).
 
+The live PASS specimen (Qureshi/Tayubi/BaruKab/Khan, PLOS ONE, 2026-05-21,
+DOI 10.1371/journal.pone.0345956, PMC13193550) is the real-world PASS witness:
+a real empirical paper that scores an SVM classifier on a held-out 20% test set
+(n=10,754) drawn from the TSB (Transportation Safety Board of Canada) 80-year
+external corpus (1955-2020, 53,770 occurrence summaries). The corpus-builder
+is an independent federal agency, not the party being scored (the classifier).
+held_out_eval=yes + eval_set_provenance=external -> the instrument fires
+NOTHING (verdict DISCRIMINATES, flags []): the held-out is genuinely
+independent. The mirror image of the OpenAI FIRE (the same held-out-incident-
+eval shape, differing only in provenance: self -> fire, external -> pass),
+which proves the axis discriminates rather than over-fires. Scaffolding rows
+keep the empirical axes clean (SVM 0.9806 > majority-baseline null 0.5630; no
+knob/CI/subgroup). Minor self-inconsistency noted honestly (not this axis):
+the paper's confusion matrix (TP=4621, TN=5916, FP=138, FN=79) computes to
+97.98%, but the paper reports 98.06% (the 5-fold CV number). The co-firing
+matrix is unchanged (the new specimen fires nothing, so no flag's fire set
+changes; 45 of 63 flags still have >= 1 exclusive specimen).
+
 ## Lineage
 
 Built 2026-09-15..22 as a workspace instrument for tearing apart
@@ -623,7 +641,7 @@ python3 cofiring.py
 ```
 
 Growth to 59 axes raises the question: do axes start to overlap? `cofiring.py`
-computes the co-firing matrix over the 189-specimen battery: per-axis firing
+computes the co-firing matrix over the 190-specimen battery: per-axis firing
 counts, identical firing sets (pure redundancy), strict-subset sets (the
 designed refinement hierarchy), and co-firing pairs. Current state
 (2026-09-30): no two axes share a firing set; the only subset structure is the

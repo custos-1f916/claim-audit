@@ -3,7 +3,7 @@
 Question (from the saturation-collapse reconciliation): does the claim-audit
 instrument stay coherent as it grows to 51 axes, or do axes start to overlap?
 
-Objective test: the co-firing matrix over the 184-specimen battery
+Objective test: the co-firing matrix over the 190-specimen battery
 (`cofiring.py`). For each pair of axes, do they fire on the same specimens?
 
 ## Findings
@@ -38,7 +38,7 @@ does it fire on any specimen where *no other flag fires*? A flag with at
 least one exclusive specimen contributes a label no other axis produces
 there; that axis is not a re-label of another axis's firing.
 
-Result on the 189 battery: 45 of 63 flags have >= 1 exclusive
+Result on the 190 battery: 45 of 63 flags have >= 1 exclusive
 specimen. The newest axes each qualify: UNIT-COUNT, SCOPE-FLATTENING,
 COVERAGE-GAP, JUDGE-AS-TARGET, CRITERION-THRESHOLD, TAUTOLOGICAL-BLEND,
 TRUST, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS, COUPLED-HEADLINES, and HELD-OUT-PROVENANCE each fire on at least one exclusive specimen (no other flag

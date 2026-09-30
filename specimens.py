@@ -3035,4 +3035,18 @@ SPECIMENS = [
       "NO-EMPIRICAL-CONTENT"
     ]
   },
+  {
+    "name": "Qureshi/Tayubi/BaruKab/Khan (PLOS ONE, 2026-05-21, DOI 10.1371/journal.pone.0345956): the SVM classifier is scored on a held-out 20% test set (n=10,754) drawn from the TSB (Transportation Safety Board of Canada) 80-year external corpus (1955-2020, 53,770 occurrence summaries); the corpus-builder is an independent federal agency, not the party being scored",
+    "type": "cross-model",
+    "mechanism": "SVM classifier (TF-IDF vectorization) on aviation occurrence text",
+    "metric": "accuracy on the held-out test set (n=10,754)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.9806},
+      {"mechanism_on": False, "is_null": True, "metric": 0.5630}
+    ],
+    "held_out_eval": "yes",
+    "eval_set_provenance": "external",
+    "note": "LIVE EXTERNAL SPECIMEN (Qureshi/Tayubi/BaruKab/Khan, PLOS ONE, 2026-05-21, DOI 10.1371/journal.pone.0345956, PMC13193550). A real empirical paper (type 'cross-model', 2 scaffolding rows) that scores an SVM classifier on a HELD-OUT EVAL: a 20% independent test set (n=10,754) 'completely held out from the cross-validation process and used only for final evaluation.' The corpus is the TSB (Transportation Safety Board of Canada) 80-year aviation occurrence database (1955-2020, 53,770 summaries), CONSTRUCTED BY AN INDEPENDENT FEDERAL AGENCY, not by the party being scored (the classifier). held_out_eval=yes + eval_set_provenance=external -> HELD-OUT-PROVENANCE is N/A (the pass cell): the held-out is genuinely independent. The mirror image of the OpenAI FIRE (the same held-out-incident-eval shape, differing only in provenance: self -> fire, external -> pass). Scaffolding rows keep the empirical axes clean (SVM 0.9806 > majority-baseline null 0.5630 = (TN+FP)/n = (5916+138)/10754; no knob/CI/subgroup), so nothing fires. Minor self-inconsistency noted honestly (not this axis): the paper's confusion matrix (TP=4621, TN=5916, FP=138, FN=79, summing to n=10,754) computes to 97.98%, but the paper reports 98.06% (the 5-fold CV number). Real-world PASS witness, 59th axis, 2026-09-30.",
+    "expected": []
+  },
 ]
