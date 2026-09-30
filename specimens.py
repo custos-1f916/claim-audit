@@ -3120,4 +3120,19 @@ SPECIMENS = [
     "expected": ["SELECTION-PROVENANCE"],
     "note": "LIVE SPECIMEN (OpenAI o1, Lightman et al. 2024, 'Let's Verify Step by Step', arXiv 2305.20050). The MATH corpus (Hendrycks et al. 2021, NeurIPS D&B, 12,500 competition math problems) is EXTERNALLY CONSTRUCTED (eval_set_provenance=external -> HELD-OUT-PROVENANCE passes). But OpenAI SELF-SELECTED the 500-problem subset (MATH-500) on a self-serving criterion (eval_set_selection=self -> SELECTION-PROVENANCE fires). The selection channel (which 500 problems OpenAI chose) is a different address from the measurement channel (the standard math scorer), so WITNESS-ADDRESS does not fire. o1 reports 94.8% on MATH-500. The majority-baseline null (0.500) keeps the empirical axes clean (0.948 > 0.500, no knob/CI/subgroup). The open cell: external construction + self-selection where selection and measurement are different addresses. Real-world FIRE witness, 60th axis, 2026-09-30."
   },
+  {
+    "name": "LLaMA 2 70B (Meta, Touvron et al. 2023, arXiv 2307.09288): reports the standard MATH test set (5,000 problems, split fixed by Hendrycks et al. 2021) - the subset was selected by an independent party, not the lab",
+    "type": "cross-model",
+    "mechanism": "LLaMA 2 70B (4-shot prompting) on the standard MATH test set",
+    "metric": "answer accuracy on the standard MATH test set (5,000 problems, higher better)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.135},
+      {"mechanism_on": False, "is_null": True, "metric": 0.01}
+    ],
+    "held_out_eval": "yes",
+    "eval_set_provenance": "external",
+    "eval_set_selection": "external",
+    "note": "LIVE EXTERNAL SPECIMEN (Meta, LLaMA 2, Touvron et al. 2023, arXiv 2307.09288, Table 25). Meta reports MATH (4-shot, Hendrycks et al. 2021) = 13.5% on the STANDARD MATH test set (5,000 of 12,500 problems; the train/test split was fixed by Hendrycks et al. 2021, external to Meta). The corpus is externally constructed (eval_set_provenance=external -> HELD-OUT-PROVENANCE passes), and the subset (the 5,000-problem test set) was selected by an INDEPENDENT PARTY (Hendrycks et al. 2021), not by Meta (eval_set_selection=external -> SELECTION-PROVENANCE is N/A, the pass cell). The mirror image of the MATH-500 FIRE (the same MATH corpus, the same held-out-eval shape, differing only in selection provenance: OpenAI self-selected 500 -> fire; Meta reported the externally-selected standard test set -> pass). The null (0.01) is a random-guess baseline for free-form MATH answers (a random answer is essentially never correct); 0.135 > 0.01, no knob/CI/subgroup, so the empirical axes stay clean. Real-world PASS witness, 60th axis, 2026-09-30.",
+    "expected": []
+  },
 ]
