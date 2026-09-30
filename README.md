@@ -104,6 +104,9 @@ battery from this copy of the code.
   trust_cell.py          the two-terminus discriminating test; TRUST is the first genuinely-new self-keyed referent
   certifier_denominator.py  the 69k-trial certifier-denominator check (Case A mine / A' stranger / B certifier-dependent D)
   certifier_denominator.results.txt  the recorded result (a stranger re-run diffs against it byte-for-byte)
+  referent_integrity.py  the address x resolution grid probe (citation integrity: address STABLE/MOVED x referent PRESERVED/DRIFTED + SELF-KEYED check)
+  referent_integrity.witness-22674891.json  the pre-fetched Zenodo 22674891 witness (offline, stranger-rerunnable)
+  referent_integrity.results.txt  the recorded result (a stranger re-run diffs against it byte-for-byte)
 
 ## The PUBLICITY saturation test (certification subset)
 
@@ -527,3 +530,55 @@ sometimes undefined. This is the family's only correctness probe of the
 certifier's own score (lineage-scoped: it varies the certifier's parameters,
 not the scoring form); the other self-checks are same-method (stability)
 re-runs of the flags.
+
+## The referent-integrity probe (address x resolution grid)
+
+The claim-audit axes check whether a claim's *numbers* hold up. This probe
+checks whether the *citations* still resolve: for each cited reference, does
+the cited address still point at the cited referent? Two orthogonal axes:
+
+  ADDRESS axis — does the cited address still point at the same record?
+    STABLE  the address 200s at the same record (no redirect)
+    MOVED   the address redirects (302) to a different record
+
+  REFERENT axis — does the cited title still match the live title?
+    PRESERVED  cited title ~ live title (after normalization, token overlap
+               >= 0.6)
+    DRIFTED    cited title != live title
+
+Four cells:
+
+    (STABLE, PRESERVED)  clean — the citation is intact
+    (MOVED,  PRESERVED)  address moved, referent preserved (a version bump
+                         that kept the work; the old address now forwards)
+    (STABLE, DRIFTED)    address stable, referent drifted — the load-bearing
+                         cell: the address is unchanged but the thing at it is
+                         no longer the thing you cited
+    (MOVED,  DRIFTED)    both changed
+
+Plus a SELF-KEYED check on the subject record: does its conceptdoi dangle
+back to the record itself (no independent version history)?
+
+The witness is the evidence; the classification is deterministic. The
+committed witness (referent_integrity.witness-22674891.json) is the
+self-cited corpus of the Zenodo 22674891 record (Logvinovich 'YM_V5'),
+pre-fetched so a stranger can re-run offline:
+
+    python3 referent_integrity.py --offline referent_integrity.witness-22674891.json
+
+Recorded result (committed as referent_integrity.results.txt; a stranger
+re-run diffs against it byte-for-byte):
+
+  10.5281/zenodo.20590951  (MOVED, PRESERVED)   overlap 0.94
+  10.5281/zenodo.20277693  (STABLE, DRIFTED)    overlap 0.39
+  subject 22674891: self-keyed = True
+
+Both axes of the grid are instantiated independently in one bibliography:
+the 'Draft' DOI 302-redirects to a new record whose title matches the cited
+title (address moved, referent preserved), while the 'Boson' DOI is a stable
+200 whose live title no longer matches the cited title (address stable,
+referent drifted). The subject record is self-keyed: its conceptdoi dangles
+back to itself with no version history.
+
+Live-fetch mode is a stub for a later slice; the offline path is the
+stranger-rerunnable one.

@@ -1,0 +1,27 @@
+{
+  "subject": {
+    "recid": 22674891,
+    "doi": "10.5281/zenodo.22674891",
+    "conceptdoi": "10.5281/zenodo.21555360",
+    "concept_final_recid": 22674891,
+    "is_version_of": null
+  },
+  "citations": [
+    {
+      "doi": "10.5281/zenodo.20590951",
+      "cited_recid": 20590951,
+      "cited_title": "Topological Obstruction to the Yang--Mills Mass Gap on $\\R^{4}$ and Geometric Resolution via Compact Constructible Manifolds",
+      "final_recid": 20605490,
+      "redirected": true,
+      "live_title": "Topological Obstruction to the Yang-Mills Mass Gap on \u211d\u2074 and Geometric Resolution via Compact Constructible Manifolds"
+    },
+    {
+      "doi": "10.5281/zenodo.20277693",
+      "cited_recid": 20277693,
+      "cited_title": "Ab-Initio Prediction of the 1.088 TeV Topological Resonance ($Z'_{\\mathrm{geom}}$) in the IT$^{3}$ Spectral-Geometric Framework",
+      "final_recid": 20277693,
+      "redirected": false,
+      "live_title": "Exact Parameter-Free Precision in the IT3 Spectral-Geometric Framework: Strict Ab-Initio Generation Quantization and the Complete Mass Spectrum with Dynamic Torus Stabilization and Full Geometric Closure"
+    }
+  ]
+}

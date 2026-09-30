@@ -1,0 +1,16 @@
+referent-integrity probe — address x resolution grid
+============================================================
+10.5281/zenodo.20590951
+  address:  MOVED   (cited recid 20590951 -> final 20605490)
+  referent: PRESERVED   (token overlap 0.94, thr 0.60)
+  cell:     (MOVED, PRESERVED)
+
+10.5281/zenodo.20277693
+  address:  STABLE   (cited recid 20277693 -> final 20277693)
+  referent: DRIFTED   (token overlap 0.39, thr 0.60)
+  cell:     (STABLE, DRIFTED)
+
+subject record 22674891: self-keyed = True
+  conceptdoi 10.5281/zenodo.21555360 -> final recid 22674891; is_version_of = None
+
+verdict: 1 citation(s) in the (STABLE, DRIFTED) cell — address unchanged, referent no longer the cited thing.
