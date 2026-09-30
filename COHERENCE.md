@@ -543,15 +543,21 @@ claim; the designed refinement parent). The constructed WA1 witness is what
 makes the axis exclusive on the battery; this live specimen is the real-world
 witness.
 
-WITNESS-ADDRESS fires on exactly 2 specimens (the WA1 fire cell + the
-post-7253 partial-exit live specimen) and has 1 exclusive specimen (WA1; the
-live specimen co-fires with NO-EMPIRICAL-CONTENT, its designed refinement
-parent). No identical firing set, not a strict subset of any existing axis.
-The battery is now 177 specimens (173 + 4: WA1/WA2/WA3 + the post-7253
-partial-exit live specimen). Re-derived from the actual cofiring output and
-verified with `python3 cofiring.py --check` (the staleness guard: exit 0 when
-the committed cofiring.json matches a fresh recompute, exit 1 when it is stale,
-exit 2 when missing).
+WITNESS-ADDRESS fires on exactly 3 specimens (the WA1 fire cell, the
+post-7253 partial-exit live specimen, and the 2609.30397 live specimen) and
+has 2 exclusive specimens (the WA1 fire cell + the 2609.30397 live specimen;
+both fire WITNESS-ADDRESS only). The 2609.30397 specimen is a real-world
+exclusive witness: the synthetic GT is the model's own perturbation response
+(Eq.1), the same input-sensitivity address the top-scoring backprop methods
+compute; the falsifier is itself self-keyed. The post-7253 live specimen
+co-fires with NO-EMPIRICAL-CONTENT, its designed refinement parent. No
+identical firing set, not a strict subset of any existing axis. The battery is
+now 183 specimens (177 + 6: the 5 COUPLED-HEADLINES cells -- CH1/CH2/CH3 + the
+STEPQuant live specimen + the 2609.30328 live specimen -- plus the 2609.30397
+live specimen). Re-derived from the actual cofiring output and verified with
+`python3 cofiring.py --check` (the staleness guard: exit 0 when the committed
+cofiring.json matches a fresh recompute, exit 1 when it is stale, exit 2 when
+missing).
 
 ## COUPLED-HEADLINES re-derivation (2026-09-30)
 

@@ -1,0 +1,42 @@
+{
+  "name": "2609.30397 (A Synthetic Ground-Truth Framework for the Evaluation of XAI Methods, Miro-Nicolau/Spinnato/Guidotti): the synthetic GT is the model's own perturbation response (Eq.1), the same input-sensitivity address the top-scoring backprop methods compute; the abstract's universal 'significant limitations' flattens a modality-conditional result where the best cell (tabular, backprop) is near-perfect (SIM 0.980)",
+  "type": "regime-sweep",
+  "mechanism": "XAI attribution methods scored against a synthetic intervention-based ground truth (SAIG)",
+  "mechanism_lever": "attribution method family (backprop vs perturbation vs surrogate)",
+  "metric": "SIM (spatial agreement with the ground-truth attribution, higher is better)",
+  "scope_claim": true,
+  "probe_support_fraction": 1.0,
+  "rows": [
+    {
+      "label": "tabular, Gradient (backprop; near-perfect)",
+      "mechanism_on": true,
+      "substrate": [
+        "tabular",
+        "backprop"
+      ],
+      "metric": 0.98
+    },
+    {
+      "label": "time-series, RISE (perturbation; best)",
+      "mechanism_on": true,
+      "substrate": [
+        "time_series",
+        "perturbation"
+      ],
+      "metric": 0.522
+    },
+    {
+      "label": "binary images, DeepLIFT (backprop; best)",
+      "mechanism_on": true,
+      "substrate": [
+        "binary_images",
+        "backprop"
+      ],
+      "metric": 0.38
+    }
+  ],
+  "claim_channel_address": "model_input_sensitivity",
+  "falsifier_witness_address": "model_input_sensitivity",
+  "expected": [],
+  "note": "LIVE EXTERNAL SPECIMEN (arXiv 2609.30397, Miro-Nicolau/Spinnato/Guidotti, 2026-09-30). The paper builds 'ground truth' explanations by intervening on the model (Eq.1: a component's contribution = the model-output difference between the original and the intervened input) and scores nine attribution methods against it across binary images / time series / tabular. The load-bearing seam is WITNESS-ADDRESS / self-keyed: the synthetic GT is the model's OWN response to perturbation (the model's input-sensitivity), and the top-scoring tabular methods are the backprop family (Gradient SIM 0.980, DeepLIFT 0.636, Integrated Gradients 0.642) computing the SAME local input-sensitivity (the gradient is the first-order perturbation response). On a near-linear low-complexity MLP (F1 0.98), the near-perfect backprop score is expected by construction. The paper's independence claim is scoped to 'model accuracy' (the GT is 'independently of model accuracy'), a different axis than measurement-channel independence. claim_channel_address = falsifier_witness_address = model_input_sensitivity (same address) -> the acceptance test (the GT) is itself self-keyed: a mis-attribution at the input-sensitivity level slips through both the backprop attribution and the GT witness -> WITNESS-ADDRESS fires. Fair counterweight: the perturbation methods (RISE/LIME) use a different read path (finite-difference sampling, not the analytic gradient) and score lower, so the GT does discriminate between families. Secondary seam (SCOPE-FLATTENING, qualitative): the abstract's blanket 'significant limitations in current techniques' flattens a modality-conditional, NFL-framed result (tabular backprop near-perfect SIM 0.980/KL 0.092; time-series RISE best but SIM 0.522; binary images all struggle; the conclusion itself says 'gradient-based methods perform relatively well in structured settings such as images and tabular data'). SCOPE-FLATTENING is N/A here (the universal negative is qualitative, not a single stated numeric value, and there is no null baseline -- the paper is a method-comparison, not a mechanism-vs-null ablation); this is a calibration data point for the axis boundary (qualitative universal negatives are outside the numeric axis's domain). expected=[WITNESS-ADDRESS] is the routing result; the run's routing IS the result. expected=[] is a probe; the run routing IS the result."
+}

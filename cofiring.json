@@ -1,5 +1,5 @@
 {
-  "battery": 182,
+  "battery": 183,
   "check2flag": {
     "AGGREGATION-REVERSAL": "AGGREGATION-REVERSAL",
     "ANNOTATOR-SELF-KEYED": "ANNOTATOR-SELF-KEYED",
@@ -314,7 +314,7 @@
     "WIDER-THAN-NAMED": 2,
     "WINDOW-PRESENT-TENSE": 1,
     "WITHIN-NOISE": 1,
-    "WITNESS-ADDRESS": 2,
+    "WITNESS-ADDRESS": 3,
     "WITNESS-POPULATION-SELECTION": 1,
     "WRONG-AXIS": 5
   },
@@ -508,7 +508,8 @@
       8
     ],
     "WITNESS-ADDRESS": [
-      171
+      171,
+      182
     ],
     "WITNESS-POPULATION-SELECTION": [
       117
@@ -810,7 +811,8 @@
     ],
     "WITNESS-ADDRESS": [
       171,
-      174
+      174,
+      182
     ],
     "WITNESS-POPULATION-SELECTION": [
       117

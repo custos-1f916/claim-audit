@@ -75,7 +75,7 @@ undeclared field makes a refinement N/A), `contested`.
 python3 claim_audit.py
 ```
 
-Runs the 182 specimens in `specimens.py` (134 real — papers from the
+Runs the 183 specimens in `specimens.py` (135 real — papers from the
 2026-09-15..22 audit run plus schema-boundary cells plus the live 1f916.ai
 seal/ack floor — plus 48 constructed/self-specimen discriminating cells: the
 original 11 battery witnesses for TEMPORAL-ONSET, REFERENCE-MIX,
@@ -94,7 +94,7 @@ battery from this copy of the code.
   calibration_boundary.py  the self-calibration probe (per-check mutation)
   calibration_confound.py  the RED-baseline confound (dead check reads CALIBRATED)
   calibration_bandaid.py   the baseline-integrity fix (band-aid, not removal)
-  specimens.py     182 specimens (134 real + 48 constructed/self-specimen) with expected flag sets
+  specimens.py     183 specimens (135 real + 48 constructed/self-specimen) with expected flag sets
   results.txt      fresh battery run from this copy
   publicity_saturation.py  the PUBLICITY saturation test (certification subset -> one variable)
   question_selection.py  terminus candidate: query-selection collapses into what-is-recorded
@@ -411,7 +411,23 @@ undeclared) fires nothing (schema-boundary). The weight-1 WITNESS-ADDRESS
 instrument landed as the 57th axis (check_witness_address in claim_audit.py),
 with the calibration cells (calibration.py: WA1 fire + WA2 pass) and the
 battery cells (specimens.py: WA1/WA2/WA3 + the post-7253 partial-exit live
-external specimen). The battery is now 177 specimens.
+external specimen + the 2609.30397 live external specimen). The battery is now
+183 specimens (177 + 6: the 5 COUPLED-HEADLINES cells -- CH1/CH2/CH3 + the
+STEPQuant live specimen + the 2609.30328 live specimen -- plus the 2609.30397
+live specimen).
+
+WITNESS-ADDRESS fires on exactly 3 specimens (the WA1 fire cell, the
+post-7253 partial-exit live specimen, and the 2609.30397 live specimen) and
+has 2 exclusive specimens (the WA1 fire cell + the 2609.30397 live specimen;
+both fire WITNESS-ADDRESS only). The 2609.30397 specimen is a real-world
+exclusive witness: the synthetic GT is the model's own perturbation response
+(Eq.1), the same input-sensitivity address the top-scoring backprop methods
+compute; the falsifier is itself self-keyed. The post-7253 live specimen
+co-fires with NO-EMPIRICAL-CONTENT, its designed refinement parent. No
+identical firing set, not a strict subset of any existing axis. Re-derived
+from the actual cofiring output and verified with `python3 cofiring.py
+--check` (the staleness guard: exit 0 when the committed cofiring.json
+matches a fresh recompute, exit 1 when it is stale, exit 2 when missing).
 
 (2026-09-30): the COUPLED-HEADLINES axis (58th) was implemented. The
 COUPLED-HEADLINES axis catches the coupled-numbers seam: an abstract
@@ -433,7 +449,7 @@ checkable); CH3 (single headline, no coupled pair) fires nothing
 instrument landed as the 58th axis (check_coupled_headlines in claim_audit.py),
 with the calibration cells (calibration.py: CH1 fire + CH2 pass) and the
 battery cells (specimens.py: CH1/CH2/CH3 + the STEPQuant arXiv 2609.38169 live
-external specimen). The battery is now 182 specimens.
+external specimen). The battery is now 183 specimens.
 
 The live specimen (STEPQuant, arXiv 2609.38169, 2026-09-30) is the real-world
 witness: the abstract headlines "over 5x recurrent-state compression" (the
@@ -517,10 +533,10 @@ a STRUCTURAL set-size (support, check_count, cursor_runs — a different
 dataset) or a DECLARED parameter (knob, threshold, stated_headline — the
 claim's own exact value). The classes are not mutually exclusive per specimen.
 
-Current state (2026-09-30): 182 specimens, 772 numeric leaves. 162/182
+Current state (2026-09-30): 183 specimens, 776 numeric leaves. 163/183
 verdicts are ROBUST (stable under every minimal single-field perturbation);
-20/182 are knife-edge: 14/182 flip on a measured quantity, 6/182 flip only on
-structural/declared fields, 5/182 flip on both.
+20/183 are knife-edge: 14/183 flip on a measured quantity, 6/183 flip only on
+structural/declared fields, 5/183 flip on both.
 
 The load-bearing finding is the self-specimen: CF-CG-1 sweep saturation (the
 PASS-cell self-specimen, expected flags = []) sits one 1% relative perturbation
@@ -547,7 +563,7 @@ python3 cofiring.py
 ```
 
 Growth to 58 axes raises the question: do axes start to overlap? `cofiring.py`
-computes the co-firing matrix over the 182-specimen battery: per-axis firing
+computes the co-firing matrix over the 183-specimen battery: per-axis firing
 counts, identical firing sets (pure redundancy), strict-subset sets (the
 designed refinement hierarchy), and co-firing pairs. Current state
 (2026-09-30): no two axes share a firing set; the only subset structure is the
