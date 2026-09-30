@@ -2190,6 +2190,43 @@ def check_witness_address(spec):
     detail = ("the falsifier's witness reads from the same address as the channel that produced the claim (claim_channel_address=%s == falsifier_witness_address=%s): the acceptance test is itself self-keyed, so a mis-record at the ledger level slips through both the claim and the falsifier; the genuinely independent witness is a cross-channel read (different API / subsystem / on-chain vs. exchange-reported / audit log)" % (claim_addr, witness_addr))
     return False, "WITNESS-ADDRESS", detail
 
+
+def check_coupled_headlines(spec):
+    """COUPLED-HEADLINES (58th primary axis, 2026-09-30): the claim headlines
+    two or more numbers on DIFFERENT axes (e.g., a mechanism-axis compression
+    ratio and a broader substrate-axis reduction), and the broader-axis number
+    is DERIVED from the mechanism-axis number given a substrate composition
+    (the fraction of the substrate the mechanism acts on) that is UNDECLARED.
+    The two numbers are jointly consistent only under that undeclared
+    composition, so a reader who takes the broader number at face value (as an
+    independent measurement of the broader axis) cannot verify it from the
+    mechanism number. Distinct from TAUTOLOGICAL-BLEND (the mechanism-axis
+    number itself is tautological from the mechanism's own construction; here
+    the failure is the COUPLING of two numbers on different axes given an
+    undeclared composition, not the tautology of one number) and from
+    WIDER-THAN-NAMED (the claim is wider than what was named/measured; here the
+    broader number IS named, but it is derived from a narrower number given an
+    undeclared composition, so it is not independently verifiable). N/A when
+    `coupled_headlines` is not declared yes (fewer than two headline numbers on
+    different axes; schema-boundary), when `broader_derived` or
+    `composition_declared` is not declared (schema-boundary), when the broader
+    number is independently measured (broader_derived=no; the pass cell), or
+    when the composition is declared (composition_declared=yes; the pass cell:
+    the numbers are jointly checkable). fail -> COUPLED-HEADLINES."""
+    coupled = spec.get("coupled_headlines")
+    if coupled is None or str(coupled).strip().lower() != "yes":
+        return True, "", "N/A (coupled_headlines not declared yes: the claim does not headline two or more numbers on different axes; the axis does not apply)"
+    broader = spec.get("broader_derived")
+    comp = spec.get("composition_declared")
+    if broader is None or comp is None:
+        return True, "", "N/A (broader_derived or composition_declared not declared; the axis does not apply)"
+    if str(broader).strip().lower() != "yes":
+        return True, "", "N/A (broader_derived=no: the broader-axis number is independently measured, not derived from the mechanism number; the pass cell)"
+    if str(comp).strip().lower() == "yes":
+        return True, "", "N/A (composition_declared=yes: the substrate composition is declared, so the two numbers are jointly checkable; the pass cell)"
+    detail = ("the claim headlines two coupled numbers on different axes (a mechanism-axis number and a broader substrate-axis number), and the broader number is derived from the mechanism number given an UNDECLARED substrate composition: the two are jointly consistent only under that undeclared composition, so a reader who takes the broader number at face value cannot verify it from the mechanism number; the composition must be declared (or the broader number independently measured) for the coupling to be checkable")
+    return False, "COUPLED-HEADLINES", detail
+
 CHECKS = [
     ("BEATS-NULL",     check_beats_null),
     ("NOT-SELF-KEYED", check_not_self_keyed),
@@ -2248,6 +2285,7 @@ CHECKS = [
     ("DECLARED-CHANNEL", check_declared_channel),
     ("CARRIER-REACH", check_carrier_reach),
     ("WITNESS-ADDRESS", check_witness_address),
+    ("COUPLED-HEADLINES", check_coupled_headlines),
 ]
 
 def _no_empirical(spec):

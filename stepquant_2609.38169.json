@@ -1,0 +1,25 @@
+{
+  "name": "STEPQuant 2609.38169 (coupled-numbers substrate seam, live external)",
+  "type": "empirical",
+  "mechanism": "spatial-temporal post-training quantization of Delta-rule recurrent states (allocates precision by error magnitude + memory lifetime; fits key-row/value-column scales)",
+  "metric": "total serving memory reduction (headline) vs recurrent-state compression (mechanism axis)",
+  "rows": [
+    {
+      "label": "recurrent-state axis (mechanism's own): FP32 -> nominal 6-bit",
+      "mechanism_on": true,
+      "metric": 5.0,
+      "note": "5x compression is 32/6=5.33x arithmetic on the nominal bit budget, not a measured outcome"
+    },
+    {
+      "label": "total serving memory axis (wider substrate): 6-bit STEPQuant",
+      "mechanism_on": true,
+      "metric": 0.687,
+      "note": "68.7% total reduction; reachable from the 5x state compression only if state is ~86% of total memory (0.8*f=0.687 -> f=0.859); substrate composition never declared"
+    }
+  ],
+  "expected": [],
+  "note": "LIVE EXTERNAL SPECIMEN (arXiv 2609.38169, STEPQuant). The abstract headlines two coupled numbers on two different axes: (1) 'over 5x recurrent-state compression' on the mechanism's OWN axis, which is tautological from the nominal 6-bit budget (32/6=5.33x), and (2) 'reduces total serving memory by 68.7%' on the WIDER substrate axis. The two are jointly reachable only if the recurrent state is ~86% of total serving memory (0.8*f=0.687 -> f=0.859), a substrate composition the abstract never declares. Discriminating question: does an existing axis catch the coupled-numbers-across-substrates seam, or is the honest answer a schema-boundary N/A (the substrate ratio is not in the schema)? Post-58th-axis (COUPLED-HEADLINES minted 2026-09-30): coupled_headlines=yes + broader_derived=yes + composition_declared=no -> the axis fires. expected=[] is a probe; the run's routing IS the result.",
+  "coupled_headlines": "yes",
+  "broader_derived": "yes",
+  "composition_declared": "no"
+}

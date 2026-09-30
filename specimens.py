@@ -2795,4 +2795,64 @@ SPECIMENS = [
               'substrate': ['atc', '21_judges']}],
   'thesis_endpoint': 'strong human-aligned rankings',
   'type': 'knob-sweep'},
+  {
+    "name": "coupled-headlines battery witness (two coupled numbers on different axes, broader derived, composition undeclared, CH1): the coupling is unverifiable",
+    "type": "cross-model",
+    "mechanism": "quantization (FP32 -> nominal 6-bit)",
+    "metric": "serving memory reduction (headline) vs recurrent-state compression (mechanism axis)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "coupled_headlines": "yes",
+    "broader_derived": "yes",
+    "composition_declared": "no",
+    "expected": ["COUPLED-HEADLINES"],
+    "note": "CONSTRUCTED WITNESS (coupled-headlines axis, 58th, 2026-09-30), fire cell. coupled_headlines=yes + broader_derived=yes + composition_declared=no: the claim headlines two coupled numbers on different axes (a mechanism-axis compression ratio and a broader substrate-axis reduction), and the broader number is derived from the mechanism number given an UNDECLARED substrate composition: the two are jointly consistent only under that undeclared composition, so a reader who takes the broader number at face value cannot verify it from the mechanism number -> COUPLED-HEADLINES fires, and no other flag fires (exclusive). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00, no knob/CI/subgroup). Distinct from TAUTOLOGICAL-BLEND (the mechanism-axis number itself is tautological; here the failure is the COUPLING of two numbers on different axes given an undeclared composition) and from WIDER-THAN-NAMED (the broader number IS named, but it is derived from a narrower number given an undeclared composition, so it is not independently verifiable)."
+  },
+  {
+    "name": "coupled-headlines battery witness (two coupled numbers on different axes, broader derived, composition declared, pass, CH2): the coupling is checkable",
+    "type": "cross-model",
+    "mechanism": "quantization (FP32 -> nominal 6-bit)",
+    "metric": "serving memory reduction (headline) vs recurrent-state compression (mechanism axis)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "coupled_headlines": "yes",
+    "broader_derived": "yes",
+    "composition_declared": "yes",
+    "expected": [],
+    "note": "CONSTRUCTED WITNESS (coupled-headlines axis, 58th, 2026-09-30), pass cell. coupled_headlines=yes + broader_derived=yes + composition_declared=yes: the substrate composition is declared, so the two numbers are jointly checkable -> COUPLED-HEADLINES is N/A (the pass cell). Byte-identical to the fire cell except composition_declared (yes vs no), so fire-vs-pass isolates the composition. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+  },
+  {
+    "name": "coupled-headlines battery witness (single headline, no coupled pair, N/A, CH3): schema-boundary",
+    "type": "cross-model",
+    "mechanism": "quantization (FP32 -> nominal 6-bit)",
+    "metric": "serving memory reduction (headline)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "coupled_headlines": "no",
+    "broader_derived": "yes",
+    "composition_declared": "no",
+    "expected": [],
+    "note": "CONSTRUCTED WITNESS (coupled-headlines axis, 58th, 2026-09-30), N/A cell. coupled_headlines=no: the claim headlines a single number (no coupled pair on different axes) -> COUPLED-HEADLINES is N/A (schema-boundary). Byte-identical to the fire cell except coupled_headlines (no vs yes), so fire-vs-N/A isolates the coupled-headline structure. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+  },
+  {
+    "name": "STEPQuant (arXiv 2609.38169): the abstract headlines two coupled numbers on different axes (5x recurrent-state compression + 68.7% total serving memory reduction), and the broader number is derived from the mechanism number given an undeclared substrate composition (~86%); the coupling is unverifiable",
+    "type": "empirical",
+    "mechanism": "quantization (FP32 -> nominal 6-bit STEPQuant)",
+    "metric": "total serving memory reduction (headline) vs recurrent-state compression (mechanism axis)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "coupled_headlines": "yes",
+    "broader_derived": "yes",
+    "composition_declared": "no",
+    "expected": ["COUPLED-HEADLINES"],
+    "note": "LIVE EXTERNAL SPECIMEN (arXiv 2609.38169, STEPQuant, 2026-09-30). The abstract headlines two coupled numbers on two different axes: (1) 'over 5x recurrent-state compression' on the mechanism's OWN axis, which is tautological from the nominal 6-bit budget (32/6=5.33x), and (2) 'reduces total serving memory by 68.7%' on the WIDER substrate axis. The two are jointly consistent only if the recurrent state is ~86% of total serving memory (0.8*f=0.687 -> f=0.859), a substrate composition the abstract never declares. coupled_headlines=yes + broader_derived=yes + composition_declared=no -> COUPLED-HEADLINES fires. The constructed CH1 witness is what makes the axis exclusive on the battery; this live specimen is the real-world witness."
+  },
 ]

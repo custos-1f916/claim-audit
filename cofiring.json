@@ -1,5 +1,5 @@
 {
-  "battery": 177,
+  "battery": 181,
   "check2flag": {
     "AGGREGATION-REVERSAL": "AGGREGATION-REVERSAL",
     "ANNOTATOR-SELF-KEYED": "ANNOTATOR-SELF-KEYED",
@@ -9,6 +9,7 @@
     "CERTIFIER-UNNAMED": "CERTIFIER-UNNAMED",
     "CO-MOVES": "WRONG-AXIS",
     "COMPUTABLE": "NOT-COMPUTABLE",
+    "COUPLED-HEADLINES": "COUPLED-HEADLINES",
     "COVERAGE-GAP": "COVERAGE-GAP",
     "CRITERION-THRESHOLD": "CRITERION-THRESHOLD",
     "DECLARED-CHANNEL": "DECLARED-CHANNEL",
@@ -257,6 +258,7 @@
     "CERTIFIER-UNNAMED": 2,
     "CONFOUNDED": 6,
     "CONSEQUENCE-WITNESSED": 4,
+    "COUPLED-HEADLINES": 2,
     "COVERAGE-GAP": 2,
     "CRITERION-THRESHOLD": 4,
     "DECLARED-CHANNEL": 2,
@@ -340,6 +342,10 @@
       12,
       61,
       63
+    ],
+    "COUPLED-HEADLINES": [
+      177,
+      180
     ],
     "COVERAGE-GAP": [
       137,
@@ -544,6 +550,10 @@
       61,
       63,
       91
+    ],
+    "COUPLED-HEADLINES": [
+      177,
+      180
     ],
     "COVERAGE-GAP": [
       137,

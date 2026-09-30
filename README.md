@@ -1,8 +1,8 @@
 # claim-audit
 
-A 57-axis falsification instrument for empirical claims in ML/AI papers
+A 58-axis falsification instrument for empirical claims in ML/AI papers
 (and other headline claims with data). Given a claim's raw numbers as a
-spec, it checks the claim against 57 axes (self-keyed, wrong-axis,
+spec, it checks the claim against 58 axes (self-keyed, wrong-axis,
 selection-bias, confounded, within-noise, lossy-projection,
 aggregation-reversal, referent-witnessed, temporal/dose/outcome/subgroup
 onset-and-spike, funnel-stage-misattribution, selection-on-narrative,
@@ -25,7 +25,7 @@ python3 calibration.py
 ```
 
 Exits 0 and prints `VERDICT: instrument DISCRIMINATES` if and only if all
-three properties hold on the 82 calibration specimens:
+three properties hold on the 114 calibration specimens:
 
   (a) silent-on-robust   : robust claims fire NO flag
   (b) fire-on-flawed     : flawed claims fire the expected axis
@@ -75,9 +75,9 @@ undeclared field makes a refinement N/A), `contested`.
 python3 claim_audit.py
 ```
 
-Runs the 177 specimens in `specimens.py` (132 real — papers from the
+Runs the 181 specimens in `specimens.py` (133 real — papers from the
 2026-09-15..22 audit run plus schema-boundary cells plus the live 1f916.ai
-seal/ack floor — plus 45 constructed/self-specimen discriminating cells: the
+seal/ack floor — plus 48 constructed/self-specimen discriminating cells: the
 original 11 battery witnesses for TEMPORAL-ONSET, REFERENCE-MIX,
 PLATFORM-CERTIFIED, TRUST, TAUTOLOGICAL-BLEND, CRITERION-THRESHOLD,
 JUDGE-AS-TARGET, and the four three-channel independence witnesses (CH0-CH3),
@@ -89,12 +89,12 @@ battery from this copy of the code.
 
 ## Files
 
-  claim_audit.py   the instrument (57 checks + CLI), stdlib only
-  calibration.py   the 112-specimen discriminating calibration
+  claim_audit.py   the instrument (58 checks + CLI), stdlib only
+  calibration.py   the 114-specimen discriminating calibration
   calibration_boundary.py  the self-calibration probe (per-check mutation)
   calibration_confound.py  the RED-baseline confound (dead check reads CALIBRATED)
   calibration_bandaid.py   the baseline-integrity fix (band-aid, not removal)
-  specimens.py     177 specimens (132 real + 45 constructed/self-specimen) with expected flag sets
+  specimens.py     181 specimens (133 real + 48 constructed/self-specimen) with expected flag sets
   results.txt      fresh battery run from this copy
   publicity_saturation.py  the PUBLICITY saturation test (certification subset -> one variable)
   question_selection.py  terminus candidate: query-selection collapses into what-is-recorded
@@ -413,6 +413,42 @@ with the calibration cells (calibration.py: WA1 fire + WA2 pass) and the
 battery cells (specimens.py: WA1/WA2/WA3 + the post-7253 partial-exit live
 external specimen). The battery is now 177 specimens.
 
+(2026-09-30): the COUPLED-HEADLINES axis (58th) was implemented. The
+COUPLED-HEADLINES axis catches the coupled-numbers seam: an abstract
+headlines two numbers on two DIFFERENT axes (a mechanism number on the
+mechanism's own axis + a broader-substrate number on the wider axis), and
+the two are jointly consistent only given an UNDECLARED substrate
+composition. The broader number is derived from the mechanism number given
+that composition, so the coupling is unverifiable from the claim's own data.
+Distinct from WRONG-AXIS (one number on the wrong axis; here two numbers on
+two different axes that are jointly consistent only via an undeclared
+composition) and from TAUTOLOGICAL-BLEND (a single number that is the nominal
+arithmetic of its own budget; here the seam is the coupling between two
+numbers, not the tautology of one). The discriminating test is a 3-cell design
+over coupled_headlines (yes vs no) x composition_declared (yes vs no): CH1
+(coupled + composition undeclared) fires COUPLED-HEADLINES only; CH2 (coupled
++ composition declared) fires nothing (the pass cell: the coupling is
+checkable); CH3 (single headline, no coupled pair) fires nothing
+(schema-boundary, the axis does not apply). The weight-1 COUPLED-HEADLINES
+instrument landed as the 58th axis (check_coupled_headlines in claim_audit.py),
+with the calibration cells (calibration.py: CH1 fire + CH2 pass) and the
+battery cells (specimens.py: CH1/CH2/CH3 + the STEPQuant arXiv 2609.38169 live
+external specimen). The battery is now 181 specimens.
+
+The live specimen (STEPQuant, arXiv 2609.38169, 2026-09-30) is the real-world
+witness: the abstract headlines "over 5x recurrent-state compression" (the
+mechanism's own axis -- 32/6 = 5.33x, the nominal 6-bit budget arithmetic,
+tautological) and "reduces total serving memory by 68.7%" (the wider
+substrate axis). The two are jointly consistent only if the recurrent state
+is ~86% of total serving memory -- a composition the abstract never declares.
+The instrument fires COUPLED-HEADLINES: the coupling is unverifiable.
+COUPLED-HEADLINES fires on exactly 2 specimens (the CH1 fire cell + the
+STEPQuant live specimen) and has 2 exclusive specimens (both; the live
+specimen fires COUPLED-HEADLINES only). No identical firing set, not a strict
+subset of any existing axis. Re-derived from the actual cofiring output and
+verified with `python3 cofiring.py --check` (the staleness guard: exit 0 when
+the committed cofiring.json matches a fresh recompute, exit 1 when it is stale,
+exit 2 when missing).
 ## Lineage
 
 Built 2026-09-15..22 as a workspace instrument for tearing apart
@@ -430,16 +466,16 @@ python3 calibration_boundary.py
 
 The battery being GREEN is not the same as the battery being COMPLETE.
 This probe answers the self-keyed question applied to the instrument's own
-calibration: for each of the 57 checks, blind it (force always-pass) and
+calibration: for each of the 58 checks, blind it (force always-pass) and
 re-run the battery. If the battery stays GREEN, no specimen's
 independently-derived ground truth requires that check to fire, so the check
 could silently break and `calibration.py` would still print DISCRIMINATES.
 
-Current state (2026-09-30): 57/57 checks are calibrated (each caught by
+Current state (2026-09-30): 58/58 checks are calibrated (each caught by
 at least one discriminating specimen — BEATS-NULL by 9, its
 false-positive surface being the spike family plus F2; NOT-SELF-KEYED /
 SCOPE-OF-INDEPENDENCE / EVIDENCE-UNCLOSED / SOURCE-REPLICATION by 2 each;
-the other 52 by exactly one); the calibration boundary is closed (0 uncalibrated). The
+the other 53 by exactly one); the calibration boundary is closed (0 uncalibrated). The
 last 8 were closed with one discriminating fire+pass cell per axis
 (AR/RC/F/SN/AK/C/SI/RM pairs, ground truth by direct arithmetic): each
 fire cell fires exactly its target axis, each pass cell fires nothing,
@@ -477,10 +513,10 @@ a STRUCTURAL set-size (support, check_count, cursor_runs — a different
 dataset) or a DECLARED parameter (knob, threshold, stated_headline — the
 claim's own exact value). The classes are not mutually exclusive per specimen.
 
-Current state (2026-09-30): 177 specimens, 758 numeric leaves. 157/177
+Current state (2026-09-30): 181 specimens, 766 numeric leaves. 161/181
 verdicts are ROBUST (stable under every minimal single-field perturbation);
-20/177 are knife-edge: 14/177 flip on a measured quantity, 6/177 flip only on
-structural/declared fields, 5/177 flip on both.
+20/181 are knife-edge: 14/181 flip on a measured quantity, 6/181 flip only on
+structural/declared fields, 5/181 flip on both.
 
 The load-bearing finding is the self-specimen: CF-CG-1 sweep saturation (the
 PASS-cell self-specimen, expected flags = []) sits one 1% relative perturbation
@@ -506,19 +542,19 @@ declared, 4 overlap both).
 python3 cofiring.py
 ```
 
-Growth to 57 axes raises the question: do axes start to overlap? `cofiring.py`
-computes the co-firing matrix over the 177-specimen battery: per-axis firing
+Growth to 58 axes raises the question: do axes start to overlap? `cofiring.py`
+computes the co-firing matrix over the 181-specimen battery: per-axis firing
 counts, identical firing sets (pure redundancy), strict-subset sets (the
 designed refinement hierarchy), and co-firing pairs. Current state
 (2026-09-30): no two axes share a firing set; the only subset structure is the
 designed refinement hierarchy (NULL-REACHES-HEADLINE superset of the BEATS-NULL
 spike/onset refinements; NO-EMPIRICAL-CONTENT superset of the completeness
 regime); the newest axes (COVERAGE-GAP, SCOPE-FLATTENING, UNIT-COUNT,
-OPT-IN-CENSUS, THESIS-OUTRUNS-EVIDENCE, CERTIFIER-UNNAMED, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS) each fire on a specimen where no other
+OPT-IN-CENSUS, THESIS-OUTRUNS-EVIDENCE, CERTIFIER-UNNAMED, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS, COUPLED-HEADLINES) each fire on a specimen where no other
 axis fires, except OPT-IN-CENSUS which co-fires with NO-EMPIRICAL-CONTENT (its
 designed refinement parent; THESIS-OUTRUNS-EVIDENCE likewise co-fires with
 NO-EMPIRICAL-CONTENT in its no-rows regime cell; CERTIFIER-UNNAMED co-fires with REFERENT-CONSTRUCTED on corner B, the model-constructed-referent cell — CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, and WITNESS-ADDRESS are fully exclusive) (per-axis exclusivity, derived
-from the firing sets rather than hand-listed); all 57 checks now fire on the battery — the two
+from the firing sets rather than hand-listed); all 58 checks now fire on the battery — the two
 former never-firing checks (TEMPORAL-ONSET, REFERENCE-MIX) gained constructed
 witnesses, and PLATFORM-CERTIFIED gained a constructed witness (PC1) for
 exclusivity (its live specimen, the seal-ack-floor, co-fires with

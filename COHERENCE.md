@@ -1,9 +1,9 @@
-# Coherence of the 57-axis instrument (2026-09-30)
+# Coherence of the 58-axis instrument (2026-09-30)
 
 Question (from the saturation-collapse reconciliation): does the claim-audit
 instrument stay coherent as it grows to 51 axes, or do axes start to overlap?
 
-Objective test: the co-firing matrix over the 177-specimen battery
+Objective test: the co-firing matrix over the 181-specimen battery
 (`cofiring.py`). For each pair of axes, do they fire on the same specimens?
 
 ## Findings
@@ -38,16 +38,16 @@ does it fire on any specimen where *no other flag fires*? A flag with at
 least one exclusive specimen contributes a label no other axis produces
 there; that axis is not a re-label of another axis's firing.
 
-Result on the 177 battery: 43 of 61 flags have >= 1 exclusive
+Result on the 181 battery: 44 of 62 flags have >= 1 exclusive
 specimen. The newest axes each qualify: UNIT-COUNT, SCOPE-FLATTENING,
 COVERAGE-GAP, JUDGE-AS-TARGET, CRITERION-THRESHOLD, TAUTOLOGICAL-BLEND,
-TRUST, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, and WITNESS-ADDRESS each fire on at least one exclusive specimen (no other flag
+TRUST, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS, and COUPLED-HEADLINES each fire on at least one exclusive specimen (no other flag
 fires there). OPT-IN-CENSUS (the 51st) has no exclusive specimen -- it
 co-fires with NO-EMPIRICAL-CONTENT in the no-rows regime -- but it is not
 a re-label: the identical-set test (no two flags share a firing set)
 covers it, and its fire cell is the only place the self-selected-denominator
 collapse is named. Exclusivity is computed
-on the 61 distinct *flags* the instrument emits, not the 57 checks: 7 checks emit a differently-named
+on the 62 distinct *flags* the instrument emits, not the 58 checks: 7 checks emit a differently-named
 flag (BEATS-NULL -> NULL-REACHES-HEADLINE, CO-MOVES -> WRONG-AXIS,
 COMPUTABLE -> NOT-COMPUTABLE, ISOLATED -> CONFOUNDED, NOISE-FLOOR ->
 WITHIN-NOISE, NOT-SELF-KEYED -> SELF-KEYED, REFERENT-WITNESSED ->
@@ -98,11 +98,11 @@ calibration's discriminating cells, not new ground truth.
 
 ## Verdict
 
-The 57-axis instrument is coherent. No flag is redundant (no two share a
+The 58-axis instrument is coherent. No flag is redundant (no two share a
 firing set), no axis is a weight-0 label, the subset structure is the
 designed refinement hierarchy, and the per-axis exclusivity test — now
 derived rather than hand-listed — shows the newest axes (OPT-IN-CENSUS, UNIT-COUNT, SCOPE-FLATTENING,
-COVERAGE-GAP, THESIS-OUTRUNS-EVIDENCE, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS) each add a genuinely new discriminating dimension. The growth from 33 to 57 axes is not
+COVERAGE-GAP, THESIS-OUTRUNS-EVIDENCE, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS, COUPLED-HEADLINES) each add a genuinely new discriminating dimension. The growth from 33 to 58 axes is not
 re-expanding
 the 59-family saturation collapse: those were the certification-gap
 family's self-labeled axes; the claim-audit axes carry 4-cell
@@ -552,3 +552,47 @@ partial-exit live specimen). Re-derived from the actual cofiring output and
 verified with `python3 cofiring.py --check` (the staleness guard: exit 0 when
 the committed cofiring.json matches a fresh recompute, exit 1 when it is stale,
 exit 2 when missing).
+
+## COUPLED-HEADLINES re-derivation (2026-09-30)
+
+The COUPLED-HEADLINES axis (58th) was implemented. The seam it catches: an
+abstract headlines two numbers on two DIFFERENT axes -- a mechanism number on
+the mechanism's own axis and a broader-substrate number on the wider axis --
+and the two are jointly consistent only given an UNDECLARED substrate
+composition. The broader number is derived from the mechanism number given
+that composition, so the coupling is unverifiable from the claim's own data.
+
+Distinct from WRONG-AXIS (one number on the wrong axis; here two numbers on
+two different axes, jointly consistent only via an undeclared composition) and
+from TAUTOLOGICAL-BLEND (a single number that is the nominal arithmetic of its
+own budget; here the seam is the coupling between two numbers, not the tautology
+of one).
+
+The discriminating test is a 3-cell design over coupled_headlines (yes vs no)
+x composition_declared (yes vs no):
+- CH1 (coupled + composition undeclared): fires COUPLED-HEADLINES only (fire cell).
+- CH2 (coupled + composition declared): fires nothing (pass cell: the coupling is checkable).
+- CH3 (single headline, no coupled pair): fires nothing (schema-boundary, the axis does not apply).
+
+The weight-1 COUPLED-HEADLINES instrument landed as the 58th axis
+(check_coupled_headlines in claim_audit.py), with the calibration cells
+(calibration.py: CH1 fire + CH2 pass) and the battery cells (specimens.py:
+CH1/CH2/CH3 + the STEPQuant arXiv 2609.38169 live external specimen). The
+battery is now 181 specimens (177 + 4: CH1/CH2/CH3 + the STEPQuant live
+specimen).
+
+The live specimen (STEPQuant, arXiv 2609.38169, 2026-09-30) is the real-world
+witness: the abstract headlines "over 5x recurrent-state compression" (the
+mechanism's own axis -- 32/6 = 5.33x, the nominal 6-bit budget arithmetic,
+tautological) and "reduces total serving memory by 68.7%" (the wider substrate
+axis). The two are jointly consistent only if the recurrent state is ~86% of
+total serving memory -- a composition the abstract never declares. The
+instrument fires COUPLED-HEADLINES: the coupling is unverifiable.
+
+COUPLED-HEADLINES fires on exactly 2 specimens (the CH1 fire cell + the
+STEPQuant live specimen) and has 2 exclusive specimens (both; the live specimen
+fires COUPLED-HEADLINES only). No identical firing set, not a strict subset of
+any existing axis. Re-derived from the actual cofiring output and verified with
+`python3 cofiring.py --check` (the staleness guard: exit 0 when the committed
+cofiring.json matches a fresh recompute, exit 1 when it is stale, exit 2 when
+missing).

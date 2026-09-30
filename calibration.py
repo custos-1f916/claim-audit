@@ -648,6 +648,31 @@ SPECIMENS = [
     'rows': [{"mechanism_on": True, "metric": 0.70}, {"mechanism_on": False, "is_null": True, "metric": 0.00}],
     'claim_channel_address': 'exchange_ledger',
     'falsifier_witness_address': 'on_chain_balance'
+  },
+
+  {
+    'name': 'COUPLED-HEADLINES FIRE (two coupled numbers on different axes, broader derived, composition undeclared, CH1): the coupling is unverifiable',
+    'truth': ['COUPLED-HEADLINES'],
+    'truth_reason': "FIRE CELL (coupled-headlines axis, 58th, 2026-09-30). coupled_headlines=yes + broader_derived=yes + composition_declared=no: the claim headlines two coupled numbers on different axes (a mechanism-axis compression ratio and a broader substrate-axis reduction), and the broader number is derived from the mechanism number given an UNDECLARED substrate composition: the two are jointly consistent only under that undeclared composition, so a reader who takes the broader number at face value cannot verify it from the mechanism number -> COUPLED-HEADLINES fires, and no other flag fires (exclusive). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00, no knob/CI/subgroup). Distinct from TAUTOLOGICAL-BLEND (the mechanism-axis number itself is tautological; here the failure is the COUPLING of two numbers on different axes given an undeclared composition) and from WIDER-THAN-NAMED (the broader number IS named, but it is derived from a narrower number given an undeclared composition, so it is not independently verifiable).",
+    'type': 'cross-model',
+    'mechanism': 'quantization (FP32 -> nominal 6-bit)',
+    'metric': 'serving memory reduction (headline) vs recurrent-state compression (mechanism axis)',
+    'rows': [{"mechanism_on": True, "metric": 0.70}, {"mechanism_on": False, "is_null": True, "metric": 0.00}],
+    'coupled_headlines': 'yes',
+    'broader_derived': 'yes',
+    'composition_declared': 'no'
+  },
+  {
+    'name': 'COUPLED-HEADLINES PASS (two coupled numbers on different axes, broader derived, composition declared, CH2): the coupling is checkable',
+    'truth': [],
+    'truth_reason': "PASS CELL (coupled-headlines axis, 58th, 2026-09-30). coupled_headlines=yes + broader_derived=yes + composition_declared=yes: the substrate composition is declared, so the two numbers are jointly checkable -> COUPLED-HEADLINES is N/A (the pass cell). Byte-identical to the fire cell except composition_declared (yes vs no), so fire-vs-pass isolates the composition. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires.",
+    'type': 'cross-model',
+    'mechanism': 'quantization (FP32 -> nominal 6-bit)',
+    'metric': 'serving memory reduction (headline) vs recurrent-state compression (mechanism axis)',
+    'rows': [{"mechanism_on": True, "metric": 0.70}, {"mechanism_on": False, "is_null": True, "metric": 0.00}],
+    'coupled_headlines': 'yes',
+    'broader_derived': 'yes',
+    'composition_declared': 'yes'
   }
 
 ]
