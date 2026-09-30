@@ -2263,6 +2263,35 @@ def check_held_out_provenance(spec):
     detail = ("the claim proposes a held-out eval (a test set the monitored party is scored against) that is self-compiled by the monitored party from its own records: 'held-out' means held-out-in-time only, so the monitor certifies its own test set; a set can be temporally held-out (not overfit, not hillclimbed on) yet provenance-self-keyed; the genuinely independent eval set is externally constructed (NTSB-style public accident reports, regulator findings, an external corpus independent of the party being scored)")
     return False, "HELD-OUT-PROVENANCE", detail
 
+def check_selection_provenance(spec):
+    """SELECTION-PROVENANCE (60th primary axis, 2026-09-30): the claim proposes
+    an eval set drawn from a larger corpus, and the monitored party SELF-SELECTS
+    the subset on a self-serving criterion. The corpus may be externally
+    constructed (so HELD-OUT-PROVENANCE, 59th, passes), but the selection of
+    which items to report on is self-keyed: the party being scored chooses the
+    subset, and the selection channel (which items) is a different address from
+    the measurement channel (the scorer). Distinct from HELD-OUT-PROVENANCE
+    (59th: CONSTRUCTION provenance of the whole corpus; here it is the SELECTION
+    of the subset from that corpus), from WITNESS-ADDRESS (57th: the falsifier's
+    single WITNESS READ comes from the same ADDRESS as the claim channel; here
+    the selection channel is a different address from the measurement channel),
+    and from SELECTION-BIAS (7th: max-of-K order statistics over draws of a fixed
+    instrument; here the selection is of the eval set, not of the measurement
+    draws). N/A when eval_set_selection is not declared (schema-boundary), when
+    the selection is externally made (eval_set_selection=external; the pass
+    cell), or when the post does not declare who selects the subset
+    (eval_set_selection=undeclared; schema-boundary)."""
+    sel = spec.get("eval_set_selection")
+    if sel is None:
+        return True, "", "N/A (eval_set_selection not declared: schema-boundary)"
+    sel = str(sel).strip().lower()
+    if sel == "external":
+        return True, "", "N/A (eval_set_selection=external: the subset was selected by an independent party; the pass cell)"
+    if sel == "undeclared":
+        return True, "", "N/A (eval_set_selection=undeclared: the post does not declare who selects the subset; schema-boundary)"
+    detail = ("the claim proposes an eval set drawn from a larger corpus, and the monitored party self-selects the subset on a self-serving criterion: the corpus may be externally constructed (HELD-OUT-PROVENANCE passes), but the selection of which items to report on is self-keyed; the selection channel (which items) is a different address from the measurement channel (the scorer), so WITNESS-ADDRESS does not fire; the genuinely independent selection is externally made (an independent party chooses the subset, not the party being scored)")
+    return False, "SELECTION-PROVENANCE", detail
+
 CHECKS = [
     ("BEATS-NULL",     check_beats_null),
     ("NOT-SELF-KEYED", check_not_self_keyed),
@@ -2323,6 +2352,7 @@ CHECKS = [
     ("WITNESS-ADDRESS", check_witness_address),
     ("COUPLED-HEADLINES", check_coupled_headlines),
     ("HELD-OUT-PROVENANCE", check_held_out_provenance),
+    ("SELECTION-PROVENANCE", check_selection_provenance),
 ]
 
 def _no_empirical(spec):
@@ -2336,7 +2366,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING", "THESIS-OUTRUNS-EVIDENCE", "UNIT-COUNT", "OPT-IN-CENSUS", "CAUSAL-WIRING", "DECLARED-CHANNEL", "CARRIER-REACH", "WITNESS-ADDRESS", "HELD-OUT-PROVENANCE"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING", "THESIS-OUTRUNS-EVIDENCE", "UNIT-COUNT", "OPT-IN-CENSUS", "CAUSAL-WIRING", "DECLARED-CHANNEL", "CARRIER-REACH", "WITNESS-ADDRESS", "SELECTION-PROVENANCE", "HELD-OUT-PROVENANCE"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:

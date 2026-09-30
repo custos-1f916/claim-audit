@@ -686,6 +686,45 @@ SPECIMENS = [
     'eval_set_provenance': 'self'
   },
   {
+    'name': 'SELECTION-PROVENANCE FIRE (eval set self-selected by the monitored party, SP1): the party being scored chooses the subset',
+    'truth': ['SELECTION-PROVENANCE'],
+    'truth_reason': "FIRE CELL (selection-provenance axis, 60th, 2026-09-30). eval_set_selection=self: the claim proposes an eval set drawn from a larger corpus, and the monitored party self-selects the subset on a self-serving criterion: the corpus may be externally constructed (HELD-OUT-PROVENANCE passes), but the selection of which items to report on is self-keyed; the selection channel (which items) is a different address from the measurement channel (the scorer), so WITNESS-ADDRESS does not fire -> SELECTION-PROVENANCE fires, and no other flag fires (exclusive). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00, no knob/CI/subgroup). Distinct from HELD-OUT-PROVENANCE (59th: CONSTRUCTION provenance of the whole corpus; here it is the SELECTION of the subset from that corpus) and from WITNESS-ADDRESS (57th: the falsifier's single WITNESS READ comes from the same ADDRESS as the claim channel; here the selection channel is a different address from the measurement channel).",
+    'type': 'cross-model',
+    'mechanism': 'eval set (self-selected subset of external corpus)',
+    'metric': 'answer accuracy (higher better)',
+    'rows': [{"mechanism_on": True, "metric": 0.70}, {"mechanism_on": False, "is_null": True, "metric": 0.00}],
+    'eval_set_selection': 'self'
+  },
+  {
+    'name': 'SELECTION-PROVENANCE PASS (eval set externally selected, SP2): the selection is genuinely independent',
+    'truth': [],
+    'truth_reason': "PASS CELL (selection-provenance axis, 60th, 2026-09-30). eval_set_selection=external: the subset was selected by an independent party, so the selection is genuinely independent -> SELECTION-PROVENANCE is N/A (the pass cell). Byte-identical to the fire cell except eval_set_selection (external vs self), so fire-vs-pass isolates the selection. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires.",
+    'type': 'cross-model',
+    'mechanism': 'eval set (externally selected subset of external corpus)',
+    'metric': 'answer accuracy (higher better)',
+    'rows': [{"mechanism_on": True, "metric": 0.70}, {"mechanism_on": False, "is_null": True, "metric": 0.00}],
+    'eval_set_selection': 'external'
+  },
+  {
+    'name': 'SELECTION-PROVENANCE SCHEMA-BOUNDARY (eval set selection undeclared, SP3): the post does not declare who selects the subset',
+    'truth': [],
+    'truth_reason': "SCHEMA-BOUNDARY CELL (selection-provenance axis, 60th, 2026-09-30). eval_set_selection=undeclared: the post does not declare who selects the subset -> SELECTION-PROVENANCE is N/A (schema-boundary). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires.",
+    'type': 'cross-model',
+    'mechanism': 'eval set (selection undeclared)',
+    'metric': 'answer accuracy (higher better)',
+    'rows': [{"mechanism_on": True, "metric": 0.70}, {"mechanism_on": False, "is_null": True, "metric": 0.00}],
+    'eval_set_selection': 'undeclared'
+  },
+  {
+    'name': 'SELECTION-PROVENANCE N/A (no eval set selection field, SP4): the axis does not apply',
+    'truth': [],
+    'truth_reason': "N/A CELL (selection-provenance axis, 60th, 2026-09-30). No eval_set_selection field: the axis does not apply -> SELECTION-PROVENANCE is N/A. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires.",
+    'type': 'cross-model',
+    'mechanism': 'eval set (no selection field)',
+    'metric': 'answer accuracy (higher better)',
+    'rows': [{"mechanism_on": True, "metric": 0.70}, {"mechanism_on": False, "is_null": True, "metric": 0.00}]
+  },
+  {
     'name': 'HELD-OUT-PROVENANCE PASS (held-out eval externally constructed, HP2): the held-out is genuinely independent',
     'truth': [],
     'truth_reason': "PASS CELL (held-out-provenance axis, 59th, 2026-09-30). held_out_eval=yes + eval_set_provenance=external: the eval set is independently constructed, so the held-out is genuinely independent -> HELD-OUT-PROVENANCE is N/A (the pass cell). Byte-identical to the fire cell except eval_set_provenance (external vs self), so fire-vs-pass isolates the provenance. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires.",

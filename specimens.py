@@ -3049,4 +3049,75 @@ SPECIMENS = [
     "note": "LIVE EXTERNAL SPECIMEN (Qureshi/Tayubi/BaruKab/Khan, PLOS ONE, 2026-05-21, DOI 10.1371/journal.pone.0345956, PMC13193550). A real empirical paper (type 'cross-model', 2 scaffolding rows) that scores an SVM classifier on a HELD-OUT EVAL: a 20% independent test set (n=10,754) 'completely held out from the cross-validation process and used only for final evaluation.' The corpus is the TSB (Transportation Safety Board of Canada) 80-year aviation occurrence database (1955-2020, 53,770 summaries), CONSTRUCTED BY AN INDEPENDENT FEDERAL AGENCY, not by the party being scored (the classifier). held_out_eval=yes + eval_set_provenance=external -> HELD-OUT-PROVENANCE is N/A (the pass cell): the held-out is genuinely independent. The mirror image of the OpenAI FIRE (the same held-out-incident-eval shape, differing only in provenance: self -> fire, external -> pass). Scaffolding rows keep the empirical axes clean (SVM 0.9806 > majority-baseline null 0.5630 = (TN+FP)/n = (5916+138)/10754; no knob/CI/subgroup), so nothing fires. Minor self-inconsistency noted honestly (not this axis): the paper's confusion matrix (TP=4621, TN=5916, FP=138, FN=79, summing to n=10,754) computes to 97.98%, but the paper reports 98.06% (the 5-fold CV number). Real-world PASS witness, 59th axis, 2026-09-30.",
     "expected": []
   },
+  {
+    "name": "SELECTION-PROVENANCE FIRE (eval set self-selected by the monitored party, SP1): the party being scored chooses the subset",
+    "truth": ["SELECTION-PROVENANCE"],
+    "type": "cross-model",
+    "mechanism": "eval set (self-selected subset of external corpus)",
+    "metric": "answer accuracy (higher better)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "eval_set_selection": "self",
+    "expected": ["SELECTION-PROVENANCE"],
+    "note": "FIRE CELL (selection-provenance axis, 60th, 2026-09-30). eval_set_selection=self: the monitored party self-selects the subset on a self-serving criterion. The corpus may be externally constructed (HELD-OUT-PROVENANCE passes), but the selection of which items to report on is self-keyed. The selection channel (which items) is a different address from the measurement channel (the scorer), so WITNESS-ADDRESS does not fire. SELECTION-PROVENANCE fires exclusively. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00, no knob/CI/subgroup)."
+  },
+  {
+    "name": "SELECTION-PROVENANCE PASS (eval set externally selected, SP2): the selection is genuinely independent",
+    "truth": [],
+    "type": "cross-model",
+    "mechanism": "eval set (externally selected subset of external corpus)",
+    "metric": "answer accuracy (higher better)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "eval_set_selection": "external",
+    "expected": [],
+    "note": "PASS CELL (selection-provenance axis, 60th, 2026-09-30). eval_set_selection=external: the subset was selected by an independent party, so the selection is genuinely independent -> SELECTION-PROVENANCE is N/A (the pass cell). Byte-identical to the fire cell except eval_set_selection (external vs self), so fire-vs-pass isolates the selection. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+  },
+  {
+    "name": "SELECTION-PROVENANCE SCHEMA-BOUNDARY (eval set selection undeclared, SP3): the post does not declare who selects the subset",
+    "truth": [],
+    "type": "cross-model",
+    "mechanism": "eval set (selection undeclared)",
+    "metric": "answer accuracy (higher better)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "eval_set_selection": "undeclared",
+    "expected": [],
+    "note": "SCHEMA-BOUNDARY CELL (selection-provenance axis, 60th, 2026-09-30). eval_set_selection=undeclared: the post does not declare who selects the subset -> SELECTION-PROVENANCE is N/A (schema-boundary). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+  },
+  {
+    "name": "SELECTION-PROVENANCE N/A (no eval set selection field, SP4): the axis does not apply",
+    "truth": [],
+    "type": "cross-model",
+    "mechanism": "eval set (no selection field)",
+    "metric": "answer accuracy (higher better)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "expected": [],
+    "note": "N/A CELL (selection-provenance axis, 60th, 2026-09-30). No eval_set_selection field: the axis does not apply -> SELECTION-PROVENANCE is N/A. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+  },
+  {
+    "name": "MATH-500 (OpenAI o1, Lightman et al. 2024): self-selected subset of external MATH corpus",
+    "truth": ["SELECTION-PROVENANCE"],
+    "type": "cross-model",
+    "mechanism": "o1 reasoning model (self-selected 500-problem subset of MATH)",
+    "metric": "answer accuracy on MATH-500 (higher better)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.948},
+      {"mechanism_on": False, "is_null": True, "metric": 0.500}
+    ],
+    "held_out_eval": "yes",
+    "eval_set_provenance": "external",
+    "eval_set_selection": "self",
+    "expected": ["SELECTION-PROVENANCE"],
+    "note": "LIVE SPECIMEN (OpenAI o1, Lightman et al. 2024, 'Let's Verify Step by Step', arXiv 2305.20050). The MATH corpus (Hendrycks et al. 2021, NeurIPS D&B, 12,500 competition math problems) is EXTERNALLY CONSTRUCTED (eval_set_provenance=external -> HELD-OUT-PROVENANCE passes). But OpenAI SELF-SELECTED the 500-problem subset (MATH-500) on a self-serving criterion (eval_set_selection=self -> SELECTION-PROVENANCE fires). The selection channel (which 500 problems OpenAI chose) is a different address from the measurement channel (the standard math scorer), so WITNESS-ADDRESS does not fire. o1 reports 94.8% on MATH-500. The majority-baseline null (0.500) keeps the empirical axes clean (0.948 > 0.500, no knob/CI/subgroup). The open cell: external construction + self-selection where selection and measurement are different addresses. Real-world FIRE witness, 60th axis, 2026-09-30."
+  },
 ]

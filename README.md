@@ -547,6 +547,57 @@ the paper's confusion matrix (TP=4621, TN=5916, FP=138, FN=79) computes to
 matrix is unchanged (the new specimen fires nothing, so no flag's fire set
 changes; 45 of 63 flags still have >= 1 exclusive specimen).
 
+(2026-09-30): the SELECTION-PROVENANCE axis (60th) was implemented. The
+SELECTION-PROVENANCE axis catches the selection-provenance seam: the claim
+proposes an eval set drawn from a larger corpus, and the monitored party
+SELF-SELECTS the subset on a self-serving criterion. The corpus may be
+externally constructed (so HELD-OUT-PROVENANCE, 59th, passes), but the
+selection of which items to report on is self-keyed: the party being scored
+chooses the subset, and the selection channel (which items) is a different
+address from the measurement channel (the scorer). This is the hole the 59th
+axis leaves open: HELD-OUT-PROVENANCE reads CONSTRUCTION provenance only
+(eval_set_provenance; external means pass unconditionally), so an external
+corpus can still be self-keyed if the monitored party self-selects the subset.
+Distinct from HELD-OUT-PROVENANCE (59th: CONSTRUCTION provenance of the whole
+corpus; here it is the SELECTION of the subset from that corpus), from
+WITNESS-ADDRESS (57th: the falsifier's single WITNESS READ comes from the same
+ADDRESS as the claim channel; here the selection channel is a different address
+from the measurement channel, so WITNESS-ADDRESS does not fire), and from
+SELECTION-BIAS (7th: max-of-K order statistics over draws of a fixed instrument;
+here the selection is of the eval set, not of the measurement draws). The
+discriminating test is a 4-cell design over eval_set_selection (self vs external
+vs undeclared): SP1 (self) fires SELECTION-PROVENANCE only; SP2 (external) fires
+nothing (the pass cell: the selection is genuinely independent); SP3 (undeclared)
+fires nothing (schema-boundary, the post does not declare who selects the subset);
+SP4 (no held-out eval + self) fires nothing (the axis does not apply). The weight-1
+SELECTION-PROVENANCE instrument landed as the 60th axis
+(check_selection_provenance in claim_audit.py), with the calibration cells
+(calibration.py: SP1 fire + SP2 pass) and the battery cells (specimens.py:
+SP1/SP2/SP3/SP4 + the MATH-500 live external-construction self-selection specimen).
+The battery is now 195 specimens.
+
+The live specimen (OpenAI o1, Lightman et al. 2024, "Let's Verify Step by Step",
+arXiv 2305.20050) is the real-world FIRE witness: the MATH corpus (Hendrycks et
+al. 2021, NeurIPS Datasets & Benchmarks, 12,500 competition math problems) is
+EXTERNALLY CONSTRUCTED (eval_set_provenance=external -> HELD-OUT-PROVENANCE
+passes), but OpenAI SELF-SELECTED the 500-problem subset (MATH-500) on a
+self-serving criterion (eval_set_selection=self -> SELECTION-PROVENANCE fires).
+The selection channel (which 500 problems OpenAI chose) is a different address
+from the measurement channel (the standard math scorer), so WITNESS-ADDRESS does
+not fire. o1 reports 94.8% on MATH-500. The majority-baseline null (0.500) keeps
+the empirical axes clean (0.948 > 0.500, no knob/CI/subgroup). This is the open
+cell the 59th axis left: external construction + self-selection where selection
+and measurement are different addresses. SELECTION-PROVENANCE fires on exactly
+2 specimens (the SP1 fire cell + the MATH-500 live specimen) and has 1 exclusive
+specimen (the SP1 fire cell; the live specimen fires SELECTION-PROVENANCE
+exclusively, no co-firing). No identical firing set, not a strict subset of any
+existing axis. Re-derived from the actual cofiring output and verified with
+`python3 cofiring.py --check` (the staleness guard: exit 0 when the committed
+cofiring.json matches a fresh recompute, exit 1 when it is stale, exit 2 when
+missing).
+
+
+
 ## Lineage
 
 Built 2026-09-15..22 as a workspace instrument for tearing apart
