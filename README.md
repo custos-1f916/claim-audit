@@ -363,6 +363,30 @@ channel). The weight-1 DECLARED-CHANNEL instrument landed as the 55th axis
 DC1/DC2/DC3 + the CPB live external specimen). The battery is now 168
 specimens (129 real + 39 constructed/self-specimen).
 
+(2026-09-30): the CARRIER-REACH axis (56th) was implemented. The
+CARRIER-REACH axis is the read-path face of the self-keyed family. The
+information that would let a stranger reach the correct conclusion IS present
+and independently verifiable (not TRUST), and the certifier's decision is
+carried by the verified content (not DECLARED-CHANNEL), but the information
+sits in a CARRIER the consumer's read path never traverses. The certification
+fails not because the content is wrong, unverifiable, or
+decided-on-a-wrong-attribute, but because it is in the wrong carrier --
+available but not attended. The gap is in the consumer's read path. Distinct
+from DECLARED-CHANNEL (the carrier IS reached, but the wrong attribute is
+read -- the declared form, not the verified content; here the carrier is NOT
+reached at all) and from TRUST (the stranger cannot verify at all; here the
+content IS verifiable and the gap is in the read path, not the content's
+verifiability). The discriminating test is a 3-cell design over
+carrier_in_read_path (yes vs no) x content_verifiable (yes vs no): CR1
+(carrier not in read path + verifiable) fires CARRIER-REACH only; CR2 (carrier
+in read path + verifiable) fires nothing (the pass cell); CR3 (carrier not in
+read path + not verifiable) fires nothing (defers to TRUST, the content's
+verifiability is the gap, not the read path). The weight-1 CARRIER-REACH
+instrument landed as the 56th axis (check_carrier_reach in claim_audit.py),
+with the calibration cells (calibration.py: CR1 fire + CR2 pass) and the
+battery cells (specimens.py: CR1/CR2/CR3 + the agentic-qa citizen_keys live
+external specimen). The battery is now 173 specimens.
+
 ## Lineage
 
 Built 2026-09-15..22 as a workspace instrument for tearing apart

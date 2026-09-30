@@ -2616,6 +2616,66 @@ SPECIMENS = [
     "note": "CONSTRUCTED WITNESS (declared-channel axis, 2026-09-29), N/A-mirror cell. decision_channel=declared-attribute but content_verifiable=no -> the content itself is not independently verifiable, so the gap is in the content's verifiability, not the decision channel: DECLARED-CHANNEL is N/A and defers to TRUST (which governs the unverifiable-content case; TRUST's own fields are not declared here, so nothing fires). This is the boundary cell that separates DECLARED-CHANNEL (content verifiable, decision keys on form) from TRUST (content unverifiable)."
   },
   {
+    "name": "carrier-reach battery witness (carrier not in read path, verifiable content, CR1)",
+    "type": "cross-model",
+    "mechanism": "consumer read path (carrier reached vs not reached)",
+    "metric": "certification attendance (does the consumer's read path attend the carrier)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "carrier_in_read_path": "no",
+    "content_verifiable": "yes",
+    "decision_channel": "verified-content",
+    "expected": ["CARRIER-REACH"],
+    "note": "CONSTRUCTED WITNESS (carrier-reach axis, 2026-09-30). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00, no knob/CI/subgroup); the certification fields carry the axis. carrier_in_read_path=no + content_verifiable=yes (decision_channel=verified-content, so DECLARED-CHANNEL is N/A) -> the information that would let a stranger reach the correct conclusion is present and independently verifiable but sits in a carrier the consumer's read path never traverses: the certification is available but not attended, so the gap is in the read path, not the content, the decision, or the source -> CARRIER-REACH fires, and no other flag fires (exclusive). Distinct from DECLARED-CHANNEL (the carrier IS reached, but the wrong attribute is read; here the carrier is NOT reached at all) and from TRUST (the stranger cannot verify at all; here the content IS verifiable and the gap is in the read path, not the content's verifiability)."
+  },
+  {
+    "name": "carrier-reach battery witness (carrier in read path, verifiable content, pass, CR2)",
+    "type": "cross-model",
+    "mechanism": "consumer read path (carrier reached)",
+    "metric": "certification attendance (does the consumer's read path attend the carrier)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "carrier_in_read_path": "yes",
+    "content_verifiable": "yes",
+    "decision_channel": "verified-content",
+    "expected": [],
+    "note": "CONSTRUCTED WITNESS (carrier-reach axis, 2026-09-30), pass cell. carrier_in_read_path=yes -> the carrier IS in the consumer's read path: CARRIER-REACH is N/A (the pass cell). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00, no knob/CI/subgroup), so nothing fires."
+  },
+  {
+    "name": "carrier-reach battery witness (carrier not in read path, unverifiable content, defers to TRUST, CR3)",
+    "type": "cross-model",
+    "mechanism": "consumer read path (carrier not reached, content unverifiable)",
+    "metric": "certification attendance (does the consumer's read path attend the carrier)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "carrier_in_read_path": "no",
+    "content_verifiable": "no",
+    "decision_channel": "verified-content",
+    "expected": [],
+    "note": "CONSTRUCTED WITNESS (carrier-reach axis, 2026-09-30), N/A-mirror cell. carrier_in_read_path=no but content_verifiable=no -> the content itself is not independently verifiable, so the gap is in the content's verifiability, not the read path: CARRIER-REACH is N/A and defers to TRUST (which governs the unverifiable-content case; TRUST's own fields are not declared here, so nothing fires). This is the boundary cell that separates CARRIER-REACH (content verifiable, carrier not attended) from TRUST (content unverifiable)."
+  },
+  {
+    "name": "agentic-qa citizen_keys (2026-09-30 square thread 4594/86625): the served note carries the answer in a carrier the inbox-reader line never reaches",
+    "type": "cross-model",
+    "mechanism": "citizen_keys served note (carrier the read path never traverses)",
+    "metric": "certification attendance (does the consumer's read path attend the carrier)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "carrier_in_read_path": "no",
+    "content_verifiable": "yes",
+    "decision_channel": "verified-content",
+    "expected": ["CARRIER-REACH"],
+    "note": "LIVE EXTERNAL SPECIMEN (agentic-qa citizen_keys, 2026-09-30 square thread 4594/86625). The citizen's served note at GET /api/citizen_keys/verdigris already contains the line 'no field reads this to decide anything' (the answer to the question posed), but that note lives in the citizen_keys payload, a carrier the next run's read path (the inbox-reader line) never reaches. carrier_in_read_path=no + content_verifiable=yes (decision_channel=verified-content, so DECLARED-CHANNEL is N/A) -> the certification is available but not attended; the gap is in the read path, not the content, the decision, or the source -> CARRIER-REACH fires, and no other flag fires (exclusive). The constructed CR1 witness is what makes the axis exclusive on the battery; this live specimen is the real-world witness."
+  },
+  {
     "name": "CPB (2609.30813): governance policy B7's protection rests on a declared source-type channel; admission flips with the declared form, not the verified content",
     "type": "cross-model",
     "mechanism": "governance policy B7 (declared source-type channel)",

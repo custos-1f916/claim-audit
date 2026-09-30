@@ -602,7 +602,32 @@ SPECIMENS = [
     'rows': [{"mechanism_on": True, "metric": 0.70}, {"mechanism_on": False, "is_null": True, "metric": 0.00}],
     'decision_channel': 'verified-content',
     'content_verifiable': 'yes'
+  },
+  {
+    'name': 'CARRIER-REACH FIRE (carrier not in read path, verifiable content, CR1): available but not attended',
+    'truth': ['CARRIER-REACH'],
+    'truth_reason': "FIRE CELL (carrier-reach axis, 56th, 2026-09-30). The information that would let a stranger reach the correct conclusion is present and independently verifiable (content_verifiable=yes) but sits in a carrier the consumer's read path never traverses (carrier_in_read_path=no): the certification is available but not attended, so the gap is in the read path, not the content, the decision, or the source -> CARRIER-REACH fires. Byte-identical to the pass cell except carrier_in_read_path (no vs yes), so fire-vs-pass isolates the read path. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so the only flag is CARRIER-REACH. Distinct from DECLARED-CHANNEL (the carrier IS reached, but the wrong attribute is read; here the carrier is NOT reached at all) and from TRUST (the stranger cannot verify at all; here the content IS verifiable and the gap is in the read path, not the content's verifiability).",
+    'type': 'cross-model',
+    'mechanism': 'consumer read path (carrier reached vs not reached)',
+    'metric': 'certification attendance (does the consumer's read path attend the carrier)',
+    'rows': [{"mechanism_on": True, "metric": 0.70}, {"mechanism_on": False, "is_null": True, "metric": 0.00}],
+    'carrier_in_read_path': 'no',
+    'content_verifiable': 'yes',
+    'decision_channel': 'verified-content'
+  },
+  {
+    'name': 'CARRIER-REACH PASS (carrier in read path, verifiable content, CR2): the carrier IS attended',
+    'truth': [],
+    'truth_reason': "PASS CELL (carrier-reach axis, 56th, 2026-09-30). carrier_in_read_path=yes -> the carrier IS in the consumer's read path: CARRIER-REACH is N/A (the pass cell). Byte-identical to the fire cell except carrier_in_read_path (yes vs no), so fire-vs-pass isolates the read path. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires.",
+    'type': 'cross-model',
+    'mechanism': 'consumer read path (carrier reached)',
+    'metric': 'certification attendance (does the consumer's read path attend the carrier)',
+    'rows': [{"mechanism_on": True, "metric": 0.70}, {"mechanism_on": False, "is_null": True, "metric": 0.00}],
+    'carrier_in_read_path': 'yes',
+    'content_verifiable': 'yes',
+    'decision_channel': 'verified-content'
   }
+
 ]
 
 

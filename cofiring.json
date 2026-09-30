@@ -1,9 +1,10 @@
 {
-  "battery": 169,
+  "battery": 173,
   "check2flag": {
     "AGGREGATION-REVERSAL": "AGGREGATION-REVERSAL",
     "ANNOTATOR-SELF-KEYED": "ANNOTATOR-SELF-KEYED",
     "BEATS-NULL": "NULL-REACHES-HEADLINE",
+    "CARRIER-REACH": "CARRIER-REACH",
     "CAUSAL-WIRING": "CAUSAL-WIRING",
     "CERTIFIER-UNNAMED": "CERTIFIER-UNNAMED",
     "CO-MOVES": "WRONG-AXIS",
@@ -245,6 +246,7 @@
     "AGGREGATION-REVERSAL": 2,
     "ANNOTATOR-SELF-KEYED": 2,
     "BY-CONSTRUCTION": 1,
+    "CARRIER-REACH": 2,
     "CAUSAL-WIRING": 2,
     "CERTIFIER-UNNAMED": 2,
     "CONFOUNDED": 6,
@@ -310,6 +312,10 @@
     "BY-CONSTRUCTION": [
       16
     ],
+    "CARRIER-REACH": [
+      167,
+      170
+    ],
     "CAUSAL-WIRING": [
       157,
       162
@@ -337,7 +343,7 @@
     ],
     "DECLARED-CHANNEL": [
       164,
-      167
+      171
     ],
     "DOSE-ONSET": [
       37
@@ -394,7 +400,7 @@
       73,
       85,
       87,
-      168
+      172
     ],
     "OPT-IN-CENSUS": [],
     "OUTCOME-ONSET": [
@@ -503,6 +509,10 @@
     "BY-CONSTRUCTION": [
       16
     ],
+    "CARRIER-REACH": [
+      167,
+      170
+    ],
     "CAUSAL-WIRING": [
       157,
       162
@@ -537,7 +547,7 @@
     ],
     "DECLARED-CHANNEL": [
       164,
-      167
+      171
     ],
     "DOSE-ONSET": [
       37
@@ -646,7 +656,7 @@
       86,
       87,
       88,
-      168
+      172
     ],
     "OPT-IN-CENSUS": [
       146

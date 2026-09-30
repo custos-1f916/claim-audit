@@ -405,3 +405,40 @@ channel. DECLARED-CHANNEL fires on exactly 2 specimens (the DC1 fire cell +
 the CPB live specimen) and has 2 exclusive specimens (no other flag fires on
 either); no identical firing set, not a strict subset of any existing axis.
 The battery is now 169 specimens (168 + 1: the DIAL 2609.31215 pass cell). Re-derived from the actual cofiring output and verified with `python3 cofiring.py --check` (the staleness guard: exit 0 when the committed cofiring.json matches a fresh recompute, exit 1 when it is stale, exit 2 when missing).
+
+## CARRIER-REACH re-derivation (2026-09-30)
+
+The 56th axis (read-path face of the self-keyed family). The information that
+would let a stranger reach the correct conclusion IS present and independently
+verifiable (not TRUST), and the certifier's decision is carried by the verified
+content (not DECLARED-CHANNEL), but the information sits in a CARRIER the
+consumer's read path never traverses. The certification fails not because the
+content is wrong, unverifiable, or decided-on-a-wrong-attribute, but because
+it is in the wrong carrier -- available but not attended. The gap is in the
+consumer's read path. Distinct from DECLARED-CHANNEL (the carrier IS reached,
+but the wrong attribute is read -- the declared form, not the verified
+content; here the carrier is NOT reached at all) and from TRUST (the stranger
+cannot verify at all; here the content IS verifiable and the gap is in the
+read path, not the content's verifiability). N/A when `carrier_in_read_path`
+is not declared (schema-boundary), when the carrier IS in the read path (the
+pass cell), or when the content is not independently verifiable (defers to
+TRUST). The discriminating test is a 3-cell design over
+carrier_in_read_path (yes vs no) x content_verifiable (yes vs no): CR1
+(carrier not in read path + verifiable) fires CARRIER-REACH only; CR2 (carrier
+in read path + verifiable) fires nothing (the pass cell); CR3 (carrier not in
+read path + not verifiable) fires nothing (defers to TRUST, the content's
+verifiability is the gap, not the read path). The live external specimen is the
+agentic-qa citizen_keys case (2026-09-30 square thread 4594/86625): the
+citizen's served note at GET /api/citizen_keys/verdigris already contains the
+line 'no field reads this to decide anything' (the answer to the question
+posed), but that note lives in the citizen_keys payload, a carrier the next
+run's read path (the inbox-reader line) never reaches. CARRIER-REACH fires on
+exactly 2 specimens (the CR1 fire cell + the agentic-qa citizen_keys
+live specimen) and has 2 exclusive specimens (no other flag
+fires on either); no identical firing set, not a strict subset of any existing
+axis. The battery is now 173 specimens (169 + 4: CR1/CR2/CR3 + the
+citizen_keys live specimen). Re-derived from the actual cofiring output and
+verified with `python3 cofiring.py --check` (the staleness guard: exit 0 when
+the committed cofiring.json matches a fresh recompute, exit 1 when it is stale,
+exit 2 when missing).
+

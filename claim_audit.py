@@ -2129,6 +2129,38 @@ def check_declared_channel(spec):
     detail = ("the certifier's decision is carried by a self-declared attribute (decision_channel=declared-attribute) while the content is independently verifiable (content_verifiable=yes): the admission decision flips with the declared form, not the verified content, so the protection is carried by the declaration, not by verification")
     return False, "DECLARED-CHANNEL", detail
 
+def check_carrier_reach(spec):
+    """CARRIER-REACH (56th primary axis, 2026-09-30): the read-path face of the
+    self-keyed family. The information that would let a stranger reach the
+    correct conclusion IS present and independently verifiable (not TRUST),
+    and the certifier's decision is carried by the verified content (not
+    DECLARED-CHANNEL), but the information sits in a CARRIER the consumer's
+    read path never traverses. The certification fails not because the content
+    is wrong, unverifiable, or decided-on-a-wrong-attribute, but because it is
+    in the wrong carrier -- available but not attended. The gap is in the
+    consumer's read path. Distinct from DECLARED-CHANNEL (the carrier IS
+    reached, but the wrong attribute is read -- the declared form, not the
+    verified content; here the carrier is NOT reached at all) and from TRUST
+    (the stranger cannot verify at all; here the content IS verifiable and the
+    gap is in the read path, not the content's verifiability). N/A when
+    `carrier_in_read_path` is not declared (schema-boundary), when the carrier
+    IS in the read path (the pass cell), or when the content is not
+    independently verifiable (defers to TRUST). fail -> CARRIER-REACH."""
+    cr = spec.get("carrier_in_read_path")
+    if cr is None:
+        return True, "", "N/A (carrier_in_read_path not declared; the axis does not apply)"
+    cr = str(cr).lower()
+    if cr == "yes":
+        return True, "", "N/A (carrier_in_read_path=yes: the carrier IS in the consumer's read path; the pass cell)"
+    cv = spec.get("content_verifiable")
+    if cv is None:
+        return True, "", "N/A (carrier_in_read_path=no but content_verifiable not declared; cannot separate the read-path gap from the content-verifiability gap)"
+    cv = str(cv).lower()
+    if cv != "yes":
+        return True, "", "N/A (carrier_in_read_path=no but content_verifiable=%s: the content is not independently verifiable, so the gap is in the content's verifiability, not the read path; TRUST governs)" % cv
+    detail = ("the information that would let a stranger reach the correct conclusion is present and independently verifiable (content_verifiable=yes) but sits in a carrier the consumer's read path never traverses (carrier_in_read_path=no): the certification is available but not attended, so the gap is in the read path, not the content, the decision, or the source")
+    return False, "CARRIER-REACH", detail
+
 CHECKS = [
     ("BEATS-NULL",     check_beats_null),
     ("NOT-SELF-KEYED", check_not_self_keyed),
@@ -2185,6 +2217,7 @@ CHECKS = [
     ("CERTIFIER-UNNAMED", check_certifier_unnamed),
     ("CAUSAL-WIRING", check_causal_wiring),
     ("DECLARED-CHANNEL", check_declared_channel),
+    ("CARRIER-REACH", check_carrier_reach),
 ]
 
 def _no_empirical(spec):
@@ -2198,7 +2231,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING", "THESIS-OUTRUNS-EVIDENCE", "UNIT-COUNT", "OPT-IN-CENSUS", "CAUSAL-WIRING", "DECLARED-CHANNEL"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING", "THESIS-OUTRUNS-EVIDENCE", "UNIT-COUNT", "OPT-IN-CENSUS", "CAUSAL-WIRING", "DECLARED-CHANNEL", "CARRIER-REACH"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:
