@@ -3,7 +3,7 @@
 Question (from the saturation-collapse reconciliation): does the claim-audit
 instrument stay coherent as it grows to 51 axes, or do axes start to overlap?
 
-Objective test: the co-firing matrix over the 182-specimen battery
+Objective test: the co-firing matrix over the 184-specimen battery
 (`cofiring.py`). For each pair of axes, do they fire on the same specimens?
 
 ## Findings
@@ -38,7 +38,7 @@ does it fire on any specimen where *no other flag fires*? A flag with at
 least one exclusive specimen contributes a label no other axis produces
 there; that axis is not a re-label of another axis's firing.
 
-Result on the 182 battery: 44 of 62 flags have >= 1 exclusive
+Result on the 184 battery: 44 of 62 flags have >= 1 exclusive
 specimen. The newest axes each qualify: UNIT-COUNT, SCOPE-FLATTENING,
 COVERAGE-GAP, JUDGE-AS-TARGET, CRITERION-THRESHOLD, TAUTOLOGICAL-BLEND,
 TRUST, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS, and COUPLED-HEADLINES each fire on at least one exclusive specimen (no other flag
@@ -543,21 +543,26 @@ claim; the designed refinement parent). The constructed WA1 witness is what
 makes the axis exclusive on the battery; this live specimen is the real-world
 witness.
 
-WITNESS-ADDRESS fires on exactly 3 specimens (the WA1 fire cell, the
-post-7253 partial-exit live specimen, and the 2609.30397 live specimen) and
-has 2 exclusive specimens (the WA1 fire cell + the 2609.30397 live specimen;
-both fire WITNESS-ADDRESS only). The 2609.30397 specimen is a real-world
-exclusive witness: the synthetic GT is the model's own perturbation response
-(Eq.1), the same input-sensitivity address the top-scoring backprop methods
-compute; the falsifier is itself self-keyed. The post-7253 live specimen
-co-fires with NO-EMPIRICAL-CONTENT, its designed refinement parent. No
-identical firing set, not a strict subset of any existing axis. The battery is
-now 183 specimens (177 + 6: the 5 COUPLED-HEADLINES cells -- CH1/CH2/CH3 + the
-STEPQuant live specimen + the 2609.30328 live specimen -- plus the 2609.30397
-live specimen). Re-derived from the actual cofiring output and verified with
-`python3 cofiring.py --check` (the staleness guard: exit 0 when the committed
-cofiring.json matches a fresh recompute, exit 1 when it is stale, exit 2 when
-missing).
+WITNESS-ADDRESS fires on exactly 4 specimens (the WA1 fire cell, the
+post-7253 partial-exit live specimen, the 2609.30397 live specimen, and the
+2609.30383 live specimen) and has 3 exclusive specimens (the WA1 fire cell +
+the 2609.30397 live specimen + the 2609.30383 live specimen; all three fire
+WITNESS-ADDRESS only). The 2609.30397 specimen is a real-world exclusive
+witness: the synthetic GT is the model's own perturbation response (Eq.1),
+the same input-sensitivity address the top-scoring backprop methods compute;
+the falsifier is itself self-keyed. The 2609.30383 specimen is a real-world
+exclusive witness (the selection face): the per-skill scanner both selects
+the benchmark population (the inner loop iterates until the scanners pass)
+and measures the stealth rate, so the falsifier reads from the same address
+as the selection channel. The post-7253 live specimen co-fires with
+NO-EMPIRICAL-CONTENT, its designed refinement parent. No identical firing
+set, not a strict subset of any existing axis. The battery is now 184
+specimens (178 + 7: the 5 COUPLED-HEADLINES cells -- CH1/CH2/CH3 + the
+STEPQuant live specimen + the 2609.30328 live specimen -- plus the
+2609.30397 live specimen + the 2609.30383 live specimen). Re-derived from
+the actual cofiring output and verified with `python3 cofiring.py --check`
+(the staleness guard: exit 0 when the committed cofiring.json matches a fresh
+recompute, exit 1 when it is stale, exit 2 when missing).
 
 ## COUPLED-HEADLINES re-derivation (2026-09-30)
 
@@ -584,8 +589,9 @@ The weight-1 COUPLED-HEADLINES instrument landed as the 58th axis
 (check_coupled_headlines in claim_audit.py), with the calibration cells
 (calibration.py: CH1 fire + CH2 pass) and the battery cells (specimens.py:
 CH1/CH2/CH3 + the STEPQuant arXiv 2609.38169 live external specimen). The
-battery is now 182 specimens (177 + 5: CH1/CH2/CH3 + the STEPQuant live
-specimen + the 2609.30328 live specimen).
+battery is now 184 specimens (178 + 7: CH1/CH2/CH3 + the STEPQuant live
+specimen + the 2609.30328 live specimen + the 2609.30397 live specimen + the
+2609.30383 live specimen).
 
 The live specimen (STEPQuant, arXiv 2609.38169, 2026-09-30) is the real-world
 witness: the abstract headlines "over 5x recurrent-state compression" (the

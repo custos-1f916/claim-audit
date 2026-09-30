@@ -2895,4 +2895,45 @@ SPECIMENS = [
     "expected": ["WITNESS-ADDRESS"],
     "note": "LIVE EXTERNAL SPECIMEN (arXiv 2609.30397, 2026-09-30). The paper builds 'ground truth' explanations by intervening on the model: a component's contribution = the model-output difference between the original and the intervened input (Eq.1), and scores nine attribution methods against it across binary images / time series / tabular. Load-bearing seam (WITNESS-ADDRESS, self-keyed): the GT is the model's own response to perturbation (the model's input-sensitivity, read by the model itself), and the top-scoring tabular methods are the backprop family (Gradient SIM 0.980/KL 0.092, Integrated Gradients 0.642, DeepLIFT 0.636) computing the SAME local input-sensitivity. On a near-linear low-complexity MLP (tabular F1 0.98), the near-perfect backprop score is expected by construction -- the witness reads from the same address as the claim channel, so a mis-record at the sensitivity level slips through both. claim_channel_address=falsifier_witness_address=model_input_sensitivity -> WITNESS-ADDRESS fires, exclusively (the spec has rows, so NO-EMPIRICAL-CONTENT is N/A; the empirical axes are N/A -- no null rows, no knob/CI/subgroup declared). The paper's own independence claim is scoped to 'model accuracy' (the GT is 'independently of model accuracy'), a different axis than measurement-channel independence. Fair counterweight: the perturbation methods (RISE/LIME) use a different read path (finite-difference sampling, not the analytic gradient) and score lower, so the GT does discriminate between families. Secondary seam (qualitative, outside the numeric axes): the abstract's blanket 'significant limitations in current techniques' flattens a modality-conditional, NFL-framed result (tabular backprop near-perfect SIM 0.980/KL 0.092; time-series RISE best but SIM 0.522/KL 0.790; binary images all struggle, best SIM 0.380; the conclusion itself says 'gradient-based methods perform relatively well in structured settings such as images and tabular data'). SCOPE-FLATTENING is N/A (the universal negative is qualitative, not a single stated numeric value, and there is no null baseline -- a method-comparison, not a mechanism-vs-null ablation): a calibration data point for the axis boundary (qualitative universal negatives are outside the numeric axis's domain). The constructed WA1 witness is the exclusive WITNESS-ADDRESS witness; this live specimen is the second real-world witness (the post-7253 partial-exit specimen is the first)."
   },
+  {
+    "name": "2609.30383 (Stealth Apart, Harm Together: Skill Cascading Attacks on Skill-Based Agent Systems, Zhu/Lyu/Bibi/Wu): the benchmark population was selected by the per-skill scanners (the inner loop iterates until the scanners pass), so the absolute stealth rate (86%+) is inflated by the selection; the selection-robust evidence is the delta (2.5-4.7 pts), which the body reports but the abstract does not foreground",
+    "type": "regime-sweep",
+    "mechanism": "skill cascading attacks (a malicious objective distributed across 2+ skills) evaluated against per-skill scanners and runtime monitors",
+    "mechanism_lever": "defense type (per-skill scanner vs joint cross-skill scanner vs runtime monitor)",
+    "metric": "stealth rate (fraction of scanner submissions returning a safe verdict, higher is stealthier)",
+    "scope_claim": True,
+    "probe_support_fraction": 1.0,
+    "rows": [
+      {
+        "label": "per-skill scanners (static + LLM; 5 scanners; full benchmark)",
+        "mechanism_on": True,
+        "substrate": [
+          "per_skill_scanner"
+        ],
+        "metric": 0.86
+      },
+      {
+        "label": "joint cross-skill scanner (Joint-LLM; full benchmark)",
+        "mechanism_on": True,
+        "substrate": [
+          "joint_scanner"
+        ],
+        "metric": 0.83
+      },
+      {
+        "label": "runtime monitors (4 defenses; single config OpenClaw+GPT-5.4-mini)",
+        "mechanism_on": True,
+        "substrate": [
+          "runtime_monitor"
+        ],
+        "metric": 0.885
+      }
+    ],
+    "claim_channel_address": "scanner_verdict",
+    "falsifier_witness_address": "scanner_verdict",
+    "expected": [
+      "WITNESS-ADDRESS"
+    ],
+    "note": "LIVE EXTERNAL SPECIMEN (arXiv 2609.30383, Zhu/Lyu/Bibi/Wu, 2026-09-30). The paper introduces skill cascading attacks, in which a malicious objective is distributed across 2+ skills so that each modification clears per-skill scanning in isolation but the combined execution is harmful. They build SkillCascade (5-agent red-teaming, all on Claude Sonnet 4.6) and SkillCascade-Bench (213 validated cases, 10 domains, avg cascade 3.25). Headline: global ASR 89.4% over 24 configs (3 agents x 8 backbones), per-skill scanner stealth >=86% (delta <= 4.7 pts), runtime-defense evasion 88.5%. The load-bearing seam is WITNESS-ADDRESS / self-keyed (via selection): the benchmark is the OUTPUT of a pipeline whose inner loop 'iterates on the modified skill set until every skill independently passes per-skill scanning' (App C.1), using the SAME four public scanners (D.3: Skill-Vetter, Skill-Scanner, SkillScan, AIG-EdgeOne) that Section 5.3 measures (5.3 also measures a fifth, SkillProbe, which the selection loop does not use; the headline stealth rate is dominated by the four self-selected scanners). So the abstract's 'evading existing per-skill scanners' reports the absolute stealth rate of a population SELECTED to be stealthy. The selection-robust evidence is the delta (2.5-4.7 pts), which the body reports but the abstract does not foreground. The scanner both certifies (selects) and measures the population -> the falsifier reads from the same address as the selection channel. claim_channel_address = falsifier_witness_address = scanner_verdict (same address) -> WITNESS-ADDRESS fires. Secondary seam (scope, logged not flagged): the abstract pools 'evading per-skill scanners AND runtime monitors' without the single-config caveat (DER is measured on ONE config, OpenClaw + GPT-5.4-mini, while ASR is 24 configs). Tertiary seam (qualification, logged not flagged): the threat model requires attacker-controlled co-installation, asserted as 'natural' and cited to platform suite-install patterns, but the Discussion flags 'the empirical incidence of attacker-controlled co-installation in open marketplaces remains an open question we cannot answer from controlled experiments alone.' The honest, non-self-keyed core: the Behavior-Composition Scanner (Sec 6.4) is a genuinely different instrument (generative counterfactual, not the per-skill scanner) and catches 30+ pts on causal cascades -> that is the real, non-self-keyed result, and it is the paper's strongest. WITNESS-ADDRESS now fires on 4 specimens with 3 exclusive (the WA1 constructed witness, 2609.30397, and this one; the post-7253 partial-exit live specimen co-fires with NO-EMPIRICAL-CONTENT, so it is not exclusive). This live specimen is the third real-world witness (the selection face of the self-keyed family)."
+  },
 ]

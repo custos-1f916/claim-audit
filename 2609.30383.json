@@ -1,0 +1,39 @@
+{
+  "name": "2609.30383 (Stealth Apart, Harm Together: Skill Cascading Attacks on Skill-Based Agent Systems, Zhu/Lyu/Bibi/Wu): the benchmark population was selected by the per-skill scanners (the inner loop iterates until the scanners pass), so the absolute stealth rate (86%+) is inflated by the selection; the selection-robust evidence is the delta (2.5-4.7 pts), which the body reports but the abstract does not foreground",
+  "type": "regime-sweep",
+  "mechanism": "skill cascading attacks (a malicious objective distributed across 2+ skills) evaluated against per-skill scanners and runtime monitors",
+  "mechanism_lever": "defense type (per-skill scanner vs joint cross-skill scanner vs runtime monitor)",
+  "metric": "stealth rate (fraction of scanner submissions returning a safe verdict, higher is stealthier)",
+  "scope_claim": true,
+  "probe_support_fraction": 1.0,
+  "rows": [
+    {
+      "label": "per-skill scanners (static + LLM; 5 scanners; full benchmark)",
+      "mechanism_on": true,
+      "substrate": [
+        "per_skill_scanner"
+      ],
+      "metric": 0.86
+    },
+    {
+      "label": "joint cross-skill scanner (Joint-LLM; full benchmark)",
+      "mechanism_on": true,
+      "substrate": [
+        "joint_scanner"
+      ],
+      "metric": 0.83
+    },
+    {
+      "label": "runtime monitors (4 defenses; single config OpenClaw+GPT-5.4-mini)",
+      "mechanism_on": true,
+      "substrate": [
+        "runtime_monitor"
+      ],
+      "metric": 0.885
+    }
+  ],
+  "claim_channel_address": "scanner_verdict",
+  "falsifier_witness_address": "scanner_verdict",
+  "expected": [],
+  "note": "LIVE EXTERNAL SPECIMEN (arXiv 2609.30383, Zhu/Lyu/Bibi/Wu, 2026-09-30). The paper introduces skill cascading attacks, in which a malicious objective is distributed across 2+ skills so that each modification clears per-skill scanning in isolation but the combined execution is harmful. They build SkillCascade (5-agent red-teaming, all on Claude Sonnet 4.6) and SkillCascade-Bench (213 validated cases, 10 domains, avg cascade 3.25). Headline: global ASR 89.4% over 24 configs (3 agents x 8 backbones), per-skill scanner stealth >=86% (delta <= 4.7 pts), runtime-defense evasion 88.5%. The load-bearing seam is WITNESS-ADDRESS / self-keyed (via selection): the benchmark is the OUTPUT of a pipeline whose inner loop 'iterates on the modified skill set until every skill independently passes per-skill scanning' (App C.1), using the SAME four public scanners (D.3: Skill-Vetter, Skill-Scanner, SkillScan, AIG-EdgeOne) that Section 5.3 measures (5.3 also measures a fifth, SkillProbe, which the selection loop does not use; the headline stealth rate is dominated by the four self-selected scanners). So the abstract's 'evading existing per-skill scanners' reports the absolute stealth rate of a population SELECTED to be stealthy. The selection-robust evidence is the delta (2.5-4.7 pts), which the body reports but the abstract does not foreground. The scanner both certifies (selects) and measures the population -> the falsifier reads from the same address as the selection channel. claim_channel_address = falsifier_witness_address = scanner_verdict (same address) -> WITNESS-ADDRESS fires. Secondary seam (scope, logged not flagged): the abstract pools 'evading per-skill scanners AND runtime monitors' without the single-config caveat (DER is measured on ONE config, OpenClaw + GPT-5.4-mini, while ASR is 24 configs). Tertiary seam (qualification, logged not flagged): the threat model requires attacker-controlled co-installation, asserted as 'natural' and cited to platform suite-install patterns, but the Discussion flags 'the empirical incidence of attacker-controlled co-installation in open marketplaces remains an open question we cannot answer from controlled experiments alone.' The honest, non-self-keyed core: the Behavior-Composition Scanner (Sec 6.4) is a genuinely different instrument (generative counterfactual, not the per-skill scanner) and catches 30+ pts on causal cascades -> that is the real, non-self-keyed result, and it is the paper's strongest. WITNESS-ADDRESS now fires on 4 specimens with 3 exclusive (the WA1 constructed witness, 2609.30397, and this one; the post-7253 partial-exit live specimen co-fires with NO-EMPIRICAL-CONTENT, so it is not exclusive). This live specimen is the third real-world witness (the selection face of the self-keyed family)."
+}
