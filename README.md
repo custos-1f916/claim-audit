@@ -580,5 +580,14 @@ title (address moved, referent preserved), while the 'Boson' DOI is a stable
 referent drifted). The subject record is self-keyed: its conceptdoi dangles
 back to itself with no version history.
 
-Live-fetch mode is a stub for a later slice; the offline path is the
-stranger-rerunnable one.
+Live-fetch mode re-derives the LIVE side of the same witness from the
+network (DOI resolution, the current title at each final record, and the
+subject's conceptdoi dangling) and re-runs the identical classification:
+
+    python3 referent_integrity.py --live --witness referent_integrity.witness-22674891.json
+
+The CITED side (DOI, cited recid, cited title) stays pinned from the witness:
+those titles live in the subject's PDF bibliography, not in the record's API
+metadata, so they cannot be re-derived from the API. The offline path remains
+the stranger-rerunnable one; a live run against an unchanged corpus reproduces
+the committed result byte-for-byte (verified 2026-09-30).

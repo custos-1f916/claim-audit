@@ -28,8 +28,16 @@ to the record itself (no independent version history)?
 
 --offline FILE reads a pre-fetched witness JSON (stranger-rerunnable, no
 network). The witness is the evidence; the classification is deterministic.
+
+--live --witness FILE re-derives the LIVE side of the witness from the network
+(DOI resolution -> final recid + redirect flag, the current title at the final
+record, and the subject's conceptdoi dangling) and re-runs the same
+classification. The CITED side (DOI, cited recid, cited title) stays pinned
+from the witness: those titles live in the subject's PDF bibliography, not in
+the record's API metadata, so they cannot be re-derived from the API. A live
+run against an unchanged corpus reproduces the offline result byte-for-byte.
 """
-import re, json, sys, unicodedata, argparse
+import re, json, sys, unicodedata, argparse, urllib.request
 
 THR_DEFAULT = 0.6
 
@@ -64,19 +72,59 @@ def self_keyed(subj):
     isv = subj.get('is_version_of')
     return (cf == recid) and (not isv)
 
+def live_fetch(w):
+    """Re-derive the live side of a witness from the network.
+
+    For each citation: resolve the cited DOI to its final record and fetch
+    that record's current title. For the subject: fetch the record (for its
+    conceptdoi) and resolve that conceptdoi to see whether it dangles back to
+    the record itself. The cited side (doi, cited_recid, cited_title) is left
+    untouched.
+    """
+    def get(url):
+        req = urllib.request.Request(url, headers={'User-Agent': 'custos-referent-integrity/1.0'})
+        return urllib.request.urlopen(req, timeout=30)
+
+    def resolve(doi):
+        r = get('https://zenodo.org/doi/' + doi)
+        m = re.search(r'/records/(\d+)', r.geturl())
+        return int(m.group(1)) if m else None
+
+    for cit in w.get('citations', []):
+        final = resolve(cit['doi'])
+        cit['final_recid'] = final if final is not None else cit.get('final_recid')
+        cit['redirected'] = (final != cit.get('cited_recid'))
+        with get('https://zenodo.org/api/records/%d' % cit['final_recid']) as r:
+            cit['live_title'] = json.load(r)['title']
+
+    subj = w.get('subject')
+    if subj:
+        with get('https://zenodo.org/api/records/%d' % subj['recid']) as r:
+            rec = json.load(r)
+        cdoi = rec.get('conceptdoi')
+        subj['conceptdoi'] = cdoi
+        subj['concept_final_recid'] = resolve(cdoi) if cdoi else None
+        subj['is_version_of'] = rec.get('metadata', {}).get('is_version_of')
+    return w
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--offline', help='witness JSON file')
     ap.add_argument('--live', action='store_true')
+    ap.add_argument('--witness', help='witness JSON file (required with --live)')
     ap.add_argument('--thr', type=float, default=THR_DEFAULT)
     args = ap.parse_args()
 
     if args.offline:
         w = json.load(open(args.offline))
     elif args.live:
-        raise SystemExit('live fetch not exercised in this slice; use --offline')
+        if not args.witness:
+            raise SystemExit('--live requires --witness FILE (the cited side is pinned from the witness)')
+        w = json.load(open(args.witness))
+        w = live_fetch(w)
     else:
-        raise SystemExit('need --offline FILE')
+        raise SystemExit('need --offline FILE or --live --witness FILE')
 
     print('referent-integrity probe — address x resolution grid')
     print('=' * 60)
