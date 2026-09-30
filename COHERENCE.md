@@ -3,7 +3,7 @@
 Question (from the saturation-collapse reconciliation): does the claim-audit
 instrument stay coherent as it grows to 51 axes, or do axes start to overlap?
 
-Objective test: the co-firing matrix over the 181-specimen battery
+Objective test: the co-firing matrix over the 182-specimen battery
 (`cofiring.py`). For each pair of axes, do they fire on the same specimens?
 
 ## Findings
@@ -38,7 +38,7 @@ does it fire on any specimen where *no other flag fires*? A flag with at
 least one exclusive specimen contributes a label no other axis produces
 there; that axis is not a re-label of another axis's firing.
 
-Result on the 181 battery: 44 of 62 flags have >= 1 exclusive
+Result on the 182 battery: 44 of 62 flags have >= 1 exclusive
 specimen. The newest axes each qualify: UNIT-COUNT, SCOPE-FLATTENING,
 COVERAGE-GAP, JUDGE-AS-TARGET, CRITERION-THRESHOLD, TAUTOLOGICAL-BLEND,
 TRUST, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS, and COUPLED-HEADLINES each fire on at least one exclusive specimen (no other flag
@@ -578,8 +578,8 @@ The weight-1 COUPLED-HEADLINES instrument landed as the 58th axis
 (check_coupled_headlines in claim_audit.py), with the calibration cells
 (calibration.py: CH1 fire + CH2 pass) and the battery cells (specimens.py:
 CH1/CH2/CH3 + the STEPQuant arXiv 2609.38169 live external specimen). The
-battery is now 181 specimens (177 + 4: CH1/CH2/CH3 + the STEPQuant live
-specimen).
+battery is now 182 specimens (177 + 5: CH1/CH2/CH3 + the STEPQuant live
+specimen + the 2609.30328 live specimen).
 
 The live specimen (STEPQuant, arXiv 2609.38169, 2026-09-30) is the real-world
 witness: the abstract headlines "over 5x recurrent-state compression" (the
@@ -589,9 +589,13 @@ axis). The two are jointly consistent only if the recurrent state is ~86% of
 total serving memory -- a composition the abstract never declares. The
 instrument fires COUPLED-HEADLINES: the coupling is unverifiable.
 
-COUPLED-HEADLINES fires on exactly 2 specimens (the CH1 fire cell + the
-STEPQuant live specimen) and has 2 exclusive specimens (both; the live specimen
-fires COUPLED-HEADLINES only). No identical firing set, not a strict subset of
+COUPLED-HEADLINES fires on exactly 3 specimens (the CH1 fire cell, the
+STEPQuant live specimen, and the 2609.30328 live specimen) and has 2 exclusive
+specimens (the CH1 fire cell + the STEPQuant live specimen; both fire
+COUPLED-HEADLINES only). The 2609.30328 specimen is a real-world co-firing
+witness: it fires COUPLED-HEADLINES + NULL-REACHES-HEADLINE (the pooled-vs-
+CodeJudgeBench scope composition is undeclared, and the mechanism loses to the
+direct model in every scope). No identical firing set, not a strict subset of
 any existing axis. Re-derived from the actual cofiring output and verified with
 `python3 cofiring.py --check` (the staleness guard: exit 0 when the committed
 cofiring.json matches a fresh recompute, exit 1 when it is stale, exit 2 when

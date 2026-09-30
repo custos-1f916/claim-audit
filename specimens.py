@@ -2855,4 +2855,26 @@ SPECIMENS = [
     "expected": ["COUPLED-HEADLINES"],
     "note": "LIVE EXTERNAL SPECIMEN (arXiv 2609.38169, STEPQuant, 2026-09-30). The abstract headlines two coupled numbers on two different axes: (1) 'over 5x recurrent-state compression' on the mechanism's OWN axis, which is tautological from the nominal 6-bit budget (32/6=5.33x), and (2) 'reduces total serving memory by 68.7%' on the WIDER substrate axis. The two are jointly consistent only if the recurrent state is ~86% of total serving memory (0.8*f=0.687 -> f=0.859), a substrate composition the abstract never declares. coupled_headlines=yes + broader_derived=yes + composition_declared=no -> COUPLED-HEADLINES fires. The constructed CH1 witness is what makes the axis exclusive on the battery; this live specimen is the real-world witness."
   },
+  {
+    "name": "2609.30328 (When Is a Multi-Agent Code Judge Actually Grounded?, Aly/Assaf/Kobti, Windsor): the abstract headlines a pooled ungated 4.4% alongside a CodeJudgeBench-only gated 36.9% as one story; the scope composition is undeclared, and the mechanism loses to the direct model in every scope",
+    "type": "regime-sweep",
+    "mechanism": "MARCH multi-agent code-verification pipeline (run unmodified) vs the same model asked directly",
+    "mechanism_lever": "multi-agent claim decomposition + verification",
+    "metric": "accuracy (fraction of comparisons judged correctly)",
+    "scope_claim": True,
+    "probe_support_fraction": 1.0,
+    "stated_headline": 0.044,
+    "rows": [
+      {"label": "CodeJudgeBench ungated", "mechanism_on": True, "substrate": ["march", "codejudgebench"], "metric": 0.207},
+      {"label": "pooled both benchmarks ungated", "mechanism_on": True, "substrate": ["march", "pooled"], "metric": 0.044},
+      {"label": "direct CodeJudgeBench (null)", "mechanism_on": False, "is_null": True, "substrate": ["direct", "codejudgebench"], "metric": 0.734},
+      {"label": "direct pooled (null)", "mechanism_on": False, "is_null": True, "substrate": ["direct", "pooled"], "metric": 0.437}
+    ],
+    "coupled_headlines": "yes",
+    "broader_derived": "yes",
+    "composition_declared": "no",
+    "expected": ["NULL-REACHES-HEADLINE", "COUPLED-HEADLINES"],
+    "note": "LIVE EXTERNAL SPECIMEN (arXiv 2609.30328, 2026-09-30). The abstract headlines MARCH ungated accuracy as a single universal 4.4% ('reaching 4.4% accuracy where the same model asked directly reaches 43.7%'), but that number is pooled over BOTH benchmarks (80 condition-by-cell measurements) and its scope is never declared. The gated repair ('raises its accuracy from 20.7 to 36.9%') is the CodeJudgeBench-only table row (the body scopes the table: 'The table reports CodeJudgeBench, the benchmark that carries difficulty labels'). A reader who combines the pooled baseline (4.4%) with the CodeJudgeBench post-gate (36.9%) reads an ~8.4x gate effect; the same-scope (CodeJudgeBench) effect is 20.7->36.9 = ~1.78x. The scope composition (pooled vs CodeJudgeBench) is undeclared -> COUPLED-HEADLINES fires (the axis generalizes from substrate-composition to scope-composition). The mechanism (MARCH) loses to the direct model in every scope (20.7 < 73.4, 4.4 < 43.7) -> NULL-REACHES-HEADLINE fires (faithful: the paper's point is the pipeline is bad). SCOPE-FLATTENING is N/A (the max-over-scope headline 0.207 does not beat the max-over-scope null 0.734; the flattening is not masked, so NULL-REACHES-HEADLINE governs) -- a calibration data point: the seam is a scope-mismatch WITHOUT directional support, which SCOPE-FLATTENING (requires directional support) misses and COUPLED-HEADLINES (via the undeclared scope composition) catches. Secondary seam: abstract '80 condition-by-cell measurements' vs body '54 experimental cells' (unreconciled counts). The constructed CH1 witness is the exclusive COUPLED-HEADLINES witness; this live specimen is a real-world co-firing witness (COUPLED-HEADLINES + NULL-REACHES-HEADLINE)."
+  },
+
 ]

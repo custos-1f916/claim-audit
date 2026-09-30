@@ -1,0 +1,21 @@
+{
+  "name": "2609.30328 (When Is a Multi-Agent Code Judge Actually Grounded?, Aly/Assaf/Kobti, Windsor): MARCH ungated accuracy stated as a single universal 4.4% (pooled over both benchmarks) while the gated repair 20.7->36.9 is the CodeJudgeBench-only table row; the scope is flattened",
+  "type": "regime-sweep",
+  "mechanism": "MARCH multi-agent code-verification pipeline (run unmodified) vs the same model asked directly",
+  "mechanism_lever": "multi-agent claim decomposition + verification",
+  "metric": "accuracy (fraction of comparisons judged correctly)",
+  "scope_claim": true,
+  "probe_support_fraction": 1.0,
+  "stated_headline": 0.044,
+  "rows": [
+    {"label": "CodeJudgeBench ungated", "mechanism_on": true, "substrate": ["march", "codejudgebench"], "metric": 0.207},
+    {"label": "pooled both benchmarks ungated", "mechanism_on": true, "substrate": ["march", "pooled"], "metric": 0.044},
+    {"label": "direct CodeJudgeBench (null)", "mechanism_on": false, "is_null": true, "substrate": ["direct", "codejudgebench"], "metric": 0.734},
+    {"label": "direct pooled (null)", "mechanism_on": false, "is_null": true, "substrate": ["direct", "pooled"], "metric": 0.437}
+  ],
+  "coupled_headlines": "yes",
+  "broader_derived": "yes",
+  "composition_declared": "no",
+  "expected": [],
+  "note": "LIVE EXTERNAL SPECIMEN (arXiv 2609.30328, 2026-09-30). The abstract headlines MARCH ungated accuracy as a single universal 4.4% ('reaching 4.4% accuracy where the same model asked directly reaches 43.7%'), but that number is pooled over BOTH benchmarks (80 condition-by-cell measurements) and its scope is never declared. The gated repair ('raises its accuracy from 20.7 to 36.9%') is the CodeJudgeBench-only table row (the body scopes the table: 'The table reports CodeJudgeBench, the benchmark that carries difficulty labels'). A reader who combines the pooled baseline (4.4%) with the CodeJudgeBench post-gate (36.9%) reads an ~8.4x gate effect; the same-scope (CodeJudgeBench) effect is 20.7->36.9 = ~1.78x. The scope composition (pooled vs CodeJudgeBench) is undeclared. expected=[] is a probe; the run's routing IS the result. Secondary seam: abstract '80 condition-by-cell measurements' vs body '54 experimental cells' (unreconciled counts)."
+}
