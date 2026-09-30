@@ -1,5 +1,5 @@
 {
-  "battery": 173,
+  "battery": 177,
   "check2flag": {
     "AGGREGATION-REVERSAL": "AGGREGATION-REVERSAL",
     "ANNOTATOR-SELF-KEYED": "ANNOTATOR-SELF-KEYED",
@@ -56,6 +56,7 @@
     "UNWITNESSED-ROOT": "UNWITNESSED-ROOT",
     "WIDER-THAN-NAMED": "WIDER-THAN-NAMED",
     "WINDOW-PRESENT-TENSE": "WINDOW-PRESENT-TENSE",
+    "WITNESS-ADDRESS": "WITNESS-ADDRESS",
     "WITNESS-POPULATION-SELECTION": "WITNESS-POPULATION-SELECTION"
   },
   "cofire_eq1": [
@@ -143,6 +144,11 @@
       "NO-EMPIRICAL-CONTENT",
       "WINDOW-PRESENT-TENSE",
       107
+    ],
+    [
+      "NO-EMPIRICAL-CONTENT",
+      "WITNESS-ADDRESS",
+      174
     ],
     [
       "NULL-REACHES-HEADLINE",
@@ -265,7 +271,7 @@
     "LOSSY-PROJECTION": 6,
     "METRIC-ONSET": 1,
     "METRIC-SPIKE": 3,
-    "NO-EMPIRICAL-CONTENT": 19,
+    "NO-EMPIRICAL-CONTENT": 20,
     "NOT-COMPUTABLE": 2,
     "NULL-REACHES-HEADLINE": 37,
     "OPT-IN-CENSUS": 1,
@@ -301,6 +307,7 @@
     "WIDER-THAN-NAMED": 2,
     "WINDOW-PRESENT-TENSE": 1,
     "WITHIN-NOISE": 1,
+    "WITNESS-ADDRESS": 2,
     "WITNESS-POPULATION-SELECTION": 1,
     "WRONG-AXIS": 5
   },
@@ -343,7 +350,7 @@
     ],
     "DECLARED-CHANNEL": [
       164,
-      171
+      175
     ],
     "DOSE-ONSET": [
       37
@@ -400,7 +407,7 @@
       73,
       85,
       87,
-      172
+      176
     ],
     "OPT-IN-CENSUS": [],
     "OUTCOME-ONSET": [
@@ -489,6 +496,9 @@
     "WITHIN-NOISE": [
       8
     ],
+    "WITNESS-ADDRESS": [
+      171
+    ],
     "WITNESS-POPULATION-SELECTION": [
       117
     ],
@@ -547,7 +557,7 @@
     ],
     "DECLARED-CHANNEL": [
       164,
-      171
+      175
     ],
     "DOSE-ONSET": [
       37
@@ -613,7 +623,8 @@
       146,
       147,
       148,
-      152
+      152,
+      174
     ],
     "NOT-COMPUTABLE": [
       15,
@@ -656,7 +667,7 @@
       86,
       87,
       88,
-      172
+      176
     ],
     "OPT-IN-CENSUS": [
       146
@@ -780,6 +791,10 @@
     "WITHIN-NOISE": [
       8
     ],
+    "WITNESS-ADDRESS": [
+      171,
+      174
+    ],
     "WITNESS-POPULATION-SELECTION": [
       117
     ],
@@ -809,7 +824,7 @@
       "EVIDENCE-UNCLOSED",
       "NO-EMPIRICAL-CONTENT",
       2,
-      19
+      20
     ],
     [
       "FUNNEL-STAGE-MISATTRIBUTION",
@@ -827,37 +842,37 @@
       "NOT-COMPUTABLE",
       "NO-EMPIRICAL-CONTENT",
       2,
-      19
+      20
     ],
     [
       "OPT-IN-CENSUS",
       "NO-EMPIRICAL-CONTENT",
       1,
-      19
+      20
     ],
     [
       "UNWITNESSED-RECEIPT",
       "NO-EMPIRICAL-CONTENT",
       1,
-      19
+      20
     ],
     [
       "UNWITNESSED-ROOT",
       "NO-EMPIRICAL-CONTENT",
       1,
-      19
+      20
     ],
     [
       "WIDER-THAN-NAMED",
       "NO-EMPIRICAL-CONTENT",
       2,
-      19
+      20
     ],
     [
       "WINDOW-PRESENT-TENSE",
       "NO-EMPIRICAL-CONTENT",
       1,
-      19
+      20
     ],
     [
       "OUTCOME-SPIKE",

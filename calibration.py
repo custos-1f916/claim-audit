@@ -626,6 +626,28 @@ SPECIMENS = [
     'carrier_in_read_path': 'yes',
     'content_verifiable': 'yes',
     'decision_channel': 'verified-content'
+  },
+  {
+    'name': 'WITNESS-ADDRESS FIRE (falsifier witness same address as claim channel, WA1): the falsifier is itself self-keyed',
+    'truth': ['WITNESS-ADDRESS'],
+    'truth_reason': "FIRE CELL (witness-address axis, 57th, 2026-09-30). claim_channel_address=exchange_ledger + falsifier_witness_address=exchange_ledger (same address): the claim's proposed falsifier reads its witness from the same address as the channel that produced the claim, so the falsifier is itself self-keyed -- a mis-record at the ledger level slips through both the claim and the falsifier, so the acceptance test cannot catch the failure it was designed to catch -> WITNESS-ADDRESS fires, and no other flag fires (exclusive). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00, no knob/CI/subgroup). Distinct from SCOPE-OF-INDEPENDENCE (the 'independent' QUALIFIER on a panel; here the falsifier's WITNESS is the referent and the question is whether it is a distinct ADDRESS) and from UNWITNESSED-RECEIPT (a disagreement going unread; here the witness may be read and agree -- the failure is that it reads from the same address as the claim channel).",
+    'type': 'cross-model',
+    'mechanism': 'exit-engine state (closed vs residual)',
+    'metric': 'position state (does the engine record the position as closed)',
+    'rows': [{"mechanism_on": True, "metric": 0.70}, {"mechanism_on": False, "is_null": True, "metric": 0.00}],
+    'claim_channel_address': 'exchange_ledger',
+    'falsifier_witness_address': 'exchange_ledger'
+  },
+  {
+    'name': 'WITNESS-ADDRESS PASS (falsifier witness distinct address, WA2): the falsifier is genuinely independent',
+    'truth': [],
+    'truth_reason': "PASS CELL (witness-address axis, 57th, 2026-09-30). claim_channel_address=exchange_ledger + falsifier_witness_address=on_chain_balance (distinct address): the claim's proposed falsifier reads its witness from a distinct address than the channel that produced the claim, so the falsifier is genuinely independent -> WITNESS-ADDRESS is N/A (the pass cell). Byte-identical to the fire cell except falsifier_witness_address (on_chain_balance vs exchange_ledger), so fire-vs-pass isolates the address. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires.",
+    'type': 'cross-model',
+    'mechanism': 'exit-engine state (closed vs residual)',
+    'metric': 'position state (does the engine record the position as closed)',
+    'rows': [{"mechanism_on": True, "metric": 0.70}, {"mechanism_on": False, "is_null": True, "metric": 0.00}],
+    'claim_channel_address': 'exchange_ledger',
+    'falsifier_witness_address': 'on_chain_balance'
   }
 
 ]

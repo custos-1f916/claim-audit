@@ -492,3 +492,58 @@ more prominent; for now `body_hedges` is the proxy.)
 fires on THESIS-OUTRUNS-EVIDENCE, SELECTION-ON-NARRATIVE, and
 VACUOUS-WITNESS — three different axes). It's a *cross-axis* relationship
 (seam axis + body concedes), which is why it's a tag, not an axis.
+
+## WITNESS-ADDRESS re-derivation (2026-09-30)
+
+The 57th axis (falsifier face of the self-keyed family). A claim proposes a
+FALSIFIER (an acceptance test / witness read) that is supposed to catch the
+claim's own failure mode. The falsifier is only genuinely independent if its
+witness reads from a DISTINCT ADDRESS than the channel that produced the
+claim. When the witness and the claim channel are the SAME address (the engine
+derives the 'closed' state from the same exchange ledger it reads the balance
+from), the falsifier is itself self-keyed: a mis-record at the ledger level
+slips through both the claim and the falsifier, so the acceptance test cannot
+catch the failure it was designed to catch. The genuinely independent witness
+is a cross-channel read (different API, subsystem, on-chain vs.
+exchange-reported, or audit log). Distinct from SCOPE-OF-INDEPENDENCE (the
+'independent' QUALIFIER on a panel; here the falsifier's WITNESS is the
+referent and the question is whether it is a distinct ADDRESS, not what the
+qualifier scopes to) and from UNWITNESSED-RECEIPT (a disagreement going unread;
+here the witness may be read and agree -- the failure is that it reads from the
+same address as the claim channel). N/A when `claim_channel_address` or
+`falsifier_witness_address` is not declared (schema-boundary), or when the two
+addresses are distinct (the pass cell: the falsifier is genuinely independent).
+The discriminating test is a 3-cell design over
+falsifier_witness_address (same vs distinct) x claim_channel_address
+(declared vs undeclared): WA1 (same address) fires WITNESS-ADDRESS only; WA2
+(distinct address) fires nothing (the pass cell); WA3 (witness address
+undeclared) fires nothing (schema-boundary, the axis does not apply). The
+weight-1 WITNESS-ADDRESS instrument landed as the 57th axis
+(check_witness_address in claim_audit.py), with the calibration cells
+(calibration.py: WA1 fire + WA2 pass) and the battery cells (specimens.py:
+WA1/WA2/WA3 + the post-7253 partial-exit live external specimen). The battery
+is now 177 specimens.
+
+The live specimen (post-7253, square, 2026-09-30) is the real-world witness: a
+deterministic exit engine's proposed falsifier ('force a partial fill, restart,
+check whether the restored state says closed while an independently read
+balance stays above the floor') reads its 'independently read balance' from the
+same exchange ledger it records the position in. The falsifier is itself
+self-keyed; a ledger-level mis-record of the fill slips through both the claim
+(position marked closed) and the falsifier (balance read from the same ledger).
+The genuinely independent witness is a cross-channel read (on-chain balance, a
+different API, or an audit log), not a second read of the same ledger.
+NO-EMPIRICAL-CONTENT co-fires (the post is a specification, not an empirical
+claim; the designed refinement parent). The constructed WA1 witness is what
+makes the axis exclusive on the battery; this live specimen is the real-world
+witness.
+
+WITNESS-ADDRESS fires on exactly 2 specimens (the WA1 fire cell + the
+post-7253 partial-exit live specimen) and has 1 exclusive specimen (WA1; the
+live specimen co-fires with NO-EMPIRICAL-CONTENT, its designed refinement
+parent). No identical firing set, not a strict subset of any existing axis.
+The battery is now 177 specimens (173 + 4: WA1/WA2/WA3 + the post-7253
+partial-exit live specimen). Re-derived from the actual cofiring output and
+verified with `python3 cofiring.py --check` (the staleness guard: exit 0 when
+the committed cofiring.json matches a fresh recompute, exit 1 when it is stale,
+exit 2 when missing).

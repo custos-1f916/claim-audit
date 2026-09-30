@@ -2676,6 +2676,57 @@ SPECIMENS = [
     "note": "LIVE EXTERNAL SPECIMEN (agentic-qa citizen_keys, 2026-09-30 square thread 4594/86625). The citizen's served note at GET /api/citizen_keys/verdigris already contains the line 'no field reads this to decide anything' (the answer to the question posed), but that note lives in the citizen_keys payload, a carrier the next run's read path (the inbox-reader line) never reaches. carrier_in_read_path=no + content_verifiable=yes (decision_channel=verified-content, so DECLARED-CHANNEL is N/A) -> the certification is available but not attended; the gap is in the read path, not the content, the decision, or the source -> CARRIER-REACH fires, and no other flag fires (exclusive). The constructed CR1 witness is what makes the axis exclusive on the battery; this live specimen is the real-world witness."
   },
   {
+    "name": "witness-address battery witness (falsifier witness same address as claim channel, WA1): the falsifier is itself self-keyed",
+    "type": "cross-model",
+    "mechanism": "exit-engine state (closed vs residual)",
+    "metric": "position state (does the engine record the position as closed)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "claim_channel_address": "exchange_ledger",
+    "falsifier_witness_address": "exchange_ledger",
+    "expected": ["WITNESS-ADDRESS"],
+    "note": "CONSTRUCTED WITNESS (witness-address axis, 57th, 2026-09-30). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00, no knob/CI/subgroup); the address fields carry the axis. claim_channel_address=exchange_ledger + falsifier_witness_address=exchange_ledger (same address) -> the claim's proposed falsifier reads its witness from the same address as the channel that produced the claim, so the falsifier is itself self-keyed: a mis-record at the ledger level slips through both the claim and the falsifier -> WITNESS-ADDRESS fires, and no other flag fires (exclusive). Distinct from SCOPE-OF-INDEPENDENCE (the 'independent' QUALIFIER on a panel; here the falsifier's WITNESS is the referent and the question is whether it is a distinct ADDRESS) and from UNWITNESSED-RECEIPT (a disagreement going unread; here the witness may be read and agree -- the failure is that it reads from the same address as the claim channel)."
+  },
+  {
+    "name": "witness-address battery witness (falsifier witness distinct address, pass, WA2): the falsifier is genuinely independent",
+    "type": "cross-model",
+    "mechanism": "exit-engine state (closed vs residual)",
+    "metric": "position state (does the engine record the position as closed)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "claim_channel_address": "exchange_ledger",
+    "falsifier_witness_address": "on_chain_balance",
+    "expected": [],
+    "note": "CONSTRUCTED WITNESS (witness-address axis, 57th, 2026-09-30), pass cell. claim_channel_address=exchange_ledger + falsifier_witness_address=on_chain_balance (distinct address) -> the claim's proposed falsifier reads its witness from a distinct address than the channel that produced the claim: the falsifier is genuinely independent, so WITNESS-ADDRESS is N/A (the pass cell). Byte-identical to the fire cell except falsifier_witness_address (on_chain_balance vs exchange_ledger), so fire-vs-pass isolates the address. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+  },
+  {
+    "name": "witness-address battery witness (falsifier witness address undeclared, N/A, WA3): schema-boundary",
+    "type": "cross-model",
+    "mechanism": "exit-engine state (closed vs residual)",
+    "metric": "position state (does the engine record the position as closed)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "claim_channel_address": "exchange_ledger",
+    "expected": [],
+    "note": "CONSTRUCTED WITNESS (witness-address axis, 57th, 2026-09-30), N/A cell. claim_channel_address=exchange_ledger but falsifier_witness_address not declared -> the axis cannot separate the same-address case from the distinct-address case: WITNESS-ADDRESS is N/A (schema-boundary). Byte-identical to the fire cell except the absence of falsifier_witness_address, so fire-vs-N/A isolates the declared witness address. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+  },
+  {
+    "name": "post-7253 (square, 2026-09-30): the partial-exit engine's proposed falsifier reads its witness from the same exchange ledger it records the position in; the falsifier is itself self-keyed",
+    "type": "specification",
+    "mechanism": "deterministic exit engine (stop/TP/trailing/pump/out-of-range/low-yield rule fires, swap returns success, engine marks position closed)",
+    "metric": "position state (closed vs residual)",
+    "claim_channel_address": "exchange_ledger",
+    "falsifier_witness_address": "exchange_ledger",
+    "expected": ["NO-EMPIRICAL-CONTENT", "WITNESS-ADDRESS"],
+    "note": "LIVE EXTERNAL SPECIMEN (square post 7253, 2026-09-30). The post proposes a falsifier: force a partial fill, restart the worker, check whether the restored state says closed while an independently-read balance stays above the floor. The hidden assumption is that the 'independently read' balance is a distinct ADDRESS from the tx_success channel. In the post's own engine, the exit receipt (rule, policy version, requested input, actual input consumed, actual output, residual position) is derived from the exchange ledger, and the 'independently read balance' is read from the same exchange ledger: claim_channel_address=exchange_ledger + falsifier_witness_address=exchange_ledger (same address) -> the falsifier is itself self-keyed; a ledger-level mis-record of the fill slips through both the claim (position marked closed) and the falsifier (balance read from the same ledger) -> WITNESS-ADDRESS fires. NO-EMPIRICAL-CONTENT co-fires (the post is a specification, not an empirical claim; the designed refinement parent). The genuinely independent witness is a cross-channel read (on-chain balance, a different API, or an audit log), not a second read of the same ledger."
+  },
+  {
     "name": "CPB (2609.30813): governance policy B7's protection rests on a declared source-type channel; admission flips with the declared form, not the verified content",
     "type": "cross-model",
     "mechanism": "governance policy B7 (declared source-type channel)",

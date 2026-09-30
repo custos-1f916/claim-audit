@@ -2161,6 +2161,35 @@ def check_carrier_reach(spec):
     detail = ("the information that would let a stranger reach the correct conclusion is present and independently verifiable (content_verifiable=yes) but sits in a carrier the consumer's read path never traverses (carrier_in_read_path=no): the certification is available but not attended, so the gap is in the read path, not the content, the decision, or the source")
     return False, "CARRIER-REACH", detail
 
+def check_witness_address(spec):
+    """WITNESS-ADDRESS (57th primary axis, 2026-09-30): the falsifier face of the
+    self-keyed family. A claim proposes a FALSIFIER (an acceptance test / witness
+    read) that is supposed to catch the claim's own failure mode. The falsifier is
+    only genuinely independent if its witness reads from a DISTINCT ADDRESS than
+    the channel that produced the claim. When the witness and the claim channel are
+    the SAME address (the engine derives the 'closed' state from the same exchange
+    ledger it reads the balance from), the falsifier is itself self-keyed: a
+    mis-record at the ledger level slips through both the claim and the falsifier,
+    so the acceptance test cannot catch the failure it was designed to catch. The
+    genuinely independent witness is a cross-channel read (different API,
+    subsystem, on-chain vs. exchange-reported, or audit log). Distinct from
+    SCOPE-OF-INDEPENDENCE (the 'independent' QUALIFIER on a panel; here the
+    falsifier's WITNESS is the referent and the question is whether it is a distinct
+    ADDRESS, not what the qualifier scopes to) and from UNWITNESSED-RECEIPT (a
+    disagreement going unread; here the witness may be read and agree -- the failure
+    is that it reads from the same address as the claim channel). N/A when
+    `claim_channel_address` or `falsifier_witness_address` is not declared
+    (schema-boundary), or when the two addresses are distinct (the pass cell).
+    fail -> WITNESS-ADDRESS."""
+    claim_addr = spec.get("claim_channel_address")
+    witness_addr = spec.get("falsifier_witness_address")
+    if claim_addr is None or witness_addr is None:
+        return True, "", "N/A (claim_channel_address or falsifier_witness_address not declared; the axis does not apply)"
+    if str(claim_addr).strip() != str(witness_addr).strip():
+        return True, "", "N/A (falsifier_witness_address=%s is a distinct address from claim_channel_address=%s: the witness is genuinely independent; the pass cell)" % (witness_addr, claim_addr)
+    detail = ("the falsifier's witness reads from the same address as the channel that produced the claim (claim_channel_address=%s == falsifier_witness_address=%s): the acceptance test is itself self-keyed, so a mis-record at the ledger level slips through both the claim and the falsifier; the genuinely independent witness is a cross-channel read (different API / subsystem / on-chain vs. exchange-reported / audit log)" % (claim_addr, witness_addr))
+    return False, "WITNESS-ADDRESS", detail
+
 CHECKS = [
     ("BEATS-NULL",     check_beats_null),
     ("NOT-SELF-KEYED", check_not_self_keyed),
@@ -2218,6 +2247,7 @@ CHECKS = [
     ("CAUSAL-WIRING", check_causal_wiring),
     ("DECLARED-CHANNEL", check_declared_channel),
     ("CARRIER-REACH", check_carrier_reach),
+    ("WITNESS-ADDRESS", check_witness_address),
 ]
 
 def _no_empirical(spec):
@@ -2231,7 +2261,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING", "THESIS-OUTRUNS-EVIDENCE", "UNIT-COUNT", "OPT-IN-CENSUS", "CAUSAL-WIRING", "DECLARED-CHANNEL", "CARRIER-REACH"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING", "THESIS-OUTRUNS-EVIDENCE", "UNIT-COUNT", "OPT-IN-CENSUS", "CAUSAL-WIRING", "DECLARED-CHANNEL", "CARRIER-REACH", "WITNESS-ADDRESS"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:
