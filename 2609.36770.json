@@ -1,0 +1,121 @@
+{
+  "spec": "2609.36770 (Emergent Specialization in Populations of Self-Supervised Collaborative Vision Experts Without a Shared Gate or Cross-Agent Gradients, Davtyan/Acuaviva/Stapf/Favaro, 2026-10-01): the core causal claim 'specialization rather than population size drives the gain' is well-controlled (random-routing control holds K=4 + total budget, removes only semantic structure, underperforms solo); the specialization METRIC Sp is decoupled from performance (K-means Sp=0.957 vs learned-central MoE-style Sp=0.788, both Best=0.678); two mild logged seams: scope extension to 'decentralized predictive pretraining' (hedged) and retention-vs-transfer framing on ImageNet100 (abstract accurate, body clarifies retention + everything degrades below pre-finetuning)",
+  "type": "scope-extension + metric-vs-mechanism (calibration PASS)",
+  "mechanism": "population of independently-trained ViTs, each can ask another for help via a gradient-free forward pass; DISCO = local helper selection + stop-gradient message",
+  "mechanism_lever": "what the router is trained on (per-sample performance / improvement), not how evenly it spreads load",
+  "metric": "R-Top5-Best (expert envelope retrieval hit rate over validation)",
+  "scope_claim": false,
+  "probe_support_fraction": 1.0,
+  "stated_headline": "specialization rather than population size drives the gain",
+  "rows": [
+    {
+      "label": "Solo (1 agent, all data; generalist ref)",
+      "mechanism_on": false,
+      "substrate": [
+        "solo"
+      ],
+      "sp": null,
+      "u": null,
+      "metric": 0.653
+    },
+    {
+      "label": "Random routing (K=4, random split, no semantics)",
+      "mechanism_on": true,
+      "substrate": [
+        "random",
+        "k4"
+      ],
+      "sp": 0.011,
+      "u": 0.999,
+      "metric": 0.65
+    },
+    {
+      "label": "K-means (offline privileged split)",
+      "mechanism_on": true,
+      "substrate": [
+        "kmeans",
+        "k4"
+      ],
+      "sp": 0.957,
+      "u": 0.962,
+      "metric": 0.678
+    },
+    {
+      "label": "Learned central (MoE-style online gate)",
+      "mechanism_on": true,
+      "substrate": [
+        "learned-central",
+        "k4"
+      ],
+      "sp": 0.788,
+      "u": 0.995,
+      "metric": 0.678
+    },
+    {
+      "label": "Distributed delegation (one router/agent)",
+      "mechanism_on": true,
+      "substrate": [
+        "delegation",
+        "k4"
+      ],
+      "sp": 0.926,
+      "u": 0.846,
+      "metric": 0.672
+    },
+    {
+      "label": "DISCO (ours, local + stop-grad message)",
+      "mechanism_on": true,
+      "substrate": [
+        "disco",
+        "k4"
+      ],
+      "sp": 0.931,
+      "u": 0.841,
+      "metric": 0.668
+    },
+    {
+      "label": "ImageNet100 retention (seen in pretraining, not specialization): DISCO",
+      "mechanism_on": true,
+      "substrate": [
+        "disco",
+        "imagenet100",
+        "retention"
+      ],
+      "sp": null,
+      "u": null,
+      "metric": 0.642
+    },
+    {
+      "label": "ImageNet100 retention: solo",
+      "mechanism_on": false,
+      "substrate": [
+        "solo",
+        "imagenet100",
+        "retention"
+      ],
+      "sp": null,
+      "u": null,
+      "metric": 0.636
+    },
+    {
+      "label": "ImageNet100 pre-finetuning baseline (everything falls below this)",
+      "mechanism_on": false,
+      "substrate": [
+        "pre-finetune",
+        "imagenet100"
+      ],
+      "sp": null,
+      "u": null,
+      "metric": 0.663
+    }
+  ],
+  "axes_checked": {
+    "THESIS-OUTRUNS-EVIDENCE": "PASS (hedged: 'measurable evidence for the dynamics needed', 'small scale proxy', 'future work involves larger populations')",
+    "QUALIFICATION-DROP": "PASS (retention-vs-transfer qualification present in body; abstract 'outside the specialization mixture' is accurate, not 'transfer')",
+    "REFERENT-CONSTRUCTED": "PASS ('specialization' well-defined as Sp; paper explicitly distinguishes metric from mechanism)",
+    "COUPLED-HEADLINES": "N/A (single causal claim, not two coupled numbers)",
+    "RANGE-MERGE": "N/A (no min-max range merging distinct regimes)",
+    "SCOPE-FLATTENING": "N/A (claim is causal/controlled, not a single-level scope-universal claim)"
+  },
+  "verdict": "PASS \u2014 no axis fires; calibration data point"
+}

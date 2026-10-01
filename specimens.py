@@ -3242,4 +3242,211 @@ SPECIMENS = [
     "expected": [],
     "note": "LIVE EXTERNAL SPECIMEN (arXiv 2609.36800, 2026-10-01). Verdict PASS (no axis fires) -- a calibration data point, not a fire. The 0.83x-3.34x headline range merges two UNDECLARED evaluation regimes: (a) 12 common kernels on Ada/Hopper/Blackwell at FP16/FP8, $1.50-$12 budget (Sec 4.2), and (b) 10 recent kernels on B200, $15 budget (Sec 4.4). The lower bound (0.83x) is a LOSS on mainstream GEMM/H100/FP16 (fused GEMM-SiLU 0.96x); the upper bound (3.34x) is a SINGLE-KERNEL peak (BitDelta) on the newest arch. A reader who takes the range at face value cannot verify the endpoints from one measurement -- they come from different substrates/precisions/architectures/budgets, and the composition is undeclared. RANGE-MERGING / scope-composition seam, logged-not-flagged (not a load-bearing flattening): scope_claim=false (a range, not a single-level scope-universal claim) -> SCOPE-FLATTENING N/A; coupled_headlines=no (a min-max range, not two coupled numbers on different axes) -> COUPLED-HEADLINES N/A. The load-bearing honesty: the body concedes the checker (Volta) is a PERFORMANCE LIMITER (Table 2, Sec 4.5: provably-verified GEMM 0.24x, FlashAttention 0.78x, Conv 0.77x vs numerically-verified 1.03x/1.37x/1.35x; 'the features that deliver performance on modern GPUs are not yet all supported by Volta'; TCB 42k->60k LoC, 'every newly modeled instruction introduces an additional risk of unsoundness'; three unsupported construct classes: atomics, input-dependent control flow, bit-level value manipulation). The winning kernels (1.37x, 1.35x, 1.03x) are the NUMERICALLY verified ones -- the ones the formal checker does NOT certify. The abstract's 'replace the checkers' thesis is a forecast the evidence does not measure (the evidence measures that the checker is a limiter), so THESIS-OUTRUNS-EVIDENCE passes (headline_states_as_fact=false: the abstract hedges with 'suggest an emerging future'; body_hedges=true: the conclusion says 'with sufficiently strong verification'). Soft QUALIFICATION-DROP (Case B, partial): the body states the checker-as-limiter qualification (Table 2) that the abstract presents as a solved robustness feature ('robust evaluation harness with comprehensive verification support... substantially extend it'), though the abstract acknowledges 'the current limitations' generally. Discriminating value: separates RANGE-MERGING-WITH-HONEST-BODY (PASS, this one) from RANGE-MERGING-WITH-LOOSE-BODY (SCOPE-FLATTENING / COUPLED-HEADLINES fire, e.g. 2609.30328). The paper is mostly clean and fairly honest; the seam is a presentation seam (undeclared range composition), not a substance seam."
   },
+  {
+      "name": "2609.36770 (Emergent Specialization in Populations of Self-Supervised Collaborative Vision Experts Without a Shared Gate or Cross-Agent Gradients, Davtyan/Acuaviva/Stapf/Favaro, 2026-10-01): the core causal claim 'specialization rather than population size drives the gain' is well-controlled (random-routing control holds K=4 + total budget, removes only semantic structure, underperforms solo); the specialization METRIC Sp is decoupled from performance (K-means Sp=0.957 vs learned-central MoE-style Sp=0.788, both Best=0.678); two mild logged seams: scope extension to 'decentralized predictive pretraining' (hedged) and retention-vs-transfer framing on ImageNet100 (abstract accurate, body clarifies retention + everything degrades below pre-finetuning)",
+      "type": "scope-extension + metric-vs-mechanism (calibration PASS)",
+      "mechanism": "population of independently-trained ViTs, each can ask another for help via a gradient-free forward pass; DISCO = local helper selection + stop-gradient message",
+      "mechanism_lever": "what the router is trained on (per-sample performance / improvement), not how evenly it spreads load",
+      "metric": "R-Top5-Best (expert envelope retrieval hit rate over validation)",
+      "scope_claim": False,
+      "probe_support_fraction": 1.0,
+      "stated_headline": "specialization rather than population size drives the gain",
+      "rows": [
+          {
+              "label": "Solo (1 agent, all data; generalist ref)",
+              "mechanism_on": False,
+              "substrate": ["solo"],
+              "sp": None,
+              "u": None,
+              "metric": 0.653
+          },
+          {
+              "label": "Random routing (K=4, random split, no semantics)",
+              "mechanism_on": True,
+              "substrate": ["random", "k4"],
+              "sp": 0.011,
+              "u": 0.999,
+              "metric": 0.65
+          },
+          {
+              "label": "K-means (offline privileged split)",
+              "mechanism_on": True,
+              "substrate": ["kmeans", "k4"],
+              "sp": 0.957,
+              "u": 0.962,
+              "metric": 0.678
+          },
+          {
+              "label": "Learned central (MoE-style online gate)",
+              "mechanism_on": True,
+              "substrate": ["learned-central", "k4"],
+              "sp": 0.788,
+              "u": 0.995,
+              "metric": 0.678
+          },
+          {
+              "label": "Distributed delegation (one router/agent)",
+              "mechanism_on": True,
+              "substrate": ["delegation", "k4"],
+              "sp": 0.926,
+              "u": 0.846,
+              "metric": 0.672
+          },
+          {
+              "label": "DISCO (ours, local + stop-grad message)",
+              "mechanism_on": True,
+              "substrate": ["disco", "k4"],
+              "sp": 0.931,
+              "u": 0.841,
+              "metric": 0.668
+          },
+          {
+              "label": "ImageNet100 retention (seen in pretraining, not specialization): DISCO",
+              "mechanism_on": True,
+              "substrate": ["disco", "imagenet100", "retention"],
+              "sp": None,
+              "u": None,
+              "metric": 0.642
+          },
+          {
+              "label": "ImageNet100 retention: solo",
+              "mechanism_on": False,
+              "substrate": ["solo", "imagenet100", "retention"],
+              "sp": None,
+              "u": None,
+              "metric": 0.636
+          },
+          {
+              "label": "ImageNet100 pre-finetuning baseline (everything falls below this)",
+              "mechanism_on": False,
+              "substrate": ["pre-finetune", "imagenet100"],
+              "sp": None,
+              "u": None,
+              "metric": 0.663
+          }
+      ],
+      "axes_checked": {
+          "THESIS-OUTRUNS-EVIDENCE": "PASS (hedged: 'measurable evidence for the dynamics needed', 'small scale proxy', 'future work involves larger populations')",
+          "QUALIFICATION-DROP": "PASS (retention-vs-transfer qualification present in body; abstract 'outside the specialization mixture' is accurate, not 'transfer')",
+          "REFERENT-CONSTRUCTED": "PASS ('specialization' well-defined as Sp; paper explicitly distinguishes metric from mechanism)",
+          "COUPLED-HEADLINES": "N/A (single causal claim, not two coupled numbers)",
+          "RANGE-MERGE": "N/A (no min-max range merging distinct regimes)",
+          "SCOPE-FLATTENING": "N/A (claim is causal/controlled, not a single-level scope-universal claim)"
+      },
+      "verdict": "PASS \u2014 no axis fires; calibration data point",
+      "expected": [],
+      "note": "LIVE EXTERNAL SPECIMEN (arXiv 2609.36770, 2026-10-01). Verdict PASS (no axis fires) -- a calibration data point, not a fire. The core causal claim ('specialization rather than population size drives the gain') is a clean controlled experiment: the random-routing control (Table 2) holds K=4 + total budget and removes only semantic structure, underperforming solo (Best 0.650 vs 0.653) while every semantic regime beats it (0.672-0.678). The finding worth keeping: the specialization METRIC Sp is decoupled from performance -- K-means (Sp=0.957) and the learned-central MoE-style gate (Sp=0.788) hit the SAME Best=0.678, so Sp is a proxy, not the causal driver; the causal quantity is what the router is trained on (per-sample improvement), not load evenness. Clean metric-vs-mechanism separation, so REFERENT-CONSTRUCTED passes. Two mild seams, both disclosed in-body, logged-not-flagged: (a) THESIS-OUTRUNS-EVIDENCE PASS -- the abstract's 'decentralized predictive pretraining' scope is hedged ('measurable evidence ... needed by', 'small scale proxy', 'future work ... larger populations'), so it does not outrun the evidence as a fact; (b) QUALIFICATION-DROP PASS -- the abstract's 'surpass it, including on data outside the specialization mixture' is accurate, and the body (Sec 4.3) names the ImageNet100 set 'a retention test rather than transfer to a new distribution' and reports every regime (incl. solo) falls below pre-finetuning (0.663); DISCO loses least (0.642 vs 0.636 solo, paired +0.006, [0.005,0.006]). COUPLED-HEADLINES N/A (single causal claim); RANGE-MERGE N/A (no min-max range); SCOPE-FLATTENING N/A (controlled causal claim, not scope-universal). A live independent specimen of the routing-statistic-is-an-address-not-the-mechanism gap (the KSplit / kilmon-ai MoE thread), handled correctly."
+  },
+  {
+      "name": "2609.36777 (Code4Scene: Benchmarking Coding Agents for Constructing and Editing 3D Scenes, 2026-10-01): a 190-case Unreal Engine benchmark (95 public / 95 private) evaluating 14 coding-agent configurations on construction (T2S) and editing (I2S); the abstract's 'GPT-6 Astra narrowly leads overall' is a 0.0003-margin PRECISION seam (S_model 0.6193 vs Gemini 0.6190, a tie at the printed 3-decimal 0.619) that the body discloses with 4-decimal values and the setting-level split (Fable leads construction 0.788, Gemini leads editing 0.581); every other specific abstract claim (rho=0.78, best Repair F1 0.527, 35.8% unintended changes, 'Spatial Composition weakest for every agent') is backed in the body",
+      "type": "precision-seam + coupled-leaderboard (calibration PASS)",
+      "mechanism": "coding-agent system (model + harness) constructing/editing an Unreal Engine scene from language or reference images",
+      "mechanism_lever": "the model configuration (14 configs) under a fixed benchmark environment and evaluator",
+      "metric": "S_model (equal-weighted overall of S_T2S construction and S_I2S editing), in [0,1]",
+      "scope_claim": False,
+      "probe_support_fraction": 1.0,
+      "stated_headline": "GPT-6 Astra narrowly leads overall",
+      "rows": [
+          {
+              "label": "GPT-6 Astra (max) - 'narrowly leads overall' (S_model 0.6193)",
+              "mechanism_on": True,
+              "substrate": ["coding_agent", "gpt6_astra", "public"],
+              "metric": 0.6193
+          },
+          {
+              "label": "Gemini 3.8 Flash (high) - 'leads editing', tie at 3-decimal (S_model 0.6190)",
+              "mechanism_on": True,
+              "substrate": ["coding_agent", "gemini38_flash", "public"],
+              "metric": 0.619
+          },
+          {
+              "label": "Claude Fable 5.1 (max) - 'leads construction' (S_model 0.606)",
+              "mechanism_on": True,
+              "substrate": ["coding_agent", "claude_fable51", "public"],
+              "metric": 0.606
+          },
+          {
+              "label": "GPT-5.6 Sol (high)",
+              "mechanism_on": True,
+              "substrate": ["coding_agent", "gpt56_sol", "public"],
+              "metric": 0.55
+          },
+          {
+              "label": "DeepSeek V4.1 Flash (high) - floor (S_model 0.227)",
+              "mechanism_on": True,
+              "substrate": ["coding_agent", "deepseek_v41", "public"],
+              "metric": 0.227
+          }
+      ],
+      "coupled_headlines": "yes",
+      "broader_derived": "no",
+      "composition_declared": "yes",
+      "thesis_endpoint": "a gap between plausible 3D generation and reliable spatial reasoning and state control",
+      "measured_endpoints": ["a gap between plausible 3D generation and reliable spatial reasoning and state control", "S_model/S_T2S/S_I2S leaderboard across 14 configs", "Repair F1 (best 0.527)", "35.8% of target-recovering edits introduce unintended changes", "Spatial Composition weakest for all 14 configs"],
+      "headline_states_as_fact": True,
+      "body_hedges": True,
+      "expected": [],
+      "note": "The 'overall leader' is a 0.0003-margin PRECISION seam: at the printed 3-decimal precision Astra (0.619) and Gemini (0.619) tie, but the body (Sec 3.2) discloses the 4-decimal values (0.6193 vs 0.6190) and the setting-level split (Astra leads construction 0.724 vs 0.657; Gemini leads editing 0.581 vs 0.515). The coupled-leaderboard structure (overall leader != setting leaders) is disclosed, not hidden. The THESIS endpoint ('a gap between plausible 3D generation and reliable spatial reasoning and state control') is the MEASURED quantity, not a forecast: the benchmark's purpose is to quantify that gap, and the construction leaderboard (generation side, S_T2S up to 0.788) vs the editing diagnostics (control side, best Repair F1 0.527, 35.8% unintended changes, Spatial Composition weakest for all 14) are the two measured sides. So THESIS-OUTRUNS-EVIDENCE does not fire (endpoint is in the measured set -> SCOPE-FLATTENING's domain, which is N/A here). Every other specific abstract claim is backed in the body: rho=0.78 (Sec 3.2), best Repair F1 0.527 (Table 2 + Sec 3.2), 35.8% = 76/212 (Appendix D), 'Spatial Composition weakest for every agent' (Sec 3.4 + Appendix D, 'all 14' / 'every configuration'). Clean PASS: a benchmark paper that measures its own thesis and discloses its leaderboard's precision seam. Calibration data point for the PRECISION seam (3-decimal tie vs 4-decimal lead) and the COUPLED-LEADERBOARD structure (overall leader != setting leaders, disclosed)."
+  },
+  {
+      "name": "2609.36805 (UpliftMem: Learning Memory Retrieval from Set-Level Execution Uplift, 2026-10-01): LLM-agent memory retrieval learned from set-level execution uplift; the load-bearing claim is that EVSI-guided probe selection beats any-extra-probing at equal budget. The discriminating control is present and favorable: Table 2 ablation (random probing = uniform sampling under the SAME probe budget) shows full 76.86/81.43 vs random 66.07/72.85 vs warm-up-only 64.76/66.19 (ALFWorld seen, 4B/8B); RQ4 compares EVSI vs random/MC-STD/EIG at 7 budget points on WebShop with EVSI highest at every nonzero budget. Two seams, both disclosed in-body, logged-not-flagged: (a) QUALIFICATION-DROP -- abstract 'best success rates among evaluated baselines' vs body 'best OR JOINT-best' (BigCodeBench 8B 42.69% is a tie); (b) EVIDENCE-SCOPE -- the end-to-end headline (Table 1) bundles the retrieval scorer with UpliftMem's online memory-writing workflow; the retrieval-specific result is the separate fixed-store MemSyco-Bench ablation (decision accuracy 41.7->66.5% 4B / 44.4->68.8% 8B)",
+      "type": "equal-budget ablation + qualification-drop (calibration PASS)",
+      "mechanism": "EVSI-guided probe selection for memory-set retrieval (expected value of sample information over alternative memory sets)",
+      "mechanism_lever": "which alternative memory sets to probe (EVSI selection vs uniform random at the same probe budget)",
+      "metric": "task success rate (%) on ALFWorld (seen) and WebShop",
+      "scope_claim": False,
+      "probe_support_fraction": 1.0,
+      "stated_headline": "EVSI-guided memory retrieval beats equal-budget random probing",
+      "rows": [
+          {
+              "label": "UpliftMem full (EVSI-guided), ALFWorld seen, 4B",
+              "mechanism_on": True,
+              "substrate": ["evsi", "alfworld", "4b"],
+              "metric": 76.86
+          },
+          {
+              "label": "UpliftMem full (EVSI-guided), ALFWorld seen, 8B",
+              "mechanism_on": True,
+              "substrate": ["evsi", "alfworld", "8b"],
+              "metric": 81.43
+          },
+          {
+              "label": "Random probing (uniform, SAME probe budget), ALFWorld seen, 4B",
+              "mechanism_on": False,
+              "is_null": True,
+              "substrate": ["random", "alfworld", "4b"],
+              "metric": 66.07
+          },
+          {
+              "label": "Random probing (uniform, SAME probe budget), ALFWorld seen, 8B",
+              "mechanism_on": False,
+              "is_null": True,
+              "substrate": ["random", "alfworld", "8b"],
+              "metric": 72.85
+          },
+          {
+              "label": "Warm-up-only (no probe selection), ALFWorld seen, 4B",
+              "mechanism_on": False,
+              "is_null": True,
+              "substrate": ["warmup", "alfworld", "4b"],
+              "metric": 64.76
+          },
+          {
+              "label": "Warm-up-only (no probe selection), ALFWorld seen, 8B",
+              "mechanism_on": False,
+              "is_null": True,
+              "substrate": ["warmup", "alfworld", "8b"],
+              "metric": 66.19
+          }
+      ],
+      "coupled_headlines": "no",
+      "broader_derived": "no",
+      "composition_declared": "yes",
+      "thesis_endpoint": "EVSI-guided selection (not any extra probing) drives the retrieval gain",
+      "measured_endpoints": ["EVSI-guided selection (not any extra probing) drives the retrieval gain", "Table 2 equal-budget ablation (EVSI vs random vs warm-up-only, ALFWorld seen 4B/8B)", "RQ4 EVSI vs random/MC-STD/EIG at 7 WebShop budget points (EVSI highest at every nonzero budget)", "fixed-store MemSyco-Bench retrieval ablation (decision accuracy 41.7->66.5% 4B / 44.4->68.8% 8B)"],
+      "headline_states_as_fact": True,
+      "body_hedges": True,
+      "expected": [],
+      "note": "The strongest control of the recent batch: the equal-budget random-probing ablation isolates the EVSI-selection effect from the any-extra-probing confound and it is favorable (full 76.86/81.43 vs random 66.07/72.85 vs warm-up-only 64.76/66.19 ALFWorld seen 4B/8B; RQ4 EVSI highest at every nonzero WebShop budget). The thesis endpoint (selection, not extra probing, drives the gain) is the MEASURED quantity (equal-budget ablation), so THESIS-OUTRUNS-EVIDENCE does not fire. Two seams, both disclosed in-body, logged-not-flagged: (a) QUALIFICATION-DROP -- abstract 'best success rates among evaluated baselines' vs body 'best OR JOINT-best' (BigCodeBench 8B 42.69% is a tie, not strictly best); (b) EVIDENCE-SCOPE -- the end-to-end headline (Table 1) bundles the retrieval scorer with UpliftMem's online memory-writing workflow; the retrieval-specific result is the separate fixed-store MemSyco-Bench ablation. The paper separates these cleanly, so no axis fires. Baseline scope honestly bounded ('among evaluated baselines'), not field-SOTA. Theoretical EVSI is a correlated-Gaussian closed-form motivator, not an optimality proof; the empirical ablation carries the claim. Clean PASS: a calibration data point for the equal-budget-ablation shape (selection isolated from any-extra-probing)."
+  },
 ]

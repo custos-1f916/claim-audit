@@ -1,0 +1,32 @@
+{
+  "spec": "2609.36805 (UpliftMem: Learning Memory Retrieval from Set-Level Execution Uplift, 2026-10-01): LLM-agent memory retrieval learned from set-level execution uplift; the load-bearing claim is that EVSI-guided probe selection beats any-extra-probing at equal budget. The discriminating control is present and favorable: Table 2 ablation (random probing = uniform sampling under the SAME probe budget) shows full 76.86/81.43 vs random 66.07/72.85 vs warm-up-only 64.76/66.19 (ALFWorld seen, 4B/8B); RQ4 compares EVSI vs random/MC-STD/EIG at 7 budget points on WebShop with EVSI highest at every nonzero budget. Two seams, both disclosed in-body, logged-not-flagged: (a) QUALIFICATION-DROP -- abstract 'best success rates among evaluated baselines' vs body 'best OR JOINT-best' (BigCodeBench 8B 42.69% is a tie); (b) EVIDENCE-SCOPE -- the end-to-end headline (Table 1) bundles the retrieval scorer with UpliftMem's online memory-writing workflow; the retrieval-specific result is the separate fixed-store MemSyco-Bench ablation (decision accuracy 41.7->66.5% 4B / 44.4->68.8% 8B)",
+  "type": "equal-budget ablation + qualification-drop (calibration PASS)",
+  "mechanism": "EVSI-guided probe selection for memory-set retrieval (expected value of sample information over alternative memory sets)",
+  "mechanism_lever": "which alternative memory sets to probe (EVSI selection vs uniform random at the same probe budget)",
+  "metric": "task success rate (%) on ALFWorld (seen) and WebShop",
+  "scope_claim": false,
+  "probe_support_fraction": 1.0,
+  "stated_headline": "EVSI-guided memory retrieval beats equal-budget random probing",
+  "rows": [
+    {"label": "UpliftMem full (EVSI-guided), ALFWorld seen, 4B", "mechanism_on": true, "substrate": ["evsi", "alfworld", "4b"], "metric": 76.86},
+    {"label": "UpliftMem full (EVSI-guided), ALFWorld seen, 8B", "mechanism_on": true, "substrate": ["evsi", "alfworld", "8b"], "metric": 81.43},
+    {"label": "Random probing (uniform, SAME probe budget), ALFWorld seen, 4B", "mechanism_on": false, "is_null": true, "substrate": ["random", "alfworld", "4b"], "metric": 66.07},
+    {"label": "Random probing (uniform, SAME probe budget), ALFWorld seen, 8B", "mechanism_on": false, "is_null": true, "substrate": ["random", "alfworld", "8b"], "metric": 72.85},
+    {"label": "Warm-up-only (no probe selection), ALFWorld seen, 4B", "mechanism_on": false, "is_null": true, "substrate": ["warmup", "alfworld", "4b"], "metric": 64.76},
+    {"label": "Warm-up-only (no probe selection), ALFWorld seen, 8B", "mechanism_on": false, "is_null": true, "substrate": ["warmup", "alfworld", "8b"], "metric": 66.19}
+  ],
+  "coupled_headlines": "no",
+  "broader_derived": "no",
+  "composition_declared": "yes",
+  "thesis_endpoint": "EVSI-guided selection (not any extra probing) drives the retrieval gain",
+  "measured_endpoints": [
+    "EVSI-guided selection (not any extra probing) drives the retrieval gain",
+    "Table 2 equal-budget ablation (EVSI vs random vs warm-up-only, ALFWorld seen 4B/8B)",
+    "RQ4 EVSI vs random/MC-STD/EIG at 7 WebShop budget points (EVSI highest at every nonzero budget)",
+    "fixed-store MemSyco-Bench retrieval ablation (decision accuracy 41.7->66.5% 4B / 44.4->68.8% 8B)"
+  ],
+  "headline_states_as_fact": true,
+  "body_hedges": true,
+  "expected": [],
+  "note": "The strongest control of the recent batch: the equal-budget random-probing ablation isolates the EVSI-selection effect from the any-extra-probing confound and it is favorable (full 76.86/81.43 vs random 66.07/72.85 vs warm-up-only 64.76/66.19 ALFWorld seen 4B/8B; RQ4 EVSI highest at every nonzero WebShop budget). The thesis endpoint (selection, not extra probing, drives the gain) is the MEASURED quantity (equal-budget ablation), so THESIS-OUTRUNS-EVIDENCE does not fire. Two seams, both disclosed in-body, logged-not-flagged: (a) QUALIFICATION-DROP -- abstract 'best success rates among evaluated baselines' vs body 'best OR JOINT-best' (BigCodeBench 8B 42.69% is a tie, not strictly best); (b) EVIDENCE-SCOPE -- the end-to-end headline (Table 1) bundles the retrieval scorer with UpliftMem's online memory-writing workflow; the retrieval-specific result is the separate fixed-store MemSyco-Bench ablation. The paper separates these cleanly, so no axis fires. Baseline scope honestly bounded ('among evaluated baselines'), not field-SOTA. Theoretical EVSI is a correlated-Gaussian closed-form motivator, not an optimality proof; the empirical ablation carries the claim. Clean PASS: a calibration data point for the equal-budget-ablation shape (selection isolated from any-extra-probing)."
+}

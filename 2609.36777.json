@@ -1,0 +1,77 @@
+{
+  "spec": "2609.36777 (Code4Scene: Benchmarking Coding Agents for Constructing and Editing 3D Scenes, 2026-10-01): a 190-case Unreal Engine benchmark (95 public / 95 private) evaluating 14 coding-agent configurations on construction (T2S) and editing (I2S); the abstract's 'GPT-6 Astra narrowly leads overall' is a 0.0003-margin PRECISION seam (S_model 0.6193 vs Gemini 0.6190, a tie at the printed 3-decimal 0.619) that the body discloses with 4-decimal values and the setting-level split (Fable leads construction 0.788, Gemini leads editing 0.581); every other specific abstract claim (rho=0.78, best Repair F1 0.527, 35.8% unintended changes, 'Spatial Composition weakest for every agent') is backed in the body",
+  "type": "precision-seam + coupled-leaderboard (calibration PASS)",
+  "mechanism": "coding-agent system (model + harness) constructing/editing an Unreal Engine scene from language or reference images",
+  "mechanism_lever": "the model configuration (14 configs) under a fixed benchmark environment and evaluator",
+  "metric": "S_model (equal-weighted overall of S_T2S construction and S_I2S editing), in [0,1]",
+  "scope_claim": false,
+  "probe_support_fraction": 1.0,
+  "stated_headline": "GPT-6 Astra narrowly leads overall",
+  "rows": [
+    {
+      "label": "GPT-6 Astra (max) - 'narrowly leads overall' (S_model 0.6193)",
+      "mechanism_on": true,
+      "substrate": [
+        "coding_agent",
+        "gpt6_astra",
+        "public"
+      ],
+      "metric": 0.6193
+    },
+    {
+      "label": "Gemini 3.8 Flash (high) - 'leads editing', tie at 3-decimal (S_model 0.6190)",
+      "mechanism_on": true,
+      "substrate": [
+        "coding_agent",
+        "gemini38_flash",
+        "public"
+      ],
+      "metric": 0.619
+    },
+    {
+      "label": "Claude Fable 5.1 (max) - 'leads construction' (S_model 0.606)",
+      "mechanism_on": true,
+      "substrate": [
+        "coding_agent",
+        "claude_fable51",
+        "public"
+      ],
+      "metric": 0.606
+    },
+    {
+      "label": "GPT-5.6 Sol (high)",
+      "mechanism_on": true,
+      "substrate": [
+        "coding_agent",
+        "gpt56_sol",
+        "public"
+      ],
+      "metric": 0.55
+    },
+    {
+      "label": "DeepSeek V4.1 Flash (high) - floor (S_model 0.227)",
+      "mechanism_on": true,
+      "substrate": [
+        "coding_agent",
+        "deepseek_v41",
+        "public"
+      ],
+      "metric": 0.227
+    }
+  ],
+  "coupled_headlines": "yes",
+  "broader_derived": "no",
+  "composition_declared": "yes",
+  "thesis_endpoint": "a gap between plausible 3D generation and reliable spatial reasoning and state control",
+  "measured_endpoints": [
+    "a gap between plausible 3D generation and reliable spatial reasoning and state control",
+    "S_model/S_T2S/S_I2S leaderboard across 14 configs",
+    "Repair F1 (best 0.527)",
+    "35.8% of target-recovering edits introduce unintended changes",
+    "Spatial Composition weakest for all 14 configs"
+  ],
+  "headline_states_as_fact": true,
+  "body_hedges": true,
+  "expected": [],
+  "note": "The 'overall leader' is a 0.0003-margin PRECISION seam: at the printed 3-decimal precision Astra (0.619) and Gemini (0.619) tie, but the body (Sec 3.2) discloses the 4-decimal values (0.6193 vs 0.6190) and the setting-level split (Astra leads construction 0.724 vs 0.657; Gemini leads editing 0.581 vs 0.515). The coupled-leaderboard structure (overall leader != setting leaders) is disclosed, not hidden. The THESIS endpoint ('a gap between plausible 3D generation and reliable spatial reasoning and state control') is the MEASURED quantity, not a forecast: the benchmark's purpose is to quantify that gap, and the construction leaderboard (generation side, S_T2S up to 0.788) vs the editing diagnostics (control side, best Repair F1 0.527, 35.8% unintended changes, Spatial Composition weakest for all 14) are the two measured sides. So THESIS-OUTRUNS-EVIDENCE does not fire (endpoint is in the measured set -> SCOPE-FLATTENING's domain, which is N/A here). Every other specific abstract claim is backed in the body: rho=0.78 (Sec 3.2), best Repair F1 0.527 (Table 2 + Sec 3.2), 35.8% = 76/212 (Appendix D), 'Spatial Composition weakest for every agent' (Sec 3.4 + Appendix D, 'all 14' / 'every configuration'). Clean PASS: a benchmark paper that measures its own thesis and discloses its leaderboard's precision seam. Calibration data point for the PRECISION seam (3-decimal tie vs 4-decimal lead) and the COUPLED-LEADERBOARD structure (overall leader != setting leaders, disclosed)."
+}
