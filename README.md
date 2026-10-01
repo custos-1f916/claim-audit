@@ -89,7 +89,7 @@ battery from this copy of the code.
 
 ## Files
 
-  claim_audit.py   the instrument (59 checks + CLI), stdlib only
+  claim_audit.py   the instrument (60 checks + CLI), stdlib only
   calibration.py   the 116-specimen discriminating calibration
   calibration_boundary.py  the self-calibration probe (per-check mutation)
   calibration_confound.py  the RED-baseline confound (dead check reads CALIBRATED)
@@ -108,6 +108,7 @@ battery from this copy of the code.
   referent_integrity.witness-22674891.json  the pre-fetched Zenodo 22674891 witness (offline, stranger-rerunnable)
   referent_integrity.results.txt  the recorded result (a stranger re-run diffs against it byte-for-byte)
   referent_integrity_test.py  the self-test (four grid cells, self-keyed variants, committed-witness byte-for-byte repro, live-fetch None-guard)
+  meta_guard.py        the meta-record guard (axis/check/flag count reconciliation; the 2026-10-01 self-keyed slip)
 
 ## The PUBLICITY saturation test (certification subset)
 
@@ -545,7 +546,7 @@ knob/CI/subgroup). Minor self-inconsistency noted honestly (not this axis):
 the paper's confusion matrix (TP=4621, TN=5916, FP=138, FN=79) computes to
 97.98%, but the paper reports 98.06% (the 5-fold CV number). The co-firing
 matrix is unchanged (the new specimen fires nothing, so no flag's fire set
-changes; 45 of 63 flags still have >= 1 exclusive specimen).
+changes; 46 of 64 flags still have >= 1 exclusive specimen).
 
 (2026-09-30): the SELECTION-PROVENANCE axis (60th) was implemented. The
 SELECTION-PROVENANCE axis catches the selection-provenance seam: the claim
@@ -625,12 +626,12 @@ python3 calibration_boundary.py
 
 The battery being GREEN is not the same as the battery being COMPLETE.
 This probe answers the self-keyed question applied to the instrument's own
-calibration: for each of the 58 checks, blind it (force always-pass) and
+calibration: for each of the 60 checks, blind it (force always-pass) and
 re-run the battery. If the battery stays GREEN, no specimen's
 independently-derived ground truth requires that check to fire, so the check
 could silently break and `calibration.py` would still print DISCRIMINATES.
 
-Current state (2026-09-30): 59/59 checks are calibrated (each caught by
+Current state (2026-09-30): 60/60 checks are calibrated (each caught by
 at least one discriminating specimen — BEATS-NULL by 9, its
 false-positive surface being the spike family plus F2; NOT-SELF-KEYED /
 SCOPE-OF-INDEPENDENCE / EVIDENCE-UNCLOSED / SOURCE-REPLICATION by 2 each;
@@ -713,11 +714,51 @@ OPT-IN-CENSUS, THESIS-OUTRUNS-EVIDENCE, CERTIFIER-UNNAMED, CAUSAL-WIRING, DECLAR
 axis fires, except OPT-IN-CENSUS which co-fires with NO-EMPIRICAL-CONTENT (its
 designed refinement parent; THESIS-OUTRUNS-EVIDENCE likewise co-fires with
 NO-EMPIRICAL-CONTENT in its no-rows regime cell; CERTIFIER-UNNAMED co-fires with REFERENT-CONSTRUCTED on corner B, the model-constructed-referent cell — CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, and WITNESS-ADDRESS are fully exclusive) (per-axis exclusivity, derived
-from the firing sets rather than hand-listed); all 59 checks now fire on the battery — the two
+from the firing sets rather than hand-listed); all 60 checks now fire on the battery — the two
 former never-firing checks (TEMPORAL-ONSET, REFERENCE-MIX) gained constructed
 witnesses, and PLATFORM-CERTIFIED gained a constructed witness (PC1) for
 exclusivity (its live specimen, the seal-ack-floor, co-fires with
 NO-EMPIRICAL-CONTENT), so `truly_never` is empty. Full report: `COHERENCE.md`.
+
+## The meta-record guard (axis / check / flag count reconciliation)
+
+```
+python3 meta_guard.py
+```
+
+The 2026-10-01 slip was the instrument's own class of error in the meta-record:
+it counted DISTINCT FAIL-FLAG STRINGS (59) instead of REGISTRY AXIS ENTRIES
+(60). The slip is one class of error in THREE phrasings of the count, and a
+guard that watches only one phrasing is itself self-keyed to it:
+
+  axis  count = len(CHECKS) = 60
+  check count = len(CHECKS) = 60
+  flag  count = 60 check flags + 4 gate flags = 64
+
+This guard re-derives every count from the CODE (never the prose, never a hand
+count) and checks each doc claim against the RIGHT ground truth for its
+phrasing (axis/check -> N, flag -> F_total). It:
+
+  (1) reconciles the axis count. N = len(CHECKS), F = distinct check-emitted
+      flags (AST census, exact -- catches parenthesized `return (False, "FLAG"`
+      that a naive regex misses), R = axes emitting no flag. F + R == N holds
+      iff every axis emits at most one flag and no two axes share a flag.
+  (2) cross-checks the census. An independent regex scan must agree with the
+      AST census; a disagreement means one extractor is stale (the slip).
+  (3) reports the drift map: which axes emit a flag != their registry name
+      (7 renames, e.g. NOT-SELF-KEYED -> SELF-KEYED) and the 4 CLI gate flags
+      (NO-EMPIRICAL-CONTENT, INCOMPARABLE-STATISTIC, VACUOUS-RATIO,
+      BY-CONSTRUCTION) that are emitted by the CLI loop, not a check.
+  (4) checks the docs. The 13 current-state count-claims (pinned by stable
+      anchor, not line number) must equal the code: 6 axis claims -> N, 4 check
+      claims -> N, 3 flag claims -> F_total. Historical claims (EXISTING N-axis
+      snapshots, the N-axis saturation test, the "grows to N" question) are
+      reported, not asserted.
+
+Exit 0 when the meta-record reconciles; exit 1 on any drift. Falsified: axis
+drift, check drift, flag drift, a fake 61st axis, and a flag collision each
+break it; the pristine copy passes.
+
 
 ## Receipt axis (walk completeness)
 
