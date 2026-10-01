@@ -481,6 +481,12 @@ claim is tagged QUALIFICATION-DROP. (A more general
 `body_concedes_qualification` field could be added if the pattern becomes
 more prominent; for now `body_hedges` is the proxy.)
 
+**Resolved 2026-10-01.** The pattern reached 5 in-battery witnesses, so the
+`body_concedes_qualification` field was added (distinct from the
+endpoint-hedge `body_hedges` corroboration) and a machine-checkable probe
+(`qualification_drop.py`, `--check` staleness guard) was built. See the
+two-cell-structure subsection below.
+
 **The 5 specimens.**
 - 2609.30563 Bojic: THESIS-OUTRUNS-EVIDENCE (CI crosses zero, abstract
   claims "cut the compression of individual differences from seven times
@@ -519,6 +525,40 @@ cost side of a cost-benefit claim (here the "USD 30/USD 1" hedge, the
 $64B/$296B finance gap, and the report's own "inherently cost-effective
 misconception" warning). The $1.8T/yr benefit figure is not invented
 (it is on p.61), so the brief is a lossy compression, not a fabrication.
+
+**Two-cell structure + machine-checkable probe (2026-10-01).** The strict prose
+discriminator (a seam axis fires AND the body concedes) is *narrower than the
+tag's usage*. `qualification_drop.py` makes the discriminator machine-checkable
+and exposes two cells the prose conflated:
+
+- **Cell B — known-but-hidden** (substance flawed, authors knew): a seam axis
+  fires AND the body concedes. The strict prose definition captures exactly
+  this cell. In-battery witnesses: 2609.31054 Rilla (both the rows and the
+  no-rows regime), FAO SOFO 2026 (cross-source).
+- **Cell P — presentation-only** (substance fine, presentation loose): the body
+  concedes a dropped qualification but NO seam axis fires. The strict prose
+  definition *misses* this cell. In-battery witnesses: 2609.36800 AI-as-Compiler
+  (soft QUALIFICATION-DROP, logged-not-flagged) and 2609.36805 UpliftMem
+  (abstract "best success rates" vs body "best OR JOINT-best"). Both are
+  logged as QUALIFICATION-DROP in their specimen notes and are clean PASSes.
+
+The first-class discriminator is the new `body_concedes_qualification` field
+(True on exactly the 5 in-battery witnesses; False on the 3 hedge-only PASS
+specimens that carry `body_hedges` but no dropped qualification). `body_hedges`
+and note-string-matching remain as cross-checks only.
+
+**VACUOUS-WITNESS is prose-only, not an axis.** The prose names it as one of the
+three seam axes (THESIS-OUTRUNS-EVIDENCE, SELECTION-ON-NARRATIVE,
+VACUOUS-WITNESS), but it is not in `claim_audit.py`'s `CHECKS`. The probe
+intersects the prose seam set with the actual axes and records the prose-only
+remainder. The TGL-NSGA-II specimen that motivated VACUOUS-WITNESS is
+prose-only (not in the battery), so the finding is a documentation seam, not a
+regression.
+
+**Prose vs in-battery witness sets.** The "5 specimens" list above (Bojic,
+Parkinsonism, BioEVAL, TGL-NSGA-II, FAO SOFO) is prose-only except FAO SOFO;
+the probe's 5 in-battery witnesses (Rilla x2, FAO SOFO, AI-as-Compiler,
+UpliftMem) are a later, different set. The probe reports on the battery only.
 
 ## WITNESS-ADDRESS re-derivation (2026-09-30)
 

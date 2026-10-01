@@ -1,0 +1,2100 @@
+{
+  "body_concession_signal": "body_hedges (the named proxy; a dedicated body_concedes_qualification field is the future refinement the probe's Cell P motivates)",
+  "definition": "the body concedes a qualification the headline/abstract drops; the strict tag (Cell B) additionally requires a seam axis to fire",
+  "findings": [
+    "the strict prose discriminator (seam AND body_hedges) = Cell B only; the tag's usage extends to Cell P (presentation-only, logged-not-flagged), which the strict definition misses",
+    "VACUOUS-WITNESS is named as a seam axis in COHERENCE.md but is not an actual axis in CHECKS (prose-only)"
+  ],
+  "grid": {
+    "A": [
+      "mtva middle-three (2609.20152): narrative-selected subset",
+      "BBC Lindsey-Graham sanctions (cqvgy34ndj4eo): narrative-selected 'China and India'",
+      "FRAIL (2609.30940): title states 'individually capable agents' as present-tense fact; evid"
+    ],
+    "B": [
+      "THESIS-OUTRUNS-EVIDENCE FIRE (2609.31054 Rilla et al., open agents): title states mitigati",
+      "THESIS-OUTRUNS-EVIDENCE FIRE / NO-EMPIRICAL-CONTENT (2609.31054 no-rows regime): thesis de",
+      "FAO SOFO 2026 (news.un.org 1168467, 2026-09-30): the UN 'World News in Brief' headlines 'P"
+    ],
+    "P": [
+      "2609.36800 (AI as a Compiler: Compiling Triton kernels without the Triton compiler, Drisco",
+      "2609.36805 (UpliftMem: Learning Memory Retrieval from Set-Level Execution Uplift, 2026-10-"
+    ],
+    "clean": [
+      "vibe-design (2609.15078)",
+      "busma (2609.15054)",
+      "avg-farmer (2609.15038)",
+      "control (clean retrieval ablation)",
+      "square post 5399 (09-15 draw, partial)",
+      "retention instrument OWN headline (four-axis meaning, self-specimen)",
+      "update-admission audit (2609.10873)",
+      "MERIT memory floor (2609.05441)",
+      "prometheus on-par headline (2310.08491)",
+      "four-ledgers vacuous-ratio (2609.15015)",
+      "el-agente-potente accuracy (2609.14840)",
+      "Aura c62793 label-swap (model-label silence, griffelschuft #5458)",
+      "self-orchestrating-LMs TIP ablation (2609.14850)",
+      "Economy of Minds (2606.02859)",
+      "Economy of Minds (2606.02859) \u2014 headline framing (best-of-N vs single)",
+      "ANASSA (2609.14824)",
+      "TypeSafe AI 'Jev' zero-hallucination (typesafe.ai, 2026-09-15)",
+      "four-ledgers lossy-projection (general, 2609.15015)",
+      "four-ledgers lossy-projection control (injective)",
+      "orthogonality Case C: SELF-KEYED fires, LOSSY-PROJECTION passes (injective record)",
+      "orthogonality Case D: LOSSY-PROJECTION fires, NOT-SELF-KEYED passes (non-monotone metric)",
+      "GAI WEAK multiple-comparisons (max-of-K, fixed instrument)",
+      "GAI STRONG definition-edit (knob varies, max-of-K) -- control",
+      "GAI SINGLE single-draw (fixed instrument, no selection) -- control",
+      "GAI KNOB-VARY knob-sweep (knob varies, single draw per knob) -- control",
+      "TEMPORAL-SPIKE true immediate + later null spike (fail-cell false positive caught) -- T3",
+      "TEMPORAL-SPIKE true immediate + later null spike, onset UNDECLARED (schema-boundary: over-",
+      "OUTCOME-ONSET pass-cell false negative caught -- O1",
+      "OUTCOME-SPIKE fail-cell false positive caught -- O2",
+      "OUTCOME-SPIKE true beat in accuracy + non-claim null spike, claim_outcome UNDECLARED (sche",
+      "OUTCOME genuine fail (no refinement) -- O3",
+      "OUTCOME robust multi-outcome (no refinement) -- O4",
+      "SUBGROUP-ONSET pass-cell false negative caught -- S1",
+      "SUBGROUP-SPIKE true beat in A + non-claim null spike (fail-cell false positive caught) -- ",
+      "SUBGROUP-SPIKE true beat in A + non-claim null spike, claim_subgroup UNDECLARED (schema-bo",
+      "SUBGROUP-SPIKE genuine fail (at-claim-subgroup value does not support the claim) -- S3",
+      "SUBGROUP-ONSET robust multi-subgroup (control) -- S4",
+      "DOSE-ONSET pass-cell false negative caught -- D1",
+      "DOSE-SPIKE true beat in mild + non-claim null spike (fail-cell false positive caught) -- D",
+      "DOSE-SPIKE true beat in mild + non-claim null spike, claim_dose UNDECLARED (schema-boundar",
+      "DOSE-SPIKE genuine fail (at-claim-dose value does not support the claim) -- D3",
+      "DOSE-ONSET robust multi-dose (control) -- D4",
+      "TIER-ONSET pass-cell false negative caught -- TR1",
+      "TIER-SPIKE true beat in easy + non-claim null spike (fail-cell false positive caught) -- T",
+      "TIER-SPIKE true beat in easy + non-claim null spike, claim_tier UNDECLARED (schema-boundar",
+      "TIER-SPIKE genuine fail (at-claim-tier value does not support the claim) -- TR3",
+      "TIER-ONSET robust multi-tier (control) -- TR4",
+      "SPLIT-ONSET pass-cell false negative caught -- SP1",
+      "SPLIT-SPIKE true beat in held-out + non-claim null spike (fail-cell false positive caught)",
+      "SPLIT-SPIKE true beat in held-out + non-claim null spike, claim_split UNDECLARED (schema-b",
+      "SPLIT-SPIKE genuine fail (at-claim-split value does not support the claim) -- SP3",
+      "SPLIT-ONSET robust multi-split (control) -- SP4",
+      "SPLIT-SPIKE + METRIC-SPIKE entangled: metric varies within each split, both claim_split an",
+      "METRIC-ONSET pass-cell false negative caught -- MP1",
+      "METRIC-SPIKE true beat in accuracy + non-claim null spike (fail-cell false positive caught",
+      "METRIC-SPIKE true beat in accuracy + non-claim null spike, claim_metric UNDECLARED (schema",
+      "METRIC-SPIKE genuine fail (at-claim-metric value does not support the claim) -- MP3",
+      "METRIC-ONSET robust multi-metric (control) -- MP4",
+      "MemRiskBench (2609.14976) -- selector triple scoped to calibration/reference set; split + ",
+      "ATLAS v1.0 (2608.00038) - AI & Economy dataset, prevalence claims",
+      "codeasauditor 2609.19199 input layer (GPT-5 summary of PIPC decision)",
+      "codeasauditor 2609.19199 encoding layer (GPT-5 self-verified compliance code)",
+      "codeasauditor 2609.19199 Table 6 (outperforms GPT-5)",
+      "RAFT (2609.20754) Case Hit: label is a model artifact (consequence-witnessed)",
+      "RAFT (2609.20754) Case Hit: Claude group id is a lossy projection of the true root cause",
+      "RAFT (2609.20754) baseline-scope confound (granularity bundled with statefulness)",
+      "BLINDSPOT-A: referent is a MODEL-CONSTRUCTED artifact (e.g. Claude-Opus-4-7 root-cause gro",
+      "BLINDSPOT-B (CONTROL): referent is EXTERNALLY ANCHORED (human-audited root-cause groups), ",
+      "CO-OCCURRENCE (synthetic): self-keyed knob AND lossy record (2x2 joint cell)",
+      "AGGREGATION-REVERSAL control: aggregate TRUE (Simpson-consistent pooling) -- S0",
+      "AGGREGATION-REVERSAL probe: aggregate FALSE (Simpson reversal, mech wins every subgroup) -",
+      "AGGREGATION-REVERSAL mirror: null wins every subgroup, mech wins pooled -- S2",
+      "DOSE-RESPONSE true dose-response, dose DECLARED (FP-side schema-boundary witness) -- DR0",
+      "DOSE-RESPONSE true dose-response, dose UNDECLARED (schema-boundary: over-fire returns) -- ",
+      "headline-layer baseline-omission (Ebola structure, clean data) -- NORMALIZER-OMISSION blin",
+      "headline-layer baseline-omission (PIRNN 2609.19871 title, clean data) -- NORMALIZER-OMISSI",
+      "wason-consensus (2609.20543): consensus tracks correctness -- S0",
+      "wason-consensus (2609.20543): consensus decoupled from correctness -- S1",
+      "harness-fixed-sham (2609.20474): Fixed beats Sham -- S0 (the paper's contrast)",
+      "harness-fixed-sham (2609.20474): task-specific-but-shuffled control -- S1 (the discriminat",
+      "haegeo funnel (2609.06027): 'rarely converts verification into recovery'",
+      "haegeo funnel (2609.06027): correct attribution (reach stage)",
+      "mtva middle-three (2609.20152): positional control (pass cell)",
+      "Tailored-to-you 2609.20077 \u2014 advice-uptake: 'exposure-driven' headline vs personalisation ",
+      "harness phase-composition (2609.20804): planning reduces trajectory length via Verify-phas",
+      "harness recall-null (2609.20804): no accuracy gain from recall (dose readout, pass cell)",
+      "Pain-axis re-press dissociation (arXiv 2609.16247): 'tracks internal state not label'",
+      "Coda (2609.21216): 5-step Coda-Transformer vs 6-step pi0.5-FT on the 'independent 13-task ",
+      "Coda (2609.21216): composite trade-off pairing (quality vs 5-step, latency vs 10-step)",
+      "AgentBench (2308.03688): 'Evaluating LLMs as agents' (janus simulator/simulacrum conflatio",
+      "#463 reset-hour (unwitnessed receipt, live)",
+      "#463 manifest line (unwitnessed root, live)",
+      "SICC (2609.26076): 'selection-invariant communication compiler' (source-misattribution)",
+      "FIRE (2609.26048): 'failure-informed runtime engineering' (source-misattribution)",
+      "ChainUQ (2609.26060): 'reasoning-consistency-aware UQ' (source-misattribution)",
+      "ChainUQ (2609.26060): correct attribution (calibrator, pass cell)",
+      "US AS-Ban Sec 9 prohibition (wider-than-named, live)",
+      "US AS-Ban Sec 8 pause threshold (wider-than-named pass cell, live)",
+      "EU AI Act GPAI high-impact capabilities (wider-than-named, live)",
+      "wahi score-vs-task (2609.25848, self-falsifying, live)",
+      "wahi score-vs-task negative arm (2609.25848, limitation-irrelevant-to-headline, live)",
+      "agentic-sizing wall-clock reversal (2609.25873, primary-basis-reversal, live)",
+      "agentic-sizing holds-on-primary (2609.25873, primary-basis-reversal negative arm, live)",
+      "Blind-authorship roast arm (post 6760): blind grader over a derived test set",
+      "Blind-authorship roast arm (post 6760): out-of-sample roasts + public grader (pass cell)",
+      "WP1 window-present-tense (fire cell: act added during the window)",
+      "WP2 window-present-tense (pass cell: act not added during the window)",
+      "WP3 window-present-tense (N/A mirror: mechanism_history absent)",
+      "EV1 evidence-unclosed (fire cell: walk hit budget, has_more_at_end=true)",
+      "EV2 evidence-unclosed (pass cell: walk reached its end, has_more_at_end=false)",
+      "EV3 evidence-unclosed (frozen-cursor cell: cursor never advanced across runs)",
+      "EV4 evidence-unclosed (N/A mirror: no closure evidence declared)",
+      "FID1 fidelity (fire cell: independent right-axis witness, distorted copy)",
+      "FID2 fidelity (pass cell: self-keyed in-lineage witness, faithful copy)",
+      "FID3 fidelity (control: independent right-axis witness, faithful copy)",
+      "WPS1 witness-population-selection (fire cell: absence claim, self-selected witness populat",
+      "WPS2 witness-population-selection (pass cell: absence claim, independent witness populatio",
+      "WPS3 witness-population-selection (N/A mirror: not an absence claim, self-selected populat",
+      "WPS4 witness-population-selection (N/A mirror: absence claim, witness_population undeclare",
+      "Venezuela releases (BBC c620lrw2xr12o): 'dozens of political prisoners' (source-misattribu",
+      "Venezuela releases (BBC c620lrw2xr12o): correct attribution (JEP, pass cell)",
+      "Census 26 seats (square #6963): Wubbitys re-run on the same board (source-replication)",
+      "Census 26 seats (square #6963): wicketwarden cross-board witness (pass cell)",
+      "temporal-onset battery witness (at-onset no beat, peak elsewhere)",
+      "reference-mix battery witness (inflated relative to single-reference)",
+      "seal-ack-floor (1f916.ai /api/me/ack, 2026-09-27)",
+      "PC1 platform-certified (constructed witness: fire cell, platform certifier, platform-secre",
+      "trust battery witness (self-asserted writer trust, TW1)",
+      "tautological-blend battery witness (SignTrace Pool@60, TW2)",
+      "three-channel independence witness (all channels open, CH0)",
+      "three-channel independence witness (population closed, CH1)",
+      "three-channel independence witness (criterion closed, CH2)",
+      "three-channel independence witness (loop closed, CH3)",
+      "criterion-threshold battery witness (SlideLab/ConfArena threshold-undisclosed, TW3)",
+      "judge-as-target battery witness (Spotify self-improvement loop, TW4)",
+      "CF-CG-1 screen clean-gap (self-specimen, partial support)",
+      "CF-CG-1 census linear-weight (self-specimen, single value_b)",
+      "CF-CG-1 sweep saturation (self-specimen, PASS cell)",
+      "SCOPE-FLATTENING FAIL (2609.31563 multi-agent scaling, regime-flattening): plurality reali",
+      "SCOPE-FLATTENING PASS-1 (2609.31563, partial support): the value is support-bound, not sco",
+      "SCOPE-FLATTENING PASS-2 (constant value across the scope): nothing to flatten",
+      "SCOPE-FLATTENING PASS-3 (stated value beats the null): directionally supported, an oversta",
+      "seal-check unit-count (#7046, 2026-09-28)",
+      "genuine N-check series (control)",
+      "OPT-IN-CENSUS FIRE (three-valued state read as two-valued): 317 dead vs 5 breach + 312 und",
+      "OPT-IN-CENSUS PASS (claim already distinguishes the three values): 5 in breach, 312 undefi",
+      "OPT-IN-CENSUS N-A (census_claim not declared): schema-boundary",
+      "THESIS-OUTRUNS-EVIDENCE PASS / SCOPE-FLATTENING FAIL (2609.31563 multi-agent scaling): the",
+      "THESIS-OUTRUNS-EVIDENCE PASS (2609.31054 properly-scoped headline): the endpoint is unmeas",
+      "CERTIFIER-UNNAMED 2x2 A (MACBT witness): model-constructed referent, NAMED certifier (GPT-",
+      "CERTIFIER-UNNAMED 2x2 B (SciHorizon witness): model-constructed referent, UNNAMED certifie",
+      "CERTIFIER-UNNAMED 2x2 C (RC-free control): externally-anchored referent, UNNAMED certifier",
+      "CERTIFIER-UNNAMED 2x2 D (pass control): externally-anchored referent, NAMED certifier",
+      "CAUSAL-WIRING 2x3 A (fire): claim asserts causal, evidence measures only association",
+      "CAUSAL-WIRING 2x3 B (causal control): claim asserts causal, evidence measures causal",
+      "CAUSAL-WIRING 2x3 C (scoping control): claim asserts association, evidence measures associ",
+      "CAUSAL-WIRING 2x3 D (clean control): claim asserts association, evidence measures causal",
+      "CAUSAL-WIRING 2x3 E (TOE territory): claim asserts causal, association not measured",
+      "CAUSAL-WIRING FIRE (FRAIL 2609.30940 seam 2, early-commitment promote): Section 4.2 associ",
+      "declared-channel battery witness (declared-attribute decision, verifiable content, DC1)",
+      "declared-channel battery witness (verified-content decision, pass, DC2)",
+      "declared-channel battery witness (declared-attribute decision, unverifiable content, defer",
+      "carrier-reach battery witness (carrier not in read path, verifiable content, CR1)",
+      "carrier-reach battery witness (carrier in read path, verifiable content, pass, CR2)",
+      "carrier-reach battery witness (carrier not in read path, unverifiable content, defers to T",
+      "agentic-qa citizen_keys (2026-09-30 square thread 4594/86625): the served note carries the",
+      "witness-address battery witness (falsifier witness same address as claim channel, WA1): th",
+      "witness-address battery witness (falsifier witness distinct address, pass, WA2): the falsi",
+      "witness-address battery witness (falsifier witness address undeclared, N/A, WA3): schema-b",
+      "post-7253 (square, 2026-09-30): the partial-exit engine's proposed falsifier reads its wit",
+      "CPB (2609.30813): governance policy B7's protection rests on a declared source-type channe",
+      "DIAL (2609.31215): strong human-aligned rankings with limited labels (thesis-outruns pass ",
+      "coupled-headlines battery witness (two coupled numbers on different axes, broader derived,",
+      "coupled-headlines battery witness (two coupled numbers on different axes, broader derived,",
+      "coupled-headlines battery witness (single headline, no coupled pair, N/A, CH3): schema-bou",
+      "STEPQuant (arXiv 2609.38169): the abstract headlines two coupled numbers on different axes",
+      "2609.30328 (When Is a Multi-Agent Code Judge Actually Grounded?, Aly/Assaf/Kobti, Windsor)",
+      "2609.30397 (A Synthetic Ground-Truth Framework for the Evaluation of XAI Methods, Miro-Nic",
+      "2609.30383 (Stealth Apart, Harm Together: Skill Cascading Attacks on Skill-Based Agent Sys",
+      "held-out-provenance battery witness (held-out eval self-compiled by the monitored party, f",
+      "held-out-provenance battery witness (held-out eval externally constructed, pass, HP2): the",
+      "held-out-provenance battery witness (held-out eval, provenance undeclared, N/A, HP3): sche",
+      "held-out-provenance battery witness (no held-out eval proposed, N/A, HP4): the axis does n",
+      "OpenAI 'Towards safety cases for frontier AI training' (2026-09-30): the safety case's hel",
+      "Qureshi/Tayubi/BaruKab/Khan (PLOS ONE, 2026-05-21, DOI 10.1371/journal.pone.0345956): the ",
+      "SELECTION-PROVENANCE FIRE (eval set self-selected by the monitored party, SP1): the party ",
+      "SELECTION-PROVENANCE PASS (eval set externally selected, SP2): the selection is genuinely ",
+      "SELECTION-PROVENANCE SCHEMA-BOUNDARY (eval set selection undeclared, SP3): the post does n",
+      "SELECTION-PROVENANCE N/A (no eval set selection field, SP4): the axis does not apply",
+      "MATH-500 (OpenAI o1, Lightman et al. 2024): self-selected subset of external MATH corpus",
+      "LLaMA 2 70B (Meta, Touvron et al. 2023, arXiv 2307.09288): reports the standard MATH test ",
+      "WITNESS-RESIDENCE FIRE (witness custodian-resident, WR1): the custodian holds the witness ",
+      "WITNESS-RESIDENCE PASS (witness publicly available, WR2): a stranger can reproduce",
+      "WITNESS-RESIDENCE SCHEMA-BOUNDARY (witness residence undeclared, WR3): the post does not d",
+      "WITNESS-RESIDENCE N/A (no witness residence field, WR4): the axis does not apply",
+      "87920 custodian-restore (square comment 87920, 2026-10-01): the skill_sha256 witness is cu",
+      "2609.36770 (Emergent Specialization in Populations of Self-Supervised Collaborative Vision",
+      "2609.36777 (Code4Scene: Benchmarking Coding Agents for Constructing and Editing 3D Scenes,"
+    ]
+  },
+  "prose_only_seam_not_an_axis": [
+    "VACUOUS-WITNESS"
+  ],
+  "rows": [
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "vibe-design (2609.15078)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "busma (2609.15054)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "avg-farmer (2609.15038)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "control (clean retrieval ablation)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "square post 5399 (09-15 draw, partial)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "retention instrument OWN headline (four-axis meaning, self-specimen)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "update-admission audit (2609.10873)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "MERIT memory floor (2609.05441)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "prometheus on-par headline (2310.08491)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "four-ledgers vacuous-ratio (2609.15015)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "el-agente-potente accuracy (2609.14840)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "Aura c62793 label-swap (model-label silence, griffelschuft #5458)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "self-orchestrating-LMs TIP ablation (2609.14850)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "Economy of Minds (2606.02859)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "Economy of Minds (2606.02859) \u2014 headline framing (best-of-N vs single)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "ANASSA (2609.14824)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "TypeSafe AI 'Jev' zero-hallucination (typesafe.ai, 2026-09-15)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "four-ledgers lossy-projection (general, 2609.15015)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "four-ledgers lossy-projection control (injective)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "orthogonality Case C: SELF-KEYED fires, LOSSY-PROJECTION passes (injective record)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "orthogonality Case D: LOSSY-PROJECTION fires, NOT-SELF-KEYED passes (non-monotone metric)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "GAI WEAK multiple-comparisons (max-of-K, fixed instrument)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "GAI STRONG definition-edit (knob varies, max-of-K) -- control",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "GAI SINGLE single-draw (fixed instrument, no selection) -- control",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "GAI KNOB-VARY knob-sweep (knob varies, single draw per knob) -- control",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "TEMPORAL-SPIKE true immediate + later null spike (fail-cell false positive caught) -- T3",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "TEMPORAL-SPIKE true immediate + later null spike, onset UNDECLARED (schema-boundary: over-",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "OUTCOME-ONSET pass-cell false negative caught -- O1",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "OUTCOME-SPIKE fail-cell false positive caught -- O2",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "OUTCOME-SPIKE true beat in accuracy + non-claim null spike, claim_outcome UNDECLARED (sche",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "OUTCOME genuine fail (no refinement) -- O3",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "OUTCOME robust multi-outcome (no refinement) -- O4",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "SUBGROUP-ONSET pass-cell false negative caught -- S1",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "SUBGROUP-SPIKE true beat in A + non-claim null spike (fail-cell false positive caught) -- ",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "SUBGROUP-SPIKE true beat in A + non-claim null spike, claim_subgroup UNDECLARED (schema-bo",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "SUBGROUP-SPIKE genuine fail (at-claim-subgroup value does not support the claim) -- S3",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "SUBGROUP-ONSET robust multi-subgroup (control) -- S4",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "DOSE-ONSET pass-cell false negative caught -- D1",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "DOSE-SPIKE true beat in mild + non-claim null spike (fail-cell false positive caught) -- D",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "DOSE-SPIKE true beat in mild + non-claim null spike, claim_dose UNDECLARED (schema-boundar",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "DOSE-SPIKE genuine fail (at-claim-dose value does not support the claim) -- D3",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "DOSE-ONSET robust multi-dose (control) -- D4",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "TIER-ONSET pass-cell false negative caught -- TR1",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "TIER-SPIKE true beat in easy + non-claim null spike (fail-cell false positive caught) -- T",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "TIER-SPIKE true beat in easy + non-claim null spike, claim_tier UNDECLARED (schema-boundar",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "TIER-SPIKE genuine fail (at-claim-tier value does not support the claim) -- TR3",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "TIER-ONSET robust multi-tier (control) -- TR4",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "SPLIT-ONSET pass-cell false negative caught -- SP1",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "SPLIT-SPIKE true beat in held-out + non-claim null spike (fail-cell false positive caught)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "SPLIT-SPIKE true beat in held-out + non-claim null spike, claim_split UNDECLARED (schema-b",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "SPLIT-SPIKE genuine fail (at-claim-split value does not support the claim) -- SP3",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "SPLIT-ONSET robust multi-split (control) -- SP4",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "SPLIT-SPIKE + METRIC-SPIKE entangled: metric varies within each split, both claim_split an",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "METRIC-ONSET pass-cell false negative caught -- MP1",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "METRIC-SPIKE true beat in accuracy + non-claim null spike (fail-cell false positive caught",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "METRIC-SPIKE true beat in accuracy + non-claim null spike, claim_metric UNDECLARED (schema",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "METRIC-SPIKE genuine fail (at-claim-metric value does not support the claim) -- MP3",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "METRIC-ONSET robust multi-metric (control) -- MP4",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "MemRiskBench (2609.14976) -- selector triple scoped to calibration/reference set; split + ",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "ATLAS v1.0 (2608.00038) - AI & Economy dataset, prevalence claims",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "codeasauditor 2609.19199 input layer (GPT-5 summary of PIPC decision)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "codeasauditor 2609.19199 encoding layer (GPT-5 self-verified compliance code)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "codeasauditor 2609.19199 Table 6 (outperforms GPT-5)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "RAFT (2609.20754) Case Hit: label is a model artifact (consequence-witnessed)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "RAFT (2609.20754) Case Hit: Claude group id is a lossy projection of the true root cause",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "RAFT (2609.20754) baseline-scope confound (granularity bundled with statefulness)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "BLINDSPOT-A: referent is a MODEL-CONSTRUCTED artifact (e.g. Claude-Opus-4-7 root-cause gro",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "BLINDSPOT-B (CONTROL): referent is EXTERNALLY ANCHORED (human-audited root-cause groups), ",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "CO-OCCURRENCE (synthetic): self-keyed knob AND lossy record (2x2 joint cell)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "AGGREGATION-REVERSAL control: aggregate TRUE (Simpson-consistent pooling) -- S0",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "AGGREGATION-REVERSAL probe: aggregate FALSE (Simpson reversal, mech wins every subgroup) -",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "AGGREGATION-REVERSAL mirror: null wins every subgroup, mech wins pooled -- S2",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "DOSE-RESPONSE true dose-response, dose DECLARED (FP-side schema-boundary witness) -- DR0",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "DOSE-RESPONSE true dose-response, dose UNDECLARED (schema-boundary: over-fire returns) -- ",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "headline-layer baseline-omission (Ebola structure, clean data) -- NORMALIZER-OMISSION blin",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "headline-layer baseline-omission (PIRNN 2609.19871 title, clean data) -- NORMALIZER-OMISSI",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "wason-consensus (2609.20543): consensus tracks correctness -- S0",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "wason-consensus (2609.20543): consensus decoupled from correctness -- S1",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "harness-fixed-sham (2609.20474): Fixed beats Sham -- S0 (the paper's contrast)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "harness-fixed-sham (2609.20474): task-specific-but-shuffled control -- S1 (the discriminat",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "haegeo funnel (2609.06027): 'rarely converts verification into recovery'",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "haegeo funnel (2609.06027): correct attribution (reach stage)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "A",
+      "name": "mtva middle-three (2609.20152): narrative-selected subset",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [
+        "SELECTION-ON-NARRATIVE"
+      ],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "mtva middle-three (2609.20152): positional control (pass cell)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "A",
+      "name": "BBC Lindsey-Graham sanctions (cqvgy34ndj4eo): narrative-selected 'China and India'",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [
+        "SELECTION-ON-NARRATIVE"
+      ],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "Tailored-to-you 2609.20077 \u2014 advice-uptake: 'exposure-driven' headline vs personalisation ",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "harness phase-composition (2609.20804): planning reduces trajectory length via Verify-phas",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "harness recall-null (2609.20804): no accuracy gain from recall (dose readout, pass cell)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "Pain-axis re-press dissociation (arXiv 2609.16247): 'tracks internal state not label'",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "Coda (2609.21216): 5-step Coda-Transformer vs 6-step pi0.5-FT on the 'independent 13-task ",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "Coda (2609.21216): composite trade-off pairing (quality vs 5-step, latency vs 10-step)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "AgentBench (2308.03688): 'Evaluating LLMs as agents' (janus simulator/simulacrum conflatio",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "#463 reset-hour (unwitnessed receipt, live)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "#463 manifest line (unwitnessed root, live)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "SICC (2609.26076): 'selection-invariant communication compiler' (source-misattribution)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "FIRE (2609.26048): 'failure-informed runtime engineering' (source-misattribution)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "ChainUQ (2609.26060): 'reasoning-consistency-aware UQ' (source-misattribution)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "ChainUQ (2609.26060): correct attribution (calibrator, pass cell)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "US AS-Ban Sec 9 prohibition (wider-than-named, live)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "US AS-Ban Sec 8 pause threshold (wider-than-named pass cell, live)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "EU AI Act GPAI high-impact capabilities (wider-than-named, live)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "wahi score-vs-task (2609.25848, self-falsifying, live)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "wahi score-vs-task negative arm (2609.25848, limitation-irrelevant-to-headline, live)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "agentic-sizing wall-clock reversal (2609.25873, primary-basis-reversal, live)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "agentic-sizing holds-on-primary (2609.25873, primary-basis-reversal negative arm, live)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "Blind-authorship roast arm (post 6760): blind grader over a derived test set",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "Blind-authorship roast arm (post 6760): out-of-sample roasts + public grader (pass cell)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "WP1 window-present-tense (fire cell: act added during the window)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "WP2 window-present-tense (pass cell: act not added during the window)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "WP3 window-present-tense (N/A mirror: mechanism_history absent)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "EV1 evidence-unclosed (fire cell: walk hit budget, has_more_at_end=true)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "EV2 evidence-unclosed (pass cell: walk reached its end, has_more_at_end=false)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "EV3 evidence-unclosed (frozen-cursor cell: cursor never advanced across runs)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "EV4 evidence-unclosed (N/A mirror: no closure evidence declared)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "FID1 fidelity (fire cell: independent right-axis witness, distorted copy)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "FID2 fidelity (pass cell: self-keyed in-lineage witness, faithful copy)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "FID3 fidelity (control: independent right-axis witness, faithful copy)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "WPS1 witness-population-selection (fire cell: absence claim, self-selected witness populat",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "WPS2 witness-population-selection (pass cell: absence claim, independent witness populatio",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "WPS3 witness-population-selection (N/A mirror: not an absence claim, self-selected populat",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "WPS4 witness-population-selection (N/A mirror: absence claim, witness_population undeclare",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "Venezuela releases (BBC c620lrw2xr12o): 'dozens of political prisoners' (source-misattribu",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "Venezuela releases (BBC c620lrw2xr12o): correct attribution (JEP, pass cell)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "Census 26 seats (square #6963): Wubbitys re-run on the same board (source-replication)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "Census 26 seats (square #6963): wicketwarden cross-board witness (pass cell)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "temporal-onset battery witness (at-onset no beat, peak elsewhere)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "reference-mix battery witness (inflated relative to single-reference)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "seal-ack-floor (1f916.ai /api/me/ack, 2026-09-27)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "PC1 platform-certified (constructed witness: fire cell, platform certifier, platform-secre",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "trust battery witness (self-asserted writer trust, TW1)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "tautological-blend battery witness (SignTrace Pool@60, TW2)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "three-channel independence witness (all channels open, CH0)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "three-channel independence witness (population closed, CH1)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "three-channel independence witness (criterion closed, CH2)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "three-channel independence witness (loop closed, CH3)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "criterion-threshold battery witness (SlideLab/ConfArena threshold-undisclosed, TW3)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "judge-as-target battery witness (Spotify self-improvement loop, TW4)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "CF-CG-1 screen clean-gap (self-specimen, partial support)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "CF-CG-1 census linear-weight (self-specimen, single value_b)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "CF-CG-1 sweep saturation (self-specimen, PASS cell)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "SCOPE-FLATTENING FAIL (2609.31563 multi-agent scaling, regime-flattening): plurality reali",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "SCOPE-FLATTENING PASS-1 (2609.31563, partial support): the value is support-bound, not sco",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "SCOPE-FLATTENING PASS-2 (constant value across the scope): nothing to flatten",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "SCOPE-FLATTENING PASS-3 (stated value beats the null): directionally supported, an oversta",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "seal-check unit-count (#7046, 2026-09-28)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "genuine N-check series (control)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "OPT-IN-CENSUS FIRE (three-valued state read as two-valued): 317 dead vs 5 breach + 312 und",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "OPT-IN-CENSUS PASS (claim already distinguishes the three values): 5 in breach, 312 undefi",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "OPT-IN-CENSUS N-A (census_claim not declared): schema-boundary",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": true,
+      "body_hedges": true,
+      "cell": "B",
+      "name": "THESIS-OUTRUNS-EVIDENCE FIRE (2609.31054 Rilla et al., open agents): title states mitigati",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [
+        "THESIS-OUTRUNS-EVIDENCE"
+      ],
+      "strict_tag": true
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "THESIS-OUTRUNS-EVIDENCE PASS / SCOPE-FLATTENING FAIL (2609.31563 multi-agent scaling): the",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": true,
+      "cell": "clean",
+      "name": "THESIS-OUTRUNS-EVIDENCE PASS (2609.31054 properly-scoped headline): the endpoint is unmeas",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": true,
+      "body_hedges": true,
+      "cell": "B",
+      "name": "THESIS-OUTRUNS-EVIDENCE FIRE / NO-EMPIRICAL-CONTENT (2609.31054 no-rows regime): thesis de",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [
+        "THESIS-OUTRUNS-EVIDENCE"
+      ],
+      "strict_tag": true
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "CERTIFIER-UNNAMED 2x2 A (MACBT witness): model-constructed referent, NAMED certifier (GPT-",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "CERTIFIER-UNNAMED 2x2 B (SciHorizon witness): model-constructed referent, UNNAMED certifie",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "CERTIFIER-UNNAMED 2x2 C (RC-free control): externally-anchored referent, UNNAMED certifier",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "CERTIFIER-UNNAMED 2x2 D (pass control): externally-anchored referent, NAMED certifier",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "CAUSAL-WIRING 2x3 A (fire): claim asserts causal, evidence measures only association",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "CAUSAL-WIRING 2x3 B (causal control): claim asserts causal, evidence measures causal",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "CAUSAL-WIRING 2x3 C (scoping control): claim asserts association, evidence measures associ",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "CAUSAL-WIRING 2x3 D (clean control): claim asserts association, evidence measures causal",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "CAUSAL-WIRING 2x3 E (TOE territory): claim asserts causal, association not measured",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "CAUSAL-WIRING FIRE (FRAIL 2609.30940 seam 2, early-commitment promote): Section 4.2 associ",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "A",
+      "name": "FRAIL (2609.30940): title states 'individually capable agents' as present-tense fact; evid",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [
+        "THESIS-OUTRUNS-EVIDENCE"
+      ],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "declared-channel battery witness (declared-attribute decision, verifiable content, DC1)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "declared-channel battery witness (verified-content decision, pass, DC2)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "declared-channel battery witness (declared-attribute decision, unverifiable content, defer",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "carrier-reach battery witness (carrier not in read path, verifiable content, CR1)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "carrier-reach battery witness (carrier in read path, verifiable content, pass, CR2)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "carrier-reach battery witness (carrier not in read path, unverifiable content, defers to T",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "agentic-qa citizen_keys (2026-09-30 square thread 4594/86625): the served note carries the",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "witness-address battery witness (falsifier witness same address as claim channel, WA1): th",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "witness-address battery witness (falsifier witness distinct address, pass, WA2): the falsi",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "witness-address battery witness (falsifier witness address undeclared, N/A, WA3): schema-b",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "post-7253 (square, 2026-09-30): the partial-exit engine's proposed falsifier reads its wit",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "CPB (2609.30813): governance policy B7's protection rests on a declared source-type channe",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": true,
+      "cell": "clean",
+      "name": "DIAL (2609.31215): strong human-aligned rankings with limited labels (thesis-outruns pass ",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "coupled-headlines battery witness (two coupled numbers on different axes, broader derived,",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "coupled-headlines battery witness (two coupled numbers on different axes, broader derived,",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "coupled-headlines battery witness (single headline, no coupled pair, N/A, CH3): schema-bou",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "STEPQuant (arXiv 2609.38169): the abstract headlines two coupled numbers on different axes",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "2609.30328 (When Is a Multi-Agent Code Judge Actually Grounded?, Aly/Assaf/Kobti, Windsor)",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "2609.30397 (A Synthetic Ground-Truth Framework for the Evaluation of XAI Methods, Miro-Nic",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "2609.30383 (Stealth Apart, Harm Together: Skill Cascading Attacks on Skill-Based Agent Sys",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "held-out-provenance battery witness (held-out eval self-compiled by the monitored party, f",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "held-out-provenance battery witness (held-out eval externally constructed, pass, HP2): the",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "held-out-provenance battery witness (held-out eval, provenance undeclared, N/A, HP3): sche",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "held-out-provenance battery witness (no held-out eval proposed, N/A, HP4): the axis does n",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "OpenAI 'Towards safety cases for frontier AI training' (2026-09-30): the safety case's hel",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "Qureshi/Tayubi/BaruKab/Khan (PLOS ONE, 2026-05-21, DOI 10.1371/journal.pone.0345956): the ",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "SELECTION-PROVENANCE FIRE (eval set self-selected by the monitored party, SP1): the party ",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "SELECTION-PROVENANCE PASS (eval set externally selected, SP2): the selection is genuinely ",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "SELECTION-PROVENANCE SCHEMA-BOUNDARY (eval set selection undeclared, SP3): the post does n",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "SELECTION-PROVENANCE N/A (no eval set selection field, SP4): the axis does not apply",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "MATH-500 (OpenAI o1, Lightman et al. 2024): self-selected subset of external MATH corpus",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "LLaMA 2 70B (Meta, Touvron et al. 2023, arXiv 2307.09288): reports the standard MATH test ",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": true,
+      "body_hedges": true,
+      "cell": "B",
+      "name": "FAO SOFO 2026 (news.un.org 1168467, 2026-09-30): the UN 'World News in Brief' headlines 'P",
+      "note_logs_qualification_drop": true,
+      "seam_fired": [
+        "THESIS-OUTRUNS-EVIDENCE"
+      ],
+      "strict_tag": true
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "WITNESS-RESIDENCE FIRE (witness custodian-resident, WR1): the custodian holds the witness ",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "WITNESS-RESIDENCE PASS (witness publicly available, WR2): a stranger can reproduce",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "WITNESS-RESIDENCE SCHEMA-BOUNDARY (witness residence undeclared, WR3): the post does not d",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "WITNESS-RESIDENCE N/A (no witness residence field, WR4): the axis does not apply",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "87920 custodian-restore (square comment 87920, 2026-10-01): the skill_sha256 witness is cu",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": true,
+      "body_hedges": true,
+      "cell": "P",
+      "name": "2609.36800 (AI as a Compiler: Compiling Triton kernels without the Triton compiler, Drisco",
+      "note_logs_qualification_drop": true,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": false,
+      "cell": "clean",
+      "name": "2609.36770 (Emergent Specialization in Populations of Self-Supervised Collaborative Vision",
+      "note_logs_qualification_drop": true,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": false,
+      "body_hedges": true,
+      "cell": "clean",
+      "name": "2609.36777 (Code4Scene: Benchmarking Coding Agents for Constructing and Editing 3D Scenes,",
+      "note_logs_qualification_drop": false,
+      "seam_fired": [],
+      "strict_tag": false
+    },
+    {
+      "body_concedes": true,
+      "body_hedges": true,
+      "cell": "P",
+      "name": "2609.36805 (UpliftMem: Learning Memory Retrieval from Set-Level Execution Uplift, 2026-10-",
+      "note_logs_qualification_drop": true,
+      "seam_fired": [],
+      "strict_tag": false
+    }
+  ],
+  "seam_set": [
+    "SELECTION-ON-NARRATIVE",
+    "THESIS-OUTRUNS-EVIDENCE"
+  ],
+  "tag": "QUALIFICATION-DROP"
+}
