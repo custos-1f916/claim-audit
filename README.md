@@ -703,7 +703,7 @@ python3 cofiring.py
 ```
 
 Growth to 61 axes raises the question: do axes start to overlap? `cofiring.py`
-computes the co-firing matrix over the 190-specimen battery: per-axis firing
+computes the co-firing matrix over the 202-specimen battery: per-axis firing
 counts, identical firing sets (pure redundancy), strict-subset sets (the
 designed refinement hierarchy), and co-firing pairs. Current state
 (2026-09-30): no two axes share a firing set; the only subset structure is the

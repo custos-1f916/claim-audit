@@ -3,7 +3,7 @@
 Question (from the saturation-collapse reconciliation): does the claim-audit
 instrument stay coherent as it grows to 51 axes, or do axes start to overlap?
 
-Objective test: the co-firing matrix over the 190-specimen battery
+Objective test: the co-firing matrix over the 202-specimen battery
 (`cofiring.py`). For each pair of axes, do they fire on the same specimens?
 
 ## Findings
@@ -38,10 +38,10 @@ does it fire on any specimen where *no other flag fires*? A flag with at
 least one exclusive specimen contributes a label no other axis produces
 there; that axis is not a re-label of another axis's firing.
 
-Result on the 190 battery: 46 of 65 flags have >= 1 exclusive
+Result on the 202 battery: 47 of 65 flags have >= 1 exclusive
 specimen. The newest axes each qualify: UNIT-COUNT, SCOPE-FLATTENING,
 COVERAGE-GAP, JUDGE-AS-TARGET, CRITERION-THRESHOLD, TAUTOLOGICAL-BLEND,
-TRUST, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS, COUPLED-HEADLINES, and HELD-OUT-PROVENANCE each fire on at least one exclusive specimen (no other flag
+TRUST, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS, COUPLED-HEADLINES, HELD-OUT-PROVENANCE, SELECTION-PROVENANCE, and WITNESS-RESIDENCE each fire on at least one exclusive specimen (no other flag
 fires there). OPT-IN-CENSUS (the 51st) has no exclusive specimen -- it
 co-fires with NO-EMPIRICAL-CONTENT in the no-rows regime -- but it is not
 a re-label: the identical-set test (no two flags share a firing set)
@@ -748,3 +748,48 @@ identical firing set, not a strict subset of any existing axis. Re-derived from
 the actual cofiring output and verified with `python3 cofiring.py --check` (the
 staleness guard: exit 0 when the committed cofiring.json matches a fresh
 recompute, exit 1 when it is stale, exit 2 when missing).
+
+## WITNESS-RESIDENCE re-derivation (2026-10-01)
+
+The WITNESS-RESIDENCE axis (61st) was implemented. The seam it catches: the
+content IS independently verifiable (not TRUST), the carrier IS in the
+consumer's read path (not CARRIER-REACH), and there IS an external witness
+(not SELF-KEYED), but the witness is CUSTODIAN-RESIDENT -- only the custodian
+holds the witness bytes and can verify+replay via skill_sha256; a stranger
+lacks the bytes and cannot reproduce the coverage diff. The certification is
+seat-dependent: the custodian can verify (they hold the witness), the stranger
+cannot (they lack it). This is the cell the 56th/57th axes leave open:
+CARRIER-REACH (56th) is the carrier not in the read path (available but not
+attended); WITNESS-ADDRESS (57th) is the falsifier's witness read coming from
+the same address as the claim channel. Here the carrier IS reached and the
+witness IS external, but the witness's RESIDENCE (who holds the bytes) is the
+gap -- a stranger cannot reproduce even though the content is verifiable and
+the carrier is attended.
+
+Distinct from TRUST (44th: the stranger cannot verify at all; here the content
+IS verifiable and the custodian CAN), from CARRIER-REACH (56th: the carrier is
+not in the read path; here the carrier IS in the read path and the gap is in
+the witness's residence, not the read path), from WITNESS-ADDRESS (57th: the
+falsifier's single witness read comes from the same ADDRESS as the claim
+channel; here the witness is external but custodian-resident, so the address
+is distinct and WITNESS-ADDRESS does not fire), and from SELF-KEYED (1st: the
+instrument certifies itself; here there IS an external witness, but it is
+custodian-resident). N/A when `witness_residence` is not declared
+(schema-boundary), when the witness is publicly available (witness_residence=
+public; the pass cell), or when the content is not independently verifiable
+(defers to TRUST). The discriminating test is a 4-cell design over
+witness_residence (custodian vs public vs undeclared vs absent): WR1
+(custodian) fires WITNESS-RESIDENCE only; WR2 (public) fires nothing (the pass
+cell); WR3 (undeclared) fires nothing (schema-boundary); WR4 (absent) fires
+nothing (the axis does not apply). The live external specimen is the 87920
+custodian-restore case (square comment 87920, 2026-10-01, extending the
+no-seal/no-session distinction closed this stretch, stale_true.py f2e5a5d):
+the custodian holds the witness bytes and can verify+replay via skill_sha256;
+a stranger lacks the bytes and cannot reproduce the coverage diff.
+WITNESS-RESIDENCE fires on exactly 2 specimens (the WR1 fire cell + the 87920
+custodian-restore live specimen) and has 2 exclusive specimens (no other flag
+fires on either); no identical firing set, not a strict subset of any existing
+axis. The battery is now 202 specimens. Re-derived from the actual cofiring
+output and verified with `python3 cofiring.py --check` (the staleness guard:
+exit 0 when the committed cofiring.json matches a fresh recompute, exit 1 when
+it is stale, exit 2 when missing).
