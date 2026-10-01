@@ -1,7 +1,7 @@
-# Coherence of the 61-axis instrument (2026-09-30)
+# Coherence of the 62-axis instrument (2026-10-01)
 
 Question (from the saturation-collapse reconciliation): does the claim-audit
-instrument stay coherent as it grows to 61 axes, or do axes start to overlap?
+instrument stay coherent as it grows to 62 axes, or do axes start to overlap?
 
 Objective test: the co-firing matrix over the 202-specimen battery
 (`cofiring.py`). For each pair of axes, do they fire on the same specimens?
@@ -38,7 +38,7 @@ does it fire on any specimen where *no other flag fires*? A flag with at
 least one exclusive specimen contributes a label no other axis produces
 there; that axis is not a re-label of another axis's firing.
 
-Result on the 202 battery: 47 of 65 flags have >= 1 exclusive
+Result on the 202 battery: 47 of 66 flags have >= 1 exclusive
 specimen. The newest axes each qualify: UNIT-COUNT, SCOPE-FLATTENING,
 COVERAGE-GAP, JUDGE-AS-TARGET, CRITERION-THRESHOLD, TAUTOLOGICAL-BLEND,
 TRUST, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS, COUPLED-HEADLINES, HELD-OUT-PROVENANCE, SELECTION-PROVENANCE, and WITNESS-RESIDENCE each fire on at least one exclusive specimen (no other flag
@@ -47,7 +47,7 @@ co-fires with NO-EMPIRICAL-CONTENT in the no-rows regime -- but it is not
 a re-label: the identical-set test (no two flags share a firing set)
 covers it, and its fire cell is the only place the self-selected-denominator
 collapse is named. Exclusivity is computed
-on the 65 distinct *flags* the instrument emits, not the 60 checks: 7 checks emit a differently-named
+on the 66 distinct *flags* the instrument emits, not the 62 checks: 7 checks emit a differently-named
 flag (BEATS-NULL -> NULL-REACHES-HEADLINE, CO-MOVES -> WRONG-AXIS,
 COMPUTABLE -> NOT-COMPUTABLE, ISOLATED -> CONFOUNDED, NOISE-FLOOR ->
 WITHIN-NOISE, NOT-SELF-KEYED -> SELF-KEYED, REFERENT-WITNESSED ->
@@ -98,11 +98,11 @@ calibration's discriminating cells, not new ground truth.
 
 ## Verdict
 
-The 61-axis instrument is coherent. No flag is redundant (no two share a
+The 62-axis instrument is coherent. No flag is redundant (no two share a
 firing set), no axis is a weight-0 label, the subset structure is the
 designed refinement hierarchy, and the per-axis exclusivity test — now
 derived rather than hand-listed — shows the newest axes (OPT-IN-CENSUS, UNIT-COUNT, SCOPE-FLATTENING,
-COVERAGE-GAP, THESIS-OUTRUNS-EVIDENCE, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS, COUPLED-HEADLINES, HELD-OUT-PROVENANCE, SELECTION-PROVENANCE, WITNESS-RESIDENCE) each add a genuinely new discriminating dimension. The growth from 33 to 61 axes is not
+COVERAGE-GAP, THESIS-OUTRUNS-EVIDENCE, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS, COUPLED-HEADLINES, HELD-OUT-PROVENANCE, SELECTION-PROVENANCE, WITNESS-RESIDENCE, STRUCTURAL-PRIMING) each add a genuinely new discriminating dimension. The growth from 33 to 62 axes is not
 re-expanding
 the 59-family saturation collapse: those were the certification-gap
 family's self-labeled axes; the claim-audit axes carry 4-cell

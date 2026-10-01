@@ -1,8 +1,8 @@
 # claim-audit
 
-A 61-axis falsification instrument for empirical claims in ML/AI papers
+A 62-axis falsification instrument for empirical claims in ML/AI papers
 (and other headline claims with data). Given a claim's raw numbers as a
-spec, it checks the claim against 61 axes (self-keyed, wrong-axis,
+spec, it checks the claim against 62 axes (self-keyed, wrong-axis,
 selection-bias, confounded, within-noise, lossy-projection,
 aggregation-reversal, referent-witnessed, temporal/dose/outcome/subgroup
 onset-and-spike, funnel-stage-misattribution, selection-on-narrative,
@@ -89,7 +89,7 @@ battery from this copy of the code.
 
 ## Files
 
-  claim_audit.py   the instrument (61 checks + CLI), stdlib only
+  claim_audit.py   the instrument (62 checks + CLI), stdlib only
   calibration.py   the 116-specimen discriminating calibration
   calibration_boundary.py  the self-calibration probe (per-check mutation)
   calibration_confound.py  the RED-baseline confound (dead check reads CALIBRATED)
@@ -548,7 +548,7 @@ knob/CI/subgroup). Minor self-inconsistency noted honestly (not this axis):
 the paper's confusion matrix (TP=4621, TN=5916, FP=138, FN=79) computes to
 97.98%, but the paper reports 98.06% (the 5-fold CV number). The co-firing
 matrix is unchanged (the new specimen fires nothing, so no flag's fire set
-changes; 46 of 65 flags still have >= 1 exclusive specimen).
+changes; 46 of 66 flags still have >= 1 exclusive specimen).
 
 (2026-09-30): the SELECTION-PROVENANCE axis (60th) was implemented. The
 SELECTION-PROVENANCE axis catches the selection-provenance seam: the claim
@@ -628,12 +628,12 @@ python3 calibration_boundary.py
 
 The battery being GREEN is not the same as the battery being COMPLETE.
 This probe answers the self-keyed question applied to the instrument's own
-calibration: for each of the 61 checks, blind it (force always-pass) and
+calibration: for each of the 62 checks, blind it (force always-pass) and
 re-run the battery. If the battery stays GREEN, no specimen's
 independently-derived ground truth requires that check to fire, so the check
 could silently break and `calibration.py` would still print DISCRIMINATES.
 
-Current state (2026-09-30): 61/61 checks are calibrated (each caught by
+Current state (2026-10-01): 62/62 checks are calibrated (each caught by
 at least one discriminating specimen — BEATS-NULL by 9, its
 false-positive surface being the spike family plus F2; NOT-SELF-KEYED /
 SCOPE-OF-INDEPENDENCE / EVIDENCE-UNCLOSED / SOURCE-REPLICATION by 2 each;
@@ -762,7 +762,7 @@ declared, 4 overlap both).
 python3 cofiring.py
 ```
 
-Growth to 61 axes raises the question: do axes start to overlap? `cofiring.py`
+Growth to 62 axes raises the question: do axes start to overlap? `cofiring.py`
 computes the co-firing matrix over the 202-specimen battery: per-axis firing
 counts, identical firing sets (pure redundancy), strict-subset sets (the
 designed refinement hierarchy), and co-firing pairs. Current state
@@ -774,7 +774,7 @@ OPT-IN-CENSUS, THESIS-OUTRUNS-EVIDENCE, CERTIFIER-UNNAMED, CAUSAL-WIRING, DECLAR
 axis fires, except OPT-IN-CENSUS which co-fires with NO-EMPIRICAL-CONTENT (its
 designed refinement parent; THESIS-OUTRUNS-EVIDENCE likewise co-fires with
 NO-EMPIRICAL-CONTENT in its no-rows regime cell; CERTIFIER-UNNAMED co-fires with REFERENT-CONSTRUCTED on corner B, the model-constructed-referent cell — CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, and WITNESS-ADDRESS are fully exclusive) (per-axis exclusivity, derived
-from the firing sets rather than hand-listed); all 61 checks now fire on the battery — the two
+from the firing sets rather than hand-listed); all 62 checks now fire on the battery — the two
 former never-firing checks (TEMPORAL-ONSET, REFERENCE-MIX) gained constructed
 witnesses, and PLATFORM-CERTIFIED gained a constructed witness (PC1) for
 exclusivity (its live specimen, the seal-ack-floor, co-fires with

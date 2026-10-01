@@ -775,6 +775,36 @@ SPECIMENS = [
     'metric': 'coverage delta (higher better)',
     'rows': [{"mechanism_on": True, "metric": 0.70}, {"mechanism_on": False, "is_null": True, "metric": 0.00}]
   },
+  {
+    'name': 'STRUCTURAL-PRIMING FIRE (expected value in the mandatory lead, SP1): the document leads with its own key',
+    'truth': ['STRUCTURAL-PRIMING'],
+    'truth_reason': "FIRE CELL (structural-priming axis, 62nd, 2026-10-01). priming_position=lead: the expected value sits in the mandatory lead the reading procedure requires, so the reader's supposed independence (the 'tell it no expected value' instruction) is defeated by the document's OWN structure -> STRUCTURAL-PRIMING fires, and no other flag fires (exclusive). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00, no knob/CI/subgroup). Distinct from WITNESS-ADDRESS (57th: the witness read comes from the same address; here the failure is the priming, not the address), from TRUST (44th: the content is verifiable), from CARRIER-REACH (56th: the carrier IS in the read path), from WITNESS-RESIDENCE (61st: the key is public, not custodian-resident), and from SELF-KEYED (1st: there IS an external certifier).",
+    'type': 'cross-model',
+    'mechanism': 'transcription of continuity block (document leads with its own key)',
+    'metric': 'reader-neutrality delta (higher better)',
+    'rows': [{"mechanism_on": True, "metric": 0.70}, {"mechanism_on": False, "is_null": True, "metric": 0.00}],
+    'priming_position': 'lead'
+  },
+  {
+    'name': 'STRUCTURAL-PRIMING PASS (expected value not in the lead, SP2): the reader is not primed',
+    'truth': [],
+    'truth_reason': "PASS CELL (structural-priming axis, 62nd, 2026-10-01). priming_position=non_lead: the expected value is not in the mandatory lead; the reader is not primed by the document's structure -> STRUCTURAL-PRIMING is N/A (the pass cell). Byte-identical to the fire cell except priming_position (non_lead vs lead), so fire-vs-pass isolates the position. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires.",
+    'type': 'cross-model',
+    'mechanism': 'transcription of continuity block (expected value in appendix)',
+    'metric': 'reader-neutrality delta (higher better)',
+    'rows': [{"mechanism_on": True, "metric": 0.70}, {"mechanism_on": False, "is_null": True, "metric": 0.00}],
+    'priming_position': 'non_lead'
+  },
+  {
+    'name': 'STRUCTURAL-PRIMING SCHEMA-BOUNDARY (priming position undeclared, SP3): the document does not declare where the expected value sits',
+    'truth': [],
+    'truth_reason': "SCHEMA-BOUNDARY CELL (structural-priming axis, 62nd, 2026-10-01). priming_position undeclared: the document does not declare where the expected value sits -> STRUCTURAL-PRIMING is N/A (schema-boundary). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires.",
+    'type': 'cross-model',
+    'mechanism': 'transcription of continuity block (position undeclared)',
+    'metric': 'reader-neutrality delta (higher better)',
+    'rows': [{"mechanism_on": True, "metric": 0.70}, {"mechanism_on": False, "is_null": True, "metric": 0.00}]
+  },
+
 
 ]
 

@@ -3218,6 +3218,85 @@ SPECIMENS = [
     "note": "LIVE SPECIMEN (square comment 87920, 2026-10-01, extending the no-seal/no-session distinction closed this stretch, stale_true.py f2e5a5d). The custodian holds the witness bytes and can verify+replay via skill_sha256; a stranger lacks the bytes and cannot reproduce the coverage diff. That is CUSTODIAN-RECOVERABLE vs PUBLICLY-REPRODUCIBLE: the certification is seat-dependent. The content IS independently verifiable (not TRUST), the carrier IS in the read path (not CARRIER-REACH), and there IS an external witness (not SELF-KEYED), but the witness is custodian-resident -> WITNESS-RESIDENCE fires. Real-world FIRE witness, 61st axis, 2026-10-01."
   },
   {
+    "name": "STRUCTURAL-PRIMING FIRE (expected value in the mandatory lead, distinct-address witness, SP1): the document leads with its own key",
+    "truth": ["STRUCTURAL-PRIMING"],
+    "type": "cross-model",
+    "mechanism": "transcription of continuity block (document leads with its own key)",
+    "metric": "reader-neutrality delta (higher better)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "priming_position": "lead",
+    "claim_channel_address": "exchange_ledger",
+    "falsifier_witness_address": "audit_log",
+    "expected": ["STRUCTURAL-PRIMING"],
+    "note": "FIRE CELL (structural-priming axis, 62nd, 2026-10-01). priming_position=lead: the expected value sits in the mandatory lead the reading procedure requires, so the reader's supposed independence (the 'tell it no expected value' instruction) is defeated by the document's OWN structure -> STRUCTURAL-PRIMING fires, and no other flag fires (exclusive; the witness address is distinct, so WITNESS-ADDRESS does not fire). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00, no knob/CI/subgroup). Distinct from WITNESS-ADDRESS (57th: the witness read comes from the same address; here the failure is the priming, not the address), from TRUST (44th: the content is verifiable), from CARRIER-REACH (56th: the carrier IS in the read path), from WITNESS-RESIDENCE (61st: the key is public, not custodian-resident), and from SELF-KEYED (1st: there IS an external certifier)."
+  },
+  {
+    "name": "STRUCTURAL-PRIMING + WITNESS-ADDRESS CO-FIRE (expected value in the mandatory lead, same-address witness, SP2): the document leads with its own key AND the falsifier reads from the same address",
+    "truth": ["STRUCTURAL-PRIMING", "WITNESS-ADDRESS"],
+    "type": "cross-model",
+    "mechanism": "transcription of continuity block (document leads with its own key; falsifier same-address)",
+    "metric": "reader-neutrality delta (higher better)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "priming_position": "lead",
+    "claim_channel_address": "exchange_ledger",
+    "falsifier_witness_address": "exchange_ledger",
+    "expected": ["STRUCTURAL-PRIMING", "WITNESS-ADDRESS"],
+    "note": "CO-FIRE CELL (structural-priming axis, 62nd, 2026-10-01). priming_position=lead AND claim_channel_address==falsifier_witness_address: the document leads with its own key (STRUCTURAL-PRIMING) AND the falsifier's witness reads from the same address as the claim channel (WITNESS-ADDRESS). Both fire independently -- the axes are orthogonal, not a relabel. This is cell (a) of the discriminating grid: same-address witness in the lead position."
+  },
+  {
+    "name": "WITNESS-ADDRESS ONLY (expected value not in the lead, same-address witness, SP3): the falsifier reads from the same address but the document does not lead with its own key",
+    "truth": ["WITNESS-ADDRESS"],
+    "type": "cross-model",
+    "mechanism": "transcription of continuity block (falsifier same-address; expected value in appendix)",
+    "metric": "reader-neutrality delta (higher better)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "priming_position": "non_lead",
+    "claim_channel_address": "exchange_ledger",
+    "falsifier_witness_address": "exchange_ledger",
+    "expected": ["WITNESS-ADDRESS"],
+    "note": "WITNESS-ADDRESS-ONLY CELL (structural-priming axis, 62nd, 2026-10-01). priming_position=non_lead AND claim_channel_address==falsifier_witness_address: the falsifier's witness reads from the same address (WITNESS-ADDRESS fires), but the expected value is NOT in the mandatory lead (it sits in an appendix), so the reader is not primed by the document's structure -> STRUCTURAL-PRIMING does not fire. This is cell (b) of the discriminating grid: same-address witness in a non-lead position proves the axes are orthogonal (a same-address witness in a non-lead position does not prime the reader)."
+  },
+  {
+    "name": "STRUCTURAL-PRIMING PASS (expected value not in the lead, distinct-address witness, SP4): the reader is not primed and the witness is genuinely independent",
+    "truth": [],
+    "type": "cross-model",
+    "mechanism": "transcription of continuity block (expected value in appendix; falsifier distinct-address)",
+    "metric": "reader-neutrality delta (higher better)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "priming_position": "non_lead",
+    "claim_channel_address": "exchange_ledger",
+    "falsifier_witness_address": "audit_log",
+    "expected": [],
+    "note": "PASS CELL (structural-priming axis, 62nd, 2026-10-01). priming_position=non_lead AND claim_channel_address!=falsifier_witness_address: the expected value is not in the mandatory lead (the reader is not primed) AND the witness address is distinct (the witness is genuinely independent) -> neither STRUCTURAL-PRIMING nor WITNESS-ADDRESS fires. The pass cell of the 2x2 grid."
+  },
+  {
+    "name": "STRUCTURAL-PRIMING SCHEMA-BOUNDARY (priming position undeclared, SP5): the document does not declare where the expected value sits",
+    "truth": [],
+    "type": "cross-model",
+    "mechanism": "transcription of continuity block (position undeclared)",
+    "metric": "reader-neutrality delta (higher better)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "claim_channel_address": "exchange_ledger",
+    "falsifier_witness_address": "audit_log",
+    "expected": [],
+    "note": "SCHEMA-BOUNDARY CELL (structural-priming axis, 62nd, 2026-10-01). priming_position undeclared: the document does not declare where the expected value sits -> STRUCTURAL-PRIMING is N/A (schema-boundary). The witness address is distinct, so WITNESS-ADDRESS is also N/A (the pass cell). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+  },
+  {
     "name": "2609.36800 (AI as a Compiler: Compiling Triton kernels without the Triton compiler, Driscoll et al., 2026-10-01): the 0.83x-3.34x headline range merges two undeclared evaluation regimes; the lower bound is a loss on mainstream GEMM/H100/FP16 and the upper bound is a single-kernel peak on the newest arch; the body is honest about the per-regime numbers and the checker-as-limiter",
     "type": "range-merge",
     "mechanism": "TAIC (Triton AI Compiler) agentic Triton->PTX lowering vs autotuned Triton baseline",

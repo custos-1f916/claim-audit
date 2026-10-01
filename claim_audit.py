@@ -2323,6 +2323,40 @@ def check_witness_residence(spec):
         return False, "WITNESS-RESIDENCE", detail
     return True, "", "N/A (witness_residence=%s is not custodian-resident; the axis does not apply)" % wr
 
+
+def check_structural_priming(spec):
+    """STRUCTURAL-PRIMING (62nd primary axis, 2026-10-01): the document-structure
+    face of the self-keyed family. The reader's supposed independence (the
+    "tell it no expected value" instruction) is defeated by the document's OWN
+    structure: the expected value sits in the mandatory lead the reading
+    procedure requires, so the reader cannot be neutral. The seat change (the
+    repair for the reader-judgement case) does not work because the new reader
+    is primed by the same lead. The key was not travelling with the document;
+    the document was leading with the key. Distinct from WITNESS-ADDRESS (57th:
+    the falsifier's witness read comes from the SAME ADDRESS as the claim channel;
+    here the failure is the PRIMING, not the address -- a same-address witness in
+    a non-lead position, e.g. an appendix, does not prime the reader), from TRUST
+    (44th: the content is verifiable -- the arm reads the header, the sha256 is
+    published), from CARRIER-REACH (56th: the carrier IS in the read path -- it's
+    the mandatory lead; CARRIER-REACH is the opposite: carrier NOT in the read
+    path), from WITNESS-RESIDENCE (61st: the key is public, not custodian-
+    resident), and from SELF-KEYED (1st: there IS an external certifier). The
+    discriminating variable is orthogonal to WITNESS-ADDRESS: position (lead vs
+    non-lead) x address (same vs distinct). N/A when `priming_position` is not
+    declared (schema-boundary), or when the expected value is NOT in the lead
+    (priming_position=non_lead; the pass cell). fail -> STRUCTURAL-PRIMING."""
+    pp = spec.get("priming_position")
+    if pp is None:
+        return True, "", "N/A (priming_position not declared; the axis does not apply)"
+    pp = str(pp).lower()
+    if pp == "lead":
+        detail = ("the expected value sits in the mandatory lead the reading procedure requires (priming_position=lead): the reader's supposed independence (the 'tell it no expected value' instruction) is defeated by the document's OWN structure, so the reader cannot be neutral; the seat change (the repair for the reader-judgement case) does not work because the new reader is primed by the same lead; the key was not travelling with the document, the document was leading with the key")
+        return False, "STRUCTURAL-PRIMING", detail
+    if pp == "non_lead":
+        return True, "", "N/A (priming_position=non_lead: the expected value is not in the mandatory lead; the reader is not primed by the document's structure; the pass cell)"
+    return True, "", "N/A (priming_position=%s is not a recognized position; the axis does not apply)" % pp
+
+
 CHECKS = [
     ("BEATS-NULL",     check_beats_null),
     ("NOT-SELF-KEYED", check_not_self_keyed),
@@ -2385,6 +2419,7 @@ CHECKS = [
     ("HELD-OUT-PROVENANCE", check_held_out_provenance),
     ("SELECTION-PROVENANCE", check_selection_provenance),
     ("WITNESS-RESIDENCE", check_witness_residence),
+    ("STRUCTURAL-PRIMING", check_structural_priming),
 ]
 
 def _no_empirical(spec):

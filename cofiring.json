@@ -1,5 +1,5 @@
 {
-  "battery": 207,
+  "battery": 212,
   "check2flag": {
     "AGGREGATION-REVERSAL": "AGGREGATION-REVERSAL",
     "ANNOTATOR-SELF-KEYED": "ANNOTATOR-SELF-KEYED",
@@ -45,6 +45,7 @@
     "SOURCE-REPLICATION": "SOURCE-REPLICATION",
     "SPLIT-ONSET": "SPLIT-ONSET",
     "SPLIT-SPIKE": "SPLIT-SPIKE",
+    "STRUCTURAL-PRIMING": "STRUCTURAL-PRIMING",
     "SUBGROUP-ONSET": "SUBGROUP-ONSET",
     "SUBGROUP-SPIKE": "SUBGROUP-SPIKE",
     "TAUTOLOGICAL-BLEND": "TAUTOLOGICAL-BLEND",
@@ -193,6 +194,11 @@
       "SELF-KEYED",
       "WRONG-AXIS",
       0
+    ],
+    [
+      "STRUCTURAL-PRIMING",
+      "WITNESS-ADDRESS",
+      203
     ]
   ],
   "cofire_ge2": [
@@ -308,6 +314,7 @@
     "SOURCE-REPLICATION": 1,
     "SPLIT-ONSET": 1,
     "SPLIT-SPIKE": 3,
+    "STRUCTURAL-PRIMING": 2,
     "SUBGROUP-ONSET": 1,
     "SUBGROUP-SPIKE": 1,
     "TAUTOLOGICAL-BLEND": 4,
@@ -324,7 +331,7 @@
     "WIDER-THAN-NAMED": 2,
     "WINDOW-PRESENT-TENSE": 1,
     "WITHIN-NOISE": 1,
-    "WITNESS-ADDRESS": 4,
+    "WITNESS-ADDRESS": 6,
     "WITNESS-POPULATION-SELECTION": 1,
     "WITNESS-RESIDENCE": 2,
     "WRONG-AXIS": 6
@@ -490,6 +497,9 @@
       47
     ],
     "SPLIT-SPIKE": [],
+    "STRUCTURAL-PRIMING": [
+      202
+    ],
     "SUBGROUP-ONSET": [
       32
     ],
@@ -528,7 +538,8 @@
     "WITNESS-ADDRESS": [
       171,
       182,
-      183
+      183,
+      204
     ],
     "WITNESS-POPULATION-SELECTION": [
       117
@@ -540,7 +551,7 @@
     "WRONG-AXIS": [
       4,
       77,
-      206
+      211
     ]
   },
   "firing_sets": {
@@ -789,6 +800,10 @@
       52,
       58
     ],
+    "STRUCTURAL-PRIMING": [
+      202,
+      203
+    ],
     "SUBGROUP-ONSET": [
       32
     ],
@@ -848,7 +863,9 @@
       171,
       174,
       182,
-      183
+      183,
+      203,
+      204
     ],
     "WITNESS-POPULATION-SELECTION": [
       117
@@ -863,7 +880,7 @@
       4,
       77,
       105,
-      206
+      211
     ]
   },
   "identical": {},
