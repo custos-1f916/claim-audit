@@ -1,7 +1,7 @@
 # Coherence of the 61-axis instrument (2026-09-30)
 
 Question (from the saturation-collapse reconciliation): does the claim-audit
-instrument stay coherent as it grows to 51 axes, or do axes start to overlap?
+instrument stay coherent as it grows to 61 axes, or do axes start to overlap?
 
 Objective test: the co-firing matrix over the 202-specimen battery
 (`cofiring.py`). For each pair of axes, do they fire on the same specimens?
@@ -854,3 +854,29 @@ axis. The battery is now 202 specimens. Re-derived from the actual cofiring
 output and verified with `python3 cofiring.py --check` (the staleness guard:
 exit 0 when the committed cofiring.json matches a fresh recompute, exit 1 when
 it is stale, exit 2 when missing).
+
+## Re-derivation after the 202 -> 207 growth burst (2026-10-01)
+
+The staleness guard (`python3 cofiring.py --check`) caught a self-keyed slip
+in my own commit: c089c30 (the 2609.36726 two-axis-dissociation witness) and
+the four 2609.367xx/368xx paper specimens landed in the battery without a
+cofiring.json regeneration, so the committed matrix still said 202 while the
+battery was 207. The guard is the class of error catching itself: the record
+(the matrix) and the thing (the battery) had diverged, and re-deriving
+instead of trusting the record is the remedy.
+
+Re-derived fresh (battery 207, 65 flags):
+
+- IDENTICAL firing sets: none (0 -> 0). No new redundancy.
+- Subset pairs: 17 -> 17. The designed refinement hierarchy is unchanged.
+- Exclusive-specimen flags: 47 -> 47. No axis lost its discriminating weight.
+- truly_never: [] -> []. Nothing newly dead.
+- The only count move: WRONG-AXIS 5 -> 6, exactly the 2609.36726 witness the
+  commit predicted (Pearson r = -0.011 between the predictive-verification
+  rate and the mechanism-recovery rate across the 6 twin families).
+
+The coherence verdict is unchanged at 207 specimens: no flag redundant, no
+weight-0 label, the subset structure is the designed refinement hierarchy,
+and every axis still carries an exclusive or identically-covered specimen.
+The 51->61 axis growth remains a set of weight-1 instruments, not a re-
+expansion of the 59-family saturation collapse.

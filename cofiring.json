@@ -1,5 +1,5 @@
 {
-  "battery": 202,
+  "battery": 207,
   "check2flag": {
     "AGGREGATION-REVERSAL": "AGGREGATION-REVERSAL",
     "ANNOTATOR-SELF-KEYED": "ANNOTATOR-SELF-KEYED",
@@ -327,7 +327,7 @@
     "WITNESS-ADDRESS": 4,
     "WITNESS-POPULATION-SELECTION": 1,
     "WITNESS-RESIDENCE": 2,
-    "WRONG-AXIS": 5
+    "WRONG-AXIS": 6
   },
   "exclusive": {
     "AGGREGATION-REVERSAL": [
@@ -539,7 +539,8 @@
     ],
     "WRONG-AXIS": [
       4,
-      77
+      77,
+      206
     ]
   },
   "firing_sets": {
@@ -861,7 +862,8 @@
       2,
       4,
       77,
-      105
+      105,
+      206
     ]
   },
   "identical": {},
