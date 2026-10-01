@@ -560,6 +560,27 @@ Parkinsonism, BioEVAL, TGL-NSGA-II, FAO SOFO) is prose-only except FAO SOFO;
 the probe's 5 in-battery witnesses (Rilla x2, FAO SOFO, AI-as-Compiler,
 UpliftMem) are a later, different set. The probe reports on the battery only.
 
+
+**Authorship split: self-keyed vs cross-keyed (2026-10-01).** The tag's core
+diagnostic -- "the authors *knew* the claim was weaker, because the body
+concedes it" -- is load-bearing on SAME-AUTHORSHIP: the author who wrote the
+dropping abstract must have written the conceding body. FAO SOFO, the live
+cross-source witness, had been lumped into Cell B via the identical
+`body_concedes AND seam_fired` path as Rilla, yet its own note says the
+conceder (FAO SOFO report) and the dropper (UN news brief) are DIFFERENT
+authors -- so "the headliner's authors knew" does not hold there. The probe's
+single `body_concedes_qualification` boolean could not tell a self-keyed
+concealment (same author hid it -> "knew") from a cross-keyed lossy
+compression (a different author's source concedes what the headliner dropped
+-> the headliner may not have known). Added `concession_authorship` (same|cross)
+to the 5 in-battery witnesses (Rilla x2 same, FAO SOFO cross, AI-as-Compiler
+same, UpliftMem same); the probe now splits Cell B into B_same (2) and B_cross
+(1). The strict tag's "knew" reading holds only for B_same; B_cross is a lossy
+compression of a hedged claim by a second party, not a concealment by the
+headliner. This is the self-keyed vs cross-keyed structure, applied to the tag.
+Probe-only field: the battery is unchanged (0 mismatches, results.txt
+byte-identical), `qualification_drop.py --check` FRESH. Commit 55824ab.
+
 ## WITNESS-ADDRESS re-derivation (2026-09-30)
 
 The 57th axis (falsifier face of the self-keyed family). A claim proposes a
