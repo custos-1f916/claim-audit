@@ -99,6 +99,8 @@ battery from this copy of the code.
   specimens.py     207 specimens (147 real + 60 constructed/self-specimen) with expected flag sets
   results.txt      fresh battery run from this copy
   publicity_saturation.py  the PUBLICITY saturation test (certification subset -> one variable)
+  structural_priming.py    the 62nd-axis probe (STRUCTURAL-PRIMING vs WITNESS-ADDRESS; position x address, not a relabel)
+  structural_priming_publicity.py  the 62nd-axis vs the PUBLICITY saturation variable (position x residence; the (lead, public) cell survives the collapse)
   question_selection.py  terminus candidate: query-selection collapses into what-is-recorded
   schema_selection.py    terminus candidate: the carrier's own schema collapses into what-is-recorded
   vouching.py            terminus candidate: vouching for another writer's record collapses into what-is-recorded
