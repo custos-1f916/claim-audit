@@ -3455,4 +3455,22 @@ SPECIMENS = [
       "expected": [],
       "note": "The strongest control of the recent batch: the equal-budget random-probing ablation isolates the EVSI-selection effect from the any-extra-probing confound and it is favorable (full 76.86/81.43 vs random 66.07/72.85 vs warm-up-only 64.76/66.19 ALFWorld seen 4B/8B; RQ4 EVSI highest at every nonzero WebShop budget). The thesis endpoint (selection, not extra probing, drives the gain) is the MEASURED quantity (equal-budget ablation), so THESIS-OUTRUNS-EVIDENCE does not fire. Two seams, both disclosed in-body, logged-not-flagged: (a) QUALIFICATION-DROP -- abstract 'best success rates among evaluated baselines' vs body 'best OR JOINT-best' (BigCodeBench 8B 42.69% is a tie, not strictly best); (b) EVIDENCE-SCOPE -- the end-to-end headline (Table 1) bundles the retrieval scorer with UpliftMem's online memory-writing workflow; the retrieval-specific result is the separate fixed-store MemSyco-Bench ablation. The paper separates these cleanly, so no axis fires. Baseline scope honestly bounded ('among evaluated baselines'), not field-SOTA. Theoretical EVSI is a correlated-Gaussian closed-form motivator, not an optimality proof; the empirical ablation carries the claim. Clean PASS: a calibration data point for the equal-budget-ablation shape (selection isolated from any-extra-probing)."
   },
+  {
+    "name": "Synthetic Universes two-axis dissociation (2609.36726 Chauhan & Kargi): prediction vs mechanism recovery across 6 twin families",
+    "type": "dissociation",
+    "mechanism": "scientific agent infers a law from evidence; the claim is that predictive adequacy and mechanism recovery are distinct and require distinct tests",
+    "mechanism_lever": "the inferred law (executed on held-out continuations vs checked for mechanism recovery)",
+    "metric": "predictive-verification rate (fraction of twin trials passing the predictive verifier, Table 2 twin column)",
+    "mechanism_axis": "mechanism-recovery rate (fraction of twin trials recovering the generating mechanism, Table 2 twin column)",
+    "rows": [
+      {"label": "Spring twin", "mechanism_on": True, "substrate": ["twin", "spring"], "metric": 0.0, "mechanism_axis": 0.0},
+      {"label": "Gravity twin", "mechanism_on": True, "substrate": ["twin", "gravity"], "metric": 0.2, "mechanism_axis": 0.8},
+      {"label": "Drag twin", "mechanism_on": True, "substrate": ["twin", "drag"], "metric": 1.0, "mechanism_axis": 0.2},
+      {"label": "Pendulum twin", "mechanism_on": True, "substrate": ["twin", "pendulum"], "metric": 0.5, "mechanism_axis": 0.0},
+      {"label": "Conservation twin", "mechanism_on": True, "substrate": ["twin", "conservation"], "metric": 0.5, "mechanism_axis": 0.0},
+      {"label": "Coupling twin", "mechanism_on": True, "substrate": ["twin", "coupling"], "metric": 0.0, "mechanism_axis": 0.0},
+    ],
+    "expected": ["WRONG-AXIS"],
+    "note": "LIVE EXTERNAL SPECIMEN (2609.36726, Chauhan & Kargi 'Can AI Scientists Change Their Minds? Prior-Evidence Conflict in Synthetic Universes', 2026-09-29). The paper's headline finding is that predictive adequacy and mechanism recovery are DISTINCT and require distinct tests -- 'Prediction and mechanism dissociate in both directions.' The Table 2 twin column gives the 6-family dissociation: the predictive-verification rate (metric) and the mechanism-recovery rate (mechanism_axis) are essentially uncorrelated (Pearson r = -0.0109 across the 6 twin families: Spring 0/5|0/5, Gravity 1/5|4/5, Drag 5/5|1/5, Pendulum 1/2|0/2, Conservation 1/2|0/2, Coupling 0/1|0/1). WRONG-AXIS fires: the predictive headline is decoupled from the mechanism's own axis. This is a CONVERGENCE witness with my two-axis certifier taxonomy (address vs time): the paper independently arrived at the same structural insight (a prediction-only certifier is blind to mechanism recovery). The Pendulum audited run is the single-case witness: it reports the linear oscillator and achieves NRMSE_H=0.0016, NRMSE_T=0.0068 (near-perfect prediction), but the functional checker, evaluated on a wider fixed angular domain, rejects the nonlinear mechanism match -- 'an unseen test is not automatically a discriminative test.' No new axis needed; this is a regression witness for the existing CO-MOVES/WRONG-AXIS axis."
+  },
 ]
