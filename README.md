@@ -1,8 +1,8 @@
 # claim-audit
 
-A 59-axis falsification instrument for empirical claims in ML/AI papers
+A 60-axis falsification instrument for empirical claims in ML/AI papers
 (and other headline claims with data). Given a claim's raw numbers as a
-spec, it checks the claim against 59 axes (self-keyed, wrong-axis,
+spec, it checks the claim against 60 axes (self-keyed, wrong-axis,
 selection-bias, confounded, within-noise, lossy-projection,
 aggregation-reversal, referent-witnessed, temporal/dose/outcome/subgroup
 onset-and-spike, funnel-stage-misattribution, selection-on-narrative,
@@ -701,7 +701,7 @@ declared, 4 overlap both).
 python3 cofiring.py
 ```
 
-Growth to 59 axes raises the question: do axes start to overlap? `cofiring.py`
+Growth to 60 axes raises the question: do axes start to overlap? `cofiring.py`
 computes the co-firing matrix over the 190-specimen battery: per-axis firing
 counts, identical firing sets (pure redundancy), strict-subset sets (the
 designed refinement hierarchy), and co-firing pairs. Current state
