@@ -734,7 +734,47 @@ SPECIMENS = [
     'rows': [{"mechanism_on": True, "metric": 0.70}, {"mechanism_on": False, "is_null": True, "metric": 0.00}],
     'held_out_eval': 'yes',
     'eval_set_provenance': 'external'
-  }
+  },
+
+  {
+    'name': 'WITNESS-RESIDENCE FIRE (witness custodian-resident, WR1): the custodian holds the witness bytes, a stranger cannot reproduce',
+    'truth': ['WITNESS-RESIDENCE'],
+    'truth_reason': "FIRE CELL (witness-residence axis, 61st, 2026-10-01). witness_residence=custodian: the content IS independently verifiable (not TRUST), the carrier IS in the consumer's read path (not CARRIER-REACH), and there IS an external witness (not SELF-KEYED), but only the custodian holds the witness bytes and can verify+replay via skill_sha256; a stranger lacks the bytes and cannot reproduce the coverage diff -> WITNESS-RESIDENCE fires, and no other flag fires (exclusive). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00, no knob/CI/subgroup). Distinct from TRUST (44th: the stranger cannot verify at all; here the content IS verifiable and the custodian CAN), from CARRIER-REACH (56th: the carrier is not in the read path; here the carrier IS in the read path), and from SELF-KEYED (1st: the instrument certifies itself; here there IS an external witness, but it is custodian-resident).",
+    'type': 'cross-model',
+    'mechanism': 'coverage diff (custodian-resident witness bytes)',
+    'metric': 'coverage delta (higher better)',
+    'rows': [{"mechanism_on": True, "metric": 0.70}, {"mechanism_on": False, "is_null": True, "metric": 0.00}],
+    'witness_residence': 'custodian'
+  },
+  {
+    'name': 'WITNESS-RESIDENCE PASS (witness publicly available, WR2): a stranger can reproduce',
+    'truth': [],
+    'truth_reason': "PASS CELL (witness-residence axis, 61st, 2026-10-01). witness_residence=public: the witness is publicly available, so a stranger CAN reproduce the coverage diff -> WITNESS-RESIDENCE is N/A (the pass cell). Byte-identical to the fire cell except witness_residence (public vs custodian), so fire-vs-pass isolates the residence. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires.",
+    'type': 'cross-model',
+    'mechanism': 'coverage diff (publicly available witness bytes)',
+    'metric': 'coverage delta (higher better)',
+    'rows': [{"mechanism_on": True, "metric": 0.70}, {"mechanism_on": False, "is_null": True, "metric": 0.00}],
+    'witness_residence': 'public'
+  },
+  {
+    'name': 'WITNESS-RESIDENCE SCHEMA-BOUNDARY (witness residence undeclared, WR3): the post does not declare where the witness lives',
+    'truth': [],
+    'truth_reason': "SCHEMA-BOUNDARY CELL (witness-residence axis, 61st, 2026-10-01). witness_residence=undeclared: the post does not declare where the witness lives -> WITNESS-RESIDENCE is N/A (schema-boundary). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires.",
+    'type': 'cross-model',
+    'mechanism': 'coverage diff (residence undeclared)',
+    'metric': 'coverage delta (higher better)',
+    'rows': [{"mechanism_on": True, "metric": 0.70}, {"mechanism_on": False, "is_null": True, "metric": 0.00}],
+    'witness_residence': 'undeclared'
+  },
+  {
+    'name': 'WITNESS-RESIDENCE N/A (no witness residence field, WR4): the axis does not apply',
+    'truth': [],
+    'truth_reason': "N/A CELL (witness-residence axis, 61st, 2026-10-01). No witness_residence field: the axis does not apply -> WITNESS-RESIDENCE is N/A. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires.",
+    'type': 'cross-model',
+    'mechanism': 'coverage diff (no residence field)',
+    'metric': 'coverage delta (higher better)',
+    'rows': [{"mechanism_on": True, "metric": 0.70}, {"mechanism_on": False, "is_null": True, "metric": 0.00}]
+  },
 
 ]
 

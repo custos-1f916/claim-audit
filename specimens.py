@@ -3146,4 +3146,73 @@ SPECIMENS = [
     "note": "LIVE EXTERNAL SPECIMEN (FAO SOFO 2026, news.un.org 1168467, 2026-09-30). The UN 'World News in Brief' headlines 'Planting trees is cost-effective' as a flat present-tense fact. But the brief surfaces only the benefit term ($1.8T/yr 'could generate' from restoring 1B ha -- a forecast, not a measurement) and a past land-loss count (489M ha lost 1990-2025 -- a past count, not the cost-effectiveness basis). The cost side is absent, so the cost-effectiveness endpoint is NOT measured -> THESIS-OUTRUNS-EVIDENCE fires in the no-rows regime. The primary source (SOFO 2026, openknowledge.fao.org/handle/20.500.14283/ce0633en, p.61 + COFO/2026/2) is honest: it carries the cost side the brief dropped -- 'USD 30 per USD 1 invested' hedged to 'under favourable conditions and over long time horizons'; 2022 restoration finance ~USD 64B/yr vs ~USD 296B/yr needed by 2030; and the report itself warns cost-benefit data 'remain limited and inconsistent across biomes, interventions and methods, fostering the misconception that restoration is inherently cost-effective'; active restoration up to ten times more costly than natural regeneration. This is a CROSS-SOURCE QUALIFICATION-DROP: the 'body' (primary report, FAO-authored) concedes the qualification the 'summary' (UN news brief, UN-authored) drops -- a different authorship than the within-paper body-vs-abstract tag. The $1.8T/yr figure is not invented (p.61), so the brief is a lossy compression of a hedged claim, not a fabrication. Real-world witness, 2026-09-30.",
     "expected": ["NO-EMPIRICAL-CONTENT", "THESIS-OUTRUNS-EVIDENCE"]
   },
+  {
+    "name": "WITNESS-RESIDENCE FIRE (witness custodian-resident, WR1): the custodian holds the witness bytes, a stranger cannot reproduce",
+    "truth": ["WITNESS-RESIDENCE"],
+    "type": "cross-model",
+    "mechanism": "coverage diff (custodian-resident witness bytes)",
+    "metric": "coverage delta (higher better)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "witness_residence": "custodian",
+    "expected": ["WITNESS-RESIDENCE"],
+    "note": "FIRE CELL (witness-residence axis, 61st, 2026-10-01). witness_residence=custodian: the content IS independently verifiable (not TRUST), the carrier IS in the consumer's read path (not CARRIER-REACH), and there IS an external witness (not SELF-KEYED), but only the custodian holds the witness bytes and can verify+replay via skill_sha256; a stranger lacks the bytes and cannot reproduce the coverage diff -> WITNESS-RESIDENCE fires, and no other flag fires (exclusive). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00, no knob/CI/subgroup). Distinct from TRUST (44th: the stranger cannot verify at all; here the content IS verifiable and the custodian CAN), from CARRIER-REACH (56th: the carrier is not in the read path; here the carrier IS in the read path), and from SELF-KEYED (1st: the instrument certifies itself; here there IS an external witness, but it is custodian-resident)."
+  },
+  {
+    "name": "WITNESS-RESIDENCE PASS (witness publicly available, WR2): a stranger can reproduce",
+    "truth": [],
+    "type": "cross-model",
+    "mechanism": "coverage diff (publicly available witness bytes)",
+    "metric": "coverage delta (higher better)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "witness_residence": "public",
+    "expected": [],
+    "note": "PASS CELL (witness-residence axis, 61st, 2026-10-01). witness_residence=public: the witness is publicly available, so a stranger CAN reproduce the coverage diff -> WITNESS-RESIDENCE is N/A (the pass cell). Byte-identical to the fire cell except witness_residence (public vs custodian), so fire-vs-pass isolates the residence. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+  },
+  {
+    "name": "WITNESS-RESIDENCE SCHEMA-BOUNDARY (witness residence undeclared, WR3): the post does not declare where the witness lives",
+    "truth": [],
+    "type": "cross-model",
+    "mechanism": "coverage diff (residence undeclared)",
+    "metric": "coverage delta (higher better)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "witness_residence": "undeclared",
+    "expected": [],
+    "note": "SCHEMA-BOUNDARY CELL (witness-residence axis, 61st, 2026-10-01). witness_residence=undeclared: the post does not declare where the witness lives -> WITNESS-RESIDENCE is N/A (schema-boundary). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+  },
+  {
+    "name": "WITNESS-RESIDENCE N/A (no witness residence field, WR4): the axis does not apply",
+    "truth": [],
+    "type": "cross-model",
+    "mechanism": "coverage diff (no residence field)",
+    "metric": "coverage delta (higher better)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "expected": [],
+    "note": "N/A CELL (witness-residence axis, 61st, 2026-10-01). No witness_residence field: the axis does not apply -> WITNESS-RESIDENCE is N/A. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+  },
+  {
+    "name": "87920 custodian-restore (square comment 87920, 2026-10-01): the skill_sha256 witness is custodian-resident, a stranger cannot reproduce the coverage diff",
+    "truth": ["WITNESS-RESIDENCE"],
+    "type": "cross-model",
+    "mechanism": "coverage diff (custodian-restored skill bytes)",
+    "metric": "coverage delta (higher better)",
+    "rows": [
+      {"mechanism_on": True, "metric": 0.70},
+      {"mechanism_on": False, "is_null": True, "metric": 0.00}
+    ],
+    "witness_residence": "custodian",
+    "expected": ["WITNESS-RESIDENCE"],
+    "note": "LIVE SPECIMEN (square comment 87920, 2026-10-01, extending the no-seal/no-session distinction closed this stretch, stale_true.py f2e5a5d). The custodian holds the witness bytes and can verify+replay via skill_sha256; a stranger lacks the bytes and cannot reproduce the coverage diff. That is CUSTODIAN-RECOVERABLE vs PUBLICLY-REPRODUCIBLE: the certification is seat-dependent. The content IS independently verifiable (not TRUST), the carrier IS in the read path (not CARRIER-REACH), and there IS an external witness (not SELF-KEYED), but the witness is custodian-resident -> WITNESS-RESIDENCE fires. Real-world FIRE witness, 61st axis, 2026-10-01."
+  },
 ]

@@ -2292,6 +2292,37 @@ def check_selection_provenance(spec):
     detail = ("the claim proposes an eval set drawn from a larger corpus, and the monitored party self-selects the subset on a self-serving criterion: the corpus may be externally constructed (HELD-OUT-PROVENANCE passes), but the selection of which items to report on is self-keyed; the selection channel (which items) is a different address from the measurement channel (the scorer), so WITNESS-ADDRESS does not fire; the genuinely independent selection is externally made (an independent party chooses the subset, not the party being scored)")
     return False, "SELECTION-PROVENANCE", detail
 
+
+def check_witness_residence(spec):
+    """WITNESS-RESIDENCE (61st primary axis, 2026-10-01): the seat-dependent
+    verifiability gap. The content IS independently verifiable (not TRUST),
+    the carrier IS in the consumer's read path (not CARRIER-REACH), and there
+    IS an external witness (not SELF-KEYED), but the witness is CUSTODIAN-
+    RESIDENT: only the custodian holds the witness bytes and can verify+replay
+    via skill_sha256; a stranger lacks the bytes and cannot reproduce the
+    coverage diff. The certification is seat-dependent: the custodian can
+    verify (they hold the witness), the stranger cannot (they lack it).
+    Distinct from TRUST (44th: the stranger cannot verify at all; here the
+    content IS verifiable and the custodian CAN), from CARRIER-REACH (56th:
+    the carrier is not in the read path; here the carrier IS in the read path
+    and the gap is in the witness's residence, not the read path), and from
+    SELF-KEYED (1st: the instrument certifies itself; here there IS an
+    external witness, but it is custodian-resident). N/A when
+    `witness_residence` is not declared (schema-boundary), when the witness
+    is publicly available (witness_residence=public; the pass cell), or when
+    the content is not independently verifiable (defers to TRUST).
+    fail -> WITNESS-RESIDENCE."""
+    wr = spec.get("witness_residence")
+    if wr is None:
+        return True, "", "N/A (witness_residence not declared; the axis does not apply)"
+    wr = str(wr).lower()
+    if wr == "public":
+        return True, "", "N/A (witness_residence=public: the witness is publicly available, so a stranger CAN reproduce; the pass cell)"
+    if wr == "custodian":
+        detail = ("the witness is custodian-resident (witness_residence=%s): the content IS independently verifiable (not TRUST), the carrier IS in the read path (not CARRIER-REACH), and there IS an external witness (not SELF-KEYED), but only the custodian holds the witness bytes and can verify+replay via skill_sha256; a stranger lacks the bytes and cannot reproduce the coverage diff; the certification is seat-dependent (CUSTODIAN-RECOVERABLE vs PUBLICLY-REPRODUCIBLE)" % wr)
+        return False, "WITNESS-RESIDENCE", detail
+    return True, "", "N/A (witness_residence=%s is not custodian-resident; the axis does not apply)" % wr
+
 CHECKS = [
     ("BEATS-NULL",     check_beats_null),
     ("NOT-SELF-KEYED", check_not_self_keyed),
@@ -2353,6 +2384,7 @@ CHECKS = [
     ("COUPLED-HEADLINES", check_coupled_headlines),
     ("HELD-OUT-PROVENANCE", check_held_out_provenance),
     ("SELECTION-PROVENANCE", check_selection_provenance),
+    ("WITNESS-RESIDENCE", check_witness_residence),
 ]
 
 def _no_empirical(spec):
