@@ -95,7 +95,7 @@ battery from this copy of the code.
   calibration_confound.py  the RED-baseline confound (dead check reads CALIBRATED)
   calibration_bandaid.py   the baseline-integrity fix (band-aid, not removal)
   calibration_fix_confound.py  the fix's own confound (four-arm: fix trades false-positive for baseline-dependent false-negative)
-  calibration_witness_local.py  the fix's false-negative is witness-local (ARM 5: red on an unrelated specimen, witness green -> fix reads CALIBRATED)
+  calibration_witness_local.py  the fix's false-negative is ALL-WITNESSES-RED (ARM 6/7: multi-witness one-red -> CALIBRATED, all-red -> UNCALIBRATED; 'single-witness' was a conflation)
   specimens.py     206 specimens (146 real + 60 constructed/self-specimen) with expected flag sets
   results.txt      fresh battery run from this copy
   publicity_saturation.py  the PUBLICITY saturation test (certification subset -> one variable)
@@ -659,6 +659,7 @@ report is the point.
 ```
 python3 calibration_bandaid.py
 python3 calibration_fix_confound.py
+python3 calibration_witness_local.py
 ```
 
 The naive probe above is only correct on a GREEN baseline. On a RED baseline
@@ -687,18 +688,28 @@ it. Deterministic across two runs; battery 124/124 GREEN before and after the
 mutation/restore cycle. Commit f1c0060.
 
 But the "baseline-dependent" label is too coarse. `calibration_witness_local.py`
-(2026-10-01) sharpens it: the fix's false-negative is WITNESS-LOCAL, not
-baseline-dependent. ARM 4 (reproduce fix-confound) and ARM 5 (new) both run on a
-RED baseline; the only difference is where the red sits. When the red IS the
-check's own witness (ARM 4), blinding the check causes no NEW failure, so the
-fix reads UNCALIBRATED (false-negative). When the red is an UNRELATED specimen
-and the witness stays green (ARM 5), blinding the check makes the green witness
-newly fail, so the fix reads CALIBRATED (correct). The fix is correct on a RED
-baseline whenever the check's witness is green; it fails only when the witness
-itself is the red. A multi-witness check is immune (a green witness still newly
-fails under the blind). The GREEN-baseline precondition is load-bearing for the
-NAIVE rule; for the FIX it is the witness's greenness that matters, not the
-baseline's. Deterministic; battery 124/124 GREEN before and after.
+(2026-10-01) sharpens it: the fix's false-negative is not caused by the baseline
+being RED per se, but by the RED sitting on the check's own witness. ARM 4
+(reproduce fix-confound) and ARM 5 (new) both run on a RED baseline; the only
+difference is where the red sits. When the red IS the check's own witness (ARM 4),
+blinding the check causes no NEW failure, so the fix reads UNCALIBRATED
+(false-negative). When the red is an UNRELATED specimen and the witness stays
+green (ARM 5), blinding the check makes the green witness newly fail, so the fix
+reads CALIBRATED (correct).
+
+The first sharpening — "witness-local, a single-witness check whose sole witness
+is the red" — was itself a conflation. ARM 6 and ARM 7 run on a MULTI-witness
+check (NOT-SELF-KEYED, witnesses F1 + SR4) and split the two cases the
+single-witness label had fused. ARM 6 (one witness red, the other green): the
+green witness still newly fails under the blind, so the fix reads CALIBRATED
+(correct). ARM 7 (ALL witnesses red): no witness is green, blinding causes no NEW
+failure, so the fix reads UNCALIBRATED (false-negative). The blanket
+"multi-witness is immune" claim is refuted by ARM 7. The condition is
+witness-count-agnostic: the fix reads a check CALIBRATED iff at least one witness
+is GREEN on the baseline; it false-negatives iff ALL witnesses are red. The
+GREEN-baseline precondition is load-bearing for the NAIVE rule; for the FIX it is
+the greenness of at least one witness that matters, not the baseline's or the
+witness count. Deterministic; battery 124/124 GREEN before and after.
 
 ## Knife-edge probe (verdict ruggedness — the near-miss rows)
 

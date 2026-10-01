@@ -18,13 +18,21 @@ differently by the fix:
         witness stays GREEN.
         Blinding C makes the green witness NEWLY fail.
         fix: CALIBRATED    -> CORRECT.
+  ARM 6 (new): RED baseline on a MULTI-witness check, ONE witness is the red,
+        the other stays GREEN.
+        Blinding C makes the green witness NEWLY fail.
+        fix: CALIBRATED    -> CORRECT (a green witness still exists).
+  ARM 7 (new): RED baseline on a MULTI-witness check, ALL witnesses are the red.
+        Blinding C causes no NEW failure (every witness was already failing).
+        fix: UNCALIBRATED  -> FALSE-NEGATIVE (multi-witness is NOT immune).
 
-The contrast is the result: the fix is correct on a RED baseline whenever the
-check's witness is green, and fails only when the witness itself is the red.
-The false-negative is witness-local (a single-witness check whose sole witness
-is the red), not baseline-dependent (any red baseline). A multi-witness check is
-immune: even if one witness is red, a green witness still newly fails under the
-blind, so the fix reads it CALIBRATED.
+The contrast is the result: the fix reads a check CALIBRATED iff blinding it
+causes at least one NEW failure, which happens iff at least one of the check's
+witnesses is GREEN on the baseline. It false-negatives iff ALL of the check's
+witnesses are red. The condition is witness-count-agnostic: "single-witness"
+was a conflation. A multi-witness check is immune only while a green witness
+exists; all-witnesses-red multi-witness (ARM 7) reads UNCALIBRATED, so the
+blanket "multi-witness is immune" claim is refuted.
 
 Deterministic; the battery is GREEN (124/124) before and after each arm's
 mutation/restore cycle.
@@ -94,6 +102,23 @@ def find_unrelated_green():
         return s
     return None
 
+def find_multi_witness():
+    """A check with exactly TWO green witnesses (check fires AND the specimen is
+    green, flags == truth). Green witnesses are the only ones that can newly fail
+    under the blind, so this is the clean multi-witness case for ARM 6/7."""
+    for i, (name, fn) in enumerate(CHECKS):
+        witnesses = []
+        for s in SPECS:
+            a = claim_audit.audit(s)
+            if a["checks"].get(name, {}).get("pass", True):
+                continue
+            if set(a["flags"]) != set(s["truth"]):
+                continue
+            witnesses.append(s)
+        if len(witnesses) == 2:
+            return i, name, witnesses
+    return None, None, None
+
 def main():
     print("=== baseline (GREEN expected) ===")
     bf = baseline_fails()
@@ -131,22 +156,51 @@ def main():
     print("fix: %s (CORRECT: new_fails=%s; the green witness newly fails under the blind)" % (f5, nf5))
     assert f5 == "CALIBRATED" and nf5 == [cw["name"]]
 
+    # ARM 6 + ARM 7: multi-witness check, one witness red vs all witnesses red
+    mi, mname, mw = find_multi_witness()
+    assert mi is not None, "no clean multi-witness check found"
+    m0, m1 = mw[0], mw[1]
+    print()
+    print("=== ARM 6: RED baseline on %s (multi-witness), ONE witness red ===" % mname)
+    m0_backup = m0["truth"]
+    m0["truth"] = ["GHOST-FLAG"]
+    assert baseline_fails() == [m0["name"]], "RED baseline should be exactly the one witness"
+    f6, nf6 = classify_fix(mi)
+    m0["truth"] = m0_backup
+    print("fix: %s (CORRECT: new_fails=%s; the other witness stays green and newly fails)" % (f6, nf6))
+    assert f6 == "CALIBRATED" and nf6 == [m1["name"]]
+
+    print()
+    print("=== ARM 7: RED baseline on %s (multi-witness), ALL witnesses red ===" % mname)
+    m0_backup, m1_backup = m0["truth"], m1["truth"]
+    m0["truth"] = ["GHOST-FLAG"]
+    m1["truth"] = ["GHOST-FLAG"]
+    assert sorted(baseline_fails()) == sorted([m0["name"], m1["name"]]), \
+        "RED baseline should be exactly both witnesses"
+    f7, nf7 = classify_fix(mi)
+    m0["truth"] = m0_backup
+    m1["truth"] = m1_backup
+    print("fix: %s (FALSE-NEGATIVE: new_fails=%s; every witness was already failing)" % (f7, nf7))
+    assert f7 == "UNCALIBRATED" and nf7 == []
+
     # sanity: baseline restored to GREEN
     assert not baseline_fails(), "baseline should be GREEN after the arms"
 
     print()
     print("=== RESULT ===")
-    print("The fix's false-negative is WITNESS-LOCAL, not baseline-dependent:")
-    print("  ARM 4 (red = the witness):  fix reads UNCALIBRATED (false-negative)")
-    print("  ARM 5 (red = unrelated):    fix reads CALIBRATED (correct)")
-    print("The fix is correct on a RED baseline whenever the check's witness is")
-    print("green; it fails only when the witness itself is the red. The label")
-    print('"baseline-dependent false-negative" (fix-confound) is too coarse: the')
-    print("false-negative requires a single-witness check whose sole witness is")
-    print("the red. A multi-witness check is immune (a green witness still newly")
-    print("fails under the blind). The GREEN-baseline precondition is load-bearing")
-    print("for the NAIVE rule; for the FIX it is the witness's greenness that")
-    print("matters, not the baseline's.")
+    print("The fix's false-negative is ALL-WITNESSES-RED, not baseline- or")
+    print("witness-count-dependent:")
+    print("  ARM 4 (single witness, red):            UNCALIBRATED (false-negative)")
+    print("  ARM 5 (single witness, green):          CALIBRATED (correct)")
+    print("  ARM 6 (multi witness, one red):         CALIBRATED (correct)")
+    print("  ARM 7 (multi witness, all red):         UNCALIBRATED (false-negative)")
+    print("The fix reads a check CALIBRATED iff blinding it causes a NEW failure,")
+    print("which happens iff at least one witness is GREEN on the baseline; it")
+    print("false-negatives iff ALL witnesses are red. The condition is")
+    print("witness-count-agnostic: 'single-witness' was a conflation, and the")
+    print("blanket 'multi-witness is immune' claim is refuted by ARM 7. The")
+    print("GREEN-baseline precondition is load-bearing for the NAIVE rule; for the")
+    print("FIX it is the greenness of at least one witness that matters.")
     return 0
 
 if __name__ == "__main__":
