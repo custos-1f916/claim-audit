@@ -1,0 +1,27 @@
+{
+  "spec": "2609.36800 (AI as a Compiler: Compiling Triton kernels without the Triton compiler, Driscoll et al., 2026-10-01): the 0.83x-3.34x headline range merges two undeclared evaluation regimes; the lower bound is a loss on mainstream GEMM/H100/FP16 and the upper bound is a single-kernel peak on the newest arch; the body is honest about the per-regime numbers and the checker-as-limiter",
+  "type": "range-merge",
+  "mechanism": "TAIC (Triton AI Compiler) agentic Triton->PTX lowering vs autotuned Triton baseline",
+  "mechanism_lever": "LLM agent translating Triton kernels directly into PTX",
+  "metric": "speedup over autotuned Triton (x)",
+  "scope_claim": false,
+  "probe_support_fraction": 1.0,
+  "stated_headline": 0.83,
+  "rows": [
+    {"label": "GEMM H100 FP16 (common suite, lower bound)", "mechanism_on": true, "substrate": ["taic", "h100", "fp16", "common"], "metric": 0.83},
+    {"label": "fused GEMM-SiLU H100 FP16", "mechanism_on": true, "substrate": ["taic", "h100", "fp16", "common"], "metric": 0.96},
+    {"label": "Convolution 2D (common suite, up to)", "mechanism_on": true, "substrate": ["taic", "common"], "metric": 2.23},
+    {"label": "BitDelta B200 (recent suite, upper bound, single kernel)", "mechanism_on": true, "substrate": ["taic", "b200", "recent"], "metric": 3.34},
+    {"label": "FlashAttention B200 (recent suite)", "mechanism_on": true, "substrate": ["taic", "b200", "recent"], "metric": 1.37},
+    {"label": "autotuned Triton (null)", "mechanism_on": false, "is_null": true, "substrate": ["triton"], "metric": 1.0}
+  ],
+  "coupled_headlines": "no",
+  "broader_derived": "no",
+  "composition_declared": "no",
+  "thesis_endpoint": "AI compilers replace custom-written intermediate representations and checkers",
+  "measured_endpoints": ["performance of AI-lowered kernels vs Triton", "Volta verification coverage (what it can/cannot certify)"],
+  "headline_states_as_fact": false,
+  "body_hedges": true,
+  "expected": [],
+  "note": "LIVE EXTERNAL SPECIMEN (arXiv 2609.36800, 2026-10-01). Verdict PASS (no axis fires) -- a calibration data point, not a fire. The 0.83x-3.34x headline range merges two UNDECLARED evaluation regimes: (a) 12 common kernels on Ada/Hopper/Blackwell at FP16/FP8, $1.50-$12 budget, and (b) 10 recent kernels on B200, $15 budget. The lower bound (0.83x) is a LOSS on mainstream GEMM/H100/FP16 (and fused GEMM-SiLU 0.96x); the upper bound (3.34x) is a SINGLE-KERNEL peak (BitDelta) on the newest arch. A reader who takes the range at face value cannot verify the endpoints from a single measurement -- they come from different substrates/precisions/architectures/budgets, and the composition is undeclared. This is a RANGE-MERGING / scope-composition seam, logged-not-flagged (not a load-bearing flattening): scope_claim=false because the claim is a range, not a single-level scope-universal claim, so SCOPE-FLATTENING is N/A; coupled_headlines=no because it is a min-max range, not two coupled numbers on different axes, so COUPLED-HEADLINES is N/A. The load-bearing honesty: the body concedes the checker (Volta) is a PERFORMANCE LIMITER (Table 2, 4.5: provably-verified GEMM 0.24x, FlashAttention 0.78x, Conv 0.77x vs numerically-verified 1.03x/1.37x/1.35x; 'the features that deliver performance on modern GPUs are not yet all supported by Volta'; TCB 42k->60k LoC, 'every newly modeled instruction introduces an additional risk of unsoundness'; three unsupported construct classes: atomics, input-dependent control flow, bit-level value manipulation). The winning kernels (1.37x, 1.35x, 1.03x) are the NUMERICALLY verified ones -- the ones the formal checker does NOT certify. The abstract's 'replace the checkers' thesis is a forecast the evidence does not measure (the evidence measures that the checker is a limiter), so THESIS-OUTRUNS-EVIDENCE passes (headline_states_as_fact=false: the abstract hedges with 'suggest an emerging future'; body_hedges=true: the conclusion says 'with sufficiently strong verification'). This is a soft QUALIFICATION-DROP (Case B, partial): the body states the checker-as-limiter qualification (Table 2) that the abstract presents as a solved robustness feature ('robust evaluation harness with comprehensive verification support... substantially extend it'), though the abstract does acknowledge 'the current limitations' generally. Discriminating test (the value of this specimen): it separates RANGE-MERGING-WITH-HONEST-BODY (PASS, this one) from RANGE-MERGING-WITH-LOOSE-BODY (SCOPE-FLATTENING / COUPLED-HEADLINES fire, e.g. 2609.30328). The paper is mostly clean and fairly honest; the seam is a presentation seam (undeclared range composition), not a substance seam."
+}
