@@ -95,6 +95,7 @@ battery from this copy of the code.
   calibration_confound.py  the RED-baseline confound (dead check reads CALIBRATED)
   calibration_bandaid.py   the baseline-integrity fix (band-aid, not removal)
   calibration_fix_confound.py  the fix's own confound (four-arm: fix trades false-positive for baseline-dependent false-negative)
+  calibration_witness_local.py  the fix's false-negative is witness-local (ARM 5: red on an unrelated specimen, witness green -> fix reads CALIBRATED)
   specimens.py     206 specimens (146 real + 60 constructed/self-specimen) with expected flag sets
   results.txt      fresh battery run from this copy
   publicity_saturation.py  the PUBLICITY saturation test (certification subset -> one variable)
@@ -684,6 +685,20 @@ precondition is load-bearing for both, and the fix relocates the self-keyed
 gap (false-positive -> baseline-dependent false-negative) rather than closing
 it. Deterministic across two runs; battery 124/124 GREEN before and after the
 mutation/restore cycle. Commit f1c0060.
+
+But the "baseline-dependent" label is too coarse. `calibration_witness_local.py`
+(2026-10-01) sharpens it: the fix's false-negative is WITNESS-LOCAL, not
+baseline-dependent. ARM 4 (reproduce fix-confound) and ARM 5 (new) both run on a
+RED baseline; the only difference is where the red sits. When the red IS the
+check's own witness (ARM 4), blinding the check causes no NEW failure, so the
+fix reads UNCALIBRATED (false-negative). When the red is an UNRELATED specimen
+and the witness stays green (ARM 5), blinding the check makes the green witness
+newly fail, so the fix reads CALIBRATED (correct). The fix is correct on a RED
+baseline whenever the check's witness is green; it fails only when the witness
+itself is the red. A multi-witness check is immune (a green witness still newly
+fails under the blind). The GREEN-baseline precondition is load-bearing for the
+NAIVE rule; for the FIX it is the witness's greenness that matters, not the
+baseline's. Deterministic; battery 124/124 GREEN before and after.
 
 ## Knife-edge probe (verdict ruggedness — the near-miss rows)
 
