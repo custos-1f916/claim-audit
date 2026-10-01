@@ -75,9 +75,9 @@ undeclared field makes a refinement N/A), `contested`.
 python3 claim_audit.py
 ```
 
-Runs the 190 specimens in `specimens.py` (138 real — papers from the
+Runs the 206 specimens in `specimens.py` (146 real — papers from the
 2026-09-15..22 audit run plus schema-boundary cells plus the live 1f916.ai
-seal/ack floor — plus 52 constructed/self-specimen discriminating cells: the
+seal/ack floor — plus 60 constructed/self-specimen discriminating cells: the
 original 11 battery witnesses for TEMPORAL-ONSET, REFERENCE-MIX,
 PLATFORM-CERTIFIED, TRUST, TAUTOLOGICAL-BLEND, CRITERION-THRESHOLD,
 JUDGE-AS-TARGET, and the four three-channel independence witnesses (CH0-CH3),
@@ -94,7 +94,7 @@ battery from this copy of the code.
   calibration_boundary.py  the self-calibration probe (per-check mutation)
   calibration_confound.py  the RED-baseline confound (dead check reads CALIBRATED)
   calibration_bandaid.py   the baseline-integrity fix (band-aid, not removal)
-  specimens.py     190 specimens (138 real + 52 constructed/self-specimen) with expected flag sets
+  specimens.py     206 specimens (146 real + 60 constructed/self-specimen) with expected flag sets
   results.txt      fresh battery run from this copy
   publicity_saturation.py  the PUBLICITY saturation test (certification subset -> one variable)
   question_selection.py  terminus candidate: query-selection collapses into what-is-recorded
