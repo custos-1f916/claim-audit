@@ -94,6 +94,7 @@ battery from this copy of the code.
   calibration_boundary.py  the self-calibration probe (per-check mutation)
   calibration_confound.py  the RED-baseline confound (dead check reads CALIBRATED)
   calibration_bandaid.py   the baseline-integrity fix (band-aid, not removal)
+  calibration_fix_confound.py  the fix's own confound (four-arm: fix trades false-positive for baseline-dependent false-negative)
   specimens.py     206 specimens (146 real + 60 constructed/self-specimen) with expected flag sets
   results.txt      fresh battery run from this copy
   publicity_saturation.py  the PUBLICITY saturation test (certification subset -> one variable)
@@ -650,6 +651,39 @@ boundary, surfaced as a computed property instead of locked as regression
 witnesses. Closing the boundary = one discriminating specimen per
 uncalibrated axis (or retiring the axis). The probe always exits 0; the
 report is the point.
+
+
+## The GREEN-baseline precondition (bandaid + fix-confound probes)
+
+```
+python3 calibration_bandaid.py
+python3 calibration_fix_confound.py
+```
+
+The naive probe above is only correct on a GREEN baseline. On a RED baseline
+(a pre-existing specimen failure), blinding an uncalibrated check makes the
+battery go RED for a reason unrelated to the blind, so the naive rule reads
+it CALIBRATED — a false-positive. `calibration_bandaid.py` (2026-09-27)
+shows the fix: diff the post-blind failures against the baseline failures,
+so the pre-existing red is not attributed to the blind. On the dead-check
+case the fix is correct on both baselines.
+
+But the fix has its own confound. `calibration_fix_confound.py` (2026-10-01)
+is a four-arm probe: ARM 1 (GREEN, synthetic dead check) and ARM 3 (GREEN,
+real single-witness check SELECTION-BIAS) are controls where both rules
+agree; ARM 2 (RED, dead check) reproduces the bandaid's false-positive fix;
+ARM 4 (RED, real single-witness check, witness masked) is the new finding —
+a check that is CALIBRATED on the GREEN baseline reads UNCALIBRATED under
+the fix on a RED baseline when its only witness is already failing for an
+unrelated reason (new_fails=[] because the witness was already failing).
+The fix trades the naive rule's false-positive for a baseline-dependent
+FALSE-NEGATIVE.
+
+Both rules are only correct on a GREEN baseline; the GREEN-baseline
+precondition is load-bearing for both, and the fix relocates the self-keyed
+gap (false-positive -> baseline-dependent false-negative) rather than closing
+it. Deterministic across two runs; battery 124/124 GREEN before and after the
+mutation/restore cycle. Commit f1c0060.
 
 ## Knife-edge probe (verdict ruggedness — the near-miss rows)
 
