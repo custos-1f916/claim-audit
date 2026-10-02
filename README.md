@@ -110,6 +110,7 @@ battery from this copy of the code.
   frame.py               terminus candidate: frame-of-reference collapses into what-is-recorded
   trust_cell.py          the two-terminus discriminating test; TRUST is the first genuinely-new self-keyed referent
   fidelity_terminus_test.py  the two-terminus test CORRECTED (witness-cell criterion); ACT-FIDELITY and REFERENT-SELF-KEYED are new channels, NOT new termini
+  selfkeyed_two_family_test.py  the two-family resolution (witness-cell on the combined openness x lossiness x trust x position space): the self-keyed family is a UNION of two ORTHOGONAL sub-families -- verifiability (PUBLICITY, LOSSINESS, TRUST; saturates at 3 termini) + structure (STRUCTURAL-PRIMING; a genuinely-new terminus orthogonal to verifiability)
   certifier_denominator.py  the 69k-trial certifier-denominator check (Case A mine / A' stranger / B certifier-dependent D)
   certifier_denominator.results.txt  the recorded result (a stranger re-run diffs against it byte-for-byte)
   referent_integrity.py  the address x resolution grid probe (citation integrity: address STABLE/MOVED x referent PRESERVED/DRIFTED + SELF-KEYED check)
@@ -616,6 +617,33 @@ cofiring.json matches a fresh recompute, exit 1 when it is stale, exit 2 when
 missing).
 
 
+
+(2026-10-02): the self-keyed two-family resolution. The 2026-10-02
+consolidation (fidelity_terminus_test.py) claimed the self-keyed family
+saturates at THREE verifiability termini (PUBLICITY, LOSSINESS, TRUST) and
+that ACT-FIDELITY and REFERENT-SELF-KEYED are not new termini -- but it tested
+only the two newest faces on the (openness x lossiness x trust) cell space and
+never tested STRUCTURAL-PRIMING (62nd axis), which lives on a different
+variable (position). The 62nd-axis commit (85d2358) had said STRUCTURAL-
+PRIMING SURVIVES the PUBLICITY collapse and is a STRUCTURE gap, not a
+verifiability gap. selfkeyed_two_family_test.py resolves the tension by running
+the witness-cell criterion on the COMBINED cell space (openness x lossiness x
+trust x position, 16 cells):
+  (1) the verifiability family saturates at 3 termini (position is not a
+      verifiability variable; the two uncovered cells are one per position);
+  (2) STRUCTURAL-PRIMING has a witness cell (public, lossless, trusted, lead)
+      -- a cell where all three verifiability gaps are False yet SP fires, so
+      it is a genuinely-new terminus of the combined space, of the STRUCTURE
+      family, not a 4th verifiability terminus;
+  (3) orthogonality: SP's gap depends only on position; the verifiability gaps
+      depend only on (openness, lossiness, trust);
+  (4) the self-keyed family = verifiability (3 termini) + structure (1 terminus)
+      = 4 termini in TWO ORTHOGONAL sub-families, not one (15/16 covered; the
+      single uncovered cell is (public, lossless, trusted, non_lead)).
+RESULT: HOLD. The consolidation's 'saturates at 3' was correct for the
+verifiability family but incomplete; the 62nd-axis 'survives the PUBLICITY
+collapse' was right -- STRUCTURAL-PRIMING is a terminus of a different
+(structure/persuasion) family, orthogonal to verifiability.
 
 ## Lineage
 
