@@ -1708,6 +1708,38 @@ def check_fidelity(spec):
         return False, "FIDELITY", detail
     return True, "", "reading %r byte-matches the value %r (faithful copy)" % (reading, ref)
 
+def check_referent_self_keyed(spec):
+    """REFERENT-SELF-KEYED (63rd primary axis, 2026-10-02): the referent-
+    declaration channel of the self-keyed family. The closing act declares
+    BOTH sides of the FIDELITY byte-match (referent_value + reading); when the
+    referent_value is self-declared by the writer (the subject: the one who
+    performed the reasoning), the writer can make FIDELITY pass by re-labeling
+    referent_value == reading, regardless of whether the reading faithfully
+    represents the reasoning performed. FIDELITY at the closing act is then a
+    vacuous check: it certifies the declared referent matches the reading,
+    which is trivially satisfiable. Fires when `referent_source` is
+    "self-declared" (the writer holds the referent_value declaration; the
+    stranger cannot verify the state because the writer is both the source and
+    the certifier). Distinct from FIDELITY (the reading's byte-match; a face
+    of this axis, blind when the writer re-labels), TRUST (the writer's
+    authority channel; the writer_trust declaration, not the referent_value
+    declaration), and the what-is-recorded terminus (the writer choosing a
+    lossy function state->record; here the writer is declaring what the
+    referent IS, not projecting it). N/A when `referent_source` is not declared
+    (schema-boundary), or when referent_source is "externally-witnessed"
+    (the pass cell: the referent_value is anchored outside the writer's own
+    declaration, so the writer cannot re-label it). fail -> REFERENT-SELF-KEYED."""
+    rs = spec.get("referent_source")
+    if rs is None:
+        return True, "", "N/A (referent_source not declared; the axis does not apply)"
+    if rs == "externally-witnessed":
+        return True, "", "N/A (referent_value is externally-witnessed: anchored outside the writer's own declaration, so the writer cannot re-label it; the referent-declaration gap is closed)"
+    if rs == "self-declared":
+        detail = ("the referent_value is self-declared by the writer (referent_source=%s): the writer holds the declaration of the thing being certified, so they can make FIDELITY pass by re-labeling referent_value == reading regardless of whether the reading faithfully represents the reasoning performed -- FIDELITY at the closing act is a vacuous check, and the stranger cannot verify the state because the writer is both the source of the referent_value and its certifier (the referent-declaration channel)" % rs)
+        return False, "REFERENT-SELF-KEYED", detail
+    return True, "", "N/A (referent_source=%s: the referent is neither self-declared nor externally-witnessed; the axis does not apply)" % rs
+
+
 def check_witness_population_selection(spec):
     """WITNESS-POPULATION-SELECTION (41st axis, 2026-09-27): the witness
     population of an absence claim is structurally selected against
@@ -2456,6 +2488,7 @@ CHECKS = [
     ("SELECTION-PROVENANCE", check_selection_provenance),
     ("WITNESS-RESIDENCE", check_witness_residence),
     ("STRUCTURAL-PRIMING", check_structural_priming),
+    ("REFERENT-SELF-KEYED", check_referent_self_keyed),
 ]
 
 def _no_empirical(spec):
@@ -2469,7 +2502,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING", "THESIS-OUTRUNS-EVIDENCE", "UNIT-COUNT", "OPT-IN-CENSUS", "CAUSAL-WIRING", "DECLARED-CHANNEL", "CARRIER-REACH", "WITNESS-ADDRESS", "SELECTION-PROVENANCE", "HELD-OUT-PROVENANCE"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING", "THESIS-OUTRUNS-EVIDENCE", "UNIT-COUNT", "OPT-IN-CENSUS", "CAUSAL-WIRING", "DECLARED-CHANNEL", "CARRIER-REACH", "WITNESS-ADDRESS", "SELECTION-PROVENANCE", "HELD-OUT-PROVENANCE", "REFERENT-SELF-KEYED"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:

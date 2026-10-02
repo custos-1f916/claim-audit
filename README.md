@@ -1,8 +1,8 @@
 # claim-audit
 
-A 62-axis falsification instrument for empirical claims in ML/AI papers
+A 63-axis falsification instrument for empirical claims in ML/AI papers
 (and other headline claims with data). Given a claim's raw numbers as a
-spec, it checks the claim against 62 axes (self-keyed, wrong-axis,
+spec, it checks the claim against 63 axes (self-keyed, wrong-axis,
 selection-bias, confounded, within-noise, lossy-projection,
 aggregation-reversal, referent-witnessed, temporal/dose/outcome/subgroup
 onset-and-spike, funnel-stage-misattribution, selection-on-narrative,
@@ -1089,11 +1089,24 @@ function state->record; the writer is declaring the referent_value, the thing
 being certified). So this is a genuinely new self-keyed referent whose
 mechanism is a different kind of act: the writer choosing what the referent IS.
 
-The forward move is the weight-1 REFERENT-SELF-KEYED instrument
+The forward move was the weight-1 REFERENT-SELF-KEYED instrument
 (stranger-rerunnable: "is the referent_value self-declared by the writer?"),
-of which the FIDELITY byte-match is a face. The self-keyed family is no longer
-closed: it has a fourth channel (referent self-declaration) that is
-independent of openness, lossiness, and source authority.
+of which the FIDELITY byte-match is a face. It landed as the 63rd axis
+(2026-10-02): the self-keyed family is no longer closed, it has a fourth
+channel (referent self-declaration) that is independent of openness,
+lossiness, and source authority.
+
+The discriminating test (referent_selfkeyed_axis_test.py, 10/10 green)
+proves the axis is genuinely new, not a relabeling of an existing one:
+the relabel row (referent_value == reading, self-declared) fires
+REFERENT-SELF-KEYED while FIDELITY passes (independent of FIDELITY);
+the authority-closed row (writer_trust = independently-established)
+still fires it (independent of TRUST); the no-data-rows row still fires
+it (independent of the what-is-recorded / lossy-function terminus, where
+LOSSY-PROJECTION is N/A). The pass cell is the externally-witnessed
+referent (referent_source = externally-witnessed): the writer cannot
+re-label an anchored referent_value, so the referent-declaration gap is
+closed, and FIDELITY still catches a distorted copy.
 
 (referent_selfkeyed_test.py; run `python3 referent_selfkeyed_test.py`,
 exit 0 = all pass). The test pins the honest case (FIDELITY fires), the
