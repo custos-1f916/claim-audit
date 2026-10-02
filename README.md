@@ -329,7 +329,26 @@ regresses, the Apple specimen newly fires THESIS-OUTRUNS-EVIDENCE and the batter
 goes red. A separate logged-not-flagged seam (BEATS-NULL polarity-blindness): the
 axis is polarity-blind by design, so a negative result (higher TV = worse) passes
 as long as the rows are separable (0.157 > 0.0054); the good-direction judgment is
-the author's, not the instrument's.
+the author's, not the instrument's. The seam is now a declared spec-level
+witness: the `metric_polarity` field (values `higher-is-better` [default],
+`lower-is-better`) declares the metric's polarity. When declared AND the beat
+is in the bad direction (for `lower-is-better`: max(mech) > max(null), i.e. the
+mechanism is worse than the null), check_beats_null adds a logged-not-flagged
+note to the BEATS-NULL check's `detail`: "polarity: the beat is in the bad
+direction (mechanism worse than null); the good-direction judgment is the
+author's, not the instrument's." It is a witness, not a flag: the direction is
+not a flaw in itself; it is the author's judgment. No new flag, no changed
+pass/fail, no change to the firing set (the pass surface does not perturb the
+firing-set analysis). Proven by the polarity+no-polarity pair
+(polarity_test.py): the same spec shape (a cost metric where the mechanism is
+worse than the null), one with metric_polarity declared (adds the note) and
+one without (no note); neither fires NULL-REACHES-HEADLINE (the metric
+distinguishes the rows), and the pair differs only on the metric_polarity
+field. The live Apple specimen (specimens.py, expected=[] unchanged, now
+declares metric_polarity="lower-is-better") is the permanent regression
+witness: if the polarity note ever regresses, the battery's BEATS-NULL detail
+loses the note (the firing set is unchanged, so the battery stays green -- the
+note is the witness, not a flag).
 
 (2026-09-29): the CERTIFIER-UNNAMED axis (53rd) was implemented. The
 certification-gate face of the self-keyed family (arXiv 2609.30971,

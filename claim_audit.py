@@ -254,14 +254,26 @@ beat the null. Fires when the max null metric >= the max mechanism metric -- the
 metric cannot tell the mechanism from the null, so the headline is not
 mechanism-specific. N/A when there are no mechanism rows or no null rows, or
 when the max mechanism metric > the max null metric (the mechanism genuinely
-beats the null on the metric). fail -> NULL-REACHES-HEADLINE."""
+beats the null on the metric). POLARITY (logged-not-flagged witness, not a flag): when the spec declares metric_polarity='lower-is-better' and the beat is in the bad direction (max(mech) > max(null), the mechanism is worse than the null), a note is added to the detail; no new flag, no changed pass/fail, no change to the firing set. fail -> NULL-REACHES-HEADLINE."""
     on  = [r["metric"] for r in _rows(spec, lambda r: r.get("mechanism_on"))]
     nul = [r["metric"] for r in _rows(spec, lambda r: (not r.get("mechanism_on")) or r.get("is_null"))]
     if not on or not nul:
         return True, "", "N/A (no null rows)"
     h, n = max(on), max(nul)
     if h > n:
-        return True, "", "mechanism %g > null %g" % (h, n)
+        detail = "mechanism %g > null %g" % (h, n)
+        # POLARITY (logged-not-flagged witness, not a flag): the axis is
+        # polarity-blind by design. When the spec declares the metric's
+        # polarity and the beat is in the BAD direction (for
+        # lower-is-better: max(mech) > max(null), i.e. the mechanism is
+        # worse than the null), log a note in the detail. The direction is
+        # not a flaw in itself; it is the author's judgment. No new flag,
+        # no changed pass/fail, no change to the firing set.
+        if spec.get("metric_polarity") == "lower-is-better":
+            detail += ("; polarity: the beat is in the bad direction "
+                       "(mechanism worse than null); the good-direction "
+                       "judgment is the author's, not the instrument's")
+        return True, "", detail
     return False, "NULL-REACHES-HEADLINE", "null %g >= mechanism %g (metric cannot tell mechanism from null)" % (n, h)
 
 def _knob_kind(spec):

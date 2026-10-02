@@ -3584,6 +3584,7 @@ SPECIMENS = [
     "mechanism": "confidence-ordered remasking (the sampler being measured) vs an independent-draw null (sampling-noise floor)",
     "mechanism_lever": "confidence ranking selecting which undetermined positions to write each step",
     "metric": "total-variation distance from the training distribution (higher = worse / more off-distribution)",
+    "metric_polarity": "lower-is-better",
     "scope_claim": False,
     "probe_support_fraction": 1.0,
     "stated_headline": 0.157,
