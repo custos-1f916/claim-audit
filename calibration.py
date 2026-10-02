@@ -531,6 +531,25 @@ SPECIMENS = [
     ]
   },
   {
+    "name": "THESIS-OUTRUNS-EVIDENCE PASS / PROOF-CHANNEL (2609.20581 Limits of Confidence in Diffusion, Apple): the causal endpoint is established by Theorem 3, not by measurement; the measured rows are the empirical instantiation",
+    "truth": [],
+    "truth_reason": "PASS CELL (theorem/proof channel for the thesis-outruns-evidence axis, added 2026-10-02 from the Apple 2609.20581 calibration boundary). The headline states a causal endpoint as a present-tense fact (confidence-based remasking is systematically off-distribution on dependent token groups) and the endpoint is NOT in the measured set (the rows measure TV distances on the one synthetic task, ScanAndAdd). Absent the proof channel this is exactly the Rilla overclaim shape and THESIS-OUTRUNS-EVIDENCE fires. But the load-bearing result is Theorem 3, which ESTABLISHES the endpoint (a step matches the training distribution iff the written positions are conditionally independent given the fixed tokens; no product of per-position distributions matches a dependent group), not merely that the premises hold. proof_supported=True routes it to the proof channel: the endpoint is established by proof, the measured rows are the empirical instantiation, so the thesis does not outrun the evidence -> no flag. The discriminator is the SUPPORT CHANNEL (measurement vs proof), not the headline's fact-statement: the fire cell (Rilla) and this pass cell share the same fact-statement + unmeasured-endpoint + body-hedge shape and differ only on the proof field. This is the discriminating cell the 2026-10-02 calibration boundary named (the instrument had no theorem/proof channel, so a proof-backed endpoint read as a forecast). Distinct from SCOPE-FLATTENING (the endpoint is unmeasured, not a measured value flattened across regimes) and from FUNNEL-STAGE-MISATTRIBUTION (the endpoint is not a stage in the measured pipeline).",
+    "type": "negative-result",
+    "mechanism_lever": "confidence ranking selecting which undetermined positions to write each step",
+    "thesis_endpoint": "confidence-based remasking is systematically off-distribution on dependent token groups; per-sample metrics cannot see it",
+    "measured_endpoints": ["TV distance of confidence-remasking samples vs the training joint", "TV distance of the independent-draw null (sampling-noise floor)", "TV distance of hand-specified (non-confidence) orders reaching the free group in parallel"],
+    "headline_states_as_fact": True,
+    "body_hedges": True,
+    "proof_supported": True,
+    "proof_statement": "Theorem 3: KL(p||prod pi_i) = TC + sum KL(p_i||pi_i); a step matches the training distribution only when the positions it writes are conditionally independent given the already-fixed tokens, and no product of per-position distributions can match a dependent group",
+    "rows": [
+      {"label": "confidence-ordered remasking, ScanAndAdd (flagship)", "mechanism_on": True, "substrate": ["confidence", "scanandadd"], "metric": 0.157},
+      {"label": "confidence-ordered remasking, other point", "mechanism_on": True, "substrate": ["confidence", "scanandadd"], "metric": 0.129},
+      {"label": "independent-draw null / sampling-noise floor", "mechanism_on": False, "is_null": True, "substrate": ["independent-draw"], "metric": 0.0054},
+      {"label": "hand-specified order, free group parallel (Group A, reachable null)", "mechanism_on": False, "substrate": ["hand-order", "free-group"], "metric": 0.005}
+    ]
+  },
+  {
     'name': "CERTIFIER-UNNAMED FIRE (2609.30971 SciHorizon-eLab, unnamed visual-review agent): the certification gate's only protocol-anchoring channel has no declared identity",
     'truth': ['CERTIFIER-UNNAMED'],
     'truth_reason': "FIRE CELL (certifier-unnamed axis, 53rd, 2026-09-29). The benchmark's load-bearing word is 'certified', and the certification gate's only channel that ties the compiled task back to the source protocol is a 'visual-review agent' that is NEVER NAMED anywhere in the paper (no model/provider/temperature/prompt for any pipeline agent). The certification is stranger-unrerunnable: a stranger cannot re-derive the gate's output without the certifier's identity. Distinct from REFERENT-CONSTRUCTED (the referent -- what the claim is about -- is a model-constructed artifact; here the referent is externally-anchored and the gap is at the certifier) and from ANNOTATOR-SELF-KEYED (the 'why' rests on a non-public annotation; here the certification gate's output is the load-bearing channel and the certifier's identity is absent, not merely non-public). The empirical layer passes (the 49.7% headline is arithmetically correct), so the only flag is the certifier-channel gap.",

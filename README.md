@@ -25,7 +25,7 @@ python3 calibration.py
 ```
 
 Exits 0 and prints `VERDICT: instrument DISCRIMINATES` if and only if all
-three properties hold on the 131 calibration specimens:
+three properties hold on the 132 calibration specimens:
 
   (a) silent-on-robust   : robust claims fire NO flag
   (b) fire-on-flawed     : flawed claims fire the expected axis
@@ -75,7 +75,7 @@ undeclared field makes a refinement N/A), `contested`.
 python3 claim_audit.py
 ```
 
-Runs the 214 specimens in `specimens.py` (real — papers from the
+Runs the 215 specimens in `specimens.py` (real — papers from the
 2026-09-15..22 audit run plus schema-boundary cells plus the live 1f916.ai
 seal/ack floor — plus 60 constructed/self-specimen discriminating cells: the
 original 11 battery witnesses for TEMPORAL-ONSET, REFERENCE-MIX,
@@ -90,7 +90,7 @@ battery from this copy of the code.
 ## Files
 
   claim_audit.py   the instrument (64 checks + CLI), stdlib only
-  calibration.py   the 131-specimen discriminating calibration
+  calibration.py   the 132-specimen discriminating calibration
   calibration_boundary.py  the self-calibration probe (per-check mutation)
   calibration_confound.py  the RED-baseline confound (dead check reads CALIBRATED)
   calibration_bandaid.py   the baseline-integrity fix (band-aid, not removal)
@@ -99,7 +99,7 @@ battery from this copy of the code.
   second_mind.py     the second-mind label-derivation pass (independent fact re-derivation for the 9 primary empirical axes; --judgments emits the fact->name table for a different mind to audit)
   self_keyed_witness_test.py  the SELF-KEYED "undeclared -> lever" regression witness (byte-identical W-triple; locks in the declaration-driven fallback that closes the co-error the battery and second_mind both miss)
   wrong_axis_witness_test.py  the WRONG-AXIS "tie -> wrong-axis" regression witness (byte-identical W-triple; locks in the at/below boundary that the second-mind audit flagged as under-determining the label, and confirms it is the right one)
-  specimens.py     214 specimens (real + constructed/self-specimen) with expected flag sets
+  specimens.py     215 specimens (real + constructed/self-specimen) with expected flag sets
   results.txt      fresh battery run from this copy
   publicity_saturation.py  the PUBLICITY saturation test (certification subset -> one variable)
   structural_priming.py    the 62nd-axis probe (STRUCTURAL-PRIMING vs WITNESS-ADDRESS; position x address, not a relabel)
@@ -303,6 +303,33 @@ battery cells (specimens.py: the Rilla fire cell, the 2609.31563
 measured-endpoint reverse control, the properly-scoped-headline pass cell,
 and the no-rows regime cell). The battery is now 153 specimens (126 real +
 27 constructed/self-specimen).
+
+(2026-10-02): the theorem/proof channel (calibration boundary from the Apple
+2609.20581 discriminating test). The axis's hidden assumption was "the only
+support channel for a causal endpoint is a MEASUREMENT." A claim whose
+load-bearing result is a PROOF read as a forecast: arXiv 2609.20581 (Apple,
+"Limits of Confidence in Diffusion") states the causal endpoint (confidence-based
+remasking is systematically off-distribution on dependent token groups) as a
+present-tense fact, and the endpoint is not in the measured set (the rows measure
+TV distances on the one synthetic task, ScanAndAdd) -- so the axis fired
+THESIS-OUTRUNS-EVIDENCE. But the load-bearing result is Theorem 3, which
+ESTABLISHES the endpoint (a step matches the training distribution iff the written
+positions are conditionally independent given the fixed tokens; no product of
+per-position distributions matches a dependent group), not merely that the
+premises hold. The fix promotes the assumption to a spec-level variable
+(`proof_supported` + `proof_statement` in check_thesis_outruns_evidence): when the
+endpoint is established by proof, the measured rows are the empirical
+instantiation and the axis passes. The discriminator is the SUPPORT CHANNEL
+(measurement vs proof), not the headline's fact-statement. Proven by the
+fire+pass pair (proof_channel_test.py, 6/6 green): the pair differs only on the
+proof field; the measured-endpoint, hedged-headline, and N/A cases are untouched.
+The live Apple specimen (specimens.py, expected=[]) and the calibration pass cell
+(calibration.py) are the permanent regression witnesses: if the proof branch ever
+regresses, the Apple specimen newly fires THESIS-OUTRUNS-EVIDENCE and the battery
+goes red. A separate logged-not-flagged seam (BEATS-NULL polarity-blindness): the
+axis is polarity-blind by design, so a negative result (higher TV = worse) passes
+as long as the rows are separable (0.157 > 0.0054); the good-direction judgment is
+the author's, not the instrument's.
 
 (2026-09-29): the CERTIFIER-UNNAMED axis (53rd) was implemented. The
 certification-gate face of the self-keyed family (arXiv 2609.30971,
@@ -884,7 +911,7 @@ python3 cofiring.py
 ```
 
 Growth to 64 axes raises the question: do axes start to overlap? `cofiring.py`
-computes the co-firing matrix over the 214-specimen battery: per-axis firing
+computes the co-firing matrix over the 215-specimen battery: per-axis firing
 counts, identical firing sets (pure redundancy), strict-subset sets (the
 designed refinement hierarchy), and co-firing pairs. Current state
 (2026-10-02): no two axes share a firing set; the only subset structure is the

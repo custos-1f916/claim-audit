@@ -2086,6 +2086,19 @@ def check_thesis_outruns_evidence(spec):
     measured = spec.get("measured_endpoints", [])
     if thesis in measured:
         return True, "", "the thesis endpoint (%s) is in the measured set; the endpoint is a measurement, not a forecast -- the measured-value case is SCOPE-FLATTENING's domain" % thesis
+    # Theorem/proof channel (added 2026-10-02, calibration boundary from the
+    # Apple 2609.20581 discriminating test): a causal endpoint need not be
+    # directly MEASURED to be supported -- it may be ESTABLISHED BY PROOF.
+    # The hidden assumption this promotes to a spec-level variable is "the
+    # only support channel for an endpoint is a measurement." When the spec
+    # declares the endpoint is load-bearing supported by a theorem (the proof
+    # establishes the endpoint, not merely that the premises hold), the
+    # endpoint is not a forecast: it is a theorem, and the measured rows are
+    # the empirical instantiation. The discriminator is the support channel
+    # (measurement vs proof), not the headline's fact-statement.
+    if spec.get("proof_supported"):
+        stmt = spec.get("proof_statement", "(statement not recorded)")
+        return True, "", "the thesis endpoint (%s) is not in the measured set, but it is load-bearing supported by a theorem (%s): the endpoint is established by proof, not a forecast -- the measured rows are the empirical instantiation, so the thesis does not outrun the evidence" % (thesis, stmt)
     if not spec.get("headline_states_as_fact", False):
         return True, "", "the thesis endpoint (%s) is not in the measured set, but the headline does not state it as a present-tense fact (properly scoped/hedged); no overclaim" % thesis
     corr = ""

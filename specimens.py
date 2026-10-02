@@ -3578,4 +3578,31 @@ SPECIMENS = [
     "expected": ["GATE-ON-REALIZATION"],
     "note": "BATTERY WITNESS (2026-10-02): this specimen exists to make the battery non-silent on the GATE-ON-REALIZATION axis (the 64th). Structure mirrors the GOR1 calibration fire cell: the receipt's validity gate is the realized-size band (1-sd), NOT the structural design-consistency check. Design consistency HOLDS (declared_fraction=0.06 == rule_probability=0.06, exact, no realized n needed), yet the realized n=0 on Binomial(N=50, p=0.06) sits ~1.8sd below the mean 3 (band [1.321, 4.679]), so the gate discards it -- yet P(n=0)=(0.94)^50=0.047, a ~5% LEGITIMATE tail, not an anomaly. The gate bit on a structurally-consistent receipt. The empirical rows are clean (0.50>0.20, no knob/CI/subgroup -> all empirical axes pass or N/A), so GATE-ON-REALIZATION is the only flag that fires. The calibration cell GOR1 already proves the axis discriminates; this witness makes the battery itself a second, independent confirmation (the PC1 / temporal-onset / RSK1 pattern). Pass cell: realized_n=3 (at the mean, inside the band) fires nothing (the conflation is invisible)."
   },
+  {
+    "name": "THESIS-OUTRUNS-EVIDENCE PASS / PROOF-CHANNEL (2609.20581 Limits of Confidence in Diffusion, Apple): the causal endpoint is established by Theorem 3, not by measurement; the measured rows are the empirical instantiation",
+    "type": "negative-result",
+    "mechanism": "confidence-ordered remasking (the sampler being measured) vs an independent-draw null (sampling-noise floor)",
+    "mechanism_lever": "confidence ranking selecting which undetermined positions to write each step",
+    "metric": "total-variation distance from the training distribution (higher = worse / more off-distribution)",
+    "scope_claim": False,
+    "probe_support_fraction": 1.0,
+    "stated_headline": 0.157,
+    "coupled_headlines": "no",
+    "broader_derived": "no",
+    "composition_declared": "yes",
+    "thesis_endpoint": "confidence-based remasking is systematically off-distribution on dependent token groups; per-sample metrics cannot see it",
+    "measured_endpoints": ["TV distance of confidence-remasking samples vs the training joint", "TV distance of the independent-draw null (sampling-noise floor)", "TV distance of hand-specified (non-confidence) orders reaching the free group in parallel"],
+    "headline_states_as_fact": True,
+    "body_hedges": True,
+    "proof_supported": True,
+    "proof_statement": "Theorem 3: KL(p||prod pi_i) = TC + sum KL(p_i||pi_i); a step matches the training distribution only when the positions it writes are conditionally independent given the already-fixed tokens, and no product of per-position distributions can match a dependent group (the irreducible floor is the total-correlation term TC)",
+    "rows": [
+      {"label": "confidence-ordered remasking, ScanAndAdd (flagship)", "mechanism_on": True, "substrate": ["confidence", "scanandadd"], "metric": 0.157},
+      {"label": "confidence-ordered remasking, other point", "mechanism_on": True, "substrate": ["confidence", "scanandadd"], "metric": 0.129},
+      {"label": "independent-draw null / sampling-noise floor", "mechanism_on": False, "is_null": True, "substrate": ["independent-draw"], "metric": 0.0054},
+      {"label": "hand-specified order, free group parallel (Group A, reachable null)", "mechanism_on": False, "substrate": ["hand-order", "free-group"], "metric": 0.005}
+    ],
+    "expected": [],
+    "note": "LIVE EXTERNAL SPECIMEN (arXiv 2609.20581, Webb/Shidani/Bizeul/Busbridge, Apple, 'Limits of Confidence in Diffusion'). PROOF-CHANNEL regression witness (2026-10-02). The headline states a causal endpoint as a present-tense fact (confidence-based remasking is systematically off-distribution on dependent token groups), and the endpoint is NOT in the measured set (the rows measure TV distances on the one synthetic task, ScanAndAdd). Absent the proof channel this is exactly the Rilla shape and THESIS-OUTRUNS-EVIDENCE fires. But the load-bearing result is Theorem 3: it ESTABLISHES the endpoint (a step matches the training distribution iff the written positions are conditionally independent given the fixed tokens; no product of per-position distributions matches a dependent group), not merely that the premises hold. The measured rows are the empirical instantiation of the theorem, not the whole of the evidence. So the thesis does not outrun the evidence: proof_supported=True routes it to the proof channel and the axis passes. This is the discriminating cell the 2026-10-02 calibration boundary named (the instrument had no theorem/proof channel, so a proof-backed endpoint read as a forecast). The fire+pass pair (proof_channel_test.py) differs only on the proof field; the pair's fire cell (same spec, proof_supported absent) is the Rilla/ScanAndAdd overclaim shape. Distinct from SCOPE-FLATTENING (the endpoint is unmeasured, not a measured value flattened across regimes) and from FUNNEL-STAGE-MISATTRIBUTION (the endpoint is not a stage in the measured pipeline). BEATS-NULL polarity-blindness (a separate, logged-not-flagged seam): the axis is polarity-blind by design, so a negative result (higher TV = worse) passes as long as the rows are separable (0.157 > 0.0054); the good-direction judgment is the author's, not the instrument's."
+  },
 ]
