@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""TRUST cell test (2026-09-28).
+"""TRUST cell test (2026-09-28; criterion corrected 2026-10-02, f3ec9e1).
 
 Scope: the two-terminus synthesis (2026-09-28). PUBLICITY (3ddd51b0) and
 what-is-recorded (2e9551e5) are two faces of ONE self-keyed act (the writer
@@ -10,16 +10,20 @@ bounded by the WEAKER of the two, so they are the same collapse read from two
 ends (openness vs lossiness), not independent.
 
 The two terminuses each pointed toward a 'genuinely new self-keyed referent'
-but never stated the discriminating test. This test states it:
+but never stated the discriminating test. This test states it.
 
-  A candidate self-keyed referent C is GENUINELY NEW iff its self-keyedness
-  (its gap) survives BOTH:
-    (a) full publicity   : the raw state is made public   (publicity = public)
-    (b) losslessness     : the function is made identity  (losslessness = lossless)
+  CORRECTED CRITERION (2026-10-02, f3ec9e1): the witness-cell test.
+  A candidate self-keyed referent C is GENUINELY NEW iff SOME cell exists
+  where ALL known termini's gaps are False but C's gap is True (C adds a cell
+  no known terminus covers).
 
-  If C's gap vanishes under (a), C is a face of the PUBLICITY terminus (its
-  self-keyedness is just OPENNESS). If C's gap vanishes under (b), C is a face
-  of the what-is-recorded terminus (its self-keyedness is just LOSSINESS).
+  The original weak criterion ("C's gap survives BOTH (a) full publicity and
+  (b) losslessness", i.e. is not implied by either SINGLE terminus) let a
+  DISJUNCTION of the two known termini (secret OR lossy) pass both arms and
+  masquerade as genuinely-new, even though it is just the union of the two
+  known faces. The witness-cell test rejects it: the disjunction's gap is True
+  only where at least one known terminus's gap is already True, so no cell
+  exists where all known termini are False and the disjunction is True.
 
 Operational reading of 2e9551e5's 'a different kind of act' clause: a
 different kind of act = an act that is neither a function-selection act nor a
@@ -27,8 +31,7 @@ publicity act.
 
 Context: the four earlier 'next-referent' candidates (query-selection,
 schema-selection, vouching, frame-of-reference) all collapsed into
-what-is-recorded (they failed arm (b) -- their gap vanishes under
-losslessness). The first candidate that PASSES this two-axis test is
+what-is-recorded. The first candidate that PASSES the witness-cell test is
 TRUST (provenance) -- the writer choosing WHICH OTHER WRITER to accept. Trust
 is a third axis that survives both full publicity and losslessness, because a
 public, lossless record from an untrusted writer is still unverifiable (the
@@ -40,12 +43,15 @@ axes: verifiable iff (publicity = public) AND (losslessness = lossless) AND
 (trust = trusted). The stranger's verifiability is bounded by the weakest of
 the three.
 
-The discriminating property:
-  - TRUST PASSES both arms (genuinely new): its gap survives full publicity AND
-    losslessness. The witness cell is (public, lossless, untrusted) ->
-    unverifiable.
-  - PUBLICITY FAILS arm (a) (a relabel): its gap vanishes under full publicity.
-  - LOSSINESS FAILS arm (b) (a relabel): its gap vanishes under losslessness.
+The discriminating property (witness-cell test):
+  - TRUST has a witness cell (public, lossless, untrusted) -> genuinely new:
+    a cell where both known termini's gaps are False but TRUST's gap is True.
+  - PUBLICITY has no witness cell (its gap is exactly the PUBLICITY terminus)
+    -> a relabel.
+  - LOSSINESS has no witness cell (its gap is exactly the LOSSINESS terminus)
+    -> a relabel.
+  - DISJUNCTION (secret OR lossy) has no witness cell -> the old weak
+    criterion's false positive, now correctly rejected.
 
 Secondary property (the 'invariant' check, mirroring the PUBLICITY test's
 seat-invariance): within the (public, lossless) cell, the verdict is determined
@@ -80,54 +86,69 @@ def cells():
 # The gap predicates for each candidate: the condition under which the
 # candidate produces a self-keyed gap (unverifiability).
 GAP = {
-    "PUBLICITY": lambda c: c[0] == "secret",
-    "LOSSINESS": lambda c: c[1] == "lossy",
-    "TRUST":     lambda c: c[2] == "untrusted",
+    "PUBLICITY":   lambda c: c[0] == "secret",
+    "LOSSINESS":   lambda c: c[1] == "lossy",
+    "TRUST":       lambda c: c[2] == "untrusted",
+    # The disjunction of the two known termini: the old weak criterion's false
+    # positive (secret OR lossy). A regression witness for the correction.
+    "DISJUNCTION": lambda c: (c[0] == "secret") or (c[1] == "lossy"),
 }
 
+# The known termini against which a candidate is tested.
+KNOWN_TERMINI = ("PUBLICITY", "LOSSINESS")
+
 def implied_by(predicate, condition):
-    # Check whether predicate(c) -> condition(c) for all cells c.
+    # The OLD weak criterion's primitive (kept for the regression witness):
+    # check whether predicate(c) -> condition(c) for all cells c.
     for c in cells():
         if predicate(c) and not condition(c):
             return False
     return True
 
-def two_axis_test(name):
-    # A candidate is GENUINELY NEW iff its gap survives BOTH:
-    #   (a) full publicity   : the gap is NOT implied by (publicity = secret)
-    #   (b) losslessness     : the gap is NOT implied by (losslessness = lossy)
+def witness_cell(name):
+    # CORRECTED (2026-10-02, f3ec9e1): a candidate C is GENUINELY NEW iff SOME
+    # cell exists where ALL known termini's gaps are False but C's gap is True
+    # (C adds a cell no known terminus covers). Returns the witness cell, or
+    # None.
     p = GAP[name]
-    face_of_publicity = implied_by(p, lambda c: c[0] == "secret")
-    face_of_lossiness = implied_by(p, lambda c: c[1] == "lossy")
-    genuinely_new = (not face_of_publicity) and (not face_of_lossiness)
-    return genuinely_new, face_of_publicity, face_of_lossiness
+    for c in cells():
+        if all(not GAP[k](c) for k in KNOWN_TERMINI) and p(c):
+            return c
+    return None
+
+def two_axis_test(name):
+    # Corrected (2026-10-02, f3ec9e1): the witness-cell criterion.
+    # The original weak criterion ("gap not implied by either SINGLE terminus")
+    # let a DISJUNCTION of the two termini (secret OR lossy) pass both arms and
+    # masquerade as genuinely-new. The witness-cell test rejects it.
+    w = witness_cell(name)
+    return (w is not None), w
 
 def main():
-    print("TRUST cell test (2026-09-28) -- two-terminus discriminating test")
+    print("TRUST cell test (2026-09-28; witness-cell criterion, f3ec9e1)")
     print("=" * 88)
     print("Ground-truth stranger-verifiability verdict (conjunctive over 3 axes):")
     print("%-10s %-12s %-10s %s" % ("publicity", "losslessness", "trust", "verdict"))
     for c in cells():
         print("%-10s %-12s %-10s %s" % (c[0], c[1], c[2], verdict(*c)))
     print("-" * 88)
-    print("Two-axis discriminating test (genuinely new iff survives BOTH arms):")
-    print("%-14s %-24s %-24s %s" %
-          ("candidate", "arm (a) full publicity", "arm (b) losslessness",
+    print("Witness-cell discriminating test (genuinely new iff a witness cell exists):")
+    print("%-14s %-34s %s" %
+          ("candidate", "witness cell (all known termini False, C True)",
            "genuinely new"))
     results = {}
-    for name in ["PUBLICITY", "LOSSINESS", "TRUST"]:
-        gn, fp, fl = two_axis_test(name)
+    for name in ["PUBLICITY", "LOSSINESS", "TRUST", "DISJUNCTION"]:
+        gn, w = two_axis_test(name)
         results[name] = gn
-        print("%-14s %-24s %-24s %s" %
+        print("%-14s %-34s %s" %
               (name,
-               "FAIL (face of PUBLICITY)" if fp else "PASS (gap survives)",
-               "FAIL (face of LOSSINESS)" if fl else "PASS (gap survives)",
+               str(w) if w is not None else "none",
                "YES" if gn else "no"))
     print("-" * 88)
-    print("Witness cells:")
-    print("  TRUST witness   (public, lossless, untrusted) -> %s  [gap SURVIVES both arms]"
+    print("Witness cells (ground-truth verdict at the key cells):")
+    print("  TRUST witness   (public, lossless, untrusted) -> %s  [gap SURVIVES both termini]"
           % verdict("public", "lossless", "untrusted"))
-    print("  control         (public, lossless, trusted)   -> %s  [both terminuses satisfied]"
+    print("  control         (public, lossless, trusted)   -> %s  [both termini satisfied]"
           % verdict("public", "lossless", "trusted"))
     print("  PUBLICITY face  (secret, lossless, trusted)   -> %s  [gap under secret]"
           % verdict("secret", "lossless", "trusted"))
@@ -148,22 +169,47 @@ def main():
     print("  invariant to writer identity, depends on trust: %s" %
           ("PASS" if inv_ok else "FAIL"))
     print("-" * 88)
-    a_ok = (results["TRUST"] and not results["PUBLICITY"] and not results["LOSSINESS"])
-    trust_witness = verdict("public", "lossless", "untrusted") == "unverifiable"
-    if a_ok and trust_witness and inv_ok:
+    # Regression witness: the old weak criterion vs the witness-cell criterion,
+    # on the disjunction (secret OR lossy) -- the old criterion's false positive.
+    disj = GAP["DISJUNCTION"]
+    old_fp = implied_by(disj, lambda c: c[0] == "secret")
+    old_fl = implied_by(disj, lambda c: c[1] == "lossy")
+    old_new = (not old_fp) and (not old_fl)
+    new_w = witness_cell("DISJUNCTION")
+    new_new = new_w is not None
+    print("Regression witness (old weak criterion vs witness-cell criterion):")
+    print("  DISJUNCTION (secret OR lossy):")
+    print("    OLD weak criterion  -> genuinely_new: %s  (FALSE POSITIVE if True)"
+          % old_new)
+    print("    NEW witness-cell    -> witness: %s -> genuinely_new: %s"
+          % (new_w, new_new))
+    print("    regression: %s" % ("PASS (old false positive now rejected)"
+                                  if (old_new and not new_new) else "FAIL"))
+    print("-" * 88)
+    # The corrected verdict: TRUST is genuinely new (witness cell exists);
+    # PUBLICITY, LOSSINESS, and DISJUNCTION are not (no witness cell).
+    a_ok = (results["TRUST"]
+            and not results["PUBLICITY"]
+            and not results["LOSSINESS"]
+            and not results["DISJUNCTION"])
+    trust_witness = witness_cell("TRUST") == ("public", "lossless", "untrusted")
+    disj_rejected = witness_cell("DISJUNCTION") is None
+    regression_ok = old_new and not new_new
+    if a_ok and trust_witness and disj_rejected and regression_ok and inv_ok:
         print("VERDICT: TRUST is the first GENUINELY NEW self-keyed referent. It")
-        print("  survives BOTH the publicity and losslessness terminuses (the (public,")
-        print("  lossless, untrusted) cell is still unverifiable). PUBLICITY and")
-        print("  LOSSINESS are relabels (faces of the two terminuses): each fails")
-        print("  its own arm. The two terminuses are the same collapse read from")
-        print("  two ends (openness vs lossiness); TRUST is a third axis (the")
-        print("  source's authority) that is conjunctive with them. The forward")
-        print("  move is the weight-1 TRUST instrument (stranger-rerunnable: 'is")
-        print("  the writer trusted?'), of which provenance is a face.")
+        print("  has a witness cell (public, lossless, untrusted): a cell where both")
+        print("  known termini's gaps are False but TRUST's gap is True. PUBLICITY and")
+        print("  LOSSINESS are relabels (no witness cell). The DISJUNCTION (secret OR")
+        print("  lossy) -- the old weak criterion's false positive -- is now correctly")
+        print("  rejected (no witness cell; regression PASS). The two terminuses are the")
+        print("  same collapse read from two ends (openness vs lossiness); TRUST is a")
+        print("  third axis (the source's authority) that is conjunctive with them. The")
+        print("  forward move is the weight-1 TRUST instrument (stranger-rerunnable:")
+        print("  'is the writer trusted?'), of which provenance is a face.")
     else:
         print("VERDICT: the discriminating test does NOT hold cleanly. See the")
         print("  FAIL lines above.")
-    return 0 if (a_ok and trust_witness and inv_ok) else 1
+    return 0 if (a_ok and trust_witness and disj_rejected and regression_ok and inv_ok) else 1
 
 if __name__ == "__main__":
     raise SystemExit(main())
