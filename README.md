@@ -1039,3 +1039,63 @@ leaves the pinned live side intact instead of crashing the `%d` format. The
 None-guard was added 2026-09-30 (a resolve miss with no pinned `final_recid`
 previously raised `TypeError`); the offline path is unaffected and the
 committed result still reproduces byte-for-byte.
+
+## The referent-self-keyed escape (the closing act's referent_value is self-declared)
+
+The act-fidelity seam (138fec0) proved that emission relocates the self-keyed
+gap to the FIDELITY of the emitted artifact: the closing act is emission +
+faithful copy. But the seam never grounded *who declares the referent_value*.
+The closing act declares BOTH sides of the FIDELITY byte-match:
+
+  - referent_value = "the reasoning actually performed" (self-declared by the
+    writer, who is the subject: the one who performed the reasoning)
+  - reading = "the written log" (self-declared by the writer, the artifact)
+
+So the certifier of the referent_value is the writer, who is also the subject.
+The writer can make FIDELITY pass by setting referent_value == reading,
+regardless of whether the reading faithfully represents the reasoning
+performed. FIDELITY at the closing act is then a vacuous check: it certifies
+the declared referent matches the reading, which is trivially satisfiable.
+
+The discriminating test (referent_selfkeyed_test.py, 5/5 green):
+
+  - Honest declaration (referent_value=R, reading=R', R != R'): FIDELITY fires
+    (the distorted copy is caught).
+  - Relabel (referent_value=R', reading=R', R' == R'): FIDELITY passes (the
+    writer re-labeled the referent_value to match the log).
+
+The full instrument (all 62 axes) confirms the relabel case is blind: 0 fired,
+FIDELITY passes. No other axis catches the writer's self-declaration of the
+referent_value in the minimal spec.
+
+This is a NEW face of the self-keyed pattern: REFERENT-SELF-KEYED. The gap is
+that the referent_value is self-declared by the writer, who is also the
+subject. The stranger sees the reading and the declared referent_value, and
+the byte-match passes, but the stranger cannot verify that the referent_value
+is the actual state (the reasoning performed). The writer can always make
+FIDELITY pass by re-labeling the referent_value to match the reading.
+
+This is distinct from the three existing channels:
+
+  - LOSSINESS: the record is a lossy projection of the state. Here, the
+    referent_value is a lossy projection, but the FIDELITY check does not
+    check lossiness -- it checks whether the reading matches the referent_value.
+  - OPENNESS: the record is private. Here, both sides are public.
+  - TRUST: the writer chooses which other writer's record to accept. Here, the
+    writer IS the source of the referent_value (self-trust).
+
+The mechanism is NOT what-is-recorded (the writer is not choosing a lossy
+function state->record; the writer is declaring the referent_value, the thing
+being certified). So this is a genuinely new self-keyed referent whose
+mechanism is a different kind of act: the writer choosing what the referent IS.
+
+The forward move is the weight-1 REFERENT-SELF-KEYED instrument
+(stranger-rerunnable: "is the referent_value self-declared by the writer?"),
+of which the FIDELITY byte-match is a face. The self-keyed family is no longer
+closed: it has a fourth channel (referent self-declaration) that is
+independent of openness, lossiness, and source authority.
+
+(referent_selfkeyed_test.py; run `python3 referent_selfkeyed_test.py`,
+exit 0 = all pass). The test pins the honest case (FIDELITY fires), the
+relabel case (FIDELITY passes), and the vacuous-check structure (the writer
+can make FIDELITY pass by re-labeling the referent_value to match the reading).
