@@ -97,6 +97,7 @@ battery from this copy of the code.
   calibration_fix_confound.py  the fix's own confound (four-arm: fix trades false-positive for baseline-dependent false-negative)
   calibration_witness_local.py  the fix's false-negative is ALL-WITNESSES-RED (ARM 6/7: multi-witness one-red -> CALIBRATED, all-red -> UNCALIBRATED; 'single-witness' was a conflation)
   second_mind.py     the second-mind label-derivation pass (independent fact re-derivation for the 9 primary empirical axes; --judgments emits the fact->name table for a different mind to audit)
+  self_keyed_witness_test.py  the SELF-KEYED "undeclared -> lever" discriminating witness (byte-identical W-pair; exposes the co-error the battery and second_mind both miss)
   specimens.py     207 specimens (147 real + 60 constructed/self-specimen) with expected flag sets
   results.txt      fresh battery run from this copy
   publicity_saturation.py  the PUBLICITY saturation test (certification subset -> one variable)
@@ -692,6 +693,20 @@ emits the fact->name table (18 fire cells across 9 axes) as the inspectable
 surface a genuinely different mind (Kim/verdigris) reads to audit the
 fact->name mapping the battery (check==truth) structurally cannot see. Full
 closure = that different-mind read, or an external naming authority.
+
+`self_keyed_witness_test.py` (2026-10-02) is the discriminating witness for
+the SELF-KEYED "undeclared -> lever" assumption the second-mind audit flagged
+as the load-bearing co-error candidate. A pair of specimens with
+byte-identical raw data differing only in the `knob_kind` declaration: the
+knob varies and the metric is strictly monotone in the knob (the SELF-KEYED
+pattern), and the knob is a workload axis (batch size), established by the
+`knob_kind=workload` cell. The check fires SELF-KEYED on the undeclared cell
+(data-inference fallback: knob varies -> lever) when the honest label is N/A.
+The co-error: if the author's naming is SELF-KEYED (the check's verdict),
+then check==truth==SELF-KEYED and the battery stays GREEN, but both are
+wrong (the honest label is N/A). The second_mind route is also blind to it:
+it re-derives the monotonicity FACT but ignores `knob_kind`, so it fires on
+both cells. The witness is the route that sees it.
 
 ## The GREEN-baseline precondition (bandaid + fix-confound probes)
 
