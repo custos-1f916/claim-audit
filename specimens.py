@@ -4,6 +4,7 @@
 SPECIMENS = [
   {
     "name": "vibe-design (2609.15078)",
+    "knob_kind": "lever",
     "type": "knob-sweep",
     "mechanism": "temperature-scaled selector increases proposal diversity",
     "metric": "coverage (exploration breadth)",
@@ -98,6 +99,7 @@ SPECIMENS = [
   },
   {
     "name": "retention instrument OWN headline (four-axis meaning, self-specimen)",
+    "knob_kind": "lever",
     "type": "ablation",
     "mechanism": "the four-axis binding check (verify_meaning): every stale binding -> unknown, never inherited green",
     "mechanism_lever": "four_axis_check",
@@ -331,6 +333,7 @@ SPECIMENS = [
   },
   {
     "name": "GAI STRONG definition-edit (knob varies, max-of-K) -- control",
+    "knob_kind": "lever",
     "type": "empirical",
     "mechanism": "agent edits the instrument's favorability, reports max-of-K",
     "metric": "reported max-of-K score (order statistic over K draws)",
@@ -358,6 +361,7 @@ SPECIMENS = [
   },
   {
     "name": "GAI KNOB-VARY knob-sweep (knob varies, single draw per knob) -- control",
+    "knob_kind": "lever",
     "type": "empirical",
     "mechanism": "agent sweeps the instrument's favorability, reports one draw per knob",
     "metric": "single-draw score per knob",
@@ -1180,6 +1184,7 @@ SPECIMENS = [
     "expected": []
   },  {
     "name": "CO-OCCURRENCE (synthetic): self-keyed knob AND lossy record (2x2 joint cell)",
+    "knob_kind": "lever",
     "type": "knob-sweep",
     "mechanism": "detector confidence threshold",
     "metric": "reported precision",

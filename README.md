@@ -75,7 +75,7 @@ undeclared field makes a refinement N/A), `contested`.
 python3 claim_audit.py
 ```
 
-Runs the 207 specimens in `specimens.py` (147 real — papers from the
+Runs the 212 specimens in `specimens.py` (real — papers from the
 2026-09-15..22 audit run plus schema-boundary cells plus the live 1f916.ai
 seal/ack floor — plus 60 constructed/self-specimen discriminating cells: the
 original 11 battery witnesses for TEMPORAL-ONSET, REFERENCE-MIX,
@@ -97,8 +97,8 @@ battery from this copy of the code.
   calibration_fix_confound.py  the fix's own confound (four-arm: fix trades false-positive for baseline-dependent false-negative)
   calibration_witness_local.py  the fix's false-negative is ALL-WITNESSES-RED (ARM 6/7: multi-witness one-red -> CALIBRATED, all-red -> UNCALIBRATED; 'single-witness' was a conflation)
   second_mind.py     the second-mind label-derivation pass (independent fact re-derivation for the 9 primary empirical axes; --judgments emits the fact->name table for a different mind to audit)
-  self_keyed_witness_test.py  the SELF-KEYED "undeclared -> lever" discriminating witness (byte-identical W-pair; exposes the co-error the battery and second_mind both miss)
-  specimens.py     207 specimens (147 real + 60 constructed/self-specimen) with expected flag sets
+  self_keyed_witness_test.py  the SELF-KEYED "undeclared -> lever" regression witness (byte-identical W-triple; locks in the declaration-driven fallback that closes the co-error the battery and second_mind both miss)
+  specimens.py     212 specimens (real + constructed/self-specimen) with expected flag sets
   results.txt      fresh battery run from this copy
   publicity_saturation.py  the PUBLICITY saturation test (certification subset -> one variable)
   structural_priming.py    the 62nd-axis probe (STRUCTURAL-PRIMING vs WITNESS-ADDRESS; position x address, not a relabel)
@@ -694,19 +694,34 @@ surface a genuinely different mind (Kim/verdigris) reads to audit the
 fact->name mapping the battery (check==truth) structurally cannot see. Full
 closure = that different-mind read, or an external naming authority.
 
-`self_keyed_witness_test.py` (2026-10-02) is the discriminating witness for
-the SELF-KEYED "undeclared -> lever" assumption the second-mind audit flagged
-as the load-bearing co-error candidate. A pair of specimens with
-byte-identical raw data differing only in the `knob_kind` declaration: the
-knob varies and the metric is strictly monotone in the knob (the SELF-KEYED
-pattern), and the knob is a workload axis (batch size), established by the
-`knob_kind=workload` cell. The check fires SELF-KEYED on the undeclared cell
-(data-inference fallback: knob varies -> lever) when the honest label is N/A.
-The co-error: if the author's naming is SELF-KEYED (the check's verdict),
-then check==truth==SELF-KEYED and the battery stays GREEN, but both are
-wrong (the honest label is N/A). The second_mind route is also blind to it:
-it re-derives the monotonicity FACT but ignores `knob_kind`, so it fires on
-both cells. The witness is the route that sees it.
+`self_keyed_witness_test.py` (2026-10-02) is the regression witness for the
+SELF-KEYED "undeclared -> lever" assumption the second-mind audit flagged as
+the load-bearing co-error candidate. It isolates that assumption as the sole
+load-bearing variable: a TRIPLE of specimens with byte-identical raw data
+differing only in the `knob_kind` declaration. The knob varies and the metric
+is strictly monotone in the knob (the SELF-KEYED pattern); the knob is a
+workload axis (batch size), established by the `knob_kind=workload` cell.
+
+The original witness (pre-fix) proved the co-error was REAL: the check's
+data-inference fallback treated an undeclared `knob_kind` as the mechanism's
+own lever, so the workload cell that was simply not declared fired SELF-KEYED
+when the honest label is N/A. If the author's naming was SELF-KEYED (the
+check's verdict), then check==truth==SELF-KEYED and the battery stayed GREEN
+while both were wrong; the second_mind route was also blind (it re-derives the
+monotonicity FACT but ignores `knob_kind`, so it fired on both cells). The
+witness was the route that saw it.
+
+The fix (this commit) closes the co-error at the mechanism level: the
+data-inference fallback is now conservative — an UNDECLARED `knob_kind` is
+reported N/A (schema-boundary), not inferred as a lever. SELF-KEYED now
+requires a positive `knob_kind=lever` declaration. The 5 genuine-lever
+specimens in the battery (and the F1/SR4 calibration cells) carry that
+declaration, so the battery stays green via declaration, not inference. The
+witness is now a REGRESSION test: W-undeclared is N/A (the fix), W-workload is
+N/A, W-lever fires SELF-KEYED (the positive case), and a wrong author naming
+(SELF-KEYED on the workload cell) is now CATCHABLE (check==N/A, truth==
+SELF-KEYED -> the battery would go RED). The co-error is closed; the second
+route still confirms the fact, and the declaration determines the name.
 
 ## The GREEN-baseline precondition (bandaid + fix-confound probes)
 

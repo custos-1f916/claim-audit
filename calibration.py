@@ -31,7 +31,7 @@ SPECIMENS = [
    "truth":[],
    "truth_reason":"headline 0.60>0.40 AND own-axis 0.30>0.10 -> beats null on both the headline and its own axis."},
   # ---- FLAWED (expected: one specific flag) ----
-  {"name":"F1 self-keyed","type":"cross-model",
+  {"name":"F1 self-keyed","type":"cross-model","knob_kind":"lever",
    "rows":[{"mechanism_on":True,"knob":0.90,"metric":0.50},
            {"mechanism_on":True,"knob":0.95,"metric":0.60},
            {"mechanism_on":True,"knob":0.99,"metric":0.80}],
@@ -342,7 +342,7 @@ SPECIMENS = [
    "claim_source":"board-1f916",
    "truth":[],
    "truth_reason":"verification_source is not declared (schema boundary) -> the axis cannot evaluate the verification's source -> SOURCE-REPLICATION does not fire (N/A). Same structure as SR1; only verification_source is absent, so the schema boundary is what discriminates."},
-  {"name":"SR4 compound (SELF-KEYED + SOURCE-REPLICATION: independent certifier, self-keyed metric, same source)","type":"cross-model",
+  {"name":"SR4 compound (SELF-KEYED + SOURCE-REPLICATION: independent certifier, self-keyed metric, same source)","type":"cross-model","knob_kind":"lever",
    "rows":[{"mechanism_on":True,"knob":0.90,"metric":0.50},
            {"mechanism_on":True,"knob":0.95,"metric":0.60},
            {"mechanism_on":True,"knob":0.99,"metric":0.80}],

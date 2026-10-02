@@ -142,7 +142,7 @@ mechanism's own LEVER (self-keying applies), a fixed INSTRUMENT's knob
 (max-of-K selection bias applies), or an external WORKLOAD axis (a legitimate
 max-over-a-workload-sweep is neither). When knob_kind is declared it overrides
 the inference: NOT-SELF-KEYED is N/A for workload/instrument, and
-SELECTION-BIAS is N/A for lever/workload. Undeclared -> current inference.
+SELECTION-BIAS is N/A for lever/workload. Undeclared -> N/A (schema-boundary: the check does not infer the knob's role from the data; a varying knob could be the mechanism's own lever OR an external workload axis, and the data alone cannot tell them apart, so an undeclared knob is reported N/A rather than misfired. Declare knob_kind=lever to enable SELF-KEYED, knob_kind=instrument/workload to disable it.)
 
 Usage:
   python3 claim_audit.py                 # run all built-in specimens
@@ -279,6 +279,8 @@ def check_not_self_keyed(spec):
     kind = _knob_kind(spec)
     if kind in ("workload", "instrument"):
         return True, "", "N/A (knob_kind=%s: the knob is not the mechanism's own lever, so self-keying does not apply)" % kind
+    if kind is None:
+        return True, "", "N/A (knob_kind undeclared: the check cannot determine whether the knob is the mechanism's own lever, so it does not infer; declare knob_kind=lever to enable SELF-KEYED)"
     r = _spearman(ks, ms)
     if r is None:
         return True, "", "N/A (zero variance)"
