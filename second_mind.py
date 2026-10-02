@@ -207,6 +207,18 @@ AXES = [
     ("AGGREGATION-REVERSAL", second_agg_reversal),
 ]
 
+AXIS_CHECK = {
+    "SELF-KEYED": claim_audit.check_not_self_keyed,
+    "NULL-REACHES-HEADLINE": claim_audit.check_beats_null,
+    "CONFOUNDED": claim_audit.check_isolated,
+    "WRONG-AXIS": claim_audit.check_co_moves,
+    "WITHIN-NOISE": claim_audit.check_noise_floor,
+    "CONSEQUENCE-WITNESSED": claim_audit.check_referent_witnessed,
+    "LOSSY-PROJECTION": claim_audit.check_lossy_projection,
+    "SELECTION-BIAS": claim_audit.check_selection_bias,
+    "AGGREGATION-REVERSAL": claim_audit.check_aggregation_reversal,
+}
+
 
 def main():
     audit_flags = {s["name"]: set(claim_audit.audit(s)["flags"]) for s in SPECS}
@@ -260,11 +272,15 @@ def main():
 
 
 def emit_judgments():
-    """Emit the inspectable fact->name table: for each axis, the fact that fires
-    it, the fire-cell specimens (where the independent second derivation fires),
-    and the check/truth votes on those cells. This is the artifact a genuinely
-    different mind (Kim/verdigris) reads to audit the fact->name mapping the
-    battery (check==truth) structurally cannot see.
+    """Emit the inspectable fact->name table: for each axis, the axis's
+    definition (pulled from the check function's docstring, the authoritative
+    source), the fact that fires it, the fire-cell specimens (where the
+    independent second derivation fires), and the check/truth votes on those
+    cells. This is the artifact a genuinely different mind (Kim/verdigris)
+    reads to audit the fact->name mapping the battery (check==truth)
+    structurally cannot see. The definitions are printed inline so the surface
+    is self-contained: a second mind no longer needs an external axis_defs file
+    (the truncated one that left SELECTION-BIAS 'asserted, not inspectable').
 
     Because the battery baseline is GREEN, check==truth on every cell; the cells
     where the second derivation fires but the check does not are the fact-
@@ -273,13 +289,18 @@ def emit_judgments():
     this table is the surface a different mind audits."""
     audit_flags = {s["name"]: set(claim_audit.audit(s)["flags"]) for s in SPECS}
     print("=== fact->name judgments (the inspectable surface) ===")
-    print("For each axis: the fact that fires it, the fire cells (where the")
-    print("independent second derivation fires), and the check/truth votes.")
-    print("A different mind reads this to audit the fact->name mapping the")
-    print("battery (check==truth) cannot see.")
+    print("For each axis: its definition (from the check function's docstring,")
+    print("the authoritative source), the fact that fires it, the fire cells")
+    print("(where the independent second derivation fires), and the check/truth")
+    print("votes. The definitions are printed inline so the surface is")
+    print("self-contained: a second mind no longer needs an external axis_defs")
+    print("file to audit the fact->name mapping the battery (check==truth)")
+    print("cannot see.")
     print()
     total_fire = 0
     for axis, fn in AXES:
+        check_fn = AXIS_CHECK.get(axis)
+        defn = (check_fn.__doc__ or "").strip() if check_fn else ""
         fire_cells = []
         for s in SPECS:
             sf, fact = fn(s)
@@ -289,8 +310,15 @@ def emit_judgments():
         total_fire += len(fire_cells)
         if not fire_cells:
             print("AXIS %-26s: no fire cell (not exercised by the battery)" % axis)
+            if defn:
+                for line in defn.splitlines():
+                    print("    defn: %s" % line)
+            print()
             continue
         print("AXIS %-26s: %d fire cell(s)" % (axis, len(fire_cells)))
+        if defn:
+            for line in defn.splitlines():
+                print("    defn: %s" % line)
         for name, cf, th, fact in fire_cells:
             print("    %-30s check=%-5s truth=%-5s second=True" % (name, cf, th))
             print("        fact: %s" % fact)
@@ -301,7 +329,6 @@ def emit_judgments():
     print("checks. A different mind reading this table is the closure the")
     print("battery cannot provide (the taxonomy co-error).")
     return 0
-
 
 if __name__ == "__main__":
     import sys

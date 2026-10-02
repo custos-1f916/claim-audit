@@ -249,6 +249,12 @@ def _by_construction(spec):
 
 
 def check_beats_null(spec):
+    """NULL-REACHES-HEADLINE (2nd primary axis): the mechanism's headline metric must
+beat the null. Fires when the max null metric >= the max mechanism metric -- the
+metric cannot tell the mechanism from the null, so the headline is not
+mechanism-specific. N/A when there are no mechanism rows or no null rows, or
+when the max mechanism metric > the max null metric (the mechanism genuinely
+beats the null on the metric). fail -> NULL-REACHES-HEADLINE."""
     on  = [r["metric"] for r in _rows(spec, lambda r: r.get("mechanism_on"))]
     nul = [r["metric"] for r in _rows(spec, lambda r: (not r.get("mechanism_on")) or r.get("is_null"))]
     if not on or not nul:
@@ -272,6 +278,17 @@ def _knob_kind(spec):
     return k if k in ("lever", "instrument", "workload") else None
 
 def check_not_self_keyed(spec):
+    """SELF-KEYED (1st primary axis): the reported metric must not be (anti-)monotone
+in the mechanism's own control knob -- the instrument reads the lever it is
+supposed to measure. Fires when the knob is established to be the mechanism's
+own lever (knob_kind=lever) AND the metric-knob spearman |r| >= 0.9. N/A when:
+fewer than two knob readings, knob_kind is 'workload' or 'instrument' (the knob
+is not the mechanism's own lever), knob_kind is undeclared (the check does not
+infer the knob's role from the data -- a varying knob could be the mechanism's
+own lever or an external workload axis; declare knob_kind=lever to enable
+SELF-KEYED), or zero variance in the knob. Distinct from SELECTION-BIAS (knob
+constant across draws of a fixed instrument) and from NULL-REACHES-HEADLINE
+(needs a null row). fail -> SELF-KEYED."""
     ks = [r["knob"] for r in spec["rows"] if r.get("knob") is not None]
     ms = [r["metric"] for r in spec["rows"] if r.get("knob") is not None]
     if len(ks) < 2:
@@ -331,6 +348,13 @@ def check_selection_bias(spec):
     return False, "SELECTION-BIAS", ("reported metric %g is the max of %d independent draws of a fixed instrument (knob %s); the max-of-K selection bias inflates the score by ~fsd * E[max of K standard normals] (~2.5*fsd at K=100), not a mechanism effect" % (h_row["metric"], len(draws), knobs[0]))
 
 def check_isolated(spec):
+    """CONFOUNDED (3rd primary axis): an ablation's null must hold the substrate
+constant and drop only the mechanism's own lever. Fires when NO null row holds
+the substrate -- every null drops substrate components beyond the mechanism's
+own lever, so the gap between mechanism and null is the substrate, not the
+mechanism. N/A when the spec is not an ablation claim, when there are no
+mechanism or null rows, or when at least one null drops only the lever (the
+substrate is held; the ablation is isolated). fail -> CONFOUNDED."""
     if spec.get("type") != "ablation":
         return True, "", "N/A (not an ablation claim)"
     lever = spec.get("mechanism_lever")
@@ -349,6 +373,16 @@ def check_isolated(spec):
     return False, "CONFOUNDED", "no null holds the substrate: best null drops %s beyond the lever; the gap is the substrate, not the mechanism" % extra
 
 def check_co_moves(spec):
+    """WRONG-AXIS (4th primary axis): the mechanism's headline must be driven by the
+mechanism's own axis, not decoupled from it. Two failure modes: (a) when both
+mechanism and null rows carry a mechanism-axis reading, the mechanism is at or
+below the null on its own axis (max on-axis <= max null-axis + tol) -- the
+headline is high but the mechanism-relevant axis is at null; (b) when only one
+side carries the axis reading, the metric and the mechanism's own axis do not
+co-move (pearson r <= 0.5) -- the headline is decoupled from the mechanism's
+own axis. N/A when there are fewer than two mechanism-axis readings, when the
+mechanism beats the null on its own axis, when the metric and axis co-move
+(r > 0.5), or on zero variance. fail -> WRONG-AXIS."""
     rows = [r for r in spec["rows"] if r.get("mechanism_axis") is not None]
     if len(rows) < 2:
         return True, "", "N/A (no mechanism-axis readings)"
