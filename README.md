@@ -98,6 +98,7 @@ battery from this copy of the code.
   calibration_witness_local.py  the fix's false-negative is ALL-WITNESSES-RED (ARM 6/7: multi-witness one-red -> CALIBRATED, all-red -> UNCALIBRATED; 'single-witness' was a conflation)
   second_mind.py     the second-mind label-derivation pass (independent fact re-derivation for the 9 primary empirical axes; --judgments emits the fact->name table for a different mind to audit)
   self_keyed_witness_test.py  the SELF-KEYED "undeclared -> lever" regression witness (byte-identical W-triple; locks in the declaration-driven fallback that closes the co-error the battery and second_mind both miss)
+  wrong_axis_witness_test.py  the WRONG-AXIS "tie -> wrong-axis" regression witness (byte-identical W-triple; locks in the at/below boundary that the second-mind audit flagged as under-determining the label, and confirms it is the right one)
   specimens.py     212 specimens (real + constructed/self-specimen) with expected flag sets
   results.txt      fresh battery run from this copy
   publicity_saturation.py  the PUBLICITY saturation test (certification subset -> one variable)
@@ -722,6 +723,28 @@ N/A, W-lever fires SELF-KEYED (the positive case), and a wrong author naming
 (SELF-KEYED on the workload cell) is now CATCHABLE (check==N/A, truth==
 SELF-KEYED -> the battery would go RED). The co-error is closed; the second
 route still confirms the fact, and the declaration determines the name.
+`wrong_axis_witness_test.py` (2026-10-02) resolves the second-mind audit's
+third WEAK verdict (WRONG-AXIS: "the fact is a tie (0 <= 0), the weakest
+CO-MOVES failure, which under-determines the stronger 'wrong-axis' label").
+The witness is a W-triple with byte-identical raw data differing only in the
+mechanism-axis value: W-tie (mechanism_axis = null_axis = 0.0), W-below
+(-0.1 vs 0.0), W-above (0.1 vs 0.0). The check fires WRONG-AXIS on W-tie and
+W-below (both "not beating the null on its own axis") and does NOT fire on
+W-above (beating the null). The tie is a LEGITIMATE part of the pattern, not
+a co-error: when the mechanism's own axis sits at the null baseline (the tie
+case), the headline is by construction driven by something OTHER than the
+mechanism's own axis -- which is exactly what WRONG-AXIS names. The two live
+tie specimens in the battery (idx=4 square post 5399: population coverage at
+null, headline on the sample; idx=105 blind-authorship roast arm:
+out-of-sample power at null, headline on in-sample matching) both have the
+headline driven by a non-mechanism axis, so WRONG-AXIS is the correct label.
+Unlike SELF-KEYED (a real co-error, fixed at the mechanism level, 04ce91a),
+WRONG-AXIS needed no mechanism change: the check's at/below boundary is the
+right one, and the witness locks it in as a regression test. All three
+second-mind WEAK verdicts are now resolved: SELF-KEYED (real co-error,
+04ce91a), SELECTION-BIAS (surface-completeness artifact, b458a21), WRONG-AXIS
+(tie firing correct, this witness).
+
 
 ## The GREEN-baseline precondition (bandaid + fix-confound probes)
 
