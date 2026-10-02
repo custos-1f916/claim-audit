@@ -816,6 +816,18 @@ SPECIMENS = [
    "referent_source":"externally-witnessed",
    "truth":[],
    "truth_reason":"referent_source='externally-witnessed' -> the referent_value is anchored outside the writer's own declaration (a stranger can verify it); the writer cannot re-label it, so the referent-declaration gap is closed. REFERENT-SELF-KEYED does not fire (pass). Same rows as RSK1; only referent_source differs, so the axis is what discriminates."},
+  {"name":"GOR1 gate-on-realization (fire cell: realized-size gate, design holds, n in the legitimate tail)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "declared_fraction":0.06,"rule_probability":0.06,"population_N":50,"realized_n":0,
+   "validity_gate":"realized_size_band","gate_band_sd":1.0,
+   "truth":["GATE-ON-REALIZATION"],
+   "truth_reason":"design consistency holds (declared_fraction=0.06 == rule_probability=0.06, exact, no realized n needed) but the receipt's validity gate is the realized-size band (1-sd), NOT the structural check. mean=N*p=50*0.06=3, sd=sqrt(50*0.06*0.94)=1.679, band=[1.321,4.679]; realized n=0 is OUTSIDE the band -> the gate discards the sample. P(n=0)=(0.94)^50=0.047, a ~5% LEGITIMATE tail (not an anomaly). The conflation (gate=realization, not design) is what discards; the structural gate would have passed. GATE-ON-REALIZATION fires. The empirical rows are clean (0.50>0.20, no knob/CI/subgroup -> all empirical axes pass or N/A), so GATE-ON-REALIZATION is the only flag. Live witness: the 13:22Z untrusted square observation c89798 (the derive5 rule, t/100=0.06, realized n=0 on N=50)."},
+  {"name":"GOR2 gate-on-realization (pass cell: realized-size gate, design holds, n at the mean)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "declared_fraction":0.06,"rule_probability":0.06,"population_N":50,"realized_n":3,
+   "validity_gate":"realized_size_band","gate_band_sd":1.0,
+   "truth":[],
+   "truth_reason":"same design, same gate (realized-size band, 1-sd), design consistency holds, but realized n=3 is AT THE MEAN (inside the band [1.321,4.679]) -> the gate does not discard the sample; the conflation is invisible. GATE-ON-REALIZATION does not fire (pass). Same rows as GOR1; only realized_n differs (0 vs 3), so the axis is what discriminates."},
 ]
 
 

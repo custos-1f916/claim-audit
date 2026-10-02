@@ -1740,6 +1740,60 @@ def check_referent_self_keyed(spec):
     return True, "", "N/A (referent_source=%s: the referent is neither self-declared nor externally-witnessed; the axis does not apply)" % rs
 
 
+def check_gate_on_realization(spec):
+    """GATE-ON-REALIZATION (64th primary axis, 2026-10-02): the sampling-
+    receipt gate channel. A sampling receipt's VALIDITY GATE must be the
+    structural design-consistency check (declared_fraction == rule_inclusion
+    probability, e.g. t/100), which is checkable EXACTLY with no realized n.
+    Realized-size plausibility (n vs Binomial(N, p)) is a STATISTICAL
+    diagnostic only: it is never the source of p and is not normally a
+    validity gate. The failure mode this axis catches: the receipt uses the
+    realized-size band AS the validity gate, so acceptance is conditioned on
+    the random realization and a legitimate tail sample is silently discarded.
+    Fires when (1) validity_gate == "realized_size_band" (the gate is the
+    realized-size plausibility band, not the structural check), (2) design
+    consistency HOLDS (declared_fraction == rule_probability, exact -- so the
+    structural gate would have passed; the realization condition is what is
+    doing the discarding), and (3) the realized n falls outside the declared
+    band (the gate actually bit on this draw). Distinct from WITHIN-NOISE
+    (the claim's effect-size CI, not a receipt gate), CRITERION-THRESHOLD
+    (a threshold on a criterion, not realization-conditional),
+    INCOMPARABLE-STATISTIC / VACUOUS-RATIO (vacuous ratios), SELF-KEYED
+    (knob-monotonicity), and UNWITNESSED-RECEIPT (witness-absence) -- none
+    conditions a validity gate on the random draw. N/A when the sampling
+    design is not declared (declared_fraction / rule_probability absent;
+    schema-boundary), when validity_gate is not declared, when the gate IS the
+    structural design-consistency check (the pass cell: the correct gate), or
+    when design consistency does NOT hold (the structural gate legitimately
+    fails, so the conflation is not the cause of the discard). fail ->
+    GATE-ON-REALIZATION."""
+    df = spec.get("declared_fraction")
+    rp = spec.get("rule_probability")
+    if df is None or rp is None:
+        return True, "", "N/A (no sampling design declared: declared_fraction/rule_probability absent; the axis does not apply)"
+    gate = spec.get("validity_gate")
+    if gate is None:
+        return True, "", "N/A (validity_gate not declared; the axis does not apply)"
+    if gate == "design_consistency":
+        return True, "", "PASS (the validity gate IS the structural design-consistency check: exact match of declared_fraction to rule_probability, checkable with no realized n; the correct gate, the pass cell)"
+    if gate != "realized_size_band":
+        return True, "", "N/A (validity_gate=%s: not the realized-size-band conflation; the axis does not apply)" % gate
+    if df != rp:
+        return True, "", "N/A (design consistency does NOT hold: declared_fraction=%s != rule_probability=%s; the structural gate legitimately fails, so the realization condition is not the cause of the discard; the axis does not apply)" % (df, rp)
+    N = spec.get("population_N")
+    n = spec.get("realized_n")
+    if N is None or n is None:
+        return True, "", "N/A (population_N/realized_n not declared; cannot evaluate the band; the axis does not apply)"
+    k = spec.get("gate_band_sd", 1.0)
+    mean = N * rp
+    sd = math.sqrt(N * rp * (1.0 - rp))
+    lo, hi = mean - k * sd, mean + k * sd
+    if lo <= n <= hi:
+        return True, "", "PASS (design consistency holds and the realized n=%d is inside the %g-sd band [%g, %g]: the gate did not discard the sample; the conflation is invisible and the axis does not fire)" % (n, k, lo, hi)
+    p_n = math.comb(N, n) * (rp ** n) * ((1.0 - rp) ** (N - n)) if 0 <= n <= N else 0.0
+    detail = ("the receipt's validity gate is the realized-size band (validity_gate=realized_size_band, %g-sd), NOT the structural design-consistency check: design consistency HOLDS (declared_fraction=%s == rule_probability=%s, exact, no realized n needed), yet the receipt is invalidated because the realized n=%d falls outside the band [%g, %g] (mean=%g, sd=%g). This conditions acceptance on the random realization and silently discards a legitimate tail sample -- P(n=%d | N=%d, p=%g) = %.4g, a legitimate draw, not an anomaly. The gate is the realization, not the design; the structural check (the correct gate) would have passed. The fix: carry the structural gate and the plausibility diagnostic as separate receipts." % (k, df, rp, n, lo, hi, mean, sd, n, N, rp, p_n))
+    return False, "GATE-ON-REALIZATION", detail
+
 def check_witness_population_selection(spec):
     """WITNESS-POPULATION-SELECTION (41st axis, 2026-09-27): the witness
     population of an absence claim is structurally selected against
@@ -2489,6 +2543,7 @@ CHECKS = [
     ("WITNESS-RESIDENCE", check_witness_residence),
     ("STRUCTURAL-PRIMING", check_structural_priming),
     ("REFERENT-SELF-KEYED", check_referent_self_keyed),
+    ("GATE-ON-REALIZATION", check_gate_on_realization),
 ]
 
 def _no_empirical(spec):
@@ -2502,7 +2557,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING", "THESIS-OUTRUNS-EVIDENCE", "UNIT-COUNT", "OPT-IN-CENSUS", "CAUSAL-WIRING", "DECLARED-CHANNEL", "CARRIER-REACH", "WITNESS-ADDRESS", "SELECTION-PROVENANCE", "HELD-OUT-PROVENANCE", "REFERENT-SELF-KEYED"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING", "THESIS-OUTRUNS-EVIDENCE", "UNIT-COUNT", "OPT-IN-CENSUS", "CAUSAL-WIRING", "DECLARED-CHANNEL", "CARRIER-REACH", "WITNESS-ADDRESS", "SELECTION-PROVENANCE", "HELD-OUT-PROVENANCE", "REFERENT-SELF-KEYED", "GATE-ON-REALIZATION"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:

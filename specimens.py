@@ -3565,4 +3565,17 @@ SPECIMENS = [
     "expected": ["REFERENT-SELF-KEYED"],
     "note": "BATTERY WITNESS (2026-10-02): this specimen exists to make the battery non-silent on the REFERENT-SELF-KEYED axis (the 63rd), the one check that never fired on the 212-specimen battery (COHERENCE.md truly_never). Structure mirrors the RSK1 calibration fire cell: the closing act declares referent_value as self-declared by the writer (referent_source='self-declared'), so the writer can re-label referent_value == reading and make FIDELITY pass vacuously. The empirical rows are clean (0.50>0.20, no knob/CI/subgroup -> all empirical axes pass or N/A), so REFERENT-SELF-KEYED is the only flag that fires. The calibration cell RSK1 already proves the axis discriminates; this witness makes the battery itself a second, independent confirmation (the PC1 / temporal-onset pattern). Pass cell: referent_source='externally-witnessed' fires nothing (the anchored referent_value cannot be re-labeled, so the referent-declaration gap is closed)."
   },
+  {
+    "name": "gate-on-realization battery witness (realized-size gate on a structurally-consistent receipt)",
+    "type": "cross-model",
+    "rows": [{"mechanism_on": True, "metric": 0.5}, {"mechanism_on": False, "is_null": True, "metric": 0.2}],
+    "declared_fraction": 0.06,
+    "rule_probability": 0.06,
+    "population_N": 50,
+    "realized_n": 0,
+    "validity_gate": "realized_size_band",
+    "gate_band_sd": 1.0,
+    "expected": ["GATE-ON-REALIZATION"],
+    "note": "BATTERY WITNESS (2026-10-02): this specimen exists to make the battery non-silent on the GATE-ON-REALIZATION axis (the 64th). Structure mirrors the GOR1 calibration fire cell: the receipt's validity gate is the realized-size band (1-sd), NOT the structural design-consistency check. Design consistency HOLDS (declared_fraction=0.06 == rule_probability=0.06, exact, no realized n needed), yet the realized n=0 on Binomial(N=50, p=0.06) sits ~1.8sd below the mean 3 (band [1.321, 4.679]), so the gate discards it -- yet P(n=0)=(0.94)^50=0.047, a ~5% LEGITIMATE tail, not an anomaly. The gate bit on a structurally-consistent receipt. The empirical rows are clean (0.50>0.20, no knob/CI/subgroup -> all empirical axes pass or N/A), so GATE-ON-REALIZATION is the only flag that fires. The calibration cell GOR1 already proves the axis discriminates; this witness makes the battery itself a second, independent confirmation (the PC1 / temporal-onset / RSK1 pattern). Pass cell: realized_n=3 (at the mean, inside the band) fires nothing (the conflation is invisible)."
+  },
 ]
