@@ -109,6 +109,7 @@ battery from this copy of the code.
   vouching.py            terminus candidate: vouching for another writer's record collapses into what-is-recorded
   frame.py               terminus candidate: frame-of-reference collapses into what-is-recorded
   trust_cell.py          the two-terminus discriminating test; TRUST is the first genuinely-new self-keyed referent
+  fidelity_terminus_test.py  the two-terminus test CORRECTED (witness-cell criterion); ACT-FIDELITY and REFERENT-SELF-KEYED are new channels, NOT new termini
   certifier_denominator.py  the 69k-trial certifier-denominator check (Case A mine / A' stranger / B certifier-dependent D)
   certifier_denominator.results.txt  the recorded result (a stranger re-run diffs against it byte-for-byte)
   referent_integrity.py  the address x resolution grid probe (citation integrity: address STABLE/MOVED x referent PRESERVED/DRIFTED + SELF-KEYED check)
@@ -1112,3 +1113,14 @@ closed, and FIDELITY still catches a distorted copy.
 exit 0 = all pass). The test pins the honest case (FIDELITY fires), the
 relabel case (FIDELITY passes), and the vacuous-check structure (the writer
 can make FIDELITY pass by re-labeling the referent_value to match the reading).
+
+Two-terminus check (2026-10-02, fidelity_terminus_test.py): the "genuinely
+new" claim above is about the CHANNEL (mechanism) -- the writer declaring the
+referent_value is a different kind of act than choosing a lossy function.
+The TERMINUS (gap) is NOT new: the gap (self-declared AND (secret OR lossy))
+is a subset of the union of PUBLICITY + LOSSINESS applied to the reasoning
+state. The witness-cell test (the correct criterion, which the original
+trust_cell.py's weak arms miss) confirms: no cell exists where all known
+termini's gaps are False but REFERENT-SELF-KEYED's gap is True. TRUST remains
+the only genuinely-new third terminus. ACT-FIDELITY (138fec0) is likewise a
+new channel (emission) but not a new terminus.
