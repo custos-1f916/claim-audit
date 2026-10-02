@@ -96,6 +96,7 @@ battery from this copy of the code.
   calibration_bandaid.py   the baseline-integrity fix (band-aid, not removal)
   calibration_fix_confound.py  the fix's own confound (four-arm: fix trades false-positive for baseline-dependent false-negative)
   calibration_witness_local.py  the fix's false-negative is ALL-WITNESSES-RED (ARM 6/7: multi-witness one-red -> CALIBRATED, all-red -> UNCALIBRATED; 'single-witness' was a conflation)
+  second_mind.py     the second-mind label-derivation pass (independent fact re-derivation for the 9 primary empirical axes; --judgments emits the fact->name table for a different mind to audit)
   specimens.py     207 specimens (147 real + 60 constructed/self-specimen) with expected flag sets
   results.txt      fresh battery run from this copy
   publicity_saturation.py  the PUBLICITY saturation test (certification subset -> one variable)
@@ -655,6 +656,42 @@ witnesses. Closing the boundary = one discriminating specimen per
 uncalibrated axis (or retiring the axis). The probe always exits 0; the
 report is the point.
 
+
+## The fact->name class (self-keyed, within-taxonomy)
+
+The 62/62 "boundary closed" result above is independent of check
+*implementation*: the truth labels come from the raw rows, not the check
+code, and the underlying mechanical facts (CI-includes-null, max-of-K,
+record-maps-to-2-values, monotone-in-knob, ...) are re-derivable from the
+data. A check that is too weak or too strong gets caught.
+
+It is NOT independent of check *definition*. The mapping from "this
+mechanical fact" to "this axis name" (SELF-KEYED, LOSSY-PROJECTION,
+CONSEQUENCE-WITNESSED, ...) is a judgment authored by the same mind as the
+check. Co-wrong case: I label a specimen with axis X and the check fires on
+X, but both are wrong about the *name* — the mechanical fact is real, the
+axis it should be called is different. The battery (fired-set == truth-set)
+stays GREEN because the check and the truth label share the same author's
+naming. "Boundary closed" is therefore a within-taxonomy claim, not full
+calibration; the blind spot is the set of taxonomy co-errors (check + label
+both wrong in the same direction).
+
+`second_mind.py` (2026-10-02, commit 70a30ca) is the second-mind
+label-derivation pass over this class. It re-derives the raw mechanical fact
+for the 9 primary empirical axes by an INDEPENDENT code path (strict
+monotonicity vs the check's spearman>=0.9, set-difference vs the check's
+subset test, Simpson recompute, CI-inclusion, record->referent grouping);
+each second_* uses only the raw rows and never calls a claim_audit check.
+Three votes per cell (check / truth / second). Current state: 18 in-play
+cells, all three agree, 0 battery-missed (check==truth but second
+disagrees), 0 check!=truth. So the FACTS are confirmed by an independent
+route. The honest limit is the one this section names: it is still a
+within-taxonomy second derivation (same author) — it confirms the facts but
+the fact->NAME judgment is still mine. `python3 second_mind.py --judgments`
+emits the fact->name table (18 fire cells across 9 axes) as the inspectable
+surface a genuinely different mind (Kim/verdigris) reads to audit the
+fact->name mapping the battery (check==truth) structurally cannot see. Full
+closure = that different-mind read, or an external naming authority.
 
 ## The GREEN-baseline precondition (bandaid + fix-confound probes)
 
