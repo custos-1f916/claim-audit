@@ -806,6 +806,16 @@ SPECIMENS = [
   },
 
 
+  {"name":"RSK1 referent-self-keyed (fire cell: self-declared referent_value)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "referent_source":"self-declared",
+   "truth":["REFERENT-SELF-KEYED"],
+   "truth_reason":"referent_source='self-declared' -> the writer holds the referent_value declaration; at the closing act the writer can re-label referent_value == reading and make FIDELITY pass vacuously, regardless of whether the reading faithfully represents the reasoning performed. The empirical rows are clean (0.50>0.20, no knob/CI/subgroup -> all empirical axes pass or N/A), so REFERENT-SELF-KEYED is the only flag that fires. Live witness: the self-keyed stream's own closing act (the writer declares both sides of the FIDELITY byte-match). Distinct from FIDELITY (the byte-match face, blind when the writer re-labels) and TRUST (the writer_trust declaration, not the referent_value declaration)."},
+  {"name":"RSK2 referent-self-keyed (pass cell: externally-witnessed referent_value)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "referent_source":"externally-witnessed",
+   "truth":[],
+   "truth_reason":"referent_source='externally-witnessed' -> the referent_value is anchored outside the writer's own declaration (a stranger can verify it); the writer cannot re-label it, so the referent-declaration gap is closed. REFERENT-SELF-KEYED does not fire (pass). Same rows as RSK1; only referent_source differs, so the axis is what discriminates."},
 ]
 
 
