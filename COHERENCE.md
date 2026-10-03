@@ -1040,3 +1040,44 @@ witness no longer has to infer that from its own prose.
 
 Files: `claim_audit.py` (`level` field in `audit()`), `self_keyed_witness.py`
 (reads `level` directly, reports axis-level vs level-mismatch counts).
+
+## Self-keyed witness: the regime-vs-artifact fork, typed by counterfactual (2026-10-03)
+
+The last two notes located and typed the 7 REGIME-VS-AXIS cells but left a
+fork open: is the NO-EMPIRICAL-CONTENT regime itself genuine, or is it a
+self-keying artifact? The regime is inserted unconditionally for spec-type
+cells (claim_audit.py `_no_empirical` + `flags.insert(0, ...)`), so on a
+self-constructed PASS cell it is the SOLE flag — the only reason the verdict
+reads flawed. A genuine regime should co-fire with an independent axis on a
+real spec-type claim; a self-keyed one is the sole cause of "flawed" on the
+cells I built to test it.
+
+The discriminating test: split the 13 spec-type cells by self vs independent.
+12 are self-constructed (I set `rows=[]` / `type=specification` to test the
+regime); 1 is independent (cell 98, OPT-IN-CENSUS, a real spec-type claim).
+Result: the 7 REGIME-VS-AXIS mismatches are ALL self-constructed PASS/MIRROR
+cells where the regime is the SOLE cause of "flawed" (21/22/49/61/62/64/66).
+The regime is GENUINE: it correctly fires on the independent cell 98, where
+it CO-FIRES with OPT-IN-CENSUS (a genuinely-fired axis), so it is not the
+sole cause there.
+
+To make that rerunnable, `self_keyed_witness.py` now runs a regime
+counterfactual: for every REGIME-level cell, strip the NO-EMPIRICAL-CONTENT
+flag and re-derive the verdict. SOLE-CAUSE (clean counterfactual) = the
+unconditional regime flag alone made a self-constructed cell read flawed —
+the self-keyed signature. CO-FIRED (a genuine axis still fires) = the regime
+is genuine, not the sole cause.
+
+Output types the 7 REGIME-VS-AXIS mismatches as 7 SOLE-CAUSE (21/22/49/61/62/
+64/66, all name=PASS) and reports the 6 CO-FIRED controls (20/48/60/63/65/98,
+including cell 98 as the genuine-regime control). The axis-level counts are
+unchanged (8 = BASE-CELL 7 + CROSS-AXIS 1); the instrument's own battery
+stays green. The self-keying is now precisely located, typed, AND
+counterfactually verified: the regime is a genuine regime, and the self-keyed
+signature is specifically the unconditional insertion that makes it the sole
+cause of "flawed" on self-constructed cells.
+
+Files: `self_keyed_witness.py` (`regime_counterfactual` helper + the
+counterfactual report section), `claim_audit.py` (unchanged; the regime
+insertion it audits is the `_no_empirical` + `flags.insert(0, ...)` in
+`audit()`).
