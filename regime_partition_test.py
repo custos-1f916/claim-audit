@@ -77,6 +77,67 @@ check("behavioral: exactly the EMPIRICAL_AXES axes show the blanket N/A",
 check("behavioral: no NO_EMPIRICAL_AXES axis is routed to the blanket N/A",
       routed_blanket & ca.NO_EMPIRICAL_AXES, set())
 
+
+# (3) OUTCOME witness: assignment-correctness teeth in Direction 1.
+#
+# The static partition (1a-1d) and the behavioral blanket-marker (2) are
+# self-keyed for ASSIGNMENT CORRECTNESS: they witness that audit() routes via
+# the named constant and that the two constants partition the registry, but
+# neither can catch an axis sitting in the WRONG set. The discriminating
+# mutation proved it: moving SOURCE-MISATTRIBUTION from NO_EMPIRICAL_AXES to
+# EMPIRICAL_AXES leaves all four static checks AND the blanket-marker passing
+# (routed_blanket = CHECKS - NO_EMPIRICAL_AXES = EMPIRICAL_AXES by the static
+# partition, so the marker restates the partition rather than witnessing it).
+#
+# The OUTCOME witness closes that seam. A NO-EMPIRICAL axis mis-assigned to
+# EMPIRICAL_AXES is routed to the blanket N/A on a no-rows spec, so its real
+# check never runs and a spec that should FIRE comes back pass/blanket.
+# Asserting the FIRE cell on a concrete spec therefore has real teeth in
+# Direction 1: it fails exactly when the 2026-10-03 SOURCE-MISATTRIBUTION
+# drift (a regime-relevant axis silently missing from the tuple) recurs.
+#
+# It is BLIND in Direction 2 (an EMPIRICAL axis wrongly in NO_EMPIRICAL_AXES):
+# there the mis-routed real check runs on a spec lacking its rows and the
+# observable is behaviorally invisible (row-caused N/A == blanket N/A in
+# pass/flag), so no outcome assertion can catch it -- the blanket-marker (2)
+# is the only witness there, and it catches the drift only by the accidental
+# KeyError the mis-routed check raises. Documented, not hidden.
+#
+# Two independent fire cells (SOURCE-MISATTRIBUTION, the historical drift
+# axis, and SELF-FALSIFYING) so the witness is not single-axis.
+
+def _fire_cell(axis, spec):
+    """Assert axis FIRES (pass=False, not the blanket N/A) on a no-rows spec."""
+    r = ca.audit(spec)["checks"][axis]
+    check("outcome: %s FIRES on a no-rows spec (not blanket N/A)" % axis,
+          (r["pass"], r["detail"] == BLANKET), (False, False))
+
+# SOURCE-MISATTRIBUTION: credited component != load-bearing variable.
+_fire_cell("SOURCE-MISATTRIBUTION",
+           dict(name="witness", source_attribution="the API layer",
+                load_bearing="the model weights"))
+# SELF-FALSIFYING: the paper's own limitation negates its own headline scope.
+_fire_cell("SELF-FALSIFYING",
+           dict(name="witness", headline_scope="universal",
+                limitation_negates="universal"))
+
+# (3b) discriminating mutation: prove the outcome witness has teeth the static
+# checks and the blanket-marker lack. Move SOURCE-MISATTRIBUTION to the wrong
+# set (NO_EMPIRICAL -> EMPIRICAL). The static partition stays complete and
+# disjoint, and the blanket-marker still passes (routed_blanket == EMPIRICAL),
+# but the fire spec is now routed to the blanket N/A: only the outcome witness
+# fails. This is the exact historical drift, caught by behavior.
+_orig_ne, _orig_e = ca.NO_EMPIRICAL_AXES, ca.EMPIRICAL_AXES
+ca.NO_EMPIRICAL_AXES = frozenset(_orig_ne - {"SOURCE-MISATTRIBUTION"})
+ca.EMPIRICAL_AXES = frozenset(_orig_e | {"SOURCE-MISATTRIBUTION"})
+try:
+    r = ca.audit(dict(name="witness", source_attribution="the API layer",
+                      load_bearing="the model weights"))["checks"]["SOURCE-MISATTRIBUTION"]
+    check("outcome mutation: drift to EMPIRICAL routes the fire spec to blanket N/A (witness catches it)",
+          (r["pass"], r["detail"] == BLANKET), (True, True))
+finally:
+    ca.NO_EMPIRICAL_AXES, ca.EMPIRICAL_AXES = _orig_ne, _orig_e
+
 print()
 if ok:
     print("ALL CHECKS PASSED: the regime partition is an exact, disjoint,")
