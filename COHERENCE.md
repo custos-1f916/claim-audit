@@ -1,4 +1,4 @@
-# Coherence of the 65-axis instrument (2026-10-03)
+# Coherence of the 66-axis instrument (2026-10-03)
 
 Question (from the saturation-collapse reconciliation): does the claim-audit
 instrument stay coherent as it grows to 62 axes, or do axes start to overlap?
@@ -38,7 +38,7 @@ does it fire on any specimen where *no other flag fires*? A flag with at
 least one exclusive specimen contributes a label no other axis produces
 there; that axis is not a re-label of another axis's firing.
 
-Result on the 216 battery: 51 of 69 flags have >= 1 exclusive
+Result on the 217 battery: 52 of 70 flags have >= 1 exclusive
 specimen. The newest axes each qualify: UNIT-COUNT, SCOPE-FLATTENING,
 COVERAGE-GAP, JUDGE-AS-TARGET, CRITERION-THRESHOLD, TAUTOLOGICAL-BLEND,
 TRUST, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS, COUPLED-HEADLINES, HELD-OUT-PROVENANCE, SELECTION-PROVENANCE, WITNESS-RESIDENCE, STRUCTURAL-PRIMING, REFERENT-SELF-KEYED, GATE-ON-REALIZATION, and PSEUDOREPLICATION each fire on at least one exclusive specimen (no other flag
@@ -47,7 +47,7 @@ co-fires with NO-EMPIRICAL-CONTENT in the no-rows regime -- but it is not
 a re-label: the identical-set test (no two flags share a firing set)
 covers it, and its fire cell is the only place the self-selected-denominator
 collapse is named. Exclusivity is computed
-on the 69 distinct *flags* the instrument emits, not the 65 checks: 7 checks emit a differently-named
+on the 70 distinct *flags* the instrument emits, not the 66 checks: 7 checks emit a differently-named
 flag (BEATS-NULL -> NULL-REACHES-HEADLINE, CO-MOVES -> WRONG-AXIS,
 COMPUTABLE -> NOT-COMPUTABLE, ISOLATED -> CONFOUNDED, NOISE-FLOOR ->
 WITHIN-NOISE, NOT-SELF-KEYED -> SELF-KEYED, REFERENT-WITNESSED ->
@@ -98,11 +98,11 @@ calibration's discriminating cells, not new ground truth.
 
 ## Verdict
 
-The 65-axis instrument is coherent. No flag is redundant (no two share a
+The 66-axis instrument is coherent. No flag is redundant (no two share a
 firing set), no axis is a weight-0 label, the subset structure is the
 designed refinement hierarchy, and the per-axis exclusivity test — now
 derived rather than hand-listed — shows the newest axes (OPT-IN-CENSUS, UNIT-COUNT, SCOPE-FLATTENING,
-COVERAGE-GAP, THESIS-OUTRUNS-EVIDENCE, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS, COUPLED-HEADLINES, HELD-OUT-PROVENANCE, SELECTION-PROVENANCE, WITNESS-RESIDENCE, STRUCTURAL-PRIMING, REFERENT-SELF-KEYED, GATE-ON-REALIZATION, and PSEUDOREPLICATION) each add a genuinely new discriminating dimension. The growth from 33 to 65 axes is not
+COVERAGE-GAP, THESIS-OUTRUNS-EVIDENCE, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS, COUPLED-HEADLINES, HELD-OUT-PROVENANCE, SELECTION-PROVENANCE, WITNESS-RESIDENCE, STRUCTURAL-PRIMING, REFERENT-SELF-KEYED, GATE-ON-REALIZATION, and PSEUDOREPLICATION) each add a genuinely new discriminating dimension. The growth from 33 to 66 axes is not
 re-expanding
 the 59-family saturation collapse: those were the certification-gap
 family's self-labeled axes; the claim-audit axes carry 4-cell
@@ -1081,3 +1081,36 @@ Files: `self_keyed_witness.py` (`regime_counterfactual` helper + the
 counterfactual report section), `claim_audit.py` (unchanged; the regime
 insertion it audits is the `_no_empirical` + `flags.insert(0, ...)` in
 `audit()`).
+
+## Re-derived fresh (battery 217, 70 flags) — the 66th axis (2026-10-03)
+
+NULL-RESULT-HONESTY (the 66th) is the negative-claim / power-matching
+channel: a strong absence claim (negative_claim='absent') at a design power
+below the adequate-power threshold (default 0.80) outruns the power; the
+honest move at that power is to hedge to power (negative_claim='unresolved').
+All 65 prior axes are positive-claim detectors; this is the complement.
+
+Re-derived from the actual code (meta_guard.py) and the fresh cofiring
+output (cofiring.py --check, exit 0):
+
+- N = len(CHECKS) = 66 (was 65). F + R == N: 66 + 0 == 66.
+- F_total = 70 distinct flags (66 check flags + 4 gate flags; was 69).
+- Battery: 217 specimens (was 216). ALL SPECIMENS MATCH (exit 0).
+- IDENTICAL firing sets: none. No new redundancy.
+- Subset pairs: 17 (unchanged). The designed refinement hierarchy is intact.
+- Exclusive-specimen flags: 52 (was 51). NULL-RESULT-HONESTY gained its
+  exclusive battery witness (NRH1, the strong-absence-at-underpowered-design
+  cell; fires 1, exclusive 1).
+- truly_never: []. Nothing newly dead.
+- Calibration boundary: closed. calibration.py 136/136 DISCRIMINATES
+  (NRH1 fire cell fires exactly NULL-RESULT-HONESTY, no cross-fire; NRH2
+  pass cell fires nothing); calibration_boundary.py 66/66 calibrated,
+  0 uncalibrated.
+- The four straight SILENT null-result verdicts of 2026-10-03
+  (2609.35873, 2609.36043, 2609.35875, 2609.35953) were all hedged to power,
+  so none fire — the axis is silent-on-robust as designed; the fire cell is
+  the un-hedged counterfactual.
+
+The 33-to-66 growth remains a set of weight-1 instruments (each
+carries a 4-cell discriminating calibration), not a re-expansion of the
+59-family saturation collapse.

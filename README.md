@@ -1,8 +1,8 @@
 # claim-audit
 
-A 65-axis falsification instrument for empirical claims in ML/AI papers
+A 66-axis falsification instrument for empirical claims in ML/AI papers
 (and other headline claims with data). Given a claim's raw numbers as a
-spec, it checks the claim against 65 axes (self-keyed, wrong-axis,
+spec, it checks the claim against 66 axes (self-keyed, wrong-axis,
 selection-bias, confounded, within-noise, lossy-projection,
 aggregation-reversal, referent-witnessed, temporal/dose/outcome/subgroup
 onset-and-spike, funnel-stage-misattribution, selection-on-narrative,
@@ -75,7 +75,7 @@ undeclared field makes a refinement N/A), `contested`.
 python3 claim_audit.py
 ```
 
-Runs the 215 specimens in `specimens.py` (real — papers from the
+Runs the 217 specimens in `specimens.py` (real — papers from the
 2026-09-15..22 audit run plus schema-boundary cells plus the live 1f916.ai
 seal/ack floor — plus 60 constructed/self-specimen discriminating cells: the
 original 11 battery witnesses for TEMPORAL-ONSET, REFERENCE-MIX,
@@ -89,7 +89,7 @@ battery from this copy of the code.
 
 ## Files
 
-  claim_audit.py   the instrument (65 checks + CLI), stdlib only
+  claim_audit.py   the instrument (66 checks + CLI), stdlib only
   calibration.py   the 132-specimen discriminating calibration
   calibration_boundary.py  the self-calibration probe (per-check mutation)
   calibration_confound.py  the RED-baseline confound (dead check reads CALIBRATED)
@@ -99,7 +99,7 @@ battery from this copy of the code.
   second_mind.py     the second-mind label-derivation pass (independent fact re-derivation for the 9 primary empirical axes; --judgments emits the fact->name table for a different mind to audit)
   self_keyed_witness_test.py  the SELF-KEYED "undeclared -> lever" regression witness (byte-identical W-triple; locks in the declaration-driven fallback that closes the co-error the battery and second_mind both miss)
   wrong_axis_witness_test.py  the WRONG-AXIS "tie -> wrong-axis" regression witness (byte-identical W-triple; locks in the at/below boundary that the second-mind audit flagged as under-determining the label, and confirms it is the right one)
-  specimens.py     215 specimens (real + constructed/self-specimen) with expected flag sets
+  specimens.py     217 specimens (real + constructed/self-specimen) with expected flag sets
   results.txt      fresh battery run from this copy
   publicity_saturation.py  the PUBLICITY saturation test (certification subset -> one variable)
   structural_priming.py    the 62nd-axis probe (STRUCTURAL-PRIMING vs WITNESS-ADDRESS; position x address, not a relabel)
@@ -739,12 +739,12 @@ python3 calibration_boundary.py
 
 The battery being GREEN is not the same as the battery being COMPLETE.
 This probe answers the self-keyed question applied to the instrument's own
-calibration: for each of the 65 checks, blind it (force always-pass) and
+calibration: for each of the 66 checks, blind it (force always-pass) and
 re-run the battery. If the battery stays GREEN, no specimen's
 independently-derived ground truth requires that check to fire, so the check
 could silently break and `calibration.py` would still print DISCRIMINATES.
 
-Current state (2026-10-02): 65/65 checks are calibrated (each caught by
+Current state (2026-10-02): 66/66 checks are calibrated (each caught by
 at least one discriminating specimen — BEATS-NULL by 9, its
 false-positive surface being the spike family plus F2; NOT-SELF-KEYED /
 SCOPE-OF-INDEPENDENCE / EVIDENCE-UNCLOSED / SOURCE-REPLICATION by 2 each;
@@ -960,8 +960,8 @@ declared, 4 overlap both).
 python3 cofiring.py
 ```
 
-Growth to 65 axes raises the question: do axes start to overlap? `cofiring.py`
-computes the co-firing matrix over the 215-specimen battery: per-axis firing
+Growth to 66 axes raises the question: do axes start to overlap? `cofiring.py`
+computes the co-firing matrix over the 217-specimen battery: per-axis firing
 counts, identical firing sets (pure redundancy), strict-subset sets (the
 designed refinement hierarchy), and co-firing pairs. Current state
 (2026-10-02): no two axes share a firing set; the only subset structure is the
@@ -972,9 +972,9 @@ OPT-IN-CENSUS, THESIS-OUTRUNS-EVIDENCE, CERTIFIER-UNNAMED, CAUSAL-WIRING, DECLAR
 axis fires, except OPT-IN-CENSUS which co-fires with NO-EMPIRICAL-CONTENT (its
 designed refinement parent; THESIS-OUTRUNS-EVIDENCE likewise co-fires with
 NO-EMPIRICAL-CONTENT in its no-rows regime cell; CERTIFIER-UNNAMED co-fires with REFERENT-CONSTRUCTED on corner B, the model-constructed-referent cell — CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, and WITNESS-ADDRESS are fully exclusive) (per-axis exclusivity, derived
-from the firing sets rather than hand-listed); 51 of 69 flags have >= 1 exclusive specimen; all 65 checks now fire on the battery — the two
+from the firing sets rather than hand-listed); 52 of 70 flags have >= 1 exclusive specimen; all 66 checks now fire on the battery — the two
 former never-firing checks (TEMPORAL-ONSET, REFERENCE-MIX) gained constructed
-witnesses, PLATFORM-CERTIFIED gained a constructed witness (PC1; its live specimen, the seal-ack-floor, co-fires with NO-EMPIRICAL-CONTENT), and REFERENT-SELF-KEYED (the 63rd) gained a battery witness (RSK1) for exclusivity, and GATE-ON-REALIZATION (the 64th) gained a battery witness (GOR1) for exclusivity, and PSEUDOREPLICATION (the 65th) gained a battery witness (PR1) for exclusivity, so `truly_never` is empty. Full report: `COHERENCE.md`.
+witnesses, PLATFORM-CERTIFIED gained a constructed witness (PC1; its live specimen, the seal-ack-floor, co-fires with NO-EMPIRICAL-CONTENT), and REFERENT-SELF-KEYED (the 63rd) gained a battery witness (RSK1) for exclusivity, and GATE-ON-REALIZATION (the 64th) gained a battery witness (GOR1) for exclusivity, and PSEUDOREPLICATION (the 65th) gained a battery witness (PR1) for exclusivity, and NULL-RESULT-HONESTY (the 66th) gained a battery witness (NRH1) for exclusivity, so `truly_never` is empty. Full report: `COHERENCE.md`.
 
 ## The meta-record guard (axis / check / flag count reconciliation)
 

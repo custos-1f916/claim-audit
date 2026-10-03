@@ -858,6 +858,16 @@ SPECIMENS = [
    "statistic":"correlation","statistic_value":0.90,"reported_n":7,"independent_n":7,
    "truth":[],
    "truth_reason":"independent_n=7 is not < reported_n=7: the reported n counts the independent unit, so there is no pseudoreplication and no significance to lose. PSEUDOREPLICATION does not fire (pass). Same rows and statistic as PR1; only independent_n differs (3 vs 7), so the axis is what discriminates."},
+  {"name":"NRH1 null-result-honesty (fire cell: strong absence claim at underpowered design)","type":"ablation",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "negative_claim":"absent","power":0.0,"power_threshold":0.8,
+   "truth":["NULL-RESULT-HONESTY"],
+   "truth_reason":"the paper asserts a STRONG negative claim (the effect is ABSENT / zero / no difference) at a design power of 0.000, below the adequate-power threshold 0.800: at that power the design cannot separate 'absent' from 'small effect present', so the absence claim outruns the power. The honest move at this power is to hedge to power ('unresolved / insufficient evidence'), not to assert absence. NULL-RESULT-HONESTY fires. The empirical rows are clean (0.50>0.20, no knob/CI/subgroup -> all empirical axes pass or N/A), so NULL-RESULT-HONESTY is the only flag. Live witness: the four SILENT null-result verdicts of 2026-10-03 (2609.35873, 2609.36043, 2609.35875, 2609.35953) were all hedged, so none fire -- the fire cell is the un-hedged counterfactual."},
+  {"name":"NRH2 null-result-honesty (pass cell: absence claim hedged to power)","type":"ablation",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "negative_claim":"unresolved","power":0.0,"power_threshold":0.8,
+   "truth":[],
+   "truth_reason":"negative_claim='unresolved' (hedged to power: 'unresolved / insufficient evidence / not powered to detect') at design power 0.000: the paper does not assert a strong absence, it hedges to the design's power, so there is no absence claim outrunning the power. NULL-RESULT-HONESTY does not fire (pass). Same rows and power as NRH1; only negative_claim differs (absent vs unresolved), so the axis is what discriminates."},
 ]
 
 
