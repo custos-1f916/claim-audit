@@ -254,7 +254,7 @@ beat the null. Fires when the max null metric >= the max mechanism metric -- the
 metric cannot tell the mechanism from the null, so the headline is not
 mechanism-specific. N/A when there are no mechanism rows or no null rows, or
 when the max mechanism metric > the max null metric (the mechanism genuinely
-beats the null on the metric). POLARITY (logged-not-flagged witness, not a flag): when the spec declares metric_polarity='lower-is-better' and the beat is in the bad direction (max(mech) > max(null), the mechanism is worse than the null), a note is added to the detail; no new flag, no changed pass/fail, no change to the firing set. fail -> NULL-REACHES-HEADLINE."""
+beats the null on the metric). POLARITY (logged-not-flagged witness, not a flag): when the spec declares metric_polarity='lower-is-better' and the beat is in the bad direction (max(mech) > max(null), the mechanism is worse than the null), a note is added to the detail; no new flag, no changed pass/fail, no change to the firing set. CLAIM-POLARITY (logged-not-flagged witness, not a flag): when the spec declares claim_polarity='negative' (a negative-result claim) and the check fires, mechanism <= null SUPPORTS the headline, so NULL-REACHES-HEADLINE is a polarity artifact here; a note is added to the detail; no new flag, no changed pass/fail, no change to the firing set. fail -> NULL-REACHES-HEADLINE."""
     on  = [r["metric"] for r in _rows(spec, lambda r: r.get("mechanism_on"))]
     nul = [r["metric"] for r in _rows(spec, lambda r: (not r.get("mechanism_on")) or r.get("is_null"))]
     if not on or not nul:
@@ -274,7 +274,16 @@ beats the null on the metric). POLARITY (logged-not-flagged witness, not a flag)
                        "(mechanism worse than null); the good-direction "
                        "judgment is the author's, not the instrument's")
         return True, "", detail
-    return False, "NULL-REACHES-HEADLINE", "null %g >= mechanism %g (metric cannot tell mechanism from null)" % (n, h)
+    detail = "null %g >= mechanism %g (metric cannot tell mechanism from null)" % (n, h)
+    # CLAIM-POLARITY (logged-not-flagged witness, not a flag): the check
+    # assumes a POSITIVE claim (the mechanism beats the null). When the spec
+    # declares claim_polarity='negative' (the mechanism does NOT beat the
+    # null), mechanism <= null SUPPORTS the headline, so NULL-REACHES-HEADLINE
+    # is a polarity artifact here, not a flaw. No new flag, no changed
+    # pass/fail, no change to the firing set.
+    if spec.get("claim_polarity") == "negative":
+        detail += ("; claim-polarity: the data (mechanism <= null) supports the negative claim as framed; NULL-REACHES-HEADLINE is a polarity artifact (the check assumes a positive claim) -- reframe with the winning component as mechanism to audit cleanly, or treat the flag as expected")
+    return False, "NULL-REACHES-HEADLINE", detail
 
 def _knob_kind(spec):
     """The declared three-way role of the knob: 'lever' (the mechanism's own
