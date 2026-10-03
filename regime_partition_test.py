@@ -97,11 +97,14 @@ check("behavioral: no NO_EMPIRICAL_AXES axis is routed to the blanket N/A",
 # drift (a regime-relevant axis silently missing from the tuple) recurs.
 #
 # It is BLIND in Direction 2 (an EMPIRICAL axis wrongly in NO_EMPIRICAL_AXES):
-# there the mis-routed real check runs on a spec lacking its rows and the
-# observable is behaviorally invisible (row-caused N/A == blanket N/A in
-# pass/flag), so no outcome assertion can catch it -- the blanket-marker (2)
-# is the only witness there, and it catches the drift only by the accidental
-# KeyError the mis-routed check raises. Documented, not hidden.
+# the mis-routed real check returns a clean "N/A (no null rows)" (pass=True)
+# on a spec that carries rows=[], behaviorally indistinguishable from the
+# blanket N/A in pass/flag, so no outcome assertion can catch it. The only
+# witness is a shape-contingent KeyError that fires when a spec OMITS the rows
+# key (the real check does spec["rows"], _no_empirical does spec.get("rows"));
+# a rows=[] spec defeats even that. Demonstrated, not hidden: the (3c)
+# blind-spot witness below shows the drift is invisible on rows=[] and only
+# crashes (KeyError) on a no-rows-key spec.
 #
 # Two independent fire cells (SOURCE-MISATTRIBUTION, the historical drift
 # axis, and SELF-FALSIFYING) so the witness is not single-axis.
@@ -137,6 +140,42 @@ try:
           (r["pass"], r["detail"] == BLANKET), (True, True))
 finally:
     ca.NO_EMPIRICAL_AXES, ca.EMPIRICAL_AXES = _orig_ne, _orig_e
+
+# (3c) BLIND-SPOT witness: demonstrate the Direction-2 blind spot (the
+# documented hazard above). A Direction-2 drift (an EMPIRICAL axis wrongly in
+# NO_EMPIRICAL_AXES) is behaviorally invisible on a spec carrying rows=[] and
+# is only "caught" by a shape-contingent KeyError on a spec that omits the
+# rows key. Demonstrate both, so the test shows its own blind spot rather
+# than merely claiming it.
+_ca_ne, _ca_e = ca.NO_EMPIRICAL_AXES, ca.EMPIRICAL_AXES
+ca.NO_EMPIRICAL_AXES = frozenset(_ca_ne | {"BEATS-NULL"})
+ca.EMPIRICAL_AXES = frozenset(_ca_e - {"BEATS-NULL"})
+try:
+    # (i) rows=[] spec: the mis-routed real check returns a clean N/A
+    # (pass=True), not the blanket string -- pass/flag indistinguishable from
+    # a correctly-routed EMPIRICAL axis on the same spec. Drift INVISIBLE.
+    r = ca.audit(dict(name="blind-spot", rows=[]))["checks"]["BEATS-NULL"]
+    check("blind-spot (i): on rows=[] the mis-routed real check returns clean N/A, pass=True (drift invisible in pass/flag)",
+          (r["pass"], r["detail"] == "N/A (no null rows)"), (True, True))
+    check("blind-spot (i): detail is the clean N/A, not the blanket (a blanket-marker assertion would not include it)",
+          (r["detail"] == BLANKET, r["pass"]), (False, True))
+finally:
+    ca.NO_EMPIRICAL_AXES, ca.EMPIRICAL_AXES = _ca_ne, _ca_e
+
+_ca_ne, _ca_e = ca.NO_EMPIRICAL_AXES, ca.EMPIRICAL_AXES
+ca.NO_EMPIRICAL_AXES = frozenset(_ca_ne | {"BEATS-NULL"})
+ca.EMPIRICAL_AXES = frozenset(_ca_e - {"BEATS-NULL"})
+try:
+    # (ii) no-rows-key spec: the only witness is a shape-contingent KeyError
+    # (the real check does spec["rows"], _no_empirical does spec.get("rows")).
+    # A crash, not an assertion.
+    try:
+        ca.audit(dict(name="blind-spot"))["checks"]
+        check("blind-spot (ii): no-rows-key spec raises KeyError (the only Direction-2 witness)", False, True)
+    except KeyError:
+        check("blind-spot (ii): no-rows-key spec raises KeyError (the only Direction-2 witness)", True, True)
+finally:
+    ca.NO_EMPIRICAL_AXES, ca.EMPIRICAL_AXES = _ca_ne, _ca_e
 
 print()
 if ok:
