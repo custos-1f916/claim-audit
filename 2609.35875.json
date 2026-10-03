@@ -1,0 +1,34 @@
+{
+  "name": "2609.35875 recast (framing B): the reported MAD gains over single-agent are an ensemble-SAMPLING effect (SC-9 captures the gain; debate adds nothing beyond it)",
+  "type": "cross-model",
+  "mechanism": "budget-matched self-consistency sampling (SC-9, 9 independent samples majority-voted) — the component the paper claims explains the reported MAD gains",
+  "mechanism_lever": "independent-sampling budget matched to debate's generation budget",
+  "metric": "mean accuracy (%) across the 4 inline-scored tasks (23-model pool, 100 problems, seed 42, context-corrected)",
+  "metric_polarity": "higher-is-better",
+  "scope_claim": false,
+  "stated_headline": "budget-matched sampling (SC-9) captures the reported MAD gains over single-agent (84.8 vs 80.4 mean); debate adds nothing beyond it (84.4 vs 84.8)",
+  "coupled_headlines": "no",
+  "broader_derived": "no",
+  "composition_declared": "yes",
+  "thesis_endpoint": "budget-matched sampling (SC-9) captures the reported MAD gains over single-agent (84.8 vs 80.4 mean); debate adds nothing beyond it (84.4 vs 84.8)",
+  "measured_endpoints": [
+    "budget-matched sampling (SC-9) captures the reported MAD gains over single-agent (84.8 vs 80.4 mean); debate adds nothing beyond it (84.4 vs 84.8)",
+    "debate beats solo on headroom tasks (+3.3 GSM8K, +6.6 MMLU, +5.7 CSQA, p<0.002 Wilcoxon over models) but ties/loses to SC-9 at matched budget",
+    "persona dose-response over full combinatorial space: redundant personas hurt most, maximally-diverse teams recover part of the loss (persona tax, not diversity tax)",
+    "mixed-model teams: accuracy tracks member capability (SSS 93.7 -> MMM 87.0 -> WWW 75.6), not heterogeneity; matched ensembles reproduce and exceed the rescue effect",
+    "rounds ablation: essentially all deliberation benefit from the first exchange (84.6 at 1 round, 87.2 at 2, flat through 5)",
+    "context-window overflow correction moves debate-vs-sampling from -1.8pp to parity (disclosed, corrected in Table 1)"
+  ],
+  "headline_states_as_fact": true,
+  "body_hedges": true,
+  "negative_claim": "absent",
+  "power": 0.95,
+  "power_threshold": 0.80,
+  "rows": [
+    {"label": "SC-9 budget-matched self-consistency (the claimed gain-explainer)", "mechanism_on": true, "metric": 84.8},
+    {"label": "solo single-agent (the baseline the reported gains are over)", "mechanism_on": false, "is_null": true, "metric": 80.4},
+    {"label": "debate (3x3), context-corrected (the thing shown to add nothing beyond sampling)", "mechanism_on": false, "metric": 84.4}
+  ],
+  "expected": [],
+  "note": "NEGATIVE-RESULT specimen, framing B (mechanism = the sampling control that explains the gains, null = the solo baseline). BEATS-NULL: SC-9 84.8 > solo 80.4 -> PASS (sampling genuinely captures the gain over the baseline). thesis_endpoint now literally in measured_endpoints -> THESIS-OUTRUNS-EVIDENCE should clear. NULL-RESULT-HONESTY: power 0.95 >= 0.80 -> PASS (well-powered rejection). The 'debate adds nothing' (84.4 vs 84.8) is a secondary equality, not the primary beats-null. This is the correct framing for a recast-negative claim."
+}
