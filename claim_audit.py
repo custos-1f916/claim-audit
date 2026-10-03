@@ -2731,6 +2731,94 @@ CHECKS = [
     ("NULL-RESULT-HONESTY", check_null_result_honesty),
 ]
 
+# Regime partition (spec-level constants, 2026-10-03): every axis is
+# explicitly assigned to exactly one regime. NO_EMPIRICAL_AXES run their
+# check on a pure specification (no data rows, or type 'specification');
+# EMPIRICAL_AXES need the (mechanism, metric, null) triple and are forced
+# to the blanket N/A in the no-empirical branch of audit(). This used to be
+# an inline hidden constant inside audit(); the 2026-10-03
+# SOURCE-MISATTRIBUTION drift (a regime-relevant axis silently missing from
+# the tuple, coming back N/A in the regime where its seam lives) is what
+# promoted it. regime_partition_test.py witnesses the partition: an axis
+# added to CHECKS without a regime assignment fails it. The assignment is a
+# semantic decision -- headline-layer axes that read only declared string
+# fields belong in NO_EMPIRICAL_AXES; row-dependent axes belong in
+# EMPIRICAL_AXES. (COMPUTABLE, WIDER-THAN-NAMED and SCOPE-FLATTENING gate on
+# _no_empirical and touch rows only to decide their own N/A; they are
+# no-empirical axes.)
+NO_EMPIRICAL_AXES = frozenset({
+    "CARRIER-REACH",
+    "CAUSAL-WIRING",
+    "COMPUTABLE",
+    "COVERAGE-GAP",
+    "CRITERION-THRESHOLD",
+    "DECLARED-CHANNEL",
+    "EVIDENCE-UNCLOSED",
+    "FIDELITY",
+    "GATE-ON-REALIZATION",
+    "HELD-OUT-PROVENANCE",
+    "JUDGE-AS-TARGET",
+    "NULL-RESULT-HONESTY",
+    "OPT-IN-CENSUS",
+    "PLATFORM-CERTIFIED",
+    "PSEUDOREPLICATION",
+    "REFERENT-SELF-KEYED",
+    "SCOPE-FLATTENING",
+    "SELECTION-PROVENANCE",
+    "SELF-FALSIFYING",
+    "SOURCE-MISATTRIBUTION",
+    "SOURCE-REPLICATION",
+    "STRUCTURAL-PRIMING",
+    "TAUTOLOGICAL-BLEND",
+    "THESIS-OUTRUNS-EVIDENCE",
+    "TRUST",
+    "UNIT-COUNT",
+    "UNWITNESSED-RECEIPT",
+    "UNWITNESSED-ROOT",
+    "WIDER-THAN-NAMED",
+    "WINDOW-PRESENT-TENSE",
+    "WITNESS-ADDRESS",
+    "WITNESS-POPULATION-SELECTION",
+})
+
+EMPIRICAL_AXES = frozenset({
+    "AGGREGATION-REVERSAL",
+    "ANNOTATOR-SELF-KEYED",
+    "BEATS-NULL",
+    "CERTIFIER-UNNAMED",
+    "CO-MOVES",
+    "COUPLED-HEADLINES",
+    "DOSE-ONSET",
+    "DOSE-RESPONSE",
+    "DOSE-SPIKE",
+    "FUNNEL-STAGE-MISATTRIBUTION",
+    "ISOLATED",
+    "LOSSY-PROJECTION",
+    "METRIC-ONSET",
+    "METRIC-SPIKE",
+    "NOISE-FLOOR",
+    "NOT-SELF-KEYED",
+    "OUTCOME-ONSET",
+    "OUTCOME-SPIKE",
+    "PRIMARY-BASIS-REVERSAL",
+    "REFERENCE-MIX",
+    "REFERENT-CONSTRUCTED",
+    "REFERENT-WITNESSED",
+    "SCOPE-OF-INDEPENDENCE",
+    "SELECTION-BIAS",
+    "SELECTION-ON-NARRATIVE",
+    "SPLIT-ONSET",
+    "SPLIT-SPIKE",
+    "SUBGROUP-ONSET",
+    "SUBGROUP-SPIKE",
+    "TEMPORAL-ONSET",
+    "TEMPORAL-SPIKE",
+    "TIER-ONSET",
+    "TIER-SPIKE",
+    "WITNESS-RESIDENCE",
+})
+
+
 def _no_empirical(spec):
     """NO-EMPIRICAL-CONTENT regime: a pure specification claim. A spec with no
     data rows, or declared type 'specification', has no (mechanism, metric,
@@ -2742,7 +2830,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING", "SOURCE-MISATTRIBUTION", "THESIS-OUTRUNS-EVIDENCE", "UNIT-COUNT", "OPT-IN-CENSUS", "CAUSAL-WIRING", "DECLARED-CHANNEL", "CARRIER-REACH", "WITNESS-ADDRESS", "SELECTION-PROVENANCE", "HELD-OUT-PROVENANCE", "STRUCTURAL-PRIMING", "REFERENT-SELF-KEYED", "GATE-ON-REALIZATION", "PSEUDOREPLICATION", "NULL-RESULT-HONESTY"):
+            if name in NO_EMPIRICAL_AXES:
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:
