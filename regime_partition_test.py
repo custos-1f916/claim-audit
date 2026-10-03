@@ -30,6 +30,16 @@ This test witnesses the partition two ways:
       show that exact blanket string and every NO_EMPIRICAL_AXES axis must NOT.
       This is the marker that the constants are not just a count but the set
       audit() really branches on.
+
+  (3) OUTCOME + DETAIL-STRING -- the assignment-correctness teeth. (3) asserts
+      a concrete no-rows spec that should FIRE comes back FIRE (not blanket
+      N/A) for two independent NO-EMPIRICAL axes; (3b) proves the drift that
+      would break it is caught only by this outcome witness. (3c) documents the
+      Direction-2 blind spot (pass/flag invisible on rows=[]). (3d) closes it
+      with a designed detail-string witness: on rows=[] a drifted EMPIRICAL
+      axis runs its real check and shows that check's own N/A literal, which
+      differs from the fixed blanket constant -- so detail != BLANKET catches
+      the drift for all EMPIRICAL axes, not just by an accidental KeyError.
 """
 import claim_audit as ca
 
@@ -166,14 +176,66 @@ _ca_ne, _ca_e = ca.NO_EMPIRICAL_AXES, ca.EMPIRICAL_AXES
 ca.NO_EMPIRICAL_AXES = frozenset(_ca_ne | {"BEATS-NULL"})
 ca.EMPIRICAL_AXES = frozenset(_ca_e - {"BEATS-NULL"})
 try:
-    # (ii) no-rows-key spec: the only witness is a shape-contingent KeyError
-    # (the real check does spec["rows"], _no_empirical does spec.get("rows")).
-    # A crash, not an assertion.
+    # (ii) no-rows-key spec: for THIS shape the only witness is a
+    # shape-contingent KeyError (the real check does spec["rows"],
+    # _no_empirical does spec.get("rows")). A crash, not an assertion. The
+    # rows=[] shape is NOT blind, though: see (3d), the designed detail-string
+    # witness that catches the drift on rows=[] for all EMPIRICAL axes.
     try:
         ca.audit(dict(name="blind-spot"))["checks"]
         check("blind-spot (ii): no-rows-key spec raises KeyError (the only Direction-2 witness)", False, True)
     except KeyError:
         check("blind-spot (ii): no-rows-key spec raises KeyError (the only Direction-2 witness)", True, True)
+finally:
+    ca.NO_EMPIRICAL_AXES, ca.EMPIRICAL_AXES = _ca_ne, _ca_e
+
+# (3d) DETAIL-STRING witness: the designed, non-tautological Direction-2
+# witness. (3c) documented the blind spot as "only caught by a shape-contingent
+# KeyError on a no-rows-key spec." That is true only for the no-rows-KEY shape.
+# On the natural rows=[] spec the drift is NOT invisible: a correctly-routed
+# EMPIRICAL axis shows the BLANKET literal, while a drifted axis (moved to
+# NO_EMPIRICAL) runs its REAL check and shows that check's own empty-rows N/A
+# literal. The blanket literal is a fixed external constant (claim_audit.py:
+# 2839) that differs from every real check's empty-rows N/A, so detail !=
+# BLANKET is a designed assertion with teeth: it fails exactly when a real
+# check's empty-rows N/A would masquerade as the blanket. (3c)(i) covered only
+# BEATS-NULL; this generalizes to every EMPIRICAL axis.
+_ca_ne, _ca_e = ca.NO_EMPIRICAL_AXES, ca.EMPIRICAL_AXES
+_d2_caught, _d2_blind = 0, []
+for _axis in sorted(_ca_e):
+    ca.NO_EMPIRICAL_AXES = frozenset(_ca_ne | {_axis})
+    ca.EMPIRICAL_AXES = frozenset(_ca_e - {_axis})
+    try:
+        _d = ca.audit(dict(name="d2", rows=[]))["checks"][_axis]["detail"]
+        if _d != BLANKET:
+            _d2_caught += 1
+        else:
+            _d2_blind.append(_axis)
+    finally:
+        ca.NO_EMPIRICAL_AXES, ca.EMPIRICAL_AXES = _ca_ne, _ca_e
+check("detail-string (3d): the Direction-2 drift is caught by detail != BLANKET for ALL %d EMPIRICAL axes (0 blind)" % len(_ca_e),
+      (_d2_caught, _d2_blind), (len(_ca_e), []))
+
+# (3e) discriminating contrast: prove (3d) has teeth the (2) blanket-marker
+# lacks. Apply the Direction-2 drift to BEATS-NULL (EMPIRICAL -> NO_EMPIRICAL)
+# on the natural rows=[] spec. The (2) routing marker recomputes routed_blanket
+# from the SAME audit and compares it to the SAME named set -- both shrink
+# together, so (2) still passes (blind in pass/flag). The (3d) detail-string
+# witness compares the drifted axis's real-check N/A to the fixed BLANKET
+# constant, so it catches the drift. (The no-rows-KEY shape is a different
+# story -- (3c)(ii): there the only witness is the accidental KeyError.)
+_ca_ne, _ca_e = ca.NO_EMPIRICAL_AXES, ca.EMPIRICAL_AXES
+ca.NO_EMPIRICAL_AXES = frozenset(_ca_ne | {"BEATS-NULL"})
+ca.EMPIRICAL_AXES = frozenset(_ca_e - {"BEATS-NULL"})
+try:
+    _res = ca.audit(dict(name="d2 contrast", rows=[]))["checks"]
+    _routed = {n for n, c in _res.items() if c["detail"] == BLANKET}
+    _marker_blind = (_routed == ca.EMPIRICAL_AXES)          # (2) still passes
+    _detail_catches = (_res["BEATS-NULL"]["detail"] != BLANKET)  # (3d) catches
+    check("discriminating (3e): on rows=[] under the Direction-2 drift the (2) blanket-marker is BLIND (routed == named, both shrink)",
+          _marker_blind, True)
+    check("discriminating (3e): on the same rows=[] spec the (3d) detail-string witness CATCHES it (detail != BLANKET)",
+          _detail_catches, True)
 finally:
     ca.NO_EMPIRICAL_AXES, ca.EMPIRICAL_AXES = _ca_ne, _ca_e
 
