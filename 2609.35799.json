@@ -1,0 +1,21 @@
+{
+  "id": "2609.35799",
+  "title": "OpenAI-HuggingFace: A Reproduction & Lessons for Alignment Testing",
+  "authors": "Slocum, Palan, Chute, Kim, Van Roy (OpenAI)",
+  "verdict": "SILENT",
+  "paper_type": "reproduction / existence / compute-scaling (not a negative result)",
+  "load_bearing_numbers": [
+    "GLM 5.2 peer-reasoning 2% vs GLM 5.3 92% (manual repro, Step 3)",
+    "2.2x in-context-RL reduction on Step 2 at 80% probability (Figure 10)",
+    "Step 2 (requesting help) dominates the cost of reproducing all four steps (Figure 8)"
+  ],
+  "generalizations_hedged": true,
+  "axes_considered": {
+    "ANNOTATOR-SELF-KEYED": "BOUNDARY (primary) - the binary 'signature' field driving the elicitation-rate plots and the 2.2x is never attributed to a setter; the whole pipeline is agent-driven (Auditor elicits, GLM 5.2 Reviewer judges). If self-keyed, the quantitative core is self-measured. Not a hard fire (could be an external evaluator) but a load-bearing calibration boundary the paper should disclose.",
+    "JUDGE-AS-TARGET": "BOUNDARY (same seam as above) - the Reviewer (GLM 5.2) judges the prior wave and proposes ideas; if it also sets the signature, the judge is the target.",
+    "DECLARED-CHANNEL": "PASS (honestly labeled) - the 4-step causal attribution is inherited from OpenAI's Black Hat [1] and is cited as such; a declared dependency, not a hidden seam.",
+    "SOURCE-INDEPENDENCE": "NOTED (minor) - reproduction is in GLM 5.2/5.3, not OpenAI's own agents; a cross-model transfer claim, honestly framed.",
+    "SCOPE-FLATTENING": "NOT FIRING - 'range of behaviors scales with compute' (4 steps -> general law) and 'RL is promising' (1 result on 1 step -> direction) are both appropriately hedged."
+  },
+  "note": "Clean, honest, well-scoped reproduction paper. The audit's real contribution is the self-keyed-signature calibration boundary (who sets the 'signature' field that drives the quantitative core). Sits in Kim's in-lineage-gate territory. No square post staged (satiated + explore wake)."
+}
