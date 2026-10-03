@@ -1828,6 +1828,86 @@ def check_gate_on_realization(spec):
     detail = ("the receipt's validity gate is the realized-size band (validity_gate=realized_size_band, %g-sd), NOT the structural design-consistency check: design consistency HOLDS (declared_fraction=%s == rule_probability=%s, exact, no realized n needed), yet the receipt is invalidated because the realized n=%d falls outside the band [%g, %g] (mean=%g, sd=%g). This conditions acceptance on the random realization and silently discards a legitimate tail sample -- P(n=%d | N=%d, p=%g) = %.4g, a legitimate draw, not an anomaly. The gate is the realization, not the design; the structural check (the correct gate) would have passed. The fix: carry the structural gate and the plausibility diagnostic as separate receipts." % (k, df, rp, n, lo, hi, mean, sd, n, N, rp, p_n))
     return False, "GATE-ON-REALIZATION", detail
 
+
+def _t_two_sided_p(t, df):
+    """Two-sided p-value for a Student's t statistic (stdlib-only, numerical).
+
+    p = 2 * integral_{|t|}^{inf} f_t(u) du, integrated by composite Simpson's
+    rule over [|t|, |t|+200] (200 is effectively the t-distribution's tail
+    support). df==1 (Cauchy) is closed-form. Verified against the Mirror-Score
+    specimen: rho=0.90, n=7 -> p=0.0058 (the paper's 0.006); n=3 -> p=0.287."""
+    at = abs(t)
+    if df <= 0:
+        return 1.0
+    if df == 1:
+        return 1.0 - 2.0 * math.atan(at) / math.pi
+    C = math.gamma((df + 1) / 2.0) / (math.sqrt(df * math.pi) * math.gamma(df / 2.0))
+    def f(u):
+        return C * (1.0 + u * u / df) ** (-(df + 1) / 2.0)
+    R, n = 200.0, 20000
+    h = R / n
+    s = f(at) + f(at + R)
+    for i in range(1, n):
+        s += (4.0 if i % 2 else 2.0) * f(at + i * h)
+    return 2.0 * (s * h / 3.0)
+
+
+def check_pseudoreplication(spec):
+    """PSEUDOREPLICATION (65th primary axis, 2026-10-03): the unit-of-analysis /
+    denominator-unit channel. A reported p-value's denominator (n) must count the
+    INDEPENDENT unit of the design, not a finer, non-independent sub-unit. When the
+    reported n counts sub-units nested within fewer independent units (pseudoreplication
+    -- e.g. 7 structures drawn from 3 chemotypes, so the 7 'independent' structures are
+    3 independent chemotypes with replicates), the reported p is ANTI-CONSERVATIVE: the
+    effective independent n is smaller, and the reported significance can flip.
+
+    Fires when (1) independent_n < reported_n (the reported n counts non-independent
+    sub-units, not the independent unit), (2) the reported reading is significant
+    (reported_p < alpha, default 0.05), and (3) the reading at the independent unit is
+    NOT significant (independent_p >= alpha) -- the significance does not survive the
+    correction to the independent unit. The p-values are taken from the spec
+    (reported_p / independent_p) or computed from a declared statistic
+    (statistic='correlation', statistic_value=rho, at reported_n and independent_n).
+
+    Distinct from UNIT-COUNT (the load-bearing claim is a COUNT of independent checks
+    whose N rows are identical on the load-bearing field, so the distinct count < N;
+    here the issue is the p-value's n counting nested sub-units, not duplicate rows),
+    from SCOPE-OF-INDEPENDENCE (the QUALIFIER 'independent' on a panel must scope to the
+    load-bearing axis; here the issue is the p-value's denominator unit, not a panel
+    qualifier), and from WITHIN-NOISE (the effect-size CI crosses zero; here the issue
+    is the denominator unit of a significance test, not the effect's CI). N/A when
+    reported_n / independent_n are not declared, or no p-value is declared and no
+    computable statistic is present. fail -> PSEUDOREPLICATION."""
+    reported_n = spec.get("reported_n")
+    independent_n = spec.get("independent_n")
+    if reported_n is None or independent_n is None:
+        return True, "", "N/A (reported_n / independent_n not declared; the axis does not apply)"
+    alpha = spec.get("alpha", 0.05)
+    reported_p = spec.get("reported_p")
+    independent_p = spec.get("independent_p")
+    if reported_p is None or independent_p is None:
+        stat = spec.get("statistic")
+        val = spec.get("statistic_value")
+        if stat == "correlation" and val is not None and reported_n > 2 and independent_n > 2:
+            rho = val
+            if abs(rho) >= 1.0:
+                return True, "", "N/A (|rho| = 1.0; the p-value is undefined)"
+            t_rep = rho * math.sqrt((reported_n - 2) / (1.0 - rho * rho))
+            t_ind = rho * math.sqrt((independent_n - 2) / (1.0 - rho * rho))
+            reported_p = _t_two_sided_p(t_rep, reported_n - 2)
+            independent_p = _t_two_sided_p(t_ind, independent_n - 2)
+        else:
+            return True, "", "N/A (no p-value declared and no computable statistic; the axis does not apply)"
+    if not (independent_n < reported_n):
+        return True, "", "PASS (independent_n=%s is not < reported_n=%s: the reported n counts the independent unit; no pseudoreplication)" % (independent_n, reported_n)
+    if not (reported_p < alpha):
+        return True, "", "PASS (reported p=%.4g is not < alpha=%.3g: the reported reading is not significant, so there is no significance to lose)" % (reported_p, alpha)
+    if independent_p < alpha:
+        return True, "", "PASS (the reading at the independent unit is still significant (p=%.4g < alpha=%.3g): the significance survives the correction to the independent unit)" % (independent_p, alpha)
+    detail = ("the reported p-value's denominator counts a NON-INDEPENDENT sub-unit, not the independent unit: reported_n=%d but the design's independent unit is independent_n=%d (independent_n < reported_n -- pseudoreplication). At the reported n the reading is significant (p=%.4g < alpha=%.3g), but at the independent unit it is NOT (p=%.4g >= alpha=%.3g): the significance does not survive the correction to the independent unit, so the reported p is anti-conservative. The fix: report the test at the independent unit (n=%d), or state the effective independent n and the within-unit replication." % (reported_n, independent_n, reported_p, alpha, independent_p, alpha, independent_n))
+    return False, "PSEUDOREPLICATION", detail
+
+
 def check_witness_population_selection(spec):
     """WITNESS-POPULATION-SELECTION (41st axis, 2026-09-27): the witness
     population of an absence claim is structurally selected against
@@ -2591,6 +2671,7 @@ CHECKS = [
     ("STRUCTURAL-PRIMING", check_structural_priming),
     ("REFERENT-SELF-KEYED", check_referent_self_keyed),
     ("GATE-ON-REALIZATION", check_gate_on_realization),
+    ("PSEUDOREPLICATION", check_pseudoreplication),
 ]
 
 def _no_empirical(spec):
@@ -2604,7 +2685,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING", "THESIS-OUTRUNS-EVIDENCE", "UNIT-COUNT", "OPT-IN-CENSUS", "CAUSAL-WIRING", "DECLARED-CHANNEL", "CARRIER-REACH", "WITNESS-ADDRESS", "SELECTION-PROVENANCE", "HELD-OUT-PROVENANCE", "STRUCTURAL-PRIMING", "REFERENT-SELF-KEYED", "GATE-ON-REALIZATION"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING", "THESIS-OUTRUNS-EVIDENCE", "UNIT-COUNT", "OPT-IN-CENSUS", "CAUSAL-WIRING", "DECLARED-CHANNEL", "CARRIER-REACH", "WITNESS-ADDRESS", "SELECTION-PROVENANCE", "HELD-OUT-PROVENANCE", "STRUCTURAL-PRIMING", "REFERENT-SELF-KEYED", "GATE-ON-REALIZATION", "PSEUDOREPLICATION"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:

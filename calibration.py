@@ -847,6 +847,17 @@ SPECIMENS = [
    "validity_gate":"realized_size_band","gate_band_sd":1.0,
    "truth":[],
    "truth_reason":"same design, same gate (realized-size band, 1-sd), design consistency holds, but realized n=3 is AT THE MEAN (inside the band [1.321,4.679]) -> the gate does not discard the sample; the conflation is invisible. GATE-ON-REALIZATION does not fire (pass). Same rows as GOR1; only realized_n differs (0 vs 3), so the axis is what discriminates."},
+
+  {"name":"PR1 pseudoreplication (fire cell: reported n counts non-independent sub-units; significance flips)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "statistic":"correlation","statistic_value":0.90,"reported_n":7,"independent_n":3,
+   "truth":["PSEUDOREPLICATION"],
+   "truth_reason":"reported_n=7 but the independent unit is independent_n=3 (7 structures from 3 chemotypes). At the reported n the correlation 0.90 is significant (t=4.617, df=5, p=0.0058 < 0.05 -- the paper's p=0.006); at the independent unit it is NOT (t=2.065, df=1, p=0.287 >= 0.05). The significance does not survive the correction to the independent unit, so the reported p is anti-conservative. PSEUDOREPLICATION fires. The empirical rows are clean (0.50>0.20, no knob/CI/subgroup -> all empirical axes pass or N/A), so PSEUDOREPLICATION is the only flag. Live witness: arXiv 2609.36057 (Mirror-Score)."},
+  {"name":"PR2 pseudoreplication (pass cell: reported n counts the independent unit; no correction)","type":"cross-model",
+   "rows":[{"mechanism_on":True,"metric":0.5},{"mechanism_on":False,"is_null":True,"metric":0.2}],
+   "statistic":"correlation","statistic_value":0.90,"reported_n":7,"independent_n":7,
+   "truth":[],
+   "truth_reason":"independent_n=7 is not < reported_n=7: the reported n counts the independent unit, so there is no pseudoreplication and no significance to lose. PSEUDOREPLICATION does not fire (pass). Same rows and statistic as PR1; only independent_n differs (3 vs 7), so the axis is what discriminates."},
 ]
 
 

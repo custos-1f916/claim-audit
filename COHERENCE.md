@@ -1,4 +1,4 @@
-# Coherence of the 64-axis instrument (2026-10-01)
+# Coherence of the 65-axis instrument (2026-10-03)
 
 Question (from the saturation-collapse reconciliation): does the claim-audit
 instrument stay coherent as it grows to 62 axes, or do axes start to overlap?
@@ -38,16 +38,16 @@ does it fire on any specimen where *no other flag fires*? A flag with at
 least one exclusive specimen contributes a label no other axis produces
 there; that axis is not a re-label of another axis's firing.
 
-Result on the 215 battery: 50 of 68 flags have >= 1 exclusive
+Result on the 216 battery: 51 of 69 flags have >= 1 exclusive
 specimen. The newest axes each qualify: UNIT-COUNT, SCOPE-FLATTENING,
 COVERAGE-GAP, JUDGE-AS-TARGET, CRITERION-THRESHOLD, TAUTOLOGICAL-BLEND,
-TRUST, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS, COUPLED-HEADLINES, HELD-OUT-PROVENANCE, SELECTION-PROVENANCE, and WITNESS-RESIDENCE each fire on at least one exclusive specimen (no other flag
+TRUST, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS, COUPLED-HEADLINES, HELD-OUT-PROVENANCE, SELECTION-PROVENANCE, WITNESS-RESIDENCE, STRUCTURAL-PRIMING, REFERENT-SELF-KEYED, GATE-ON-REALIZATION, and PSEUDOREPLICATION each fire on at least one exclusive specimen (no other flag
 fires there). OPT-IN-CENSUS (the 51st) has no exclusive specimen -- it
 co-fires with NO-EMPIRICAL-CONTENT in the no-rows regime -- but it is not
 a re-label: the identical-set test (no two flags share a firing set)
 covers it, and its fire cell is the only place the self-selected-denominator
 collapse is named. Exclusivity is computed
-on the 68 distinct *flags* the instrument emits, not the 64 checks: 7 checks emit a differently-named
+on the 69 distinct *flags* the instrument emits, not the 65 checks: 7 checks emit a differently-named
 flag (BEATS-NULL -> NULL-REACHES-HEADLINE, CO-MOVES -> WRONG-AXIS,
 COMPUTABLE -> NOT-COMPUTABLE, ISOLATED -> CONFOUNDED, NOISE-FLOOR ->
 WITHIN-NOISE, NOT-SELF-KEYED -> SELF-KEYED, REFERENT-WITNESSED ->
@@ -98,11 +98,11 @@ calibration's discriminating cells, not new ground truth.
 
 ## Verdict
 
-The 64-axis instrument is coherent. No flag is redundant (no two share a
+The 65-axis instrument is coherent. No flag is redundant (no two share a
 firing set), no axis is a weight-0 label, the subset structure is the
 designed refinement hierarchy, and the per-axis exclusivity test — now
 derived rather than hand-listed — shows the newest axes (OPT-IN-CENSUS, UNIT-COUNT, SCOPE-FLATTENING,
-COVERAGE-GAP, THESIS-OUTRUNS-EVIDENCE, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS, COUPLED-HEADLINES, HELD-OUT-PROVENANCE, SELECTION-PROVENANCE, WITNESS-RESIDENCE, STRUCTURAL-PRIMING, GATE-ON-REALIZATION) each add a genuinely new discriminating dimension. The growth from 33 to 64 axes is not
+COVERAGE-GAP, THESIS-OUTRUNS-EVIDENCE, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS, COUPLED-HEADLINES, HELD-OUT-PROVENANCE, SELECTION-PROVENANCE, WITNESS-RESIDENCE, STRUCTURAL-PRIMING, REFERENT-SELF-KEYED, GATE-ON-REALIZATION, and PSEUDOREPLICATION) each add a genuinely new discriminating dimension. The growth from 33 to 65 axes is not
 re-expanding
 the 59-family saturation collapse: those were the certification-gap
 family's self-labeled axes; the claim-audit axes carry 4-cell
@@ -880,3 +880,25 @@ weight-0 label, the subset structure is the designed refinement hierarchy,
 and every axis still carries an exclusive or identically-covered specimen.
 The 51->61 axis growth remains a set of weight-1 instruments, not a re-
 expansion of the 59-family saturation collapse.
+
+Re-derived fresh (battery 216, 69 flags):
+
+- IDENTICAL firing sets: none (0 -> 0). No new redundancy.
+- Subset pairs: 17 -> 17. The designed refinement hierarchy is unchanged.
+- Exclusive-specimen flags: 50 -> 51. PSEUDOREPLICATION (the 65th) gained
+  its exclusive witness (the Mirror-Score specimen, arXiv 2609.36057).
+- truly_never: [] -> []. Nothing newly dead.
+- The count move: PSEUDOREPLICATION added (64 -> 65 axes, 68 -> 69 flags),
+  the unit-of-analysis / denominator-unit channel. A reported p-value's n
+  must count the INDEPENDENT unit of the design, not a finer non-independent
+  sub-unit; when it counts nested sub-units (7 structures from 3 chemotypes),
+  the reported p is anti-conservative and the significance can flip at the
+  independent unit. Live witness: arXiv 2609.36057 (Mirror-Score), where the
+  headline pLDDT structure-level LOO Spearman rho=0.90 (p=0.006) is
+  arithmetically correct at n=7 but not significant at the independent n=3
+  (p=0.287) -- the significance does not survive the correction.
+
+The coherence verdict is unchanged at 216 specimens: no flag redundant, no
+weight-0 label, the subset structure is the designed refinement hierarchy,
+and every axis still carries an exclusive or identically-covered specimen.
+The 64->65 axis growth is a weight-1 instrument, not a re-label.

@@ -1,8 +1,8 @@
 # claim-audit
 
-A 64-axis falsification instrument for empirical claims in ML/AI papers
+A 65-axis falsification instrument for empirical claims in ML/AI papers
 (and other headline claims with data). Given a claim's raw numbers as a
-spec, it checks the claim against 64 axes (self-keyed, wrong-axis,
+spec, it checks the claim against 65 axes (self-keyed, wrong-axis,
 selection-bias, confounded, within-noise, lossy-projection,
 aggregation-reversal, referent-witnessed, temporal/dose/outcome/subgroup
 onset-and-spike, funnel-stage-misattribution, selection-on-narrative,
@@ -89,7 +89,7 @@ battery from this copy of the code.
 
 ## Files
 
-  claim_audit.py   the instrument (64 checks + CLI), stdlib only
+  claim_audit.py   the instrument (65 checks + CLI), stdlib only
   calibration.py   the 132-specimen discriminating calibration
   calibration_boundary.py  the self-calibration probe (per-check mutation)
   calibration_confound.py  the RED-baseline confound (dead check reads CALIBRATED)
@@ -739,12 +739,12 @@ python3 calibration_boundary.py
 
 The battery being GREEN is not the same as the battery being COMPLETE.
 This probe answers the self-keyed question applied to the instrument's own
-calibration: for each of the 64 checks, blind it (force always-pass) and
+calibration: for each of the 65 checks, blind it (force always-pass) and
 re-run the battery. If the battery stays GREEN, no specimen's
 independently-derived ground truth requires that check to fire, so the check
 could silently break and `calibration.py` would still print DISCRIMINATES.
 
-Current state (2026-10-02): 64/64 checks are calibrated (each caught by
+Current state (2026-10-02): 65/65 checks are calibrated (each caught by
 at least one discriminating specimen — BEATS-NULL by 9, its
 false-positive surface being the spike family plus F2; NOT-SELF-KEYED /
 SCOPE-OF-INDEPENDENCE / EVIDENCE-UNCLOSED / SOURCE-REPLICATION by 2 each;
@@ -960,7 +960,7 @@ declared, 4 overlap both).
 python3 cofiring.py
 ```
 
-Growth to 64 axes raises the question: do axes start to overlap? `cofiring.py`
+Growth to 65 axes raises the question: do axes start to overlap? `cofiring.py`
 computes the co-firing matrix over the 215-specimen battery: per-axis firing
 counts, identical firing sets (pure redundancy), strict-subset sets (the
 designed refinement hierarchy), and co-firing pairs. Current state
@@ -972,9 +972,9 @@ OPT-IN-CENSUS, THESIS-OUTRUNS-EVIDENCE, CERTIFIER-UNNAMED, CAUSAL-WIRING, DECLAR
 axis fires, except OPT-IN-CENSUS which co-fires with NO-EMPIRICAL-CONTENT (its
 designed refinement parent; THESIS-OUTRUNS-EVIDENCE likewise co-fires with
 NO-EMPIRICAL-CONTENT in its no-rows regime cell; CERTIFIER-UNNAMED co-fires with REFERENT-CONSTRUCTED on corner B, the model-constructed-referent cell — CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, and WITNESS-ADDRESS are fully exclusive) (per-axis exclusivity, derived
-from the firing sets rather than hand-listed); 50 of 68 flags have >= 1 exclusive specimen; all 64 checks now fire on the battery — the two
+from the firing sets rather than hand-listed); 51 of 69 flags have >= 1 exclusive specimen; all 65 checks now fire on the battery — the two
 former never-firing checks (TEMPORAL-ONSET, REFERENCE-MIX) gained constructed
-witnesses, PLATFORM-CERTIFIED gained a constructed witness (PC1; its live specimen, the seal-ack-floor, co-fires with NO-EMPIRICAL-CONTENT), and REFERENT-SELF-KEYED (the 63rd) gained a battery witness (RSK1) for exclusivity, and GATE-ON-REALIZATION (the 64th) gained a battery witness (GOR1) for exclusivity, so `truly_never` is empty. Full report: `COHERENCE.md`.
+witnesses, PLATFORM-CERTIFIED gained a constructed witness (PC1; its live specimen, the seal-ack-floor, co-fires with NO-EMPIRICAL-CONTENT), and REFERENT-SELF-KEYED (the 63rd) gained a battery witness (RSK1) for exclusivity, and GATE-ON-REALIZATION (the 64th) gained a battery witness (GOR1) for exclusivity, and PSEUDOREPLICATION (the 65th) gained a battery witness (PR1) for exclusivity, so `truly_never` is empty. Full report: `COHERENCE.md`.
 
 ## The meta-record guard (axis / check / flag count reconciliation)
 
