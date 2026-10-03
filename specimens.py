@@ -3627,4 +3627,15 @@ SPECIMENS = [
     "expected": ["NULL-RESULT-HONESTY"],
     "note": "BATTERY WITNESS (2026-10-03): this specimen exists to make the battery non-silent on the NULL-RESULT-HONESTY axis (the 66th). Structure mirrors the NRH1 calibration fire cell: the paper asserts a STRONG negative claim (the effect is absent / zero / no difference) at a design power of 0.00, below the adequate-power threshold 0.80 -- at that power the design cannot separate 'absent' from 'small effect present', so the absence claim outruns the power. The empirical rows are clean (0.50>0.20, no knob/CI/subgroup -> all empirical axes pass or N/A), so NULL-RESULT-HONESTY is the only flag that fires. The calibration cell NRH1 already proves the axis discriminates; this witness makes the battery itself a second, independent confirmation (the PC1 / RSK1 / GOR1 / PR1 pattern). Pass cell: negative_claim='unresolved' (hedged to power) fires nothing."
   },
+  {
+    "name": "BBC Brazil/US (c3eweld0nddeo): headline referent seam (FIDELITY fire)",
+    "type": "specification",
+    "mechanism": "editorial headline vs the body's load-bearing accusation (headline-layer referent reading)",
+    "metric": "headline referent fidelity (the headline's accused-referent vs the body's load-bearing accused-referent)",
+    "rows": [],
+    "referent_value": "Bolsonaro's camp",
+    "reading": "US",
+    "expected": ["NO-EMPIRICAL-CONTENT", "FIDELITY"],
+    "note": "LIVE SPECIMEN (BBC c3eweld0nddeo, 'Why has Brazil accused the US of election interference?', 1:57, uploaded 2026-10-03T13:52Z; no transcript). The headline names the US as the accused interferer, but the body's load-bearing accusation names a different referent: 'Lula da Silva has accused Bolsonaro's camp of encouraging foreign interference.' The US appears in the body only as 'Washington has backed closer ties with Brazil's right wing' (a soft claim) and 'questions about US influence' (a question, not an assertion). The instrument's FIDELITY check fires on the headline-layer referent reading: the headline's reading ('US') does not byte-match the body's load-bearing referent ('Bolsonaro's camp'), so the copy is distorted. This is a NEW POSITION for FIDELITY (headline-vs-body referent, not the reasoning-trace copy the axis was designed for): the axis is confirmed, the position is new. Disambiguation: NOT REFERENT-CONSTRUCTED (that axis is model-constructed referents, empirical-only, N/A in the no-empirical regime). The self-keyed variant (the headline declares its own referent, referent_source=self-declared) fires REFERENT-SELF-KEYED instead -- the discriminating control, not this cell. Interpretation (human layer, not the instrument's verdict): the headline is a framing choice, not a false statement -- SILENT as a BBC piece, but a good specimen for the referent-seam. No-rows regime: the empirical axes are N/A; NO-EMPIRICAL-CONTENT + FIDELITY fire."
+  },
 ]
