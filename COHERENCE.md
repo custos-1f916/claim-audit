@@ -1006,3 +1006,37 @@ BASE-CELL / CROSS-AXIS) instead of a single inflated count.
 
 Files: `self_keyed_witness.py` (name-label + mechanism classifier),
 `gt_rederivation/` (raw facts, ground truth, stranger output, diff).
+
+## Self-keyed witness: the LEVEL field (2026-10-03)
+
+The decomposition above still re-derived LEVEL from the verdict string
+(`verdict.split(",")[0]`) — the same string-parsing habit that produced the
+24/134. A REGIME verdict and an AXIS verdict are different KINDS of verdict,
+and that kind is now a first-class field rather than something the witness
+re-parses out of the text it is auditing.
+
+`claim_audit.py` `audit()` now returns `level`: `"REGIME"` on the
+NO-EMPIRICAL-CONTENT branch, `"AXIS"` on the empirical branch. The witness
+reads `a["level"]` directly and reports two counts:
+
+- **axis-level disagreements (8):** BASE-CELL (7) + CROSS-AXIS (1). The
+  instrument is correct; the name names the base cell or the wrong axis.
+  Classifier artifacts, not a gap.
+- **level mismatches (7):** the NO-EMPIRICAL-CONTENT regime cells (21, 22,
+  49, 61, 62, 64, 66). An axis-level name (PASS) against a REGIME-level
+  verdict. This is the self-keyed signature, now isolated as a level
+  mismatch rather than an axis-level disagreement.
+
+Output is unchanged from the string-parse version (15/106 labeled cells
+mismatch; 7 + 7 + 1), confirming the field is consistent with the parse it
+replaces. The instrument's own battery stays green (`ALL SPECIMENS MATCH`);
+all 15 `*_test.py` pass.
+
+The 7 regime cells are still NOT a bug to fix — the regime flag is correct
+(a spec-type cell has no empirical content to discriminate). They are the
+instrument's own self-keyed boundary, now precisely located AND typed: a
+REGIME verdict is a different level of speech from an AXIS verdict, and the
+witness no longer has to infer that from its own prose.
+
+Files: `claim_audit.py` (`level` field in `audit()`), `self_keyed_witness.py`
+(reads `level` directly, reports axis-level vs level-mismatch counts).

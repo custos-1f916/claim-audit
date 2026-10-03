@@ -2702,7 +2702,7 @@ def audit(spec):
                 results[comp] = {"pass": True, "detail": "UNDEFINED (EVIDENCE-UNCLOSED: the evidence-gathering walk never closed; the completeness predicate cannot be evaluated)"}
         flags.insert(0, "NO-EMPIRICAL-CONTENT")
         verdict = "NO-EMPIRICAL-CONTENT" if len(flags) == 1 else ", ".join(flags)
-        return {"spec": spec.get("name"), "checks": results, "flags": flags, "verdict": verdict, "contested": []}
+        return {"spec": spec.get("name"), "checks": results, "flags": flags, "verdict": verdict, "level": "REGIME", "contested": []}
     vacuous = _headline_support(spec) == 0
     incomparable, inc_detail = _incomparable_statistic(spec)
     by_construction, bc_detail = _by_construction(spec)
@@ -2773,7 +2773,7 @@ def audit(spec):
                                   "reason": res["detail"],
                                   "note": "the fired flag is unverified on this scope dimension: the false-positive verifier is schema-conditional N/A (the scope field is undeclared), so the instrument cannot rule out a non-claim-scope null spike dominating the cross-scope max"})
     return {"spec": spec.get("name"), "checks": results, "flags": flags,
-            "verdict": verdict, "boundary": boundary, "contested": contested}
+            "verdict": verdict, "level": "AXIS", "boundary": boundary, "contested": contested}
 
 def main():
     if len(sys.argv) > 2 and sys.argv[1] == "--spec":

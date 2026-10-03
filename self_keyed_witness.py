@@ -14,21 +14,30 @@ mentions sibling fire cells ("byte-identical to the fire cell except ...")
 and negations ("so nothing fires"); a naive `fires` regex catches those and
 inflates the count. The name is the cell's own primary-axis conclusion.
 
-DECOMPOSITION: a name->PASS / verdict->flawed mismatch is NOT uniformly
-self-keyed. It decomposes by mechanism:
-  - REGIME-VS-AXIS: the verdict is a regime flag (NO-EMPIRICAL-CONTENT)
-    inserted unconditionally (claim_audit.py:2703) for spec-type cells, but
-    the name is an axis-level conclusion ("pass cell" / "N/A mirror"). The
-    instrument's verdict is decoupled from the axis-level conclusion: the
-    genuine self-keyed signature.
-  - BASE-CELL: the name's "pass cell" describes the BASE flat-check cell
-    (BEATS-NULL-PASS); the verdict is a scoped refinement (TEMPORAL-ONSET,
-    OUTCOME-ONSET, ...) that "can only flag in the BEATS-NULL-PASS cell"
-    (claim_audit.py:17). The instrument is correct; the name describes the
-    base cell, not the refinement's conclusion.
-  - CROSS-AXIS: the name is about one axis (FIDELITY silent); the verdict is
-    a different axis (SCOPE-OF-INDEPENDENCE). The instrument is correct; the
-    name names the wrong axis.
+LEVEL: the instrument's verdict carries a first-class `level` field
+(claim_audit.py, audit()). A REGIME verdict (NO-EMPIRICAL-CONTENT) is a
+different KIND of verdict from an AXIS verdict: it says the empirical axes
+do not apply to this spec-type cell, not that a specific axis fires or
+passes. Comparing an axis-level name (PASS/FIRE) against a REGIME-level
+verdict is therefore a LEVEL mismatch, not an axis-level disagreement. The
+witness reads `level` directly instead of string-parsing the verdict --
+the string parse was the last self-keyed artifact in the witness (a regex
+catching 'fires' in its own sibling-cell prose).
+
+DECOMPOSITION: a name->PASS / verdict->flawed mismatch decomposes by
+mechanism:
+  - REGIME-VS-AXIS (level == REGIME): the verdict is a regime flag, the name
+    is an axis-level conclusion. Different levels. The genuine self-keyed
+    signature -- precisely located, one direction (name->PASS), zero reverse.
+  - BASE-CELL (level == AXIS, scoped refinement fired): the name's "pass
+    cell" describes the BASE flat-check cell (BEATS-NULL-PASS); the verdict
+    is a scoped refinement (TEMPORAL-ONSET, OUTCOME-ONSET, ...) that "can
+    only flag in the BEATS-NULL-PASS cell". Same level; the instrument is
+    correct; the name describes the base cell, not the refinement's
+    conclusion.
+  - CROSS-AXIS (level == AXIS, non-scoped flag): the name is about one axis
+    (FIDELITY silent); the verdict is a different axis. Same level; the
+    instrument is correct; the name names the wrong axis.
 
 This is a witness test: it checks whether the certifier's own conclusion
 matches the certifier's own verdict. It does NOT check whether the verdict is
@@ -48,17 +57,19 @@ def name_label(name):
         return "PASS"
     return "?"
 
-REGIME = {"NO-EMPIRICAL-CONTENT"}
 SCOPED = {"TEMPORAL-ONSET","OUTCOME-ONSET","SUBGROUP-ONSET","DOSE-ONSET",
           "TIER-ONSET","SPLIT-ONSET","METRIC-ONSET","DOSE-RESPONSE",
           "TEMPORAL-SPIKE","OUTCOME-SPIKE","SUBGROUP-SPIKE","DOSE-SPIKE",
           "TIER-SPIKE","SPLIT-SPIKE","METRIC-SPIKE"}
 
-def classify_mismatch(name, verdict):
-    """Classify a name->PASS / verdict->flawed mismatch by mechanism."""
-    v = verdict.split(",")[0].strip()
-    if v in REGIME:
+def classify_mismatch(name, verdict, level):
+    """Classify a name->PASS / verdict->flawed mismatch by mechanism.
+
+    LEVEL is read from the instrument's first-class field, not string-parsed.
+    """
+    if level == "REGIME":
         return "REGIME-VS-AXIS"
+    v = verdict.split(",")[0].strip()
     if v in SCOPED:
         return "BASE-CELL"
     return "CROSS-AXIS"
@@ -75,26 +86,33 @@ def main():
     for cid in sorted(truth):
         r = truth[cid]
         L = name_label(r.get("name", ""))
-        verdict = CA.audit(raw[cid])["verdict"]
+        a = CA.audit(raw[cid])
+        verdict = a["verdict"]
+        level = a["level"]
         flawed = verdict != "DISCRIMINATES"
         c[(L, flawed)] += 1
         if L == "PASS" and flawed:
-            mech = classify_mismatch(r.get("name",""), verdict)
-            mismatches.append((cid, mech, verdict.split(",")[0].strip(), r.get("name","")))
+            mech = classify_mismatch(r.get("name",""), verdict, level)
+            mismatches.append((cid, mech, level, verdict.split(",")[0].strip(), r.get("name","")))
         elif L == "FIRE" and not flawed:
-            mismatches.append((cid, "FIRE->robust", verdict, r.get("name","")))
+            mismatches.append((cid, "FIRE->robust", level, verdict, r.get("name","")))
 
     labeled = sum(n for (L, _), n in c.items() if L != "?")
-    print(f"Self-keyed witness (name-label + mechanism): {len(mismatches)}/{labeled} labeled cells mismatch")
+    print(f"Self-keyed witness (name-label + level + mechanism): {len(mismatches)}/{labeled} labeled cells mismatch")
     for (L, fl), n in sorted(c.items()):
         print(f"  {L:5s} flawed={str(fl):5s} {n}")
     print(f"  (real-paper cells with no constructed label: {c[('?', True)] + c[('?', False)]})")
     print("\nMismatches by mechanism:")
-    mc = Counter(m for _, m, _, _ in mismatches)
+    mc = Counter(m for _, m, _, _, _ in mismatches)
     for m, n in mc.most_common():
         print(f"  {m:16s} {n}")
-    for cid, mech, v, name in mismatches:
-        print(f"  [{cid:3d}] {mech:16s} {v:24s} {name[:44]}")
+    axis_level = sum(n for m, n in mc.items() if m != "REGIME-VS-AXIS")
+    regime_level = mc.get("REGIME-VS-AXIS", 0)
+    print(f"\n  axis-level disagreements (BASE-CELL + CROSS-AXIS + FIRE->robust): {axis_level}")
+    print(f"  level mismatches (axis-name vs REGIME-verdict, the self-keyed signature): {regime_level}")
+    print("\nCells:")
+    for cid, mech, level, v, name in mismatches:
+        print(f"  [{cid:3d}] {mech:16s} level={level:6s} {v:24s} {name[:40]}")
 
 if __name__ == "__main__":
     main()
