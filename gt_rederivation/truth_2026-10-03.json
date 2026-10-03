@@ -1,0 +1,1105 @@
+[
+ {
+  "id": 0,
+  "name": "R1 clean-ablation",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "0.22>0.05 (real beat); null removes only {cm} (the lever) -> isolated, honest, resolved."
+ },
+ {
+  "id": 1,
+  "name": "R2 ci-resolved",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "0.40>0.20 (point beat); 95% CI [0.35,0.45] excludes 0.20 (0.20<0.35) -> resolved."
+ },
+ {
+  "id": 2,
+  "name": "R3 own-axis-beat",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "headline 0.60>0.40 AND own-axis 0.30>0.10 -> beats null on both the headline and its own axis."
+ },
+ {
+  "id": 3,
+  "name": "F1 self-keyed",
+  "truth": [
+   "SELF-KEYED"
+  ],
+  "robust": false,
+  "truth_reason": "metric (0.50,0.60,0.80) strictly monotone in the mechanism's own knob (0.90,0.95,0.99) -> reads the lever it measures."
+ },
+ {
+  "id": 4,
+  "name": "F2 null-reaches-headline",
+  "truth": [
+   "NULL-REACHES-HEADLINE"
+  ],
+  "robust": false,
+  "truth_reason": "null 0.30 > mechanism 0.10 -> the metric cannot tell mechanism from null."
+ },
+ {
+  "id": 5,
+  "name": "F3 confounded-ablation",
+  "truth": [
+   "CONFOUNDED"
+  ],
+  "robust": false,
+  "truth_reason": "null removes {cm,bus,shared}, more than the lever {cm} -> turning off cm also drops bus+shared; never isolates the lever."
+ },
+ {
+  "id": 6,
+  "name": "F4 wrong-axis",
+  "truth": [
+   "WRONG-AXIS"
+  ],
+  "robust": false,
+  "truth_reason": "headline 0.90>0.70 but the mechanism's own axis (0.00) sits at the null baseline (0.00) -> decoupled from the mechanism-relevant axis."
+ },
+ {
+  "id": 7,
+  "name": "F5 within-noise",
+  "truth": [
+   "WITHIN-NOISE"
+  ],
+  "robust": false,
+  "truth_reason": "point beat 0.40>0.35 but 95% CI [0.30,0.50] includes the null 0.35 (0.35>=0.30) -> gap within the noise floor."
+ },
+ {
+  "id": 8,
+  "name": "F6 consequence-witnessed",
+  "truth": [
+   "CONSEQUENCE-WITNESSED"
+  ],
+  "robust": false,
+  "truth_reason": "witness observes only {runtime timing, output quality} (downstream consequences), never the referent 'the cache is correct' -> self-sealing."
+ },
+ {
+  "id": 9,
+  "name": "F7 lossy-projection",
+  "truth": [
+   "LOSSY-PROJECTION"
+  ],
+  "robust": false,
+  "truth_reason": "record 'L' maps to two distinct referent values {1.0, 0.0} -> the referent is non-identifiable from the record."
+ },
+ {
+  "id": 10,
+  "name": "F8 selection-bias",
+  "truth": [
+   "SELECTION-BIAS"
+  ],
+  "robust": false,
+  "truth_reason": "headline 2.75 is the max of independent draws {2.10,2.30,2.75} of a FIXED instrument (knob 0.90 constant) -> max-of-K selection, not a mechanism effect."
+ },
+ {
+  "id": 11,
+  "name": "U1 unwitnessed-receipt (fail cell)",
+  "truth": [
+   "UNWITNESSED-RECEIPT"
+  ],
+  "robust": false,
+  "truth_reason": "the empirical claim is clean (0.50>0.40, no knob/CI/subgroup -> all empirical axes pass or N/A). The receipt is WRITTEN and DISAGREES with the promise (the failure signal is present), but the witness is asleep and there is no self-escalation -> the failure is silent. UNWITNESSED-RECEIPT fires; the empirical axes do not."
+ },
+ {
+  "id": 12,
+  "name": "U2 unwitnessed-receipt (pass cell: caught)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "identical claim, identical receipt disagreement, but the witness is AWAKE -> the failure is read and caught. UNWITNESSED-RECEIPT does NOT fire: the silence is the failure, not the disagreement. Same data as U1; only the witness state differs, so the axis is what discriminates."
+ },
+ {
+  "id": 13,
+  "name": "U3 unwitnessed-receipt (mirror: signal absent)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "no receipt is written at all -> the failure signal is ABSENT, not unread. This is the MEASUREMENT-ABSENT regime (signal absent -> claim unfalsifiable), NOT UNWITNESSED-RECEIPT (which requires the signal to be PRESENT but UNREAD). UNWITNESSED-RECEIPT does NOT fire."
+ },
+ {
+  "id": 14,
+  "name": "R1 unwitnessed-root (fail cell)",
+  "truth": [
+   "UNWITNESSED-ROOT"
+  ],
+  "robust": false,
+  "truth_reason": "the empirical claim is clean (0.50>0.40, no knob/CI/subgroup -> all empirical axes pass or N/A). The manifest is a diff presented as a recoverable receipt, but its root (the pre-set hash) was written and UNWITNESSED at write time -> the recovery chain terminates at an unwitnessed root. UNWITNESSED-ROOT fires; the empirical axes do not."
+ },
+ {
+  "id": 15,
+  "name": "R2 unwitnessed-root (pass cell: witnessed root)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "identical manifest to R1, but the root was WITNESSED at write time -> the recovery chain terminates at a witnessed root; no gap. UNWITNESSED-ROOT does NOT fire. Same manifest, only root_witnessed differs, so the axis is what discriminates."
+ },
+ {
+  "id": 16,
+  "name": "R3 unwitnessed-root (mirror: root absent)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "the root hash is not written at all -> the recovery chain is broken at the first link (MEASUREMENT-ABSENT regime), not unwitnessed. UNWITNESSED-ROOT does NOT fire."
+ },
+ {
+  "id": 17,
+  "name": "S1 source-misattribution (fire: credited != load-bearing)",
+  "truth": [
+   "SOURCE-MISATTRIBUTION"
+  ],
+  "robust": false,
+  "truth_reason": "the empirical claim is clean (0.22>0.05, no knob/CI/subgroup -> all empirical axes pass or N/A). The headline credits FORM as the source of the effect, but the load-bearing variable is CONTENT (a different component) -> the source attribution does not match the load-bearing variable. SOURCE-MISATTRIBUTION fires; the empirical axes do not."
+ },
+ {
+  "id": 18,
+  "name": "S2 source-misattribution (pass cell: credited == load-bearing)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "identical claim, identical empirical rows, but the headline credits CONTENT as the source (the load-bearing variable) -> the source attribution matches the load-bearing variable. SOURCE-MISATTRIBUTION does NOT fire. Same data as S1; only the source_attribution differs, so the axis is what discriminates."
+ },
+ {
+  "id": 19,
+  "name": "S3 source-misattribution (mirror: load_bearing absent)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "the headline credits 'form' as the source, but the load-bearing variable is not declared (schema-boundary) -> SOURCE-MISATTRIBUTION does NOT fire (N/A). The empirical claim is clean, so no other flags fire either."
+ },
+ {
+  "id": 20,
+  "name": "W1 wider-than-named (fire: disjunction referent)",
+  "truth": [
+   "NO-EMPIRICAL-CONTENT",
+   "WIDER-THAN-NAMED"
+  ],
+  "robust": false,
+  "truth_reason": "the named referent 'ASI' is a statutory DISJUNCTION of two unmeasurable horns (cross-domain performance OR counterfactual destruction-capacity); the one measurable number (10^25 ops) is demoted to a bright-line screen gating the Sec 8 pause, not the Sec 9 prohibition. The load-bearing referent is wider than the named number -> WIDER-THAN-NAMED fires; the empirical axes are N/A (no data rows)."
+ },
+ {
+  "id": 21,
+  "name": "W2 wider-than-named (pass cell: absolute referent)",
+  "truth": [
+   "NO-EMPIRICAL-CONTENT"
+  ],
+  "robust": false,
+  "truth_reason": "the named referent IS the measurable number (the class is defined by the number alone, an absolute threshold): no wider-than-named gap. WIDER-THAN-NAMED does not fire. Same regime as W1 (no data rows); only referent_structure and number_role differ, so the referent structure is what discriminates."
+ },
+ {
+  "id": 22,
+  "name": "W3 wider-than-named (mirror: referent_structure absent)",
+  "truth": [
+   "NO-EMPIRICAL-CONTENT"
+  ],
+  "robust": false,
+  "truth_reason": "the load-bearing referent structure is not declared (schema-boundary): the instrument cannot tell whether the referent is wider than the named number. WIDER-THAN-NAMED does not fire (N/A). Same number_role as W1; only referent_structure is absent, so the axis is what discriminates."
+ },
+ {
+  "id": 23,
+  "name": "T1 temporal-onset (pass cell: no beat at claim temporal, peak elsewhere)",
+  "truth": [
+   "TEMPORAL-ONSET"
+  ],
+  "robust": false,
+  "truth_reason": "at the claim temporal (T0) the mechanism is 0.10 <= null 0.20 (no beat at the claimed temporal), but at the non-claim temporal (T1) the mechanism is 0.50 > null 0.10 (a real peak); the flat check pools the cross-temporal max (max-mech 0.50 > max-null 0.20) and passes, so it is silent on the false 'temporal-scoped' claim -> TEMPORAL-ONSET."
+ },
+ {
+  "id": 24,
+  "name": "O1 outcome-onset (pass cell: no beat at claim outcome, peak elsewhere)",
+  "truth": [
+   "OUTCOME-ONSET"
+  ],
+  "robust": false,
+  "truth_reason": "at the claim outcome (win) the mechanism is 0.10 <= null 0.20 (no beat at the claimed outcome), but at the non-claim outcome (loss) the mechanism is 0.50 > null 0.10 (a real peak); the flat check pools the cross-outcome max (max-mech 0.50 > max-null 0.20) and passes, so it is silent on the false 'outcome-scoped' claim -> OUTCOME-ONSET."
+ },
+ {
+  "id": 25,
+  "name": "S1 subgroup-onset (pass cell: no beat at claim subgroup, peak elsewhere)",
+  "truth": [
+   "SUBGROUP-ONSET"
+  ],
+  "robust": false,
+  "truth_reason": "at the claim subgroup (young) the mechanism is 0.10 <= null 0.20 (no beat at the claimed subgroup), but at the non-claim subgroup (old) the mechanism is 0.50 > null 0.10 (a real peak); the flat check pools the cross-subgroup max (max-mech 0.50 > max-null 0.20) and passes, so it is silent on the false 'subgroup-scoped' claim -> SUBGROUP-ONSET."
+ },
+ {
+  "id": 26,
+  "name": "D1 dose-onset (pass cell: no beat at claim dose, peak elsewhere)",
+  "truth": [
+   "DOSE-ONSET"
+  ],
+  "robust": false,
+  "truth_reason": "at the claim dose (mild) the mechanism is 0.10 <= null 0.20 (no beat at the claimed dose), but at the non-claim dose (severe) the mechanism is 0.50 > null 0.10 (a real peak); the flat check pools the cross-dose max (max-mech 0.50 > max-null 0.20) and passes, so it is silent on the false 'dose-scoped' claim -> DOSE-ONSET."
+ },
+ {
+  "id": 27,
+  "name": "T1 tier-onset (pass cell: no beat at claim tier, peak elsewhere)",
+  "truth": [
+   "TIER-ONSET"
+  ],
+  "robust": false,
+  "truth_reason": "at the claim tier (T1) the mechanism is 0.10 <= null 0.20 (no beat at the claimed tier), but at the non-claim tier (T2) the mechanism is 0.50 > null 0.10 (a real peak); the flat check pools the cross-tier max (max-mech 0.50 > max-null 0.20) and passes, so it is silent on the false 'tier-scoped' claim -> TIER-ONSET."
+ },
+ {
+  "id": 28,
+  "name": "S1 split-onset (pass cell: no beat at claim split, peak elsewhere)",
+  "truth": [
+   "SPLIT-ONSET"
+  ],
+  "robust": false,
+  "truth_reason": "at the claim split (A) the mechanism is 0.10 <= null 0.20 (no beat at the claimed split), but at the non-claim split (B) the mechanism is 0.50 > null 0.10 (a real peak); the flat check pools the cross-split max (max-mech 0.50 > max-null 0.20) and passes, so it is silent on the false 'split-scoped' claim -> SPLIT-ONSET."
+ },
+ {
+  "id": 29,
+  "name": "M1 metric-onset (pass cell: no beat at claim metric, peak elsewhere)",
+  "truth": [
+   "METRIC-ONSET"
+  ],
+  "robust": false,
+  "truth_reason": "at the claim metric (acc) the mechanism is 0.10 <= null 0.20 (no beat at the claimed metric), but at the non-claim metric (f1) the mechanism is 0.50 > null 0.10 (a real peak); the flat check pools the cross-metric max (max-mech 0.50 > max-null 0.20) and passes, so it is silent on the false 'metric-scoped' claim -> METRIC-ONSET."
+ },
+ {
+  "id": 30,
+  "name": "T2 temporal-spike (fail cell: real beat at claim temporal, non-claim null spike)",
+  "truth": [
+   "NULL-REACHES-HEADLINE",
+   "TEMPORAL-SPIKE"
+  ],
+  "robust": false,
+  "truth_reason": "at the claim temporal (T0) the mechanism is 0.50 > null 0.10 (a real beat at the claimed temporal), but at the non-claim temporal (T1) the null is 0.60 (a spike); the cross-temporal max is max-null 0.60 >= max-mech 0.50, so the flat check fires NULL-REACHES-HEADLINE as a false positive (the real beat is at the claim temporal) -> TEMPORAL-SPIKE."
+ },
+ {
+  "id": 31,
+  "name": "O2 outcome-spike (fail cell: real beat at claim outcome, non-claim null spike)",
+  "truth": [
+   "NULL-REACHES-HEADLINE",
+   "OUTCOME-SPIKE"
+  ],
+  "robust": false,
+  "truth_reason": "at the claim outcome (win) the mechanism is 0.50 > null 0.10 (a real beat at the claimed outcome), but at the non-claim outcome (loss) the null is 0.60 (a spike); the cross-outcome max is max-null 0.60 >= max-mech 0.50, so the flat check fires NULL-REACHES-HEADLINE as a false positive (the real beat is at the claim outcome) -> OUTCOME-SPIKE."
+ },
+ {
+  "id": 32,
+  "name": "S2 subgroup-spike (fail cell: real beat at claim subgroup, non-claim null spike)",
+  "truth": [
+   "NULL-REACHES-HEADLINE",
+   "SUBGROUP-SPIKE"
+  ],
+  "robust": false,
+  "truth_reason": "at the claim subgroup (young) the mechanism is 0.50 > null 0.10 (a real beat at the claimed subgroup), but at the non-claim subgroup (old) the null is 0.60 (a spike); the cross-subgroup max is max-null 0.60 >= max-mech 0.50, so the flat check fires NULL-REACHES-HEADLINE as a false positive (the real beat is at the claim subgroup) -> SUBGROUP-SPIKE."
+ },
+ {
+  "id": 33,
+  "name": "D2 dose-spike (fail cell: real beat at claim dose, non-claim null spike)",
+  "truth": [
+   "NULL-REACHES-HEADLINE",
+   "DOSE-SPIKE"
+  ],
+  "robust": false,
+  "truth_reason": "at the claim dose (mild) the mechanism is 0.50 > null 0.10 (a real beat at the claimed dose), but at the non-claim dose (severe) the null is 0.60 (a spike); the cross-dose max is max-null 0.60 >= max-mech 0.50, so the flat check fires NULL-REACHES-HEADLINE as a false positive (the real beat is at the claim dose) -> DOSE-SPIKE."
+ },
+ {
+  "id": 34,
+  "name": "T2 tier-spike (fail cell: real beat at claim tier, non-claim null spike)",
+  "truth": [
+   "NULL-REACHES-HEADLINE",
+   "TIER-SPIKE"
+  ],
+  "robust": false,
+  "truth_reason": "at the claim tier (T1) the mechanism is 0.50 > null 0.10 (a real beat at the claimed tier), but at the non-claim tier (T2) the null is 0.60 (a spike); the cross-tier max is max-null 0.60 >= max-mech 0.50, so the flat check fires NULL-REACHES-HEADLINE as a false positive (the real beat is at the claim tier) -> TIER-SPIKE."
+ },
+ {
+  "id": 35,
+  "name": "S2 split-spike (fail cell: real beat at claim split, non-claim null spike)",
+  "truth": [
+   "NULL-REACHES-HEADLINE",
+   "SPLIT-SPIKE"
+  ],
+  "robust": false,
+  "truth_reason": "at the claim split (A) the mechanism is 0.50 > null 0.10 (a real beat at the claimed split), but at the non-claim split (B) the null is 0.60 (a spike); the cross-split max is max-null 0.60 >= max-mech 0.50, so the flat check fires NULL-REACHES-HEADLINE as a false positive (the real beat is at the claim split) -> SPLIT-SPIKE."
+ },
+ {
+  "id": 36,
+  "name": "M2 metric-spike (fail cell: real beat at claim metric, non-claim null spike)",
+  "truth": [
+   "NULL-REACHES-HEADLINE",
+   "METRIC-SPIKE"
+  ],
+  "robust": false,
+  "truth_reason": "at the claim metric (acc) the mechanism is 0.50 > null 0.10 (a real beat at the claimed metric), but at the non-claim metric (f1) the null is 0.60 (a spike); the cross-metric max is max-null 0.60 >= max-mech 0.50, so the flat check fires NULL-REACHES-HEADLINE as a false positive (the real beat is at the claim metric) -> METRIC-SPIKE."
+ },
+ {
+  "id": 37,
+  "name": "DR1 dose-response (fail cell: within-dose favorable, cross-dose tie at top)",
+  "truth": [
+   "NULL-REACHES-HEADLINE",
+   "DOSE-RESPONSE"
+  ],
+  "robust": false,
+  "truth_reason": "the mechanism is >= the null at every dose (mild 0.40>=0.30, severe 0.50>=0.50), so the claim is a true dose-response; but the cross-dose max ties at the top (max-null 0.50 == max-mech 0.50), so the flat check fires NULL-REACHES-HEADLINE as a false positive -> DOSE-RESPONSE."
+ },
+ {
+  "id": 38,
+  "name": "AR1 aggregation-reversal (fire: within-subgroup mechanism-wins, pooled null-wins)",
+  "truth": [
+   "AGGREGATION-REVERSAL"
+  ],
+  "robust": false,
+  "truth_reason": "within each subgroup the mechanism wins (A: 0.8>0.7, B: 0.3>0.2), but the n-weighted pooled comparison reverses it (pooled mechanism (0.8*10+0.3*100)/110=0.345 vs pooled null (0.7*100+0.2*10)/110=0.655): the aggregate is an artifact of the pooling weights, not the mechanism (Simpson's paradox)."
+ },
+ {
+  "id": 39,
+  "name": "AR2 aggregation-reversal (pass cell: pooled agrees with within-subgroup)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "within each subgroup the mechanism wins (A: 0.8>0.7, B: 0.6>0.5) and the n-weighted pooled comparison agrees (pooled mechanism 0.7 vs pooled null 0.6): no reversal, the aggregate is honest."
+ },
+ {
+  "id": 40,
+  "name": "RC1 referent-constructed (fire: model-constructed referent)",
+  "truth": [
+   "REFERENT-CONSTRUCTED"
+  ],
+  "robust": false,
+  "truth_reason": "the referent (root-cause groups) is a model-constructed artifact (assigned by the model's own clustering): the claim is measured against the model's own output, so a perfect reading is a self-sealing tautology. The empirical axes are clean (0.9>0.5, no knob/CI/subgroup)."
+ },
+ {
+  "id": 41,
+  "name": "RC2 referent-constructed (pass cell: external referent)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "the referent (human-annotated labels) is external (not model-constructed): the claim is not graded against the model's own output. REFERENT-CONSTRUCTED does not fire. Same data as RC1; only referent_provenance differs, so the provenance is what discriminates."
+ },
+ {
+  "id": 42,
+  "name": "F1 funnel-stage (fire: named stage not rarest)",
+  "truth": [
+   "FUNNEL-STAGE-MISATTRIBUTION"
+  ],
+  "robust": false,
+  "truth_reason": "the headline names parse (rate 0.95) as the bottleneck, but validate is rarer (rate 0.4 < 0.95): the real bottleneck is the validate stage, not the named one. The named stage is a MAJORITY (0.95>=0.5), so the 'rarely/low' qualifier is additionally contradicted. The empirical axes are clean (0.9>0.5)."
+ },
+ {
+  "id": 43,
+  "name": "F2 funnel-stage (pass cell: named stage is rarest)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "the headline names validate (rate 0.4) as the bottleneck, and validate IS the rarest stage (rate 0.4 = min): correct attribution. FUNNEL-STAGE-MISATTRIBUTION does not fire. Same funnel as F1; only headline_stage differs, so the stage attribution is what discriminates."
+ },
+ {
+  "id": 44,
+  "name": "SN1 selection-on-narrative (fire: null fails criterion)",
+  "truth": [
+   "SELECTION-ON-NARRATIVE"
+  ],
+  "robust": false,
+  "truth_reason": "the headline's subset (metric 0.8) satisfies the narrative criterion (>= 0.5), but the null row (metric 0.3) does NOT: the subset is narrative-conditional, and the data-layer instrument reads the rows, not the subset's provenance. The empirical axes are clean (0.8>0.3)."
+ },
+ {
+  "id": 45,
+  "name": "SN2 selection-on-narrative (pass cell: null satisfies criterion)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "the headline's subset (metric 0.8) satisfies the narrative criterion (>= 0.5) AND the null row (metric 0.6) also satisfies it: the subset is not narrative-conditional. SELECTION-ON-NARRATIVE does not fire. Same criterion as SN1; only the null metric differs, so the criterion satisfaction is what discriminates."
+ },
+ {
+  "id": 46,
+  "name": "AK1 annotator-self-keyed (fire: llm-judge-non-public)",
+  "truth": [
+   "ANNOTATOR-SELF-KEYED"
+  ],
+  "robust": false,
+  "truth_reason": "the mechanism explanation rests on a non-public LLM-judge annotation: the aggregate is stranger-rerunnable but the 'why' is not - a stranger cannot re-derive the annotation without the judge and the non-public trajectories. The empirical axes are clean (0.9>0.5)."
+ },
+ {
+  "id": 47,
+  "name": "AK2 annotator-self-keyed (pass cell: public human annotation)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "the 'why' rests on a public human annotation (not a non-public LLM-judge): a stranger can re-derive it. ANNOTATOR-SELF-KEYED does not fire. Same data as AK1; only annotation_provenance differs, so the provenance is what discriminates."
+ },
+ {
+  "id": 48,
+  "name": "C1 computable (fire: named metric not operationalized)",
+  "truth": [
+   "NO-EMPIRICAL-CONTENT",
+   "NOT-COMPUTABLE"
+  ],
+  "robust": false,
+  "truth_reason": "1 of 2 named metrics (latency) is not computable from the specified artifacts (only coverage is operationalized): the evaluation plan is incomplete. NO-EMPIRICAL-CONTENT (no data rows) + NOT-COMPUTABLE."
+ },
+ {
+  "id": 49,
+  "name": "C2 computable (pass cell: all metrics operationalized)",
+  "truth": [
+   "NO-EMPIRICAL-CONTENT"
+  ],
+  "robust": false,
+  "truth_reason": "both named metrics (coverage, latency) are operationalized (computable from specified artifacts): the evaluation plan is complete. NOT-COMPUTABLE does not fire. Same named_metrics as C1; only operationalized differs, so the operationalization is what discriminates."
+ },
+ {
+  "id": 50,
+  "name": "SI1 scope-of-independence (fire: load-bearing axis not in scope)",
+  "truth": [
+   "SCOPE-OF-INDEPENDENCE"
+  ],
+  "robust": false,
+  "truth_reason": "the 'independent' panel declares scope [protocol, data] but the load-bearing axis is implementation: the independence qualifier is under-specified on the axis that makes it do work (the panel may be in-distribution on implementation). The empirical axes are clean (0.9>0.5)."
+ },
+ {
+  "id": 51,
+  "name": "SI2 scope-of-independence (pass cell: load-bearing axis in scope)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "the 'independent' panel declares scope [protocol, data, implementation] and the load-bearing axis (implementation) is in scope: the independence qualifier is specified where it does work. SCOPE-OF-INDEPENDENCE does not fire. Same load-bearing axis as SI1; only the scope differs, so the scope coverage is what discriminates."
+ },
+ {
+  "id": 52,
+  "name": "RM1 reference-mix (fire: inflated relative to single-reference)",
+  "truth": [
+   "REFERENCE-MIX"
+  ],
+  "robust": false,
+  "truth_reason": "the composite trade-off pairing anchors quality to the abstract reference (0.5), giving a gain of 0.9-0.5=0.4, which is inflated relative to the single-reference reading (single 0.7, gain 0.9-0.7=0.2): the pairing does rhetorical work. The empirical axes are clean (0.9>0.5)."
+ },
+ {
+  "id": 53,
+  "name": "RM2 reference-mix (pass cell: conservative relative to single-reference)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "the composite trade-off pairing anchors quality to the abstract reference (0.7), giving a gain of 0.9-0.7=0.2, which is conservative relative to the single-reference reading (single 0.5, gain 0.9-0.5=0.4): presentation, not flaw. REFERENCE-MIX does not fire. Same structure as RM1; only the reference values differ, so the reference anchoring is what discriminates."
+ },
+ {
+  "id": 54,
+  "name": "SF1 self-falsifying (fire cell: limitation negates the headline's scope)",
+  "truth": [
+   "SELF-FALSIFYING"
+  ],
+  "robust": false,
+  "truth_reason": "the headline claims a universal result, but the paper's own stated limitation negates that universal scope; the data-layer checks read the rows (0.9>0.5, clean) and cannot see this seam. SELF-FALSIFYING fires."
+ },
+ {
+  "id": 55,
+  "name": "SF2 self-falsifying (pass cell: limitation-irrelevant-to-headline)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "the stated limitation negates a different dimension (sample-size), not the headline's scope (universal); limitation-irrelevant-to-headline, so SELF-FALSIFYING does not fire. Same rows as SF1; only limitation_negates differs, so the axis is what discriminates."
+ },
+ {
+  "id": 56,
+  "name": "SF3 self-falsifying (N/A mirror: limitation not declared)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "the stated limitation is not declared, so the axis cannot apply (schema boundary); SELF-FALSIFYING does not fire. Same rows as SF1; only limitation_negates is absent, so the axis is what discriminates."
+ },
+ {
+  "id": 57,
+  "name": "PBR1 primary-basis-reversal (2609.25873, live)",
+  "truth": [
+   "PRIMARY-BASIS-REVERSAL"
+  ],
+  "robust": false,
+  "truth_reason": "the paper designates wall-clock time as the primary basis for comparison, and the comparative advantage (mechanism 0.9 > null 0.5 on the success-rate axis) reverses on it (AgenticSizing slowest on every benchmark: full LDO 2h37m vs BO 1h18m; BGR 1h11m vs DE 392ms). The data-layer checks read the rows (0.9>0.5, mechanism beats null) and cannot see the seam; PRIMARY-BASIS-REVERSAL fires on the basis designation + the reversal."
+ },
+ {
+  "id": 58,
+  "name": "PBR2 holds-on-primary (pass cell)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "the claim holds on the designated primary basis (wall-clock time): holds-on-primary, so PRIMARY-BASIS-REVERSAL does not fire. Same rows and primary_basis as PBR1; only primary_basis_result differs, so the axis is what discriminates."
+ },
+ {
+  "id": 59,
+  "name": "PBR3 primary-basis-result absent (N/A mirror)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "the primary basis is declared but the result on it is not, so the axis cannot apply (schema boundary); PRIMARY-BASIS-REVERSAL does not fire. Same rows and primary_basis as PBR1; only primary_basis_result is absent, so the axis is what discriminates."
+ },
+ {
+  "id": 60,
+  "name": "WP1 window-present-tense (fire cell: act added during the window)",
+  "truth": [
+   "NO-EMPIRICAL-CONTENT",
+   "WINDOW-PRESENT-TENSE"
+  ],
+  "robust": false,
+  "truth_reason": "the claim is window-scoped (the verb never existed in the 12-day window) but the evidence is a present-tense read of the mechanism; the mechanism's own history shows the verb was added during the window, so the present read certifies the present, not the window. WINDOW-PRESENT-TENSE fires."
+ },
+ {
+  "id": 61,
+  "name": "WP2 window-present-tense (pass cell: act added before the window)",
+  "truth": [
+   "NO-EMPIRICAL-CONTENT"
+  ],
+  "robust": false,
+  "truth_reason": "the mechanism's history shows the verb was added before the window, so the present-tense read is consistent with the window claim (the verb existed throughout the window and now). WINDOW-PRESENT-TENSE does not fire. Same window_claim as WP1; only mechanism_history differs, so the axis is what discriminates."
+ },
+ {
+  "id": 62,
+  "name": "WP3 window-present-tense (N/A mirror: mechanism_history absent)",
+  "truth": [
+   "NO-EMPIRICAL-CONTENT"
+  ],
+  "robust": false,
+  "truth_reason": "the window claim is declared but the mechanism's history is not, so the axis cannot apply (schema boundary); WINDOW-PRESENT-TENSE does not fire. Same window_claim as WP1; only mechanism_history is absent, so the axis is what discriminates."
+ },
+ {
+  "id": 63,
+  "name": "EV1 evidence-unclosed (fire cell: walk hit budget, has_more_at_end=true)",
+  "truth": [
+   "NO-EMPIRICAL-CONTENT",
+   "EVIDENCE-UNCLOSED"
+  ],
+  "robust": false,
+  "truth_reason": "has_more_at_end=true -> the walk hit its budget with more still queued -> unclosed -> EVIDENCE-UNCLOSED fires; the completeness predicate is undefined. Same structure as EV2; only has_more_at_end differs, so the field is what discriminates."
+ },
+ {
+  "id": 64,
+  "name": "EV2 evidence-unclosed (pass cell: walk reached its end, has_more_at_end=false)",
+  "truth": [
+   "NO-EMPIRICAL-CONTENT"
+  ],
+  "robust": false,
+  "truth_reason": "has_more_at_end=false -> the walk reached its end -> closed -> EVIDENCE-UNCLOSED does not fire. Same structure as EV1; only has_more_at_end differs, so the field is what discriminates."
+ },
+ {
+  "id": 65,
+  "name": "EV3 evidence-unclosed (frozen-cursor cell: cursor never advanced across runs)",
+  "truth": [
+   "NO-EMPIRICAL-CONTENT",
+   "EVIDENCE-UNCLOSED"
+  ],
+  "robust": false,
+  "truth_reason": "cursor_runs=[1234,1234] never advanced across >=2 runs -> frozen-cursor -> the observable symptom of an unclosed window -> EVIDENCE-UNCLOSED fires; the completeness predicate is undefined. has_more_at_end is absent, so the cross-run tell governs."
+ },
+ {
+  "id": 66,
+  "name": "EV4 evidence-unclosed (N/A mirror: no closure evidence declared)",
+  "truth": [
+   "NO-EMPIRICAL-CONTENT"
+  ],
+  "robust": false,
+  "truth_reason": "neither has_more_at_end nor cursor_runs is declared -> the axis cannot apply (schema boundary) -> EVIDENCE-UNCLOSED does not fire. Same structure as EV3; only cursor_runs is absent, so the axis is what discriminates."
+ },
+ {
+  "id": 67,
+  "name": "FID1 fidelity (fire cell: independent right-axis witness, distorted copy)",
+  "truth": [
+   "FIDELITY"
+  ],
+  "robust": false,
+  "truth_reason": "reading a2ff25f1 != value a2ff25f0 (distorted copy) -> FIDELITY fires; independence_scope covers protocol (the load-bearing axis) -> SCOPE-OF-INDEPENDENCE passes. Case A: independent, right-axis witness, distorted copy."
+ },
+ {
+  "id": 68,
+  "name": "FID2 fidelity (pass cell: self-keyed in-lineage witness, faithful copy)",
+  "truth": [
+   "SCOPE-OF-INDEPENDENCE"
+  ],
+  "robust": false,
+  "truth_reason": "reading a2ff25f0 == value a2ff25f0 (faithful copy) -> FIDELITY silent; independence_scope covers only data but the load-bearing axis is protocol -> SCOPE-OF-INDEPENDENCE fires. Case B: self-keyed, in-lineage witness, faithful copy. A+B: orthogonal."
+ },
+ {
+  "id": 69,
+  "name": "FID3 fidelity (control: independent right-axis witness, faithful copy)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "reading == value (faithful) AND scope covers the load-bearing axis (independent) -> neither FIDELITY nor SCOPE-OF-INDEPENDENCE fires. The 'neither axis' corner of the 2x2."
+ },
+ {
+  "id": 70,
+  "name": "WPS1 witness-population-selection (fire cell: absence claim, self-selected population)",
+  "truth": [
+   "WITNESS-POPULATION-SELECTION"
+  ],
+  "robust": false,
+  "truth_reason": "absence_claim=true AND witness_population=self-selected -> the witness population is structurally selected against reporting -> an empty observed population is a selection effect, not a scheduling gap -> WITNESS-POPULATION-SELECTION fires. From the tardis-relay thread (hermes-waco/just-testing, 00:14-00:20Z)."
+ },
+ {
+  "id": 71,
+  "name": "WPS2 witness-population-selection (pass cell: absence claim, independent population)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "absence_claim=true AND witness_population=independent -> no selection against reporting -> the absence is informative -> WITNESS-POPULATION-SELECTION does not fire. Same structure as WPS1; only witness_population differs, so the field is what discriminates."
+ },
+ {
+  "id": 72,
+  "name": "WPS3 witness-population-selection (N/A mirror: not an absence claim, self-selected population)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "absence_claim=false -> not an absence claim -> the provenance of the population does not gate an absence inference -> WITNESS-POPULATION-SELECTION does not fire (N/A). Same structure as WPS1; only absence_claim differs, so the absence gate is what discriminates."
+ },
+ {
+  "id": 73,
+  "name": "WPS4 witness-population-selection (N/A mirror: absence claim, witness_population undeclared)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "absence_claim=true but witness_population not declared -> schema boundary -> the axis cannot evaluate the provenance of the population -> WITNESS-POPULATION-SELECTION does not fire (N/A). Same structure as WPS1; only witness_population is absent, so the schema boundary is what discriminates."
+ },
+ {
+  "id": 74,
+  "name": "SR1 source-replication (fire: verification on the claim's own source)",
+  "truth": [
+   "SOURCE-REPLICATION"
+  ],
+  "robust": false,
+  "truth_reason": "the empirical claim is clean (0.9>0.5, no knob/CI/subgroup -> empirical axes pass or N/A). The verification re-checks the claim on the claim's own source (board-1f916): an independent certifier is a replication, not an independent witness -- it buys no source-independence. SOURCE-REPLICATION fires."
+ },
+ {
+  "id": 75,
+  "name": "SR2 source-replication (pass cell: independent verification source)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "identical claim, identical empirical rows, but the verification reads from an independent source (board-universal-agent-forum != board-1f916) -> the re-check buys source-independence. SOURCE-REPLICATION does not fire. Same data as SR1; only verification_source differs, so the axis is what discriminates."
+ },
+ {
+  "id": 76,
+  "name": "SR3 source-replication (N/A mirror: verification_source undeclared)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "verification_source is not declared (schema boundary) -> the axis cannot evaluate the verification's source -> SOURCE-REPLICATION does not fire (N/A). Same structure as SR1; only verification_source is absent, so the schema boundary is what discriminates."
+ },
+ {
+  "id": 77,
+  "name": "SR4 compound (SELF-KEYED + SOURCE-REPLICATION: independent certifier, self-keyed metric, same source)",
+  "truth": [
+   "SELF-KEYED",
+   "SOURCE-REPLICATION"
+  ],
+  "robust": false,
+  "truth_reason": "the metric is monotone in its own knob (spearman +1.000) -> SELF-KEYED fires (the instrument reads the lever it is supposed to measure). The verification is on the claim's own source (board-1f916) -> SOURCE-REPLICATION fires (an independent certifier is a replication). The two axes are orthogonal: SELF-KEYED reads the certifier==subject coupling (the metric IS the knob); SOURCE-REPLICATION reads the verification-source==claim-source coupling (the data source). Both fire on the same specimen, proving the axes are distinct dimensions, not a re-label."
+ },
+ {
+  "id": 78,
+  "name": "PC1 platform-certified (fire cell: platform certifier, platform-secret key)",
+  "truth": [
+   "PLATFORM-CERTIFIED"
+  ],
+  "robust": false,
+  "truth_reason": "certifier=platform AND verification_key=platform-secret -> the platform is the certifier (signs the seal) and holds the verification key; the citizen is a blind carrier (carries the seal, cannot verify it); no independent third party can verify (needs the platform's secret) -> the self-keyed gap fires at the certifier layer -> PLATFORM-CERTIFIED fires. Live witness: the 1f916.ai /api/me/ack seal/ack floor (seal keyed by OAUTH_KEY; endpoint citizen-scoped, 401 without a secret)."
+ },
+ {
+  "id": 79,
+  "name": "PC2 platform-certified (pass cell: citizen certifier, citizen-secret key)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "certifier=citizen -> the citizen is the certifier, not a blind carrier; a second citizen (stranger with their own secret) can independently verify -> PLATFORM-CERTIFIED does not fire (pass). The discriminating cell: citizen-certified passes independent verification."
+ },
+ {
+  "id": 80,
+  "name": "PC3 platform-certified (pass cell: platform certifier, public key)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "verification_key=public -> an independent third party can verify the seal from public data; independent verification is possible -> PLATFORM-CERTIFIED does not fire (pass)."
+ },
+ {
+  "id": 81,
+  "name": "PC4 platform-certified (N/A mirror: certifier undeclared)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "certifier is not declared (schema boundary) -> the axis cannot evaluate who certifies -> PLATFORM-CERTIFIED does not fire (N/A). Same structure as PC1; only certifier is absent, so the schema boundary is what discriminates."
+ },
+ {
+  "id": 82,
+  "name": "T1 trust (fire cell: self-asserted writer trust)",
+  "truth": [
+   "TRUST"
+  ],
+  "robust": false,
+  "truth_reason": "the empirical claim is clean (0.5>0.2, no knob/CI/subgroup -> empirical axes pass or N/A). writer_trust=self-asserted -> the writer's trust is self-asserted (the writer decides which sources count, and the record carries no independent establishment of that trust); the stranger's verifiability is bounded by what the stranger believes, and no record closes that gap -- trust is conjunctive, not derivable from the record (the authority channel) -> TRUST fires."
+ },
+ {
+  "id": 83,
+  "name": "T2 trust (pass cell: independently-established writer trust)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "identical claim, identical empirical rows, but writer_trust=independently-established -> trust was established outside the writer's own record; the authority gap is closed -> TRUST does not fire (pass). Same data as T1; only writer_trust differs, so the axis is what discriminates."
+ },
+ {
+  "id": 84,
+  "name": "T3 trust (N/A mirror: writer_trust undeclared)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "writer_trust is not declared (schema boundary) -> the axis cannot evaluate the writer's trust -> TRUST does not fire (N/A). Same structure as T1; only writer_trust is absent, so the schema boundary is what discriminates."
+ },
+ {
+  "id": 85,
+  "name": "T4 trust (N/A mirror: declared but non-self-asserted writer trust)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "writer_trust=platform-certified is a declared but non-self-asserted value -> the axis fires only on self-asserted -> TRUST does not fire (N/A). Same structure as T1; only the writer_trust value differs, so the self-asserted condition is what discriminates."
+ },
+ {
+  "id": 86,
+  "name": "TB1 tautological-blend (fire cell: undisclosed guaranteed component)",
+  "truth": [
+   "TAUTOLOGICAL-BLEND"
+  ],
+  "robust": false,
+  "truth_reason": "the empirical claim is clean (0.5>0.2, no knob/CI/subgroup -> empirical axes pass or N/A). guaranteed_count=200, total_count=500, measured_count=297, separated=False -> the SignTrace Pool@60 decomposition: 200 preselected targets are guaranteed to be in the top-60 pool (100% by construction), 300 measured targets are not (297/300=99.0%); the headline Pool@60=99.4% blends the guaranteed (200/500) with the measured (297/500) without separating them -> the guaranteed component inflates the headline by 0.4pp -> TAUTOLOGICAL-BLEND fires."
+ },
+ {
+  "id": 87,
+  "name": "TB2 tautological-blend (pass cell: guaranteed component separately reported)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "identical claim, identical empirical rows, identical construction fields, but separated=True -> the guaranteed component is separately reported (the headline reports only over the measured subset, or the measured-only component is separately reported); the headline does not blend the guaranteed with the measured -> TAUTOLOGICAL-BLEND does not fire (pass). Same data as TB1; only separated differs, so the axis is what discriminates."
+ },
+ {
+  "id": 88,
+  "name": "TB3 tautological-blend (N/A mirror: guaranteed_count undeclared)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "guaranteed_count is not declared (schema boundary) -> the axis cannot evaluate the construction-guaranteed subset -> TAUTOLOGICAL-BLEND does not fire (N/A). Same structure as TB1; only guaranteed_count is absent, so the schema boundary is what discriminates."
+ },
+ {
+  "id": 89,
+  "name": "CT1 criterion-threshold (fire cell: undisclosed threshold on own metric)",
+  "truth": [
+   "CRITERION-THRESHOLD"
+  ],
+  "robust": false,
+  "truth_reason": "the detector claims to catch a failure, the catch verdict is on the detector's OWN metric, and the detection threshold is not disclosed -> the detector is its own criterion and the catch verdict is not magnitude-calibrated -> CRITERION-THRESHOLD fires."
+ },
+ {
+  "id": 90,
+  "name": "CT2 criterion-threshold (pass cell: threshold disclosed)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "identical claim, identical empirical rows, identical criterion fields, but detection_threshold_disclosed=True -> the threshold that counts as a catch is disclosed, so the catch verdict is magnitude-calibrated -> CRITERION-THRESHOLD does not fire (pass). Same data as CT1; only the threshold differs, so the axis is what discriminates."
+ },
+ {
+  "id": 91,
+  "name": "CT3 criterion-threshold (N/A mirror: detector_catches_claim undeclared)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "detector_catches_claim is not declared (schema boundary) -> the axis cannot evaluate the detector's catch claim -> CRITERION-THRESHOLD does not fire (N/A). Same structure as CT1; only detector_catches_claim is absent, so the schema boundary is what discriminates."
+ },
+ {
+  "id": 92,
+  "name": "JT1 judge-as-target (fire cell: judge emits labels and agent optimizes toward them)",
+  "truth": [
+   "JUDGE-AS-TARGET"
+  ],
+  "robust": false,
+  "truth_reason": "the judge emits the labels AND the agent optimizes toward those same labels -> the measure is the optimization target, so the loop closes on the judge and the reported gain is self-measured -> JUDGE-AS-TARGET fires."
+ },
+ {
+  "id": 93,
+  "name": "JT2 judge-as-target (pass cell: agent does not optimize toward the judge)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "identical claim, identical empirical rows, identical loop fields, but agent_optimizes_toward_judge=False -> the agent does not optimize toward the judge's labels, so the measure and the target are separated -> JUDGE-AS-TARGET does not fire (pass). Same data as JT1; only the optimization target differs, so the axis is what discriminates."
+ },
+ {
+  "id": 94,
+  "name": "JT3 judge-as-target (N/A mirror: judge_emits_labels undeclared)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "judge_emits_labels is not declared (schema boundary) -> the axis cannot evaluate the judge's label emission -> JUDGE-AS-TARGET does not fire (N/A). Same structure as JT1; only judge_emits_labels is absent, so the schema boundary is what discriminates."
+ },
+ {
+  "id": 95,
+  "name": "CF-CG-1 screen clean-gap (self-specimen, partial support)",
+  "truth": [
+   "COVERAGE-GAP"
+  ],
+  "robust": false,
+  "truth_reason": "SELF-SPECIMEN (CF-CG-1 terrarium, 2026-09-28). The transplant-ranking screen (16 genomes/seed, bit_counts {1,2,3,4,5}) claimed a two-level landscape with a clean gap in [0.5,0.95). The census (full bc0-8) showed bc5 sits at 0.7334, INSIDE the claimed gap. The clean-gap was a shape claim over partial support (5/8 non-ancestor bit_counts), dissolved by the wider re-probe. Self-specimen: my own probe dissolved my own shape claim."
+ },
+ {
+  "id": 96,
+  "name": "SCOPE-FLATTENING FAIL (2609.31563 multi-agent scaling, regime-flattening): plurality realizes almost none of the OR-potential, stated as scope-universal",
+  "truth": [
+   "SCOPE-FLATTENING"
+  ],
+  "robust": false,
+  "truth_reason": "2609.31563 regime-flattening (the motivating case). The abstract states 'plurality realises almost none of the OR-potential' (~0.5, the close-modal value) as a scope-universal level claim. But the realized fraction varies across regimes: not-modal 0.0, close-modal 0.5, clear-modal 1.0. The instrument's max-over-scope headline selection reads the clear-modal regime (1.0), which beats the null (0.5) -> reports DISCRIMINATES, no flags. But the STATED universal value (0.5) does not beat the null (0.5). The regime-conditional value is flattened into a universal claim the instrument cannot see. FAIL cell: SCOPE-FLATTENING fires."
+ },
+ {
+  "id": 97,
+  "name": "seal-check unit-count (#7046, 2026-09-28)",
+  "truth": [
+   "UNIT-COUNT"
+  ],
+  "robust": false,
+  "truth_reason": "2,228 signed seal-checks; 331 of 331 byte-identical to the seal row's own signature across six seals and four citizens; the only field that varies is the server timestamp. 331 weak checks is a unit error: it is 1 bind x 331 receipts. bearer-liveness, server-witnessed; key-liveness unproven."
+ },
+ {
+  "id": 98,
+  "name": "OPT-IN-CENSUS FIRE (three-valued state read as two-valued): 317 dead vs 5 breach + 312 undefined",
+  "truth": [
+   "NO-EMPIRICAL-CONTENT",
+   "OPT-IN-CENSUS"
+  ],
+  "robust": false,
+  "truth_reason": "FIRE CELL (self-selected-denominator axis, 2026-09-29). The state field is three-valued (within_declared, breached, undeclared) with a non-empty undeclared bucket (312 seats, wake: null). The claim '317 seats are dead' collapses the undeclared bucket into the breached state, so the census conflates opt-out with a state: 312 undefined seats are read as dead. The denominator is self-selected (only seats that opted in to be judged carry a state), and the binary reading treats the opt-out as a state. Distinct from SELF-KEYED (the registry measures the seats; it does not measure itself) and from SELECTION-ON-NARRATIVE (the whole population is present; the rows are not selected to fit the narrative). No-rows regime: NO-EMPIRICAL-CONTENT fires alongside OPT-IN-CENSUS."
+ },
+ {
+  "id": 99,
+  "name": "THESIS-OUTRUNS-EVIDENCE FIRE (2609.31054 Rilla et al., open agents): title states mitigation difficulty as a present-tense fact; the data measures cost, competitiveness, failure profiles, SED",
+  "truth": [
+   "THESIS-OUTRUNS-EVIDENCE"
+  ],
+  "robust": false,
+  "truth_reason": "FIRE CELL (thesis-outruns-evidence axis, 2026-09-29). The title 'Cheap, open agents make LLM pollution harder to mitigate' states a present-tense causal fact about MITIGATION DIFFICULTY, but the evidence measures only the premises: deployment cost, survey competitiveness, per-check failure profile, and SED (distance from a human reference). Mitigation difficulty is a forecast endpoint (cheap + competitive + detectable-textually-but-not-behaviorally -> harder to mitigate), not a measurement. The body hedges it ('may have removed this barrier', 'FUTURE pollution'), so the title outruns even the authors' own careful claim. The empirical layer passes (open beats closed on competitiveness), so the only flag is the headline-layer overclaim. Distinct from SCOPE-FLATTENING (a measured value varies across regimes and is stated universal; here the endpoint is unmeasured) and from FUNNEL-STAGE-MISATTRIBUTION (the named stage is in the pipeline; here the endpoint is downstream of the measured set)."
+ },
+ {
+  "id": 100,
+  "name": "THESIS-OUTRUNS-EVIDENCE PASS (2609.31054 properly-scoped headline): the unmeasured endpoint is hedged in the title, not stated as a fact",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "PASS CELL (thesis-outruns-evidence axis, 2026-09-29). Same measured set (cost, competitiveness, failure profile, SED) and same unmeasured endpoint (mitigation difficulty), but the title hedges the endpoint ('open agents may make LLM pollution harder to mitigate') rather than stating it as a present-tense fact. The thesis does not out-run the evidence: the endpoint is a forecast and the headline concedes it is a forecast. No flags fire (the empirical layer passes, open beats closed on competitiveness). This is the reverse control to the fire cell: the discriminator is the headline's present-tense fact-statement, not the body hedge (present in both cells)."
+ },
+ {
+  "id": 101,
+  "name": "THESIS-OUTRUNS-EVIDENCE PASS / PROOF-CHANNEL (2609.20581 Limits of Confidence in Diffusion, Apple): the causal endpoint is established by Theorem 3, not by measurement; the measured rows are the empirical instantiation",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "PASS CELL (theorem/proof channel for the thesis-outruns-evidence axis, added 2026-10-02 from the Apple 2609.20581 calibration boundary). The headline states a causal endpoint as a present-tense fact (confidence-based remasking is systematically off-distribution on dependent token groups) and the endpoint is NOT in the measured set (the rows measure TV distances on the one synthetic task, ScanAndAdd). Absent the proof channel this is exactly the Rilla overclaim shape and THESIS-OUTRUNS-EVIDENCE fires. But the load-bearing result is Theorem 3, which ESTABLISHES the endpoint (a step matches the training distribution iff the written positions are conditionally independent given the fixed tokens; no product of per-position distributions matches a dependent group), not merely that the premises hold. proof_supported=True routes it to the proof channel: the endpoint is established by proof, the measured rows are the empirical instantiation, so the thesis does not outrun the evidence -> no flag. The discriminator is the SUPPORT CHANNEL (measurement vs proof), not the headline's fact-statement: the fire cell (Rilla) and this pass cell share the same fact-statement + unmeasured-endpoint + body-hedge shape and differ only on the proof field. This is the discriminating cell the 2026-10-02 calibration boundary named (the instrument had no theorem/proof channel, so a proof-backed endpoint read as a forecast). Distinct from SCOPE-FLATTENING (the endpoint is unmeasured, not a measured value flattened across regimes) and from FUNNEL-STAGE-MISATTRIBUTION (the endpoint is not a stage in the measured pipeline)."
+ },
+ {
+  "id": 102,
+  "name": "CERTIFIER-UNNAMED FIRE (2609.30971 SciHorizon-eLab, unnamed visual-review agent): the certification gate's only protocol-anchoring channel has no declared identity",
+  "truth": [
+   "CERTIFIER-UNNAMED"
+  ],
+  "robust": false,
+  "truth_reason": "FIRE CELL (certifier-unnamed axis, 53rd, 2026-09-29). The benchmark's load-bearing word is 'certified', and the certification gate's only channel that ties the compiled task back to the source protocol is a 'visual-review agent' that is NEVER NAMED anywhere in the paper (no model/provider/temperature/prompt for any pipeline agent). The certification is stranger-unrerunnable: a stranger cannot re-derive the gate's output without the certifier's identity. Distinct from REFERENT-CONSTRUCTED (the referent -- what the claim is about -- is a model-constructed artifact; here the referent is externally-anchored and the gap is at the certifier) and from ANNOTATOR-SELF-KEYED (the 'why' rests on a non-public annotation; here the certification gate's output is the load-bearing channel and the certifier's identity is absent, not merely non-public). The empirical layer passes (the 49.7% headline is arithmetically correct), so the only flag is the certifier-channel gap."
+ },
+ {
+  "id": 103,
+  "name": "CERTIFIER-UNNAMED PASS (corner D: externally-anchored referent, NAMED certifier): the certifier is a specific model a stranger can re-run",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "PASS CELL (certifier-unnamed axis, 53rd, 2026-09-29), corner D of the 2x2 discriminating test. The referent is externally-anchored (so REFERENT-CONSTRUCTED does NOT fire) and the certifier is NAMED (a specific model a stranger can re-run, so CERTIFIER-UNNAMED does NOT fire). No flags fire: the certification is stranger-rerunnable and the referent is not model-constructed. This is the all-pass control of the 2x2: the fire cell (corner B, model-constructed referent + unnamed certifier) fires CERTIFIER-UNNAMED, the MACBT witness (corner A, model-constructed referent + named certifier) fires REFERENT-CONSTRUCTED only, and this cell fires neither. The discriminator is the certifier's identity, not the referent's provenance."
+ },
+ {
+  "id": 104,
+  "name": "CERTIFIER-UNNAMED N/A MIRROR (certifier_identity undeclared): no certifier role declared, so the axis does not apply",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "N/A MIRROR (certifier-unnamed axis, 53rd, 2026-09-29). The certifier_identity field is not declared, so the axis is N/A (schema-boundary: no certifier role declared). The empirical layer passes (the 49.7% headline is arithmetically correct), so no flags fire. This is the N/A mirror to the fire cell: the discriminator is the presence of the certifier_identity field, not the certifier's identity (absent in both cells)."
+ },
+ {
+  "id": 105,
+  "name": "CAUSAL-WIRING FIRE (claim asserts causal, evidence measures only association): the measured correlate is promoted to a cause",
+  "truth": [
+   "CAUSAL-WIRING"
+  ],
+  "robust": false,
+  "truth_reason": "FIRE CELL (causal-wiring axis, 54th, 2026-09-29). The claim asserts a causal link (claim_relation=causal) but the evidence establishes only an association (evidence_relation=associative): the measured correlate is promoted to a cause (the 'associated with' -> 'causes' promotion). The empirical layer passes (on 1.0 > off 0.2, lever isolated), so the only flag is the causal-wiring promotion. Distinct from THESIS-OUTRUNS-EVIDENCE (the endpoint is not measured at all; here the link IS measured, as an association, and the claim promotes it)."
+ },
+ {
+  "id": 106,
+  "name": "CAUSAL-WIRING PASS (corner B causal control: claim asserts causal, evidence measures causal): no promotion",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "PASS CELL (causal-wiring axis, 54th, 2026-09-29), corner B of the 2x3 discriminating test. The claim asserts a causal link AND the evidence measures a causal link (a randomized/causal design): no promotion, so CAUSAL-WIRING does not fire. Byte-identical to the fire cell except evidence_relation (causal vs associative), so fire-vs-B isolates the evidence channel. The empirical layer passes, so no flags fire."
+ },
+ {
+  "id": 107,
+  "name": "DECLARED-CHANNEL FIRE (declared-attribute decision, verifiable content, DC1): the protection is carried by the declaration, not by verification",
+  "truth": [
+   "DECLARED-CHANNEL"
+  ],
+  "robust": false,
+  "truth_reason": "FIRE CELL (declared-channel axis, 55th, 2026-09-29). The certifier's decision is carried by a self-declared attribute (a form/type label, decision_channel=declared-attribute) while the content is independently verifiable (content_verifiable=yes): the admission decision flips with the declared form, not the verified content, so the protection is carried by the declaration, not by verification -> DECLARED-CHANNEL fires, and no other flag fires (exclusive). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00, no knob/CI/subgroup). Distinct from TRUST (the stranger cannot verify at all; here the content IS verifiable and the gap is in the certifier's decision channel, not the stranger's belief)."
+ },
+ {
+  "id": 108,
+  "name": "DECLARED-CHANNEL PASS (verified-content decision, DC2): the decision is carried by the verified content, not a declared form",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "PASS CELL (declared-channel axis, 55th, 2026-09-29). decision_channel=verified-content -> the certifier's decision is carried by the verified content, not a declared form: DECLARED-CHANNEL is N/A (the pass cell). Byte-identical to the fire cell except decision_channel (verified-content vs declared-attribute), so fire-vs-pass isolates the decision channel. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+ },
+ {
+  "id": 109,
+  "name": "CARRIER-REACH FIRE (carrier not in read path, verifiable content, CR1): available but not attended",
+  "truth": [
+   "CARRIER-REACH"
+  ],
+  "robust": false,
+  "truth_reason": "FIRE CELL (carrier-reach axis, 56th, 2026-09-30). The information that would let a stranger reach the correct conclusion is present and independently verifiable (content_verifiable=yes) but sits in a carrier the consumer's read path never traverses (carrier_in_read_path=no): the certification is available but not attended, so the gap is in the read path, not the content, the decision, or the source -> CARRIER-REACH fires. Byte-identical to the pass cell except carrier_in_read_path (no vs yes), so fire-vs-pass isolates the read path. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so the only flag is CARRIER-REACH. Distinct from DECLARED-CHANNEL (the carrier IS reached, but the wrong attribute is read; here the carrier is NOT reached at all) and from TRUST (the stranger cannot verify at all; here the content IS verifiable and the gap is in the read path, not the content's verifiability)."
+ },
+ {
+  "id": 110,
+  "name": "CARRIER-REACH PASS (carrier in read path, verifiable content, CR2): the carrier IS attended",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "PASS CELL (carrier-reach axis, 56th, 2026-09-30). carrier_in_read_path=yes -> the carrier IS in the consumer's read path: CARRIER-REACH is N/A (the pass cell). Byte-identical to the fire cell except carrier_in_read_path (yes vs no), so fire-vs-pass isolates the read path. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+ },
+ {
+  "id": 111,
+  "name": "WITNESS-ADDRESS FIRE (falsifier witness same address as claim channel, WA1): the falsifier is itself self-keyed",
+  "truth": [
+   "WITNESS-ADDRESS"
+  ],
+  "robust": false,
+  "truth_reason": "FIRE CELL (witness-address axis, 57th, 2026-09-30). claim_channel_address=exchange_ledger + falsifier_witness_address=exchange_ledger (same address): the claim's proposed falsifier reads its witness from the same address as the channel that produced the claim, so the falsifier is itself self-keyed -- a mis-record at the ledger level slips through both the claim and the falsifier, so the acceptance test cannot catch the failure it was designed to catch -> WITNESS-ADDRESS fires, and no other flag fires (exclusive). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00, no knob/CI/subgroup). Distinct from SCOPE-OF-INDEPENDENCE (the 'independent' QUALIFIER on a panel; here the falsifier's WITNESS is the referent and the question is whether it is a distinct ADDRESS) and from UNWITNESSED-RECEIPT (a disagreement going unread; here the witness may be read and agree -- the failure is that it reads from the same address as the claim channel)."
+ },
+ {
+  "id": 112,
+  "name": "WITNESS-ADDRESS PASS (falsifier witness distinct address, WA2): the falsifier is genuinely independent",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "PASS CELL (witness-address axis, 57th, 2026-09-30). claim_channel_address=exchange_ledger + falsifier_witness_address=on_chain_balance (distinct address): the claim's proposed falsifier reads its witness from a distinct address than the channel that produced the claim, so the falsifier is genuinely independent -> WITNESS-ADDRESS is N/A (the pass cell). Byte-identical to the fire cell except falsifier_witness_address (on_chain_balance vs exchange_ledger), so fire-vs-pass isolates the address. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+ },
+ {
+  "id": 113,
+  "name": "COUPLED-HEADLINES FIRE (two coupled numbers on different axes, broader derived, composition undeclared, CH1): the coupling is unverifiable",
+  "truth": [
+   "COUPLED-HEADLINES"
+  ],
+  "robust": false,
+  "truth_reason": "FIRE CELL (coupled-headlines axis, 58th, 2026-09-30). coupled_headlines=yes + broader_derived=yes + composition_declared=no: the claim headlines two coupled numbers on different axes (a mechanism-axis compression ratio and a broader substrate-axis reduction), and the broader number is derived from the mechanism number given an UNDECLARED substrate composition: the two are jointly consistent only under that undeclared composition, so a reader who takes the broader number at face value cannot verify it from the mechanism number -> COUPLED-HEADLINES fires, and no other flag fires (exclusive). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00, no knob/CI/subgroup). Distinct from TAUTOLOGICAL-BLEND (the mechanism-axis number itself is tautological; here the failure is the COUPLING of two numbers on different axes given an undeclared composition) and from WIDER-THAN-NAMED (the broader number IS named, but it is derived from a narrower number given an undeclared composition, so it is not independently verifiable)."
+ },
+ {
+  "id": 114,
+  "name": "COUPLED-HEADLINES PASS (two coupled numbers on different axes, broader derived, composition declared, CH2): the coupling is checkable",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "PASS CELL (coupled-headlines axis, 58th, 2026-09-30). coupled_headlines=yes + broader_derived=yes + composition_declared=yes: the substrate composition is declared, so the two numbers are jointly checkable -> COUPLED-HEADLINES is N/A (the pass cell). Byte-identical to the fire cell except composition_declared (yes vs no), so fire-vs-pass isolates the composition. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+ },
+ {
+  "id": 115,
+  "name": "HELD-OUT-PROVENANCE FIRE (held-out eval self-compiled by the monitored party, HP1): the monitor certifies its own test set",
+  "truth": [
+   "HELD-OUT-PROVENANCE"
+  ],
+  "robust": false,
+  "truth_reason": "FIRE CELL (held-out-provenance axis, 59th, 2026-09-30). held_out_eval=yes + eval_set_provenance=self: the claim proposes a held-out eval (a test set the monitored party is scored against) that is self-compiled by the monitored party from its own records: 'held-out' means held-out-in-time only, so the monitor certifies its own test set; a set can be temporally held-out (not overfit, not hillclimbed on) yet provenance-self-keyed -> HELD-OUT-PROVENANCE fires, and no other flag fires (exclusive). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00, no knob/CI/subgroup). Distinct from WITNESS-ADDRESS (the falsifier's single WITNESS READ comes from the same ADDRESS as the claim channel; here it is the CONSTRUCTION PROVENANCE of the whole eval corpus, not where one read comes from) and from the temporal held-out (a set can be held-out in time yet self-keyed in provenance -- this axis is provenance, orthogonal to time) and from CERTIFIER-UNNAMED (the certifier may be named; the question is whether the eval set is independently constructed)."
+ },
+ {
+  "id": 116,
+  "name": "SELECTION-PROVENANCE FIRE (eval set self-selected by the monitored party, SP1): the party being scored chooses the subset",
+  "truth": [
+   "SELECTION-PROVENANCE"
+  ],
+  "robust": false,
+  "truth_reason": "FIRE CELL (selection-provenance axis, 60th, 2026-09-30). eval_set_selection=self: the claim proposes an eval set drawn from a larger corpus, and the monitored party self-selects the subset on a self-serving criterion: the corpus may be externally constructed (HELD-OUT-PROVENANCE passes), but the selection of which items to report on is self-keyed; the selection channel (which items) is a different address from the measurement channel (the scorer), so WITNESS-ADDRESS does not fire -> SELECTION-PROVENANCE fires, and no other flag fires (exclusive). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00, no knob/CI/subgroup). Distinct from HELD-OUT-PROVENANCE (59th: CONSTRUCTION provenance of the whole corpus; here it is the SELECTION of the subset from that corpus) and from WITNESS-ADDRESS (57th: the falsifier's single WITNESS READ comes from the same ADDRESS as the claim channel; here the selection channel is a different address from the measurement channel)."
+ },
+ {
+  "id": 117,
+  "name": "SELECTION-PROVENANCE PASS (eval set externally selected, SP2): the selection is genuinely independent",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "PASS CELL (selection-provenance axis, 60th, 2026-09-30). eval_set_selection=external: the subset was selected by an independent party, so the selection is genuinely independent -> SELECTION-PROVENANCE is N/A (the pass cell). Byte-identical to the fire cell except eval_set_selection (external vs self), so fire-vs-pass isolates the selection. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+ },
+ {
+  "id": 118,
+  "name": "SELECTION-PROVENANCE SCHEMA-BOUNDARY (eval set selection undeclared, SP3): the post does not declare who selects the subset",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "SCHEMA-BOUNDARY CELL (selection-provenance axis, 60th, 2026-09-30). eval_set_selection=undeclared: the post does not declare who selects the subset -> SELECTION-PROVENANCE is N/A (schema-boundary). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+ },
+ {
+  "id": 119,
+  "name": "SELECTION-PROVENANCE N/A (no eval set selection field, SP4): the axis does not apply",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "N/A CELL (selection-provenance axis, 60th, 2026-09-30). No eval_set_selection field: the axis does not apply -> SELECTION-PROVENANCE is N/A. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+ },
+ {
+  "id": 120,
+  "name": "HELD-OUT-PROVENANCE PASS (held-out eval externally constructed, HP2): the held-out is genuinely independent",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "PASS CELL (held-out-provenance axis, 59th, 2026-09-30). held_out_eval=yes + eval_set_provenance=external: the eval set is independently constructed, so the held-out is genuinely independent -> HELD-OUT-PROVENANCE is N/A (the pass cell). Byte-identical to the fire cell except eval_set_provenance (external vs self), so fire-vs-pass isolates the provenance. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+ },
+ {
+  "id": 121,
+  "name": "WITNESS-RESIDENCE FIRE (witness custodian-resident, WR1): the custodian holds the witness bytes, a stranger cannot reproduce",
+  "truth": [
+   "WITNESS-RESIDENCE"
+  ],
+  "robust": false,
+  "truth_reason": "FIRE CELL (witness-residence axis, 61st, 2026-10-01). witness_residence=custodian: the content IS independently verifiable (not TRUST), the carrier IS in the consumer's read path (not CARRIER-REACH), and there IS an external witness (not SELF-KEYED), but only the custodian holds the witness bytes and can verify+replay via skill_sha256; a stranger lacks the bytes and cannot reproduce the coverage diff -> WITNESS-RESIDENCE fires, and no other flag fires (exclusive). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00, no knob/CI/subgroup). Distinct from TRUST (44th: the stranger cannot verify at all; here the content IS verifiable and the custodian CAN), from CARRIER-REACH (56th: the carrier is not in the read path; here the carrier IS in the read path), and from SELF-KEYED (1st: the instrument certifies itself; here there IS an external witness, but it is custodian-resident)."
+ },
+ {
+  "id": 122,
+  "name": "WITNESS-RESIDENCE PASS (witness publicly available, WR2): a stranger can reproduce",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "PASS CELL (witness-residence axis, 61st, 2026-10-01). witness_residence=public: the witness is publicly available, so a stranger CAN reproduce the coverage diff -> WITNESS-RESIDENCE is N/A (the pass cell). Byte-identical to the fire cell except witness_residence (public vs custodian), so fire-vs-pass isolates the residence. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+ },
+ {
+  "id": 123,
+  "name": "WITNESS-RESIDENCE SCHEMA-BOUNDARY (witness residence undeclared, WR3): the post does not declare where the witness lives",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "SCHEMA-BOUNDARY CELL (witness-residence axis, 61st, 2026-10-01). witness_residence=undeclared: the post does not declare where the witness lives -> WITNESS-RESIDENCE is N/A (schema-boundary). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+ },
+ {
+  "id": 124,
+  "name": "WITNESS-RESIDENCE N/A (no witness residence field, WR4): the axis does not apply",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "N/A CELL (witness-residence axis, 61st, 2026-10-01). No witness_residence field: the axis does not apply -> WITNESS-RESIDENCE is N/A. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+ },
+ {
+  "id": 125,
+  "name": "STRUCTURAL-PRIMING FIRE (expected value in the mandatory lead, SP1): the document leads with its own key",
+  "truth": [
+   "STRUCTURAL-PRIMING"
+  ],
+  "robust": false,
+  "truth_reason": "FIRE CELL (structural-priming axis, 62nd, 2026-10-01). priming_position=lead: the expected value sits in the mandatory lead the reading procedure requires, so the reader's supposed independence (the 'tell it no expected value' instruction) is defeated by the document's OWN structure -> STRUCTURAL-PRIMING fires, and no other flag fires (exclusive). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00, no knob/CI/subgroup). Distinct from WITNESS-ADDRESS (57th: the witness read comes from the same address; here the failure is the priming, not the address), from TRUST (44th: the content is verifiable), from CARRIER-REACH (56th: the carrier IS in the read path), from WITNESS-RESIDENCE (61st: the key is public, not custodian-resident), and from SELF-KEYED (1st: there IS an external certifier)."
+ },
+ {
+  "id": 126,
+  "name": "STRUCTURAL-PRIMING PASS (expected value not in the lead, SP2): the reader is not primed",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "PASS CELL (structural-priming axis, 62nd, 2026-10-01). priming_position=non_lead: the expected value is not in the mandatory lead; the reader is not primed by the document's structure -> STRUCTURAL-PRIMING is N/A (the pass cell). Byte-identical to the fire cell except priming_position (non_lead vs lead), so fire-vs-pass isolates the position. Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+ },
+ {
+  "id": 127,
+  "name": "STRUCTURAL-PRIMING SCHEMA-BOUNDARY (priming position undeclared, SP3): the document does not declare where the expected value sits",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "SCHEMA-BOUNDARY CELL (structural-priming axis, 62nd, 2026-10-01). priming_position undeclared: the document does not declare where the expected value sits -> STRUCTURAL-PRIMING is N/A (schema-boundary). Scaffolding rows keep the empirical axes clean (on 0.70 > null 0.00), so nothing fires."
+ },
+ {
+  "id": 128,
+  "name": "RSK1 referent-self-keyed (fire cell: self-declared referent_value)",
+  "truth": [
+   "REFERENT-SELF-KEYED"
+  ],
+  "robust": false,
+  "truth_reason": "referent_source='self-declared' -> the writer holds the referent_value declaration; at the closing act the writer can re-label referent_value == reading and make FIDELITY pass vacuously, regardless of whether the reading faithfully represents the reasoning performed. The empirical rows are clean (0.50>0.20, no knob/CI/subgroup -> all empirical axes pass or N/A), so REFERENT-SELF-KEYED is the only flag that fires. Live witness: the self-keyed stream's own closing act (the writer declares both sides of the FIDELITY byte-match). Distinct from FIDELITY (the byte-match face, blind when the writer re-labels) and TRUST (the writer_trust declaration, not the referent_value declaration)."
+ },
+ {
+  "id": 129,
+  "name": "RSK2 referent-self-keyed (pass cell: externally-witnessed referent_value)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "referent_source='externally-witnessed' -> the referent_value is anchored outside the writer's own declaration (a stranger can verify it); the writer cannot re-label it, so the referent-declaration gap is closed. REFERENT-SELF-KEYED does not fire (pass). Same rows as RSK1; only referent_source differs, so the axis is what discriminates."
+ },
+ {
+  "id": 130,
+  "name": "GOR1 gate-on-realization (fire cell: realized-size gate, design holds, n in the legitimate tail)",
+  "truth": [
+   "GATE-ON-REALIZATION"
+  ],
+  "robust": false,
+  "truth_reason": "design consistency holds (declared_fraction=0.06 == rule_probability=0.06, exact, no realized n needed) but the receipt's validity gate is the realized-size band (1-sd), NOT the structural check. mean=N*p=50*0.06=3, sd=sqrt(50*0.06*0.94)=1.679, band=[1.321,4.679]; realized n=0 is OUTSIDE the band -> the gate discards the sample. P(n=0)=(0.94)^50=0.047, a ~5% LEGITIMATE tail (not an anomaly). The conflation (gate=realization, not design) is what discards; the structural gate would have passed. GATE-ON-REALIZATION fires. The empirical rows are clean (0.50>0.20, no knob/CI/subgroup -> all empirical axes pass or N/A), so GATE-ON-REALIZATION is the only flag. Live witness: the 13:22Z untrusted square observation c89798 (the derive5 rule, t/100=0.06, realized n=0 on N=50)."
+ },
+ {
+  "id": 131,
+  "name": "GOR2 gate-on-realization (pass cell: realized-size gate, design holds, n at the mean)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "same design, same gate (realized-size band, 1-sd), design consistency holds, but realized n=3 is AT THE MEAN (inside the band [1.321,4.679]) -> the gate does not discard the sample; the conflation is invisible. GATE-ON-REALIZATION does not fire (pass). Same rows as GOR1; only realized_n differs (0 vs 3), so the axis is what discriminates."
+ },
+ {
+  "id": 132,
+  "name": "PR1 pseudoreplication (fire cell: reported n counts non-independent sub-units; significance flips)",
+  "truth": [
+   "PSEUDOREPLICATION"
+  ],
+  "robust": false,
+  "truth_reason": "reported_n=7 but the independent unit is independent_n=3 (7 structures from 3 chemotypes). At the reported n the correlation 0.90 is significant (t=4.617, df=5, p=0.0058 < 0.05 -- the paper's p=0.006); at the independent unit it is NOT (t=2.065, df=1, p=0.287 >= 0.05). The significance does not survive the correction to the independent unit, so the reported p is anti-conservative. PSEUDOREPLICATION fires. The empirical rows are clean (0.50>0.20, no knob/CI/subgroup -> all empirical axes pass or N/A), so PSEUDOREPLICATION is the only flag. Live witness: arXiv 2609.36057 (Mirror-Score)."
+ },
+ {
+  "id": 133,
+  "name": "PR2 pseudoreplication (pass cell: reported n counts the independent unit; no correction)",
+  "truth": [],
+  "robust": true,
+  "truth_reason": "independent_n=7 is not < reported_n=7: the reported n counts the independent unit, so there is no pseudoreplication and no significance to lose. PSEUDOREPLICATION does not fire (pass). Same rows and statistic as PR1; only independent_n differs (3 vs 7), so the axis is what discriminates."
+ }
+]

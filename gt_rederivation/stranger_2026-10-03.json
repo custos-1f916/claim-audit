@@ -1,0 +1,672 @@
+[
+  {
+    "id": 0,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 1,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 2,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 3,
+    "robust": false,
+    "flaw": "There is no null or baseline condition to compare against, so the headline number cannot be attributed to the mechanism."
+  },
+  {
+    "id": 4,
+    "robust": false,
+    "flaw": "The mechanism condition scores below the null baseline, so the headline number does not support a positive effect."
+  },
+  {
+    "id": 5,
+    "robust": false,
+    "flaw": "The mechanism condition carries extra components (bus, shared) beyond the lever, so the gap could be due to those rather than the lever itself."
+  },
+  {
+    "id": 6,
+    "robust": false,
+    "flaw": "The mechanism axis shows no difference between the two conditions, so the headline gap is not on the axis the mechanism is supposed to act on."
+  },
+  {
+    "id": 7,
+    "robust": false,
+    "flaw": "The confidence interval on the mechanism overlaps the null value, so the gap is within measurement noise."
+  },
+  {
+    "id": 8,
+    "robust": false,
+    "flaw": "The referent (cache correctness) is not what the witness actually observes (timing and quality), so the number is not graded against the right thing."
+  },
+  {
+    "id": 9,
+    "robust": false,
+    "flaw": "The same headline number is graded against two different referents, so it does not have a single well-defined meaning."
+  },
+  {
+    "id": 10,
+    "robust": false,
+    "flaw": "The headline number is the maximum over the random draws, so it is the best case rather than a representative value."
+  },
+  {
+    "id": 11,
+    "robust": false,
+    "flaw": "The written receipt disagrees with the claim and the witness was not awake to reconcile it."
+  },
+  {
+    "id": 12,
+    "robust": false,
+    "flaw": "The written receipt disagrees with the claim even though the witness was awake, so the disagreement stands."
+  },
+  {
+    "id": 13,
+    "robust": false,
+    "flaw": "The receipt was not written but is marked as disagreeing, which is contradictory."
+  },
+  {
+    "id": 14,
+    "robust": false,
+    "flaw": "The root is written but not independently witnessed, so it is not verified."
+  },
+  {
+    "id": 15,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 16,
+    "robust": false,
+    "flaw": "The root is neither written nor witnessed, so there is no independent verification of the underlying data."
+  },
+  {
+    "id": 17,
+    "robust": false,
+    "flaw": "The source attribution is on the form, but the load-bearing element is the content, so they do not match."
+  },
+  {
+    "id": 18,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 19,
+    "robust": false,
+    "flaw": "The source attribution is on the form but the load-bearing element is not declared, so the match cannot be verified."
+  },
+  {
+    "id": 20,
+    "robust": false,
+    "flaw": "The referent is a disjunction, so the bright-line screen does not have a single well-defined threshold."
+  },
+  {
+    "id": 21,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 22,
+    "robust": false,
+    "flaw": "The referent structure is not declared, so the bright-line screen's threshold is not well-defined."
+  },
+  {
+    "id": 23,
+    "robust": false,
+    "flaw": "The effect reverses over time: at the onset the mechanism is below the null, and only later does it exceed it, so the headline is only supported at one timepoint."
+  },
+  {
+    "id": 24,
+    "robust": false,
+    "flaw": "The claim is about the win outcome, but in wins the mechanism is below the null; it only helps in losses."
+  },
+  {
+    "id": 25,
+    "robust": false,
+    "flaw": "The claim is about the young subgroup, but in young the mechanism is below the null; it only helps in the old subgroup."
+  },
+  {
+    "id": 26,
+    "robust": false,
+    "flaw": "The claim is about the mild dose, but in mild the mechanism is below the null; it only helps in the severe dose."
+  },
+  {
+    "id": 27,
+    "robust": false,
+    "flaw": "The claim is about tier T1, but in T1 the mechanism is below the null; it only helps in T2."
+  },
+  {
+    "id": 28,
+    "robust": false,
+    "flaw": "The claim is about split A, but in A the mechanism is below the null; it only helps in split B."
+  },
+  {
+    "id": 29,
+    "robust": false,
+    "flaw": "The claim is about the acc metric, but on acc the mechanism is below the null; it only helps on f1."
+  },
+  {
+    "id": 30,
+    "robust": false,
+    "flaw": "The effect reverses over time: at the onset the mechanism exceeds the null, but later it falls below it, so the headline is only supported at one timepoint."
+  },
+  {
+    "id": 31,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 32,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 33,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 34,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 35,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 36,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 37,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 38,
+    "robust": false,
+    "flaw": "The sample sizes are crossed between the mechanism and null conditions, so the comparison is confounded by sample size."
+  },
+  {
+    "id": 39,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 40,
+    "robust": false,
+    "flaw": "The referent is model-constructed rather than externally anchored, so the number is not graded against an independent standard."
+  },
+  {
+    "id": 41,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 42,
+    "robust": false,
+    "flaw": "The headline names parse as the bottleneck, but parse has the highest rate; the actual bottleneck is validate."
+  },
+  {
+    "id": 43,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 44,
+    "robust": false,
+    "flaw": "The subset criterion selects the mechanism condition but not the null, so the gap is partly explained by the selection."
+  },
+  {
+    "id": 45,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 46,
+    "robust": false,
+    "flaw": "The annotations are from a non-public LLM judge, so the metric is not independently verifiable."
+  },
+  {
+    "id": 47,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 48,
+    "robust": false,
+    "flaw": "Latency is named but not operationalized, so the headline is not fully supported."
+  },
+  {
+    "id": 49,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 50,
+    "robust": false,
+    "flaw": "The independence scope is protocol and data, but the load-bearing element is implementation, so they do not match."
+  },
+  {
+    "id": 51,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 52,
+    "robust": false,
+    "flaw": "The tradeoff is paired with the weaker reference (abstract 0.5) while the single reference is stronger (0.7), so the comparison is against a weaker baseline than the single reference."
+  },
+  {
+    "id": 53,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 54,
+    "robust": false,
+    "flaw": "The headline claims a universal scope, but the stated limitation directly negates that universality."
+  },
+  {
+    "id": 55,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 56,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 57,
+    "robust": false,
+    "flaw": "The primary basis (wall-clock time) reverses, so the headline number is not stably supported on that basis."
+  },
+  {
+    "id": 58,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 59,
+    "robust": false,
+    "flaw": "The primary basis (wall-clock time) is stated but its result is not declared, so it is unknown whether it holds."
+  },
+  {
+    "id": 60,
+    "robust": false,
+    "flaw": "The claim is that the verb never existed in the window, but the mechanism was added during the window, so the verb could have existed after the mechanism was added."
+  },
+  {
+    "id": 61,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 62,
+    "robust": false,
+    "flaw": "The mechanism history is not declared, so it is unknown whether the mechanism was in place before the window."
+  },
+  {
+    "id": 63,
+    "robust": false,
+    "flaw": "The data has more at the end, so the headline number is not the final value."
+  },
+  {
+    "id": 64,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 65,
+    "robust": false,
+    "flaw": "The cursor runs are identical, so the cursor did not actually advance."
+  },
+  {
+    "id": 66,
+    "robust": false,
+    "flaw": "There is no data or supporting field to back the headline claim."
+  },
+  {
+    "id": 67,
+    "robust": false,
+    "flaw": "The reading does not match the referent value, so the claim is not supported by the reading."
+  },
+  {
+    "id": 68,
+    "robust": false,
+    "flaw": "The independence scope is data, but the load-bearing element is protocol, so they do not match."
+  },
+  {
+    "id": 69,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 70,
+    "robust": false,
+    "flaw": "The absence claim is based on a self-selected witness population, which is not representative."
+  },
+  {
+    "id": 71,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 72,
+    "robust": false,
+    "flaw": "The witness population is self-selected, so the claim is not based on a representative sample."
+  },
+  {
+    "id": 73,
+    "robust": false,
+    "flaw": "The witness population is not declared, so the absence claim is not based on a known sample."
+  },
+  {
+    "id": 74,
+    "robust": false,
+    "flaw": "The claim is verified by the same source that made it, so it is self-verified."
+  },
+  {
+    "id": 75,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 76,
+    "robust": false,
+    "flaw": "The claim is not verified by any source."
+  },
+  {
+    "id": 77,
+    "robust": false,
+    "flaw": "There is no null or baseline condition to compare against, and the claim is self-verified by the same source that made it."
+  },
+  {
+    "id": 78,
+    "robust": false,
+    "flaw": "The verification uses a secret key, so the certification is not publicly verifiable."
+  },
+  {
+    "id": 79,
+    "robust": false,
+    "flaw": "The verification uses a secret key, so the certification is not publicly verifiable."
+  },
+  {
+    "id": 80,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 81,
+    "robust": false,
+    "flaw": "The verification uses a secret key and there is no named certifier, so the certification is not publicly verifiable or attributed."
+  },
+  {
+    "id": 82,
+    "robust": false,
+    "flaw": "The writer's trust is self-asserted rather than independently established."
+  },
+  {
+    "id": 83,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 84,
+    "robust": false,
+    "flaw": "The writer's trust is not declared."
+  },
+  {
+    "id": 85,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 86,
+    "robust": false,
+    "flaw": "The conditions are not separated, so the comparison is confounded."
+  },
+  {
+    "id": 87,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 88,
+    "robust": false,
+    "flaw": "The conditions are not separated and the guaranteed count is not declared, so the comparison is confounded and the baseline is unknown."
+  },
+  {
+    "id": 89,
+    "robust": false,
+    "flaw": "The detection threshold is not disclosed, so it is unknown what counts as a detection."
+  },
+  {
+    "id": 90,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 91,
+    "robust": false,
+    "flaw": "The detection threshold is not disclosed and it is not declared whether the detector catches the claim."
+  },
+  {
+    "id": 92,
+    "robust": false,
+    "flaw": "The agent optimizes toward the judge, so the metric is inflated by overfitting to the judge."
+  },
+  {
+    "id": 93,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 94,
+    "robust": false,
+    "flaw": "The agent optimizes toward the judge, but it is not declared whether the judge emits labels."
+  },
+  {
+    "id": 95,
+    "robust": false,
+    "flaw": "The shape claim is only supported by 62.5% of the probe and the shape is not structurally bounded, so the shape is only partially supported."
+  },
+  {
+    "id": 96,
+    "robust": false,
+    "flaw": "The headline value (0.5) equals the null condition (single agent 0.5), so the mechanism does not improve over the baseline at the headline."
+  },
+  {
+    "id": 97,
+    "robust": false,
+    "flaw": "The 331 checks are not distinct; they are the same check repeated with different timestamps, so the series shows no real variation."
+  },
+  {
+    "id": 98,
+    "robust": false,
+    "flaw": "The 317 dead seats include 312 undeclared seats that are lumped into the dead category, so the census overcounts the dead seats."
+  },
+  {
+    "id": 99,
+    "robust": false,
+    "flaw": "The headline states the claim as fact, but the measured endpoints are proxies for the thesis endpoint (mitigation difficulty), not the endpoint itself."
+  },
+  {
+    "id": 100,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 101,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 102,
+    "robust": false,
+    "flaw": "The certifier is unnamed, so the certification is not attributed to a specific entity."
+  },
+  {
+    "id": 103,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 104,
+    "robust": false,
+    "flaw": "The certifier identity is not declared."
+  },
+  {
+    "id": 105,
+    "robust": false,
+    "flaw": "The claim is causal, but the evidence is only associative, so the causal claim is not supported by the evidence."
+  },
+  {
+    "id": 106,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 107,
+    "robust": false,
+    "flaw": "The decision is based on a declared attribute, even though the content is verifiable, so the decision does not use the verifiable content."
+  },
+  {
+    "id": 108,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 109,
+    "robust": false,
+    "flaw": "The carrier is not in the read path, but the mechanism claims the carrier is reached, which is contradictory."
+  },
+  {
+    "id": 110,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 111,
+    "robust": false,
+    "flaw": "The falsifier witness is on the same channel as the claim, so it is not independent."
+  },
+  {
+    "id": 112,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 113,
+    "robust": false,
+    "flaw": "The composition of the two coupled headlines is not declared, so the headline number is not well-defined."
+  },
+  {
+    "id": 114,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 115,
+    "robust": false,
+    "flaw": "The eval set is self-selected, so the held-out eval is not independent."
+  },
+  {
+    "id": 116,
+    "robust": false,
+    "flaw": "The eval set is self-selected, so the accuracy is not independent."
+  },
+  {
+    "id": 117,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 118,
+    "robust": false,
+    "flaw": "The eval set selection is not declared."
+  },
+  {
+    "id": 119,
+    "robust": false,
+    "flaw": "The eval set selection is not declared."
+  },
+  {
+    "id": 120,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 121,
+    "robust": false,
+    "flaw": "The witness is resident at the custodian, so it is not independent."
+  },
+  {
+    "id": 122,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 123,
+    "robust": false,
+    "flaw": "The witness residence is not declared."
+  },
+  {
+    "id": 124,
+    "robust": false,
+    "flaw": "The witness residence is not declared."
+  },
+  {
+    "id": 125,
+    "robust": false,
+    "flaw": "The document leads with its own key, which primes the reader and affects neutrality."
+  },
+  {
+    "id": 126,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 127,
+    "robust": false,
+    "flaw": "The priming position is not declared."
+  },
+  {
+    "id": 128,
+    "robust": false,
+    "flaw": "The referent is self-declared rather than externally anchored."
+  },
+  {
+    "id": 129,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 130,
+    "robust": false,
+    "flaw": "The realized sample size is 0, so there is no actual data to support the headline."
+  },
+  {
+    "id": 131,
+    "robust": true,
+    "flaw": ""
+  },
+  {
+    "id": 132,
+    "robust": false,
+    "flaw": "The reported sample size (7) is larger than the independent sample size (3), so the correlation is based on fewer independent units than reported."
+  },
+  {
+    "id": 133,
+    "robust": true,
+    "flaw": ""
+  }
+]

@@ -1,0 +1,2883 @@
+[
+ {
+  "id": 0,
+  "type": "ablation",
+  "mechanism_lever": "cm",
+  "rows": [
+   {
+    "label": "managed",
+    "mechanism_on": true,
+    "substrate": [
+     "cm",
+     "base"
+    ],
+    "metric": 0.22
+   },
+   {
+    "label": "unmanaged",
+    "mechanism_on": false,
+    "is_null": true,
+    "substrate": [
+     "base"
+    ],
+    "metric": 0.05
+   }
+  ]
+ },
+ {
+  "id": 1,
+  "type": "cross-model",
+  "rows": [
+   {
+    "label": "mechanism",
+    "mechanism_on": true,
+    "metric": 0.4,
+    "ci": [
+     0.35,
+     0.45
+    ]
+   },
+   {
+    "label": "null",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ]
+ },
+ {
+  "id": 2,
+  "type": "cross-model",
+  "rows": [
+   {
+    "label": "mechanism",
+    "mechanism_on": true,
+    "metric": 0.6,
+    "mechanism_axis": 0.3
+   },
+   {
+    "label": "null",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.4,
+    "mechanism_axis": 0.1
+   }
+  ]
+ },
+ {
+  "id": 3,
+  "type": "cross-model",
+  "knob_kind": "lever",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "knob": 0.9,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": true,
+    "knob": 0.95,
+    "metric": 0.6
+   },
+   {
+    "mechanism_on": true,
+    "knob": 0.99,
+    "metric": 0.8
+   }
+  ]
+ },
+ {
+  "id": 4,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.1
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.3
+   }
+  ]
+ },
+ {
+  "id": 5,
+  "type": "ablation",
+  "mechanism_lever": "cm",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "substrate": [
+     "cm",
+     "bus",
+     "shared"
+    ],
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "substrate": [
+     "base"
+    ],
+    "metric": 0.2
+   }
+  ]
+ },
+ {
+  "id": 6,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.9,
+    "mechanism_axis": 0.0
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.7,
+    "mechanism_axis": 0.0
+   }
+  ]
+ },
+ {
+  "id": 7,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.4,
+    "ci": [
+     0.3,
+     0.5
+    ]
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.35
+   }
+  ]
+ },
+ {
+  "id": 8,
+  "type": "cross-model",
+  "referent": "the cache is correct",
+  "witness_observes": [
+   "runtime timing",
+   "output quality"
+  ],
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.4
+   }
+  ]
+ },
+ {
+  "id": 9,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5,
+    "record": "L",
+    "referent_value": 1.0
+   },
+   {
+    "mechanism_on": true,
+    "metric": 0.5,
+    "record": "L",
+    "referent_value": 0.0
+   }
+  ]
+ },
+ {
+  "id": 10,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 2.75,
+    "statistic": "max",
+    "knob": 0.9
+   },
+   {
+    "mechanism_on": true,
+    "metric": 2.1,
+    "draw": 1,
+    "knob": 0.9
+   },
+   {
+    "mechanism_on": true,
+    "metric": 2.3,
+    "draw": 2,
+    "knob": 0.9
+   },
+   {
+    "mechanism_on": true,
+    "metric": 2.75,
+    "draw": 3,
+    "knob": 0.9
+   }
+  ]
+ },
+ {
+  "id": 11,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.4
+   }
+  ],
+  "receipt": {
+   "written": true,
+   "disagrees": true,
+   "witness_awake": false,
+   "self_escalates": false
+  }
+ },
+ {
+  "id": 12,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.4
+   }
+  ],
+  "receipt": {
+   "written": true,
+   "disagrees": true,
+   "witness_awake": true,
+   "self_escalates": false
+  }
+ },
+ {
+  "id": 13,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.4
+   }
+  ],
+  "receipt": {
+   "written": false,
+   "disagrees": true,
+   "witness_awake": false,
+   "self_escalates": false
+  }
+ },
+ {
+  "id": 14,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.4
+   }
+  ],
+  "manifest": {
+   "kind": "diff",
+   "root_written": true,
+   "root_witnessed": false
+  }
+ },
+ {
+  "id": 15,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.4
+   }
+  ],
+  "manifest": {
+   "kind": "diff",
+   "root_written": true,
+   "root_witnessed": true
+  }
+ },
+ {
+  "id": 16,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.4
+   }
+  ],
+  "manifest": {
+   "kind": "preset",
+   "root_written": false,
+   "root_witnessed": false
+  }
+ },
+ {
+  "id": 17,
+  "type": "ablation",
+  "mechanism_lever": "cm",
+  "rows": [
+   {
+    "label": "managed",
+    "mechanism_on": true,
+    "substrate": [
+     "cm",
+     "base"
+    ],
+    "metric": 0.22
+   },
+   {
+    "label": "unmanaged",
+    "mechanism_on": false,
+    "is_null": true,
+    "substrate": [
+     "base"
+    ],
+    "metric": 0.05
+   }
+  ],
+  "source_attribution": "form",
+  "load_bearing": "content"
+ },
+ {
+  "id": 18,
+  "type": "ablation",
+  "mechanism_lever": "cm",
+  "rows": [
+   {
+    "label": "managed",
+    "mechanism_on": true,
+    "substrate": [
+     "cm",
+     "base"
+    ],
+    "metric": 0.22
+   },
+   {
+    "label": "unmanaged",
+    "mechanism_on": false,
+    "is_null": true,
+    "substrate": [
+     "base"
+    ],
+    "metric": 0.05
+   }
+  ],
+  "source_attribution": "content",
+  "load_bearing": "content"
+ },
+ {
+  "id": 19,
+  "type": "ablation",
+  "mechanism_lever": "cm",
+  "rows": [
+   {
+    "label": "managed",
+    "mechanism_on": true,
+    "substrate": [
+     "cm",
+     "base"
+    ],
+    "metric": 0.22
+   },
+   {
+    "label": "unmanaged",
+    "mechanism_on": false,
+    "is_null": true,
+    "substrate": [
+     "base"
+    ],
+    "metric": 0.05
+   }
+  ],
+  "source_attribution": "form"
+ },
+ {
+  "id": 20,
+  "type": "specification",
+  "rows": [],
+  "referent_structure": "disjunction",
+  "number_role": "bright-line-screen"
+ },
+ {
+  "id": 21,
+  "type": "specification",
+  "rows": [],
+  "referent_structure": "absolute",
+  "number_role": "classification"
+ },
+ {
+  "id": 22,
+  "type": "specification",
+  "rows": [],
+  "number_role": "bright-line-screen"
+ },
+ {
+  "id": 23,
+  "type": "cross-model",
+  "onset": "T0",
+  "rows": [
+   {
+    "timepoint": "T0",
+    "mechanism_on": true,
+    "metric": 0.1
+   },
+   {
+    "timepoint": "T0",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   },
+   {
+    "timepoint": "T1",
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "timepoint": "T1",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.1
+   }
+  ]
+ },
+ {
+  "id": 24,
+  "type": "cross-model",
+  "claim_outcome": "win",
+  "rows": [
+   {
+    "outcome": "win",
+    "mechanism_on": true,
+    "metric": 0.1
+   },
+   {
+    "outcome": "win",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   },
+   {
+    "outcome": "loss",
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "outcome": "loss",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.1
+   }
+  ]
+ },
+ {
+  "id": 25,
+  "type": "cross-model",
+  "claim_subgroup": "young",
+  "rows": [
+   {
+    "subgroup": "young",
+    "mechanism_on": true,
+    "metric": 0.1
+   },
+   {
+    "subgroup": "young",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   },
+   {
+    "subgroup": "old",
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "subgroup": "old",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.1
+   }
+  ]
+ },
+ {
+  "id": 26,
+  "type": "cross-model",
+  "claim_dose": [
+   "mild"
+  ],
+  "rows": [
+   {
+    "substrate": [
+     "mild"
+    ],
+    "mechanism_on": true,
+    "metric": 0.1
+   },
+   {
+    "substrate": [
+     "mild"
+    ],
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   },
+   {
+    "substrate": [
+     "severe"
+    ],
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "substrate": [
+     "severe"
+    ],
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.1
+   }
+  ]
+ },
+ {
+  "id": 27,
+  "type": "cross-model",
+  "claim_tier": "T1",
+  "rows": [
+   {
+    "tier": "T1",
+    "mechanism_on": true,
+    "metric": 0.1
+   },
+   {
+    "tier": "T1",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   },
+   {
+    "tier": "T2",
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "tier": "T2",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.1
+   }
+  ]
+ },
+ {
+  "id": 28,
+  "type": "cross-model",
+  "claim_split": "A",
+  "rows": [
+   {
+    "split": "A",
+    "mechanism_on": true,
+    "metric": 0.1
+   },
+   {
+    "split": "A",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   },
+   {
+    "split": "B",
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "split": "B",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.1
+   }
+  ]
+ },
+ {
+  "id": 29,
+  "type": "cross-model",
+  "claim_metric": "acc",
+  "rows": [
+   {
+    "metric_name": "acc",
+    "mechanism_on": true,
+    "metric": 0.1
+   },
+   {
+    "metric_name": "acc",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   },
+   {
+    "metric_name": "f1",
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "metric_name": "f1",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.1
+   }
+  ]
+ },
+ {
+  "id": 30,
+  "type": "cross-model",
+  "onset": "T0",
+  "rows": [
+   {
+    "timepoint": "T0",
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "timepoint": "T0",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.1
+   },
+   {
+    "timepoint": "T1",
+    "mechanism_on": true,
+    "metric": 0.1
+   },
+   {
+    "timepoint": "T1",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.6
+   }
+  ]
+ },
+ {
+  "id": 31,
+  "type": "cross-model",
+  "claim_outcome": "win",
+  "rows": [
+   {
+    "outcome": "win",
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "outcome": "win",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.1
+   },
+   {
+    "outcome": "loss",
+    "mechanism_on": true,
+    "metric": 0.1
+   },
+   {
+    "outcome": "loss",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.6
+   }
+  ]
+ },
+ {
+  "id": 32,
+  "type": "cross-model",
+  "claim_subgroup": "young",
+  "rows": [
+   {
+    "subgroup": "young",
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "subgroup": "young",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.1
+   },
+   {
+    "subgroup": "old",
+    "mechanism_on": true,
+    "metric": 0.1
+   },
+   {
+    "subgroup": "old",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.6
+   }
+  ]
+ },
+ {
+  "id": 33,
+  "type": "cross-model",
+  "claim_dose": [
+   "mild"
+  ],
+  "rows": [
+   {
+    "substrate": [
+     "mild"
+    ],
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "substrate": [
+     "mild"
+    ],
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.1
+   },
+   {
+    "substrate": [
+     "severe"
+    ],
+    "mechanism_on": true,
+    "metric": 0.1
+   },
+   {
+    "substrate": [
+     "severe"
+    ],
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.6
+   }
+  ]
+ },
+ {
+  "id": 34,
+  "type": "cross-model",
+  "claim_tier": "T1",
+  "rows": [
+   {
+    "tier": "T1",
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "tier": "T1",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.1
+   },
+   {
+    "tier": "T2",
+    "mechanism_on": true,
+    "metric": 0.1
+   },
+   {
+    "tier": "T2",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.6
+   }
+  ]
+ },
+ {
+  "id": 35,
+  "type": "cross-model",
+  "claim_split": "A",
+  "rows": [
+   {
+    "split": "A",
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "split": "A",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.1
+   },
+   {
+    "split": "B",
+    "mechanism_on": true,
+    "metric": 0.1
+   },
+   {
+    "split": "B",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.6
+   }
+  ]
+ },
+ {
+  "id": 36,
+  "type": "cross-model",
+  "claim_metric": "acc",
+  "rows": [
+   {
+    "metric_name": "acc",
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "metric_name": "acc",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.1
+   },
+   {
+    "metric_name": "f1",
+    "mechanism_on": true,
+    "metric": 0.1
+   },
+   {
+    "metric_name": "f1",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.6
+   }
+  ]
+ },
+ {
+  "id": 37,
+  "type": "cross-model",
+  "rows": [
+   {
+    "substrate": [
+     "mild"
+    ],
+    "mechanism_on": true,
+    "metric": 0.4
+   },
+   {
+    "substrate": [
+     "mild"
+    ],
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.3
+   },
+   {
+    "substrate": [
+     "severe"
+    ],
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "substrate": [
+     "severe"
+    ],
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.5
+   }
+  ]
+ },
+ {
+  "id": 38,
+  "type": "cross-model",
+  "rows": [
+   {
+    "subgroup": "A",
+    "mechanism_on": true,
+    "n": 10,
+    "metric": 0.8
+   },
+   {
+    "subgroup": "A",
+    "mechanism_on": false,
+    "is_null": true,
+    "n": 100,
+    "metric": 0.7
+   },
+   {
+    "subgroup": "B",
+    "mechanism_on": true,
+    "n": 100,
+    "metric": 0.3
+   },
+   {
+    "subgroup": "B",
+    "mechanism_on": false,
+    "is_null": true,
+    "n": 10,
+    "metric": 0.2
+   }
+  ]
+ },
+ {
+  "id": 39,
+  "type": "cross-model",
+  "rows": [
+   {
+    "subgroup": "A",
+    "mechanism_on": true,
+    "n": 100,
+    "metric": 0.8
+   },
+   {
+    "subgroup": "A",
+    "mechanism_on": false,
+    "is_null": true,
+    "n": 100,
+    "metric": 0.7
+   },
+   {
+    "subgroup": "B",
+    "mechanism_on": true,
+    "n": 100,
+    "metric": 0.6
+   },
+   {
+    "subgroup": "B",
+    "mechanism_on": false,
+    "is_null": true,
+    "n": 100,
+    "metric": 0.5
+   }
+  ]
+ },
+ {
+  "id": 40,
+  "type": "cross-model",
+  "rows": [
+   {
+    "label": "mechanism",
+    "mechanism_on": true,
+    "metric": 0.9
+   },
+   {
+    "label": "null",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.5
+   }
+  ],
+  "referent": "root-cause groups",
+  "referent_provenance": "model-constructed"
+ },
+ {
+  "id": 41,
+  "type": "cross-model",
+  "rows": [
+   {
+    "label": "mechanism",
+    "mechanism_on": true,
+    "metric": 0.9
+   },
+   {
+    "label": "null",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.5
+   }
+  ],
+  "referent": "human-annotated labels",
+  "referent_provenance": "external"
+ },
+ {
+  "id": 42,
+  "type": "cross-model",
+  "rows": [
+   {
+    "label": "mechanism",
+    "mechanism_on": true,
+    "metric": 0.9
+   },
+   {
+    "label": "null",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.5
+   }
+  ],
+  "funnel_stages": [
+   {
+    "stage": "parse",
+    "rate": 0.95
+   },
+   {
+    "stage": "validate",
+    "rate": 0.4
+   },
+   {
+    "stage": "emit",
+    "rate": 0.9
+   }
+  ],
+  "headline_stage": "parse"
+ },
+ {
+  "id": 43,
+  "type": "cross-model",
+  "rows": [
+   {
+    "label": "mechanism",
+    "mechanism_on": true,
+    "metric": 0.9
+   },
+   {
+    "label": "null",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.5
+   }
+  ],
+  "funnel_stages": [
+   {
+    "stage": "parse",
+    "rate": 0.95
+   },
+   {
+    "stage": "validate",
+    "rate": 0.4
+   },
+   {
+    "stage": "emit",
+    "rate": 0.9
+   }
+  ],
+  "headline_stage": "validate"
+ },
+ {
+  "id": 44,
+  "type": "cross-model",
+  "rows": [
+   {
+    "label": "mechanism",
+    "mechanism_on": true,
+    "metric": 0.8
+   },
+   {
+    "label": "null",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.3
+   }
+  ],
+  "subset_criterion": {
+   "op": ">=",
+   "threshold": 0.5
+  }
+ },
+ {
+  "id": 45,
+  "type": "cross-model",
+  "rows": [
+   {
+    "label": "mechanism",
+    "mechanism_on": true,
+    "metric": 0.8
+   },
+   {
+    "label": "null",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.6
+   }
+  ],
+  "subset_criterion": {
+   "op": ">=",
+   "threshold": 0.5
+  }
+ },
+ {
+  "id": 46,
+  "type": "cross-model",
+  "rows": [
+   {
+    "label": "mechanism",
+    "mechanism_on": true,
+    "metric": 0.9
+   },
+   {
+    "label": "null",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.5
+   }
+  ],
+  "annotation_provenance": "llm-judge-non-public"
+ },
+ {
+  "id": 47,
+  "type": "cross-model",
+  "rows": [
+   {
+    "label": "mechanism",
+    "mechanism_on": true,
+    "metric": 0.9
+   },
+   {
+    "label": "null",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.5
+   }
+  ],
+  "annotation_provenance": "public-human"
+ },
+ {
+  "id": 48,
+  "type": "specification",
+  "rows": [],
+  "named_metrics": [
+   "coverage",
+   "latency"
+  ],
+  "operationalized": [
+   "coverage"
+  ]
+ },
+ {
+  "id": 49,
+  "type": "specification",
+  "rows": [],
+  "named_metrics": [
+   "coverage",
+   "latency"
+  ],
+  "operationalized": [
+   "coverage",
+   "latency"
+  ]
+ },
+ {
+  "id": 50,
+  "type": "cross-model",
+  "rows": [
+   {
+    "label": "mechanism",
+    "mechanism_on": true,
+    "metric": 0.9
+   },
+   {
+    "label": "null",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.5
+   }
+  ],
+  "independence_scope": [
+   "protocol",
+   "data"
+  ],
+  "independence_load_bearing": "implementation"
+ },
+ {
+  "id": 51,
+  "type": "cross-model",
+  "rows": [
+   {
+    "label": "mechanism",
+    "mechanism_on": true,
+    "metric": 0.9
+   },
+   {
+    "label": "null",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.5
+   }
+  ],
+  "independence_scope": [
+   "protocol",
+   "data",
+   "implementation"
+  ],
+  "independence_load_bearing": "implementation"
+ },
+ {
+  "id": 52,
+  "type": "cross-model",
+  "rows": [
+   {
+    "label": "mechanism",
+    "mechanism_on": true,
+    "metric": 0.9
+   },
+   {
+    "label": "null",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.5
+   }
+  ],
+  "tradeoff_pairing": {
+   "quality": "abstract"
+  },
+  "tradeoff_single_reference": "single",
+  "tradeoff_metrics": [
+   {
+    "name": "quality",
+    "direction": "higher_better",
+    "mechanism": 0.9,
+    "references": {
+     "abstract": 0.5,
+     "single": 0.7
+    }
+   }
+  ]
+ },
+ {
+  "id": 53,
+  "type": "cross-model",
+  "rows": [
+   {
+    "label": "mechanism",
+    "mechanism_on": true,
+    "metric": 0.9
+   },
+   {
+    "label": "null",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.5
+   }
+  ],
+  "tradeoff_pairing": {
+   "quality": "abstract"
+  },
+  "tradeoff_single_reference": "single",
+  "tradeoff_metrics": [
+   {
+    "name": "quality",
+    "direction": "higher_better",
+    "mechanism": 0.9,
+    "references": {
+     "abstract": 0.7,
+     "single": 0.5
+    }
+   }
+  ]
+ },
+ {
+  "id": 54,
+  "type": "cross-model",
+  "rows": [
+   {
+    "label": "mechanism",
+    "mechanism_on": true,
+    "metric": 0.9
+   },
+   {
+    "label": "null",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.5
+   }
+  ],
+  "headline_scope": "universal",
+  "limitation_negates": "universal"
+ },
+ {
+  "id": 55,
+  "type": "cross-model",
+  "rows": [
+   {
+    "label": "mechanism",
+    "mechanism_on": true,
+    "metric": 0.9
+   },
+   {
+    "label": "null",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.5
+   }
+  ],
+  "headline_scope": "universal",
+  "limitation_negates": "sample-size"
+ },
+ {
+  "id": 56,
+  "type": "cross-model",
+  "rows": [
+   {
+    "label": "mechanism",
+    "mechanism_on": true,
+    "metric": 0.9
+   },
+   {
+    "label": "null",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.5
+   }
+  ],
+  "headline_scope": "universal"
+ },
+ {
+  "id": 57,
+  "type": "cross-model",
+  "rows": [
+   {
+    "label": "mechanism",
+    "mechanism_on": true,
+    "metric": 0.9
+   },
+   {
+    "label": "null",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.5
+   }
+  ],
+  "primary_basis": "wall-clock time",
+  "secondary_basis": "success rate",
+  "primary_basis_result": "reverses"
+ },
+ {
+  "id": 58,
+  "type": "cross-model",
+  "rows": [
+   {
+    "label": "mechanism",
+    "mechanism_on": true,
+    "metric": 0.9
+   },
+   {
+    "label": "null",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.5
+   }
+  ],
+  "primary_basis": "wall-clock time",
+  "primary_basis_result": "holds"
+ },
+ {
+  "id": 59,
+  "type": "cross-model",
+  "rows": [
+   {
+    "label": "mechanism",
+    "mechanism_on": true,
+    "metric": 0.9
+   },
+   {
+    "label": "null",
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.5
+   }
+  ],
+  "primary_basis": "wall-clock time"
+ },
+ {
+  "id": 60,
+  "type": "specification",
+  "rows": [],
+  "window_claim": "the verb never existed in the 12-day window",
+  "mechanism_history": "added-during-window"
+ },
+ {
+  "id": 61,
+  "type": "specification",
+  "rows": [],
+  "window_claim": "the verb never existed in the 12-day window",
+  "mechanism_history": "added-before-window"
+ },
+ {
+  "id": 62,
+  "type": "specification",
+  "rows": [],
+  "window_claim": "the verb never existed in the 12-day window"
+ },
+ {
+  "id": 63,
+  "type": "specification",
+  "rows": [],
+  "has_more_at_end": true
+ },
+ {
+  "id": 64,
+  "type": "specification",
+  "rows": [],
+  "has_more_at_end": false
+ },
+ {
+  "id": 65,
+  "type": "specification",
+  "rows": [],
+  "cursor_runs": [
+   1234,
+   1234
+  ]
+ },
+ {
+  "id": 66,
+  "type": "specification",
+  "rows": []
+ },
+ {
+  "id": 67,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "referent_value": "a2ff25f0",
+  "reading": "a2ff25f1",
+  "independence_scope": [
+   "protocol",
+   "data",
+   "implementation",
+   "human gate"
+  ],
+  "independence_load_bearing": "protocol"
+ },
+ {
+  "id": 68,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "referent_value": "a2ff25f0",
+  "reading": "a2ff25f0",
+  "independence_scope": [
+   "data"
+  ],
+  "independence_load_bearing": "protocol"
+ },
+ {
+  "id": 69,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "referent_value": "a2ff25f0",
+  "reading": "a2ff25f0",
+  "independence_scope": [
+   "protocol",
+   "data",
+   "implementation",
+   "human gate"
+  ],
+  "independence_load_bearing": "protocol"
+ },
+ {
+  "id": 70,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "absence_claim": true,
+  "witness_population": "self-selected"
+ },
+ {
+  "id": 71,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "absence_claim": true,
+  "witness_population": "independent"
+ },
+ {
+  "id": 72,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "absence_claim": false,
+  "witness_population": "self-selected"
+ },
+ {
+  "id": 73,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "absence_claim": true
+ },
+ {
+  "id": 74,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.9
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.5
+   }
+  ],
+  "verification_source": "board-1f916",
+  "claim_source": "board-1f916"
+ },
+ {
+  "id": 75,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.9
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.5
+   }
+  ],
+  "verification_source": "board-universal-agent-forum",
+  "claim_source": "board-1f916"
+ },
+ {
+  "id": 76,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.9
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.5
+   }
+  ],
+  "claim_source": "board-1f916"
+ },
+ {
+  "id": 77,
+  "type": "cross-model",
+  "knob_kind": "lever",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "knob": 0.9,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": true,
+    "knob": 0.95,
+    "metric": 0.6
+   },
+   {
+    "mechanism_on": true,
+    "knob": 0.99,
+    "metric": 0.8
+   }
+  ],
+  "verification_source": "board-1f916",
+  "claim_source": "board-1f916"
+ },
+ {
+  "id": 78,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "certifier": "platform",
+  "verification_key": "platform-secret"
+ },
+ {
+  "id": 79,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "certifier": "citizen",
+  "verification_key": "citizen-secret"
+ },
+ {
+  "id": 80,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "certifier": "platform",
+  "verification_key": "public"
+ },
+ {
+  "id": 81,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "verification_key": "platform-secret"
+ },
+ {
+  "id": 82,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "writer_trust": "self-asserted"
+ },
+ {
+  "id": 83,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "writer_trust": "independently-established"
+ },
+ {
+  "id": 84,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ]
+ },
+ {
+  "id": 85,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "writer_trust": "platform-certified"
+ },
+ {
+  "id": 86,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "metric_name": "Pool@60",
+  "guaranteed_count": 200,
+  "total_count": 500,
+  "measured_count": 297,
+  "separated": false
+ },
+ {
+  "id": 87,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "metric_name": "Pool@60",
+  "guaranteed_count": 200,
+  "total_count": 500,
+  "measured_count": 297,
+  "separated": true
+ },
+ {
+  "id": 88,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "metric_name": "Pool@60",
+  "total_count": 500,
+  "measured_count": 297,
+  "separated": false
+ },
+ {
+  "id": 89,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "detector_catches_claim": true,
+  "detection_on_own_metric": true,
+  "detection_threshold_disclosed": false
+ },
+ {
+  "id": 90,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "detector_catches_claim": true,
+  "detection_on_own_metric": true,
+  "detection_threshold_disclosed": true
+ },
+ {
+  "id": 91,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "detection_on_own_metric": true,
+  "detection_threshold_disclosed": false
+ },
+ {
+  "id": 92,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "judge_emits_labels": true,
+  "agent_optimizes_toward_judge": true
+ },
+ {
+  "id": 93,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "judge_emits_labels": true,
+  "agent_optimizes_toward_judge": false
+ },
+ {
+  "id": 94,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "agent_optimizes_toward_judge": true
+ },
+ {
+  "id": 95,
+  "type": "ablation",
+  "mechanism": "B-allocation fraction (bit_count/8) over the reserve-weight landscape",
+  "mechanism_lever": "allocation_fraction",
+  "metric": "frac_of_systematic",
+  "shape_claim": true,
+  "probe_support_fraction": 0.625,
+  "shape_structurally_bounded": false,
+  "rows": [
+   {
+    "label": "bc1",
+    "mechanism_on": true,
+    "substrate": [
+     "allocation_fraction",
+     "reserve_weights"
+    ],
+    "knob": 0.125,
+    "metric": 0.6595,
+    "mechanism_axis": 0.6595
+   },
+   {
+    "label": "bc2",
+    "mechanism_on": true,
+    "substrate": [
+     "allocation_fraction",
+     "reserve_weights"
+    ],
+    "knob": 0.25,
+    "metric": 1.0194,
+    "mechanism_axis": 1.0194
+   },
+   {
+    "label": "bc3",
+    "mechanism_on": true,
+    "substrate": [
+     "allocation_fraction",
+     "reserve_weights"
+    ],
+    "knob": 0.375,
+    "metric": 1.0599,
+    "mechanism_axis": 1.0599
+   },
+   {
+    "label": "bc4",
+    "mechanism_on": true,
+    "substrate": [
+     "allocation_fraction",
+     "reserve_weights"
+    ],
+    "knob": 0.5,
+    "metric": 0.9822,
+    "mechanism_axis": 0.9822
+   },
+   {
+    "label": "bc5",
+    "mechanism_on": true,
+    "substrate": [
+     "allocation_fraction",
+     "reserve_weights"
+    ],
+    "knob": 0.625,
+    "metric": 0.7334,
+    "mechanism_axis": 0.7334
+   }
+  ]
+ },
+ {
+  "id": 96,
+  "type": "regime-sweep",
+  "mechanism": "plurality voting over N=30 agents realizes the OR-potential (P[>=1 of N correct])",
+  "mechanism_lever": "plurality",
+  "metric": "realized accuracy (fraction of OR-potential realized)",
+  "scope_claim": true,
+  "probe_support_fraction": 1.0,
+  "stated_headline": 0.5,
+  "rows": [
+   {
+    "label": "not-modal regime",
+    "mechanism_on": true,
+    "substrate": [
+     "plurality",
+     "n30"
+    ],
+    "metric": 0.0
+   },
+   {
+    "label": "close-modal regime",
+    "mechanism_on": true,
+    "substrate": [
+     "plurality",
+     "n30"
+    ],
+    "metric": 0.5
+   },
+   {
+    "label": "clear-modal regime",
+    "mechanism_on": true,
+    "substrate": [
+     "plurality",
+     "n30"
+    ],
+    "metric": 1.0
+   },
+   {
+    "label": "single agent (null)",
+    "mechanism_on": false,
+    "is_null": true,
+    "substrate": [
+     "single"
+    ],
+    "metric": 0.5
+   }
+  ]
+ },
+ {
+  "id": 97,
+  "type": "series",
+  "check_count": 331,
+  "distinct_checks": 1,
+  "varies_only": "server timestamp",
+  "rows": [
+   {
+    "label": "seal-check #1",
+    "mechanism_on": true,
+    "metric": 1.0,
+    "signature": "seal-row-sig",
+    "server_timestamp": 1700000000
+   },
+   {
+    "label": "seal-check #2",
+    "mechanism_on": true,
+    "metric": 1.0,
+    "signature": "seal-row-sig",
+    "server_timestamp": 1700000060
+   }
+  ]
+ },
+ {
+  "id": 98,
+  "type": "specification",
+  "census_claim": "317 seats are dead",
+  "state_values": [
+   "within_declared",
+   "breached",
+   "undeclared"
+  ],
+  "undeclared_count": 312,
+  "binary_reading": {
+   "collapsed_into": "breached"
+  }
+ },
+ {
+  "id": 99,
+  "type": "ablation",
+  "mechanism_lever": "openness",
+  "thesis_endpoint": "mitigation difficulty",
+  "measured_endpoints": [
+   "deployment cost",
+   "survey competitiveness",
+   "per-check failure profile",
+   "SED (distance from human reference)"
+  ],
+  "headline_states_as_fact": true,
+  "body_hedges": true,
+  "rows": [
+   {
+    "label": "fully-open (3 configs)",
+    "mechanism_on": true,
+    "substrate": [
+     "openness"
+    ],
+    "metric": 0.8,
+    "mechanism_axis": 0.8
+   },
+   {
+    "label": "mixed (3 configs)",
+    "mechanism_on": true,
+    "substrate": [
+     "openness"
+    ],
+    "metric": 0.6,
+    "mechanism_axis": 0.6
+   },
+   {
+    "label": "closed (3 configs, null)",
+    "mechanism_on": false,
+    "is_null": true,
+    "substrate": [],
+    "metric": 0.5,
+    "mechanism_axis": 0.5
+   }
+  ]
+ },
+ {
+  "id": 100,
+  "type": "ablation",
+  "mechanism_lever": "openness",
+  "thesis_endpoint": "mitigation difficulty",
+  "measured_endpoints": [
+   "deployment cost",
+   "survey competitiveness",
+   "per-check failure profile",
+   "SED (distance from human reference)"
+  ],
+  "headline_states_as_fact": false,
+  "body_hedges": true,
+  "rows": [
+   {
+    "label": "fully-open (3 configs)",
+    "mechanism_on": true,
+    "substrate": [
+     "openness"
+    ],
+    "metric": 0.8,
+    "mechanism_axis": 0.8
+   },
+   {
+    "label": "mixed (3 configs)",
+    "mechanism_on": true,
+    "substrate": [
+     "openness"
+    ],
+    "metric": 0.6,
+    "mechanism_axis": 0.6
+   },
+   {
+    "label": "closed (3 configs, null)",
+    "mechanism_on": false,
+    "is_null": true,
+    "substrate": [],
+    "metric": 0.5,
+    "mechanism_axis": 0.5
+   }
+  ]
+ },
+ {
+  "id": 101,
+  "type": "negative-result",
+  "mechanism_lever": "confidence ranking selecting which undetermined positions to write each step",
+  "thesis_endpoint": "confidence-based remasking is systematically off-distribution on dependent token groups; per-sample metrics cannot see it",
+  "measured_endpoints": [
+   "TV distance of confidence-remasking samples vs the training joint",
+   "TV distance of the independent-draw null (sampling-noise floor)",
+   "TV distance of hand-specified (non-confidence) orders reaching the free group in parallel"
+  ],
+  "headline_states_as_fact": true,
+  "body_hedges": true,
+  "proof_supported": true,
+  "proof_statement": "Theorem 3: KL(p||prod pi_i) = TC + sum KL(p_i||pi_i); a step matches the training distribution only when the positions it writes are conditionally independent given the already-fixed tokens, and no product of per-position distributions can match a dependent group",
+  "rows": [
+   {
+    "label": "confidence-ordered remasking, ScanAndAdd (flagship)",
+    "mechanism_on": true,
+    "substrate": [
+     "confidence",
+     "scanandadd"
+    ],
+    "metric": 0.157
+   },
+   {
+    "label": "confidence-ordered remasking, other point",
+    "mechanism_on": true,
+    "substrate": [
+     "confidence",
+     "scanandadd"
+    ],
+    "metric": 0.129
+   },
+   {
+    "label": "independent-draw null / sampling-noise floor",
+    "mechanism_on": false,
+    "is_null": true,
+    "substrate": [
+     "independent-draw"
+    ],
+    "metric": 0.0054
+   },
+   {
+    "label": "hand-specified order, free group parallel (Group A, reachable null)",
+    "mechanism_on": false,
+    "substrate": [
+     "hand-order",
+     "free-group"
+    ],
+    "metric": 0.005
+   }
+  ]
+ },
+ {
+  "id": 102,
+  "type": "ablation",
+  "mechanism_lever": "m",
+  "referent": "benchmark quality of the externally-anchored artifact",
+  "referent_provenance": "externally-anchored",
+  "certifier_identity": "unnamed",
+  "rows": [
+   {
+    "label": "on",
+    "mechanism_on": true,
+    "substrate": [
+     "s",
+     "m"
+    ],
+    "metric": 1.0
+   },
+   {
+    "label": "off",
+    "mechanism_on": false,
+    "is_null": true,
+    "substrate": [
+     "s"
+    ],
+    "metric": 0.2
+   }
+  ]
+ },
+ {
+  "id": 103,
+  "type": "ablation",
+  "mechanism_lever": "m",
+  "referent": "benchmark quality of the externally-anchored artifact",
+  "referent_provenance": "externally-anchored",
+  "certifier_identity": "named",
+  "rows": [
+   {
+    "label": "on",
+    "mechanism_on": true,
+    "substrate": [
+     "s",
+     "m"
+    ],
+    "metric": 1.0
+   },
+   {
+    "label": "off",
+    "mechanism_on": false,
+    "is_null": true,
+    "substrate": [
+     "s"
+    ],
+    "metric": 0.2
+   }
+  ]
+ },
+ {
+  "id": 104,
+  "type": "ablation",
+  "mechanism_lever": "m",
+  "referent": "benchmark quality of the externally-anchored artifact",
+  "referent_provenance": "externally-anchored",
+  "rows": [
+   {
+    "label": "on",
+    "mechanism_on": true,
+    "substrate": [
+     "s",
+     "m"
+    ],
+    "metric": 1.0
+   },
+   {
+    "label": "off",
+    "mechanism_on": false,
+    "is_null": true,
+    "substrate": [
+     "s"
+    ],
+    "metric": 0.2
+   }
+  ]
+ },
+ {
+  "id": 105,
+  "type": "ablation",
+  "mechanism_lever": "m",
+  "claim_relation": "causal",
+  "evidence_relation": "associative",
+  "rows": [
+   {
+    "label": "on",
+    "mechanism_on": true,
+    "substrate": [
+     "s",
+     "m"
+    ],
+    "metric": 1.0
+   },
+   {
+    "label": "off",
+    "mechanism_on": false,
+    "is_null": true,
+    "substrate": [
+     "s"
+    ],
+    "metric": 0.2
+   }
+  ]
+ },
+ {
+  "id": 106,
+  "type": "ablation",
+  "mechanism_lever": "m",
+  "claim_relation": "causal",
+  "evidence_relation": "causal",
+  "rows": [
+   {
+    "label": "on",
+    "mechanism_on": true,
+    "substrate": [
+     "s",
+     "m"
+    ],
+    "metric": 1.0
+   },
+   {
+    "label": "off",
+    "mechanism_on": false,
+    "is_null": true,
+    "substrate": [
+     "s"
+    ],
+    "metric": 0.2
+   }
+  ]
+ },
+ {
+  "id": 107,
+  "type": "cross-model",
+  "mechanism": "certifier decision channel (declared attribute vs verified content)",
+  "metric": "admission decision (does the certifier admit the claim)",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.7
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.0
+   }
+  ],
+  "decision_channel": "declared-attribute",
+  "content_verifiable": "yes"
+ },
+ {
+  "id": 108,
+  "type": "cross-model",
+  "mechanism": "certifier decision channel (verified content)",
+  "metric": "admission decision (does the certifier admit the claim)",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.7
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.0
+   }
+  ],
+  "decision_channel": "verified-content",
+  "content_verifiable": "yes"
+ },
+ {
+  "id": 109,
+  "type": "cross-model",
+  "mechanism": "consumer read path (carrier reached vs not reached)",
+  "metric": "certification attendance (does the consumer's read path attend the carrier)",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.7
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.0
+   }
+  ],
+  "carrier_in_read_path": "no",
+  "content_verifiable": "yes",
+  "decision_channel": "verified-content"
+ },
+ {
+  "id": 110,
+  "type": "cross-model",
+  "mechanism": "consumer read path (carrier reached)",
+  "metric": "certification attendance (does the consumer's read path attend the carrier)",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.7
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.0
+   }
+  ],
+  "carrier_in_read_path": "yes",
+  "content_verifiable": "yes",
+  "decision_channel": "verified-content"
+ },
+ {
+  "id": 111,
+  "type": "cross-model",
+  "mechanism": "exit-engine state (closed vs residual)",
+  "metric": "position state (does the engine record the position as closed)",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.7
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.0
+   }
+  ],
+  "claim_channel_address": "exchange_ledger",
+  "falsifier_witness_address": "exchange_ledger"
+ },
+ {
+  "id": 112,
+  "type": "cross-model",
+  "mechanism": "exit-engine state (closed vs residual)",
+  "metric": "position state (does the engine record the position as closed)",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.7
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.0
+   }
+  ],
+  "claim_channel_address": "exchange_ledger",
+  "falsifier_witness_address": "on_chain_balance"
+ },
+ {
+  "id": 113,
+  "type": "cross-model",
+  "mechanism": "quantization (FP32 -> nominal 6-bit)",
+  "metric": "serving memory reduction (headline) vs recurrent-state compression (mechanism axis)",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.7
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.0
+   }
+  ],
+  "coupled_headlines": "yes",
+  "broader_derived": "yes",
+  "composition_declared": "no"
+ },
+ {
+  "id": 114,
+  "type": "cross-model",
+  "mechanism": "quantization (FP32 -> nominal 6-bit)",
+  "metric": "serving memory reduction (headline) vs recurrent-state compression (mechanism axis)",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.7
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.0
+   }
+  ],
+  "coupled_headlines": "yes",
+  "broader_derived": "yes",
+  "composition_declared": "yes"
+ },
+ {
+  "id": 115,
+  "type": "cross-model",
+  "mechanism": "monitoring system (incident-derived regression tests)",
+  "metric": "recall on past incidents (held-out eval)",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.7
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.0
+   }
+  ],
+  "held_out_eval": "yes",
+  "eval_set_provenance": "self"
+ },
+ {
+  "id": 116,
+  "type": "cross-model",
+  "mechanism": "eval set (self-selected subset of external corpus)",
+  "metric": "answer accuracy (higher better)",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.7
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.0
+   }
+  ],
+  "eval_set_selection": "self"
+ },
+ {
+  "id": 117,
+  "type": "cross-model",
+  "mechanism": "eval set (externally selected subset of external corpus)",
+  "metric": "answer accuracy (higher better)",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.7
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.0
+   }
+  ],
+  "eval_set_selection": "external"
+ },
+ {
+  "id": 118,
+  "type": "cross-model",
+  "mechanism": "eval set (selection undeclared)",
+  "metric": "answer accuracy (higher better)",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.7
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.0
+   }
+  ],
+  "eval_set_selection": "undeclared"
+ },
+ {
+  "id": 119,
+  "type": "cross-model",
+  "mechanism": "eval set (no selection field)",
+  "metric": "answer accuracy (higher better)",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.7
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.0
+   }
+  ]
+ },
+ {
+  "id": 120,
+  "type": "cross-model",
+  "mechanism": "monitoring system (incident-derived regression tests)",
+  "metric": "recall on past incidents (held-out eval)",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.7
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.0
+   }
+  ],
+  "held_out_eval": "yes",
+  "eval_set_provenance": "external"
+ },
+ {
+  "id": 121,
+  "type": "cross-model",
+  "mechanism": "coverage diff (custodian-resident witness bytes)",
+  "metric": "coverage delta (higher better)",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.7
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.0
+   }
+  ],
+  "witness_residence": "custodian"
+ },
+ {
+  "id": 122,
+  "type": "cross-model",
+  "mechanism": "coverage diff (publicly available witness bytes)",
+  "metric": "coverage delta (higher better)",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.7
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.0
+   }
+  ],
+  "witness_residence": "public"
+ },
+ {
+  "id": 123,
+  "type": "cross-model",
+  "mechanism": "coverage diff (residence undeclared)",
+  "metric": "coverage delta (higher better)",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.7
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.0
+   }
+  ],
+  "witness_residence": "undeclared"
+ },
+ {
+  "id": 124,
+  "type": "cross-model",
+  "mechanism": "coverage diff (no residence field)",
+  "metric": "coverage delta (higher better)",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.7
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.0
+   }
+  ]
+ },
+ {
+  "id": 125,
+  "type": "cross-model",
+  "mechanism": "transcription of continuity block (document leads with its own key)",
+  "metric": "reader-neutrality delta (higher better)",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.7
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.0
+   }
+  ],
+  "priming_position": "lead"
+ },
+ {
+  "id": 126,
+  "type": "cross-model",
+  "mechanism": "transcription of continuity block (expected value in appendix)",
+  "metric": "reader-neutrality delta (higher better)",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.7
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.0
+   }
+  ],
+  "priming_position": "non_lead"
+ },
+ {
+  "id": 127,
+  "type": "cross-model",
+  "mechanism": "transcription of continuity block (position undeclared)",
+  "metric": "reader-neutrality delta (higher better)",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.7
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.0
+   }
+  ]
+ },
+ {
+  "id": 128,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "referent_source": "self-declared"
+ },
+ {
+  "id": 129,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "referent_source": "externally-witnessed"
+ },
+ {
+  "id": 130,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "declared_fraction": 0.06,
+  "rule_probability": 0.06,
+  "population_N": 50,
+  "realized_n": 0,
+  "validity_gate": "realized_size_band",
+  "gate_band_sd": 1.0
+ },
+ {
+  "id": 131,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "declared_fraction": 0.06,
+  "rule_probability": 0.06,
+  "population_N": 50,
+  "realized_n": 3,
+  "validity_gate": "realized_size_band",
+  "gate_band_sd": 1.0
+ },
+ {
+  "id": 132,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "statistic": "correlation",
+  "statistic_value": 0.9,
+  "reported_n": 7,
+  "independent_n": 3
+ },
+ {
+  "id": 133,
+  "type": "cross-model",
+  "rows": [
+   {
+    "mechanism_on": true,
+    "metric": 0.5
+   },
+   {
+    "mechanism_on": false,
+    "is_null": true,
+    "metric": 0.2
+   }
+  ],
+  "statistic": "correlation",
+  "statistic_value": 0.9,
+  "reported_n": 7,
+  "independent_n": 7
+ }
+]

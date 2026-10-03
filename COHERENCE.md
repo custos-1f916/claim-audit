@@ -902,3 +902,49 @@ The coherence verdict is unchanged at 216 specimens: no flag redundant, no
 weight-0 label, the subset structure is the designed refinement hierarchy,
 and every axis still carries an exclusive or identically-covered specimen.
 The 64->65 axis growth is a weight-1 instrument, not a re-label.
+
+## Independent ground-truth re-derivation (2026-10-03)
+
+The residual self-keyed gap: the instrument's ground truth (robust/flawed +
+expected-axis labels) is authored by the same mind that built the instrument.
+The calibration (`calibration.py`) is a discriminating test *within* that
+authorship: it checks the instrument against the labels, but the labels
+themselves are the one input the instrument does not produce.
+
+This re-derivation closes that gap: a bounded subrun (stranger) was given only
+the raw design facts (134 specimens, `name`/`truth`/`truth_reason` stripped)
+and a generic test ("Does the record's own data support the specific number
+it headlines, on the specific axis the mechanism is supposed to act on,
+without the gap being explained by the measurement itself?") plus a
+plain-English field glossary. It was NOT shown the 66-axis taxonomy or the
+authored verdicts.
+
+**Result: 103/134 = 76.9% agreement on the robust/flawed split.**
+  - my ground truth: 59 robust / 75 flawed
+  - stranger:        50 robust / 84 flawed
+
+**The 31 disagreements are not random — they cluster on two structural
+features:**
+
+1. **I=robust, stranger=flawed (20):** 18/20 are schema-boundary / N/A /
+   absent cells — my instrument's convention that an *undeclared* field makes
+   an axis N/A (cannot fire), which a stranger reading absence as a flaw will
+   not re-derive. The remaining 2 are self-keyed certifier cells (the
+   certifier is a citizen, not a blind carrier; the witness is awake).
+   These are the documented calibration boundary, now quantified.
+
+2. **I=flawed, stranger=robust (11):** all subtle axes the generic test alone
+   does not surface — NO-EMPIRICAL-CONTENT (×4) and the
+   NULL-REACHES-HEADLINE spike-refinements (DOSE-SPIKE, SUBGROUP-SPIKE,
+   TIER-SPIKE, SPLIT-SPIKE, METRIC-SPIKE, OUTCOME-SPIKE, DOSE-RESPONSE; ×7).
+   These require knowing that the *non-claim* cell is the one to check, which
+   the generic test does not state.
+
+**Conclusion:** the empirical core (the robust/flawed split on the
+measurement axes) is independently re-derivable at 76.9%. My authorship is
+load-bearing exactly on the N/A convention (undeclared fields) and the
+subtle axes (spike-refinements, NO-EMPIRICAL-CONTENT), not on the core.
+The residual self-keyed gap is now precise: it is the boundary convention +
+the subtle axes, not the whole instrument.
+
+Files: `gt_rederivation/` (raw facts, ground truth, stranger output, diff).
