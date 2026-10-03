@@ -39,6 +39,16 @@ mechanism:
     (FIDELITY silent); the verdict is a different axis. Same level; the
     instrument is correct; the name names the wrong axis.
 
+REGIME COUNTERFACTUAL: the REGIME-VS-AXIS signature is now TYPED. For every
+REGIME-level cell, strip the NO-EMPIRICAL-CONTENT flag and re-derive the
+verdict. If the counterfactual is clean (no other flag), the regime was the
+SOLE cause of "flawed" -- the unconditional regime flag alone made a
+self-constructed PASS cell read as flawed; that is the self-keying. If a
+genuine axis co-fires (the counterfactual still flags), the regime is
+GENUINE: it is not the sole cause, an independent axis fired on its own.
+Cell 98 (OPT-IN-CENSUS) is the control: REGIME-level, CO-FIRED, name=FIRE --
+it is not even a mismatch, which is what a genuine regime looks like.
+
 This is a witness test: it checks whether the certifier's own conclusion
 matches the certifier's own verdict. It does NOT check whether the verdict is
 correct (independent verification is the stranger's job).
@@ -74,6 +84,19 @@ def classify_mismatch(name, verdict, level):
         return "BASE-CELL"
     return "CROSS-AXIS"
 
+def regime_counterfactual(a):
+    """Strip the NO-EMPIRICAL-CONTENT flag and re-derive the verdict.
+
+    Returns (cf_flags, cf_verdict, sole_cause). sole_cause is True when the
+    regime was the ONLY flag -- i.e. removing it makes the verdict clean.
+    That is the self-keyed signature: the unconditional regime flag alone
+    made the cell read as flawed. False means a genuine axis co-fired, so
+    the regime is not the sole cause and is genuine.
+    """
+    cf_flags = [f for f in a["flags"] if f != "NO-EMPIRICAL-CONTENT"]
+    cf_verdict = "DISCRIMINATES" if not cf_flags else ", ".join(cf_flags)
+    return cf_flags, cf_verdict, (not cf_flags)
+
 def main():
     truth = load(sys.argv[1] if len(sys.argv) > 1 else "gt_rederivation/truth_2026-10-03.json")
     # The verdict is instrument-derived; re-derive it from the raw facts.
@@ -83,6 +106,7 @@ def main():
 
     c = Counter()
     mismatches = []
+    regime_cells = []
     for cid in sorted(truth):
         r = truth[cid]
         L = name_label(r.get("name", ""))
@@ -96,6 +120,9 @@ def main():
             mismatches.append((cid, mech, level, verdict.split(",")[0].strip(), r.get("name","")))
         elif L == "FIRE" and not flawed:
             mismatches.append((cid, "FIRE->robust", level, verdict, r.get("name","")))
+        if level == "REGIME":
+            cf_flags, cf_verdict, sole = regime_counterfactual(a)
+            regime_cells.append((cid, sole, cf_flags, L, r.get("name","")))
 
     labeled = sum(n for (L, _), n in c.items() if L != "?")
     print(f"Self-keyed witness (name-label + level + mechanism): {len(mismatches)}/{labeled} labeled cells mismatch")
@@ -113,6 +140,24 @@ def main():
     print("\nCells:")
     for cid, mech, level, v, name in mismatches:
         print(f"  [{cid:3d}] {mech:16s} level={level:6s} {v:24s} {name[:40]}")
+
+    # REGIME COUNTERFACTUAL: type the REGIME-VS-AXIS signature. For every
+    # REGIME-level cell, strip the NO-EMPIRICAL-CONTENT flag and ask whether
+    # the verdict is still flawed. SOLE-CAUSE -> the regime alone made it
+    # flawed (the self-keyed signature). CO-FIRED -> a genuine axis fired
+    # too (the regime is genuine, not the sole cause).
+    print("\nRegime counterfactual (strip NO-EMPIRICAL-CONTENT; is it still flawed?):")
+    sole = [x for x in regime_cells if x[1]]
+    cofired = [x for x in regime_cells if not x[1]]
+    for cid, s, cf, L, name in regime_cells:
+        tag = "SOLE-CAUSE (self-keyed)" if s else "CO-FIRED (genuine)"
+        print(f"  [{cid:3d}] {tag:26s} cf_flags={cf!r:24s} name={L:4s} {name[:40]}")
+    print(f"\n  SOLE-CAUSE (regime alone made a cell flawed; the self-keyed signature): {len(sole)}")
+    for cid, s, cf, L, name in sole:
+        print(f"    [{cid:3d}] {name[:55]}")
+    print(f"  CO-FIRED (a genuine axis fired; the regime is genuine): {len(cofired)}")
+    for cid, s, cf, L, name in cofired:
+        print(f"    [{cid:3d}] {cf!r:24s} {name[:45]}")
 
 if __name__ == "__main__":
     main()
