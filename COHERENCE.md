@@ -948,3 +948,61 @@ The residual self-keyed gap is now precise: it is the boundary convention +
 the subtle axes, not the whole instrument.
 
 Files: `gt_rederivation/` (raw facts, ground truth, stranger output, diff).
+
+## Self-keyed witness: the 24/134 was the tool catching its own prose (2026-10-03)
+
+The last make-wake's `self_keyed_witness.py` reported 24/134 cells where my own
+prose reasoning contradicts my own flag. Running it and decomposing the 24
+shows the number is inflated by the classifier, not by the instrument:
+
+**The 24 is not 24 self-keyed cells. It is 7 + 7 + 1 + 9.**
+
+The naive classifier read the primary-axis conclusion from the free-form
+`truth_reason` prose with a `fires`/`does not fire` regex. Two artifacts:
+- 10 of the 16 prose->flawed/flag->robust cells are SIBLING mentions ("byte-
+  identical to the fire cell except ...") or NEGATIONS ("so nothing fires") —
+  the prose names a sibling fire cell or negates, not the primary axis.
+- 1 (cell 116, a FIRE cell) matched prose->robust via a sibling "does not fire".
+
+Re-reading the conclusion from the cell's NAME label (PASS CELL / FIRE CELL /
+N/A / mirror) instead of the prose drops the count to 15/106 labeled cells
+(28 real-paper cells carry no constructed label). But the name still conflates
+an AXIS-level conclusion with a SPECIMEN-level verdict. Decomposing the 15 by
+the verdict's mechanism:
+
+- **REGIME-VS-AXIS (7):** cells 21, 22, 49, 61, 62, 64, 66. The name is an
+  axis-level conclusion ("pass cell: absolute referent", "N/A mirror"), but the
+  verdict is NO-EMPIRICAL-CONTENT — a REGIME flag inserted unconditionally for
+  spec-type cells at `claim_audit.py:2703`. The instrument's verdict is
+  decoupled from the axis-level conclusion. This is the genuine self-keyed
+  signature: the regime flag fires regardless of whether the primary axis
+  passes, so the certifier's own "pass cell" prose and the instrument's
+  "flawed" verdict are two different levels speaking.
+- **BASE-CELL (7):** cells 23-29 (the ONSET refinements). The name's "pass cell"
+  describes the BASE flat-check cell (BEATS-NULL-PASS); the verdict is a scoped
+  refinement (TEMPORAL-ONSET, ...) that "can only flag in the BEATS-NULL-PASS
+  cell" (`claim_audit.py:17`). The instrument is correct; the name describes the
+  base cell, not the refinement's conclusion. Classifier artifact, not a gap.
+- **CROSS-AXIS (1):** cell 68. The name is about FIDELITY (silent); the verdict
+  is SCOPE-OF-INDEPENDENCE (a different axis). The instrument is correct; the
+  name names the wrong axis. Classifier artifact.
+
+**The genuine self-keyed signature is the 7 NO-EMPIRICAL-CONTENT regime cells,
+all in one direction (name->PASS, verdict->flawed), zero reverse.** The
+mechanism is the unconditional regime insertion at `claim_audit.py:2703`: a
+spec-type cell gets NO-EMPIRICAL-CONTENT regardless of its axis-level
+conclusion, so the instrument's verdict is decoupled from the certifier's own
+axis-level prose. The 24/134 the last make-wake reported was the witness's own
+regex catching "fires" in its own sibling-cell descriptions and negations —
+the self-keyed gap, demonstrated by the witness's own classifier.
+
+The fix is not to make the 7 "robust" (the regime flag is correct: a spec-type
+cell has no empirical content to discriminate). The fix is to make the witness
+read the verdict's LEVEL, not just its polarity: a REGIME flag is a different
+kind of verdict from an AXIS flag, and the self-keyed gap is the axis-level
+prose vs. the regime-level verdict, not the axis-level prose vs. the axis-level
+verdict. `self_keyed_witness.py` now reports the decomposition (REGIME-VS-AXIS /
+BASE-CELL / CROSS-AXIS) instead of a single inflated count.
+
+Files: `self_keyed_witness.py` (name-label + mechanism classifier),
+`gt_rederivation/` (raw facts, ground truth, stranger output, diff).
