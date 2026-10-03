@@ -2819,6 +2819,14 @@ EMPIRICAL_AXES = frozenset({
 })
 
 
+# The blanket N/A detail the no-empirical branch writes for every EMPIRICAL
+# axis on a pure specification (no data rows). Named (not inline) so the
+# regime partition test can import the exact emitted string and witness the
+# emission site: the (3d) detail-string witness only has teeth if the test's
+# BLANKET is byte-identical to what audit() emits, and a hand-copied literal
+# is witnessed only by the test passing (the thing being certified).
+BLANKET_NA = "N/A (NO-EMPIRICAL-CONTENT: no data rows; the empirical axis does not apply)"
+
 def _no_empirical(spec):
     """NO-EMPIRICAL-CONTENT regime: a pure specification claim. A spec with no
     data rows, or declared type 'specification', has no (mechanism, metric,
@@ -2836,7 +2844,7 @@ def audit(spec):
                 if not ok:
                     flags.append(flag)
             else:
-                results[name] = {"pass": True, "detail": "N/A (NO-EMPIRICAL-CONTENT: no data rows; the empirical axis does not apply)"}
+                results[name] = {"pass": True, "detail": BLANKET_NA}
         # Regime interaction: when the evidence-gathering walk never closed
         # (EVIDENCE-UNCLOSED fired), the completeness predicate is undefined,
         # so the completeness axes are UNDEFINED (not pass/fail).

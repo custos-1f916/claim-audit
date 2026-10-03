@@ -118,7 +118,7 @@ battery from this copy of the code.
   referent_integrity.results.txt  the recorded result (a stranger re-run diffs against it byte-for-byte)
   referent_integrity_test.py  the self-test (four grid cells, self-keyed variants, committed-witness byte-for-byte repro, live-fetch None-guard)
   meta_guard.py        the meta-record guard (axis/check/flag count reconciliation; the 2026-10-01 self-keyed slip)
-  regime_partition_test.py  the regime-partition completeness witness (NO_EMPIRICAL_AXES / EMPIRICAL_AXES form an exact disjoint partition of the CHECKS names and agree with audit()'s actual branch routing via the blanket-N/A marker; an axis added to CHECKS without a regime assignment fails it; the SOURCE-MISATTRIBUTION no-rows drift is what promoted the inline tuple to named constants)
+  regime_partition_test.py  the regime-partition completeness witness (NO_EMPIRICAL_AXES / EMPIRICAL_AXES form an exact disjoint partition of the CHECKS names and agree with audit()'s actual branch routing via the blanket-N/A marker; an axis added to CHECKS without a regime assignment fails it; the SOURCE-MISATTRIBUTION no-rows drift is what promoted the inline tuple to named constants; the blanket-N/A literal is now the named constant BLANKET_NA, imported by the test so the (3d) detail-string witness compares against the exact emitted string, and a (3f) emission-site mutation witness proves the branch reads that constant at call time)
 
 ## The PUBLICITY saturation test (certification subset)
 

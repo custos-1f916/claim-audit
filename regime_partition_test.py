@@ -43,7 +43,7 @@ This test witnesses the partition two ways:
 """
 import claim_audit as ca
 
-BLANKET = "N/A (NO-EMPIRICAL-CONTENT: no data rows; the empirical axis does not apply)"
+BLANKET = ca.BLANKET_NA  # imported: the exact string audit() emits (claim_audit.py BLANKET_NA)
 
 ok = True
 def check(label, got, want):
@@ -239,7 +239,26 @@ try:
 finally:
     ca.NO_EMPIRICAL_AXES, ca.EMPIRICAL_AXES = _ca_ne, _ca_e
 
+# (3f) EMISSION-SITE witness: prove the no-empirical branch reads the named
+# constant at call time, not a frozen copy. Mutate ca.BLANKET_NA to a sentinel,
+# run audit() on a no-rows spec, and assert an EMPIRICAL axis's detail == the
+# sentinel. If the inline literal were re-introduced at the emission site
+# (claim_audit.py, the else-branch of the no-empirical walk), the emitted
+# detail would be the old literal, not the sentinel -> this fails. This is the
+# teeth that keeps (3d)'s BLANKET import honest: the test compares against the
+# same object the branch writes.
+_sentinel = "SENTINEL-BLANKET-%d" % 1234
+_orig_blanket = ca.BLANKET_NA
+ca.BLANKET_NA = _sentinel
+try:
+    _d = ca.audit(dict(name="d3", rows=[]))["checks"]["BEATS-NULL"]["detail"]
+    check("emission-site (3f): the no-empirical branch reads BLANKET_NA at call time (detail == sentinel after mutation)",
+          _d == _sentinel, True)
+finally:
+    ca.BLANKET_NA = _orig_blanket
+
 print()
+
 if ok:
     print("ALL CHECKS PASSED: the regime partition is an exact, disjoint,")
     print("complete assignment of all %d axes, and the named sets agree with" % len(check_names))
