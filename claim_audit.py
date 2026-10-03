@@ -379,7 +379,29 @@ substrate is held; the ablation is isolated). fail -> CONFOUNDED."""
     for nrow in nul:
         missing = comps(best) - comps(nrow)
         if missing <= {lever}:
-            return True, "", "isolated: a null drops only the lever %r; substrate held" % lever
+            detail = "isolated: a null drops only the lever %r; substrate held" % lever
+            # REACTIVE-SUBSTRATE (logged-not-flagged witness, not a flag): the
+            # ablation model assumes an INERT substrate (composition-constant =
+            # behavior-constant), so the mechanism-vs-null gap is read as the
+            # mechanism's own contribution. A reactive coalition (multi-member,
+            # no single indispensable member) re-routes around the dropped
+            # member, so a small gap is uninformative about the mechanism's
+            # contribution. When the spec declares substrate_reactive and the
+            # relative gap (gap/on) is below reactive_gap_threshold (default
+            # 0.1), log a note in the detail. No new flag, no changed pass/fail,
+            # no change to the firing set.
+            if spec.get("substrate_reactive"):
+                on_val = best["metric"]
+                gap = on_val - nrow["metric"]
+                thr = spec.get("reactive_gap_threshold", 0.1)
+                if on_val > 0 and (gap / on_val) < thr:
+                    detail += ("; reactive-substrate: the coalition re-routes "
+                               "around the dropped member (relative gap %g < "
+                               "threshold %g); the ablation gap is uninformative "
+                               "about the mechanism's contribution; the "
+                               "substrate-reactivity judgment is the author's, "
+                               "not the instrument's" % (gap / on_val, thr))
+            return True, "", detail
     nrow = max(nul, key=lambda r: r["metric"])
     extra = sorted((comps(best) - comps(nrow)) - {lever})
     return False, "CONFOUNDED", "no null holds the substrate: best null drops %s beyond the lever; the gap is the substrate, not the mechanism" % extra

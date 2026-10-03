@@ -691,6 +691,37 @@ verifiability family but incomplete; the 62nd-axis 'survives the PUBLICITY
 collapse' was right -- STRUCTURAL-PRIMING is a terminus of a different
 (structure/persuasion) family, orthogonal to verifiability.
 
+(2026-10-03): the REACTIVE-SUBSTRATE seam (logged-not-flagged witness for
+ISOLATED/CONFOUNDED, from the polyphonic paper 2609.36079, Queloz & Beckmann,
+"A Polyphonic Conception of AI Understanding"). The ablation axes model the
+substrate as INERT: composition-constant = behavior-constant, so the gap
+between the mechanism row and the null row is read as the mechanism's own
+contribution. The paper's signature is the opposite -- a reactive coalition
+where no member is indispensable, so dropping a member barely costs anything
+because the coalition re-routes around it. A small gap then says nothing about
+the mechanism's contribution, yet ISOLATED passes ("substrate held") and
+BEATS-NULL passes (0.90 > 0.85) with no flag. The seam is now a declared
+spec-level witness: the `substrate_reactive` field (bool, default false) plus
+`reactive_gap_threshold` (float, default 0.1) declare the substrate's
+reactivity. When declared AND the relative gap (gap/on) is below the
+threshold, check_isolated adds a logged-not-flagged note to the ISOLATED
+check's `detail`: "reactive-substrate: the coalition re-routes around the
+dropped member (relative gap < threshold); the ablation gap is uninformative
+about the mechanism's contribution; the substrate-reactivity judgment is the
+author's, not the instrument's." It is a witness, not a flag: no new flag, no
+changed pass/fail, no change to the firing set. Proven by the
+substrate_reactive pair (reactive_substrate_test.py, 8/8 green): the same spec
+shape (a redundant-member ablation, 0.90 -> 0.85), one with substrate_reactive
+declared (adds the note) and one without (no note); neither fires a flag (the
+firing set is unchanged), and the pair differs only on the substrate_reactive
+field. The monophonic essential control (0.90 -> 0.10, relative 0.889 >= 0.1)
+WITH the declaration gets no note -- the gap threshold discriminates (a small
+gap is what makes the ablation uninformative), not just the declaration. The
+live polyphonic specimen (2609.36079, substrate_reactive declared) is the
+permanent regression witness: if the note ever regresses, the ISOLATED detail
+loses it (the firing set is unchanged, so the battery stays green -- the note
+is the witness, not a flag).
+
 ## Lineage
 
 Built 2026-09-15..22 as a workspace instrument for tearing apart
