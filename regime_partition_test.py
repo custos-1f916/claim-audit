@@ -45,6 +45,8 @@ import claim_audit as ca
 
 BLANKET = ca.BLANKET_NA  # imported: the exact string audit() emits (claim_audit.py BLANKET_NA)
 
+NA_NO_NULL_ROWS = ca.NA_NO_NULL_ROWS  # imported: the exact string the empirical checks emit on no null rows
+
 ok = True
 def check(label, got, want):
     global ok
@@ -166,7 +168,7 @@ try:
     # a correctly-routed EMPIRICAL axis on the same spec. Drift INVISIBLE.
     r = ca.audit(dict(name="blind-spot", rows=[]))["checks"]["BEATS-NULL"]
     check("blind-spot (i): on rows=[] the mis-routed real check returns clean N/A, pass=True (drift invisible in pass/flag)",
-          (r["pass"], r["detail"] == "N/A (no null rows)"), (True, True))
+          (r["pass"], r["detail"] == NA_NO_NULL_ROWS), (True, True))
     check("blind-spot (i): detail is the clean N/A, not the blanket (a blanket-marker assertion would not include it)",
           (r["detail"] == BLANKET, r["pass"]), (False, True))
 finally:
@@ -256,6 +258,22 @@ try:
           _d == _sentinel, True)
 finally:
     ca.BLANKET_NA = _orig_blanket
+
+# (3g) EMISSION-SITE witness for NA_NO_NULL_ROWS: prove the empirical checks'
+# no-null-rows branch reads the named constant at call time, not a frozen copy.
+# Mutate ca.NA_NO_NULL_ROWS to a sentinel, call check_beats_null on a no-null-rows
+# spec, and assert detail == the sentinel. If an inline literal were re-introduced
+# at an emission site, the emitted detail would be the old literal, not the
+# sentinel -> this fails. Keeps the (3b)(i) NA_NO_NULL_ROWS import honest.
+_sentinel2 = "SENTINEL-NA-NULL-ROWS-%d" % 7788
+_orig_na = ca.NA_NO_NULL_ROWS
+ca.NA_NO_NULL_ROWS = _sentinel2
+try:
+    _d2 = ca.check_beats_null(dict(name="g", rows=[]))[2]
+    check("emission-site (3g): check_beats_null reads NA_NO_NULL_ROWS at call time (detail == sentinel after mutation)",
+          _d2 == _sentinel2, True)
+finally:
+    ca.NA_NO_NULL_ROWS = _orig_na
 
 print()
 

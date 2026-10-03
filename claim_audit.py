@@ -150,6 +150,11 @@ Usage:
 """
 import json, math, sys
 
+# N/A literal emitted by every empirical check's no-null-rows branch (18 sites).
+# Named so a test asserting against it imports the emission value instead of
+# hand-copying the byte string (the BLANKET_NA seam, closed 08db96a).
+NA_NO_NULL_ROWS = "N/A (no null rows)"
+
 def _pearson(xs, ys):
     n = len(xs)
     if n < 2: return None
@@ -258,7 +263,7 @@ beats the null on the metric). POLARITY (logged-not-flagged witness, not a flag)
     on  = [r["metric"] for r in _rows(spec, lambda r: r.get("mechanism_on"))]
     nul = [r["metric"] for r in _rows(spec, lambda r: (not r.get("mechanism_on")) or r.get("is_null"))]
     if not on or not nul:
-        return True, "", "N/A (no null rows)"
+        return True, "", NA_NO_NULL_ROWS
     h, n = max(on), max(nul)
     if h > n:
         detail = "mechanism %g > null %g" % (h, n)
@@ -453,7 +458,7 @@ def check_noise_floor(spec):
     on_rows  = _rows(spec, lambda r: r.get("mechanism_on"))
     nul_rows = _rows(spec, lambda r: (not r.get("mechanism_on")) or r.get("is_null"))
     if not on_rows or not nul_rows:
-        return True, "", "N/A (no null rows)"
+        return True, "", NA_NO_NULL_ROWS
     h_row = max(on_rows, key=lambda r: r["metric"])
     h = h_row["metric"]
     n = max(r["metric"] for r in nul_rows)
@@ -616,7 +621,7 @@ def check_dose_response(spec):
     on  = [r["metric"] for r in spec["rows"] if r.get("mechanism_on")]
     nul = [r["metric"] for r in spec["rows"] if (not r.get("mechanism_on")) or r.get("is_null")]
     if not on or not nul:
-        return True, "", "N/A (no null rows)"
+        return True, "", NA_NO_NULL_ROWS
     h, n = max(on), max(nul)
     if h > n:
         return True, "", "N/A (cross-dose max-mech > max-null; BEATS-NULL does not fire)"
@@ -695,7 +700,7 @@ def check_temporal_onset(spec):
     on  = [r["metric"] for r in spec["rows"] if r.get("mechanism_on")]
     nul = [r["metric"] for r in spec["rows"] if (not r.get("mechanism_on")) or r.get("is_null")]
     if not on or not nul:
-        return True, "", "N/A (no null rows)"
+        return True, "", NA_NO_NULL_ROWS
     h, n = max(on), max(nul)
     if h <= n:
         return True, "", "N/A (BEATS-NULL already fires; the fail cell; DOSE-RESPONSE governs)"
@@ -730,7 +735,7 @@ def check_temporal_spike(spec):
     on  = [r["metric"] for r in spec["rows"] if r.get("mechanism_on")]
     nul = [r["metric"] for r in spec["rows"] if (not r.get("mechanism_on")) or r.get("is_null")]
     if not on or not nul:
-        return True, "", "N/A (no null rows)"
+        return True, "", NA_NO_NULL_ROWS
     h, n = max(on), max(nul)
     if h > n:
         return True, "", "N/A (BEATS-NULL does not fire; the pass cell; TEMPORAL-ONSET governs)"
@@ -823,7 +828,7 @@ def check_outcome_onset(spec):
     on  = [r["metric"] for r in spec["rows"] if r.get("mechanism_on")]
     nul = [r["metric"] for r in spec["rows"] if (not r.get("mechanism_on")) or r.get("is_null")]
     if not on or not nul:
-        return True, "", "N/A (no null rows)"
+        return True, "", NA_NO_NULL_ROWS
     h, n = max(on), max(nul)
     if h <= n:
         return True, "", "N/A (BEATS-NULL already fires; the fail cell; OUTCOME-SPIKE governs)"
@@ -858,7 +863,7 @@ def check_outcome_spike(spec):
     on  = [r["metric"] for r in spec["rows"] if r.get("mechanism_on")]
     nul = [r["metric"] for r in spec["rows"] if (not r.get("mechanism_on")) or r.get("is_null")]
     if not on or not nul:
-        return True, "", "N/A (no null rows)"
+        return True, "", NA_NO_NULL_ROWS
     h, n = max(on), max(nul)
     if h > n:
         return True, "", "N/A (BEATS-NULL does not fire; the pass cell; OUTCOME-ONSET governs)"
@@ -899,7 +904,7 @@ def check_subgroup_onset(spec):
     on  = [r["metric"] for r in spec["rows"] if r.get("mechanism_on")]
     nul = [r["metric"] for r in spec["rows"] if (not r.get("mechanism_on")) or r.get("is_null")]
     if not on or not nul:
-        return True, "", "N/A (no null rows)"
+        return True, "", NA_NO_NULL_ROWS
     h, n = max(on), max(nul)
     if h <= n:
         return True, "", "N/A (BEATS-NULL already fires; the fail cell; SUBGROUP-SPIKE governs)"
@@ -934,7 +939,7 @@ def check_subgroup_spike(spec):
     on  = [r["metric"] for r in spec["rows"] if r.get("mechanism_on")]
     nul = [r["metric"] for r in spec["rows"] if (not r.get("mechanism_on")) or r.get("is_null")]
     if not on or not nul:
-        return True, "", "N/A (no null rows)"
+        return True, "", NA_NO_NULL_ROWS
     h, n = max(on), max(nul)
     if h > n:
         return True, "", "N/A (BEATS-NULL does not fire; the pass cell; SUBGROUP-ONSET governs)"
@@ -979,7 +984,7 @@ def check_dose_onset(spec):
     on  = [r["metric"] for r in spec["rows"] if r.get("mechanism_on")]
     nul = [r["metric"] for r in spec["rows"] if (not r.get("mechanism_on")) or r.get("is_null")]
     if not on or not nul:
-        return True, "", "N/A (no null rows)"
+        return True, "", NA_NO_NULL_ROWS
     h, n = max(on), max(nul)
     if h <= n:
         return True, "", "N/A (BEATS-NULL already fires; the fail cell; DOSE-SPIKE governs)"
@@ -1015,7 +1020,7 @@ def check_dose_spike(spec):
     on  = [r["metric"] for r in spec["rows"] if r.get("mechanism_on")]
     nul = [r["metric"] for r in spec["rows"] if (not r.get("mechanism_on")) or r.get("is_null")]
     if not on or not nul:
-        return True, "", "N/A (no null rows)"
+        return True, "", NA_NO_NULL_ROWS
     h, n = max(on), max(nul)
     if h > n:
         return True, "", "N/A (BEATS-NULL does not fire; the pass cell; DOSE-ONSET governs)"
@@ -1058,7 +1063,7 @@ def check_tier_onset(spec):
     on  = [r["metric"] for r in spec["rows"] if r.get("mechanism_on")]
     nul = [r["metric"] for r in spec["rows"] if (not r.get("mechanism_on")) or r.get("is_null")]
     if not on or not nul:
-        return True, "", "N/A (no null rows)"
+        return True, "", NA_NO_NULL_ROWS
     h, n = max(on), max(nul)
     if h <= n:
         return True, "", "N/A (BEATS-NULL already fires; the fail cell; TIER-SPIKE governs)"
@@ -1093,7 +1098,7 @@ def check_tier_spike(spec):
     on  = [r["metric"] for r in spec["rows"] if r.get("mechanism_on")]
     nul = [r["metric"] for r in spec["rows"] if (not r.get("mechanism_on")) or r.get("is_null")]
     if not on or not nul:
-        return True, "", "N/A (no null rows)"
+        return True, "", NA_NO_NULL_ROWS
     h, n = max(on), max(nul)
     if h > n:
         return True, "", "N/A (BEATS-NULL does not fire; the pass cell; TIER-ONSET governs)"
@@ -1137,7 +1142,7 @@ def check_split_onset(spec):
     on  = [r["metric"] for r in spec["rows"] if r.get("mechanism_on")]
     nul = [r["metric"] for r in spec["rows"] if (not r.get("mechanism_on")) or r.get("is_null")]
     if not on or not nul:
-        return True, "", "N/A (no null rows)"
+        return True, "", NA_NO_NULL_ROWS
     h, n = max(on), max(nul)
     if h <= n:
         return True, "", "N/A (BEATS-NULL already fires; the fail cell; SPLIT-SPIKE governs)"
@@ -1173,7 +1178,7 @@ def check_split_spike(spec):
     on  = [r["metric"] for r in spec["rows"] if r.get("mechanism_on")]
     nul = [r["metric"] for r in spec["rows"] if (not r.get("mechanism_on")) or r.get("is_null")]
     if not on or not nul:
-        return True, "", "N/A (no null rows)"
+        return True, "", NA_NO_NULL_ROWS
     h, n = max(on), max(nul)
     if h > n:
         return True, "", "N/A (BEATS-NULL does not fire; the pass cell; SPLIT-ONSET governs)"
@@ -1218,7 +1223,7 @@ def check_metric_onset(spec):
     on  = [r["metric"] for r in spec["rows"] if r.get("mechanism_on")]
     nul = [r["metric"] for r in spec["rows"] if (not r.get("mechanism_on")) or r.get("is_null")]
     if not on or not nul:
-        return True, "", "N/A (no null rows)"
+        return True, "", NA_NO_NULL_ROWS
     h, n = max(on), max(nul)
     if h <= n:
         return True, "", "N/A (BEATS-NULL already fires; the fail cell; METRIC-SPIKE governs)"
@@ -1255,7 +1260,7 @@ def check_metric_spike(spec):
     on  = [r["metric"] for r in spec["rows"] if r.get("mechanism_on")]
     nul = [r["metric"] for r in spec["rows"] if (not r.get("mechanism_on")) or r.get("is_null")]
     if not on or not nul:
-        return True, "", "N/A (no null rows)"
+        return True, "", NA_NO_NULL_ROWS
     h, n = max(on), max(nul)
     if h > n:
         return True, "", "N/A (BEATS-NULL does not fire; the pass cell; METRIC-ONSET governs)"
@@ -1461,7 +1466,7 @@ def check_selection_on_narrative(spec):
         return True, "", "N/A (the mechanism row's subset does not satisfy the declared criterion; the criterion is not the narrative's selection rule)"
     nul_rows = _rows(spec, lambda r: (not r.get("mechanism_on")) or r.get("is_null"))
     if not nul_rows:
-        return True, "", "N/A (no null rows)"
+        return True, "", NA_NO_NULL_ROWS
     for nr in nul_rows:
         if not _cmp_criterion(nr["metric"], op, thr):
             return False, "SELECTION-ON-NARRATIVE", \
