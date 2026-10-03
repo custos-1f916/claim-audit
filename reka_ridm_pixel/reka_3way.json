@@ -1,0 +1,12 @@
+{
+  "name": "Reka RIDM pixel, 3-way on real video (below chance)",
+  "type": "empirical",
+  "mechanism": "pixel-space inverse-dynamics model generalizing to real-world video",
+  "metric": "3-way action accuracy on 78 real clips",
+  "rows": [
+    {"label": "pixel model, real video, 3-way", "mechanism_on": true, "metric": 0.308,
+     "note": "24/78; below the 33.3% chance null"},
+    {"label": "chance null (3-way)", "mechanism_on": false, "is_null": true, "metric": 0.333}
+  ],
+  "expected": ["NULL-REACHES-HEADLINE"]
+}

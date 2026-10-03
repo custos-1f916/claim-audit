@@ -1,0 +1,12 @@
+{
+  "name": "Reka RIDM pixel, 2-way turn-direction on real video (CI declared)",
+  "type": "empirical",
+  "mechanism": "pixel-space inverse-dynamics model generalizing to real-world video",
+  "metric": "turn-direction accuracy on 47 real clips (2-way)",
+  "rows": [
+    {"label": "pixel model, real video, 2-way", "mechanism_on": true, "metric": 0.511,
+     "ci": [0.368, 0.653], "note": "24/47; two-sided binomial p=1.0000; 95% CI from n=47 includes 0.50"},
+    {"label": "chance null (2-way)", "mechanism_on": false, "is_null": true, "metric": 0.50}
+  ],
+  "expected": ["WITHIN-NOISE"]
+}

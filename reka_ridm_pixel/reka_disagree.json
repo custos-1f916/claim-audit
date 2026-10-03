@@ -1,0 +1,12 @@
+{
+  "name": "disagree test: CI excludes null but small-n binomial is non-significant",
+  "type": "empirical",
+  "mechanism": "probe",
+  "metric": "2-way accuracy",
+  "rows": [
+    {"label": "mechanism, 2-way", "mechanism_on": true, "metric": 0.55,
+     "ci": [0.52, 0.58], "note": "declared CI excludes 0.50 -> NOISE-FLOOR passes; but k=11,n=20 binomial two-sided p~0.82 (non-sig)"},
+    {"label": "chance null (2-way)", "mechanism_on": false, "is_null": true, "metric": 0.50}
+  ],
+  "expected": []
+}
