@@ -1908,6 +1908,53 @@ def check_pseudoreplication(spec):
     return False, "PSEUDOREPLICATION", detail
 
 
+def check_null_result_honesty(spec):
+    """NULL-RESULT-HONESTY (66th primary axis, 2026-10-03): the
+    negative-claim / power-matching channel. All 65 prior axes are
+    POSITIVE-claim detectors: they fire when a claim's data fails to support
+    the headline number. A well-executed NULL result is the complement with no
+    explicit arm -- the load-bearing number is the absence itself. The
+    discriminating question for a negative claim is 'does the negative claim
+    match the statistical power?': a design at power p that cannot separate
+    'absent' from 'small effect present' (p below the adequate-power
+    threshold) supports an ABSENCE claim only if the paper HEDGES to that
+    power ('unresolved / insufficient evidence'). It does not support a
+    STRONG absence claim ('X is absent / zero / no difference') -- at that
+    power, absence and a small real effect are statistically indistinguishable,
+    so asserting absence overclaims what the design can show.
+
+    Fires when (1) the paper makes a STRONG negative claim
+    (negative_claim == 'absent' -- asserts the effect is absent / zero / no
+    difference), AND (2) the design's statistical power at the tested
+    configuration is below the adequate-power threshold (power <
+    power_threshold, default 0.80) -- the design cannot separate absent from
+    small, so the strong absence claim outruns the power.
+
+    SILENT when the paper HEDGES to power (negative_claim == 'unresolved' --
+    'unresolved / insufficient evidence / not powered to detect'), even at low
+    power (the hedge is exactly what the design supports), or when the power
+    is adequate (power >= power_threshold) -- a strong absence claim IS
+    supported by a powered design. N/A when the negative-claim channel
+    (negative_claim) or the power (power) is not declared.
+
+    Distinct from WITHIN-NOISE (the claim's effect-size CI, not a power
+    match), PSEUDOREPLICATION (the p-value's n counting nested sub-units, not
+    the power of a negative claim), THESIS-OUTRUNS-EVIDENCE (a positive thesis
+    outrunning its data, not a negative claim outrunning its power), and
+    SCOPE-FLATTENING (a scope the data does not cover, not a power mismatch).
+    None conditions a negative claim on the design's power.
+    """
+    neg_claim = spec.get("negative_claim")
+    power = spec.get("power")
+    if neg_claim not in ("absent", "unresolved") or power is None:
+        return True, "", "N/A (no negative-claim / power channel declared: negative_claim=%r, power=%r)" % (neg_claim, power)
+    threshold = spec.get("power_threshold", 0.80)
+    if neg_claim == "absent" and power < threshold:
+        detail = ("the paper asserts a STRONG negative claim (the effect is ABSENT / zero / no difference) at a design power of %.3f, below the adequate-power threshold %.3f: at that power the design cannot separate 'absent' from 'small effect present', so the absence claim outruns the power. The honest move at this power is to hedge to power ('unresolved / insufficient evidence'), not to assert absence." % (power, threshold))
+        return False, "NULL-RESULT-HONESTY", detail
+    return True, "", "PASS (negative claim matches power: negative_claim=%r, power=%.3f, threshold=%.3f -- the claim is hedged to power or the design is powered to support it)" % (neg_claim, power, threshold)
+
+
 def check_witness_population_selection(spec):
     """WITNESS-POPULATION-SELECTION (41st axis, 2026-09-27): the witness
     population of an absence claim is structurally selected against
@@ -2672,6 +2719,7 @@ CHECKS = [
     ("REFERENT-SELF-KEYED", check_referent_self_keyed),
     ("GATE-ON-REALIZATION", check_gate_on_realization),
     ("PSEUDOREPLICATION", check_pseudoreplication),
+    ("NULL-RESULT-HONESTY", check_null_result_honesty),
 ]
 
 def _no_empirical(spec):
@@ -2685,7 +2733,7 @@ def audit(spec):
     results, flags = {}, []
     if _no_empirical(spec):
         for name, fn in CHECKS:
-            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING", "THESIS-OUTRUNS-EVIDENCE", "UNIT-COUNT", "OPT-IN-CENSUS", "CAUSAL-WIRING", "DECLARED-CHANNEL", "CARRIER-REACH", "WITNESS-ADDRESS", "SELECTION-PROVENANCE", "HELD-OUT-PROVENANCE", "STRUCTURAL-PRIMING", "REFERENT-SELF-KEYED", "GATE-ON-REALIZATION", "PSEUDOREPLICATION"):
+            if name in ("COMPUTABLE", "UNWITNESSED-RECEIPT", "UNWITNESSED-ROOT", "WIDER-THAN-NAMED", "SELF-FALSIFYING", "WINDOW-PRESENT-TENSE", "EVIDENCE-UNCLOSED", "FIDELITY", "WITNESS-POPULATION-SELECTION", "SOURCE-REPLICATION", "PLATFORM-CERTIFIED", "TRUST", "TAUTOLOGICAL-BLEND", "CRITERION-THRESHOLD", "JUDGE-AS-TARGET", "COVERAGE-GAP", "SCOPE-FLATTENING", "THESIS-OUTRUNS-EVIDENCE", "UNIT-COUNT", "OPT-IN-CENSUS", "CAUSAL-WIRING", "DECLARED-CHANNEL", "CARRIER-REACH", "WITNESS-ADDRESS", "SELECTION-PROVENANCE", "HELD-OUT-PROVENANCE", "STRUCTURAL-PRIMING", "REFERENT-SELF-KEYED", "GATE-ON-REALIZATION", "PSEUDOREPLICATION", "NULL-RESULT-HONESTY"):
                 ok, flag, detail = fn(spec)
                 results[name] = {"pass": ok, "detail": detail}
                 if not ok:

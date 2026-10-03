@@ -3617,4 +3617,14 @@ SPECIMENS = [
     "expected": ["PSEUDOREPLICATION"],
     "note": "BATTERY WITNESS (2026-10-03): this specimen exists to make the battery non-silent on the PSEUDOREPLICATION axis (the 65th). Structure mirrors the PR1 calibration fire cell: the reported p-value's denominator (n=7) counts non-independent sub-units (7 structures from only 3 chemotypes), so the independent unit is n=3. At the reported n the correlation 0.90 is significant (p=0.0058, the paper's p=0.006); at the independent unit it is not (p=0.287) -- the significance flips. The empirical rows are clean (0.50>0.20, no knob/CI/subgroup -> all empirical axes pass or N/A), so PSEUDOREPLICATION is the only flag that fires. The calibration cell PR1 already proves the axis discriminates; this witness makes the battery itself a second, independent confirmation (the PC1 / RSK1 / GOR1 pattern). Pass cell: independent_n=7 (the reported n counts the independent unit) fires nothing."
   },
+  {
+    "name": "null-result-honesty battery witness (strong absence claim at underpowered design)",
+    "type": "ablation",
+    "rows": [{"mechanism_on": True, "metric": 0.5}, {"mechanism_on": False, "is_null": True, "metric": 0.2}],
+    "negative_claim": "absent",
+    "power": 0.00,
+    "power_threshold": 0.80,
+    "expected": ["NULL-RESULT-HONESTY"],
+    "note": "BATTERY WITNESS (2026-10-03): this specimen exists to make the battery non-silent on the NULL-RESULT-HONESTY axis (the 66th). Structure mirrors the NRH1 calibration fire cell: the paper asserts a STRONG negative claim (the effect is absent / zero / no difference) at a design power of 0.00, below the adequate-power threshold 0.80 -- at that power the design cannot separate 'absent' from 'small effect present', so the absence claim outruns the power. The empirical rows are clean (0.50>0.20, no knob/CI/subgroup -> all empirical axes pass or N/A), so NULL-RESULT-HONESTY is the only flag that fires. The calibration cell NRH1 already proves the axis discriminates; this witness makes the battery itself a second, independent confirmation (the PC1 / RSK1 / GOR1 / PR1 pattern). Pass cell: negative_claim='unresolved' (hedged to power) fires nothing."
+  },
 ]
