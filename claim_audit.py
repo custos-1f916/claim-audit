@@ -188,12 +188,28 @@ def _rows(spec, pred):
 def _headline_support(spec):
     """Return the mechanism's headline row's support (denominator count),
     or None if no mechanism row declares a support. A support of 0 means the
-    headline ratio has an empty denominator and is undefined (vacuous)."""
+    headline ratio has an empty denominator and is undefined (vacuous). A None
+    with a mechanism row present (the headline row declares no support) is the
+    undeclared-denominator blind spot, surfaced by _headline_denominator_undeclared."""
     on_rows = _rows(spec, lambda r: r.get("mechanism_on"))
     if not on_rows:
         return None
     h_row = max(on_rows, key=lambda r: r["metric"])
     return h_row.get("support")
+
+
+def _headline_denominator_undeclared(spec):
+    """True iff the mechanism's headline row is present but its denominator
+    (support) is undeclared (absent or None). Distinct from a DECLARED support
+    of 0 (a reported empty denominator, which is the vacuous-ratio fire): here
+    the denominator is simply not in the spec, so the instrument is blind to
+    whether the headline ratio is non-vacuous. This is a schema blind spot
+    (calibration boundary), not a vacuous-ratio fire. False when there is no
+    mechanism row (a different blind spot: no headline ratio at all)."""
+    if _headline_support(spec) is not None:
+        return False  # declared (incl. a declared 0)
+    on_rows = _rows(spec, lambda r: r.get("mechanism_on"))
+    return bool(on_rows)  # True iff a mechanism row exists (the undeclared case)
 
 
 ORDER_STATISTICS = {"best","max","min","worst","p95","p5","topk","top-k"}
@@ -2911,6 +2927,19 @@ def audit(spec):
                 else:
                     note = "schema-conditional: the instrument is blind to this on the current spec; if the spec declared the structure, this check would apply"
                 boundary.append({"check": name, "reason": res["detail"], "note": note})
+    # Denominator blind spot (2026-10-04): the mechanism's headline ratio has an
+    # undeclared denominator (the support field is absent on the headline row).
+    # This is a schema blind spot, not a vacuous-ratio fire: the denominator is
+    # not in the spec, so the instrument cannot verify the ratio is non-vacuous.
+    # Distinct from a DECLARED support of 0 (a reported empty denominator, which
+    # fires VACUOUS-RATIO). If the spec declared the denominator, the vacuous-
+    # ratio guard would apply.
+    if _headline_denominator_undeclared(spec):
+        boundary.append({
+            "check": "VACUOUS-RATIO",
+            "reason": "the mechanism's headline row declares no support (denominator); the ratio's denominator is undeclared",
+            "note": "schema-conditional: the instrument is blind to the headline ratio's denominator on this spec (the support field is absent); it cannot verify the ratio is non-vacuous. Distinct from a declared support of 0 (a reported empty denominator, which fires VACUOUS-RATIO). If the spec declared the denominator, the vacuous-ratio guard would apply."
+        })
     # FP-side schema boundary: when BEATS-NULL fires NULL-REACHES-HEADLINE,
     # the fired flag is CONTESTED on every scope dimension for which the
     # false-positive verifier (the SPIKE refinement) is schema-conditional N/A
