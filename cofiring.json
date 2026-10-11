@@ -1,5 +1,5 @@
 {
-  "battery": 217,
+  "battery": 219,
   "check2flag": {
     "AGGREGATION-REVERSAL": "AGGREGATION-REVERSAL",
     "ANNOTATOR-SELF-KEYED": "ANNOTATOR-SELF-KEYED",
@@ -24,6 +24,7 @@
     "ISOLATED": "CONFOUNDED",
     "JUDGE-AS-TARGET": "JUDGE-AS-TARGET",
     "LOSSY-PROJECTION": "LOSSY-PROJECTION",
+    "MASS-WEIGHTING": "MASS-WEIGHTING",
     "METRIC-ONSET": "METRIC-ONSET",
     "METRIC-SPIKE": "METRIC-SPIKE",
     "NOISE-FLOOR": "WITHIN-NOISE",
@@ -118,6 +119,11 @@
       "DOSE-SPIKE",
       "NULL-REACHES-HEADLINE",
       38
+    ],
+    [
+      "FIDELITY",
+      "NO-EMPIRICAL-CONTENT",
+      217
     ],
     [
       "FUNNEL-STAGE-MISATTRIBUTION",
@@ -289,16 +295,17 @@
     "DOSE-RESPONSE": 2,
     "DOSE-SPIKE": 1,
     "EVIDENCE-UNCLOSED": 2,
-    "FIDELITY": 1,
+    "FIDELITY": 2,
     "FUNNEL-STAGE-MISATTRIBUTION": 1,
     "GATE-ON-REALIZATION": 1,
     "HELD-OUT-PROVENANCE": 2,
     "INCOMPARABLE-STATISTIC": 1,
     "JUDGE-AS-TARGET": 4,
     "LOSSY-PROJECTION": 6,
+    "MASS-WEIGHTING": 1,
     "METRIC-ONSET": 1,
     "METRIC-SPIKE": 3,
-    "NO-EMPIRICAL-CONTENT": 22,
+    "NO-EMPIRICAL-CONTENT": 23,
     "NOT-COMPUTABLE": 2,
     "NULL-REACHES-HEADLINE": 38,
     "NULL-RESULT-HONESTY": 1,
@@ -416,6 +423,9 @@
       20,
       60,
       64
+    ],
+    "MASS-WEIGHTING": [
+      218
     ],
     "METRIC-ONSET": [
       53
@@ -646,7 +656,8 @@
       112
     ],
     "FIDELITY": [
-      114
+      114,
+      217
     ],
     "FUNNEL-STAGE-MISATTRIBUTION": [
       80
@@ -674,6 +685,9 @@
       64,
       68,
       91
+    ],
+    "MASS-WEIGHTING": [
+      218
     ],
     "METRIC-ONSET": [
       53
@@ -705,7 +719,8 @@
       152,
       174,
       188,
-      196
+      196,
+      217
     ],
     "NOT-COMPUTABLE": [
       15,
@@ -933,7 +948,7 @@
       "EVIDENCE-UNCLOSED",
       "NO-EMPIRICAL-CONTENT",
       2,
-      22
+      23
     ],
     [
       "FUNNEL-STAGE-MISATTRIBUTION",
@@ -951,37 +966,37 @@
       "NOT-COMPUTABLE",
       "NO-EMPIRICAL-CONTENT",
       2,
-      22
+      23
     ],
     [
       "OPT-IN-CENSUS",
       "NO-EMPIRICAL-CONTENT",
       1,
-      22
+      23
     ],
     [
       "UNWITNESSED-RECEIPT",
       "NO-EMPIRICAL-CONTENT",
       1,
-      22
+      23
     ],
     [
       "UNWITNESSED-ROOT",
       "NO-EMPIRICAL-CONTENT",
       1,
-      22
+      23
     ],
     [
       "WIDER-THAN-NAMED",
       "NO-EMPIRICAL-CONTENT",
       2,
-      22
+      23
     ],
     [
       "WINDOW-PRESENT-TENSE",
       "NO-EMPIRICAL-CONTENT",
       1,
-      22
+      23
     ],
     [
       "OUTCOME-SPIKE",

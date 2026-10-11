@@ -2683,6 +2683,64 @@ def check_structural_priming(spec):
     return True, "", "N/A (priming_position=%s is not a recognized position; the axis does not apply)" % pp
 
 
+
+def check_mass_weighting(spec):
+    """MASS-WEIGHTING (67th primary axis, 2026-10-11): the
+    mass-weighted-aggregation channel. When a claim's metric is a per-unit
+    quantity (a rate ratio, a share, a per-capita value) and the units carry
+    heterogeneous mass (n), the mass-weighted mean and the unweighted mean of
+    the mechanism metric can straddle the global reference in opposite
+    directions: the mass-weighted mean says 'concentrated' while the
+    unweighted mean says 'not concentrated' (or vice versa). The reported
+    headline is whichever the author chose; the other is the silent
+    alternative. The discriminating question: does the mass-weighting choice
+    flip the sign of the claim relative to the global reference?
+
+    Fires when (1) there are >=2 mechanism rows with declared n (mass),
+    (2) the masses are not all equal (heterogeneous mass -- weighting is a
+    no-op when they are equal), (3) the null rows are homogeneous (a single
+    global reference value; heterogeneous per-subgroup baselines are
+    AGGREGATION-REVERSAL territory), and (4) the mass-weighted mean and the
+    unweighted mean of the mechanism metric straddle the reference (one
+    above, one below).
+
+    This is the axis that was structurally blind to the 2.17x witnessmark
+    retraction (2026-10-10): the per-post event-rate ratio mass-weighted by
+    comment count reported 2.1725 (concentrated) while the unweighted mean
+    was 0.8329 (<1.0, not concentrated) -- a pure central-tendency
+    mass-weighting artifact that no prior axis caught.
+
+    N/A when: <2 mechanism rows; a mechanism row is missing n; the masses are
+    all equal; there are no null rows (BEATS-NULL governs); the nulls are
+    heterogeneous (AGGREGATION-REVERSAL governs); or the total mass <= 0.
+    fail -> MASS-WEIGHTING."""
+    on = _rows(spec, lambda r: r.get("mechanism_on"))
+    if len(on) < 2:
+        return True, "", "N/A (<2 mechanism rows)"
+    if any(r.get("n") is None for r in on):
+        return True, "", "N/A (mechanism row missing n)"
+    vals = [r["metric"] for r in on]
+    masses = [r["n"] for r in on]
+    if len(set(masses)) == 1:
+        return True, "", "N/A (equal masses; weighting is a no-op)"
+    nul = [r["metric"] for r in _rows(spec, lambda r: (not r.get("mechanism_on")) or r.get("is_null"))]
+    if not nul:
+        return True, "", NA_NO_NULL_ROWS
+    if len(set(nul)) != 1:
+        return True, "", "N/A (heterogeneous nulls; AGGREGATION-REVERSAL governs)"
+    ref = nul[0]
+    tm = sum(masses)
+    if tm <= 0:
+        return True, "", "N/A (total mass <= 0)"
+    mw = sum(m * v for m, v in zip(masses, vals)) / tm
+    uw = sum(vals) / len(vals)
+    if (mw - ref) * (uw - ref) < 0:
+        return False, "MASS-WEIGHTING", \
+            ("the mass-weighted mean (%.4f) and the unweighted mean (%.4f) straddle the global reference (%.4f) in opposite directions: the mass-weighting choice flips the sign of the claim (mass-weighted reads %s, unweighted reads %s)"
+             % (mw, uw, ref, "above" if mw > ref else "below", "above" if uw > ref else "below"))
+    return True, "", ("mass-weighted mean (%.4f) and unweighted mean (%.4f) agree on the side of the reference (%.4f); no flip"
+                      % (mw, uw, ref))
+
 CHECKS = [
     ("BEATS-NULL",     check_beats_null),
     ("NOT-SELF-KEYED", check_not_self_keyed),
@@ -2750,6 +2808,7 @@ CHECKS = [
     ("GATE-ON-REALIZATION", check_gate_on_realization),
     ("PSEUDOREPLICATION", check_pseudoreplication),
     ("NULL-RESULT-HONESTY", check_null_result_honesty),
+    ("MASS-WEIGHTING", check_mass_weighting),
 ]
 
 # Regime partition (spec-level constants, 2026-10-03): every axis is
@@ -2815,6 +2874,7 @@ EMPIRICAL_AXES = frozenset({
     "FUNNEL-STAGE-MISATTRIBUTION",
     "ISOLATED",
     "LOSSY-PROJECTION",
+    "MASS-WEIGHTING",
     "METRIC-ONSET",
     "METRIC-SPIKE",
     "NOISE-FLOOR",

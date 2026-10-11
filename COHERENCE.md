@@ -1,4 +1,4 @@
-# Coherence of the 66-axis instrument (2026-10-03)
+# Coherence of the 67-axis instrument (2026-10-11)
 
 Question (from the saturation-collapse reconciliation): does the claim-audit
 instrument stay coherent as it grows to 62 axes, or do axes start to overlap?
@@ -38,7 +38,7 @@ does it fire on any specimen where *no other flag fires*? A flag with at
 least one exclusive specimen contributes a label no other axis produces
 there; that axis is not a re-label of another axis's firing.
 
-Result on the 217 battery: 52 of 70 flags have >= 1 exclusive
+Result on the 219 battery: 53 of 71 flags have >= 1 exclusive
 specimen. The newest axes each qualify: UNIT-COUNT, SCOPE-FLATTENING,
 COVERAGE-GAP, JUDGE-AS-TARGET, CRITERION-THRESHOLD, TAUTOLOGICAL-BLEND,
 TRUST, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS, COUPLED-HEADLINES, HELD-OUT-PROVENANCE, SELECTION-PROVENANCE, WITNESS-RESIDENCE, STRUCTURAL-PRIMING, REFERENT-SELF-KEYED, GATE-ON-REALIZATION, and PSEUDOREPLICATION each fire on at least one exclusive specimen (no other flag
@@ -47,7 +47,7 @@ co-fires with NO-EMPIRICAL-CONTENT in the no-rows regime -- but it is not
 a re-label: the identical-set test (no two flags share a firing set)
 covers it, and its fire cell is the only place the self-selected-denominator
 collapse is named. Exclusivity is computed
-on the 70 distinct *flags* the instrument emits, not the 66 checks: 7 checks emit a differently-named
+on the 71 distinct *flags* the instrument emits, not the 67 checks: 7 checks emit a differently-named
 flag (BEATS-NULL -> NULL-REACHES-HEADLINE, CO-MOVES -> WRONG-AXIS,
 COMPUTABLE -> NOT-COMPUTABLE, ISOLATED -> CONFOUNDED, NOISE-FLOOR ->
 WITHIN-NOISE, NOT-SELF-KEYED -> SELF-KEYED, REFERENT-WITNESSED ->
@@ -98,11 +98,11 @@ calibration's discriminating cells, not new ground truth.
 
 ## Verdict
 
-The 66-axis instrument is coherent. No flag is redundant (no two share a
+The 67-axis instrument is coherent. No flag is redundant (no two share a
 firing set), no axis is a weight-0 label, the subset structure is the
 designed refinement hierarchy, and the per-axis exclusivity test — now
 derived rather than hand-listed — shows the newest axes (OPT-IN-CENSUS, UNIT-COUNT, SCOPE-FLATTENING,
-COVERAGE-GAP, THESIS-OUTRUNS-EVIDENCE, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS, COUPLED-HEADLINES, HELD-OUT-PROVENANCE, SELECTION-PROVENANCE, WITNESS-RESIDENCE, STRUCTURAL-PRIMING, REFERENT-SELF-KEYED, GATE-ON-REALIZATION, and PSEUDOREPLICATION) each add a genuinely new discriminating dimension. The growth from 33 to 66 axes is not
+COVERAGE-GAP, THESIS-OUTRUNS-EVIDENCE, CAUSAL-WIRING, DECLARED-CHANNEL, CARRIER-REACH, WITNESS-ADDRESS, COUPLED-HEADLINES, HELD-OUT-PROVENANCE, SELECTION-PROVENANCE, WITNESS-RESIDENCE, STRUCTURAL-PRIMING, REFERENT-SELF-KEYED, GATE-ON-REALIZATION, and PSEUDOREPLICATION) each add a genuinely new discriminating dimension. The growth from 33 to 67 axes is not
 re-expanding
 the 59-family saturation collapse: those were the certification-gap
 family's self-labeled axes; the claim-audit axes carry 4-cell
@@ -1114,3 +1114,41 @@ output (cofiring.py --check, exit 0):
 The 33-to-66 growth remains a set of weight-1 instruments (each
 carries a 4-cell discriminating calibration), not a re-expansion of the
 59-family saturation collapse.
+
+
+## Re-derived fresh (battery 219, 71 flags) — the 67th axis (2026-10-11)
+
+MASS-WEIGHTING (the 67th) is the mass-weighted-aggregation channel: when
+a claim's metric is a per-unit quantity and the units carry heterogeneous
+mass (n), the mass-weighted mean and the unweighted mean can straddle the
+global reference in opposite directions. The reported headline is whichever
+the author chose; the other is the silent alternative. The discriminating
+question: does the mass-weighting choice flip the sign of the claim
+relative to the global reference? All 66 prior axes are silent on this
+face — the blind spot that produced the 2.17x witnessmark retraction
+(2026-10-10), where the mass-weighted per-post event-rate ratio reported
+2.1725 (concentrated) while the unweighted mean was 0.8329 (<1.0).
+
+Re-derived from the actual code (meta_guard.py) and the fresh cofiring
+output (cofiring.py --check, exit 0):
+
+- N = len(CHECKS) = 67 (was 66). F + R == N: 67 + 0 == 67.
+- F_total = 71 distinct flags (67 check flags + 4 gate flags; was 70).
+- Battery: 219 specimens (was 218). ALL SPECIMENS MATCH (exit 0).
+- IDENTICAL firing sets: none. No new redundancy.
+- Subset pairs: 17 (unchanged). The designed refinement hierarchy is intact.
+- Exclusive-specimen flags: 53 (was 52). MASS-WEIGHTING gained its
+  exclusive battery witness (MW1, the mass-weighted-vs-unweighted
+  straddle cell; fires 1, exclusive 1).
+- truly_never: []. Nothing newly dead.
+- Calibration boundary: closed. calibration.py 138/138 DISCRIMINATES
+  (MW1 fire cell fires exactly MASS-WEIGHTING, no cross-fire; MW2
+  pass cell fires nothing); calibration_boundary.py 67/67 calibrated,
+  0 uncalibrated.
+- The witnessmark retraction (c101629 -> c101645, 2026-10-10) now fires
+  MASS-WEIGHTING on the 67-axis instrument: the structural blind spot
+  that produced one of my own F1 retractions is closed.
+
+The 33-to-67 growth remains a set of weight-1 instruments (each
+carries a 4-cell discriminating calibration), not a re-expansion of the
+existing 66.

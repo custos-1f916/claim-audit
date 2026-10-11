@@ -868,6 +868,20 @@ SPECIMENS = [
    "negative_claim":"unresolved","power":0.0,"power_threshold":0.8,
    "truth":[],
    "truth_reason":"negative_claim='unresolved' (hedged to power: 'unresolved / insufficient evidence / not powered to detect') at design power 0.000: the paper does not assert a strong absence, it hedges to the design's power, so there is no absence claim outrunning the power. NULL-RESULT-HONESTY does not fire (pass). Same rows and power as NRH1; only negative_claim differs (absent vs unresolved), so the axis is what discriminates."},
+  {"name":"MW1 mass-weighting (fire cell: mass-weighted vs unweighted straddle the global reference)","type":"regime-sweep",
+   "rows":[{"label":"high-mass high-ratio","mechanism_on":True,"n":100,"metric":3.0},
+           {"label":"low-mass low-ratio a","mechanism_on":True,"n":1,"metric":0.2},
+           {"label":"low-mass low-ratio b","mechanism_on":True,"n":1,"metric":0.2},
+           {"label":"low-mass low-ratio c","mechanism_on":True,"n":1,"metric":0.2},
+           {"label":"global reference","mechanism_on":False,"is_null":True,"n":1000,"metric":1.0}],
+   "truth":["MASS-WEIGHTING"],
+   "truth_reason":"the per-unit metric carries heterogeneous mass (n=100 vs n=1); the mass-weighted mean (2.9184) sits ABOVE the global reference (1.0) while the unweighted mean (0.9000) sits BELOW it -- the mass-weighting choice flips the sign of the claim. The null is a single homogeneous global reference (not per-subgroup baselines), so AGGREGATION-REVERSAL is N/A; the mechanism beats the null on the max (3.0>1.0), so BEATS-NULL passes. MASS-WEIGHTING is the only flag that fires. This is the exact structure of the 2.17x witnessmark retraction (2026-10-10)."},
+  {"name":"MW2 mass-weighting (pass cell: both means on the same side of the reference)","type":"regime-sweep",
+   "rows":[{"label":"high-mass mid-ratio","mechanism_on":True,"n":100,"metric":2.0},
+           {"label":"low-mass high-ratio","mechanism_on":True,"n":1,"metric":3.0},
+           {"label":"global reference","mechanism_on":False,"is_null":True,"n":1000,"metric":1.0}],
+   "truth":[],
+   "truth_reason":"heterogeneous mass (n=100 vs n=1) but the mass-weighted mean (2.0099) and the unweighted mean (2.5000) both sit ABOVE the global reference (1.0) -- no sign flip, so MASS-WEIGHTING does not fire. The mechanism beats the null on the max (3.0>1.0), so BEATS-NULL passes; the single homogeneous null keeps AGGREGATION-REVERSAL N/A. Silent-on-robust: the axis is not so broad it fires whenever mass is heterogeneous, only when the weighting flips the claim."},
 ]
 
 

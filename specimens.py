@@ -3638,4 +3638,20 @@ SPECIMENS = [
     "expected": ["NO-EMPIRICAL-CONTENT", "FIDELITY"],
     "note": "LIVE SPECIMEN (BBC c3eweld0nddeo, 'Why has Brazil accused the US of election interference?', 1:57, uploaded 2026-10-03T13:52Z; no transcript). The headline names the US as the accused interferer, but the body's load-bearing accusation names a different referent: 'Lula da Silva has accused Bolsonaro's camp of encouraging foreign interference.' The US appears in the body only as 'Washington has backed closer ties with Brazil's right wing' (a soft claim) and 'questions about US influence' (a question, not an assertion). The instrument's FIDELITY check fires on the headline-layer referent reading: the headline's reading ('US') does not byte-match the body's load-bearing referent ('Bolsonaro's camp'), so the copy is distorted. This is a NEW POSITION for FIDELITY (headline-vs-body referent, not the reasoning-trace copy the axis was designed for): the axis is confirmed, the position is new. Disambiguation: NOT REFERENT-CONSTRUCTED (that axis is model-constructed referents, empirical-only, N/A in the no-empirical regime). The self-keyed variant (the headline declares its own referent, referent_source=self-declared) fires REFERENT-SELF-KEYED instead -- the discriminating control, not this cell. Interpretation (human layer, not the instrument's verdict): the headline is a framing choice, not a false statement -- SILENT as a BBC piece, but a good specimen for the referent-seam. No-rows regime: the empirical axes are N/A; NO-EMPIRICAL-CONTENT + FIDELITY fire."
   },
+  {
+    "name": "MASS-WEIGHTING battery witness (2026-10-11): mass-weighted vs unweighted straddle the global reference",
+    "type": "regime-sweep",
+    "mechanism": "per-unit event-rate ratio, mass-weighted by unit count (the reported headline)",
+    "mechanism_lever": "mass weighting of the per-unit ratio",
+    "metric": "per-unit rate ratio vs global (higher = more concentrated)",
+    "rows": [
+      {"label": "high-mass high-ratio", "mechanism_on": True, "n": 100, "metric": 3.0},
+      {"label": "low-mass low-ratio a", "mechanism_on": True, "n": 1, "metric": 0.2},
+      {"label": "low-mass low-ratio b", "mechanism_on": True, "n": 1, "metric": 0.2},
+      {"label": "low-mass low-ratio c", "mechanism_on": True, "n": 1, "metric": 0.2},
+      {"label": "global reference", "mechanism_on": False, "is_null": True, "n": 1000, "metric": 1.0}
+    ],
+    "expected": ["MASS-WEIGHTING"],
+    "note": "BATTERY WITNESS (2026-10-11): this specimen exists to make the battery non-silent on the MASS-WEIGHTING axis (the 67th). Structure mirrors the MW1 calibration fire cell: heterogeneous mass (n=100 vs n=1) with a single homogeneous global reference (1.0); the mass-weighted mean (2.9184) reads above the reference while the unweighted mean (0.9000) reads below it, so the mass-weighting choice flips the sign of the claim. The mechanism beats the null on the max (3.0>1.0), so BEATS-NULL passes; the single homogeneous null keeps AGGREGATION-REVERSAL N/A (heterogeneous per-subgroup baselines are that axis's territory). The calibration cell MW1 already proves the axis discriminates; this witness makes the battery itself a second, independent confirmation (the PC1 / RSK1 / GOR1 / PR1 / NRH1 pattern). Real-world motivating specimen: the 2.17x witnessmark retraction (2026-10-10), where the mass-weighted per-post event-rate ratio reported 2.1725 (concentrated) while the unweighted mean was 0.8329 (<1.0). Pass cell: MW2 (both means above the reference) fires nothing."
+  },
 ]
